@@ -32,6 +32,17 @@
     <DocumentationFile>bin\Release\netcoreapp2.2\MicroService.WebApi.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.Docker.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <PropertyGroup>
     <ProjectGuid>{9A19103F-16F7-4668-BE54-9A1E7A4F7963}</ProjectGuid>

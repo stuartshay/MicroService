@@ -1,0 +1,51 @@
+version: '2.2'
+
+services:
+
+  dotnet-navigator-reports-api-1:
+    container_name: 'navigator-reports-api'
+    image: stuartshay/navigator-reports-api:2.1-local
+    depends_on:
+      - database
+    ports:
+      - "7200:7200"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    command: "/wait_for_it.sh -h database -p 27017 -t 0 -- dotnet NavigatorReportsAPI.WebAPI.dll"
+    networks:
+      - navigator-api-network
+
+  redis:
+    container_name: 'redis'
+    image: stuartshay/navigator-identity-redis:development
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data-volume:/var/lib/redis
+    restart: always
+    networks:
+      - navigator-api-network
+
+  database:
+    container_name: 'database'
+    image: "stuartshay/navigator-instance:latest"
+    volumes:
+      - mongo-backup-volume:/backup
+      - mongo-config-volume:/data/config
+      - mongo-data-volume:/data/db
+    ports:
+      - "27017:27017"
+      - "28017:28017"
+    restart: always
+    networks:
+    - navigator-api-network
+
+volumes:
+  redis-data-volume:
+  mongo-data-volume:
+  mongo-config-volume:
+  mongo-backup-volume:
+
+networks:
+  navigator-api-network:
+    driver: bridge
