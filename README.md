@@ -6,6 +6,47 @@
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=sqale_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
 
 
+ Package | Status  
+------------ | -------------
+MicroService.Data | [![MyGet](https://img.shields.io/myget/microservice/v/MicroService.Data.svg)](https://www.myget.org/feed/microservice/package/nuget/MicroService.Data)
+MicroService.Service | [![MyGet](https://img.shields.io/myget/microservice/v/MicroService.Service.svg)](https://www.myget.org/feed/microservice/package/nuget/MicroService.Service)
+
+
+
+![MyGet](https://img.shields.io/myget/microservice/v/MicroService.Data.svg)
+
+![MyGet](https://img.shields.io/myget/microservice/v/MicroService.Service.svg)
+
+
+
+
+##
+
+### Myget Package Deployment
+
+Windows
+
+```powershell
+  $env:mygetApiKey = "adab4634-8ddb-4789-ae92-6461295ac69c"
+  .\build.ps1 -target push-myget
+```
+
+Linux
+ 
+```bash
+ export mygetApiKey="adab4634-8ddb-4789-ae92-6461295ac69c"
+./build.sh --target=push-myget
+```
+
+
+
+
+
+
+
+
+
+
 Create a microservice and a client consumer of the microservice.
 
 The requirements of the service are as follows:
