@@ -27,12 +27,6 @@ MicroService.Service | [![MyGet](https://img.shields.io/myget/microservice/v/Mic
 Base Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-base)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-base/)
 API  Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-build)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-build/)
 
-
-
-
-
-
-
 ##
 
 ### Myget Package Deployment
@@ -81,6 +75,14 @@ http://localhost:8080
  .\build.ps1 -target sonar
 ```
 
+### Development Setup
+
+```
+stuartshay/microservice-database:v1
+
+docker run —e PGDATA=postgres -p 5432:5432 -i stuartshay/microservice-database:v1
+
+```
 
 
 
@@ -88,7 +90,10 @@ http://localhost:8080
 
 
 
-Create a microservice and a client consumer of the microservice.
+
+
+
+# Create a microservice and a client consumer of the microservice.
 
 The requirements of the service are as follows:
 
