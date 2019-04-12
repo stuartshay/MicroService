@@ -5,7 +5,7 @@
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=***REMOVED-SONAR-KEY***&metric=security_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=***REMOVED-SONAR-KEY***)
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=***REMOVED-SONAR-KEY***&metric=sqale_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=***REMOVED-SONAR-KEY***)
 
- Image       |  
+ Image       |  Docker Hub
 ------------ | -------------
 microservice-database | [![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-database.svg)](https://hub.docker.com/r/stuartshay/microservice-database/)
 
