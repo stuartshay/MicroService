@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroService.Service", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroService.WebApi", "src\MicroService.WebApi\MicroService.WebApi.csproj", "{B11D1D07-EEBF-496A-9610-75AD9C887E20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroService.Text", "test\MicroService.Text\MicroService.Text.csproj", "{D8FA5755-5CB6-4CE8-96FC-11082E597527}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{B11D1D07-EEBF-496A-9610-75AD9C887E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B11D1D07-EEBF-496A-9610-75AD9C887E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B11D1D07-EEBF-496A-9610-75AD9C887E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8FA5755-5CB6-4CE8-96FC-11082E597527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8FA5755-5CB6-4CE8-96FC-11082E597527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8FA5755-5CB6-4CE8-96FC-11082E597527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8FA5755-5CB6-4CE8-96FC-11082E597527}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{22F0BC24-5DF9-46B7-86D9-1C7D8E648372} = {F428E656-40A3-482B-8BEB-36FB9C1EA1C9}
 		{442C83B0-E86B-4A38-82CC-83ADB4D87A71} = {F428E656-40A3-482B-8BEB-36FB9C1EA1C9}
 		{B11D1D07-EEBF-496A-9610-75AD9C887E20} = {F428E656-40A3-482B-8BEB-36FB9C1EA1C9}
+		{D8FA5755-5CB6-4CE8-96FC-11082E597527} = {CB94248E-94FA-4197-A7DC-4A7FD7D907B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {04E36AE4-00C1-48E4-B3EA-5836ACAE7658}
