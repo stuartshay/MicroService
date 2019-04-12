@@ -5,7 +5,6 @@
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=security_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=sqale_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
 
-
 ### Docker Hub Images 
 
  Image       |  Docker Hub
@@ -13,7 +12,7 @@
 microservice-database | [![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-database.svg)](https://hub.docker.com/r/stuartshay/microservice-database/)
 microservice-api-base | [![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-api.svg)](https://hub.docker.com/r/stuartshay/microservice-api/)
 
-### MyGet/NuGet Packages 
+### MyGet/NuGet Packages
 
  Package | Status  
 ------------ | -------------
@@ -21,10 +20,11 @@ MicroService.Data | [![MyGet](https://img.shields.io/myget/microservice/v/MicroS
 MicroService.Service | [![MyGet](https://img.shields.io/myget/microservice/v/MicroService.Service.svg)](https://www.myget.org/feed/microservice/package/nuget/MicroService.Service)
 
 ### Jenkins Build Status
+
  Jenkins | Status  
 ------------ | -------------
 Base Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-base)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-base/)
-API  Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-build)](https://jenkins.navigatorglass.com/job/NavigatorAPI/job/microservice-api-build/)
+API  Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-build)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-build/)
 
 
 
@@ -74,7 +74,11 @@ http://localhost:8080
  .\build.ps1 -target Generate-Docs
 ```
 
+### SonarQube Testing
 
+```
+ .\build.ps1 -target sonar
+```
 
 
 
