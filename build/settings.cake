@@ -11,4 +11,6 @@ public static class Settings
     public static string SonarExclude => "/d:sonar.exclusions=Program.cs,**/Swagger/*.cs";
 
     public static string SonarExcludeDuplications => "/d:sonar.cpd.exclusions=**/GalleryContextExtensions.cs";
+
+     public static string MyGetSource => "https://www.myget.org/F/microservice/api/v2/package";
 }

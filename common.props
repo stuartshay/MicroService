@@ -1,0 +1,14 @@
+<Project>
+  
+  <PropertyGroup Label="Build">
+    <RuntimeFrameworkVersion>2.2.0</RuntimeFrameworkVersion>
+    <Authors>Stuart Shay</Authors>
+    <RepositoryUrl>https://github.com/stuartshay/MicroService</RepositoryUrl>
+    <Company>Stuart Shay</Company>
+    <Product>MicroService</Product>
+    <Copyright>Copyright © Stuart Shay. All rights Reserved</Copyright>
+    <VersionPrefix>2.2.0.1</VersionPrefix>
+    <Version>2.2.0.1</Version>
+  </PropertyGroup>
+
+</Project>

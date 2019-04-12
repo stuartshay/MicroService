@@ -1,7 +1,5 @@
-//build.cake
-//  .\build.ps1 -t Coverage
-
 #load build/settings.cake
+#load build/helpers.cake
 
 //////////////////////////////////////////////////////////////////////
 // TOOLS
@@ -11,14 +9,12 @@
 #tool nuget:?package=xunit.runner.console&version=2.2.0
 #tool nuget:?package=xunit.runner.visualstudio&version=2.2.0
 #tool nuget:?package=DocFx.Console
-//#tool "nuget:?package=GitVersion.CommandLine"
 
 //////////////////////////////////////////////////////////////////////
 // ADDINS
 //////////////////////////////////////////////////////////////////////
 
 #addin nuget:?package=Cake.MiniCover&version=0.29.0-next20180721071547&prerelease
-//#addin nuget:?package=Cake.NSwag.Console&version=0.2.0-unstable0000
 #addin nuget:?package=Cake.Sonar
 #addin nuget:?package=Cake.DocFx
 
@@ -31,6 +27,8 @@ SetMiniCoverToolsProject("./build/tools.csproj");
 var target = Argument("Target", "Default");
 var configuration = Argument("configuration", "Release");
 var login = Argument<String>("login", null);
+var mygetApiKey = EnvironmentVariable("mygetApiKey");
+
 
 //////////////////////////////////////////////////////////////////////
 // PREPARATION
@@ -167,11 +165,11 @@ Task("Publish")
 
 
 Task("Generate-Docs")
-    .IsDependentOn("Build")
+    .IsDependentOn("Clean")
     .Does(() => 
     {
         DocFxBuild("./docfx/docfx.json");
-       // Zip("./docfx/_site/", artifactsDirectory + "/docfx.zip");
+        Zip("./docfx/_site/", "./artifacts/docfx.zip");
      });
 
 Task("Clean-Sonarqube")
@@ -179,7 +177,6 @@ Task("Clean-Sonarqube")
   .Does(()=>{
     CleanDirectory(sonarDirectory);
 }); 
-
 
 
 Task("Sonar")
@@ -200,14 +197,13 @@ Task("SonarBegin")
     });
 });
   
-  
 Task("SonarEnd")
     .Does(() => { 
         SonarEnd(new SonarEndSettings{});
     });
 
 Task("Pack")
-    .IsDependentOn("Coverage")
+    .IsDependentOn("Build")
     .Does(() =>
     {
         foreach (var project in GetFiles("./src/**/*.csproj"))
@@ -217,11 +213,36 @@ Task("Pack")
                 new DotNetCorePackSettings()
                 {
                     Configuration = configuration,
-                    OutputDirectory = artifactsDirectory
+                    OutputDirectory = artifactsDirectory,
+                    NoBuild = true
                 });
         }
     });
 
+Task("Push-Myget")
+    .IsDependentOn("Pack")
+    .Does(() => {
+        var pushSettings = new DotNetCoreNuGetPushSettings 
+        {
+            Source = Settings.MyGetSource,
+            ApiKey = mygetApiKey
+        };
+
+        Information($"artifactsDirectory \"{artifactsDirectory}\".");
+
+        var packages = GetFiles("./artifacts/*.nupkg");
+        foreach(var package in packages) 
+        {
+            if(!IsNuGetPublished(package)) 
+            {
+                Information($"Publishing \"{package}\".");
+                DotNetCoreNuGetPush(package.FullPath, pushSettings);
+            }
+            else {
+                Information($"Bypassing publishing \"{package}\" as it is already published.");
+            }    
+        }
+});
     
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
@@ -234,4 +255,3 @@ Task("Default")
 // EXECUTION
 //////////////////////////////////////////////////////////////////////
 RunTarget(target);
-
