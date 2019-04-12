@@ -24,6 +24,15 @@
     <ProjectReference Include="..\MicroService.Service\MicroService.Service.csproj" />
   </ItemGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.2\MicroService.WebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp2.2\MicroService.WebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+
   <PropertyGroup>
     <ProjectGuid>{9A19103F-16F7-4668-BE54-9A1E7A4F7963}</ProjectGuid>
   </PropertyGroup>
