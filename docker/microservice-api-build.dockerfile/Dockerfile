@@ -7,13 +7,13 @@ ENV BUILD_NUMBER ${BUILD_NUMBER}
 COPY src /app/src
 COPY MicroService.sln /app/MicroService.sln
 
-WORKDIR /app/src/MicroService.WebAPI
+WORKDIR /app/src/MicroService.WebApi
 
-#RUN export PATH="$PATH:/root/.dotnet/tools"
-#RUN dotnet tool install --global dotnet-setversion --version 2.0.0 
-#RUN dotnet tool install --global dotnet-dbinfo --version 1.4.0 
-#RUN dotnet tool list -g
-#RUN /root/.dotnet/tools/setversion 2.2.3.${BUILD_NUMBER};
+RUN export PATH="$PATH:/root/.dotnet/tools"
+RUN dotnet tool install --global dotnet-setversion --version 2.0.0 
+RUN dotnet tool install --global dotnet-dbinfo --version 1.4.0 
+RUN dotnet tool list -g
+RUN /root/.dotnet/tools/setversion 2.2.3.${BUILD_NUMBER};
 
 RUN dotnet publish -o /publish -c Release -f netcoreapp2.2 -r debian.9-x64
 
@@ -34,7 +34,7 @@ ENV ASPNETCORE_URLS http://*:7500
 ENV ASPNETCORE_ENVIRONMENT Docker
 
 # Open up port
-EXPOSE 7200
+EXPOSE 7500
 
 #HEALTHCHECK CMD curl --fail http://localhost:7500/health || exit 1
 
