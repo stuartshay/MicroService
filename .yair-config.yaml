@@ -1,0 +1,17 @@
+---
+clair:
+  host: "clair-scan:6060"
+
+output:
+  format: table # "json", "table", "short-table" or quiet
+# ucomment if you want to use the rocketchat output feature
+#  rocketchat:
+#    webhook_url: rocket-chat.com/hooks/...
+#    receiver: "#general,@admin"
+
+warning_on:
+  score: 265
+
+fail_on:
+  score: 625
+  big_vulnerability: true
