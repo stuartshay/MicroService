@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Configuration;
+﻿using MicroService.Data.Repository;
+using MicroService.Service.Configuration;
 using MicroService.WebApi.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,8 +9,16 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace MicroService.WebApi
 {
+    /// <summary>
+    /// Startup
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Startup" /> class.
+        /// </summary>
+        /// <param name="env"></param>
+        /// <param name="configuration"></param>
         public Startup(IHostingEnvironment env, IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,6 +35,10 @@ namespace MicroService.WebApi
         /// </summary>
         private IHostingEnvironment HostingEnvironment { get; }
 
+        /// <summary>
+        /// Configure Services.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOptions();
@@ -38,9 +51,17 @@ namespace MicroService.WebApi
             var config = Configuration.Get<ApplicationOptions>();
             services.DisplayConfiguration(Configuration, HostingEnvironment);
 
+            // Repositories
+            services.AddScoped<ICustomerRepository>(x => new CustomerRepository(config.ConnectionStrings.PostgreSql));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
+        /// <summary>
+        /// Configure
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
