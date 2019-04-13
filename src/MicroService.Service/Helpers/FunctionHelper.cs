@@ -20,22 +20,26 @@ namespace MicroService.Service.Helpers
             return n;
         }
 
-        public static double Percentile2(double[] sequence, double excelPercentile)
+        public static decimal Percentile2(decimal[] sequence, decimal excelPercentile)
         {
             Array.Sort(sequence);
             int N = sequence.Length;
 
-            double n = (N + 1) * excelPercentile;
-            if (n == 1d)
-                return sequence[0];
-            else if (n == N)
-                return sequence[N - 1];
-            else
+            decimal n = (N + 1) * excelPercentile;
+
+            if (n == 1m)
             {
-                int k = (int)n;
-                double d = n - k;
-                return sequence[k - 1] + d * (sequence[k] - sequence[k - 1]);
+                return sequence[0];
             }
+
+            if (n == N)
+            {
+                return sequence[N - 1];
+            }
+
+            int k = (int)n;
+            decimal d = n - k;
+            return sequence[k - 1] + d * (sequence[k] - sequence[k - 1]);
         }
 
 
