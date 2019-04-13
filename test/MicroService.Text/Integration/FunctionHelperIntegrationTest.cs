@@ -29,7 +29,7 @@ namespace MicroService.Text.Integration
             var array = results.Select(x => x.Data).ToArray();
 
             // Act
-            var sut = FunctionHelper.Percentile1(array, 99.5);
+            var sut = FunctionHelper.Percentile1(array, 0.995);
 
             // Assert
             Assert.NotNull(results);
@@ -46,7 +46,7 @@ namespace MicroService.Text.Integration
             var array = results.Select(x => x.Data).ToArray();
 
             // Act
-            var sut = FunctionHelper.Percentile2(array, 99.5);
+            var sut = FunctionHelper.Percentile2(array, 0.995);
 
             // Assert
             Assert.NotNull(results);
@@ -63,7 +63,7 @@ namespace MicroService.Text.Integration
             var array = results.Select(x => x.Data).ToArray();
 
             // Act
-            var sut = FunctionHelper.Percentile3(array, 99.5);
+            var sut = FunctionHelper.Percentile3(array, 0.995);
 
             // Assert
             Assert.NotNull(results);

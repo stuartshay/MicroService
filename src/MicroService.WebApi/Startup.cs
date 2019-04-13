@@ -1,5 +1,6 @@
 ﻿using MicroService.Data.Repository;
 using MicroService.Service.Configuration;
+using MicroService.Service.Services;
 using MicroService.WebApi.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -53,6 +54,9 @@ namespace MicroService.WebApi
 
             // Repositories
             services.AddScoped<ITestDataRepository>(x => new TestDataRepository(config.ConnectionStrings.PostgreSql));
+
+            // Services
+            services.AddScoped<ICalculationService, CalculationService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
