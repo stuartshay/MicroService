@@ -39,8 +39,6 @@ namespace MicroService.Service.Helpers
         }
 
 
-
-
         public static double Percentile3(IEnumerable<double> seq, double percentile)
         {
             var elements = seq.ToArray();
