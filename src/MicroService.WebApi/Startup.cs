@@ -52,7 +52,7 @@ namespace MicroService.WebApi
             services.DisplayConfiguration(Configuration, HostingEnvironment);
 
             // Repositories
-            services.AddScoped<ICustomerRepository>(x => new CustomerRepository(config.ConnectionStrings.PostgreSql));
+            services.AddScoped<ITestDataRepository>(x => new TestDataRepository(config.ConnectionStrings.PostgreSql));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
