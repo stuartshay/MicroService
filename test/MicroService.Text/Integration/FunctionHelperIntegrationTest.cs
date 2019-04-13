@@ -19,51 +19,17 @@ namespace MicroService.Text.Integration
             _testDataRepository = config.TestDataRepository;
         }
 
-        [Fact(DisplayName = "Calculate_Percentile_1 - Integration")]
+        [Fact(DisplayName = "Calculate_Percentile - Integration")]
         [Trait("Category", "Integration")]
-        public async Task Can_Calculate_Percentile_1()
+        public async Task Can_Calculate_Percentile()
         {
-            // Arrange 
+            // Arrange
             double result = 9949.9563797144219;
             var results = await _testDataRepository.FindAll();
             var array = results.Select(x => x.Data).ToArray();
 
             // Act
-            var sut = FunctionHelper.Percentile1(array, 0.9950);
-
-            // Assert
-            Assert.NotNull(results);
-            // Assert.Equal(sut, result);
-        }
-
-        [Fact(DisplayName = "Calculate_Percentile_2 - Integration")]
-        [Trait("Category", "Integration")]
-        public async Task Can_Calculate_Percentile_2()
-        {
-            // Arrange 
-            double result = 9949.9563797144219;
-            var results = await _testDataRepository.FindAll();
-            var array = results.Select(x => x.Data).ToArray();
-
-            // Act
-            // var sut = FunctionHelper.Percentile2(array, 0.995);
-
-            // Assert
-            // Assert.NotNull(results);
-            // Assert.Equal(sut, result);
-        }
-
-        [Fact(DisplayName = "Calculate_Percentile_3 - Integration")]
-        [Trait("Category", "Integration")]
-        public async Task Can_Calculate_Percentile_3()
-        {
-            // Arrange 
-            double result = 9949.9563797144219;
-            var results = await _testDataRepository.FindAll();
-            var array = results.Select(x => x.Data).ToArray();
-
-            // Act
-            var sut = FunctionHelper.Percentile3(array, 0.995);
+            var sut = FunctionHelper.Percentile(array, 0.995);
 
             // Assert
             Assert.NotNull(results);
