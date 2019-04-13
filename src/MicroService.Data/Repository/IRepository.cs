@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MicroService.Data.Models;
 
 namespace MicroService.Data.Repository
 {
     public interface IRepository<T> where T : BaseEntity
     {
-        void Add(T item);
+        Task Add(T item);
 
-        void Remove(int id);
+        Task Remove(int id);
 
-        void Update(T item);
+        Task Update(T item);
 
-        T FindById(int id);
+        Task<T> FindById(int id);
 
-        IEnumerable<T> FindAll();
+        Task<IEnumerable<T>> FindAll();
     }
 }
