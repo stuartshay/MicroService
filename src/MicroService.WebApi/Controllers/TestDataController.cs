@@ -33,7 +33,7 @@ namespace MicroService.WebApi.Controllers
         }
 
         /// <summary>
-        ///     Get Test Data Set.
+        ///     Get Test Data Set Dump.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -50,11 +50,10 @@ namespace MicroService.WebApi.Controllers
 
         /// <summary>
         /// Get Test Data Percentile.
-        /// Assume No Results will 0
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Route("/percentile")]
+        [Route("percentile")]
         [Produces("application/json", Type = typeof(IEnumerable<TestData>))]
         [ProducesResponseType(typeof(double), 200)]
         public async Task<IActionResult> GetPercentile()
