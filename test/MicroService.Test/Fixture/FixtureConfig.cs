@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace MicroService.Text.Fixture
+namespace MicroService.Test.Fixture
 {
     public abstract class FixtureConfig : IDisposable
     {

@@ -6,7 +6,7 @@ using MicroService.Service.Services;
 using Moq;
 using Xunit;
 
-namespace MicroService.Text.Mock
+namespace MicroService.Test.Mock
 {
     public class CalculationServiceMock
     {
@@ -30,7 +30,7 @@ namespace MicroService.Text.Mock
 
             // Act
             var excelPercentile = 0.3;
-            var sut = await service.CalculatePercentile(excelPercentile).ConfigureAwait(false);
+            var sut = await service.CalculatePercentile(excelPercentile);
 
             // Assert
             double result = 1.9d;

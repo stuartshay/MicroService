@@ -1,8 +1,9 @@
 ﻿using System;
+using MicroService.Service.Constants;
 using MicroService.Service.Helpers;
 using Xunit;
 
-namespace MicroService.Text.Unit
+namespace MicroService.Test.Unit
 {
     public class FunctionHelperUnitTest
     {
@@ -20,9 +21,9 @@ namespace MicroService.Text.Unit
             var calculated3 = FunctionHelper.Percentile(new double[] { 1, 2, 3, 4 }, 0.3);
 
             // Assert
-            Assert.Equal(result1, Math.Round(calculated1, 15));
-            Assert.Equal(result2, Math.Round(calculated2, 15));
-            Assert.Equal(result3, Math.Round(calculated3, 15));
+            Assert.Equal(result1, Math.Round(calculated1, DataConstants.PercentilePrecision));
+            Assert.Equal(result2, Math.Round(calculated2, DataConstants.PercentilePrecision));
+            Assert.Equal(result3, Math.Round(calculated3, DataConstants.PercentilePrecision));
         }
     }
 }

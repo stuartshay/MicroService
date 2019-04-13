@@ -2,11 +2,11 @@
 using System.Threading.Tasks;
 using MicroService.Data.Repository;
 using MicroService.Service.Helpers;
-using MicroService.Text.Fixture;
+using MicroService.Test.Fixture;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace MicroService.Text.Integration
+namespace MicroService.Test.Integration
 {
     public class FunctionHelperIntegrationTest : IClassFixture<TestDataFixture>
     {

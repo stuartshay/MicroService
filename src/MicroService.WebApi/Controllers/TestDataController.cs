@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using MicroService.Data.Models;
 using MicroService.Data.Repository;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
 using MicroService.Service.Constants;
 using MicroService.Service.Services;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MicroService.WebApi.Controllers
 {
@@ -43,11 +42,15 @@ namespace MicroService.WebApi.Controllers
         public async Task<IActionResult> Get()
         {
             var results = await _testDataRepository.FindAll();
+            if (results == null)
+                return NotFound();
+
             return Ok(results);
         }
 
         /// <summary>
         /// Get Test Data Percentile.
+        /// Assume No Results will 0
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -57,6 +60,10 @@ namespace MicroService.WebApi.Controllers
         public async Task<IActionResult> GetPercentile()
         {
             var results = await _calculationService.CalculatePercentile(DataConstants.ExcelPercentile);
+
+            if (Math.Abs(results) < 15)
+                return NotFound();
+
             return Ok(results);
         }
 
