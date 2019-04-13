@@ -9,9 +9,7 @@ The requirements of the service are as follows:
   * **Do not** sort the data in SQL - this is a C# task.
   * The calculated percentile result should use the same algorithm as MS Excel "PERCENTILE.INC", the answer for this dataset is : 9949.9563797144219
 
-
-
-###Notes: 
+### Notes: 
 * The dataset will always return 1,000,000 unsorted values
 * The PostgreSQL database connection details are:
   * Server: testvar.postgres.database.azure.com
@@ -22,8 +20,6 @@ The requirements of the service are as follows:
 * The database is read-only
   * You cannot add stored procedures/functions/tables etc.
 
-
-
 Your solution will be assessed on the following:
 
 * Implementation of the requirements
@@ -31,7 +27,6 @@ Your solution will be assessed on the following:
 * Code quality
 * Testing style and quality
 * Scaleability
-
 
 Take as long as you feel is necessary to complete the task to fulfil the requirements.
 But as guidance, aim to spend no more than 3-4 hours.  
