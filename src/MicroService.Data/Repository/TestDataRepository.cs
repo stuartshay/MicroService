@@ -15,9 +15,7 @@ namespace MicroService.Data.Repository
 
         public TestDataRepository(string connectionString)
         {
-            // _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
-            _connectionString = "User ID=postgres;Password=password;Server=192.168.99.100;Port=5432;Database=postgres;Integrated Security=true;Pooling=true;";
-
+            _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
         }
 
         internal IDbConnection Connection => new NpgsqlConnection(_connectionString);

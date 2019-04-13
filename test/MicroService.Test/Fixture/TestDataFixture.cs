@@ -1,15 +1,15 @@
 ﻿using MicroService.Data.Repository;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MicroService.Text.Fixture
+namespace MicroService.Test.Fixture
 {
     public class TestDataFixture : FixtureConfig
     {
         public TestDataFixture()
         {
             var serviceProvider = new ServiceCollection()
-                .AddSingleton<ITestDataRepository>(new TestDataRepository(DbConnection))
-                .BuildServiceProvider();
+                 .AddSingleton<ITestDataRepository>(new TestDataRepository(DbConnection))
+                 .BuildServiceProvider();
 
             TestDataRepository = serviceProvider.GetRequiredService<ITestDataRepository>();
         }
@@ -19,6 +19,5 @@ namespace MicroService.Text.Fixture
         public override void Dispose()
         {
         }
-
     }
 }
