@@ -24,7 +24,7 @@ node('docker') {
             docker run -d --link clair_db:postgres --name clair_scan arminc/clair-local-scan:v2.0.1
             """
 
-            score = sh(returnStatus: true, script: 'docker run --rm -i --link clair_scan:clair-scan  -v "$(pwd)/.yair-config.yaml:/opt/yair/config/config.yaml:ro" intersoftlab/yair stuartshay/navigator-reports-api:2.2.2-base |tee > yair.log; exit ${PIPESTATUS[0]}')
+            score = sh(returnStatus: true, script: 'docker run --rm -i --link clair_scan:clair-scan  -v "$(pwd)/.yair-config.yaml:/opt/yair/config/config.yaml:ro" intersoftlab/yair stuartshay/microservice-api:2.2.1-base |tee > yair.log; exit ${PIPESTATUS[0]}')
             sh 'cat  yair.log'
 
         } finally {
