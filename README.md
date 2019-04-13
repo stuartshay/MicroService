@@ -5,15 +5,13 @@ Serve Application Test Data to Business Users, the data will be used for further
 The Business has defined the Percentile Function will use the same algorithm as MS Excel "PERCENTILE.INC" the database is serving data using float(8) and the application has defined the double data type for precision.
 
 The Requirements for this project can be viewed at the following.     
-[Business Requirments](/requirements.md)
+[Business Requirments](/docfx/articles/requirements.md)
 
 ### SonarQube Code Quaility
 
-[![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=***REMOVED-SONAR-KEY***&metric=alert_status)](http://sonar.navigatorglass.com:9000/dashboard?id=***REMOVED-SONAR-KEY***)
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=***REMOVED-SONAR-KEY***&metric=reliability_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=***REMOVED-SONAR-KEY***)
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=***REMOVED-SONAR-KEY***&metric=security_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=***REMOVED-SONAR-KEY***)
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=***REMOVED-SONAR-KEY***&metric=sqale_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=***REMOVED-SONAR-KEY***)
-
 
 ### Docker Hub Images 
 
