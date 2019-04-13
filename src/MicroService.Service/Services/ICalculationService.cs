@@ -4,6 +4,6 @@ namespace MicroService.Service.Services
 {
     public interface ICalculationService
     {
-        Task<double> CalculatePercentile(double[] sequence, double excelPercentile);
+        Task<double> CalculatePercentile(double excelPercentile);
     }
 }

@@ -10,7 +10,7 @@ namespace MicroService.Text.Mock
 {
     public class CalculationServiceMock
     {
-        [Fact(DisplayName = "Get Calculate_Percentile")]
+        [Fact(DisplayName = "Calculate_Percentile - Mock")]
         [Trait("Category", "Mock")]
         public async Task Can_Get_Calculate_Percentile()
         {
@@ -29,10 +29,8 @@ namespace MicroService.Text.Mock
             var service = GetCalculationService(testDataRepository.Object);
 
             // Act
-            var sequence = new double[] { 1, 2, 3, 4 };
             var excelPercentile = 0.3;
-
-            var sut = await service.CalculatePercentile(sequence, excelPercentile).ConfigureAwait(false);
+            var sut = await service.CalculatePercentile(excelPercentile).ConfigureAwait(false);
 
             // Assert
             double result = 1.9d;
