@@ -11,11 +11,6 @@ The requirements of the service are as follows:
 
 ### Notes: 
 * The dataset will always return 1,000,000 unsorted values
-* The PostgreSQL database connection details are:
-  * Server: testvar.postgres.database.azure.com
-  * User: risky@testvar
-  * Password: c7CsdGuoWY%VryALXk
-  * **Note** : You will need to provide us with any IP address you are using to access the database. Email : Nick.Francis@riskfirst.com
 * To retrieve the values execute: `select * from public.get_data();`
 * The database is read-only
   * You cannot add stored procedures/functions/tables etc.

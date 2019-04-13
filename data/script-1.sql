@@ -21,6 +21,15 @@ AS $function$
 
 
 select count(*) FROM public.test_data
-
+2947.1106082201004
 
 select * from public.get_data();
+
+SELECT id, data FROM test_data
+
+
+select "id", "data" from public.get_data();
+
+select id, data from test_data;
+
+
