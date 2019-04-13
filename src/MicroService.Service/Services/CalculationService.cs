@@ -20,7 +20,7 @@ namespace MicroService.Service.Services
             var data = await _testDataRepository.FindAll();
             var array = data.Select(x => x.Data).ToArray();
 
-            return FunctionHelper.Percentile1(array, excelPercentile);
+            return FunctionHelper.Percentile3(array, excelPercentile);
         }
     }
 }
