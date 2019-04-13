@@ -6,44 +6,11 @@ namespace MicroService.Service.Helpers
 {
     /// <summary>
     ///  Function Helper
-    ///  Source: https://github.com/fsprojects/ExcelFinancialFunctions/issues/15
-    /// https://stackoverflow.com/questions/8137391/percentile-calculation
+    ///  Source: https://stackoverflow.com/questions/8137391/percentile-calculation
     /// </summary>
     public static class FunctionHelper
     {
-        public static double Percentile1(double[] sequence, double excelPercentile)
-        {
-            Array.Sort(sequence);
-            int N = sequence.Length;
-            double n = (N - 1) * excelPercentile + 1;
-
-            return n;
-        }
-
-        public static decimal Percentile2(decimal[] sequence, decimal excelPercentile)
-        {
-            Array.Sort(sequence);
-            int N = sequence.Length;
-
-            decimal n = (N + 1) * excelPercentile;
-
-            if (n == 1m)
-            {
-                return sequence[0];
-            }
-
-            if (n == N)
-            {
-                return sequence[N - 1];
-            }
-
-            int k = (int)n;
-            decimal d = n - k;
-            return sequence[k - 1] + d * (sequence[k] - sequence[k - 1]);
-        }
-
-
-        public static double Percentile3(IEnumerable<double> seq, double percentile)
+        public static double Percentile(IEnumerable<double> seq, double percentile)
         {
             var elements = seq.ToArray();
             Array.Sort(elements);

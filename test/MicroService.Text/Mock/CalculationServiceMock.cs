@@ -29,7 +29,7 @@ namespace MicroService.Text.Mock
             var service = GetCalculationService(testDataRepository.Object);
 
             // Act
-            var sequence = new float[] { 1, 2, 3, 4 };
+            var sequence = new double[] { 1, 2, 3, 4 };
             var excelPercentile = 0.3;
 
             var sut = await service.CalculatePercentile(sequence, excelPercentile).ConfigureAwait(false);

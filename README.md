@@ -1,4 +1,9 @@
-# C# Task
+# Microservice
+
+Serve Application Test Data to Business Users, the data will be used for further analysis by users in there Excel Analysis Reports.
+
+The Business has defined the Percentile Function will use the same algorithm as MS Excel "PERCENTILE.INC" the database is serving data using float(8) and the application has defined the double data type for precision.
+
 
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=alert_status)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=reliability_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
@@ -7,7 +12,7 @@
 
 ### Docker Hub Images 
 
- Image       |  Docker Hub | Version
+ Image       |  Docker Hub | Image Size
 ------------ | ------------- | -------------
 microservice-database | [![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-database.svg)](https://hub.docker.com/r/stuartshay/microservice-database/) | [![](https://images.microbadger.com/badges/image/stuartshay/microservice-database.svg)](https://microbadger.com/images/stuartshay/microservice-database "Get your own image badge on microbadger.com")
 microservice-api-base | [![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-api.svg)](https://hub.docker.com/r/stuartshay/microservice-api/) | XXXX

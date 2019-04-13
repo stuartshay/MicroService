@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using MicroService.Data.Repository;
+using MicroService.Service.Constants;
 using MicroService.Service.Helpers;
 
 namespace MicroService.Service.Services
@@ -15,12 +16,13 @@ namespace MicroService.Service.Services
             _testDataRepository = testDataRepository ?? throw new ArgumentNullException(nameof(testDataRepository));
         }
 
-        public async Task<double> CalculatePercentile(float[] sequence, double excelPercentile)
+        public async Task<double> CalculatePercentile(double[] sequence, double excelPercentile)
         {
             var data = await _testDataRepository.FindAll();
             var array = data.Select(x => x.Data).ToArray();
 
-            return FunctionHelper.Percentile3(array, excelPercentile);
+            var results = FunctionHelper.Percentile(array, excelPercentile);
+            return Math.Round(results, DataConstants.PercentilePrecision);
         }
     }
 }
