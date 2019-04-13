@@ -16,13 +16,13 @@ namespace MicroService.Service.Services
             _testDataRepository = testDataRepository ?? throw new ArgumentNullException(nameof(testDataRepository));
         }
 
-        public async Task<double> CalculatePercentile(double[] sequence, double excelPercentile)
+        public async Task<double> CalculatePercentile(double excelPercentile)
         {
             var data = await _testDataRepository.FindAll();
             var array = data.Select(x => x.Data).ToArray();
 
             var results = FunctionHelper.Percentile(array, excelPercentile);
-            return Math.Round(results, DataConstants.PercentilePrecision);
+            return results;
         }
     }
 }
