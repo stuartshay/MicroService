@@ -1,12 +1,14 @@
 # Microservice API
 
-Serve Application Test Data to Business Users, the data will be used for further analysis by users in there Excel Analysis Reports.
+### Purpose
+
+The New York Application Team has been tasked with designing a microservice for there TestData System.  The Application will be used by other groups in the organization in Machine Learning Research and the Calculation Engine Product
 
 The Business has defined the Percentile Function will use the same algorithm as MS Excel "PERCENTILE.INC" the database is serving data using float(8) and the application has defined the double data type for precision.
 
 The Requirements for this project can be viewed at the following.
 
-* [Business Requirments](/docfx/articles/requirements.md)
+* [Business Requirements](/docfx/articles/requirements.md)
 * [C# Coding Standards](/docfx/articles/csharp_coding_standards.md)
 
 ### SonarQube Code Quaility
