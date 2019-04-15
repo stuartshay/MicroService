@@ -16,9 +16,7 @@ The Requirements for this project can be viewed at the following.
 #### Local 
 ```
 stuartshay/microservice-database:v1
-
 docker run —e PGDATA=postgres -p 5432:5432 -i stuartshay/microservice-database:v1
-
 ```
 
 #### Staging
@@ -26,24 +24,21 @@ Azure Postgres Shared Database
 
 ```
 stuartshay/microservice-database:v1
-
 docker run —e PGDATA=postgres -p 5432:5432 -i stuartshay/microservice-database:v1
 ```
-
 ### SonarQube Code Quaility
 
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=reliability_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=security_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=sqale_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
 
-### Docker Hub Images 
+### Docker Hub Images
 
  Image       |  Docker Hub | Image Size
 ------------ | ------------- | -------------
 microservice-database | [![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-database.svg)](https://hub.docker.com/r/stuartshay/microservice-database/) |[![](https://images.microbadger.com/badges/image/stuartshay/microservice-database.svg)](https://microbadger.com/images/stuartshay/microservice-database "Get your own image badge on microbadger.com") 
 microservice-api-base | [![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-api.svg)](https://hub.docker.com/r/stuartshay/microservice-api/)  | [![](https://images.microbadger.com/badges/image/stuartshay/microservice-api.svg)](https://microbadger.com/images/stuartshay/microservice-api "Get your own image badge on microbadger.com") 
 microservice-api-build | [![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-api.svg)](https://hub.docker.com/r/stuartshay/microservice-api/) | [![](https://images.microbadger.com/badges/image/stuartshay/microservice-api.svg)](https://microbadger.com/images/stuartshay/microservice-api "Get your own image badge on microbadger.com")
-
 
 ### MyGet/NuGet Packages
 
@@ -58,8 +53,6 @@ MicroService.Service | [![MyGet](https://img.shields.io/myget/microservice/v/Mic
 ------------ | -------------
 Base Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-base)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-base/)
 API  Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-build)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-build/)
-
-##
 
 ### Myget Package Deployment
 
@@ -87,16 +80,15 @@ https://dotnet.github.io/docfx/
 
 ![](assets/docfx.png)
 
-
 #### Prerequisites:
 
-```
+```powershell
 choco install docfx
 ```
 
 #### Build and Serve Website
 
-```
+```powershell
 docfx docfx/docfx.json
 docfx docfx/docfx.json --serve
 ```
@@ -114,7 +106,7 @@ http://localhost:8080
 
 Windows
 
-```
+```powershell
  .\build.ps1 -target sonar
 ```
 
@@ -124,8 +116,8 @@ Linux
 ```
 
 ### Reference
+
 ```
 Percentile Calculation
 https://stackoverflow.com/questions/8137391/percentile-calculation
-
 ```
