@@ -19,13 +19,20 @@ stuartshay/microservice-database:v1
 docker run —e PGDATA=postgres -p 5432:5432 -i stuartshay/microservice-database:v1
 ```
 
-#### Staging
-Azure Postgres Shared Database
+#### Development
 
+Azure Postgres Development Database
 ```
-stuartshay/microservice-database:v1
-docker run —e PGDATA=postgres -p 5432:5432 -i stuartshay/microservice-database:v1
+cd docker
+docker-compose -f docker-compose-development.yml pull
+docker-compose -f docker-compose-development.yml up
 ```
+
+Swagger API Documentation Page
+```
+http:<DOCKER_HOST>:5000/swagger/
+```
+
 ### SonarQube Code Quaility
 
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=***REMOVED-SONAR-KEY***&metric=reliability_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=***REMOVED-SONAR-KEY***)
