@@ -30,12 +30,10 @@ WORKDIR /publish
 COPY --from=build-env /publish .
 
 # Set environment variables
-ENV ASPNETCORE_URLS http://*:7500
+ENV ASPNETCORE_URLS http://*:5000
 ENV ASPNETCORE_ENVIRONMENT Docker
 
 # Open up port
-EXPOSE 7500
-
-#HEALTHCHECK CMD curl --fail http://localhost:7500/health || exit 1
+EXPOSE 5000
 
 ENTRYPOINT ["dotnet", "MicroService.WebApi.dll"]
