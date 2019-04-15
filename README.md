@@ -21,6 +21,10 @@ cd docker
 docker-compose -f docker-compose-local.yml pull
 docker-compose -f docker-compose-local.yml up
 ```
+Swagger API Documentation Page
+```
+http://<DOCKER_HOST>:5000/swagger/
+```
 
 #### Development
 
