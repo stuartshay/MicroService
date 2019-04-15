@@ -1,6 +1,5 @@
 FROM postgres:9.6
 
-COPY scripts  /scripts
 COPY data  /data
 
 COPY docker-entrypoint-initdb.d /docker-entrypoint-initdb.d
