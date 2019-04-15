@@ -13,10 +13,13 @@ The Requirements for this project can be viewed at the following.
 
 ### Development Setup & Run
 
+Local Docker Postgres Database
+
 #### Local 
 ```
-stuartshay/microservice-database:v1
-docker run —e PGDATA=postgres -p 5432:5432 -i stuartshay/microservice-database:v1
+cd docker
+docker-compose -f docker-compose-development.yml pull
+docker-compose -f docker-compose-development.yml up
 ```
 
 #### Development
