@@ -30,7 +30,7 @@ docker-compose -f docker-compose-development.yml up
 
 Swagger API Documentation Page
 ```
-http:<DOCKER_HOST>:5000/swagger/
+http://<DOCKER_HOST>:5000/swagger/
 ```
 
 ### SonarQube Code Quaility
