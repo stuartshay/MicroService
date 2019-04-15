@@ -106,12 +106,23 @@ Linux
 
 ### Development Setup
 
+#### Local 
 ```
 stuartshay/microservice-database:v1
 
 docker run —e PGDATA=postgres -p 5432:5432 -i stuartshay/microservice-database:v1
 
 ```
+
+#### Staging
+Azure Postgres Shared Database
+
+```
+stuartshay/microservice-database:v1
+
+docker run —e PGDATA=postgres -p 5432:5432 -i stuartshay/microservice-database:v1
+
+
 
 
 
