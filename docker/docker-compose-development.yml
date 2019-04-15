@@ -1,27 +1,17 @@
-version: '2'
+version: '2.0'
 
 services:
 
-  coredatastore_reporting_api:
-    container_name: 'coredatastore-reporting-api'
-    image: "stuartshay/coredatastore-reporting-api:2.0-build"
-    depends_on:
-     - database
-    entrypoint: bash /wait_for_it.sh database:5432 -t 0 --  dotnet /publish/CoreDataStore.Reporting.WebAPI.dll
+  microservice-api:
+    container_name: 'microservice-api'
+    image: "stuartshay/microservice-api:2.2.1-build"
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Development
     ports:
-     - "5900:5000"
+     - "5000:5000"
     networks:
       - aspnetcoreapp-network
 
-  database:
-    container_name: 'database'
-    image: "stuartshay/coredatastore-postgres"
-    environment:
-      POSTGRES_PASSWORD: password
-    networks:
-    - aspnetcoreapp-network
-
-
 networks:
   aspnetcoreapp-network:
-driver: bridge
+
