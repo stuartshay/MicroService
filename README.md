@@ -18,8 +18,8 @@ Local Docker Postgres Database
 #### Local 
 ```
 cd docker
-docker-compose -f docker-compose-development.yml pull
-docker-compose -f docker-compose-development.yml up
+docker-compose -f docker-compose-local.yml pull
+docker-compose -f docker-compose-local.yml up
 ```
 
 #### Development
