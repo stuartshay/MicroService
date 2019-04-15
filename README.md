@@ -11,6 +11,25 @@ The Requirements for this project can be viewed at the following.
 * [Business Requirements](/docfx/articles/requirements.md)
 * [C# Coding Standards](/docfx/articles/csharp_coding_standards.md)
 
+### Development Setup
+
+#### Local 
+```
+stuartshay/microservice-database:v1
+
+docker run —e PGDATA=postgres -p 5432:5432 -i stuartshay/microservice-database:v1
+
+```
+
+#### Staging
+Azure Postgres Shared Database
+
+```
+stuartshay/microservice-database:v1
+
+docker run —e PGDATA=postgres -p 5432:5432 -i stuartshay/microservice-database:v1
+```
+
 ### SonarQube Code Quaility
 
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=***REMOVED-SONAR-KEY***&metric=reliability_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=***REMOVED-SONAR-KEY***)
@@ -103,28 +122,6 @@ Linux
 ```
 ./build.sh --target sonar
 ```
-
-### Development Setup
-
-#### Local 
-```
-stuartshay/microservice-database:v1
-
-docker run —e PGDATA=postgres -p 5432:5432 -i stuartshay/microservice-database:v1
-
-```
-
-#### Staging
-Azure Postgres Shared Database
-
-```
-stuartshay/microservice-database:v1
-
-docker run —e PGDATA=postgres -p 5432:5432 -i stuartshay/microservice-database:v1
-
-
-
-
 
 ### Reference
 ```
