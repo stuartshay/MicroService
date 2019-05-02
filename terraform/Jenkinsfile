@@ -30,7 +30,7 @@ node('master') {
 
         stage('tf-plan') {
 
-        dir("terraform")
+        dir("terraform") {
 
 
             wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
@@ -40,7 +40,8 @@ node('master') {
 
                 terraform init
                 terraform plan
-                """
+               """
+               }
             }
 
         }
