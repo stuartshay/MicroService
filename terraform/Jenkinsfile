@@ -68,5 +68,27 @@ node('master') {
             }
 
         }
+        stage('tf-destroy') {
+
+        dir("terraform") {
+        if(Destroy_the_Environment.equalsIgnoreCase('true')) {
+            println "Plan only run. Skipping Terraform apply."
+        }
+        else {
+           input 'WARNING: Applying Terraform destroy can result in unrecoverable destruction. Click "Proceed" to confirm Terraform update plan  to destroy was reviewed and to authorize the updates to be applied, else click "Abort".'
+           wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
+               sh """
+               export AWS_ACCESS_KEY_ID=${aws_access_id}
+               export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
+
+               terraform destroy
+               """
+
+                }
+
+            }
+            }
+
+        }
     }
 }
