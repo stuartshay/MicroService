@@ -7,7 +7,7 @@ cluster_name = "coredata-test"
 
 # AWS ECS Task Definition values
 # A unique name for your task definition
-family_name = "coredata"
+family_name = "coredata-test"
 
 # Container values
 
