@@ -81,6 +81,7 @@ node('master') {
             terraform destroy
             """
         }
+        }
         else {
 
             println "Plan only run. Skipping Terraform apply."
@@ -91,4 +92,3 @@ node('master') {
 
         }
     }
-}
