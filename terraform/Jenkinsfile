@@ -49,7 +49,7 @@ node('master') {
         stage('tf-apply') {
 
         dir("terraform") {
-        if(Plan_Only.equalsIgnoreCase('true') or (Destroy_the_Environment.equalsIgnoreCase('true')) )  {
+        if(Plan_Only.equalsIgnoreCase('true') | (Destroy_the_Environment.equalsIgnoreCase('true')) )  {
             println "Plan only run. Skipping Terraform apply."
         }
         else {
