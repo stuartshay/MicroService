@@ -34,6 +34,12 @@ cd docker
 docker-compose -f docker-compose-development.yml pull
 docker-compose -f docker-compose-development.yml up
 ```
+#### Staging
+
+ Jenkins | Status  
+------------ | -------------
+AWS ECS Fargate | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=Terraform AWS Fargate/Microservice-api-fargate)](https://jenkins.navigatorglass.com/job/Terraform AWS Fargate/job/Microservice-api-fargate/)
+
 
 Swagger API Documentation Page
 ```
