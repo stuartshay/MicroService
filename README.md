@@ -2,7 +2,9 @@
 
 ### Purpose
 
-The New York Application Team has been tasked with designing a microservice for there TestData System.  The Application will be used by other groups in the organization in Machine Learning Research and the Calculation Engine Product
+The New York Application Team has been tasked with designing a microservice for there TestData System. The Application will be used by high profile clients and internal groups in the organization for Machine Learning Research and the Calculation Engine Product.
+
+The Application will be a complete rearchitected solution using the cloud for optimal price and performance.  The API Schema has been enhanced and key performance metrics have been added. The API will implement versioning so end clients can seamlessly update to the new enhanced schema when ready.
 
 The Business has defined the Percentile Function will use the same algorithm as MS Excel "PERCENTILE.INC" the database is serving data using float(8) and the application has defined the double data type for precision.
 
@@ -10,6 +12,10 @@ The Requirements for this project can be viewed at the following.
 
 * [Business Requirements](/docfx/articles/requirements.md)
 * [C# Coding Standards](/docfx/articles/csharp_coding_standards.md)
+
+## Swagger 
+
+![](assets/swagger.png)
 
 ### Development Setup & Run
 
