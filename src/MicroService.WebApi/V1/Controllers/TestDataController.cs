@@ -8,12 +8,14 @@ using MicroService.Service.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MicroService.WebApi.Controllers
+namespace MicroService.WebApi.V1.Controllers
 {
     /// <summary>
     ///  Test Data Controller
     /// </summary>
-    [Route("api/[controller]")]
+    [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [EnableCors("AllowAll")]
     public class TestDataController : ControllerBase
     {
@@ -26,10 +28,11 @@ namespace MicroService.WebApi.Controllers
         ///  TestDataController
         /// </summary>
         /// <param name="testDataRepository"></param>
+        /// <param name="calculationService"></param>
         public TestDataController(ITestDataRepository testDataRepository, ICalculationService calculationService)
         {
-            this._testDataRepository = testDataRepository ?? throw new ArgumentNullException(nameof(testDataRepository));
-            this._calculationService = calculationService ?? throw new ArgumentNullException(nameof(calculationService));
+            _testDataRepository = testDataRepository ?? throw new ArgumentNullException(nameof(testDataRepository));
+            _calculationService = calculationService ?? throw new ArgumentNullException(nameof(calculationService));
         }
 
         /// <summary>
@@ -65,6 +68,5 @@ namespace MicroService.WebApi.Controllers
 
             return Ok(results);
         }
-
     }
 }
