@@ -1,0 +1,56 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ include "coredatastore.fullname" . }}-grafana
+  labels:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-grafana
+    helm.sh/chart: {{ include "coredatastore.chart" . }}-grafana
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.grafana.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "coredatastore.name" . }}-grafana
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "coredatastore.name" . }}-grafana
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.grafana.image}}:{{ .Values.grafana.tag }}
+          securityContext:
+            fsGroup: 1000
+            runAsUser: 0
+          env:
+          - name: GF_SECURITY_ADMIN_USER
+            value: {{ .Values.grafana.GfSecurityAdminUser }}
+          - name: GF_SECURITY_ADMIN_PASSWORD
+            value: {{ .Values.grafana.GfSecurityAdminPassword }}
+          - name: GRAFANA_HOST
+            value: "http://grafana:3000"
+          - name: GF_AUTH_ANONYMOUS_ENABLED
+            value: "{{ .Values.grafana.GfAuthAnonymousEnabled }}"
+          - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+            value: {{ .Values.grafana.GfAuthAnonymousOrgRole }}
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: grafana-data
+              mountPath: "/var/lib/grafana"
+            - name: grafana-config
+              mountPath: "/etc/grafana/datasources/"
+      volumes:
+        - name: grafana-data
+          {{- if .Values.grafana.persistence.enabled }}
+          persistentVolumeClaim:
+             ClaimName: {{ .Values.grafana.persistence.existingClaim | default (printf "%s-%s" (include "coredatastore.fullname" .) "grafana") }}
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
+        - name: grafana-config
+          configMap:
+            name: grafana-config

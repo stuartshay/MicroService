@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-maps # using this because of service issue  baked in docker file
+#  name: {{ include "coredatastore.fullname" . }}-web-maps
+  labels:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-web-maps
+    helm.sh/chart: {{ include "coredatastore.chart" . }}-web-maps
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.webmaps.service.type }}
+  ports:
+    - port:  {{ .Values.webmaps.service.ports.port }}
+  selector:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-web-maps
+    app.kubernetes.io/instance: {{ .Release.Name }}

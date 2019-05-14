@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-navigator-attractions  # using this because of service issue  baked in docker file
+#  name: {{ include "coredatastore.fullname" . }}-api-navigator-attractions
+  labels:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-api-navigator-attractions
+    helm.sh/chart: {{ include "coredatastore.chart" . }}-api-navigator-attractions
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.apinavigatorattractions.service.type }}
+  ports:
+    - port: {{ .Values.apinavigatorattractions.service.ports.port }}
+  selector:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-api-navigator-attractions
+    app.kubernetes.io/instance: {{ .Release.Name }}

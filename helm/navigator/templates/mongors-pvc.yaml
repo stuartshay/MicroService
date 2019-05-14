@@ -1,0 +1,24 @@
+{{- if and .Values.mongors.persistence.enabled (not .Values.mongors.persistence.existingClaim) }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "coredatastore.fullname" . }}-mongors
+  labels:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-mongors
+    helm.sh/chart: {{ include "coredatastore.chart" . }}-mongors
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  accessModes:
+    - {{ .Values.mongors.persistence.accessModes | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.mongors.persistence.storageSize | quote }}
+{{- if .Values.mongors.persistence.storageClass }}
+{{- if (eq "-" .Values.mongors.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.mongors.persistence.storageClass }}"
+{{- end }}
+{{- end }}
+{{- end }}

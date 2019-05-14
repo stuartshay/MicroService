@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ include "coredatastore.fullname" . }}-cadvisor
+  labels:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-cadvisor
+    helm.sh/chart: {{ include "coredatastore.chart" . }}-cadvisor
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.cadvisor.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "coredatastore.name" . }}-cadvisor
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "coredatastore.name" . }}-cadvisor
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Values.cadvisor.container_name }}
+          image: {{ .Values.cadvisor.image}}:{{ .Values.cadvisor.tag }}
+          ports:
+            - containerPort: 8080
+          # volumes: {{ .Values.cadvisor.volumes }}
+          # restart: {{ .Values.cadvisor.restart }}

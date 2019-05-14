@@ -1,0 +1,210 @@
+# Default values for CoreDataStore.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+loadlocust:
+  image: stuartshay/navigator-locust:v0.11.0-v5
+  replicaCount: 1
+
+  service:
+    type: NodePort
+    ports:
+      port: 8089
+
+
+apinavigatorattractions:
+  image: stuartshay/navigator-attractions-api
+  tag: 2.2.3-local
+  replicaCount: 1
+  AspnetcoreEnvironment: Staging
+
+  service:
+    type: NodePort
+    ports:
+      port: 7100
+
+
+apinavigatormaps:
+  image: stuartshay/navigator-maps-api
+  tag: 2.2-3-local
+  replicaCount: 1
+  AspnetcoreEnvironment: Staging
+
+  service:
+    type: NodePort
+    ports:
+      port: 7000
+
+
+apinavigatorreports:
+  image: stuartshay/navigator-reports-api
+  tag: 2.2.3-local
+  replicaCount: 1
+  AspnetcoreEnvironment: Staging
+
+  service:
+    type: NodePort
+    ports:
+      port: 7200
+
+
+webmaps:
+  image: stuartshay/navigator-maps
+  tag: 1.0.4-local
+  replicaCount: 1
+  APIPORT: 7000
+  PORT: 3200
+  NODEENV: development
+
+  service:
+    type: NodePort
+    ports:
+      port: 3200
+
+
+redis:
+  image: stuartshay/navigator-identity-redis
+  tag: development
+  replicaCount: 1
+  healthcheck:
+    test:  ["CMD", "redis-cli","ping"]
+
+  service:
+    type: NodePort
+    ports:
+      port: 6379
+
+  persistence:
+    enabled: false
+    accessMode: ReadWriteOnce
+    storageClass: gp2 # replace with your storage class
+    storageSize: 5Gi
+    # existingClaim: {}
+
+
+mongors:
+  image: stuartshay/navigator-instance
+  tag: 3.6.11-v2
+  replicaCount: 1
+
+  service:
+    type: NodePort
+    ports:
+      port: 27017
+
+  persistence:
+    enabled: false
+    accessMode: ReadWriteOnce
+    storageClass: gp2 # replace with your storage class
+    storageSize: 5Gi
+    # existingClaim: {}
+
+
+mongodbexporter:
+  image: stuartshay/navigator-mongodb-exporter
+  tag: v1.0.0
+  replicaCount: 1
+
+  service:
+    type: NodePort
+    ports:
+      port: 9001
+
+
+mongo:
+  image: mongo
+  tag: 3
+  replicaCount: 1
+
+  service:
+    type: NodePort
+    ports:
+      port: 27017
+
+
+elasticsearch:
+  image: docker.elastic.co/elasticsearch/elasticsearch-oss
+  tag: 6.6.1
+  httphost: 0.0.0.0
+  transporthost: localhost
+  networkhost: 0.0.0.0
+  EsJavaOpts: -Xms512m -Xmx512m
+  EsHeapSize: 1G
+  service:
+    type: NodePort
+    ports:
+      port: 9200
+
+
+graylog:
+  image: graylog/graylog
+  tag: "3.0"
+  replicaCount: 1
+
+  GraylogPasswordSecret: somepasswordpepper
+  #- GRAYLOG_ROOT_PASSWORD_SHA2=3f4dbd7bd7f8750ee705514a6a6ac4d3aec0f3ad4c29f48cfde4c36d3d763721
+  GraylogRootPasswordSha2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+  # GraylogHttpExternalUri: http://graylog:9000/
+  # GraylogElasticsearchHosts: http://elasticsearch:9200
+
+  service:
+    type: NodePort
+    ports:
+      port9000: "9000"
+      port1514: "1514"
+      port12201: "12201" #just for testing
+
+
+prometheus:
+  image: stuartshay/navigator-prometheus
+  tag: v2.8.1
+  replicaCount: 1
+
+  service:
+    type: NodePort
+    ports:
+      port: 9090
+
+
+grafana:
+  image: stuartshay/coredatastore-grafana
+  tag: 6.1.3-v3
+  replicaCount: 1
+  GfSecurityAdminUser: admin
+  GfSecurityAdminPassword: admin
+  # GrafanaHost: "http://coredata-coredatastore-grafana:3000"
+  GfAuthAnonymousEnabled: "true"
+  GfAuthAnonymousOrgRole: Admin
+
+  service:
+    type: NodePort
+    ports:
+      port: 3000
+
+  persistence:
+     enabled: false
+     accessMode: ReadWriteOnce
+     storageClass: gp2 # replace with your storage class
+     storageSize: 5Gi
+
+
+cadvisor:
+  image: google/cadvisor
+  tag: v0.33.0
+  replicaCount: 1
+  container_name: cadvisor
+  service:
+    type: NodePort
+    ports:
+      port: 8080
+
+
+redisexporter:
+  image: oliver006/redis_exporter
+  tag: v0.32.0
+  replicaCount: 1
+
+  service:
+    type: NodePort
+    ports:
+      port: 9121

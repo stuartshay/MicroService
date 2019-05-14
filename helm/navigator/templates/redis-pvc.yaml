@@ -1,0 +1,25 @@
+
+{{- if and .Values.redis.persistence.enabled (not .Values.redis.persistence.existingClaim) }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "coredatastore.fullname" . }}-redis
+  labels:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-redis
+    helm.sh/chart: {{ include "coredatastore.chart" . }}-redis
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  accessModes:
+    - {{ .Values.redis.persistence.accessModes | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.redis.persistence.storageSize | quote }}
+{{- if .Values.redis.persistence.storageClass }}
+{{- if (eq "-" .Values.redis.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.redis.persistence.storageClass }}"
+{{- end }}
+{{- end }}
+{{- end }}

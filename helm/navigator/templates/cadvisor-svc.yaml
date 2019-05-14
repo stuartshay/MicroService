@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cadvisor
+  # name: {{ include "coredatastore.fullname" . }}-cadvisor
+  labels:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-cadvisor
+    helm.sh/chart: {{ include "coredatastore.chart" . }}-cadvisor
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.cadvisor.service.type }}
+  ports:
+    - port: {{ .Values.cadvisor.service.ports.port }}
+
+  selector:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-cadvisor
+    app.kubernetes.io/instance: {{ .Release.Name }}
