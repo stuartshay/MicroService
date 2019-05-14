@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-rs1 # using this because of service issue  baked in docker file
+#  name: {{ include "coredatastore.fullname" . }}-mongo-rs1
+  labels:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-mongo-rs1
+    helm.sh/chart: {{ include "coredatastore.chart" . }}-mongo-rs1
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.mongors.service.type }}
+  ports:
+    - port: {{ .Values.mongors.service.ports.port }}
+
+  selector:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-mongo-rs1
+    app.kubernetes.io/instance: {{ .Release.Name }}

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+#  name: {{ include "coredatastore.fullname" . }}-prometheus
+  labels:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-prometheus
+    helm.sh/chart: {{ include "coredatastore.chart" . }}-prometheus
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.prometheus.service.type }}
+  ports:
+    - port: {{ .Values.prometheus.service.ports.port }}
+
+  selector:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-prometheus
+    app.kubernetes.io/instance: {{ .Release.Name }}

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-exporter  
+  # name: {{ include "coredatastore.fullname" . }}-redis-exporter
+  labels:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-redis-exporter
+    helm.sh/chart: {{ include "coredatastore.chart" . }}-redis-exporter
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.redisexporter.service.type }}
+  ports:
+    - port: {{ .Values.redisexporter.service.ports.port }}
+
+  selector:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-redis-exporter
+    app.kubernetes.io/instance: {{ .Release.Name }}

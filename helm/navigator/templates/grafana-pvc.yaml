@@ -1,0 +1,26 @@
+{{- if and .Values.grafana.persistence.enabled (not .Values.grafana.persistence.existingClaim) }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "coredatastore.fullname" . }}-grafana
+  labels:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-grafana
+    helm.sh/chart: {{ include "coredatastore.chart" . }}-grafana
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  accessModes:
+    - {{ .Values.grafana.persistence.accessModes | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.grafana.persistence.storageSize | quote }}
+{{- if .Values.grafana.persistence.storageClass }}
+{{- if (eq "-" .Values.grafana.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+{{- if (eq "-" .Values.grafana.persistence.storageClass) }}
+  storageClassName: "{{ .Values.grafana.persistence.storageClass }}"
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}

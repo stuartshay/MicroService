@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch  
+#  name: {{ include "coredatastore.fullname" . }}-elasticsearch
+  labels:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-elasticsearch
+    helm.sh/chart: {{ include "coredatastore.chart" . }}-elasticsearch
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.elasticsearch.service.type }}
+  ports:
+    - port: {{ .Values.elasticsearch.service.ports.port }}
+
+  selector:
+    app.kubernetes.io/name: {{ include "coredatastore.name" . }}-elasticsearch
+    app.kubernetes.io/instance: {{ .Release.Name }}
