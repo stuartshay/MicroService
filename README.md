@@ -23,28 +23,25 @@ The Requirements for this project can be viewed at the following.
 
 ## Hosting Environments
 
-### Local
+### Development
 
 Local Docker Postgres Database
-
 ```
 cd docker
 docker-compose -f docker-compose-local.yml pull
 docker-compose -f docker-compose-local.yml up
 ```
-Swagger API Documentation Page
-```
-http://<DOCKER_HOST>:5000/swagger/
-```
-
-### Development
 
 Azure Postgres Development Database
-
 ```
 cd docker
 docker-compose -f docker-compose-development.yml pull
 docker-compose -f docker-compose-development.yml up
+```
+
+Swagger API Documentation Page
+```
+http://<DOCKER_HOST>:5000/swagger/
 ```
 
 #### Build and Run
