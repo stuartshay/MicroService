@@ -70,11 +70,6 @@ AWS ECS Fargate | [![Build Status](https://jenkins.navigatorglass.com/buildStatu
 RDS PostgreSQL |  [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=Terraform%20AWS%20Fargate/RDS-Terraform)](https://jenkins.navigatorglass.com/job/Terraform%20AWS%20Fargate/job/RDS-Terraform/)
 
 
-
-
-
-
-
 ### Docker Hub Images
 
  Image       |  Docker Hub | Image Size
