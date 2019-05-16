@@ -46,7 +46,8 @@ cd docker
 docker-compose -f docker-compose-development.yml pull
 docker-compose -f docker-compose-development.yml up
 ```
-*** Build and Run ***
+
+#### Build and Run
 
 ***Powershell***
 
