@@ -25,7 +25,7 @@ The Requirements for this project can be viewed at the following.
 
 Local Docker Postgres Database
 
-#### Local 
+### Local 
 ```
 cd docker
 docker-compose -f docker-compose-local.yml pull
@@ -36,7 +36,7 @@ Swagger API Documentation Page
 http://<DOCKER_HOST>:5000/swagger/
 ```
 
-#### Development
+### Development
 
 Azure Postgres Development Database
 
@@ -61,7 +61,7 @@ docker-compose -f docker-compose-development.yml up
  ./build.sh --target=sonar
 ```
 
-#### Staging
+### Staging
 
 * [Deployment Instructions](/docfx/articles/pdf/aws-fargate-jenkins.pdf)
 
@@ -69,6 +69,11 @@ docker-compose -f docker-compose-development.yml up
 ------------ | -------------
 AWS ECS Fargate | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=Terraform%20AWS%20Fargate/Microservice-api-fargate)](https://jenkins.navigatorglass.com/job/Terraform%20AWS%20Fargate/job/Microservice-api-fargate/)
 RDS PostgreSQL |  [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=Terraform%20AWS%20Fargate/RDS-Terraform)](https://jenkins.navigatorglass.com/job/Terraform%20AWS%20Fargate/job/RDS-Terraform/)
+
+
+
+
+
 
 
 ### Docker Hub Images
