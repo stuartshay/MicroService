@@ -31,7 +31,7 @@ resource "null_resource" "setup_db" {
   depends_on = ["aws_db_instance.postgresql"] #wait for the db to be ready
   provisioner "local-exec" {
     command = "psql -h ${aws_db_instance.postgresql.address} -U ${aws_db_instance.postgresql.username} ${var.database_name} -p ${var.database_port} -a -q -f ${path.module}/sql_scripts/init1.sql"
-    environment {
+    environment = {
           PGPASSWORD = "${var.database_password}"
         }
   }
