@@ -117,6 +117,7 @@ Task("Test")
            {
                Configuration = configuration,
                NoBuild = true,
+               Filter = Settings.UnitTestFilter,
                Logger = "trx;LogFileName=UnitTestResults.trx",
                ResultsDirectory = testResultsDirectory,
                ArgumentCustomization = args => args.Append($"--no-restore")
@@ -177,12 +178,6 @@ Task("Clean-Sonarqube")
     CleanDirectory(sonarDirectory);
 }); 
 
-
-Task("Sonar")
-  .IsDependentOn("Clean-Sonarqube")
-  .IsDependentOn("SonarBegin")
-  .IsDependentOn("Coverage")
-  .IsDependentOn("SonarEnd");
 
 Task("SonarBegin")
     .Does(() => { SonarBegin(new SonarBeginSettings {
@@ -249,6 +244,12 @@ Task("Push-Myget")
 
 Task("Default")
     .IsDependentOn("Pack");
+
+Task("Sonar")
+  .IsDependentOn("Clean-Sonarqube")
+  .IsDependentOn("SonarBegin")
+  .IsDependentOn("Coverage")
+  .IsDependentOn("SonarEnd");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
