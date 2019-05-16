@@ -1,4 +1,4 @@
-node('mastrer') {
+node('master') {
     timestamps {
         String aws_credential_id = ""
         String aws_access_id = ""
