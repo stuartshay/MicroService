@@ -137,6 +137,7 @@ Task("Coverage")
                 DotNetCoreTest(project.FullPath, new DotNetCoreTestSettings
                 {
                     Configuration = configuration,
+                    Filter = Settings.UnitTestFilter,
                     NoRestore = true,
                     NoBuild = true
                 });
