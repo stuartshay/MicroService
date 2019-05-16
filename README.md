@@ -17,13 +17,13 @@ The Requirements for this project can be viewed at the following.
 * [Business Requirements](/docfx/articles/requirements.md)
 * [C# Coding Standards](/docfx/articles/csharp_coding_standards.md)
 
-## Swagger 
+## Swagger
 
 ![](assets/swagger.png)
 
-### Hosting Environments
+## Hosting Environments
 
-### Local 
+### Local
 
 Local Docker Postgres Database
 
