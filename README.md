@@ -51,6 +51,12 @@ docker-compose -f docker-compose-development.yml up
  Jenkins | Status  
 ------------ | -------------
 AWS ECS Fargate | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=Terraform%20AWS%20Fargate/Microservice-api-fargate)](https://jenkins.navigatorglass.com/job/Terraform%20AWS%20Fargate/job/Microservice-api-fargate/)
+RDS PostgreSQL |  [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=Terraform%20AWS%20Fargate/RDS-Terraform)](https://jenkins.navigatorglass.com/job/Terraform%20AWS%20Fargate/job/RDS-Terraform/)
+
+
+
+
+
 
 
 Swagger API Documentation Page
@@ -58,11 +64,8 @@ Swagger API Documentation Page
 http://<DOCKER_HOST>:5000/swagger/
 ```
 
-### SonarQube Code Quaility
 
-[![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=reliability_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
-[![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=security_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
-[![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=sqale_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
+
 
 ### Docker Hub Images
 
