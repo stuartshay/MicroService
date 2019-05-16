@@ -21,11 +21,12 @@ The Requirements for this project can be viewed at the following.
 
 ![](assets/swagger.png)
 
-### Development Setup & Run
+### Hosting Environments
+
+### Local 
 
 Local Docker Postgres Database
 
-### Local 
 ```
 cd docker
 docker-compose -f docker-compose-local.yml pull
