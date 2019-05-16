@@ -59,13 +59,6 @@ RDS PostgreSQL |  [![Build Status](https://jenkins.navigatorglass.com/buildStatu
 
 
 
-Swagger API Documentation Page
-```
-http://<DOCKER_HOST>:5000/swagger/
-```
-
-
-
 
 ### Docker Hub Images
 
