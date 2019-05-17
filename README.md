@@ -4,8 +4,7 @@
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=security_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=sqale_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
 
-[![Build Status](https://travis-ci.org/stuartshay/AzureDevOpsKats.svg?branch=develop)](https://travis-ci.org/stuartshay/AzureDevOpsKats)
-
+[![Build Status](https://travis-ci.org/stuartshay/MicroService.svg?branch=develop)](https://travis-ci.org/stuartshay/MicroService)
 
 ### Purpose
 
