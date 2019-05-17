@@ -4,8 +4,7 @@
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=***REMOVED-SONAR-KEY***&metric=security_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=***REMOVED-SONAR-KEY***)
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=***REMOVED-SONAR-KEY***&metric=sqale_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=***REMOVED-SONAR-KEY***)
 
-[![Build Status](https://travis-ci.org/stuartshay/AzureDevOpsKats.svg?branch=develop)](https://travis-ci.org/stuartshay/AzureDevOpsKats)
-
+[![Build Status](https://travis-ci.org/stuartshay/MicroService.svg?branch=develop)](https://travis-ci.org/stuartshay/MicroService)
 
 ### Purpose
 
