@@ -137,23 +137,16 @@ docfx docfx/docfx.json --serve
 http://localhost:8080
 ```
 
-#### Deployment 
-```powershell
- .\build.ps1 -target Generate-Docs
-```
 
-### SonarQube Testing
 
-Windows
+### Build Commands
 
-```powershell
- .\build.ps1 -target sonar
-```
+|  Build Type                 |  Linux/Mac                    | Windows                       |
+| --------------------------- | ------------------------------|  -----------------------------|
+| CI Build                    | ./build.sh  --target=CI-Build | .\build.ps1 --target=CI-Build |
+| SonarQube Testing           | ./build.sh  --target=sonar    | .\build.ps1 --target=sonar    |
 
-Linux
-```
-./build.sh --target sonar
-```
+
 
 ### Reference
 
