@@ -30,7 +30,7 @@ node('master') {
 
         stage('tf-plan') {
 
-        dir("terraform") {
+        dir("infastructure/ecs_terraform/") {
 
 
             wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
