@@ -7,6 +7,7 @@ services:
     image: "stuartshay/microservice-api:2.2.1-build"
     environment:
      - ASPNETCORE_ENVIRONMENT=Docker
+     - ConnectionStrings:PostgreSql=User ID=postgres;Password=password;Server=database;Port=5432;Database=postgres;Integrated Security=true;Pooling=true;
     ports:
      - "5000:5000"
     networks:
