@@ -94,50 +94,6 @@ MicroService.Service | [![MyGet](https://img.shields.io/myget/microservice/v/Mic
 Base Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-base)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-base/)
 API  Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-build)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-build/)
 
-### Myget Package Deployment
-
-Windows
-
-```powershell
-  $env:mygetApiKey = "adab4634-8ddb-4789-ae92-6461295ac69c"
-  .\build.ps1 -target push-myget
-```
-
-Linux
- 
-```bash
- export mygetApiKey="adab4634-8ddb-4789-ae92-6461295ac69c"
-./build.sh --target=push-myget
-```
-
-### DocFX
-
-DocFX generates Documentation directly from source code (.NET, RESTful API, JavaScript, Java, etc...) and Markdown files.
-
-```
-https://dotnet.github.io/docfx/
-```
-
-![](assets/docfx.png)
-
-#### Prerequisites:
-
-```powershell
-choco install docfx
-```
-
-#### Build and Serve Website
-
-```powershell
-docfx docfx/docfx.json
-docfx docfx/docfx.json --serve
-```
-
-```
-http://localhost:8080
-```
-
-
 
 ### Build Commands
 
@@ -146,7 +102,14 @@ http://localhost:8080
 | CI Build                    | ./build.sh  --target=CI-Build | .\build.ps1 --target=CI-Build |
 | SonarQube Testing           | ./build.sh  --target=sonar    | .\build.ps1 --target=sonar    |
 
+**docfx**
 
+```powershell
+docfx docfx/docfx.json
+docfx docfx/docfx.json --serve
+
+http://localhost:8080
+```
 
 ### Reference
 
