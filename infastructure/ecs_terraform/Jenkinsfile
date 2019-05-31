@@ -38,8 +38,8 @@ node('master') {
                 export AWS_ACCESS_KEY_ID=${aws_access_id}
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
 
-                terraform init -reconfigure
-                terraform plan -no-color
+                terraform init
+                terraform plan
                """
                }
             }
