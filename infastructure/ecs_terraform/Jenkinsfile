@@ -39,7 +39,7 @@ node('master') {
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
 
                 terraform init
-                terraform plan
+                terraform plan -no-color 
                """
                }
             }
