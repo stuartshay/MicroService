@@ -20,10 +20,14 @@ docker_image = "stuartshay/microservice-api:2.2.1-build"
 # The number of conatiners of the task definition to place and keep running
 desired_count = "1"
 
+aspnetcore_envirnoment = "Development" # api env
+
+db_connection_string = "User ID=development;Password=development;Server=myrdsinstance.ckm3eyorqjco.us-east-1.rds.amazonaws.com;Port=5432;Database=test;Integrated Security=true;Pooling=true;"
+
 # Fargate instance CPU units to provision
-cpu_value = "256"
+cpu_value = "1024"
 # Fargate instance memory to provision (in MiB)
-memory_value = "512"
+memory_value = "2048"
 
 # Container port use for mapping with host
 container_port = "5000"
