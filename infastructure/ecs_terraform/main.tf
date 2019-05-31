@@ -20,7 +20,16 @@ resource "aws_ecs_task_definition" "app" {
         "hostPort": ${var.host_port}
       }
     ],
-    "environment": [],
+    "environment": [
+      {
+      "name": "ConnectionStrings__PostgreSql",
+      "value": "${var.db_connection_string}"
+    },
+    {
+      "name": "ASPNETCORE_ENVIRONMENT",
+      "value": "${var.aspnetcore_envirnoment}"
+    }
+    ],
     "logConfiguration": {
     "logDriver": "awslogs",
     "options": {

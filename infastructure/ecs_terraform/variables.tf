@@ -102,3 +102,12 @@ variable "retention_days" {
 description = "number of days you want to retain log events"
 type        = "string"
 }
+variable "db_connection_string" {
+description = "number of days you want to retain log events"
+type        = "string"
+}
+
+variable "aspnetcore_envirnoment" {
+description = "number of days you want to retain log events"
+type        = "string"
+}
