@@ -2,6 +2,9 @@ public static class Settings
 {
     public static string ProjectName => "MicroService";
 
+    public static string UnitTestFilter = "Category=Unit";
+    //public static string UnitTestFilter = "Category=Integration|Category=Unit";
+
     public static string SonarUrl => "http://sonar.navigatorglass.com:9000";
 
     public static string SonarKey => "db762c49b56bd854f8e7fb1d03f7106468a27387";
@@ -12,5 +15,5 @@ public static class Settings
 
     public static string SonarExcludeDuplications => "/d:sonar.cpd.exclusions=**/GalleryContextExtensions.cs";
 
-     public static string MyGetSource => "https://www.myget.org/F/microservice/api/v2/package";
+    public static string MyGetSource => "https://www.myget.org/F/microservice/api/v2/package";
 }
