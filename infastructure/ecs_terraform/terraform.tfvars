@@ -3,16 +3,16 @@
 region = "us-east-2"
 
 # The name of the cluster (only alphanumeric characters and hyphens allowed)
-cluster_name = "coredata-test"
+cluster_name = "microservice-test"
 
 # AWS ECS Task Definition values
 # A unique name for your task definition
-family_name = "coredata-test"
+family_name = "microservice-test"
 
 # Container values
 
 # Name of container
-container_name = "coredatastore"
+container_name = "microservice"
 
 # Docker image
 docker_image = "stuartshay/microservice-api:2.2.1-build"
