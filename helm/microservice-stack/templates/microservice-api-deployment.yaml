@@ -1,0 +1,56 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "microservice-stack.fullname" . }}-microservice-api
+  labels:
+    app: {{ template "microservice-stack.name" . }}-microservice-api
+    chart: {{ template "microservice-stack.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.microserviceapi.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "microservice-stack.name" . }}-microservice-api
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "microservice-stack.name" . }}-microservice-api
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Values.microserviceapi.name }}
+          image: "{{ .Values.microserviceapi.image.repository }}:{{ .Values.microserviceapi.image.tag }}"
+          imagePullPolicy: {{ .Values.microserviceapi.image.pullPolicy }}
+          env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: {{ .Values.microserviceapi.ASPNETCORE_ENVIRONMENT }}
+          - name: ConnectionStrings__PostgreSql
+            value: "User ID={{ .Values.microserviceapi.User_ID }};Password={{ .Values.microserviceapi.Password }};Server={{ template "microservice-stack.fullname" . }}-database;Port={{ .Values.microserviceapi.Port }};Database={{ .Values.microserviceapi.Database }};Integrated Security={{ .Values.microserviceapi.Integrated_Security }};Pooling={{ .Values.microserviceapi.Pooling }};"
+          ports:
+            - name: http
+              containerPort: 5000
+              protocol: TCP
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
