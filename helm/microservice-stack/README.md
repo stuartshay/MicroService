@@ -37,7 +37,7 @@ To uninstall/delete the all the deployments
 $ helm del --purge name_of_the_release
 ```
 
-# How to acccess the swagger api / prom / grafana
+# How to acccess the service 
  
  ```sh
  $ kubectl get svc
