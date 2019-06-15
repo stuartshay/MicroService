@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "microservice-stack.fullname" . }}-microservice-api
+  labels:
+    app: {{ template "microservice-stack.name" . }}-microservice-api
+    chart: {{ template "microservice-stack.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.microserviceapi.service.type }}
+  ports:
+    - port: {{ .Values.microserviceapi.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ template "microservice-stack.name" . }}-microservice-api
+    release: {{ .Release.Name }}
