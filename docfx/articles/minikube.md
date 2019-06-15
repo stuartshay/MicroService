@@ -1,4 +1,4 @@
-# Details 2
+# Minikube
 
 ## Install minikube for Windows (Vitural Box)
 
@@ -9,6 +9,22 @@ choco install kubernetes-cli
 
 choco install kubernetes-helm
 ```
+
+### Verify Install
+
+```
+minikube status
+```
+
+```
+host: Running
+kubelet: Running
+apiserver: Running
+kubectl: Correctly Configured: pointing to minikube-vm at 192.168.99.100
+```
+
+
+
 
 ## Helm and Tiller
 
