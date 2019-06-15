@@ -1,0 +1,73 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "microservice-stack.fullname" . }}-grafana
+  labels:
+    app: {{ template "microservice-stack.name" . }}-grafana
+    chart: {{ template "microservice-stack.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.grafana.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "microservice-stack.name" . }}-grafana
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "microservice-stack.name" . }}-grafana
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Values.grafana.name }}
+          image: "{{ .Values.grafana.image.repository }}:{{ .Values.grafana.image.tag }}"
+          imagePullPolicy: {{ .Values.grafana.image.pullPolicy }}
+          env:
+          - name: GF_SECURITY_ADMIN_USER
+            value: {{ .Values.grafana.GfSecurityAdminUser }}
+          - name: GF_SECURITY_ADMIN_PASSWORD
+            value: {{ .Values.grafana.GfSecurityAdminPassword }}
+          # - name: GRAFANA_HOST
+          #   value:
+          - name: GF_AUTH_ANONYMOUS_ENABLED
+            value: "{{ .Values.grafana.GfAuthAnonymousEnabled }}"
+          - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+            value: {{ .Values.grafana.GfAuthAnonymousOrgRole }}
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          volumeMounts:
+            - name: grafana-data
+              mountPath: "/var/lib/grafana"
+      volumes:
+        - name: grafana-data
+          {{- if .Values.grafana.persistence.enabled }}
+          persistentVolumeClaim:
+             ClaimName: {{ .Values.grafana.persistence.existingClaim | default (printf "%s-%s" (include "coredatastore.fullname" .) "grafana") }}
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
