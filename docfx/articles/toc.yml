@@ -12,6 +12,10 @@
   href: details1.md
 - name: Minikube
   href: minikube.md
+  items:
+    - name: "hyper-v"
+      href: hyper-v.md
+      topicHref: hyper-v.md
 - name: How-to tutorials
   href: howto/overview.md
   topicHref: howto/overview.md

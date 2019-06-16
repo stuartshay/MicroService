@@ -2,13 +2,18 @@
 
 ## Prerequisites
 
-VirtualBox > 6.0.8   
+### VirtualBox > 6.0.8   
 
 ```
 https://www.virtualbox.org/
 ```
 
-Install Powershell > 6.2
+### Hyper-V
+
+[Hyper-V Install](/docfx/articles/hyper-v.md)
+
+
+### Powershell > 6.2
 
 ```
 https://github.com/PowerShell/PowerShell
@@ -25,10 +30,15 @@ Major  Minor  Patch  PreReleaseLabel BuildLabel
 6      2      1
 ```
 
-## Install minikube for Windows (Vitural Box)
+```
+choco install googlechrome
+choco install openssh 
+```
+## Install minikube for Windows 
 
 ```
-choco install minikube
+
+choco install docker-desktop
 choco install kubernetes-cli
 choco install kubernetes-helm
 ```
@@ -36,6 +46,8 @@ choco install kubernetes-helm
 ## Start & Run 
 
 ```
+minikube start --vm-driver hyperv --hyperv-virtual-switch "Primary Virtual Switch"
+
 minikube start
 ```
 
