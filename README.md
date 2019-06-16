@@ -80,9 +80,9 @@ API  Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/ico
 
 ```powershell
 docfx docfx/docfx.json
-docfx docfx/docfx.json --serve
+docfx docfx/docfx.json -p 9090 --serve
 
-http://localhost:8080
+http://localhost:9090
 ```
 
 ### Reference
