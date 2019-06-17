@@ -81,70 +81,7 @@ http://collabnix.com/kubernetes-dashboard-on-docker-desktop-for-windows-2-0-0-3-
 
 *************************************************************************************
 
-
-
-
-
 # BELOW ARE NOTES CAN BE REMOVED
-
-
-## Start & Run 
-
-
-
-
-```
-minikube start --vm-driver hyperv --hyperv-virtual-switch "Primary Virtual Switch"
-
-minikube start
-```
-
-
-### Verify Install
-
-```
-minikube status
-
-host: Running
-kubelet: Running
-apiserver: Running
-kubectl: Correctly Configured: pointing to minikube-vm at 192.168.99.100
-```
-
-```
-kubectl get nodes
-```
-
-
-### Create Service Account
-
-https://github.com/kubernetes/dashboard/wiki/Creating-sample-user
-
-
-
-Powershell script to automate generation of kubeconfig for the Kubernetes use      
-https://community.pivotal.io/s/article/powershell-script-to-automate-generation-of-kubeconfig-for-the-kubernetes-use
-
-
-### Deploying the Dashboard UI
-
-https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
-
-```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
-```
-
-## References 
-
-```
-https://rominirani.com/tutorial-getting-started-with-kubernetes-with-docker-on-mac-7f58467203fd
-```
-
-
-
-
-
-
 
 
 ## Helm and Tiller
@@ -184,22 +121,6 @@ kubectl describe deploy tiller-deploy --namespace=kube-system
 ```
 
 [!NOTE] This is a note which needs your attention, but it's not super important.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ```
