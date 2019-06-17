@@ -1,49 +1,97 @@
-# Minikube
+# Kubernetes
 
 ## Prerequisites
 
-### VirtualBox > 6.0.8   
-
-```
-https://www.virtualbox.org/
-```
-
-### Hyper-V
-
-[Hyper-V Install](/docfx/articles/hyper-v.md)
-
-
-### Powershell > 6.2
-
-```
+- Hyper-V     
+[Hyper-V Install](hyper-v.md)
+- Powershell  > 6.2   
 https://github.com/PowerShell/PowerShell
-```
+
 - Chocolatey   
 https://chocolatey.org/docs/installation
 
-Verify Version 
+- Choco Essentials
 ```
-$PSVersionTable.PSVersion
-
-Major  Minor  Patch  PreReleaseLabel BuildLabel
------  -----  -----  --------------- ----------
-6      2      1
-```
-
-```
+choco install vscode
 choco install googlechrome
-choco install openssh 
-```
-## Install minikube for Windows 
-
+choco install openssh
 ```
 
+## Install Docker Desktop for Windows
+
+```
 choco install docker-desktop
-choco install kubernetes-cli
 choco install kubernetes-helm
 ```
 
+![](images/docker-desktop.png)
+
+
+#### Verify Instalation 
+
+```
+kubectl version
+
+kubectl config current-context
+
+kubectl cluster-info
+
+kubectl get nodes
+```
+
+### Installating the Kubernetes Dashboard
+
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+```
+
+#### Enable Dashboard & Create Access Token
+
+```
+kubectl proxy
+```
+
+```
+$TOKEN=((kubectl -n kube-system describe secret default | Select-String "token:") -split " +")[1]
+kubectl config set-credentials docker-for-desktop --token="${TOKEN}"
+```
+
+#### Access Dashboard
+
+```
+http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/ 
+```
+
+```
+Click on Kubeconfig and select the “config” file under C:\Users<Username>.kube\config
+```
+
+![](images/kube-dashboard.png)
+
+
+
+
+
+
+### References 
+
+```
+http://collabnix.com/kubernetes-dashboard-on-docker-desktop-for-windows-2-0-0-3-in-2-minutes/
+```
+
+*************************************************************************************
+
+
+
+
+
+
+
+
 ## Start & Run 
+
+
+
 
 ```
 minikube start --vm-driver hyperv --hyperv-virtual-switch "Primary Virtual Switch"
@@ -86,8 +134,11 @@ https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
 ```
 
+## References 
 
-
+```
+https://rominirani.com/tutorial-getting-started-with-kubernetes-with-docker-on-mac-7f58467203fd
+```
 
 
 

@@ -10,8 +10,8 @@
   href: myget.md
 - name: Details 1
   href: details1.md
-- name: Minikube
-  href: minikube.md
+- name: Kubernetes
+  href: kubernetes.md
   items:
     - name: "hyper-v"
       href: hyper-v.md
