@@ -39,7 +39,7 @@ prometheus:
   name: microservice-prometheus
   replicaCount: 1
   image:
-    repository: prom/prometheus
+    repository: stuartshay/microservice-prometheus
     tag: v2.10.0
     pull_policy: IfNotPresent
   service:
