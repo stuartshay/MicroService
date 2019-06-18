@@ -1,7 +1,7 @@
-# Navigator Grafana
+# Microservice Grafana
 
-[![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/navigator-grafana.svg)](https://hub.docker.com/r/stuartshay/navigator-grafana/) [![](https://images.microbadger.com/badges/image/stuartshay/navigator-grafana.svg)](https://microbadger.com/images/stuartshay/navigator-grafana "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/stuartshay/navigator-grafana.svg)](https://microbadger.com/images/stuartshay/navigator-grafana "Get your own version badge on microbadger.com")
+[![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-grafana.svg)](https://hub.docker.com/r/stuartshay/microservice-grafana/) [![](https://images.microbadger.com/badges/image/stuartshay/microservice-grafana.svg)](https://microbadger.com/images/stuartshay/microservice-grafana "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/stuartshay/microservice-grafana.svg)](https://microbadger.com/images/stuartshay/microservice-grafana "Get your own version badge on microbadger.com")
 
 Jenkins | Status  
 ------------ | -------------
