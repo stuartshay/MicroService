@@ -5,9 +5,9 @@ node('docker') {
     }
 
     stage('Docker') {
-        sh 'docker build -f docker/microservice-prometheus.dockerfile/Dockerfile -t stuartshay/microservice-prometheus:v2.8.1 ./docker/microservice-prometheus.dockerfile'
+        sh 'docker build -f docker/microservice-prometheus.dockerfile/Dockerfile -t stuartshay/microservice-prometheus:v2.10.0 ./docker/microservice-prometheus.dockerfile'
         withDockerRegistry([credentialsId: 'docker-hub-navigatordatastore']) {
-            sh 'docker push stuartshay/microservice-prometheus:v2.8.1 '
+            sh 'docker push stuartshay/microservice-prometheus:v2.10.0 '
         }
     }
 
