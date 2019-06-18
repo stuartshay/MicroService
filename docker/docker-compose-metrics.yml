@@ -46,4 +46,4 @@ volumes:
   grafana_data:
 
 networks:
-  microservice-networ
+ microservice-network:
