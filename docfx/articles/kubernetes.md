@@ -13,6 +13,7 @@ https://chocolatey.org/docs/installation
 - Choco Essentials
 ```
 choco install vscode
+choco install cmder
 choco install googlechrome
 choco install openssh
 ```
@@ -67,6 +68,26 @@ Click on Kubeconfig and select the “config” file under C:\Users<Username>.ku
 ```
 
 ![](images/kube-dashboard.png)
+
+## Helm
+
+```
+helm init
+```
+#### Verify 
+
+```
+kubectl get pods -n kube-system
+```
+
+
+
+
+
+
+
+
+
 
 ```
 helm init command to initilaize the helm tiller. 
