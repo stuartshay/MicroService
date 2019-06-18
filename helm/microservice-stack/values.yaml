@@ -50,7 +50,7 @@ grafana:
   name: microservice-grafana
   replicaCount: 1
   image:
-    repository: grafana/grafana
+    repository: stuartshay/microservice-grafana:6.2.1-v1
     tag: 6.2.1
     pull_policy: IfNotPresent
   GfSecurityAdminUser: admin

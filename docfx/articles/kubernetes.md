@@ -80,13 +80,22 @@ helm init
 kubectl get pods -n kube-system
 ```
 
+```
+cd /helm
+helm install --name release1  ./microservice-stack
 
+helm status release1
+```
 
+## References 
 
+```
+http://collabnix.com/kubernetes-dashboard-on-docker-desktop-for-windows-2-0-0-3-in-2-minutes/
+```
 
+*************************************************************************************
 
-
-
+# BELOW ARE NOTES CAN BE REMOVED
 
 
 ```
@@ -118,15 +127,9 @@ kubectl get svc -n namespace_name
 
 
 
-### References 
 
-```
-http://collabnix.com/kubernetes-dashboard-on-docker-desktop-for-windows-2-0-0-3-in-2-minutes/
-```
 
-*************************************************************************************
 
-# BELOW ARE NOTES CAN BE REMOVED
 
 
 ## Helm and Tiller
