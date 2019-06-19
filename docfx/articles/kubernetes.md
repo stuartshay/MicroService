@@ -82,10 +82,17 @@ kubectl get pods -n kube-system
 
 ```
 cd /helm
-helm install --name release1  ./microservice-stack
+helm install --name release1 ./microservice-stack
 
 helm status release1
 ```
+
+```
+helm upgrade release1 ./microservice-stack
+```
+
+
+
 
 ## References 
 
