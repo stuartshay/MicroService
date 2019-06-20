@@ -98,7 +98,7 @@ kubectl get svc -n microservices
 
 ### Update Release
 ```
-helm upgrade release1 ./microservice-stack
+helm upgrade microservice-release ./microservice-stack
 ```
 
 ## Reset Kubernetes
