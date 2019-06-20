@@ -83,11 +83,20 @@ kubectl get pods -n kube-system
 
 ```
 cd /helm
-helm install --name release1 ./microservice-stack
+helm install --name microservice-release --namespace microservices ./microservice-stack
 
-helm status release1
+helm status microservice-release
+
+kubectl get pods -n microservices
 ```
 
+### Node Ports
+
+```
+kubectl get svc -n microservices
+```
+
+### Update Release
 ```
 helm upgrade release1 ./microservice-stack
 ```
