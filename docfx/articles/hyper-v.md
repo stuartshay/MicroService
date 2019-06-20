@@ -1,18 +1,11 @@
+# Hyper-V
 
 ## Prerequisites
 
-Azure VM with Hyper-V 
+Azure VM with Hyper-V
  - Standard D2s v3 (2 vcpus, 8 GiB memory)
 
-  
-Disable TCP/IPv6
-
-```
-https://medium.com/@JockDaRock/disabling-ipv6-on-network-adapter-windows-10-5fad010bca75
-```
-
-
-## Install Hyper-V 
+## Install Hyper-V
 
 ```
 Write-Host "Installing and Enabling Hyper-V..."
@@ -36,11 +29,6 @@ Get-NetAdapter
 New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex 13
 ```
 
-
-
-
-
-
 ### Scripts
 
 ```
@@ -54,7 +42,7 @@ else{
 }
 ```
 
-### References 
+### References
 
 ```
 https://mohitgoyal.co/2018/06/01/enable-and-use-nested-virtualization-on-azure-virtual-machine/
