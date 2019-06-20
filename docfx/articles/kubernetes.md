@@ -91,10 +91,11 @@ helm status release1
 helm upgrade release1 ./microservice-stack
 ```
 
+## Reset Kubernetes
 
+![](images/kube-reset.png)
 
-
-## References 
+## References
 
 ```
 http://collabnix.com/kubernetes-dashboard-on-docker-desktop-for-windows-2-0-0-3-in-2-minutes/
