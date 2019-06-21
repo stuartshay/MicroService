@@ -1,5 +1,11 @@
-﻿using Microsoft.AspNetCore;
+﻿using System;
+using System.IO;
+using App.Metrics;
+using App.Metrics.AspNetCore;
+using App.Metrics.Formatters.Prometheus;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace MicroService.WebApi
 {
@@ -8,6 +14,15 @@ namespace MicroService.WebApi
     /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// Configuration
+        /// </summary>
+        public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+            .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}.json", optional: true)
+            .Build();
+
         /// <summary>
         /// The main entry point to the application.
         /// </summary>
@@ -24,6 +39,18 @@ namespace MicroService.WebApi
         /// <returns></returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+             .ConfigureMetricsWithDefaults( builder => { builder.OutputMetrics.AsPrometheusPlainText(); })
+             .UseMetrics(
+                    options =>
+                    {
+                        options.EndpointOptions = endpointsOptions =>
+                        {
+                            endpointsOptions.MetricsTextEndpointOutputFormatter =
+                                new MetricsPrometheusTextOutputFormatter();
+                        };
+                    })
+            .UseStartup<Startup>()
+            .CaptureStartupErrors(true)
+            .UseConfiguration(Configuration);
     }
 }

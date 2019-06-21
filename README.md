@@ -28,13 +28,14 @@ The Requirements for this project can be viewed at the following.
 ### Development
 
 Local Docker Postgres Database
+
 ```
 cd docker
-docker-compose -f docker-compose-local.yml pull
-docker-compose -f docker-compose-local.yml up
+docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml pull
+docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml up
 ```
 
-Azure Postgres Development Database
+AWS Postgres Development Database
 ```
 cd docker
 docker-compose -f docker-compose-development.yml pull
@@ -80,9 +81,9 @@ API  Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/ico
 
 ```powershell
 docfx docfx/docfx.json
-docfx docfx/docfx.json --serve
+docfx docfx/docfx.json -p 9090 --serve
 
-http://localhost:8080
+http://localhost:9090
 ```
 
 ### Reference

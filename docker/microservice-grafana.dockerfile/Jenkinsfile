@@ -1,0 +1,18 @@
+node('docker') {
+
+    stage('Git checkout') {
+        git branch: 'develop', credentialsId: 'gihub-key', url: 'git@github.com:stuartshay/MicroService.git'
+    }
+
+    stage('Docker') {
+        sh 'docker build -f docker/microservice-grafana.dockerfile/Dockerfile -t stuartshay/microservice-grafana:6.2.1-v1 ./docker/microservice-grafana.dockerfile'
+        withDockerRegistry([credentialsId: 'docker-hub-navigatordatastore']) {
+            sh 'docker push stuartshay/microservice-grafana:6.2.1-v1 '
+        }
+    }
+
+    stage('Mail') {
+        emailext attachLog: true, body: '', subject: "Jenkins build status - ${currentBuild.fullDisplayName}", to: 'sshay@yahoo.com'
+    }
+
+ }   

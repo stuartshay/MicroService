@@ -3,7 +3,7 @@
 region = "us-east-2"
 
 # The name of the cluster (only alphanumeric characters and hyphens allowed)
-cluster_name = "microservices"
+cluster_name = "test-data"
 
 # AWS ECS Task Definition values
 # A unique name for your task definition
@@ -15,12 +15,12 @@ family_name = "microservices"
 container_name = "microservice"
 
 # Docker image
-docker_image = "stuartshay/microservice-api:2.2.1-build"
+docker_image = "stuartshay/microservice-api:2.2.2-build"
 
 # The number of conatiners of the task definition to place and keep running
 desired_count = "1"
 
-aspnetcore_envirnoment = "Development" # api env
+aspnetcore_envirnoment = "Docker" # api env
 
 db_connection_string = "User ID=development;Password=development;Server=myrdsinstance.ckm3eyorqjco.us-east-1.rds.amazonaws.com;Port=5432;Database=test;Integrated Security=true;Pooling=true;"
 

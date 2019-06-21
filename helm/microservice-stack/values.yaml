@@ -1,0 +1,69 @@
+# Default values for microservice-stack.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+
+microserviceapi:
+  name: microservice-api
+  replicaCount: 1
+  image:
+    repository: stuartshay/microservice-api
+    tag: 2.2.2-build
+    pullPolicy: IfNotPresent
+  ASPNETCORE_ENVIRONMENT: Docker
+#  ConnectionStrings__PostgreSql: User ID=postgres;Password=password;Server=database;Port=5432;Database=postgres;Integrated Security=true;Pooling=true;
+  User_ID: postgres
+  Password: password
+  Port: 5432
+  Database: postgres
+  Integrated_Security: true
+  Pooling: true
+  service:
+    type: NodePort
+    port: 5000
+
+database:
+  name: microservice-database
+  replicaCount: 1
+  image:
+    repository: stuartshay/microservice-database
+    tag: v1
+    pull_policy: IfNotPresent
+  POSTGRES_PASSWORD: password
+  service:
+    type: NodePort
+    port: 5432
+
+prometheus:
+  name: microservice-prometheus
+  replicaCount: 1
+  image:
+    repository: stuartshay/microservice-prometheus
+    tag: v2.10.0
+    pull_policy: IfNotPresent
+  service:
+    type: NodePort
+    port: 9090
+
+grafana:
+  name: microservice-grafana
+  replicaCount: 1
+  image:
+    repository: stuartshay/microservice-grafana
+    tag: 6.2.1-v1
+    pull_policy: IfNotPresent
+  GfSecurityAdminUser: admin
+  GfSecurityAdminPassword: admin
+  # GrafanaHost:
+  GfAuthAnonymousEnabled: "true"
+  GfAuthAnonymousOrgRole:  Admin
+  service:
+    type: NodePort
+    port: 3000
+  persistence:
+    enabled: false
+    accessMode: ReadWriteOnce
+    storageClass: "-"
+    storageSize: 5Gi
+
