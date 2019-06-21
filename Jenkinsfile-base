@@ -1,7 +1,7 @@
 node('docker') {
 
     stage('Git checkout') {
-        git branch: 'master', credentialsId: 'gihub-key', url: 'git@github.com:stuartshay/MicroService.git'
+        git branch: 'develop', credentialsId: 'gihub-key', url: 'git@github.com:stuartshay/MicroService.git'
     }
 
     stage('Docker build base image') {
