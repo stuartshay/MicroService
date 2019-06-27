@@ -39,7 +39,7 @@ node('master') {
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
                 
                """
-               sh "terraform init -backend-config='key=fargate-state-${branch#*/}.tfstate' "
+               sh 'terraform init -backend-config=key=fargate-state-${branch#*/}.tfstate'
                sh 'terraform plan -no-color '
 
 
