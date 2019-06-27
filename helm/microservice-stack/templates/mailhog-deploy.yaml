@@ -1,34 +1,34 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "microservice-stack.fullname" . }}-database
+  name: {{ template "microservice-stack.fullname" . }}-mailhog
   labels:
-    app: {{ template "microservice-stack.name" . }}-database
+    app: {{ template "microservice-stack.name" . }}-mailhog
     chart: {{ template "microservice-stack.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.database.replicaCount }}
+  replicas: {{ .Values.mailhog.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "microservice-stack.name" . }}-database
+      app: {{ template "microservice-stack.name" . }}-mailhog
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "microservice-stack.name" . }}-database
+        app: {{ template "microservice-stack.name" . }}-mailhog
         release: {{ .Release.Name }}
     spec:
       containers:
-        - name: {{ .Values.database.name }}
-          image: "{{ .Values.database.image.repository }}:{{ .Values.database.image.tag }}"
-          imagePullPolicy: {{ .Values.database.image.pullPolicy }}
-          env:
-          - name: POSTGRES_PASSWORD
-            value: {{ .Values.database.POSTGRES_PASSWORD }}
+        - name: {{ .Values.mailhog.name }}
+          image: "{{ .Values.mailhog.image.repository }}"
+          imagePullPolicy: {{ .Values.mailhog.image.pullPolicy }}
           ports:
-            - name: database
-              containerPort: {{ .Values.database.service.port }}
+            - name: http
+              containerPort: {{ .Values.mailhog.service.http.port }}
+              protocol: TCP
+            - name: smtp
+              containerPort: {{ .Values.mailhog.service.smtp.port }}
               protocol: TCP
           resources:
 {{ toYaml .Values.resources | indent 12 }}
