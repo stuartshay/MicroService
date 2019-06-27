@@ -30,16 +30,8 @@ spec:
             value: "User ID={{ .Values.microserviceapi.User_ID }};Password={{ .Values.microserviceapi.Password }};Server={{ template "microservice-stack.fullname" . }}-database;Port={{ .Values.microserviceapi.Port }};Database={{ .Values.microserviceapi.Database }};Integrated Security={{ .Values.microserviceapi.Integrated_Security }};Pooling={{ .Values.microserviceapi.Pooling }};"
           ports:
             - name: http
-              containerPort: 5000
+              containerPort: {{ .Values.microserviceapi.service.port }}
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

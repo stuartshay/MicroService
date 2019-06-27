@@ -1,5 +1,4 @@
-# Helm Chart
-## Introduction
+# Introduction
 This chart deploy all the deployments on a Kubernetes cluster/Minikube using the Helm package manager.
 
 
@@ -9,6 +8,8 @@ The following packages will be installed by this helm chart
 * Microservice-api
 * Grafana
 * Prometheus
+* Alert-manager
+* Mailhog
 
 ## Prerequisite
 * Kubernetes or Minikube installed
@@ -37,26 +38,32 @@ To uninstall/delete the all the deployments
 $ helm del --purge name_of_the_release
 ```
 
-### To acccess the service 
- 
+### To acccess the service
+
  ```sh
  $ kubectl get svc
  ```
- 
-```
 
-testing-stuart-microservice-stack-database           NodePort       10.102.17.132    <none>        5432:32459/TCP        137m
-testing-stuart-microservice-stack-grafana            NodePort       10.104.227.61    <none>        3000:31188/TCP        137m                                                                                                                                                                                                                  137m
-testing-stuart-microservice-stack-microservice-api   NodePort       10.98.20.40      <none>        5000:32583/TCP        137m
-testing-stuart-microservice-stack-prometheus         NodePort       10.111.189.141   <none>        9090:30718/TCP        137m    
+```
+NAME                                           TYPE      CLUSTER-IP      EXTERNAL-IP  PORT(S)                        AGE
+micro-api-microservice-stack-alertmanager      NodePort  10.100.122.183  <none>       9093:31834/TCP                 3m53s
+micro-api-microservice-stack-database          NodePort  10.105.119.100  <none>       5432:30339/TCP                 3m53s
+micro-api-microservice-stack-grafana           NodePort  10.107.148.155  <none>       3000:32113/TCP                 3m53s
+micro-api-microservice-stack-mailhog           NodePort  10.105.222.146  <none>       8025:32288/TCP,1025:32152/TCP  3m53s
+micro-api-microservice-stack-microservice-api  NodePort  10.105.109.137  <none>       5000:30437/TCP                 3m53s
+micro-api-microservice-stack-prometheus        NodePort  10.99.231.53    <none>       9090:31704/TCP                 3m53s
+
 
 ```
 To access microservice-api type NodeIP:port-no/swagger ( e.g nodeip:32583/swagger)
 
 To access grafana type NodeIP:port-no ( e.g nodeip:31188)
 
-To access prometheus type NodeIP:port-no/swagger ( e.g nodeip:30718)
+To access prometheus type NodeIP:port-no ( e.g nodeip:30718)
 
+To access alertmanager type NodeIP:port-no
+
+To access mailhog type NodeIP:port-no
 ## Configuration
 
 The following table lists the configurable parameters for this helm chart and their default values set.
@@ -88,7 +95,7 @@ The following table lists the configurable parameters for this helm chart and th
 | grafana.service.type | service type for grafana | `NodePort` |
 | grafana.service.port | Port no. for grafana  | `3000` |
 
-### prometheus
+### Prometheus
 | Parameter	  | Description | Default |
 | ------      | ------      | ------ |
 | replicaCount | replica for your deployment | 1 |
@@ -96,7 +103,7 @@ The following table lists the configurable parameters for this helm chart and th
 | prometheus.service.type | service type for prometheus | `NodePort` |
 | prometheus.service.port | Port no. for prometheus | `9090` |
 
-### database
+### Database
 | Parameter	  | Description | Default |
 | ------      | ------      | ------ |
 | replicaCount | replica for your deployment | 1 |
@@ -104,3 +111,20 @@ The following table lists the configurable parameters for this helm chart and th
 | database.POSTGRES_PASSWORD | postgrespassword value | password |
 | database.service.port | Port no. for database  | `5432` |
 | database.service.type | service type for database | `NodePort` |
+
+## Alertmanager
+| Parameter	  | Description | Default |
+| ------      | ------      | ------ |
+| replicaCount | replica for your deployment | 1 |
+| alertmanager.image.repository | image repository for alertmanager | `prom/alertmanager:latest` |
+| alertmanager.service.port | Port no. for alertmanager | `9093` |
+| alertmanager.service.type | service type for alertmanager | `NodePort` |
+
+## Mailhog
+| Parameter	  | Description | Default |
+| ------      | ------      | ------ |
+| replicaCount | replica for your deployment | 1 |
+| mailhog.image.repository | image repository for mailhog | `mailhog/mailhog` |
+| mailhog.service.smtp.port | SMTP Port no. for mailhog | `1025` |
+| mailhog.service.http.port | HTTP Port no. for mailhog | `8025` |
+| mailhog.service.type | service type for mailhog | `NodePort` |
