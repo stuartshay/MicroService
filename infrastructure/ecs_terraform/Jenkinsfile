@@ -34,12 +34,10 @@ node('master') {
 
 
             wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
-                sh """
+                sh '
                 export AWS_ACCESS_KEY_ID=${aws_access_id}
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
-                
-               """
-               sh 'terraform init -backend-config=key=fargate-state-${branch#*/}.tfstate'
+                terraform init -backend-config=key=fargate-state-${branch#*/}.tfstate'
                sh 'terraform plan -no-color '
 
 
