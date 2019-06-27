@@ -89,6 +89,6 @@ node('master') {
 
             }
             }
-
+       cleanWs()
         }
     }
