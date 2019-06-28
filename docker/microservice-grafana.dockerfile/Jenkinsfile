@@ -5,9 +5,9 @@ node('docker') {
     }
 
     stage('Docker') {
-        sh 'docker build -f docker/microservice-grafana.dockerfile/Dockerfile -t stuartshay/microservice-grafana:6.2.1-v1 ./docker/microservice-grafana.dockerfile'
+        sh 'docker build -f docker/microservice-grafana.dockerfile/Dockerfile -t stuartshay/microservice-grafana:6.2.5-v1 ./docker/microservice-grafana.dockerfile'
         withDockerRegistry([credentialsId: 'docker-hub-navigatordatastore']) {
-            sh 'docker push stuartshay/microservice-grafana:6.2.1-v1 '
+            sh 'docker push stuartshay/microservice-grafana:6.2.5-v1 '
         }
     }
 
