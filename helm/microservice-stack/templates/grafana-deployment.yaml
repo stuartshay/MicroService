@@ -38,12 +38,13 @@ spec:
             - name: http
               containerPort: {{ .Values.grafana.service.port }}
               protocol: TCP
+          {{- if .Values.grafana.persistence.enabled }}    
           volumeMounts:
             - name: grafana-data
               mountPath: "/var/lib/grafana"
             - name: database
               mountPath: "/etc/grafana/provisioning/datasources"
-              # subPath: datasource.yml
+          {{- end }}
       volumes:
         - name: grafana-data
           {{- if .Values.grafana.persistence.enabled }}
