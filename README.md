@@ -68,6 +68,7 @@ MicroService.Service | [![MyGet](https://img.shields.io/myget/microservice/v/Mic
 ------------ | -------------
 Base Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-base)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-base/)
 API  Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-build)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-build/)
+Multi Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-multi)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-multi/)
 
 
 ### Build Commands
