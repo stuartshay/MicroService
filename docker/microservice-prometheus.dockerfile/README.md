@@ -5,4 +5,4 @@
 
   Jenkins | Status  
 ------------ | -------------
-Build Image  | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService-Infrastructure/microservice-prometheus)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-prometheus/)
+Build Image  | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService-Infrastructure/microservice-prometheus)](https://jenkins.navigatorglass.com/job/MicroService-Infrastructure/job/microservice-prometheus/)
