@@ -5,7 +5,7 @@ node('docker') {
     }
 
     stage('Docker') {
-        sh 'docker build -f docker/database-postgres.dockerfile/postgres.dockerfile -t stuartshay/microservice-prometheus:v1.1 ./docker/database-postgres.dockerfile'
+        sh 'docker build -f docker/database-postgres.dockerfile/postgres.dockerfile -t stuartshay/microservice-database:v1.1 ./docker/database-postgres.dockerfile'
         withDockerRegistry([credentialsId: 'docker-hub-navigatordatastore']) {
             sh 'docker push stuartshay/microservice-database:v1.1'
         }
