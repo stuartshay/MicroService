@@ -27,9 +27,20 @@ resource "aws_db_instance" "postgresql" {
 }
 
 
+# resource "null_resource" "setup_db" {
+#   depends_on = ["aws_db_instance.postgresql"] #wait for the db to be ready
+#   provisioner "local-exec" {
+#     command = "PGPASSWORD=${var.database_password} psql -h ${aws_db_instance.postgresql.address} -U ${aws_db_instance.postgresql.username} ${var.database_name} -p ${var.database_port} -a -q -f ${path.module}/sql_scripts/init1.sql"
+#   }
+# }
 resource "null_resource" "setup_db" {
   depends_on = ["aws_db_instance.postgresql"] #wait for the db to be ready
   provisioner "local-exec" {
-    command = "PGPASSWORD=${var.database_password} psql -h ${aws_db_instance.postgresql.address} -U ${aws_db_instance.postgresql.username} ${var.database_name} -p ${var.database_port} -a -q -f ${path.module}/sql_scripts/init1.sql"
+      command = <<EOT
+        apt update;
+        apt install npm -y;
+        npm i map-pluto-postgres;
+        node ${path.module}/npm_data/pluto.js --host ${aws_db_instance.postgresql.address} --port ${var.database_port} --user ${aws_db_instance.postgresql.username} --password ${var.database_password}  --database ${var.database_name} --csv_file ${path.module}/sql_scripts/test_data_201904121704.csv
+     EOT
   }
 }
