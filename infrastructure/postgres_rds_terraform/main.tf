@@ -38,7 +38,7 @@ resource "null_resource" "setup_db" {
   provisioner "local-exec" {
       command = <<EOT
         apk update
-        apk add nodejs nodejs-npm
+        apk add nodejs
         npm i map-pluto-postgres
         node ${path.module}/npm_data/pluto.js --host ${aws_db_instance.postgresql.address} --port ${var.database_port} --user ${aws_db_instance.postgresql.username} --password ${var.database_password}  --database ${var.database_name} --csv_file ${path.module}/sql_scripts/test_data_201904121704.csv
      EOT
