@@ -27,16 +27,17 @@ resource "aws_db_instance" "postgresql" {
 }
 
 
-# resource "null_resource" "setup_db" {
-#   depends_on = ["aws_db_instance.postgresql"] #wait for the db to be ready
-#   provisioner "local-exec" {
-#     command = "PGPASSWORD=${var.database_password} psql -h ${aws_db_instance.postgresql.address} -U ${aws_db_instance.postgresql.username} ${var.database_name} -p ${var.database_port} -a -q -f ${path.module}/sql_scripts/init1.sql"
-#   }
-# }
-resource "null_resource" "setup_db" {
+resource "null_resource" "create_table" {
   depends_on = ["aws_db_instance.postgresql"] #wait for the db to be ready
   provisioner "local-exec" {
-      command = "docker run -t -v $(pwd):/tmp/ node:alpine /bin/sh -c 'npm i map-pluto-postgres && ls -l /tmp && node /tmp/npm_data/pluto.js --host ${aws_db_instance.postgresql.address} --port ${var.database_port} --user ${aws_db_instance.postgresql.username} --password ${var.database_password}  --database ${var.database_name} --csv_file /tmp/sql_scripts/test_data_201904121704.csv'"
+    command = "PGPASSWORD=${var.database_password} psql -h ${aws_db_instance.postgresql.address} -U ${var.database_username} -d ${var.database_name} -p ${var.database_port} -c 'CREATE TABLE public.PLUTO (id serial NOT NULL,"data" float8 NOT NULL,CONSTRAINT test_data_pkeytest_data_pkey PRIMARY KEY (id))'"
+  }
+}
+
+resource "null_resource" "setup_db" {
+  depends_on = ["null_resource.create_table"]
+  provisioner "local-exec" {
+      command = "docker run -t -v $(pwd):/tmp/ node:alpine /bin/sh -c 'npm i map-pluto-postgres && ls -l /tmp && node /tmp/npm_data/pluto.js --host ${aws_db_instance.postgresql.address} --port ${var.database_port} --user ${aws_db_instance.postgresql.username} --password ${var.database_password}  --database ${var.database_name}'"
 
   }
 }
