@@ -73,3 +73,9 @@ data:
             regex: '^/system\.slice/(.+)\.service$'
             target_label: systemd_service_name
             replacement: '${1}'
+
+      - job_name: 'jenkins'
+        metrics_path: '/prometheus/'
+        scheme: https
+        static_configs:
+           - targets: ['jenkins.navigatorglass.com:443']
