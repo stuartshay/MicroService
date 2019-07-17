@@ -30,7 +30,7 @@ resource "aws_db_instance" "postgresql" {
 resource "null_resource" "create_table" {
   depends_on = ["aws_db_instance.postgresql"] #wait for the db to be ready
   provisioner "local-exec" {
-    command = "PGPASSWORD=${var.database_password} psql -h ${aws_db_instance.postgresql.address} -U ${var.database_username} -d ${var.database_name} -p ${var.database_port} -c 'CREATE TABLE public.PLUTO (column_name TYPE column_constraint,table_constraint table_constraint)'"
+    command = "PGPASSWORD=${var.database_password} psql -h ${aws_db_instance.postgresql.address} -U ${var.database_username} -d ${var.database_name} -p ${var.database_port} -c 'CREATE TABLE public.PLUTO (dummy INTEGER NOT NULL PRIMARY KEY)'"
   }
 }
 
