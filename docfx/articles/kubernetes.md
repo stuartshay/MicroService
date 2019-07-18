@@ -101,6 +101,11 @@ kubectl get svc -n microservices
 helm upgrade microservice-release ./microservice-stack
 ```
 
+### Delete and Purge
+```
+ helm delete --purge  microservice-release
+```
+
 ## Reset Kubernetes
 
 ![](images/kube-reset.png)
