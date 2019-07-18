@@ -19,13 +19,13 @@ storage_type = "gp2"
 database_identifier = "myrdsinstance"
 
 # Database password inside storage engine
-database_password = "development"
+database_password = "nyclandmarks"
 
 # Name of user inside storage engine
-database_username = "development"
+database_username = "nyclandmarks"
 
 # Name of database inside storage engine
-database_name = "test"
+database_name = "nyclandmarks"
 
 # Port on which database will accept connections
 database_port = "5432"
