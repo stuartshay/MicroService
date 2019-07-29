@@ -34,10 +34,10 @@ resource "null_resource" "create_table" {
   }
 }
 
-resource "null_resource" "setup_db" {
-  depends_on = ["null_resource.create_table"]
-  provisioner "local-exec" {
-      command = "docker run -t -v $(pwd):/tmp/ node:alpine /bin/sh -c 'npm i map-pluto-postgres && ls -l /tmp && node /tmp/npm_data/pluto.js --host ${aws_db_instance.postgresql.address} --port ${var.database_port} --user ${aws_db_instance.postgresql.username} --password ${var.database_password}  --database ${var.database_name}'"
+# resource "null_resource" "setup_db" {
+#   depends_on = ["null_resource.create_table"]
+#   provisioner "local-exec" {
+#       command = "docker run -t -v $(pwd):/tmp/ node:alpine /bin/sh -c 'npm i map-pluto-postgres && ls -l /tmp && node /tmp/npm_data/pluto.js --host ${aws_db_instance.postgresql.address} --port ${var.database_port} --user ${aws_db_instance.postgresql.username} --password ${var.database_password}  --database ${var.database_name}'"
 
-  }
-}
+#   }
+# }
