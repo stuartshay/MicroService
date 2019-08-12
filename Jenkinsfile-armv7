@@ -1,4 +1,4 @@
-node('buildx') {
+node('buildx-armv7') {
 
     stage('Git checkout') {
         git branch: 'develop', credentialsId: 'gihub-key', url: 'git@github.com:stuartshay/MicroService.git'
