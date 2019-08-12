@@ -1,0 +1,34 @@
+node('buildx') {
+
+    stage('Git checkout') {
+        git branch: 'develop', credentialsId: 'gihub-key', url: 'git@github.com:stuartshay/MicroService.git'
+    }
+
+   stage('Build & Deploy Docker') {
+        sh '''mv docker/microservice-api-buildx.dockerfile/.dockerignore .dockerignore
+        docker context ls
+        docker buildx build --platform=linux/arm/v7  -f docker/microservice-api-buildx.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t stuartshay/microservice-api:2.2.2-armv7 .'''
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
+            sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
+        }
+        sh '''docker push stuartshay/microservice-api:2.2.2-armv7'''
+    }
+
+    stage('Microbadger Webhook') {
+
+        //hook = registerWebhook()
+        //echo "Waiting for POST to ${hook.getURL()}"
+
+        //sh  "curl -X POST -d 'OK' \
+        //   https://hooks.microbadger.com/images/stuartshay/microservice-api/zNG1zy7qGd0StURmg-lhGKA0XAE="
+
+        //data = waitForWebhook hook
+        //echo "Webhook called with data: ${data}"
+    }
+
+
+    stage('Mail') {
+        emailext attachLog: true, body: '', subject: "Jenkins build status - ${currentBuild.fullDisplayName}", to: 'sshay@yahoo.com'
+    }
+
+}
