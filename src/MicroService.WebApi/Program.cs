@@ -39,7 +39,7 @@ namespace MicroService.WebApi
         /// <returns></returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-             .ConfigureMetricsWithDefaults( builder => { builder.OutputMetrics.AsPrometheusPlainText(); })
+             .ConfigureMetricsWithDefaults(builder => { builder.OutputMetrics.AsPrometheusPlainText(); })
              .UseMetrics(
                     options =>
                     {
