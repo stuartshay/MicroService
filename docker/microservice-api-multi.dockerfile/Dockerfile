@@ -1,5 +1,5 @@
 # Build Stage
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2.300 AS build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
