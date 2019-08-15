@@ -24,6 +24,7 @@ bld/
 tools/
 .sonarqube/
 .test-results/
+healthchecksdb
 
 # Coverage Test Files 
 *coverage*

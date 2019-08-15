@@ -50,6 +50,7 @@ namespace MicroService.WebApi
             services.AddSingleton(Configuration);
 
             services.AddApiVersioning(Configuration);
+            services.AddCustomHealthCheck(Configuration);
 
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerConfiguration(Configuration);
@@ -83,6 +84,9 @@ namespace MicroService.WebApi
             {
                 app.UseHsts();
             }
+
+            app.UseHealthChecks($"/health");
+            app.UseHealthChecksUI();
 
             ConfigureSwagger(app, provider);
             app.UseHttpsRedirection();

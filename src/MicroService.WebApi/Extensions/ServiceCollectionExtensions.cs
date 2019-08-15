@@ -85,6 +85,23 @@ namespace MicroService.WebApi.Extensions
                });
         }
 
+        /// <summary>
+        ///   Custom Health Check.
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddCustomHealthCheck(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddHealthChecks()
+            //    .AddDbContextCheck<NycLandmarkContext>("DbContextHealthCheck")
+            ;
+
+            services.AddHealthChecksUI();
+
+            return services;
+        }
+
         private static string GetXmlCommentsPath()
         {
             var basePath = AppContext.BaseDirectory;
