@@ -17,6 +17,7 @@ namespace MicroService.Test.Integration
         public FunctionHelperIntegrationTest(TestDataFixture config, ITestOutputHelper output)
         {
             _testDataRepository = config.TestDataRepository;
+            _output = output;
         }
 
         [Fact(DisplayName = "Calculate_Percentile - Integration")]
@@ -32,6 +33,7 @@ namespace MicroService.Test.Integration
             var sut = FunctionHelper.Percentile(array, 0.995);
 
             // Assert
+            _output.WriteLine("Result:{sut}", sut);
             Assert.NotNull(results);
             Assert.Equal(sut, result);
         }

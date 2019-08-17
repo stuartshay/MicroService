@@ -93,9 +93,9 @@ namespace MicroService.WebApi.Extensions
         /// <returns></returns>
         public static IServiceCollection AddCustomHealthCheck(this IServiceCollection services, IConfiguration configuration)
         {
+            var config = configuration.Get<ApplicationOptions>();
             services.AddHealthChecks()
-            //    .AddDbContextCheck<NycLandmarkContext>("DbContextHealthCheck")
-            ;
+                .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
             services.AddHealthChecksUI();
 
