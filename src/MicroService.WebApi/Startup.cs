@@ -1,8 +1,10 @@
-﻿using MicroService.Data.Repository;
+﻿using HealthChecks.UI.Client;
+using MicroService.Data.Repository;
 using MicroService.Service.Configuration;
 using MicroService.Service.Services;
 using MicroService.WebApi.Extensions;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -85,8 +87,11 @@ namespace MicroService.WebApi
                 app.UseHsts();
             }
 
-            app.UseHealthChecks($"/health");
-            app.UseHealthChecksUI();
+            app.UseHealthChecks("/healthz", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+            });
 
             ConfigureSwagger(app, provider);
             app.UseHttpsRedirection();
