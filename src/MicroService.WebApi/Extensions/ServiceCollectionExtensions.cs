@@ -85,6 +85,23 @@ namespace MicroService.WebApi.Extensions
                });
         }
 
+        /// <summary>
+        ///   Custom Health Check.
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddCustomHealthCheck(this IServiceCollection services, IConfiguration configuration)
+        {
+            var config = configuration.Get<ApplicationOptions>();
+            services.AddHealthChecks()
+                .AddNpgSql(config.ConnectionStrings.PostgreSql);
+
+            services.AddHealthChecksUI();
+
+            return services;
+        }
+
         private static string GetXmlCommentsPath()
         {
             var basePath = AppContext.BaseDirectory;

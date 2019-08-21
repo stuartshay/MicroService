@@ -30,7 +30,7 @@ node('master') {
 
         stage('tf-plan') {
 
-        dir("postgres_rds_terraform") {
+        dir("infrastructure/postgres_rds_terraform/") {
 
 
             wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
@@ -47,7 +47,7 @@ node('master') {
 
         stage('tf-apply') {
 
-        dir("postgres_rds_terraform") {
+        dir("infrastructure/postgres_rds_terraform/") {
         if(Plan_Only.equalsIgnoreCase('true') | (Destroy_the_Environment.equalsIgnoreCase('true')) )  {
             println "Plan only run. Skipping Terraform apply."
         }
@@ -68,7 +68,7 @@ node('master') {
         }
         stage('tf-destroy') {
 
-        dir("postgres_rds_terraform") {
+        dir("infrastructure/postgres_rds_terraform/") {
         if(Destroy_the_Environment.equalsIgnoreCase('true')) {
         input 'WARNING: Applying Terraform destroy can result in unrecoverable destruction. Click "Proceed" to confirm Terraform update plan  to destroy was reviewed and to authorize the updates to be applied, else click "Abort".'
         wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
