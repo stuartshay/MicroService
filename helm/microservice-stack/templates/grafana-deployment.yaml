@@ -36,11 +36,15 @@ spec:
             value: {{ .Values.grafana.GfAuthAnonymousOrgRole }}
           ports:
             - name: http
-              containerPort: 3000
+              containerPort: {{ .Values.grafana.service.port }}
               protocol: TCP
           volumeMounts:
+          {{- if .Values.grafana.persistence.enabled }}
             - name: grafana-data
               mountPath: "/var/lib/grafana"
+          {{- end }}
+            - name: database
+              mountPath: "/etc/grafana/provisioning/datasources"
       volumes:
         - name: grafana-data
           {{- if .Values.grafana.persistence.enabled }}
@@ -49,6 +53,9 @@ spec:
           {{- else }}
           emptyDir: {}
           {{- end }}
+        - name: database
+          configMap:
+            name: {{ template "microservice-stack.fullname" . }}-database
           livenessProbe:
             httpGet:
               path: /

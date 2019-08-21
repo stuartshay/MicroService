@@ -30,7 +30,7 @@ spec:
                 "--web.console.templates", "/usr/share/prometheus/consoles" ]
           ports:
             - name: http
-              containerPort: 9090
+              containerPort: {{ .Values.prometheus.service.port }}
               protocol: TCP
           volumeMounts:
           - name: prometheus
@@ -38,7 +38,7 @@ spec:
       volumes:
         - name: prometheus
           configMap:
-             name: prometheus
+            name: {{ template "microservice-stack.fullname" . }}-prometheus
           livenessProbe:
             httpGet:
               path: /
