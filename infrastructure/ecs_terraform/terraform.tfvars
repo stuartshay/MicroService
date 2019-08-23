@@ -14,8 +14,8 @@ family_name = "microservices"
 # Name of container
 container_name = "microservice"
 
-# Docker image
-docker_image = ""
+# # Docker image
+# docker_image = ""
 
 # The number of conatiners of the task definition to place and keep running
 desired_count = "1"
