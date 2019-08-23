@@ -38,7 +38,7 @@ node('master') {
                 export AWS_ACCESS_KEY_ID=${aws_access_id}
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
                 terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
-                TF_VAR_docker_image={$docker_image}  terraform plan -no-color 
+                TF_VAR_docker_image=$docker_image  terraform plan -no-color 
                 """
 
                }
@@ -59,7 +59,7 @@ node('master') {
                export AWS_ACCESS_KEY_ID=${aws_access_id}
                export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
                terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
-               TF_VAR_docker_image={$docker_image}  terraform apply -no-color -auto-approve
+               TF_VAR_docker_image=$docker_image  terraform apply -no-color -auto-approve
                """
 
                 }
@@ -78,7 +78,7 @@ node('master') {
             export AWS_ACCESS_KEY_ID=${aws_access_id}
             export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
             terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
-            TF_VAR_docker_image={$docker_image}  terraform destroy -no-color -force
+            TF_VAR_docker_image=$docker_image  terraform destroy -no-color -force
             """
         }
         }
