@@ -15,7 +15,7 @@ family_name = "microservices"
 container_name = "microservice"
 
 # Docker image
-docker_image = "stuartshay/microservice-api:2.2.2-build"
+docker_image = ""
 
 # The number of conatiners of the task definition to place and keep running
 desired_count = "1"
