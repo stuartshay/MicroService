@@ -22,7 +22,7 @@ desired_count = "1"
 
 aspnetcore_envirnoment = "Docker" # api env
 
-db_connection_string = "User ID=development;Password=development;Server=myrdsinstance.ckm3eyorqjco.us-east-1.rds.amazonaws.com;Port=5432;Database=test;Integrated Security=true;Pooling=true;"
+db_connection_string = "User ID=nyclandmarks;Password=nyclandmarks;Server=myrdsinstance.ckm3eyorqjco.us-east-1.rds.amazonaws.com;Port=5432;Database=nyclandmarks;Integrated Security=true;Pooling=true;"
 
 # Fargate instance CPU units to provision
 cpu_value = "1024"
