@@ -3,7 +3,7 @@
 region = "us-east-2"
 
 # The name of the cluster (only alphanumeric characters and hyphens allowed)
-cluster_name = "test-data"
+cluster_name = "microservice"
 
 # AWS ECS Task Definition values
 # A unique name for your task definition
