@@ -2,8 +2,8 @@
 # AWS Credentials
 region = "us-east-2"
 
-# The name of the cluster (only alphanumeric characters and hyphens allowed)
-cluster_name = "microservice"
+# # The name of the cluster (only alphanumeric characters and hyphens allowed)
+# cluster_name = "microservice"
 
 # AWS ECS Task Definition values
 # A unique name for your task definition
