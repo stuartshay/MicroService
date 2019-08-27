@@ -39,7 +39,7 @@ node('master') {
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
                 terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
                 TF_VAR_docker_image=$docker_image
-                if (git_branch == 'master')
+                if(git_branch == 'master')
                 {
                 TF_VAR_cluster_name=microservice
                 }
@@ -69,7 +69,7 @@ node('master') {
                export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
                terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
                TF_VAR_docker_image=$docker_image
-               if (git_branch == 'master')
+               if(git_branch == 'master')
                {
                TF_VAR_cluster_name=microservice
                }
@@ -106,7 +106,7 @@ node('master') {
             export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
             terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
             TF_VAR_docker_image=$docker_image
-            if (git_branch == 'master')
+            if(git_branch == 'master')
             {
             TF_VAR_cluster_name=microservice
             }
@@ -129,4 +129,3 @@ node('master') {
        cleanWs()
         }
     }
-
