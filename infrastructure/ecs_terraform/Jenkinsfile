@@ -38,16 +38,7 @@ node('master') {
                 export AWS_ACCESS_KEY_ID=${aws_access_id}
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
                 terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
-                TF_VAR_docker_image=$docker_image
-                if(git_branch == 'master')
-                {
-                TF_VAR_cluster_name=microservice
-                }
-                else
-                {
-                 TF_VAR_cluster_name=git_branch-microservice
-                }
-                terraform plan -no-color
+                TF_VAR_docker_image=$docker_image  terraform plan -no-color 
                 """
 
                }
@@ -68,31 +59,13 @@ node('master') {
                export AWS_ACCESS_KEY_ID=${aws_access_id}
                export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
                terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
-               TF_VAR_docker_image=$docker_image
-               if(git_branch == 'master')
-               {
-               TF_VAR_cluster_name=microservice
-               }
-               else
-               {
-                TF_VAR_cluster_name=git_branch-microservice
-               }
-                terraform apply -no-color -auto-approve
+               TF_VAR_docker_image=$docker_image  terraform apply -no-color -auto-approve
                """
 
                 }
 
             }
             }
-
-        }
-
-
-        stage('verify-endpoint')
-        {
-            echo 'Access URL for swagger'
-            sleep 60;
-            curl '${aws_alb.main.dns_name}:${var.alb_port}/healthz'
 
         }
         stage('tf-destroy') {
@@ -105,17 +78,7 @@ node('master') {
             export AWS_ACCESS_KEY_ID=${aws_access_id}
             export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
             terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
-            TF_VAR_docker_image=$docker_image
-            if(git_branch == 'master')
-            {
-            TF_VAR_cluster_name=microservice
-            }
-            else
-            {
-             TF_VAR_cluster_name=git_branch-microservice
-            }
-             terraform destroy -no-color -force
-
+            TF_VAR_docker_image=$docker_image  terraform destroy -no-color -force
             """
         }
         }
