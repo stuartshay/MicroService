@@ -15,7 +15,7 @@ family_name = "microservices"
 container_name = "microservice"
 
 # # Docker image
-# docker_image = ""
+#docker_image = ""
 
 # The number of conatiners of the task definition to place and keep running
 desired_count = "1"
@@ -36,12 +36,6 @@ container_port = "5000"
 host_port = "5000"
 
 ########## for AWS ALB ######
-
-# The CIDR block for the VPC
-cidr_block = "172.17.0.0/16"
-
-# Number of AZs to cover in a given AWS region (minimum required 2)
-az_count = "2"
 
 # AWS ALB values
 # The port on which targets receive traffic and on which the load balancer is listening
