@@ -3,7 +3,7 @@
 resource "aws_security_group" "lb" {
   name        = "${var.cluster_name}-alb-sec-group"
   description = "controls access to the ALB"
-  vpc_id      = "${aws_vpc.main.id}"
+  vpc_id      = "${data.terraform_remote_state.infrastructure.vpc_id}"
 
   ingress {
     from_port   = "${var.alb_port}"
@@ -25,7 +25,7 @@ resource "aws_security_group" "lb" {
 resource "aws_security_group" "ecs_tasks" {
   name        = "${var.cluster_name}-sec-group"
   description = "allow inbound access from the ALB only"
-  vpc_id      = "${aws_vpc.main.id}"
+  vpc_id      = "${data.terraform_remote_state.infrastructure.vpc_id}"
 
   ingress {
     protocol        = "tcp"

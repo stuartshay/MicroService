@@ -5,18 +5,6 @@ variable "region" {
   type        = "string"
 }
 
-# The CIDR block for the VPC
-variable "cidr_block" {
-  description = "CIDR block for the VPC"
-  type        = "string"
-}
-
-# Number of AZs to cover in a given AWS region
-variable "az_count" {
-  description = "Number of AZs to cover in a given AWS region"
-  type        = "string"
-}
-
 # The name of the cluster
 variable "cluster_name" {
   description = "only alphanumeric characters and hyphens allowed"

@@ -52,7 +52,7 @@ resource "aws_ecs_service" "main" {
 
   network_configuration {
     security_groups = ["${aws_security_group.ecs_tasks.id}"]
-    subnets         = ["${aws_subnet.private.*.id}"]
+    subnets         = ["${data.terraform_remote_state.infrastructure.private_subnets}"]
   }
 
   load_balancer {

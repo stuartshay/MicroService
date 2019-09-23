@@ -31,14 +31,12 @@ node('master') {
         stage('tf-plan') {
 
         dir("infrastructure/ecs_terraform/") {
-
-
             wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
                 sh """
                 export AWS_ACCESS_KEY_ID=${aws_access_id}
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
-                terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
-                TF_VAR_docker_image=$docker_image  terraform plan -no-color 
+                terraform init -backend-config=key=fargate-state-${git_branch}.tfstate -reconfigure
+                TF_VAR_docker_image=$docker_image  terraform plan -no-color
                 """
 
                }
@@ -58,16 +56,19 @@ node('master') {
                sh """
                export AWS_ACCESS_KEY_ID=${aws_access_id}
                export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
-               terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
-               TF_VAR_docker_image=$docker_image  terraform apply -no-color -auto-approve
+                 if [ "$git_branch" = master ];then
+                   terraform init -backend-config=key=fargate-state-${git_branch}.tfstate -reconfigure
+                   TF_VAR_docker_image=$docker_image terraform apply -no-color -auto-approve -var cluster_name="microservices"
+                else
+                  terraform init -backend-config=key=fargate-state-${git_branch}.tfstate -reconfigure
+                  TF_VAR_docker_image=$docker_image  terraform apply -no-color -auto-approve -var cluster_name="${git_branch}-microservices"
+                fi
                """
-
                 }
-
             }
             }
-
         }
+
         stage('tf-destroy') {
 
         dir("infrastructure/ecs_terraform/") {
@@ -77,7 +78,7 @@ node('master') {
             sh """
             export AWS_ACCESS_KEY_ID=${aws_access_id}
             export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
-            terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
+            terraform init -backend-config=key=fargate-state-${git_branch}.tfstate -reconfigure
             TF_VAR_docker_image=$docker_image  terraform destroy -no-color -force
             """
         }
@@ -89,6 +90,19 @@ node('master') {
 
             }
             }
+
+        stage('Mail') {
+            echo 'Job Status Email'
+            if( $health_check == '0' ) {
+                emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n The Enpoint Access point is: and its Healthy. More info at: ${env.BUILD_URL}", subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'sshay@yahoo.com'
+            }
+            else {
+                emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n The Enpoint Access point is: and its Not Healthy. More info at: ${env.BUILD_URL}", subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'sshay@yahoo.com'
+
+            }
+
+          }
+
        cleanWs()
         }
     }
