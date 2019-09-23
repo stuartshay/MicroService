@@ -8,7 +8,7 @@ resource "aws_alb" "main" {
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = "${var.cluster_name}-alb-targer-group"
+  name        = "${var.cluster_name}-alb"
   port        = "${var.alb_port}"
   protocol    = "${var.alb_protocol}"
   vpc_id      = "${data.terraform_remote_state.infrastructure.vpc_id}"
