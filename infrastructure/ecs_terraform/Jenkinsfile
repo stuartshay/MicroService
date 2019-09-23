@@ -90,19 +90,7 @@ node('master') {
 
             }
             }
-
-        stage('Mail') {
-            echo 'Job Status Email'
-            if( $health_check == '0' ) {
-                emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n The Enpoint Access point is: and its Healthy. More info at: ${env.BUILD_URL}", subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'sshay@yahoo.com'
-            }
-            else {
-                emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n The Enpoint Access point is: and its Not Healthy. More info at: ${env.BUILD_URL}", subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'sshay@yahoo.com'
-
-            }
-
-          }
-
+            
        cleanWs()
         }
     }
