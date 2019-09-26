@@ -70,7 +70,10 @@ node('master') {
             }
         }
         stage ('EndPoint Verification'){
-          if(Plan_Only.equalsIgnoreCase('false') | (Destroy_the_Environment.equalsIgnoreCase('false')) ){
+        if(Plan_Only.equalsIgnoreCase('true') | (Destroy_the_Environment.equalsIgnoreCase('true')) )  {
+            println "Plan only run. Skipping Terraform EndPoint Verification."
+        }
+          else{
           endpoint_health = sh (script: 'cat .endpoint | xargs -I {} curl {} | grep -ow Healthy | head -1', returnStdout: true)
           if( endpoint_health == "Healthy" ) {
                  echo "Endpoint is Healthy"
@@ -83,13 +86,12 @@ node('master') {
 
        stage('Mail') {
            echo 'Job Status Email'
-           if(( endpoint_health == 'Healthy' ) | ( endpoint_health != 'Healthy' )) {
-               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL} and endpoint is : ${alb_endpoint} ", subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'harpreet@xenonstack.com'           }
-           else {
-               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n . More info at: ${env.BUILD_URL}", subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'harpreet@xenonstack.com'
-
+           if(Plan_Only.equalsIgnoreCase('true') | (Destroy_the_Environment.equalsIgnoreCase('true')) ) {
+           emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n . More info at: ${env.BUILD_URL}", subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'harpreet@xenonstack.com'
            }
-
+           else{
+               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL} and endpoint is : ${alb_endpoint} ", subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'harpreet@xenonstack.com'
+               }
          }
 
         stage('tf-destroy') {
