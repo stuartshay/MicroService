@@ -64,10 +64,33 @@ node('master') {
                   TF_VAR_docker_image=$docker_image  terraform apply -no-color -auto-approve -var cluster_name="${git_branch}-microservices"
                 fi
                """
+               alb_endpoint = sh (script: 'cat .endpoint', returnStdout: true)
                 }
             }
             }
         }
+        stage ('EndPoint Verification'){
+          if(Plan_Only.equalsIgnoreCase('false') | (Destroy_the_Environment.equalsIgnoreCase('false')) ){
+          endpoint_health = sh (script: 'cat .endpoint | xargs -I {} curl {} | grep -ow Healthy | head -1', returnStdout: true)
+          if( endpoint_health == "Healthy" ) {
+                 echo "Endpoint is Healthy"
+            }
+          else {
+                 echo "Endpoint is Not Healthy"
+               }
+           }
+       }
+
+       stage('Mail') {
+           echo 'Job Status Email'
+           if(( endpoint_health == 'Healthy' ) | ( endpoint_health != 'Healthy' )) {
+               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL} and endpoint is : ${alb_endpoint} ", subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'harpreet@xenonstack.com'           }
+           else {
+               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n . More info at: ${env.BUILD_URL}", subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'harpreet@xenonstack.com'
+
+           }
+
+         }
 
         stage('tf-destroy') {
 
@@ -90,7 +113,6 @@ node('master') {
 
             }
             }
-            
        cleanWs()
         }
     }
