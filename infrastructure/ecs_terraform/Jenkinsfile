@@ -3,6 +3,8 @@ node('master') {
         String aws_credential_id = ""
         String aws_access_id = ""
         String aws_secret_key = ""
+        def stage_name
+        def healthz_status
 
         stage('initialize') {
             def gitRepo = checkout scm
@@ -38,7 +40,7 @@ node('master') {
                 terraform init -backend-config=key=fargate-state-${git_branch}.tfstate -reconfigure
                 TF_VAR_docker_image=$docker_image  terraform plan -no-color
                 """
-
+                stage_name="tf-plan"
                }
             }
 
@@ -65,8 +67,11 @@ node('master') {
                 fi
                """
                alb_endpoint = sh (script: 'cat .endpoint', returnStdout: true)
-                }
-            }
+               sleep 90s
+               endpoint_health = sh (script: 'cat .healthzendpoint | xargs -I {} curl {} -s | grep -ow Healthy | head -1', returnStdout: true)
+               }
+            stage_name="tf-apply"
+              }
             }
         }
         stage ('EndPoint Verification'){
@@ -74,28 +79,18 @@ node('master') {
             println "Plan only run. Skipping Terraform EndPoint Verification."
         }
           else{
-          endpoint_health = sh (script: 'cat .endpoint | xargs -I {} curl {} | grep -ow Healthy | head -1', returnStdout: true)
           if( endpoint_health == "Healthy" ) {
                  echo "Endpoint is Healthy"
+                 healthz_status="Endpoint is Healthy"
             }
           else {
                  echo "Endpoint is Not Healthy"
+                 healthz_status="Endpoint is Not Healthy"
                }
            }
        }
 
-       stage('Mail') {
-           echo 'Job Status Email'
-           if(Plan_Only.equalsIgnoreCase('true') | (Destroy_the_Environment.equalsIgnoreCase('true')) ) {
-           emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n . More info at: ${env.BUILD_URL}", subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'harpreet@xenonstack.com'
-           }
-           else{
-               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL} and endpoint is : ${alb_endpoint} ", subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'harpreet@xenonstack.com'
-               }
-         }
-
         stage('tf-destroy') {
-
         dir("infrastructure/ecs_terraform/") {
         if(Destroy_the_Environment.equalsIgnoreCase('true')) {
         input 'WARNING: Applying Terraform destroy can result in unrecoverable destruction. Click "Proceed" to confirm Terraform update plan  to destroy was reviewed and to authorize the updates to be applied, else click "Abort".'
@@ -106,6 +101,7 @@ node('master') {
             terraform init -backend-config=key=fargate-state-${git_branch}.tfstate -reconfigure
             TF_VAR_docker_image=$docker_image  terraform destroy -no-color -force
             """
+            stage_name="tf-destroy"
         }
         }
         else {
@@ -115,6 +111,21 @@ node('master') {
 
             }
             }
+
+        stage('Mail') {
+        echo 'Job Status Email'
+           if(Plan_Only.equalsIgnoreCase('true') | (Destroy_the_Environment.equalsIgnoreCase('true')) ) {
+           emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Terraform Action Performed: ${stage_name}"\n EndPoint Health Status: ${healthz_status},
+           subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+           to: 'harpreet@xenonstack.com'
+           }
+           else{
+               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Access Endpoint : ${alb_endpoint}\n Terraform Action Performed: ${stage_name}",
+               subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+               to: 'harpreet@xenonstack.com'
+               }
+         }
+
        cleanWs()
         }
     }

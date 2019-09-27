@@ -3,7 +3,10 @@ resource "aws_alb" "main" {
   subnets         = ["${data.terraform_remote_state.infrastructure.public_subnets}"]
   security_groups = ["${aws_security_group.lb.id}"]
   provisioner "local-exec" {
-    command = "echo ${aws_alb.main.dns_name}:${var.alb_port}/swagger > .endpoint"
+    command = << EOT
+    "echo ${aws_alb.main.dns_name}:${var.alb_port}/swagger > .endpoint"
+    "echo ${aws_alb.main.dns_name}:${var.alb_port}/healthz > .healthzendpoint"
+    EOT
   }
 }
 
