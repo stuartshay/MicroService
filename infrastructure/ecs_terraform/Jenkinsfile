@@ -65,9 +65,9 @@ node('master') {
                   terraform init -backend-config=key=fargate-state-${git_branch}.tfstate -reconfigure
                   TF_VAR_docker_image=$docker_image  terraform apply -no-color -auto-approve -var cluster_name="${git_branch}-microservices"
                 fi
+                sleep 90s
                """
                alb_endpoint = sh (script: 'cat .endpoint', returnStdout: true)
-               sleep 90s
                endpoint_health = sh (script: 'cat .healthzendpoint | xargs -I {} curl {} -s | grep -ow Healthy | head -1', returnStdout: true)
                }
             stage_name="tf-apply"
