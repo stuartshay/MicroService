@@ -4,8 +4,8 @@ resource "aws_alb" "main" {
   security_groups = ["${aws_security_group.lb.id}"]
   provisioner "local-exec" {
     command = <<EOT
-      "echo ${aws_alb.main.dns_name}:${var.alb_port}/swagger > .endpoint"
-      "echo ${aws_alb.main.dns_name}:${var.alb_port}/healthz > .healthzendpoint"
+      echo ${aws_alb.main.dns_name}:${var.alb_port}/swagger > .endpoint;
+      echo ${aws_alb.main.dns_name}:${var.alb_port}/healthz > .healthzendpoint
     EOT
   }
 }
