@@ -68,7 +68,7 @@ node('master') {
                 sleep 90s
                """
                alb_endpoint = sh (script: 'cat .endpoint', returnStdout: true)
-               endpoint_health = sh (script: 'cat .healthzendpoint | xargs -I {} curl {} -s | grep -ow Healthy | head -1', returnStdout: true)
+               endpoint_health = sh (script: 'cat .healthzendpoint | xargs -I {} curl {} -s | grep -ow Healthy | head -1', returnStdout: true).trim()
                }
             stage_name="tf-apply"
               }
@@ -79,7 +79,7 @@ node('master') {
             println "Plan only run. Skipping Terraform EndPoint Verification."
         }
           else{
-          if( endpoint_health == "Healthy" ) {
+          if( "${endpoint_health}" == "Healthy" ) {
                  echo "Endpoint is Healthy"
                  healthz_status="Endpoint is Healthy"
             }
@@ -120,7 +120,7 @@ node('master') {
            to: 'harpreet@xenonstack.com'
            }
            else{
-               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Access Endpoint: ${alb_endpoint}\n Terraform Action Performed: ${stage_name}\n EndPoint Health Status: ${healthz_status}",
+               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Access Endpoint: ${alb_endpoint}\n Terraform Action Performed: ${stage_name}\n Endpoint Health Status: ${healthz_status}",
                subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
                to: 'harpreet@xenonstack.com'
                }
