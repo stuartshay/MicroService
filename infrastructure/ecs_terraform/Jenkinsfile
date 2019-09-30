@@ -117,12 +117,12 @@ node('master') {
            if(Plan_Only.equalsIgnoreCase('true') | (Destroy_the_Environment.equalsIgnoreCase('true')) ) {
            emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Terraform Action Performed: ${stage_name}",
            subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
-           to: 'harpreet@xenonstack.com'
+           to: 'sshay@yahoo.com'
            }
            else{
                emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Access Endpoint: ${alb_endpoint}\n Terraform Action Performed: ${stage_name}\n Endpoint Health Status: ${healthz_status}",
                subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
-               to: 'harpreet@xenonstack.com'
+               to: 'sshay@yahoo.com'
                }
          }
 
