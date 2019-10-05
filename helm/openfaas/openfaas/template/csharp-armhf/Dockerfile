@@ -1,6 +1,6 @@
 FROM openfaas/classic-watchdog:0.13.4 as watchdog
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2.203-stretch-arm32v7 as builder
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2.402-stretch-arm32v7 as builder
 
 # Supress collection of data.
 ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
