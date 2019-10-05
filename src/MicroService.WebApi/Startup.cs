@@ -96,7 +96,7 @@ namespace MicroService.WebApi
             ConfigureSwagger(app, provider);
             app.UseHttpsRedirection();
             app.UseMvc();
-        }
+        } 
 
         private void ConfigureSwagger(IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {

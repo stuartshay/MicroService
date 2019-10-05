@@ -8,6 +8,7 @@ docker/
 **/obj
 
 .dockerignore
+launchSettings.json
 
 **/*.cs
 **/*.js

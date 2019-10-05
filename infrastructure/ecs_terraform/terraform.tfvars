@@ -3,7 +3,7 @@
 region = "us-east-2"
 
 # The name of the cluster (only alphanumeric characters and hyphens allowed)
-cluster_name = "test-data"
+cluster_name = "microservice"
 
 # AWS ECS Task Definition values
 # A unique name for your task definition
@@ -14,14 +14,13 @@ family_name = "microservices"
 # Name of container
 container_name = "microservice"
 
-# Docker image
-docker_image = "stuartshay/microservice-api:2.2.2-build"
+# # Docker image
+#docker_image = ""
 
 # The number of conatiners of the task definition to place and keep running
 desired_count = "1"
 
 aspnetcore_envirnoment = "Docker" # api env
-
 
 db_connection_string = "User ID=nyclandmarks;Password=nyclandmarks;Server=myrdsinstance.ckm3eyorqjco.us-east-1.rds.amazonaws.com;Port=5432;Database=nyclandmarks;Integrated Security=true;Pooling=true;"
 
@@ -37,12 +36,6 @@ container_port = "5000"
 host_port = "5000"
 
 ########## for AWS ALB ######
-
-# The CIDR block for the VPC
-cidr_block = "172.17.0.0/16"
-
-# Number of AZs to cover in a given AWS region (minimum required 2)
-az_count = "2"
 
 # AWS ALB values
 # The port on which targets receive traffic and on which the load balancer is listening

@@ -1,13 +1,11 @@
 # Terraform configuration for running Docker Container on AWS ECS Fargate
 This terraform configuration do the following:
-* A VPC with a private and a public subnet.
 * An ECS cluster in the private subnet.
 * Runs Docker container with `stuartshay/microservice-api:2.2.1-build` image.
 * Maps Docker container port `5000`
 * Creates an AWS ECS fargate service.
 * Creates a AWS ECS fargate task definition.
 * An ALB load-balancing requests to the ECS cluster.
-* Creates 2 public subnets in different AZs required by the load balancer. 
 
 ## Prerequisites
 * Terraform
@@ -59,13 +57,13 @@ To launch execution plan
 
 ```$ terraform apply```
 ```
-Plan: 26 to add, 0 to change, 0 to destroy.
+Plan: 11 to add, 0 to change, 0 to destroy.
 
 Do you want to perform these actions?
   Terraform will perform the actions described above.
   Only 'yes' will be accepted to approve.
 
-  Enter a value: 
+  Enter a value:
 ```
 If you want to apply the plan enter ```yes``` or enter any other key to abort.
 ## Run terraform destroy
