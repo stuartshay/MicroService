@@ -3,6 +3,8 @@ node('master') {
         String aws_credential_id = ""
         String aws_access_id = ""
         String aws_secret_key = ""
+        def stage_name
+        def healthz_status
 
         stage('initialize') {
             def gitRepo = checkout scm
@@ -31,16 +33,14 @@ node('master') {
         stage('tf-plan') {
 
         dir("infrastructure/ecs_terraform/") {
-
-
             wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
                 sh """
                 export AWS_ACCESS_KEY_ID=${aws_access_id}
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
-                terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
-                terraform plan -no-color 
+                terraform init -backend-config=key=fargate-state-${git_branch}.tfstate -reconfigure
+                TF_VAR_docker_image=$docker_image  terraform plan -no-color
                 """
-
+                stage_name="tf-plan"
                }
             }
 
@@ -58,18 +58,39 @@ node('master') {
                sh """
                export AWS_ACCESS_KEY_ID=${aws_access_id}
                export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
-               terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
-               terraform apply -no-color -auto-approve
+                 if [ "$git_branch" = master ];then
+                   terraform init -backend-config=key=fargate-state-${git_branch}.tfstate -reconfigure
+                   TF_VAR_docker_image=$docker_image terraform apply -no-color -auto-approve -var cluster_name="microservices"
+                else
+                  terraform init -backend-config=key=fargate-state-${git_branch}.tfstate -reconfigure
+                  TF_VAR_docker_image=$docker_image  terraform apply -no-color -auto-approve -var cluster_name="${git_branch}-microservices"
+                fi
+                sleep 90s
                """
-
-                }
-
+               alb_endpoint = sh (script: 'cat .endpoint', returnStdout: true)
+               endpoint_health = sh (script: 'cat .healthzendpoint | xargs -I {} curl {} -s | grep -ow Healthy | head -1', returnStdout: true).trim()
+               }
+            stage_name="tf-apply"
+              }
             }
-            }
-
         }
-        stage('tf-destroy') {
+        stage ('EndPoint Verification'){
+        if(Plan_Only.equalsIgnoreCase('true') | (Destroy_the_Environment.equalsIgnoreCase('true')) )  {
+            println "Plan only run. Skipping Terraform EndPoint Verification."
+        }
+          else{
+          if( "${endpoint_health}" == "Healthy" ) {
+                 echo "Endpoint is Healthy"
+                 healthz_status="Endpoint is Healthy"
+            }
+          else {
+                 echo "Endpoint is Not Healthy"
+                 healthz_status="Endpoint is Not Healthy"
+               }
+           }
+       }
 
+        stage('tf-destroy') {
         dir("infrastructure/ecs_terraform/") {
         if(Destroy_the_Environment.equalsIgnoreCase('true')) {
         input 'WARNING: Applying Terraform destroy can result in unrecoverable destruction. Click "Proceed" to confirm Terraform update plan  to destroy was reviewed and to authorize the updates to be applied, else click "Abort".'
@@ -77,9 +98,10 @@ node('master') {
             sh """
             export AWS_ACCESS_KEY_ID=${aws_access_id}
             export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
-            terraform init -backend-config=key=fargate-state-${branch}.tfstate -reconfigure
-            terraform destroy -no-color -force
+            terraform init -backend-config=key=fargate-state-${git_branch}.tfstate -reconfigure
+            TF_VAR_docker_image=$docker_image  terraform destroy -no-color -force
             """
+            stage_name="tf-destroy"
         }
         }
         else {
@@ -89,6 +111,21 @@ node('master') {
 
             }
             }
+
+        stage('Mail') {
+        echo 'Job Status Email'
+           if(Plan_Only.equalsIgnoreCase('true') | (Destroy_the_Environment.equalsIgnoreCase('true')) ) {
+           emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Terraform Action Performed: ${stage_name}",
+           subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+           to: 'sshay@yahoo.com'
+           }
+           else{
+               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Access Endpoint: ${alb_endpoint}\n Terraform Action Performed: ${stage_name}\n Endpoint Health Status: ${healthz_status}",
+               subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+               to: 'sshay@yahoo.com'
+               }
+         }
+
        cleanWs()
         }
     }

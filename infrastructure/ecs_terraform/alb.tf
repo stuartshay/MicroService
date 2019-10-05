@@ -1,14 +1,20 @@
 resource "aws_alb" "main" {
   name            = "${var.cluster_name}-alb"
-  subnets         = ["${aws_subnet.public.*.id}"]
+  subnets         = ["${data.terraform_remote_state.infrastructure.public_subnets}"]
   security_groups = ["${aws_security_group.lb.id}"]
+  provisioner "local-exec" {
+    command = <<EOT
+      echo ${aws_alb.main.dns_name}:${var.alb_port}/swagger > .endpoint;
+      echo ${aws_alb.main.dns_name}:${var.alb_port}/healthz > .healthzendpoint
+    EOT
+  }
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = "${var.cluster_name}-alb-targer-group"
+  name        = "${var.cluster_name}-alb"
   port        = "${var.alb_port}"
   protocol    = "${var.alb_protocol}"
-  vpc_id      = "${aws_vpc.main.id}"
+  vpc_id      = "${data.terraform_remote_state.infrastructure.vpc_id}"
   target_type = "${var.alb_target_type}"
 }
 
