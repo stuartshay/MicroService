@@ -45,7 +45,7 @@ namespace MicroService.WebApi.V1.Controllers
         [Produces("application/json", Type = typeof(IEnumerable<TestData>))]
         [ProducesResponseType(typeof(IEnumerable<TestData>), 200)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> Get()
+        public async Task<ActionResult<IEnumerable<TestData>>> Get()
         {
             var results = await _testDataRepository.FindAll();
             if (results == null)
@@ -63,7 +63,7 @@ namespace MicroService.WebApi.V1.Controllers
         [Produces("application/json", Type = typeof(IEnumerable<TestData>))]
         [ProducesResponseType(typeof(double), 200)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> GetPercentile()
+        public async Task<ActionResult<double>> GetPercentile()
         {
             var results = await _calculationService.CalculatePercentile(DataConstants.ExcelPercentile);
 
