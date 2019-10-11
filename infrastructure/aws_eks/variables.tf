@@ -16,6 +16,11 @@ variable "eks_state_bucket_name" {
   description = "terraform EKS state file bucket name"
 }
 
+#Git Branch Name on runtime
+variable "branch_name" {
+  description = "Git Branch Name on runtime"
+}
+
 # Name of AWS EKS cluster
 variable "cluster-name" {
   default = "terraform-eks"
