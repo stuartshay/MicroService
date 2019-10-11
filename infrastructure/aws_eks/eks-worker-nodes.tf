@@ -80,6 +80,15 @@ resource "aws_security_group_rule" "worker-node-ingress-self" {
   type                     = "ingress"
 }
 
+resource "aws_security_group_rule" "allow-access-to-application" {
+  description              = "Allow node to communicate with each other"
+  from_port                = 30000
+  protocol                 = "-1"
+  to_port                  = 32767
+  cidr_blocks              = ["0.0.0.0/0"]
+  type                     = "ingress"
+}
+
 resource "aws_security_group_rule" "worker-node-ingress-cluster" {
   description              = "Allow worker Kubelets and pods to receive communication from the cluster control plane"
   from_port                = 1025
