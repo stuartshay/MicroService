@@ -81,7 +81,7 @@ node('master') {
             export AWS_ACCESS_KEY_ID=${aws_access_id}
             export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
             terraform init -backend-config=key=eks-microservices-stack-${git_branch}.tfstate -reconfigure
-            terraform destroy -no-color -force
+            terraform destroy -no-color -force -var branch_name="${git_branch}"
             """
             stage_name="tf-destroy"
         }
