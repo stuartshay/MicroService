@@ -70,10 +70,9 @@ resource "null_resource" "create_config_file" {
       echo "${local.kubeconfig}" > $HOME/.kube/config
       kubectl apply -f $HOME/aws-auth-cm.yaml
       curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/master/k8s-yaml-templates/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/${var.cluster-name}/;s/{{region_name}}/${var.region}/" | kubectl apply -f -
-      terraform output kubeconfig > ${var.cluster-name}-kubeconfig.txt
-      terraform output config_map_aws_auth > ${var.cluster-name}-config-map.txt
-      aws s3 mv ${var.cluster-name}-kubeconfig.txt s3://${var.eks_state_bucket_name}/
-      aws s3 mv ${var.cluster-name}-config-map.txt s3://${var.eks_state_bucket_name}/
+
+      aws s3 mv $HOME/.kube/config s3://${var.eks_state_bucket_name}/${var.branch_name}-admin.config
+      aws s3 mv $HOME/aws-auth-cm.yaml s3://${var.eks_state_bucket_name}/${var.branch_name}-aws-auth-cm.yaml
 EOT
   }
 }

@@ -31,17 +31,19 @@ node('master') {
         stage('application-deployment') {
 
           if (helm_deploy.equalsIgnoreCase('true'))
-          dir("helm/microservices-stack")
+          dir("helm/microservice-stack")
           {
             wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
                 sh """
                 export AWS_ACCESS_KEY_ID=${aws_access_id}
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
+                aws s3 cp s3://tf-state-eks-cluster/"${git_branch}"-admin.config $HOME/.kube/config
                 kubectl create sa tiller -n kube-system
                 kubectl create ns ms-stack
                 kubectl create clusterrolebinding tiller-binding --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
                 helm init --service-account tiller --wait
                 helm install --name ms-stack --namespace=ms-stack .
+                rm -rf $HOME/.kube/config
                 """
                 stage_name="application-deployment"
                }
@@ -52,13 +54,15 @@ node('master') {
         stage('Application Update')
         {
             if (helm_update.equalsIgnoreCase('true'))
-            dir("helm/microservices-stack")
+            dir("helm/microservice-stack")
             {
             wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
                 sh """
                 export AWS_ACCESS_KEY_ID=${aws_access_id}
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
+                aws s3 cp s3://tf-state-eks-cluster/"${git_branch}"-admin.config $HOME/.kube/config
                 helm upgrade ms-stack -f value.yaml .
+                rm -rf $HOME/.kube/config
                 """
                 stage_name="Application-update"
             }
@@ -73,10 +77,12 @@ node('master') {
                 sh """
                 export AWS_ACCESS_KEY_ID=${aws_access_id}
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
+                aws s3 cp s3://tf-state-eks-cluster/"${git_branch}"-admin.config $HOME/.kube/config
                 helm delete --purge ms-stack
                 kubectl delete clusterrolebinding tiller-binding
                 kubectl delete sa tiller -n kube-system
                 kubectl delete ns ms-stack
+                rm -rf $HOME/.kube/config
                 """
                 stage_name="Application-delete"
             }
