@@ -38,7 +38,7 @@ users:
   user:
     exec:
       apiVersion: client.authentication.k8s.io/v1alpha1
-      command: /var/lib/jenkins/bin/aws-iam-authenticator
+      command: aws-iam-authenticator
       args:
         - "token"
         - "-i"
@@ -72,8 +72,8 @@ resource "null_resource" "create_config_file" {
       curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/master/k8s-yaml-templates/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/${var.cluster-name}/;s/{{region_name}}/${var.region}/" | kubectl apply -f -
       terraform output kubeconfig > ${var.cluster-name}-kubeconfig.txt
       terraform output config_map_aws_auth > ${var.cluster-name}-config-map.txt
-      aws s3 cp ${var.cluster-name}-kubeconfig.txt s3://${var.eks_state_bucket_name}/
-      aws s3 cp ${var.cluster-name}-config-map.txt s3://${var.eks_state_bucket_name}/
+      aws s3 mv ${var.cluster-name}-kubeconfig.txt s3://${var.eks_state_bucket_name}/
+      aws s3 mv ${var.cluster-name}-config-map.txt s3://${var.eks_state_bucket_name}/
 EOT
   }
 }

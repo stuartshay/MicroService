@@ -37,6 +37,7 @@ node('master') {
                 export AWS_ACCESS_KEY_ID=${aws_access_id}
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
                 terraform init -backend-config=key=eks-microservices-stack-${git_branch}.tfstate -reconfigure
+                terraform plan -no-color
                 """
                 stage_name="tf-plan"
                }
@@ -101,7 +102,7 @@ node('master') {
            to: 'tushar@xenonstack.com'
            }
            else{
-               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Access Endpoint: ${alb_endpoint}\n Terraform Action Performed: ${stage_name}",
+               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Terraform Action Performed: ${stage_name}",
                subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
                to: 'tushar@xenonstack.com'
                }
