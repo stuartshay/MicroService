@@ -81,9 +81,10 @@ resource "aws_security_group_rule" "worker-node-ingress-self" {
 }
 
 resource "aws_security_group_rule" "allow-access-to-application" {
-  description              = "Allow node to communicate with each other"
+  description              = "Allow application node port from the cluster control plane"
   from_port                = 30000
-  protocol                 = "-1"
+  protocol                 = "tcp"
+  security_group_id        = "${aws_security_group.eks-worker.id}"
   to_port                  = 32767
   cidr_blocks              = ["0.0.0.0/0"]
   type                     = "ingress"
@@ -99,15 +100,6 @@ resource "aws_security_group_rule" "worker-node-ingress-cluster" {
   type                     = "ingress"
 }
 
-resource "aws_security_group_rule" "application-access" {
-  description              = "Allow application node port from the cluster control plane"
-  from_port                = 30800
-  protocol                 = "tcp"
-  security_group_id        = "${aws_security_group.eks-worker.id}"
-  cidr_blocks              = ["0.0.0.0/0"]
-  to_port                  = 30800
-  type                     = "ingress"
-}
 data "aws_ami" "eks-worker" {
   filter {
     name   = "name"
