@@ -90,6 +90,7 @@ node('master') {
                 kubectl delete clusterrolebinding tiller-binding
                 kubectl delete sa tiller -n kube-system
                 kubectl delete ns ms-stack
+                helm reset --force
                 rm -rf $HOME/.kube/config
                 """
                 stage_name="Application-delete"
