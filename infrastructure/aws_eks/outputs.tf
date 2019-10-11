@@ -46,14 +46,6 @@ users:
 KUBECONFIG
 }
 
-output "config_map_aws_auth" {
-  value = "${local.config_map_aws_auth}"
-}
-
-output "kubeconfig" {
-  value = "${local.kubeconfig}"
-}
-
 resource "null_resource" "create_config_file" {
   depends_on = ["aws_eks_cluster.eks_cluster"]
   triggers {
@@ -70,7 +62,7 @@ resource "null_resource" "create_config_file" {
       echo "${local.kubeconfig}" > $HOME/.kube/config
       kubectl apply -f $HOME/aws-auth-cm.yaml
       curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/master/k8s-yaml-templates/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/${var.cluster-name}/;s/{{region_name}}/${var.region}/" | kubectl apply -f -
-
+      kubectl get nodes -o jsonpath="{.items[0].status.addresses[1].address}" > $HOME/.nodeip
       aws s3 mv $HOME/.kube/config s3://${var.eks_state_bucket_name}/${var.branch_name}-admin.config
       aws s3 mv $HOME/aws-auth-cm.yaml s3://${var.eks_state_bucket_name}/${var.branch_name}-aws-auth-cm.yaml
 EOT
