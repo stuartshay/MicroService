@@ -14,6 +14,7 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+      nodePort: 30990
   selector:
     app: {{ template "microservice-stack.name" . }}-prometheus
     release: {{ .Release.Name }}
