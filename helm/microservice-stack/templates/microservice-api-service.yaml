@@ -14,6 +14,7 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+      nodePort: 30950
   selector:
     app: {{ template "microservice-stack.name" . }}-microservice-api
     release: {{ .Release.Name }}
