@@ -45,7 +45,7 @@ node('master') {
                 helm install --name ms-stack --namespace=ms-stack .
                 rm -rf $HOME/.kube/config
                 """
-                elb_endpoint = sh (script: 'cat .endpoint', returnStdout: true)
+                elb_endpoint = sh (script: 'cat $HOME/.elbendpoint', returnStdout: true)
                 stage_name="application-deployment"
                }
             }
