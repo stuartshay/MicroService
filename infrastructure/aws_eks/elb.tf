@@ -47,7 +47,7 @@ resource "aws_security_group" "elb" {
 }
 
 resource "aws_elb" "elb" {
-  name               = "${var.cluster-name}-k8s-worker-elb"
+  name               = "${var.cluster-name}"
   subnets            = ["${data.terraform_remote_state.infra.public_subnets}"]
   security_groups    = ["${aws_security_group.elb.id}"]
 
