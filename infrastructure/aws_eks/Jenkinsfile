@@ -64,7 +64,7 @@ node('master') {
                   terraform init -backend-config=key=eks-microservices-stack-${git_branch}.tfstate -reconfigure
                   terraform apply -no-color -auto-approve -var cluster-name="${git_branch}-microservices-stack" -var branch_name="${git_branch}"
                 fi
-                sleep 90s
+                sleep 60s
                """
                }
             stage_name="tf-apply"

@@ -43,6 +43,7 @@ node('master') {
                 kubectl create clusterrolebinding tiller-binding --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
                 helm init --service-account tiller --wait
                 helm install --name ms-stack --namespace=ms-stack .
+                sleep 30s
                 rm -rf $HOME/.kube/config
                 """
                 elb_endpoint = sh (script: 'cat $HOME/.elbendpoint', returnStdout: true).trim()
@@ -63,6 +64,7 @@ node('master') {
                 export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
                 aws s3 cp s3://tf-state-eks-cluster/"${git_branch}"-admin.config $HOME/.kube/config
                 helm upgrade ms-stack -f value.yaml .
+                sleep 30s
                 rm -rf $HOME/.kube/config
                 """
                 elb_endpoint = sh (script: 'cat $HOME/.elbendpoint', returnStdout: true).trim()
