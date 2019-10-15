@@ -4,7 +4,6 @@ node('master') {
         String aws_access_id = ""
         String aws_secret_key = ""
         def stage_name
-        def nodes_ip
 
         stage('initialize') {
             def gitRepo = checkout scm
@@ -44,15 +43,9 @@ node('master') {
                 kubectl create clusterrolebinding tiller-binding --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
                 helm init --service-account tiller --wait
                 helm install --name ms-stack --namespace=ms-stack .
-                node_ip=`kubectl get nodes --namespace ms-stack -o jsonpath="{.items[0].status.addresses[1].address}"`
-
-                echo "To Access Application Enter <node_ip>:<application_nodeport>"
-
-                echo "http://${'$'}node_ip:<application_nodeport>"
-
                 rm -rf $HOME/.kube/config
                 """
-                nodes_ip = sh (script: 'cat $HOME/.nodeip', returnStdout: true)
+                elb_endpoint = sh (script: 'cat .endpoint', returnStdout: true)
                 stage_name="application-deployment"
                }
             }
@@ -101,7 +94,8 @@ node('master') {
         stage('Mail') {
         echo 'Job Status Email'
            if(helm_deploy.equalsIgnoreCase('true') | (helm_update.equalsIgnoreCase('true')) ) {
-           emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Node IP Address: ${nodes_ip}\n Helm Action Performed: ${stage_name}",
+           emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Helm Action Performed: ${stage_name}\n
+           API Eendpoints To Access Applications\n Grafana: http://${elb_endpoint}:9000\n Microservice-API: http://${elb_endpoint}:5000\n Prometheus: http://${elb_endpoint}:9090\n Mail-Hog: http://${elb_endpoint}:8025\n",
            subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
            to: 'tushar@xenonstack.com'
            }

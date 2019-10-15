@@ -45,3 +45,62 @@ variable "min_instances" {
   default     = "1"
   type        = "string"
 }
+
+# ELB Health Check
+# The number of checks before the instance is declared healthy
+variable "healthy_threshold" {
+  description = "checks count before the instance is declared healthy"
+  type        = "string"
+}
+
+# The number of checks before the instance is declared unhealthy
+variable "unhealthy_threshold" {
+  description = "checks count before the instance is declared unhealthy"
+  type        = "string"
+}
+
+# The length of time before the check times out
+variable "health_check_timeout" {
+  description = "length of time before the check times out"
+  type        = "string"
+}
+
+# The target of the check. Valid pattern is "${PROTOCOL}:${PORT}${PATH} (eg. HTTP:8080/)"
+variable "health_check_target" {
+  description = "target of the check"
+  type        = "string"
+}
+
+# The interval between checks
+variable "health_check_interval" {
+  description = "interval between checks"
+  type        = "string"
+}
+
+# AWS ELB variables
+# Enable cross-zone load balancing.
+variable "enable_cross_zone_load_balancing" {
+  description = "Enable cross-zone load balancing"
+  default     = "true"
+  type        = "string"
+}
+
+# The time in seconds that the connection is allowed to be idle
+variable "idle_timeout" {
+  description = "time in seconds that the connection is allowed to be idle"
+  default = "60"
+}
+
+# Boolean to enable connection draining
+variable "enable_connection_draining" {
+  description = "Boolean to enable connection draining"
+  default     = "false"
+  type        = "string"
+}
+
+# The time in seconds to allow for connections to drain
+variable "connection_draining_timeout" {
+  description = "time in seconds to allow for connections to drain"
+  default     = "300"
+  type        = "string"
+}
