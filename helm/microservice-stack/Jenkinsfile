@@ -45,7 +45,7 @@ node('master') {
                 helm install --name ms-stack --namespace=ms-stack .
                 rm -rf $HOME/.kube/config
                 """
-                elb_endpoint = sh (script: 'cat $HOME/.elbendpoint', returnStdout: true)
+                elb_endpoint = sh (script: 'cat $HOME/.elbendpoint', returnStdout: true).trim()
                 stage_name="application-deployment"
                }
             }
@@ -65,6 +65,7 @@ node('master') {
                 helm upgrade ms-stack -f value.yaml .
                 rm -rf $HOME/.kube/config
                 """
+                elb_endpoint = sh (script: 'cat $HOME/.elbendpoint', returnStdout: true).trim()
                 stage_name="Application-update"
             }
         }
@@ -94,8 +95,7 @@ node('master') {
         stage('Mail') {
         echo 'Job Status Email'
            if(helm_deploy.equalsIgnoreCase('true') | (helm_update.equalsIgnoreCase('true')) ) {
-           emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Helm Action Performed: ${stage_name}\n
-           API Eendpoints To Access Applications\n Grafana: http://${elb_endpoint}:9000\n Microservice-API: http://${elb_endpoint}:5000\n Prometheus: http://${elb_endpoint}:9090\n Mail-Hog: http://${elb_endpoint}:8025\n",
+           emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Helm Action Performed: ${stage_name}\n API Eendpoints To Access Applications\n Grafana: http://${elb_endpoint}:9000\n Microservice-API: http://${elb_endpoint}:5000/swagger\n Prometheus: http://${elb_endpoint}:9090\n Mail-Hog: http://${elb_endpoint}:8025",
            subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
            to: 'tushar@xenonstack.com'
            }
