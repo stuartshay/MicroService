@@ -80,6 +80,16 @@ resource "aws_security_group_rule" "worker-node-ingress-self" {
   type                     = "ingress"
 }
 
+resource "aws_security_group_rule" "worker-node-ingress-elb" {
+  description              = "Allow node to communicate with ELB"
+  from_port                = 0
+  protocol                 = "-1"
+  security_group_id        = "${aws_security_group.eks-worker.id}"
+  source_security_group_id = "${aws_security_group.elb.id}"
+  to_port                  = 65535
+  type                     = "ingress"
+}
+
 resource "aws_security_group_rule" "allow-access-to-application" {
   description              = "Allow application node port from the cluster control plane"
   from_port                = 30000
@@ -137,6 +147,7 @@ resource "aws_autoscaling_group" "eks_autoscaling_group" {
   max_size             = "${var.max_instances}"
   min_size             = "${var.min_instances}"
   name                 = "${var.cluster-name}-eks-asg"
+  load_balancers       = ["${aws_elb.elb.name}"]
   vpc_zone_identifier  = ["${data.terraform_remote_state.infra.public_subnets}"]
 
   tag {
