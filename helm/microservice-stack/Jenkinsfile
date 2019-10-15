@@ -97,14 +97,14 @@ node('master') {
         stage('Mail') {
         echo 'Job Status Email'
            if(helm_deploy.equalsIgnoreCase('true') | (helm_update.equalsIgnoreCase('true')) ) {
-           emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Helm Action Performed: ${stage_name}\n API Eendpoints To Access Applications\n Grafana: http://${elb_endpoint}:9000\n Microservice-API: http://${elb_endpoint}:5000/swagger\n Prometheus: http://${elb_endpoint}:9090\n Mail-Hog: http://${elb_endpoint}:8025",
+           emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Helm Action Performed: ${stage_name}\n URI To Access Applications\n Grafana: http://${elb_endpoint}:9000\n Microservice-API: http://${elb_endpoint}:5000/swagger\n Prometheus: http://${elb_endpoint}:9090\n Mail-Hog: http://${elb_endpoint}:8025",
            subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
-           to: 'tushar@xenonstack.com'
+           to: 'sshay@yahoo.com'
            }
            else{
                emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Helm Action Performed: ${stage_name}",
                subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
-               to: 'tushar@xenonstack.com'
+               to: 'sshay@yahoo.com'
                }
          }
 
