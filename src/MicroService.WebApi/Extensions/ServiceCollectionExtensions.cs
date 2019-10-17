@@ -19,7 +19,7 @@ namespace MicroService.WebApi.Extensions
         /// <param name="services"></param>
         /// <param name="configuration"></param>
         /// <param name="environment"></param>
-        public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment environment)
+        public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment environment)
         {
             var config = configuration.Get<ApplicationOptions>();
             Console.WriteLine($"Environment: {environment.EnvironmentName}");

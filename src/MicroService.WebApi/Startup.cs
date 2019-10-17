@@ -25,7 +25,7 @@ namespace MicroService.WebApi
         /// </summary>
         /// <param name="env"></param>
         /// <param name="configuration"></param>
-        public Startup(IHostingEnvironment env, IConfiguration configuration)
+        public Startup(IWebHostEnvironment env, IConfiguration configuration)
         {
             Configuration = configuration;
             HostingEnvironment = env;
@@ -37,9 +37,9 @@ namespace MicroService.WebApi
         public IConfiguration Configuration { get; }
 
         /// <summary>
-        /// Hosting Environment.
+        /// WebHost Environment.
         /// </summary>
-        private IHostingEnvironment HostingEnvironment { get; }
+        private IWebHostEnvironment HostingEnvironment { get; }
 
         /// <summary>
         /// Configure Services.
@@ -50,26 +50,16 @@ namespace MicroService.WebApi
             services.AddOptions();
             services.Configure<ApplicationOptions>(Configuration);
             services.AddSingleton(Configuration);
-            
+
             var config = Configuration.Get<ApplicationOptions>();
             services.DisplayConfiguration(Configuration, HostingEnvironment);
 
-
-
-
-
-
-
-
-
-
-
-            //services.AddApiVersioning(Configuration);
+            services.AddApiVersioning(Configuration);
             services.AddCustomHealthCheck(Configuration);
 
             //services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             //services.AddSwaggerConfiguration(Configuration);
-            //services.AddCorsConfiguration(Configuration);
+            services.AddCorsConfiguration(Configuration);
 
             // Repositories
             services.AddScoped<ITestDataRepository>(x => new TestDataRepository(config.ConnectionStrings.PostgreSql));
@@ -102,12 +92,13 @@ namespace MicroService.WebApi
             //app.UseHttpsRedirection();
 
             app.UseRouting();
+            //app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-        } 
+        }
 
         private void ConfigureSwagger(IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {

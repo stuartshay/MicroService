@@ -42,7 +42,16 @@ namespace MicroService.WebApi
            Host.CreateDefaultBuilder(args)
                .ConfigureWebHostDefaults(webBuilder =>
                {
-                   webBuilder.UseStartup<Startup>();
+                   webBuilder.UseStartup<Startup>()
+                        .ConfigureMetricsWithDefaults(builder => { builder.OutputMetrics.AsPrometheusPlainText(); })
+                        .UseMetrics(options =>
+                         {
+                             options.EndpointOptions = endpointsOptions =>
+                             {
+                                endpointsOptions.MetricsTextEndpointOutputFormatter =
+                                new MetricsPrometheusTextOutputFormatter();
+                             };
+                         });
                });
 
 
