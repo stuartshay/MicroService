@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using MicroService.Service.Configuration;
+using MicroService.WebApi.Extensions.Swagger;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -71,19 +72,17 @@ namespace MicroService.WebApi.Extensions
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        //public static void AddSwaggerConfiguration(this IServiceCollection services, IConfiguration configuration)
-        //{
-        //    // Swagger
-        //    services.AddSwaggerGen(
-        //       options =>
-        //       {
-        //           options.OperationFilter<SwaggerDefaultValues>();
-
-        //           // options.DocumentFilter<Swagger.SwaggerDocumentFilter>();
-        //           options.DescribeAllEnumsAsStrings();
-        //           options.IncludeXmlComments(GetXmlCommentsPath());
-        //       });
-        //}
+        public static void AddSwaggerConfiguration(this IServiceCollection services, IConfiguration configuration)
+        {
+            // Swagger
+            services.AddSwaggerGen(
+               options =>
+               {
+                   options.OperationFilter<SwaggerDefaultValues>();
+                   options.DocumentFilter<Swagger.SwaggerDocumentFilter>();
+                   options.IncludeXmlComments(GetXmlCommentsPath());
+               });
+        }
 
         /// <summary>
         ///   Custom Health Check.
@@ -105,7 +104,7 @@ namespace MicroService.WebApi.Extensions
         private static string GetXmlCommentsPath()
         {
             var basePath = AppContext.BaseDirectory;
-            var assemblyName = Assembly.GetEntryAssembly().GetName().Name;
+            var assemblyName = Assembly.GetEntryAssembly()?.GetName().Name;
             var fileName = Path.GetFileName(assemblyName + ".xml");
 
             return Path.Combine(basePath, fileName);
