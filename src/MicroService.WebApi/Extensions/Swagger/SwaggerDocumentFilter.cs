@@ -9,19 +9,19 @@ namespace MicroService.WebApi.Extensions.Swagger
     /// <summary>
     ///
     /// </summary>
-    public class SwaggerDocumentFilter : IDocumentFilter
-    {
+    //public class SwaggerDocumentFilter : IDocumentFilter
+    //{
         /// <inheritdoc/>
-        public void Apply(SwaggerDocument swaggerDoc, DocumentFilterContext context)
-        {
-            if (swaggerDoc == null)
-            {
-                throw new ArgumentNullException(nameof(swaggerDoc));
-            }
+        //public void Apply(SwaggerDocument swaggerDoc, DocumentFilterContext context)
+        //{
+        //    if (swaggerDoc == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(swaggerDoc));
+        //    }
 
-            swaggerDoc.Tags = new List<Tag> { new Tag { Name = "RoutingApi", Description = "This is a description for the api routes" }, };
+        //    swaggerDoc.Tags = new List<Tag> { new Tag { Name = "RoutingApi", Description = "This is a description for the api routes" }, };
 
-            swaggerDoc.Paths = swaggerDoc.Paths.OrderBy(pair => pair.Key).ToDictionary(pair => pair.Key, pair => pair.Value);
-        }
-    }
+        //    swaggerDoc.Paths = swaggerDoc.Paths.OrderBy(pair => pair.Key).ToDictionary(pair => pair.Key, pair => pair.Value);
+        //}
+    //}
 }

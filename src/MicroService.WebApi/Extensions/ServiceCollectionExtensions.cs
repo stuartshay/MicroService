@@ -71,19 +71,19 @@ namespace MicroService.WebApi.Extensions
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        public static void AddSwaggerConfiguration(this IServiceCollection services, IConfiguration configuration)
-        {
-            // Swagger
-            services.AddSwaggerGen(
-               options =>
-               {
-                   options.OperationFilter<SwaggerDefaultValues>();
+        //public static void AddSwaggerConfiguration(this IServiceCollection services, IConfiguration configuration)
+        //{
+        //    // Swagger
+        //    services.AddSwaggerGen(
+        //       options =>
+        //       {
+        //           options.OperationFilter<SwaggerDefaultValues>();
 
-                   // options.DocumentFilter<Swagger.SwaggerDocumentFilter>();
-                   options.DescribeAllEnumsAsStrings();
-                   options.IncludeXmlComments(GetXmlCommentsPath());
-               });
-        }
+        //           // options.DocumentFilter<Swagger.SwaggerDocumentFilter>();
+        //           options.DescribeAllEnumsAsStrings();
+        //           options.IncludeXmlComments(GetXmlCommentsPath());
+        //       });
+        //}
 
         /// <summary>
         ///   Custom Health Check.
