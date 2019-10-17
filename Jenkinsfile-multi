@@ -23,13 +23,13 @@ node('buildx') {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
             }
 
-            sh '''docker push stuartshay/microservice-api:3.0.9-multi'''
+            sh '''docker push stuartshay/microservice-api:3.0.0-multi'''
             }
 
         else
         {
             sh """
-            docker buildx build --platform=linux/amd64 -f docker/microservice-api-multi.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t stuartshay/microservice-api:3.0.9-${BUILD_NUMBER}-prerelease-${git_branch}-multi .
+            docker buildx build --platform=linux/amd64 -f docker/microservice-api-multi.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t stuartshay/microservice-api:3.0.0-${BUILD_NUMBER}-prerelease-${git_branch}-multi .
             """
             withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
