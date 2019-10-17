@@ -6,6 +6,7 @@ using App.Metrics.Formatters.Prometheus;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 
 namespace MicroService.WebApi
 {
@@ -29,28 +30,41 @@ namespace MicroService.WebApi
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         /// <summary>
-        /// Builds a new web host for the application.
+        /// Builds a new host for the application.
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-             .ConfigureMetricsWithDefaults(builder => { builder.OutputMetrics.AsPrometheusPlainText(); })
-             .UseMetrics(
-                    options =>
-                    {
-                        options.EndpointOptions = endpointsOptions =>
-                        {
-                            endpointsOptions.MetricsTextEndpointOutputFormatter =
-                                new MetricsPrometheusTextOutputFormatter();
-                        };
-                    })
-            .UseStartup<Startup>()
-            .CaptureStartupErrors(true)
-            .UseConfiguration(Configuration);
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+           Host.CreateDefaultBuilder(args)
+               .ConfigureWebHostDefaults(webBuilder =>
+               {
+                   webBuilder.UseStartup<Startup>();
+               });
+
+
+        ///// <summary>
+        ///// Builds a new web host for the application.
+        ///// </summary>
+        ///// <param name="args"></param>
+        ///// <returns></returns>
+        //public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        //    WebHost.CreateDefaultBuilder(args)
+        //     .ConfigureMetricsWithDefaults(builder => { builder.OutputMetrics.AsPrometheusPlainText(); })
+        //     .UseMetrics(
+        //            options =>
+        //            {
+        //                options.EndpointOptions = endpointsOptions =>
+        //                {
+        //                    endpointsOptions.MetricsTextEndpointOutputFormatter =
+        //                        new MetricsPrometheusTextOutputFormatter();
+        //                };
+        //            })
+        //    .UseStartup<Startup>()
+        //    .CaptureStartupErrors(true)
+        //    .UseConfiguration(Configuration);
     }
 }

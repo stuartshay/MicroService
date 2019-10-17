@@ -82,14 +82,14 @@ namespace MicroService.WebApi.V3.Controllers
         /// <returns>The created person.</returns>
         /// <response code="201">The person was successfully created.</response>
         /// <response code="400">The person was invalid.</response>
-        [HttpPost]
-        [Produces("application/json")]
-        [ProducesResponseType(typeof(Person), 201)]
-        [ProducesResponseType(400)]
-        public IActionResult Post([FromBody] Person person, ApiVersion apiVersion)
-        {
-            person.Id = 42;
-            return CreatedAtAction(nameof(Get), new { id = person.Id, version = apiVersion.ToString() }, person);
-        }
+        //[HttpPost]
+        //[Produces("application/json")]
+        //[ProducesResponseType(typeof(Person), 201)]
+        //[ProducesResponseType(400)]
+        //public IActionResult Post([FromBody] Person person, ApiVersion apiVersion)
+        //{
+        //    person.Id = 42;
+        //    return CreatedAtAction(nameof(Get), new { id = person.Id, version = apiVersion.ToString() }, person);
+        //}
     }
 }

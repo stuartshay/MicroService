@@ -50,24 +50,33 @@ namespace MicroService.WebApi
             services.AddOptions();
             services.Configure<ApplicationOptions>(Configuration);
             services.AddSingleton(Configuration);
-
-            services.AddApiVersioning(Configuration);
-            services.AddCustomHealthCheck(Configuration);
-
-            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
-            services.AddSwaggerConfiguration(Configuration);
-            services.AddCorsConfiguration(Configuration);
-
+            
             var config = Configuration.Get<ApplicationOptions>();
             services.DisplayConfiguration(Configuration, HostingEnvironment);
+
+
+
+
+
+
+
+
+
+
+
+            //services.AddApiVersioning(Configuration);
+            services.AddCustomHealthCheck(Configuration);
+
+            //services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+            //services.AddSwaggerConfiguration(Configuration);
+            //services.AddCorsConfiguration(Configuration);
 
             // Repositories
             services.AddScoped<ITestDataRepository>(x => new TestDataRepository(config.ConnectionStrings.PostgreSql));
 
             // Services
             services.AddScoped<ICalculationService, CalculationService>();
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllers();
         }
 
         /// <summary>
@@ -76,15 +85,11 @@ namespace MicroService.WebApi
         /// <param name="app">IApplicationBuilder</param>
         /// <param name="env">IHostingEnvironment</param>
         /// <param name="provider">IApiVersionDescriptionProvider</param>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApiVersionDescriptionProvider provider)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env) //, IApiVersionDescriptionProvider provider
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
             }
 
             app.UseHealthChecks("/healthz", new HealthCheckOptions()
@@ -93,23 +98,29 @@ namespace MicroService.WebApi
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
             });
 
-            ConfigureSwagger(app, provider);
-            app.UseHttpsRedirection();
-            app.UseMvc();
+            //ConfigureSwagger(app, provider);
+            //app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         } 
 
         private void ConfigureSwagger(IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {
-            app.UseSwagger();
-            app.UseSwaggerUI(
-                options =>
-                {
-                    // build a swagger endpoint for each discovered API version
-                    foreach (var description in provider.ApiVersionDescriptions)
-                    {
-                        options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"MicroService.WebApi - {description.GroupName.ToUpperInvariant()}");
-                    }
-                });
+            //app.UseSwagger();
+            //app.UseSwaggerUI(
+            //    options =>
+            //    {
+            //        // build a swagger endpoint for each discovered API version
+            //        foreach (var description in provider.ApiVersionDescriptions)
+            //        {
+            //            options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"MicroService.WebApi - {description.GroupName.ToUpperInvariant()}");
+            //        }
+            //    });
         }
     }
 }
