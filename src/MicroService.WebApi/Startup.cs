@@ -3,13 +3,14 @@ using MicroService.Data.Repository;
 using MicroService.Service.Configuration;
 using MicroService.Service.Services;
 using MicroService.WebApi.Extensions;
+using MicroService.WebApi.Extensions.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -57,8 +58,8 @@ namespace MicroService.WebApi
             services.AddApiVersioning(Configuration);
             services.AddCustomHealthCheck(Configuration);
 
-            //services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
-            //services.AddSwaggerConfiguration(Configuration);
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+            services.AddSwaggerConfiguration(Configuration);
             services.AddCorsConfiguration(Configuration);
 
             // Repositories
@@ -73,9 +74,9 @@ namespace MicroService.WebApi
         /// Configure
         /// </summary>
         /// <param name="app">IApplicationBuilder</param>
-        /// <param name="env">IHostingEnvironment</param>
+        /// <param name="env">IWebHostEnvironment</param>
         /// <param name="provider">IApiVersionDescriptionProvider</param>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env) //, IApiVersionDescriptionProvider provider
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
             if (env.IsDevelopment())
             {
@@ -88,7 +89,7 @@ namespace MicroService.WebApi
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
             });
 
-            //ConfigureSwagger(app, provider);
+            ConfigureSwagger(app, provider);
             //app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -102,16 +103,16 @@ namespace MicroService.WebApi
 
         private void ConfigureSwagger(IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {
-            //app.UseSwagger();
-            //app.UseSwaggerUI(
-            //    options =>
-            //    {
-            //        // build a swagger endpoint for each discovered API version
-            //        foreach (var description in provider.ApiVersionDescriptions)
-            //        {
-            //            options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"MicroService.WebApi - {description.GroupName.ToUpperInvariant()}");
-            //        }
-            //    });
+            app.UseSwagger();
+            app.UseSwaggerUI(
+                options =>
+                {
+                    // build a swagger endpoint for each discovered API version
+                    foreach (var description in provider.ApiVersionDescriptions)
+                    {
+                        options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"MicroService.WebApi - {description.GroupName.ToUpperInvariant()}");
+                    }
+                });
         }
     }
 }
