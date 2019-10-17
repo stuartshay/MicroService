@@ -18,7 +18,7 @@ namespace MicroService.WebApi.V1.Controllers
     [ApiVersion("2.0")]
     [ApiVersion("3.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    [EnableCors("AllowAll")]
+  //  [EnableCors("AllowAll")]
     public class TestDataController : ControllerBase
     {
         private readonly ITestDataRepository _testDataRepository;
