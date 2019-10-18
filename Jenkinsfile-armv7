@@ -1,5 +1,4 @@
 node('buildx-armv7') {
-
     stage('Git checkout') {
         def gitRepo = checkout scm
         String git_url = gitRepo.GIT_URL
@@ -16,13 +15,31 @@ node('buildx-armv7') {
 
    stage('Build & Deploy Docker') {
         sh '''mv docker/microservice-api-multi.dockerfile/.dockerignore .dockerignore
-        docker context ls
-        docker buildx build --platform=linux/arm/v7  -f docker/microservice-api-multi.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t stuartshay/microservice-api:3.0.0-armv7 .'''
-        withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
+        docker context ls'''
+          if (git_branch == 'master')
+          {
+            sh '''docker buildx build --platform=linux/arm/v7  -f docker/microservice-api-multi.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t stuartshay/microservice-api:3.0.0-armv7 .'''
+            withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
+            }
+
+            sh '''docker push stuartshay/microservice-api:3.0.0-armv7'''
+            }
+
+        else
+        {
+            sh """
+            docker buildx build --platform=linux/arm/v7 -f docker/microservice-api-multi.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t stuartshay/microservice-api:3.0.0-armv7-${BUILD_NUMBER}-prerelease-${git_branch} .
+            """
+            withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
+            sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
+            }
+            sh """
+            docker push stuartshay/microservice-api:3.0.0-armv7-${BUILD_NUMBER}-prerelease-${git_branch}
+            """
         }
-        sh '''docker push stuartshay/microservice-api:3.0.0-armv7'''
     }
+
 
     stage('Mail') {
         emailext attachLog: true, body: '', subject: "Jenkins build status - ${currentBuild.fullDisplayName}", to: 'sshay@yahoo.com'
