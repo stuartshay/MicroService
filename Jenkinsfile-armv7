@@ -1,7 +1,17 @@
 node('buildx-armv7') {
 
     stage('Git checkout') {
-        git branch: 'develop', credentialsId: 'gihub-key', url: 'git@github.com:stuartshay/MicroService.git'
+        def gitRepo = checkout scm
+        String git_url = gitRepo.GIT_URL
+        git_branch = gitRepo.GIT_BRANCH.tokenize('/')[-1]
+
+             String git_commit_id = gitRepo.GIT_COMMIT
+             String git_short_commit_id = "${git_commit_id[0..6]}"
+
+
+             String buildTime = sh(returnStdout: true, script: "date +'%Y.%V'").trim()
+             currentBuild.displayName = (buildTime + "." + currentBuild.number + "." + git_branch + "." + git_short_commit_id)
+
     }
 
    stage('Build & Deploy Docker') {
