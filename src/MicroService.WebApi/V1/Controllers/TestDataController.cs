@@ -5,6 +5,7 @@ using MicroService.Data.Models;
 using MicroService.Data.Repository;
 using MicroService.Service.Constants;
 using MicroService.Service.Services;
+using MicroService.WebApi.Extensions.Constants;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ namespace MicroService.WebApi.V1.Controllers
     [ApiVersion("2.0")]
     [ApiVersion("3.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-  //  [EnableCors("AllowAll")]
+    [EnableCors(ApiConstants.CorsPolicy)]
     public class TestDataController : ControllerBase
     {
         private readonly ITestDataRepository _testDataRepository;
