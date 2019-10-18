@@ -55,19 +55,19 @@ namespace MicroService.WebApi
             var config = Configuration.Get<ApplicationOptions>();
             services.DisplayConfiguration(Configuration, HostingEnvironment);
 
-            services.AddApiVersioning(Configuration);
+            services.AddCustomApiVersioning();
             services.AddCustomHealthCheck(Configuration);
 
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
-            services.AddSwaggerConfiguration(Configuration);
-            services.AddCorsConfiguration(Configuration);
+            services.AddSwaggerConfiguration();
+            services.AddCorsConfiguration();
 
             // Repositories
             services.AddScoped<ITestDataRepository>(x => new TestDataRepository(config.ConnectionStrings.PostgreSql));
 
             // Services
             services.AddScoped<ICalculationService, CalculationService>();
-            services.AddControllers();
+            services.AddCustomControllers(Configuration);
         }
 
         /// <summary>
@@ -89,11 +89,11 @@ namespace MicroService.WebApi
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
             });
 
-            ConfigureSwagger(app, provider);
+            app.ConfigureSwagger(provider); 
             //app.UseHttpsRedirection();
 
             app.UseRouting();
-            //app.UseCors();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
@@ -101,18 +101,5 @@ namespace MicroService.WebApi
             });
         }
 
-        private void ConfigureSwagger(IApplicationBuilder app, IApiVersionDescriptionProvider provider)
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI(
-                options =>
-                {
-                    // build a swagger endpoint for each discovered API version
-                    foreach (var description in provider.ApiVersionDescriptions)
-                    {
-                        options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"MicroService.WebApi - {description.GroupName.ToUpperInvariant()}");
-                    }
-                });
-        }
     }
 }

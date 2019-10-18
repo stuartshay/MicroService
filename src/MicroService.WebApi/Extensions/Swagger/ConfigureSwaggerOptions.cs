@@ -1,4 +1,5 @@
 ﻿using System;
+using MicroService.WebApi.Extensions.Constants;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -37,10 +38,10 @@ namespace MicroService.WebApi.Extensions.Swagger
         {
             var info = new OpenApiInfo()
             {
-                Title = "MicroService.WebApi",
+                Title = ApiConstants.ApplicationName,
                 Version = description.ApiVersion.ToString(),
-                Description = "MicroService.WebApi",
-                Contact = new OpenApiContact { Name = "Stuart Shay", Email = "sshay@yahoo.com" },
+                Description = ApiConstants.ApplicationDescription,
+                Contact = new OpenApiContact { Name = ApiConstants.OpenApiContactName, Email = "sshay@yahoo.com" },
                 License = new OpenApiLicense { Name = "MIT", Url = new Uri($"https://github.com/stuartshay/MicroService") },
             };
 
