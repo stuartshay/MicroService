@@ -15,4 +15,4 @@ RUN apt-get update && \
     ##chmod +x /usr/local/bin/grafana.sh 
 
 
-RUN /usr/local/bin/grafana.sh
+##RUN /usr/local/bin/grafana.sh
