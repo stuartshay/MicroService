@@ -1,13 +1,42 @@
-node('docker') {
+node('buildx') {
 
     stage('Git checkout') {
-        git branch: 'develop', credentialsId: 'gihub-key', url: 'git@github.com:stuartshay/MicroService.git'
+        def gitRepo = checkout scm
+        String git_url = gitRepo.GIT_URL
+        git_branch = gitRepo.GIT_BRANCH.tokenize('/')[-1]
+
+             String git_commit_id = gitRepo.GIT_COMMIT
+             String git_short_commit_id = "${git_commit_id[0..6]}"
+
+
+             String buildTime = sh(returnStdout: true, script: "date +'%Y.%V'").trim()
+             currentBuild.displayName = (buildTime + "." + currentBuild.number + "." + git_branch + "." + git_short_commit_id)
     }
 
-    stage('Docker') {
-        sh 'docker build -f docker/microservice-grafana.dockerfile/Dockerfile -t stuartshay/microservice-grafana:6.2.5-v3.${BUILD_NUMBER} ./docker/microservice-grafana.dockerfile'
-        withDockerRegistry([credentialsId: 'docker-hub-navigatordatastore']) {
-            sh 'docker push stuartshay/microservice-grafana:6.2.5-v3.${BUILD_NUMBER}'
+    stage('Build & Deploy Docker') {
+        sh '''mv docker/microservice-grafana.dockerfile/.dockerignore .dockerignore
+        docker context ls'''
+          if (git_branch == 'master')
+          {
+            sh '''docker buildx build --platform=linux/amd64 -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t stuartshay/microservice-grafana:6.2.5-v3.${BUILD_NUMBER} .'''
+            withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
+            sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
+            }
+
+            sh '''docker push stuartshay/microservice-grafana:6.2.5-v3.${BUILD_NUMBER}'''
+            }
+
+        else
+        {
+            sh """
+            docker buildx build --platform=linux/amd64 -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t stuartshay/microservice-grafana:2.2.3-${BUILD_NUMBER}-prerelease-${git_branch} .
+            """
+            withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
+            sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
+            }
+            sh """
+            docker push stuartshay/microservice-grafana:6.2.5-v3-${BUILD_NUMBER}-prerelease-${git_branch}
+            """
         }
     }
 
