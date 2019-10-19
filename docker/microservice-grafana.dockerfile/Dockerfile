@@ -2,7 +2,7 @@ FROM grafana/grafana:6.2.5
 
 USER root
 
-ADD ./scripts/grafana.sh /usr/local/bin
+#ADD ./scripts/grafana.sh /usr/local/bin
 
 #ADD ./provisioning /etc/grafana/provisioning
 #ADD ./config.ini /etc/grafana/config.ini
