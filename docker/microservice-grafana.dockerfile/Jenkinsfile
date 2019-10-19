@@ -1,7 +1,7 @@
-pipeline {
+
 
 node('buildx') {
-    
+  pipeline {  
     String version_prefix = '6.2.5-v4'
     String docker_image_name = 'stuartshay/microservice-grafana'
     String docker_file = 'docker/microservice-grafana.dockerfile/Dockerfile'
