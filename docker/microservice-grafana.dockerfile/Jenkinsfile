@@ -19,7 +19,7 @@ node('buildx') {
     }
 
     stage('Build & Deploy Docker') {
-        sh '''mv ${docker_ignore} .dockerignore
+        sh '''mv docker/microservice-grafana.dockerfile/.dockerignore .dockerignore
         docker context ls'''
         if (git_branch == 'master')
         {
