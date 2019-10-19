@@ -1,8 +1,9 @@
+
+string version_prefix = '6.2.5-v4'
+string docker_image_name = 'stuartshay/microservice-grafana'
+
 node('buildx') {
-    
-    def version_prefix = '6.2.5-v4'
-    def docker_image_name = 'stuartshay/microservice-grafana'
-    
+
     stage('Git checkout') {
         def gitRepo = checkout scm
         String git_url = gitRepo.GIT_URL
