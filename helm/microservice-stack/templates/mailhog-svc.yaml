@@ -14,6 +14,7 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+      nodePort: 30925
     - port: {{ .Values.mailhog.service.smtp.port }}
       protocol: TCP
       name: smtp

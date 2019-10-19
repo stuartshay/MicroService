@@ -1,0 +1,113 @@
+node('master') {
+    timestamps {
+        String aws_credential_id = ""
+        String aws_access_id = ""
+        String aws_secret_key = ""
+        def stage_name
+
+        stage('initialize') {
+            def gitRepo = checkout scm
+            // String git_url = gitRepo.GIT_URL
+            git_branch = gitRepo.GIT_BRANCH.tokenize('/')[-1]
+            String git_commit_id = gitRepo.GIT_COMMIT
+            String git_short_commit_id = "${git_commit_id[0..6]}"
+
+
+            String buildTime = sh(returnStdout: true, script: "date +'%Y.%V'").trim()
+            currentBuild.displayName = (buildTime + "." + currentBuild.number + "." + git_branch + "." + git_short_commit_id)
+
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'terraform_aws',
+                    usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+                aws_access_id = USERNAME
+                aws_secret_key = PASSWORD
+            }
+            if(!aws_access_id) {
+                error("AWS access key is empty or not defined.")
+            }
+            if(!aws_secret_key) {
+                error("AWS secret key is empty or not defined.")
+            }
+        }
+
+        stage('tf-plan') {
+
+        dir("infrastructure/aws_eks/") {
+            wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
+                sh """
+                export AWS_ACCESS_KEY_ID=${aws_access_id}
+                export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
+                terraform init -backend-config=key=eks-microservices-stack-${git_branch}.tfstate -reconfigure
+                terraform plan -no-color -var branch_name="${git_branch}"
+                """
+                stage_name="tf-plan"
+               }
+            }
+
+        }
+
+        stage('tf-apply') {
+
+        dir("infrastructure/aws_eks/") {
+        if(Plan_Only.equalsIgnoreCase('true') | (Destroy_the_Environment.equalsIgnoreCase('true')) )  {
+            println "Plan only run. Skipping Terraform apply."
+        }
+        else {
+           input 'WARNING: Applying Terraform updates can result in unrecoverable destruction. Click "Proceed" to confirm Terraform update plan was reviewed and to authorize the updates to be applied, else click "Abort".'
+           wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
+               sh """
+               export AWS_ACCESS_KEY_ID=${aws_access_id}
+               export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
+                 if [ "$git_branch" = master ];then
+                   terraform init -backend-config=key=fargate-state-${git_branch}.tfstate -reconfigure
+                   terraform apply -no-color -auto-approve -var cluster-name="microservices-stack" -var branch_name="${git_branch}"
+                else
+                  terraform init -backend-config=key=eks-microservices-stack-${git_branch}.tfstate -reconfigure
+                  terraform apply -no-color -auto-approve -var cluster-name="${git_branch}-microservices-stack" -var branch_name="${git_branch}"
+                fi
+                sleep 60s
+               """
+               }
+            stage_name="tf-apply"
+              }
+            }
+        }
+
+        stage('tf-destroy') {
+        dir("infrastructure/aws_eks/") {
+        if(Destroy_the_Environment.equalsIgnoreCase('true')) {
+        input 'WARNING: Applying Terraform destroy can result in unrecoverable destruction. Click "Proceed" to confirm Terraform update plan  to destroy was reviewed and to authorize the updates to be applied, else click "Abort".'
+        wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: aws_secret_key, var: 'AWS_SECRET']]]) {
+            sh """
+            export AWS_ACCESS_KEY_ID=${aws_access_id}
+            export AWS_SECRET_ACCESS_KEY=${aws_secret_key}
+            terraform init -backend-config=key=eks-microservices-stack-${git_branch}.tfstate -reconfigure
+            terraform destroy -no-color -force -var branch_name="${git_branch}"
+            """
+            stage_name="tf-destroy"
+        }
+        }
+        else {
+
+            println "Plan only run. Skipping Terraform apply."
+                }
+
+            }
+            }
+
+        stage('Mail') {
+        echo 'Job Status Email'
+           if(Plan_Only.equalsIgnoreCase('true') | (Destroy_the_Environment.equalsIgnoreCase('true')) ) {
+           emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Terraform Action Performed: ${stage_name}",
+           subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+           to: 'sshay@yahoo.com'
+           }
+           else{
+               emailext attachLog: true, body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}\n Terraform Action Performed: ${stage_name}",
+               subject: "Jenkins Build Status ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+               to: 'sshay@yahoo.com'
+               }
+         }
+
+       cleanWs()
+        }
+    }
