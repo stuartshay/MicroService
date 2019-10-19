@@ -5,9 +5,7 @@ node('buildx') {
     
     String version_prefix = '6.2.5-v4'
     String docker_image_name = 'stuartshay/microservice-grafana'
-    String platform = linux/amd64 
-
-
+    
     stage('Git checkout') {
         def gitRepo = checkout scm
         String git_url = gitRepo.GIT_URL
@@ -26,7 +24,7 @@ node('buildx') {
         docker context ls'''
           if (git_branch == 'master')
           {
-            sh '''docker buildx build --platform=${platform} -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}.${BUILD_NUMBER} .'''
+            sh '''docker buildx build --platform=linux/amd64 -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}.${BUILD_NUMBER} .'''
             withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
             }
@@ -37,7 +35,7 @@ node('buildx') {
         else
         {
             sh """
-            docker buildx build --platform=${platform} -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}-${BUILD_NUMBER}-prerelease-${git_branch} .
+            docker buildx build --platform=linux/amd64 -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}-${BUILD_NUMBER}-prerelease-${git_branch} .
             """
             withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
