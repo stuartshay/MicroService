@@ -2,6 +2,7 @@ node('buildx') {
     
     String version_prefix = '6.2.5-v4'
     String docker_image_name = 'stuartshay/microservice-grafana'
+    String docker_file_path = 'docker/microservice-grafana.dockerfile'
     String platform = 'linux/amd64'
 
     stage('Git checkout') {
@@ -17,11 +18,11 @@ node('buildx') {
     }
 
     stage('Build & Deploy Docker') {
-        sh '''mv docker/microservice-grafana.dockerfile/.dockerignore .dockerignore
+        sh '''mv ${docker_file_path}/.dockerignore .dockerignore
         docker context ls'''
         if (git_branch == 'master')
         {
-            sh '''docker buildx build --platform=${platform} -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}.${BUILD_NUMBER} .'''
+            sh '''docker buildx build --platform=${platform} -f ${docker_file_path/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}.${BUILD_NUMBER} .'''
             withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
             }
@@ -33,7 +34,7 @@ node('buildx') {
         else
         {
             sh """
-            docker buildx build --platform=${platform} -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}-${BUILD_NUMBER}-prerelease-${git_branch} .
+            docker buildx build --platform=${platform} -f ${docker_file_path/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}-${BUILD_NUMBER}-prerelease-${git_branch} .
             """
             withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
