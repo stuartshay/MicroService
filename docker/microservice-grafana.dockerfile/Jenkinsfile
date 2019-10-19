@@ -29,7 +29,7 @@ node('buildx') {
         else
         {
             sh """
-            docker buildx build --platform=linux/amd64 -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t stuartshay/microservice-grafana:2.2.3-${BUILD_NUMBER}-prerelease-${git_branch} .
+            docker buildx build --platform=linux/amd64 -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t stuartshay/microservice-grafana:6.2.5-v3-${BUILD_NUMBER}-prerelease-${git_branch} .
             """
             withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
