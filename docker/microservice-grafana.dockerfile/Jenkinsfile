@@ -1,8 +1,10 @@
 
-string version_prefix = '6.2.5-v4'
-string docker_image_name = 'stuartshay/microservice-grafana'
+String version_prefix = '6.2.5-v4'
+Strung build_agent = 'buildx'
+String docker_image_name = 'stuartshay/microservice-grafana'
+String docker_build_file_path = 'docker/microservice-grafana.dockerfile'
 
-node('buildx') {
+node(build_agent) {
 
     stage('Git checkout') {
         def gitRepo = checkout scm
@@ -12,17 +14,16 @@ node('buildx') {
              String git_commit_id = gitRepo.GIT_COMMIT
              String git_short_commit_id = "${git_commit_id[0..6]}"
 
-
              String buildTime = sh(returnStdout: true, script: "date +'%Y.%V'").trim()
              currentBuild.displayName = (buildTime + "." + currentBuild.number + "." + git_branch + "." + git_short_commit_id)
     }
 
     stage('Build & Deploy Docker') {
-        sh '''mv docker/microservice-grafana.dockerfile/.dockerignore .dockerignore
+        sh '''mv ${docker_build_file_path}/.dockerignore .dockerignore
         docker context ls'''
           if (git_branch == 'master')
           {
-            sh '''docker buildx build --platform=linux/amd64 -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}.${BUILD_NUMBER} .'''
+            sh '''docker buildx build --platform=linux/amd64 -f ${docker_build_file_path}/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}.${BUILD_NUMBER} .'''
             withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
             }
@@ -33,7 +34,7 @@ node('buildx') {
         else
         {
             sh """
-            docker buildx build --platform=linux/amd64 -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}-${BUILD_NUMBER}-prerelease-${git_branch} .
+            docker buildx build --platform=linux/amd64 -f ${docker_build_file_path}/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}-${BUILD_NUMBER}-prerelease-${git_branch} .
             """
             withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
