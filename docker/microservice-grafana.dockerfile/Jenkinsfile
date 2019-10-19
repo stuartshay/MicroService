@@ -3,6 +3,7 @@ node('buildx') {
     String version_prefix = '6.2.5-v4'
     String docker_image_name = 'stuartshay/microservice-grafana'
     String docker_file = 'docker/microservice-grafana.dockerfile/Dockerfile'
+    String docker_ignore = 'docker/microservice-grafana.dockerfile/.dockerignore'
     String platform = 'linux/amd64'
 
     stage('Git checkout') {
@@ -18,7 +19,7 @@ node('buildx') {
     }
 
     stage('Build & Deploy Docker') {
-        sh '''mv docker/microservice-grafana.dockerfile/.dockerignore .dockerignore
+        sh '''mv ${docker_ignore} .dockerignore
         docker context ls'''
         if (git_branch == 'master')
         {
