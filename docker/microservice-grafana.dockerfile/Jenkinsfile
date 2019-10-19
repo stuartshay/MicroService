@@ -1,3 +1,5 @@
+pipeline {
+
 node('buildx') {
     
     String version_prefix = '6.2.5-v4'
@@ -50,4 +52,5 @@ node('buildx') {
         emailext attachLog: true, body: '', subject: "Jenkins build status - ${currentBuild.fullDisplayName}", to: 'sshay@yahoo.com'
     }
 
- }   
+ }
+}
