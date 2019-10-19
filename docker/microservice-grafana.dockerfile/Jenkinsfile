@@ -20,12 +20,12 @@ node('buildx') {
         docker context ls'''
           if (git_branch == 'master')
           {
-            sh '''docker buildx build --platform=linux/amd64 -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t stuartshay/microservice-grafana:6.2.5-v3.${BUILD_NUMBER} .'''
+            sh '''docker buildx build --platform=linux/amd64 -f docker/microservice-grafana.dockerfile/Dockerfile --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t stuartshay/microservice-grafana:${version_prefix}.${BUILD_NUMBER} .'''
             withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
             }
 
-            sh '''docker push stuartshay/microservice-grafana:6.2.5-v3.${BUILD_NUMBER}'''
+            sh '''docker push stuartshay/microservice-grafana:${version_prefix}.${BUILD_NUMBER}'''
             }
 
         else
