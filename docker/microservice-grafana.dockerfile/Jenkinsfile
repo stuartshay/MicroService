@@ -1,10 +1,11 @@
 
-String version_prefix = '6.2.5-v4'
-String docker_image_name = 'stuartshay/microservice-grafana'
 
 
-node(build_agent) {
-
+node('buildx') {
+    
+    string version_prefix = '6.2.5-v4'
+    string docker_image_name = 'stuartshay/microservice-grafana'
+    
     stage('Git checkout') {
         def gitRepo = checkout scm
         String git_url = gitRepo.GIT_URL
@@ -12,6 +13,7 @@ node(build_agent) {
 
              String git_commit_id = gitRepo.GIT_COMMIT
              String git_short_commit_id = "${git_commit_id[0..6]}"
+
 
              String buildTime = sh(returnStdout: true, script: "date +'%Y.%V'").trim()
              currentBuild.displayName = (buildTime + "." + currentBuild.number + "." + git_branch + "." + git_short_commit_id)
