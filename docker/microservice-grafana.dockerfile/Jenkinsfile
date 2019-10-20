@@ -6,8 +6,8 @@ node('buildx') {
     String docker_file = 'docker/microservice-grafana.dockerfile/Dockerfile'
     String docker_ignore = 'docker/microservice-grafana.dockerfile/.dockerignore'
     String platform = 'linux/amd64'
-    String git_path = 'docker/microservice-grafana.dockerfile' 
-    String email = 'sshay@yahoo.com'
+    String git_path = 'docker/microservice-grafana.dockerfile' //TODO FIX  
+    String email = 'sshay@yahoo.com' // TODO FIX
 
     stage('Git checkout') {
         def gitRepo = checkout scm
@@ -53,7 +53,7 @@ node('buildx') {
     }
 
     stage('Mail') {
-        emailext attachLog: true, body: '', subject: "Jenkins build status - ${currentBuild.fullDisplayName}", to: ${email}
+        emailext attachLog: true, body: '', subject: "Jenkins build status - ${currentBuild.fullDisplayName}", to: 'sshay@yahoo.com'
     }
 
  }   
