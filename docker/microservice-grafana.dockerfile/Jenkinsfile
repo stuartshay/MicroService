@@ -53,7 +53,7 @@ node('buildx') {
     }
 
     stage('Mail') {
-        emailext attachLog: true, body: '', subject: "Jenkins build status - ${currentBuild.fullDisplayName}", to: 'sshay@yahoo.com'
+        emailext attachLog: true, body: '', subject: "Jenkins build status - ${currentBuild.fullDisplayName}", to: ${email}
     }
 
  }   
