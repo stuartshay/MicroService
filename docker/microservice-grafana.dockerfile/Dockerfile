@@ -2,7 +2,10 @@ FROM grafana/grafana:6.2.5
 
 USER root
 
-COPY ./scripts/grafana.sh /usr/local/bin
+COPY scripts /app/src
+
+
+#COPY ./scripts/grafana.sh /usr/local/bin
 
 #ADD ./provisioning /etc/grafana/provisioning
 #ADD ./config.ini /etc/grafana/config.ini
