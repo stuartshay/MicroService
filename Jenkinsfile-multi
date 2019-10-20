@@ -40,12 +40,9 @@ node('buildx') {
         }
     }
 
-
-
-
     stage('Microbadger Webhook') {
        
-        timeout(time: 20, unit: 'MINUTES') {
+        timeout(time: 1, unit: 'MINUTES') {
         
         hook = registerWebhook()
         echo "Waiting for POST to ${hook.getURL()}"
@@ -58,7 +55,6 @@ node('buildx') {
 
         }
     }
-
 
     stage('Mail') {
         emailext attachLog: true, body: '', subject: "Jenkins build status - ${currentBuild.fullDisplayName}", to: 'sshay@yahoo.com'
