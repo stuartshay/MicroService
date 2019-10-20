@@ -9,6 +9,7 @@ COPY docker/microservice-grafana.dockerfile/dashboards /var/lib/grafana/dashboar
 ##COPY ./dashboards /var/lib/grafana/dashboards
 
 RUN pwd
+USER root
 
 RUN apt-get update && \
     apt-get install --no-install-recommends less && \
