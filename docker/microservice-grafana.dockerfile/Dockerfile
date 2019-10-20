@@ -1,7 +1,12 @@
 FROM grafana/grafana:6.2.5
 
 
-COPY  docker/microservice-grafana.dockerfile .
+COPY  docker/microservice-grafana.dockerfile/scripts/grafana.sh .
+#COPY ./scripts/grafana.sh /usr/local/bin
+
+
+
+
 RUN pwd
 RUN ls
 
