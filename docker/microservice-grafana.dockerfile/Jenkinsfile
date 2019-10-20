@@ -6,7 +6,7 @@ node('buildx') {
     String docker_file = 'docker/microservice-grafana.dockerfile/Dockerfile'
     String docker_ignore = 'docker/microservice-grafana.dockerfile/.dockerignore'
     String platform = 'linux/amd64'
-    Strung git_path = 'docker\microservice-grafana.dockerfile' 
+    Strung git_path = 'docker/microservice-grafana.dockerfile' 
     String email = 'sshay@yahoo.com'
 
     stage('Git checkout') {
