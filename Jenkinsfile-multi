@@ -39,10 +39,13 @@ node('buildx') {
             """
         }
     }
+
+
+
+
     stage('Microbadger Webhook') {
-       options {
-         timeout(time: 60, unit: 'SECONDS') 
-        }
+       
+        timeout(time: 20, unit: 'MINUTES') {
         
         hook = registerWebhook()
         echo "Waiting for POST to ${hook.getURL()}"
@@ -52,6 +55,8 @@ node('buildx') {
 
         data = waitForWebhook hook
         echo "Webhook called with data: ${data}"
+
+        }
     }
 
 
