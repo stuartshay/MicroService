@@ -9,34 +9,12 @@ COPY docker/microservice-grafana.dockerfile/dashboards /var/lib/grafana/dashboar
 ##COPY ./dashboards /var/lib/grafana/dashboards
 
 RUN pwd
-USER root
 
 RUN apt-get update && \
     apt-get install --no-install-recommends less && \
-    rm -rf /var/lib/apt/lists/*  && \
-    chmod +x /usr/local/bin/grafana.sh 
+    rm -rf /var/lib/apt/lists/*  
 
+USER root
+RUN chmod +x /usr/local/bin/grafana.sh 
 
-
-##COPY scripts /app/src
-
-
-#USER root
-
-
-
-
-#COPY ./scripts/grafana.sh /usr/local/bin
-
-#ADD ./provisioning /etc/grafana/provisioning
-#ADD ./config.ini /etc/grafana/config.ini
-## ADD ./dashboards /var/lib/grafana/dashboards
-
-#RUN apt-get update && \
-#    apt-get install --no-install-recommends less && \
-#    rm -rf /var/lib/apt/lists/* 
-#    ##  && \
-#    ##chmod +x /usr/local/bin/grafana.sh 
-
-
-##RUN /usr/local/bin/grafana.sh
+RUN /usr/local/bin/grafana.sh
