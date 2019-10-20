@@ -1,8 +1,14 @@
 FROM grafana/grafana:6.2.5
 
-
 COPY  docker/microservice-grafana.dockerfile/scripts/grafana.sh /usr/local/bin
 #COPY ./scripts/grafana.sh /usr/local/bin
+
+COPY  docker/microservice-grafana.dockerfile/provisioning /etc/grafana/provisioning
+##COPY  ./provisioning /etc/grafana/provisioning
+
+
+
+
 
 
 
