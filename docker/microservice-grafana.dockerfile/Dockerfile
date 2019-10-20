@@ -1,7 +1,8 @@
 FROM grafana/grafana:6.2.5
 
 
-COPY  scripts/grafana.sh /usr/local/
+COPY  scripts scripts
+
 
 
 
