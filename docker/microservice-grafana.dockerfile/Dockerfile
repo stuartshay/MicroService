@@ -1,8 +1,17 @@
 FROM grafana/grafana:6.2.5
 
-USER root
 
-COPY scripts /app/src
+COPY  scripts/grafana.sh /usr/local/
+
+
+
+
+##COPY scripts /app/src
+
+
+#USER root
+
+
 
 
 #COPY ./scripts/grafana.sh /usr/local/bin
