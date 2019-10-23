@@ -138,7 +138,7 @@ resource "aws_autoscaling_group" "eks_autoscaling_group" {
   min_size             = "${var.min_instances}"
   name                 = "${var.cluster-name}-eks-asg"
   load_balancers       = ["${aws_elb.elb.name}"]
-# vpc_zone_identifier  = ["${data.terraform_remote_state.infra.public_subnets}"]
+  vpc_zone_identifier  = ["${data.terraform_remote_state.infra.public_subnets}"]
 
   tag {
     key                 = "Name"
