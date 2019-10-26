@@ -4,10 +4,18 @@
   href: csharp_coding_standards.md
 - name: Business Requirements
   href: requirements.md
+- name: docfx
+  href: docfx.md
+- name: Package Deployment
+  href: myget.md
 - name: Details 1
   href: details1.md
-- name: Details 2
-  href: details2.md
+- name: Kubernetes
+  href: kubernetes.md
+  items:
+    - name: "hyper-v"
+      href: hyper-v.md
+      topicHref: hyper-v.md
 - name: How-to tutorials
   href: howto/overview.md
   topicHref: howto/overview.md

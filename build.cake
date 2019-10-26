@@ -5,18 +5,18 @@
 // TOOLS
 //////////////////////////////////////////////////////////////////////
 
-#tool nuget:?package=MSBuild.SonarQube.Runner.Tool
+#tool nuget:?package=MSBuild.SonarQube.Runner.Tool&version=4.6.0
 #tool nuget:?package=xunit.runner.console&version=2.2.0
 #tool nuget:?package=xunit.runner.visualstudio&version=2.2.0
-#tool nuget:?package=DocFx.Console
+#tool nuget:?package=DocFx.Console&version=2.42.3
 
 //////////////////////////////////////////////////////////////////////
 // ADDINS
 //////////////////////////////////////////////////////////////////////
 
 #addin nuget:?package=Cake.MiniCover&version=0.29.0-next20180721071547&prerelease
-#addin nuget:?package=Cake.Sonar
-#addin nuget:?package=Cake.DocFx
+#addin nuget:?package=Cake.Sonar&version=1.1.18
+#addin nuget:?package=Cake.DocFx&version=0.13.0
 
 SetMiniCoverToolsProject("./build/tools.csproj");
 
@@ -117,6 +117,7 @@ Task("Test")
            {
                Configuration = configuration,
                NoBuild = true,
+               Filter = Settings.UnitTestFilter,
                Logger = "trx;LogFileName=UnitTestResults.trx",
                ResultsDirectory = testResultsDirectory,
                ArgumentCustomization = args => args.Append($"--no-restore")
@@ -136,6 +137,7 @@ Task("Coverage")
                 DotNetCoreTest(project.FullPath, new DotNetCoreTestSettings
                 {
                     Configuration = configuration,
+                    Filter = Settings.UnitTestFilter,
                     NoRestore = true,
                     NoBuild = true
                 });
@@ -163,14 +165,13 @@ Task("Publish")
         });
 });
 
-
-Task("Generate-Docs")
-    .IsDependentOn("Clean")
-    .Does(() => 
-    {
-        DocFxBuild("./docfx/docfx.json");
-        Zip("./docfx/_site/", "./artifacts/docfx.zip");
-     });
+//Task("Generate-Docs")
+//    .IsDependentOn("Clean")
+//    .Does(() => 
+//   {
+//       DocFxBuild("./docfx/docfx.json");
+//       Zip("./docfx/_site/", "./artifacts/docfx.zip");
+//    });
 
 Task("Clean-Sonarqube")
   .WithCriteria(BuildSystem.IsLocalBuild)
@@ -178,12 +179,6 @@ Task("Clean-Sonarqube")
     CleanDirectory(sonarDirectory);
 }); 
 
-
-Task("Sonar")
-  .IsDependentOn("Clean-Sonarqube")
-  .IsDependentOn("SonarBegin")
-  .IsDependentOn("Coverage")
-  .IsDependentOn("SonarEnd");
 
 Task("SonarBegin")
     .Does(() => { SonarBegin(new SonarBeginSettings {
@@ -250,6 +245,12 @@ Task("Push-Myget")
 
 Task("Default")
     .IsDependentOn("Pack");
+
+Task("Sonar")
+  .IsDependentOn("Clean-Sonarqube")
+  .IsDependentOn("SonarBegin")
+  .IsDependentOn("Coverage")
+  .IsDependentOn("SonarEnd");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION

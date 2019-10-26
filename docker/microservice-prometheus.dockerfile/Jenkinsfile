@@ -1,0 +1,18 @@
+node('docker') {
+
+    stage('Git checkout') {
+        git branch: 'develop', credentialsId: 'gihub-key', url: 'git@github.com:stuartshay/MicroService.git'
+    }
+
+    stage('Docker') {
+        sh 'docker build -f docker/microservice-prometheus.dockerfile/Dockerfile -t stuartshay/microservice-prometheus:v2.10.0 ./docker/microservice-prometheus.dockerfile'
+        withDockerRegistry([credentialsId: 'docker-hub-navigatordatastore']) {
+            sh 'docker push stuartshay/microservice-prometheus:v2.10.0 '
+        }
+    }
+
+    stage('Mail') {
+        emailext attachLog: true, body: '', subject: "Jenkins build status - ${currentBuild.fullDisplayName}", to: 'sshay@yahoo.com'
+    }
+
+ }   
