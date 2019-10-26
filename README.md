@@ -1,8 +1,16 @@
 # Microservice API
 
+[![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=reliability_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
+[![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=security_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
+[![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=sqale_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
+
+[![Build Status](https://travis-ci.org/stuartshay/MicroService.svg?branch=develop)](https://travis-ci.org/stuartshay/MicroService)
+
 ### Purpose
 
-The New York Application Team has been tasked with designing a microservice for there TestData System.  The Application will be used by other groups in the organization in Machine Learning Research and the Calculation Engine Product
+The New York Application Team has been tasked with designing a microservice for there TestData System. The Application will be used by high profile clients and internal groups in the organization for Machine Learning Research and the Calculation Engine Product.
+
+The Application will be a complete rearchitected solution using the cloud for optimal price and performance.  The API Schema has been enhanced and key performance metrics have been added. The API will implement versioning so end clients can seamlessly update to the new enhanced schema when ready.
 
 The Business has defined the Percentile Function will use the same algorithm as MS Excel "PERCENTILE.INC" the database is serving data using float(8) and the application has defined the double data type for precision.
 
@@ -11,24 +19,23 @@ The Requirements for this project can be viewed at the following.
 * [Business Requirements](/docfx/articles/requirements.md)
 * [C# Coding Standards](/docfx/articles/csharp_coding_standards.md)
 
-### Development Setup & Run
+## Swagger
+
+![](assets/swagger.png)
+
+## Hosting Environments
+
+### Development
 
 Local Docker Postgres Database
 
-#### Local 
 ```
 cd docker
-docker-compose -f docker-compose-local.yml pull
-docker-compose -f docker-compose-local.yml up
-```
-Swagger API Documentation Page
-```
-http://<DOCKER_HOST>:5000/swagger/
+docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml pull
+docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml up
 ```
 
-#### Development
-
-Azure Postgres Development Database
+AWS Postgres Development Database
 ```
 cd docker
 docker-compose -f docker-compose-development.yml pull
@@ -39,12 +46,6 @@ Swagger API Documentation Page
 ```
 http://<DOCKER_HOST>:5000/swagger/
 ```
-
-### SonarQube Code Quaility
-
-[![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=reliability_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
-[![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=security_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
-[![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=sqale_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
 
 ### Docker Hub Images
 
@@ -67,66 +68,23 @@ MicroService.Service | [![MyGet](https://img.shields.io/myget/microservice/v/Mic
 ------------ | -------------
 Base Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-base)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-base/)
 API  Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-build)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-build/)
+Multi Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-multi)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-multi/)
+Arm7 Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-buildx-armv7)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-buildx-armv7/)
 
-### Myget Package Deployment
+### Build Commands
 
-Windows
+|  Build Type                 |  Linux/Mac                    | Windows                       |
+| --------------------------- | ------------------------------|  -----------------------------|
+| CI Build                    | ./build.sh  --target=CI-Build | .\build.ps1 --target=CI-Build |
+| SonarQube Testing           | ./build.sh  --target=sonar    | .\build.ps1 --target=sonar    |
 
-```powershell
-  $env:mygetApiKey = "adab4634-8ddb-4789-ae92-6461295ac69c"
-  .\build.ps1 -target push-myget
-```
-
-Linux
- 
-```bash
- export mygetApiKey="adab4634-8ddb-4789-ae92-6461295ac69c"
-./build.sh --target=push-myget
-```
-
-### DocFX
-
-DocFX generates Documentation directly from source code (.NET, RESTful API, JavaScript, Java, etc...) and Markdown files.
-
-```
-https://dotnet.github.io/docfx/
-```
-
-![](assets/docfx.png)
-
-#### Prerequisites:
-
-```powershell
-choco install docfx
-```
-
-#### Build and Serve Website
+**docfx**
 
 ```powershell
 docfx docfx/docfx.json
-docfx docfx/docfx.json --serve
-```
+docfx docfx/docfx.json -p 9090 --serve
 
-```
-http://localhost:8080
-```
-
-#### Deployment 
-```powershell
- .\build.ps1 -target Generate-Docs
-```
-
-### SonarQube Testing
-
-Windows
-
-```powershell
- .\build.ps1 -target sonar
-```
-
-Linux
-```
-./build.sh --target sonar
+http://localhost:9090
 ```
 
 ### Reference

@@ -1,0 +1,46 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "microservice-stack.fullname" . }}-database
+  labels:
+    app: {{ template "microservice-stack.name" . }}-database
+    chart: {{ template "microservice-stack.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.database.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "microservice-stack.name" . }}-database
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "microservice-stack.name" . }}-database
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Values.database.name }}
+          image: "{{ .Values.database.image.repository }}:{{ .Values.database.image.tag }}"
+          imagePullPolicy: {{ .Values.database.image.pullPolicy }}
+          env:
+          - name: POSTGRES_PASSWORD
+            value: {{ .Values.database.POSTGRES_PASSWORD }}
+          ports:
+            - name: database
+              containerPort: {{ .Values.database.service.port }}
+              protocol: TCP
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "microservice-stack.fullname" . }}-alertmanager
+  labels:
+    app: {{ template "microservice-stack.name" . }}-alertmanager
+    chart: {{ template "microservice-stack.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.alertmanager.service.type }}
+  ports:
+    - port: {{ .Values.alertmanager.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ template "microservice-stack.name" . }}-alertmanager
+    release: {{ .Release.Name }}

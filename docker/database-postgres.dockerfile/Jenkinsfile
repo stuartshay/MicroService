@@ -1,0 +1,18 @@
+node('docker') {
+
+    stage('Git checkout') {
+        git branch: 'develop', credentialsId: 'gihub-key', url: 'git@github.com:stuartshay/MicroService.git'
+    }
+
+    stage('Docker') {
+        sh 'docker build -f docker/database-postgres.dockerfile/postgres.dockerfile -t stuartshay/microservice-database:v1.1 ./docker/database-postgres.dockerfile'
+        withDockerRegistry([credentialsId: 'docker-hub-navigatordatastore']) {
+            sh 'docker push stuartshay/microservice-database:v1.1'
+        }
+    }
+
+    stage('Mail') {
+        emailext attachLog: true, body: '', subject: "Jenkins build status - ${currentBuild.fullDisplayName}", to: 'sshay@yahoo.com'
+    }
+
+ }   
