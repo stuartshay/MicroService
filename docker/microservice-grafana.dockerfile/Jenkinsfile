@@ -36,7 +36,7 @@ node('buildx') {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
             }
             sh """
-            docker push ${docker_image_name}:${version_prefix}-${BUILD_NUMBER}
+            docker push ${docker_image_name}:${version_prefix}.${BUILD_NUMBER}
             """
         }
         else
