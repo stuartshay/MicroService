@@ -1,4 +1,4 @@
-FROM grafana/grafana:6.2.5
+FROM grafana/grafana:6.4.3
 
 COPY  docker/microservice-grafana.dockerfile/scripts/grafana.sh /usr/local/bin
 COPY  docker/microservice-grafana.dockerfile/config.ini /etc/grafana/config.ini
