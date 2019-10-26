@@ -9,7 +9,7 @@ microserviceapi:
   replicaCount: 1
   image:
     repository: stuartshay/microservice-api
-    tag: 2.2.2-build
+    tag: 2.2.3-multi
     pullPolicy: IfNotPresent
   ASPNETCORE_ENVIRONMENT: Docker
 #  ConnectionStrings__PostgreSql: User ID=postgres;Password=password;Server=database;Port=5432;Database=postgres;Integrated Security=true;Pooling=true;
@@ -51,7 +51,7 @@ grafana:
   replicaCount: 1
   image:
     repository: stuartshay/microservice-grafana
-    tag: 6.2.5-v3.5
+    tag: 6.2.5-v4-65-prerelease-develop #6.2.5-v3.5
     pull_policy: IfNotPresent
   GfSecurityAdminUser: admin
   GfSecurityAdminPassword: admin
