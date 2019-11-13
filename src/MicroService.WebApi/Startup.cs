@@ -89,7 +89,7 @@ namespace MicroService.WebApi
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
             });
 
-            app.ConfigureSwagger(provider); 
+            app.ConfigureSwagger(provider);
             // app.UseHttpsRedirection();
 
             app.UseRouting();
