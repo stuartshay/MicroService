@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using MicroService.Service.Configuration;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Extensions.Swagger;
@@ -11,6 +12,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using HealthChecks.UI.Client;
+using System.Threading.Tasks;
 
 namespace MicroService.WebApi.Extensions
 {
@@ -99,10 +103,12 @@ namespace MicroService.WebApi.Extensions
         public static IServiceCollection AddCustomHealthCheck(this IServiceCollection services, IConfiguration configuration)
         {
             var config = configuration.Get<ApplicationOptions>();
-            services.AddHealthChecks()
-                .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
             services.AddHealthChecksUI();
+            services.AddHealthChecks()
+                .AddCheck<RandomHealthCheck>("random")
+                //.AddUrlGroup(new Uri("http://httpbin.org/status/200"))
+                .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
             return services;
         }
@@ -180,4 +186,20 @@ namespace MicroService.WebApi.Extensions
             return Path.Combine(basePath, fileName);
         }
     }
+
+    public class RandomHealthCheck : IHealthCheck
+    {
+        public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+        {
+            if (DateTime.UtcNow.Minute % 2 == 0)
+            {
+                return Task.FromResult(HealthCheckResult.Healthy());
+            }
+
+            return Task.FromResult(HealthCheckResult.Unhealthy(description: "failed"));
+        }
+    }
+
+
+
 }

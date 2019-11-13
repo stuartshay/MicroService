@@ -97,6 +97,7 @@ namespace MicroService.WebApi
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecksUI();
                 endpoints.MapControllers();
             });
         }
