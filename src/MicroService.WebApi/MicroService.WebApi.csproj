@@ -12,27 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-   
     <PackageReference Include="App.Metrics" Version="4.0.0-preview1.0.3" />
-   
-    <PackageReference Include="App.Metrics.Abstractions" Version="4.0.0-preview1.0.3" />
-   
     <PackageReference Include="App.Metrics.AspNetCore" Version="4.0.0-preview1.0.3" />
-    <PackageReference Include="App.Metrics.Core" Version="4.0.0-preview1.0.3" />
-    <PackageReference Include="App.Metrics.Extensions.Configuration" Version="4.0.0-preview1.0.3" />
-    <PackageReference Include="App.Metrics.Extensions.DependencyInjection" Version="4.0.0-preview1.0.3" />
-    <PackageReference Include="App.Metrics.Extensions.Hosting" Version="4.0.0-preview1.0.3" />
-    <PackageReference Include="App.Metrics.Formatters.Ascii" Version="4.0.0-preview1.0.3" />
     <PackageReference Include="App.Metrics.Formatters.Prometheus" Version="4.0.0-preview1.0.3" />
-    <PackageReference Include="App.Metrics.Reporting.Console" Version="4.0.0-preview1.0.3" />
-
-
-    
-    
-    
-    
     <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="3.0.0" />
-    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="3.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="3.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Api.Analyzers" Version="3.0.0-preview3-19153-02" />
@@ -45,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.66">
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.113">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
