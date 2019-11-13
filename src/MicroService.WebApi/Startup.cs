@@ -90,7 +90,7 @@ namespace MicroService.WebApi
             });
 
             app.ConfigureSwagger(provider); 
-            //app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
             app.UseCors();

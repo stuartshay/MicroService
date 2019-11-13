@@ -28,7 +28,7 @@ namespace MicroService.WebApi.Extensions
         public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment environment)
         {
             var config = configuration.Get<ApplicationOptions>();
-            Console.WriteLine($"Environment: {environment.EnvironmentName}");
+            Console.WriteLine($"Environment: {environment?.EnvironmentName}");
             Console.WriteLine($"PostgreSql: {config.ConnectionStrings.PostgreSql}");
         }
 
@@ -36,7 +36,6 @@ namespace MicroService.WebApi.Extensions
         ///     CORS Configuration
         /// </summary>
         /// <param name="services"></param>
-        /// 
         public static void AddCorsConfiguration(this IServiceCollection services)
         {
             services.AddCors(options =>
@@ -58,12 +57,11 @@ namespace MicroService.WebApi.Extensions
         /// Api Versioning
         /// </summary>
         /// <param name="services"></param>
-        /// 
         public static void AddCustomApiVersioning(this IServiceCollection services)
         {
             _ = services.AddApiVersioning(options => { options.ReportApiVersions = true; });
 
-            services.AddVersionedApiExplorer(
+            _ = services.AddVersionedApiExplorer(
                 options =>
                 {
                     // add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
@@ -80,15 +78,14 @@ namespace MicroService.WebApi.Extensions
         ///     Swagger Configuration
         /// </summary>
         /// <param name="services"></param>
-        /// 
         public static void AddSwaggerConfiguration(this IServiceCollection services)
         {
             // Swagger
-            services.AddSwaggerGen(
+            _ = services.AddSwaggerGen(
                options =>
                {
                    options.OperationFilter<SwaggerDefaultValues>();
-                  // options.DocumentFilter<Swagger.SwaggerDocumentFilter>();
+                   // options.DocumentFilter<Swagger.SwaggerDocumentFilter>();
                    options.IncludeXmlComments(GetXmlCommentsPath());
                });
         }
@@ -173,7 +170,6 @@ namespace MicroService.WebApi.Extensions
                     }
                 });
         }
-
 
         private static string GetXmlCommentsPath()
         {
