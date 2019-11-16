@@ -8,14 +8,14 @@ VPC_Module >> EKS_Module >> Helm_Charts
 
 ## VPC Module
 
-### Virtual Private Cloud (Amazon VPC) 
+### Virtual Private Cloud (Amazon VPC)
 
 Provisions the Network Resources such as the Gateway, Subnets and Routing Rules
 
 ![](images/vpc-diagram.png)
 
 
-
+```
 1. Plan_Only: to plan the tf-modules, and then select “ branch” name.
 
 2. Destroy_the_Environment: destroy the deployed tf-modules and then select “ branch” name.
