@@ -6,6 +6,8 @@
   href: requirements.md
 - name: docfx
   href: docfx.md
+- name: eks
+  href: eks.md
 - name: Package Deployment
   href: myget.md
 - name: Details 1
