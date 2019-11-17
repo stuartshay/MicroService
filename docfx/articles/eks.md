@@ -14,6 +14,9 @@ Provisions the Network Resources such as the Gateway, Subnets and Routing Rules
 
 ![](images/vpc-diagram.png)
 
+### Jenkins Job
+
+![](images/vpc-terraform.png)
 
 ```
 1. Plan_Only: to plan the tf-modules, and then select “ branch” name.
@@ -22,11 +25,23 @@ Provisions the Network Resources such as the Gateway, Subnets and Routing Rules
 
 3. And if you want to deploy tf-modules just only select the “ branch ”.
 ```
+### AWS Management Console
 
-![](images/vpc.png)
+
+![](images/vpc-aws.png)
 
 
 ## EKS Module
+
+### Elastic Kubernetes Service (Amazon EKS)
+
+EKS runs the Kubernetes management infrastructure 
+
+### Jenkins Job
+
+
+
+
 
 ![](images/eks_terraform.png)
 
