@@ -19,7 +19,7 @@ COPY .  .
 
 RUN dotnet publish -c release -o published -r linux-arm
 
-FROM mcr.microsoft.com/dotnet/core/runtime:2.2.4-stretch-slim-arm32v7
+FROM mcr.microsoft.com/dotnet/core/runtime:2.2.8-stretch-slim-arm32v7
 
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
