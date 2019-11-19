@@ -16,7 +16,7 @@ Provisions the Network Resources such as the Gateway, Subnets and Routing Rules
 
 ### Jenkins Job
 
-![](images/vpc-terraform.png)
+![](images/vpc-jenkins.png)
 
 ```
 1. Plan_Only: to plan the tf-modules, and then select “ branch” name.
@@ -40,6 +40,7 @@ EKS runs the Kubernetes management infrastructure
 ### Jenkins Job
 
 
+![](images/eks-jenkins.png)
 
 
 
