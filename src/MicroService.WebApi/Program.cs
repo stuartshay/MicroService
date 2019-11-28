@@ -47,11 +47,13 @@ namespace MicroService.WebApi
                    })
                    .UseMetrics(options =>
                     {
-                        //options.EndpointOptions = endpointsOptions =>
-                        //{
-                        //    endpointsOptions.MetricsTextEndpointOutputFormatter =
-                        //        new MetricsPrometheusTextOutputFormatter();
-                        //};
+                        options.EndpointOptions = builder =>
+                        {
+                            builder.MetricsTextEndpointEnabled = true;
+                            builder.EnvironmentInfoEndpointEnabled = false;
+                            builder.MetricsEndpointEnabled = true;
+                            builder.MetricsTextEndpointOutputFormatter = new MetricsPrometheusTextOutputFormatter();
+                        };
                     })
                    .Build();
     }
