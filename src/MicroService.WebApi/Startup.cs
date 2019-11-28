@@ -101,6 +101,5 @@ namespace MicroService.WebApi
                 endpoints.MapControllers();
             });
         }
-
     }
 }
