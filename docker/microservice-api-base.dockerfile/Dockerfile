@@ -1,5 +1,5 @@
 # Build Stage
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1.100
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
