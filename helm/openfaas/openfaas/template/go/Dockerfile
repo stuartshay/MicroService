@@ -1,6 +1,6 @@
 FROM openfaas/classic-watchdog:0.13.4 as watchdog
 
-FROM golang:1.10.8-alpine3.9 as builder
+FROM golang:1.12.14-alpine3.9 as builder
 
 # Allows you to add additional packages via build-arg
 ARG ADDITIONAL_PACKAGE
