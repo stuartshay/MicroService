@@ -1,16 +1,10 @@
-FROM grafana/grafana:6.4.3
+FROM grafana/grafana:6.5.3-ubuntu
 
-COPY  docker/microservice-grafana.dockerfile/scripts/grafana.sh /usr/local/bin
-COPY  docker/microservice-grafana.dockerfile/config.ini /etc/grafana/config.ini
-COPY  docker/microservice-grafana.dockerfile/provisioning /etc/grafana/provisioning
-COPY  docker/microservice-grafana.dockerfile/dashboards /var/lib/grafana/dashboards
 
-RUN ls
-
-##COPY ./scripts/grafana.sh /usr/local/bin
-##COPY  config.ini /etc/grafana/config.ini
-##COPY  ./provisioning /etc/grafana/provisioning
-##COPY ./dashboards /var/lib/grafana/dashboards
+COPY ./scripts/grafana.sh /usr/local/bin
+COPY  config.ini /etc/grafana/config.ini
+COPY  ./provisioning /etc/grafana/provisioning
+COPY ./dashboards /var/lib/grafana/dashboards
 
 USER root
 RUN apt-get update && \
