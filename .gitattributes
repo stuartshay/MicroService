@@ -7,8 +7,8 @@ core.autocrlf input
 # Using Filters
 #
 # Slack API Key Local Setup
-# git config --global filter.updateAPIKey.smudge 'sed "s/{SECURE_API_KEY}/***REMOVED-SLACK-WEBHOOK***/"'
-# git config --global filter.updateAPIKey.clean 'sed "s/***REMOVED-SLACK-WEBHOOK***/{SECURE_API_KEY}/"'
+# git config --global filter.updateAPIKey.smudge 'sed "s/{SECURE_API_KEY}/ABCDEFGH/"'
+# git config --global filter.updateAPIKey.clean 'sed "s/ABCDEFGH/{SECURE_API_KEY}/"'
 #
 #
 ###############################################################################
