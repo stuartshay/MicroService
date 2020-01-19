@@ -42,7 +42,7 @@ node('buildx') {
         else
         {
             sh """
-            docker buildx build --platform=${platform} -f ${docker_file} --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}-${BUILD_NUMBER}-prerelease-${git_branch} ${git_path}/.
+            docker buildx build --platform=${platform} -f ${docker_file} --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}-${BUILD_NUMBER}-prerelease-${git_branch} ${git_path}.
             """
             withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
