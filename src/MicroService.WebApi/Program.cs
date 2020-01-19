@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using App.Metrics;
 using App.Metrics.AspNetCore;
 using App.Metrics.Formatters.Prometheus;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +15,11 @@ namespace MicroService.WebApi
     /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public static IMetricsRoot Metrics { get; set; }
+
         /// <summary>
         /// Configuration
         /// </summary>
@@ -28,6 +35,10 @@ namespace MicroService.WebApi
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
+            Metrics = AppMetrics.CreateDefaultBuilder()
+                .OutputMetrics.AsPrometheusPlainText()
+                .Build();
+
             BuildWebHost(args).Run();
         }
 
@@ -47,12 +58,14 @@ namespace MicroService.WebApi
                    })
                    .UseMetrics(options =>
                     {
-                        options.EndpointOptions = builder =>
+                        options.EndpointOptions = endpointsOptions =>
                         {
-                            builder.MetricsTextEndpointEnabled = true;
-                            builder.EnvironmentInfoEndpointEnabled = false;
-                            builder.MetricsEndpointEnabled = true;
-                            builder.MetricsTextEndpointOutputFormatter = new MetricsPrometheusTextOutputFormatter();
+                            endpointsOptions.MetricsTextEndpointEnabled = true;
+                            endpointsOptions.EnvironmentInfoEndpointEnabled = true;
+                            endpointsOptions.MetricsEndpointEnabled = true;
+
+                            //endpointsOptions.MetricsTextEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
+                            endpointsOptions.MetricsEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
                         };
                     })
                    .Build();

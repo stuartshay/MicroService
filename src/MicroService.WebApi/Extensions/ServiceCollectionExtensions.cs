@@ -102,7 +102,7 @@ namespace MicroService.WebApi.Extensions
 
             services.AddHealthChecksUI();
             services.AddHealthChecks()
-                .AddCheck<RandomHealthCheck>("random")
+               // .AddCheck<RandomHealthCheck>("random")
                 .AddUrlGroup(new Uri("https://www.google.com/"))
                 .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
