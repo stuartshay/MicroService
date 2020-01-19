@@ -40,7 +40,7 @@ prometheus:
   replicaCount: 1
   image:
     repository: prom/prometheus
-    tag: 2.15.1-v2-5-prerelease-develop
+    tag: 2.15.1-v2.6
     pull_policy: IfNotPresent
   service:
     type: NodePort
@@ -51,7 +51,7 @@ grafana:
   replicaCount: 1
   image:
     repository: stuartshay/microservice-grafana
-    tag: 6.5.3-v4-72-prerelease-develop #6.2.5-v3.5
+    tag: 6.5.3-v4.73 
     pull_policy: IfNotPresent
   GfSecurityAdminUser: admin
   GfSecurityAdminPassword: admin
