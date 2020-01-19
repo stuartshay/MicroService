@@ -1,12 +1,12 @@
 node('buildx') {
     
-    String version_prefix = '6.4.3-v4'
+    String version_prefix = '6.5.3-v4'
     String version_suffix = ''
     String docker_image_name = 'stuartshay/microservice-grafana'
     String docker_file = 'docker/microservice-grafana.dockerfile/Dockerfile'
     String docker_ignore = 'docker/microservice-grafana.dockerfile/.dockerignore'
     String platform = 'linux/amd64'
-    String git_path = 'docker/microservice-grafana.dockerfile' //TODO FIX  
+    String git_path = 'docker/microservice-grafana.dockerfile' 
     String email = 'sshay@yahoo.com' // TODO FIX
 
     stage('Git checkout') {
@@ -30,7 +30,7 @@ node('buildx') {
         if (git_branch == 'master')
         {
             sh """
-            docker buildx build --platform=${platform} -f ${docker_file} --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}.${BUILD_NUMBER} .
+            docker buildx build --platform=${platform} -f ${docker_file} --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}.${BUILD_NUMBER}  ${git_path}.
             """
             withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
@@ -42,7 +42,7 @@ node('buildx') {
         else
         {
             sh """
-            docker buildx build --platform=${platform} -f ${docker_file} --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}-${BUILD_NUMBER}-prerelease-${git_branch} .
+            docker buildx build --platform=${platform} -f ${docker_file} --build-arg BUILD_NUMBER=${BUILD_NUMBER} -t ${docker_image_name}:${version_prefix}-${BUILD_NUMBER}-prerelease-${git_branch} ${git_path}.
             """
             withCredentials([usernamePassword(credentialsId: 'docker-hub-navigatordatastore', usernameVariable: 'DOCKER_HUB_LOGIN', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
             sh "docker login -u ${DOCKER_HUB_LOGIN} -p ${DOCKER_HUB_PASSWORD}"
