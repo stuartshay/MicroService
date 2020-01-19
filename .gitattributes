@@ -7,10 +7,12 @@ core.autocrlf input
 # Using Filters
 #
 # Slack API Key Local Setup
-# git config --global filter.updateAPIKey.smudge 'sed "s/SECURE_API_KEY/T2JTF5ACR/B2KC0TWDS/J3nujNbN50QvDp98F0mr314Y/"'
-# git config --global filter.updateAPIKey.clean 'sed "s/T2JTF5ACR/B2KC0TWDS/J3nujNbN50QvDp98F0mr314Y/SECURE_API_KEY/"'
+# git config --global filter.updateAPIKey.smudge 'sed "s/{SECURE_API_KEY}/T2JTF5ACR/B2KC0TWDS/J3nujNbN50QvDp98F0mr314Y/"'
+# git config --global filter.updateAPIKey.clean 'sed "s/T2JTF5ACR/B2KC0TWDS/J3nujNbN50QvDp98F0mr314Y/{SECURE_API_KEY}/"'
+#
+#
 ###############################################################################
-*.json filter=updateAPIKey
+appsettings.json filter=updateAPIKey
 
 ###############################################################################
 # Set default behavior for command prompt diff.
