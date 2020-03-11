@@ -1,7 +1,7 @@
 FROM openfaas/classic-watchdog:0.13.4 as watchdog
 
 # start with the official Composer image and name it
-FROM composer:1.7 AS composer
+FROM composer:1.10 AS composer
 
 # continue with the official PHP image
 FROM php:7.2-alpine
