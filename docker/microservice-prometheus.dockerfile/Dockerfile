@@ -1,4 +1,4 @@
-FROM prom/prometheus:v2.15.2
+FROM prom/prometheus:v2.20.1
 
 COPY  config/prometheus.yml  /etc/prometheus/prometheus.yml
 COPY  config/  /etc/prometheus/targets/
