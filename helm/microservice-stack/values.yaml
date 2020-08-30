@@ -51,7 +51,7 @@ grafana:
   replicaCount: 1
   image:
     repository: stuartshay/microservice-grafana
-    tag: 6.5.3-v4.73 
+    tag: 6.5.3-v4-72-prerelease-develop 
     pull_policy: IfNotPresent
   GfSecurityAdminUser: admin
   GfSecurityAdminPassword: admin
