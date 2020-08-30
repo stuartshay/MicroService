@@ -4,7 +4,7 @@ services:
 
   microservice-api:
     container_name: 'microservice-api'
-    image: "stuartshay/microservice-api:2.2.3-24-prerelease-develop-multi"
+    image: "stuartshay/microservice-api:3.0.0-10-prerelease-core3x-armv7"
     environment:
      - ASPNETCORE_ENVIRONMENT=Development
      - ConnectionStrings__PostgreSql=User ID=nyclandmarks;Password=nyclandmarks;Server=myrdsinstance.ckm3eyorqjco.us-east-1.rds.amazonaws.com;Port=5432;Database=nyclandmarks;Integrated Security=true;Pooling=true;

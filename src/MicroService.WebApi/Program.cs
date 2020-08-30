@@ -1,11 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using App.Metrics;
 using App.Metrics.AspNetCore;
 using App.Metrics.Formatters.Prometheus;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 
 namespace MicroService.WebApi
 {
@@ -14,6 +15,11 @@ namespace MicroService.WebApi
     /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public static IMetricsRoot Metrics { get; set; }
+
         /// <summary>
         /// Configuration
         /// </summary>
@@ -29,28 +35,36 @@ namespace MicroService.WebApi
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            Metrics = AppMetrics.CreateDefaultBuilder()
+                .OutputMetrics.AsPrometheusPlainText()
+                .Build();
+
+            BuildWebHost(args).Run();
         }
 
         /// <summary>
-        /// Builds a new web host for the application.
+        /// Builds a new host for the application.
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-             .ConfigureMetricsWithDefaults(builder => { builder.OutputMetrics.AsPrometheusPlainText(); })
-             .UseMetrics(
-                    options =>
+        public static IHost BuildWebHost(string[] args) =>
+           Host.CreateDefaultBuilder(args)
+               .ConfigureWebHostDefaults(webBuilder =>
+                   {
+                     webBuilder.UseStartup<Startup>();
+                   })
+                   .UseMetrics(options =>
                     {
                         options.EndpointOptions = endpointsOptions =>
                         {
-                            endpointsOptions.MetricsTextEndpointOutputFormatter =
-                                new MetricsPrometheusTextOutputFormatter();
+                            endpointsOptions.MetricsTextEndpointEnabled = true;
+                            endpointsOptions.EnvironmentInfoEndpointEnabled = true;
+                            endpointsOptions.MetricsEndpointEnabled = true;
+
+                            endpointsOptions.MetricsTextEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
+                            endpointsOptions.MetricsEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
                         };
                     })
-            .UseStartup<Startup>()
-            .CaptureStartupErrors(true)
-            .UseConfiguration(Configuration);
+                   .Build();
     }
 }

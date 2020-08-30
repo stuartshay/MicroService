@@ -2,7 +2,13 @@
 using System.IO;
 using System.Reflection;
 using MicroService.Service.Configuration;
+using MicroService.WebApi.Extensions.Constants;
+using MicroService.WebApi.Extensions.Swagger;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,10 +25,10 @@ namespace MicroService.WebApi.Extensions
         /// <param name="services"></param>
         /// <param name="configuration"></param>
         /// <param name="environment"></param>
-        public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment environment)
+        public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment environment)
         {
             var config = configuration.Get<ApplicationOptions>();
-            Console.WriteLine($"Environment: {environment.EnvironmentName}");
+            Console.WriteLine($"Environment: {environment?.EnvironmentName}");
             Console.WriteLine($"PostgreSql: {config.ConnectionStrings.PostgreSql}");
         }
 
@@ -30,17 +36,20 @@ namespace MicroService.WebApi.Extensions
         ///     CORS Configuration
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="configuration"></param>
-        public static void AddCorsConfiguration(this IServiceCollection services, IConfiguration configuration)
+        public static void AddCorsConfiguration(this IServiceCollection services)
         {
             services.AddCors(options =>
             {
+                options.AddDefaultPolicy(
+                   builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+
                 options.AddPolicy(
-                    "AllowAll",
+                    ApiConstants.CorsPolicy,
                     builder => builder.AllowAnyOrigin()
                         .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials());
+                        .AllowAnyHeader());
             });
         }
 
@@ -48,12 +57,11 @@ namespace MicroService.WebApi.Extensions
         /// Api Versioning
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="configuration"></param>
-        public static void AddApiVersioning(this IServiceCollection services, IConfiguration configuration)
+        public static void AddCustomApiVersioning(this IServiceCollection services)
         {
             _ = services.AddApiVersioning(options => { options.ReportApiVersions = true; });
 
-            services.AddVersionedApiExplorer(
+            _ = services.AddVersionedApiExplorer(
                 options =>
                 {
                     // add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
@@ -70,17 +78,14 @@ namespace MicroService.WebApi.Extensions
         ///     Swagger Configuration
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="configuration"></param>
-        public static void AddSwaggerConfiguration(this IServiceCollection services, IConfiguration configuration)
+        public static void AddSwaggerConfiguration(this IServiceCollection services)
         {
             // Swagger
-            services.AddSwaggerGen(
+            _ = services.AddSwaggerGen(
                options =>
                {
                    options.OperationFilter<SwaggerDefaultValues>();
-
                    // options.DocumentFilter<Swagger.SwaggerDocumentFilter>();
-                   options.DescribeAllEnumsAsStrings();
                    options.IncludeXmlComments(GetXmlCommentsPath());
                });
         }
@@ -94,18 +99,82 @@ namespace MicroService.WebApi.Extensions
         public static IServiceCollection AddCustomHealthCheck(this IServiceCollection services, IConfiguration configuration)
         {
             var config = configuration.Get<ApplicationOptions>();
+
+            // services.AddHealthChecksUI();
             services.AddHealthChecks()
                 .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
-            services.AddHealthChecksUI();
+            return services;
+        }
+
+        /// <summary>
+        ///  Custom Controllers
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddCustomControllers(this IServiceCollection services, IConfiguration configuration)
+        {
+            var config = configuration.Get<ApplicationOptions>();
+
+            services.AddControllers(setupAction =>
+            {
+                // setupAction.ReturnHttpNotAcceptable = true;
+                // setupAction.CacheProfiles.Add("240SecondsCacheProfile",new CacheProfile(){Duration = 240});
+            })
+            //  .AddXmlDataContractSerializerFormatters()
+            .ConfigureApiBehaviorOptions(setupAction =>
+             {
+               setupAction.InvalidModelStateResponseFactory = context =>
+               {
+                  var problemDetails = new ValidationProblemDetails(context.ModelState)
+                  {
+                     Type = "https://courselibrary.com/modelvalidationproblem",
+                     Title = "One or more model validation errors occurred.",
+                     Status = StatusCodes.Status422UnprocessableEntity,
+                     Detail = "See the errors property for details.",
+                     Instance = context.HttpContext.Request.Path,
+                  };
+
+                  problemDetails.Extensions.Add("traceId", context.HttpContext.TraceIdentifier);
+                  return new UnprocessableEntityObjectResult(problemDetails)
+                      {
+                          ContentTypes = { "application/problem+json" },
+                      };
+                  };
+            });
+            //.AddNewtonsoftJson(setupAction =>
+            //{
+            //    setupAction.SerializerSettings.ContractResolver =
+            //       new CamelCasePropertyNamesContractResolver();
+            //})
 
             return services;
+        }
+
+        /// <summary>
+        /// Configure Swagger
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="provider"></param>
+        public static void ConfigureSwagger(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI(
+                options =>
+                {
+                    // build a swagger endpoint for each discovered API version
+                    foreach (var description in provider.ApiVersionDescriptions)
+                    {
+                        options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"MicroService.WebApi - {description.GroupName.ToUpperInvariant()}");
+                    }
+                });
         }
 
         private static string GetXmlCommentsPath()
         {
             var basePath = AppContext.BaseDirectory;
-            var assemblyName = Assembly.GetEntryAssembly().GetName().Name;
+            var assemblyName = Assembly.GetEntryAssembly()?.GetName().Name;
             var fileName = Path.GetFileName(assemblyName + ".xml");
 
             return Path.Combine(basePath, fileName);
