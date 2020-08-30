@@ -4,7 +4,7 @@ env:
   global:
     - Configuration=Release
     - ASPNETCORE_ENVIRONMENT=Staging
-dotnet: 3.1.202
+dotnet: 3.1.401
 mono: none
 branches:
   only:
