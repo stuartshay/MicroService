@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   prometheus:
-    image: stuartshay/microservice-prometheus:v2.10.0
+    image: stuartshay/microservice-prometheus:v2.20.1-v2.8
     container_name: prometheus
     #volumes:
     #  - ./prometheus/:/etc/prometheus/
