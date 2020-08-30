@@ -100,10 +100,8 @@ namespace MicroService.WebApi.Extensions
         {
             var config = configuration.Get<ApplicationOptions>();
 
-            services.AddHealthChecksUI();
+            // services.AddHealthChecksUI();
             services.AddHealthChecks()
-               // .AddCheck<RandomHealthCheck>("random")
-                .AddUrlGroup(new Uri("https://www.google.com/"))
                 .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
             return services;
