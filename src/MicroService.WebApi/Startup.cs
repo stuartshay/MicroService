@@ -1,4 +1,5 @@
-﻿using HealthChecks.UI.Client;
+﻿using App.Metrics;
+using HealthChecks.UI.Client;
 using MicroService.Data.Repository;
 using MicroService.Service.Configuration;
 using MicroService.Service.Services;
@@ -58,6 +59,14 @@ namespace MicroService.WebApi
             services.AddCustomApiVersioning();
             services.AddCustomHealthCheck(Configuration);
 
+            var metrics = AppMetrics.CreateDefaultBuilder()
+                .OutputMetrics
+                .AsPrometheusPlainText()
+                .Build();
+
+            metrics.Options.ReportingEnabled = true;
+
+            services.AddMetrics(metrics);
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerConfiguration();
             services.AddCorsConfiguration();
@@ -90,10 +99,11 @@ namespace MicroService.WebApi
             });
 
             app.ConfigureSwagger(provider);
-            // app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
             app.UseCors();
+            app.UseMetricsEndpoint();
 
             app.UseEndpoints(endpoints =>
             {

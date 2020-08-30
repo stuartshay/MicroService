@@ -49,10 +49,7 @@ namespace MicroService.WebApi
         /// <returns></returns>
         public static IHost BuildWebHost(string[] args) =>
            Host.CreateDefaultBuilder(args)
-                   .ConfigureAppMetricsHostingConfiguration(options =>
-                   {
-                   })
-                   .ConfigureWebHostDefaults(webBuilder =>
+               .ConfigureWebHostDefaults(webBuilder =>
                    {
                      webBuilder.UseStartup<Startup>();
                    })
@@ -64,7 +61,7 @@ namespace MicroService.WebApi
                             endpointsOptions.EnvironmentInfoEndpointEnabled = true;
                             endpointsOptions.MetricsEndpointEnabled = true;
 
-                            //endpointsOptions.MetricsTextEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
+                            endpointsOptions.MetricsTextEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
                             endpointsOptions.MetricsEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
                         };
                     })
