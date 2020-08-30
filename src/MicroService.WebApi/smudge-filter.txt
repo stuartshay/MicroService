@@ -1,0 +1,9 @@
+## Using Filters
+
+
+
+git config --local filter.updateAPIKey.smudge 'sed "s/{SECURE_API_KEY}/T2JTF5ACR/B2KC0TWDS/J3nujNbN50QvDp98F0mr314Y/"'
+git config --local filter.updateAPIKey.clean 'sed "s/T2JTF5ACR/B2KC0TWDS/J3nujNbN50QvDp98F0mr314Y/{SECURE_API_KEY}/"'
+
+
+

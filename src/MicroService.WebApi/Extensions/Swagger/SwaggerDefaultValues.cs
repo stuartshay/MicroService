@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Swashbuckle.AspNetCore.Swagger;
+﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace MicroService.WebApi.Extensions
+namespace MicroService.WebApi.Extensions.Swagger
 {
     /// <summary>
     /// Represents the Swagger/Swashbuckle operation filter used to document the implicit API version parameter.
@@ -17,7 +16,7 @@ namespace MicroService.WebApi.Extensions
         /// </summary>
         /// <param name="operation">The operation to apply the filter to.</param>
         /// <param name="context">The current operation filter context.</param>
-        public void Apply(Operation operation, OperationFilterContext context)
+        public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
             var apiDescription = context.ApiDescription;
 
@@ -30,22 +29,22 @@ namespace MicroService.WebApi.Extensions
 
             // REF: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/412
             // REF: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/pull/413
-            foreach (var parameter in operation.Parameters.OfType<NonBodyParameter>())
-            {
-                var description = apiDescription.ParameterDescriptions.First(p => p.Name == parameter.Name);
+            //foreach (var parameter in operation.Parameters.OfType<NonBodyParameter>())
+            //{
+            //    var description = apiDescription.ParameterDescriptions.First(p => p.Name == parameter.Name);
 
-                if (parameter.Description == null)
-                {
-                    parameter.Description = description.ModelMetadata?.Description;
-                }
+            //    if (parameter.Description == null)
+            //    {
+            //        parameter.Description = description.ModelMetadata?.Description;
+            //    }
 
-                if (parameter.Default == null)
-                {
-                    parameter.Default = description.DefaultValue;
-                }
+            //    if (parameter.Default == null)
+            //    {
+            //        parameter.Default = description.DefaultValue;
+            //    }
 
-                parameter.Required |= description.IsRequired;
-            }
+            //    parameter.Required |= description.IsRequired;
+            //}
         }
     }
 }
