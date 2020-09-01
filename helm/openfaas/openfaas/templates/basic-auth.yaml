@@ -1,8 +1,0 @@
-apiVersion: v1
-data:
-  basic-auth-password: {{ .Values.secret.password }}
-  basic-auth-user: {{ .Values.secret.user }}
-kind: Secret
-metadata:
-  name: basic-auth
-  namespace: {{ .Release.Namespace | quote }}
