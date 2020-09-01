@@ -2,9 +2,9 @@ node('master') {
           String helm_repository = 'chartmuseum'
       String helm_package = 'chartmuseum/grafana'
       String helm_repository_api = 'https://helm.navigatorglass.com/api/charts'
-      String helm_package_name = "grafana"
+      String helm_package_name = "helm/grafana"
       String helm_package_version = "1.0"
-
+      string helm_package_name_upload = "grafana"
 
     timestamps {
 
@@ -40,7 +40,10 @@ node('master') {
           {
             echo "$git_branch"
               sh """
-              helm lint ../$helm_package_name
+              pwd
+            
+            
+              helm lint ../../$helm_package_name
               """
            }
         }
@@ -52,14 +55,14 @@ node('master') {
           if (helm_push.equalsIgnoreCase('true'))
           dir("$helm_package_name")
           {
-            def exists = fileExists "../$helm_package_name"
+            def exists = fileExists "../../$helm_package_name"
             if (exists) {
               sh """
               if [ `ls -1 grafana-* 2>/dev/null | wc -l ` -gt 0 ];
               then
                   rm -r grafana-*
               fi
-              helm package ../$helm_package_name
+              helm package ../../$helm_package_name
               """
             } else {
               echo 'chart not found'
@@ -70,14 +73,15 @@ node('master') {
 
         stage('chart-publish'){
         dir("$helm_package_name")
-        {
-      final chart_to_push = sh(script: "ls  | grep $helm_package_name-*", returnStdout: true).trim()
+        {   
+      final chart_to_push = sh(script: "ls  | grep $helm_package_name_upload-*", returnStdout: true).trim()
            sh """
+           
            curl --data-binary "@$chart_to_push" $helm_repository_api
            """
            }
         }
 
-
       }
   }
+
