@@ -5,18 +5,18 @@
 // TOOLS
 //////////////////////////////////////////////////////////////////////
 
-#tool nuget:?package=MSBuild.SonarQube.Runner.Tool&version=4.6.0
-#tool nuget:?package=xunit.runner.console&version=2.2.0
-#tool nuget:?package=xunit.runner.visualstudio&version=2.2.0
-#tool nuget:?package=DocFx.Console&version=2.42.3
+#tool nuget:?package=MSBuild.SonarQube.Runner.Tool&version=4.8.0
+#tool nuget:?package=xunit.runner.console&version=2.4.1
+#tool nuget:?package=xunit.runner.visualstudio&version=2.4.3
+#tool nuget:?package=DocFx.Console&version=2.56.2
 
 //////////////////////////////////////////////////////////////////////
 // ADDINS
 //////////////////////////////////////////////////////////////////////
 
 #addin nuget:?package=Cake.MiniCover&version=0.29.0-next20180721071547&prerelease
-#addin nuget:?package=Cake.Sonar&version=1.1.18
-#addin nuget:?package=Cake.DocFx&version=0.13.0
+#addin nuget:?package=Cake.Sonar&version=1.1.25
+#addin nuget:?package=Cake.DocFx&version=0.13.1
 
 SetMiniCoverToolsProject("./build/tools.csproj");
 
