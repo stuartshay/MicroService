@@ -23,10 +23,8 @@ namespace MicroService.Service.Helpers
                 return (null, null);
 
             var csWgs84 = GeographicCoordinateSystem.WGS84;
-
-            var fileText = System.IO.File.ReadAllText(@"F:\Build3\MicroService\test\MicroService.Test\Files\EPSG-2263-Ersi.wkt");
             var csFact = new CoordinateSystemFactory();
-            var utmNad83 = csFact.CreateFromWkt(fileText);
+            var utmNad83 = csFact.CreateFromWkt(Epsg2263EsriWkt);
 
 
             var ctFactory = new CoordinateTransformationFactory();
