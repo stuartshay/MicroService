@@ -19,8 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="GeoAPI" Version="1.7.5" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="Moq" Version="4.14.5" />
+    <PackageReference Include="NetTopologySuite" Version="2.1.0" />
+    <PackageReference Include="NetTopologySuite.Features" Version="2.1.0" />
+    <PackageReference Include="NetTopologySuite.IO.ShapeFile" Version="2.0.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
@@ -32,6 +36,10 @@
     <ProjectReference Include="..\..\src\MicroService.Data\MicroService.Data.csproj" />
     <ProjectReference Include="..\..\src\MicroService.Service\MicroService.Service.csproj" />
     <ProjectReference Include="..\..\src\MicroService.WebApi\MicroService.WebApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Files\Borough_Boundaries\" />
   </ItemGroup>
 
   <PropertyGroup>
