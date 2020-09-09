@@ -76,6 +76,8 @@ namespace MicroService.WebApi
 
             // Services
             services.AddScoped<ICalculationService, CalculationService>();
+            services.AddScoped<IBoroughBoundariesService, BoroughBoundariesService>();
+
             services.AddCustomControllers(Configuration);
         }
 
