@@ -40,7 +40,7 @@ namespace MicroService.Service.Helpers
         /// </summary>
         /// <param name="latitude"></param>
         /// <param name="longitude"></param>
-        /// <returns></returns>
+        /// <returns></returns> 
         public static (double?, double?) Wgs84TransformNad83(double? latitude, double? longitude)
         {
             if (!latitude.HasValue || !longitude.HasValue)
