@@ -4,6 +4,9 @@ docker/
 test/**/*
 test/
 
+**/Properties/**/*
+**/Properties
+
 **/bin/**/*
 **/bin
 
@@ -37,3 +40,5 @@ launchSettings.json
 **/Jenkinsfile-base
 **/Jenkinsfile
 **/Dockerfile
+launchSettings.json
+
