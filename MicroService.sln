@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F428E656-40A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CB94248E-94FA-4197-A7DC-4A7FD7D907B3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Data", "src\MicroService.Data\MicroService.Data.csproj", "{9A19103F-16F7-4668-BE54-9A1E7A4F7961}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Data", "src\MicroService.Data\MicroService.Data.csproj", "{E7416C7C-91B7-4E4D-AAE7-9A6FAF4058B8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Service", "src\MicroService.Service\MicroService.Service.csproj", "{9A19103F-16F7-4668-BE54-9A1E7A4F7962}"
 EndProject
@@ -15,16 +15,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.WebApi", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Test", "test\MicroService.Test\MicroService.Test.csproj", "{9A19103F-16F7-4668-BE54-9A1E7A4F7964}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{B85651F3-64E0-4A14-99EF-A3A78CFA4760}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9A19103F-16F7-4668-BE54-9A1E7A4F7961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A19103F-16F7-4668-BE54-9A1E7A4F7961}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A19103F-16F7-4668-BE54-9A1E7A4F7961}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A19103F-16F7-4668-BE54-9A1E7A4F7961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7416C7C-91B7-4E4D-AAE7-9A6FAF4058B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7416C7C-91B7-4E4D-AAE7-9A6FAF4058B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7416C7C-91B7-4E4D-AAE7-9A6FAF4058B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7416C7C-91B7-4E4D-AAE7-9A6FAF4058B8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9A19103F-16F7-4668-BE54-9A1E7A4F7962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9A19103F-16F7-4668-BE54-9A1E7A4F7962}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A19103F-16F7-4668-BE54-9A1E7A4F7962}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -42,7 +44,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9A19103F-16F7-4668-BE54-9A1E7A4F7961} = {F428E656-40A3-482B-8BEB-36FB9C1EA1C9}
+		{E7416C7C-91B7-4E4D-AAE7-9A6FAF4058B8} = {F428E656-40A3-482B-8BEB-36FB9C1EA1C9}
 		{9A19103F-16F7-4668-BE54-9A1E7A4F7962} = {F428E656-40A3-482B-8BEB-36FB9C1EA1C9}
 		{9A19103F-16F7-4668-BE54-9A1E7A4F7963} = {F428E656-40A3-482B-8BEB-36FB9C1EA1C9}
 		{9A19103F-16F7-4668-BE54-9A1E7A4F7964} = {CB94248E-94FA-4197-A7DC-4A7FD7D907B3}

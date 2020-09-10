@@ -33,7 +33,7 @@ namespace MicroService.Test.Integration
             var sut = FunctionHelper.Percentile(array, 0.995);
 
             // Assert
-            _output.WriteLine("Result:{sut}", sut);
+            _output.WriteLine($"Result:{sut}");
             Assert.NotNull(results);
             Assert.Equal(sut, result);
         }
