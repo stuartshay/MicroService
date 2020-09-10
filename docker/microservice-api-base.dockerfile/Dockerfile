@@ -1,5 +1,5 @@
 # Build Stage
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
@@ -8,4 +8,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY .  /app
 WORKDIR /app
 
-RUN dotnet restore
+RUN dotnet restore  /p:RestoreUseSkipNonexistentTargets="false"
