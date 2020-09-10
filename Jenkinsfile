@@ -1,4 +1,4 @@
-node('docker') {
+node('buildx')  {
 
     stage('Git checkout') {
         git branch: 'develop', credentialsId: 'gihub-key', url: 'git@github.com:stuartshay/MicroService.git'
