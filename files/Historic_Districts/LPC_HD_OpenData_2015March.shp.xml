@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>Landmarks Preservation Commission (Daniel H. Watts)</origin>
+				<pubdate>March 6, 2015</pubdate>
+				<title Sync="TRUE">LPC_HD_OpenData_2015March</title>
+				<geoform Sync="TRUE">vector digital data</geoform>
+				<serinfo>
+					<sername>New York City Landmark List</sername>
+					<issue>March 2015</issue>
+				</serinfo>
+				<pubinfo>
+					<publish>New York City Landmarks Preservation Commission (LPC)</publish>
+				</pubinfo>
+				<onlink>https://nycopendata.socrata.com/</onlink>
+				<ftname Sync="TRUE">LPC_HD_OpenData_2015March</ftname></citeinfo>
+		</citation>
+		<descript>
+			<abstract>This dataset contains boundaries and associated attribute information for all designated historic districts or areas under consideration for historic district designation (i.e. calendared) by the New York City Landmarks Preservation Commission (LPC), including items that may have been denied designation or overturned. Please note that some areas may have multiple records in the database if different actions were taken over time. Please pay close attention to the "CURRENT" and "LAST_ACTION_ON_BOUNDARY" fields to determine the status of a particular area. The geographic locations of the polygons in this dataset are derived primarily from the Department of City Planning's PLUTO dataset, and therefore discrepancies may arise where the LPC dataset has not been updated with information from the most recent PLUTO releases. Please pay close attention to the field descriptions present in the file's metadata to understand how to use this dataset. And please contact LPC if there are questions or concerns.</abstract>
+			<purpose>Provides information regarding all historic district boundaries calendared, heard, or designated by the Landmarks Preservation Commission.</purpose>
+			<supplinf>Please contact the Landmarks Preservation Commission with questions pertaining to any of the records contained in this dataset - info@lpc.nyg.gov.</supplinf>
+			<langdata Sync="TRUE">en</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<rngdates>
+					<begdate>October 14, 1965</begdate>
+					<enddate>March 6, 2015</enddate>
+				</rngdates>
+				<sngdate><caldate>REQUIRED: The year (and optionally month, or month and day) for which the data set corresponds to the ground.</caldate></sngdate></timeinfo>
+			<current>ground condition</current>
+		</timeperd>
+		<status>
+			<progress>In work</progress>
+			<update>As needed</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc Sync="TRUE">-74.234738</westbc>
+				<eastbc Sync="TRUE">-73.743299</eastbc>
+				<northbc Sync="TRUE">40.903416</northbc>
+				<southbc Sync="TRUE">40.515806</southbc>
+			</bounding>
+			<lboundng><leftbc Sync="TRUE">919360.083589</leftbc><rightbc Sync="TRUE">1055211.334090</rightbc><bottombc Sync="TRUE">127301.997150</bottombc><topbc Sync="TRUE">268416.936793</topbc></lboundng></spdom>
+		<keywords>
+			<theme>
+				<themekt>REQUIRED: Reference to a formally registered thesaurus or a similar authoritative source of theme keywords.</themekt>
+				<themekey>Landmark</themekey>
+				<themekey>Landmarks</themekey>
+				<themekey>Landmarks Preservation Commission</themekey>
+				<themekey>Historic Preservation</themekey>
+				<themekey>Preservation</themekey>
+				<themekey>LPC</themekey>
+				<themekey>Landmark List</themekey>
+				<themekey>Individual Landmark</themekey>
+				<themekey>Interior Landmark</themekey>
+				<themekey>Scenic Landmark</themekey>
+				<themekey>Historic District</themekey>
+				<themekey>Historic Districts</themekey>
+				<themekey>Boundaries</themekey>
+			</theme>
+			<place>
+				<placekey>New York</placekey>
+				<placekey>New York City</placekey>
+				<placekey>NYC</placekey>
+				<placekey>Bronx</placekey>
+				<placekey>Brooklyn</placekey>
+				<placekey>Manhattan</placekey>
+				<placekey>Queens</placekey>
+				<placekey>Staten Island</placekey>
+				<placekey>5 Boroughs</placekey>
+				<placekey>Five Boroughs</placekey>
+			</place>
+		</keywords>
+		<accconst>Please contact the Landmarks Preservation Commission with questions pertaining to access constraints - info@lpc.nyg.gov.</accconst>
+		<useconst>Please contact the Landmarks Preservation Commission with questions pertaining to use constraints - info@lpc.nyg.gov.</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>New York City Landmarks Preservation Commission (LPC)</cntorg>
+					<cntper>Public Information</cntper>
+				</cntorgp>
+				<cntvoice>212-669-7700</cntvoice>
+				<cntemail>info@lpc.nyc.gov</cntemail>
+				<hours>9am-5pm, weekdays</hours>
+			</cntinfo>
+		</ptcontac>
+		<datacred>Landmarks Preservation Commission, Daniel H. Watts</datacred>
+		<native Sync="TRUE">Microsoft Windows Vista Version 6.1 (Build 7601) Service Pack 1; ESRI ArcCatalog 9.3.1.3000</native>
+		<natvform Sync="TRUE">Shapefile</natvform></idinfo>
+	<dataqual>
+		<logic>The geographic locations of the polygon boundaries in this dataset are derived primarily from the Department of City Planning's PLUTO data. These locations are not necessariliy updated with changes to the aforementioned datasets, and so discrepancies are possible.</logic>
+		<lineage>
+			<procstep>
+				<procdesc>Metadata imported.</procdesc>
+				<srcused>C:\Users\jmost\AppData\Local\Temp\xml787B.tmp</srcused>
+				<procdate>20140729</procdate>
+				<proctime>13580200</proctime>
+			</procstep>
+			<procstep>
+				<procdesc>Metadata imported.</procdesc>
+				<srcused>C:\Users\jmost\AppData\Local\Temp\xml323B.tmp</srcused>
+				<procdate>20140729</procdate>
+				<proctime>15423500</proctime>
+			</procstep>
+			<procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">C:\Users\dwatts\AppData\Local\Temp\xmlEE1D.tmp</srcused><procdate Sync="TRUE">20150306</procdate><proctime Sync="TRUE">14140600</proctime></procstep></lineage>
+	</dataqual>
+	<spdoinfo>
+		<direct Sync="TRUE">Vector</direct>
+		<ptvctinf>
+			<sdtsterm Name="LPC_HD_OpenData_2015March">
+				<sdtstype Sync="TRUE">G-polygon</sdtstype>
+				<ptvctcnt Sync="TRUE">229</ptvctcnt>
+			</sdtsterm>
+			<esriterm Name="LPC_HD_OpenData_2015March"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom Sync="TRUE">Polygon</efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">229</efeacnt><spindex Sync="TRUE">FALSE</spindex><linrefer Sync="TRUE">FALSE</linrefer></esriterm></ptvctinf>
+	</spdoinfo>
+	<spref>
+		<horizsys>
+			<planar>
+				<planci>
+					<plance Sync="TRUE">coordinate pair</plance>
+					<coordrep>
+						<absres Sync="TRUE">0.000000</absres>
+						<ordres Sync="TRUE">0.000000</ordres>
+					</coordrep>
+					<plandu Sync="TRUE">survey feet</plandu>
+				</planci>
+				<mapproj><mapprojn Sync="TRUE">Lambert Conformal Conic</mapprojn><lambertc><stdparll Sync="TRUE">40.666667</stdparll><stdparll Sync="TRUE">41.033333</stdparll><longcm Sync="TRUE">-74.000000</longcm><latprjo Sync="TRUE">40.166667</latprjo><feast Sync="TRUE">984250.000000</feast><fnorth Sync="TRUE">0.000000</fnorth></lambertc></mapproj></planar>
+			<geodetic>
+				<horizdn Sync="TRUE">North American Datum of 1983</horizdn>
+				<ellips Sync="TRUE">Geodetic Reference System 80</ellips>
+				<semiaxis Sync="TRUE">6378137.000000</semiaxis>
+				<denflat Sync="TRUE">298.257222</denflat>
+			</geodetic>
+			<cordsysn><geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn><projcsn Sync="TRUE">NAD_1983_StatePlane_New_York_Long_Island_FIPS_3104_Feet</projcsn></cordsysn></horizsys>
+		<vertdef>
+			<altsys>
+				<altenc>Explicit elevation coordinate included with horizontal coordinates</altenc>
+			</altsys>
+		</vertdef>
+	</spref>
+	<eainfo>
+		<detailed Name="LPC_HD_OpenData_2015March">
+			<enttyp>
+				<enttypl Sync="TRUE">LPC_HD_OpenData_2015March</enttypl>
+				<enttypd>Provides information regarding all historic district boundaries designated or considered for designation by the Landmarks Preservation Commission.</enttypd>
+				<enttypds>LPC, DHW</enttypds>
+				<enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">229</enttypc></enttyp>
+			<attr>
+				<attrlabl>FID</attrlabl>
+				<attrdef>Internal feature number.</attrdef>
+				<attrdefs>ESRI</attrdefs>
+				<attrdomv>
+					<udom>Sequential unique whole numbers that are automatically generated.</udom>
+				</attrdomv>
+				<attalias Sync="TRUE">FID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr>
+			<attr>
+				<attrlabl>Shape</attrlabl>
+				<attrdef>Feature geometry.</attrdef>
+				<attrdefs>ESRI</attrdefs>
+				<attrdomv>
+					<udom>Coordinates defining the features.</udom>
+				</attrdomv>
+				<attalias Sync="TRUE">Shape</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr>
+			<attr>
+				<attrlabl>OBJECTID</attrlabl>
+				<attrdef>GIS-determined unique identifier</attrdef>
+				<attalias Sync="TRUE">OBJECTID</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">10</attwidth></attr>
+			<attr>
+				<attrlabl>BOROUGH</attrlabl>
+				<attrdef>Borough expressed as a two character abbreviation (MN=Manhattan, BX=Bronx, BK=Brooklyn, QN=Queens, and SI=Staten Island)</attrdef>
+				<attalias Sync="TRUE">BOROUGH</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">2</attwidth></attr>
+			<attr>
+				<attrlabl>LP_NUMBER</attrlabl>
+				<attrdef>Internal LPC identifier (LP-XXXXX) used to identify a single designation (one LP number is assigned per Historic District, Individual, Scenic, or Interior Landmark)</attrdef>
+				<attrdefs>LPC, DHW</attrdefs>
+				<attalias Sync="TRUE">LP_NUMBER</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">15</attwidth></attr>
+			<attr>
+				<attrlabl>CURRENT_</attrlabl>
+				<attrdef>Alias: CURRENT_STATUS; Indicates whether a record in the database is presently active/current (No=Not active/current; Yes=Active/current)</attrdef>
+				<attalias Sync="TRUE">CURRENT_</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">6</attwidth></attr>
+			<attr>
+				<attrlabl>AREA_NAME</attrlabl>
+				<attrdef>Name of the proposed (i.e. calendared) or designated historic district</attrdef>
+				<attalias Sync="TRUE">AREA_NAME</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">150</attwidth></attr>
+			<attr>
+				<attrlabl>EXTENSION</attrlabl>
+				<attrdef>Denotes (either yes or no) whether the item is an extension of a previously designated historic district</attrdef>
+				<attalias Sync="TRUE">EXTENSION</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">6</attwidth></attr>
+			<attr>
+				<attrlabl>STATUS_OF_</attrlabl>
+				<attrdef>Alias: STATUS_OF_BOUNDARY; present designation status of the record; NOTE: To determine the present status of any boundary in the shapefile, the fields "CURRENT_" and "STATUS_OF_BOUNDARY" must be looked at collectively. Active records will appear as "CURRENT"=Yes, "STATUS"="CALENDARED", "HEARD", "DESIGNATED" or "NOT DESIGNATED".</attrdef>
+				<attalias Sync="TRUE">STATUS_OF_</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">150</attwidth></attr>
+			<attr>
+				<attrlabl>DESIG_DATE</attrlabl>
+				<attrdef>Date of designation; Note: This field will be blank for items not designated</attrdef>
+				<attrdefs>LPC, DHW</attrdefs>
+				<attalias Sync="TRUE">DESIG_DATE</attalias><attrtype Sync="TRUE">Date</attrtype><attwidth Sync="TRUE">8</attwidth></attr>
+			<attr>
+				<attrlabl>BOUNDARY_N</attrlabl>
+				<attrdef>Alias: BOUNDARY_NOTES; Text field providing clarification for the STATUS_OF_BOUNDARY and LAST_ACTION_ON_LP fields</attrdef>
+				<attalias Sync="TRUE">BOUNDARY_N</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">250</attwidth></attr>
+			<attr>
+				<attrlabl>CALEN_DATE</attrlabl>
+				<attrdef>Date of calendaring; Note: Not all items have a date of calendaring (date of calendaring was not tracked until the 1990s)</attrdef>
+				<attrdefs>LPC, DHW</attrdefs>
+				<attalias Sync="TRUE">CALEN_DATE</attalias><attrtype Sync="TRUE">Date</attrtype><attwidth Sync="TRUE">8</attwidth></attr>
+			<attr>
+				<attrlabl>PUBLIC_HEA</attrlabl>
+				<attrdef>Alias: PUBLIC_HEARINGS; Date of public hearing(s); Note: It is possible for one item to have multiple public hearing dates; this field will be blank for items which have not yet had a public hearing</attrdef>
+				<attrdefs>LPC, DHW</attrdefs>
+				<attalias Sync="TRUE">PUBLIC_HEA</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">50</attwidth></attr>
+			<attr>
+				<attrlabl>LAST_ACTIO</attrlabl>
+				<attrdef>Alias: LAST_ACTION_ON_LP; Last action taken as part of the LP number (i.e. the LP action), specific to the boundary; helps clarify the STATUS_OF_BOUNDARY field (which denotes only status, not action taken)</attrdef>
+				<attrdefs>LPC, DHW</attrdefs>
+				<attalias Sync="TRUE">LAST_ACTIO</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">254</attwidth></attr>
+			<attr>
+				<attrlabl>OTHER_HEAR</attrlabl>
+				<attrdef>Alias: OTHER_HEARINGS; Notes any other relevant hearing dates for the item</attrdef>
+				<attalias Sync="TRUE">OTHER_HEAR</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">50</attwidth></attr>
+			<attr><attrlabl Sync="TRUE">Shape_area</attrlabl><attalias Sync="TRUE">Shape_area</attalias><attrtype Sync="TRUE">Float</attrtype><attwidth Sync="TRUE">19</attwidth><attrdef Sync="TRUE">Area of feature in internal units squared.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Positive real numbers that are automatically generated.</udom></attrdomv><atnumdec Sync="TRUE">11</atnumdec></attr><attr><attrlabl Sync="TRUE">Shape_len</attrlabl><attalias Sync="TRUE">Shape_len</attalias><attrtype Sync="TRUE">Float</attrtype><attwidth Sync="TRUE">19</attwidth><atnumdec Sync="TRUE">11</atnumdec></attr></detailed>
+		<overview>
+			<eaover>FID, Shape, BOROUGH, LP_NUMBER, AREA_NAME, EXTENSION, CURRENT_STATUS, STATUS_OF_BOUNDARY, LAST_ACTION_ON_LP, BOUNDARY_NOTES , DESIG_DATE, PUBLIC_HEARINGS, CALEN_DATE, OTHER_HEARINGS</eaover>
+			<eadetcit>Daniel H. Watts, LPC</eadetcit>
+		</overview>
+	</eainfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>New York City Landmarks Preservation Commission (LPC)</cntorg>
+					<cntper>Public Information</cntper>
+				</cntorgp>
+				<cntaddr>
+					<addrtype>physical address</addrtype>
+					<address>1 Centre Street, 9th Floor</address>
+					<city>New York</city>
+					<state>NY</state>
+					<postal>10007</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>212-669-7700</cntvoice>
+				<cntemail>info@lpc.nyc.gov</cntemail>
+				<hours>9am-5pm, weekdays</hours>
+			</cntinfo>
+		</distrib>
+		<resdesc>Downloadable Data</resdesc>
+		<stdorder>
+			<digform>
+				<digtinfo>
+					<transize>1.236</transize>
+					<dssize Sync="TRUE">0.457</dssize></digtinfo>
+			</digform>
+		</stdorder>
+	</distinfo>
+	<metainfo>
+		<metd Sync="TRUE">20150306</metd>
+		<metc>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>New York City Landmarks Preservation Commission (LPC)</cntorg>
+					<cntper>Public Information</cntper>
+				</cntorgp>
+				<cntaddr>
+					<addrtype>physical address</addrtype>
+					<address>1 Centre Street, 9th Floor</address>
+					<city>New York</city>
+					<state>NY</state>
+					<postal>10007</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>212-669-7700</cntvoice>
+				<cntemail>info@lpc.nyc.gov</cntemail>
+				<hours>9am-5pm, weekdays</hours>
+			</cntinfo>
+		</metc>
+		<metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv>
+		<mettc Sync="TRUE">local time</mettc>
+		<metextns>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<langmeta Sync="TRUE">en</langmeta><metextns><onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink><metprof Sync="TRUE">ESRI Metadata Profile</metprof></metextns></metainfo>
+	<Esri><MetaID>{E5F92AC0-3F22-4C4D-94D3-B66C710F5456}</MetaID><CreaDate>20150306</CreaDate><CreaTime>14140600</CreaTime><SyncOnce>FALSE</SyncOnce><SyncDate>20150306</SyncDate><SyncTime>14224800</SyncTime><ModDate>20150306</ModDate><ModTime>14224800</ModTime></Esri><dataIdInfo><envirDesc Sync="TRUE">Microsoft Windows Vista Version 6.1 (Build 7601) Service Pack 1; ESRI ArcCatalog 9.3.1.3000</envirDesc><dataLang><languageCode Sync="TRUE" value="en"></languageCode></dataLang><idCitation><resTitle Sync="TRUE">LPC_HD_OpenData_2015March</resTitle><presForm><PresFormCd Sync="TRUE" value="005"></PresFormCd></presForm></idCitation><spatRpType><SpatRepTypCd Sync="TRUE" value="001"></SpatRepTypCd></spatRpType><dataExt><geoEle><GeoBndBox esriExtentType="native"><westBL Sync="TRUE">919360.083589</westBL><eastBL Sync="TRUE">1055211.33409</eastBL><northBL Sync="TRUE">268416.936793</northBL><southBL Sync="TRUE">127301.99715</southBL><exTypeCode Sync="TRUE">1</exTypeCode></GeoBndBox></geoEle></dataExt><geoBox esriExtentType="decdegrees"><westBL Sync="TRUE">-74.234738</westBL><eastBL Sync="TRUE">-73.743299</eastBL><northBL Sync="TRUE">40.903416</northBL><southBL Sync="TRUE">40.515806</southBL><exTypeCode Sync="TRUE">1</exTypeCode></geoBox></dataIdInfo><mdLang><languageCode Sync="TRUE" value="en"></languageCode></mdLang><mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName><mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer><mdChar><CharSetCd Sync="TRUE" value="004"></CharSetCd></mdChar><mdHrLv><ScopeCd Sync="TRUE" value="005"></ScopeCd></mdHrLv><mdHrLvName Sync="TRUE">dataset</mdHrLvName><distInfo><distributor><distorTran><onLineSrc><orDesc Sync="TRUE">002</orDesc><linkage Sync="TRUE">file://\\csc.nycnet\landmarks\APPS2\GIS\GISdhw\2015_OpenData\LPC_HD_OpenData_2015March.shp</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc><transSize Sync="TRUE">0.457</transSize></distorTran><distorFormat><formatName Sync="TRUE">Shapefile</formatName></distorFormat></distributor></distInfo><refSysInfo><RefSystem><refSysID><identCode Sync="TRUE">NAD_1983_StatePlane_New_York_Long_Island_FIPS_3104_Feet</identCode></refSysID></RefSystem></refSysInfo><spatRepInfo><VectSpatRep><topLvl><TopoLevCd Sync="TRUE" value="001"></TopoLevCd></topLvl><geometObjs Name="LPC_HD_OpenData_2015March"><geoObjTyp><GeoObjTypCd Sync="TRUE" value="001"></GeoObjTypCd></geoObjTyp><geoObjCnt Sync="TRUE">229</geoObjCnt></geometObjs></VectSpatRep></spatRepInfo><mdDateSt Sync="TRUE">20150306</mdDateSt></metadata>
