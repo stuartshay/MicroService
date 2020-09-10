@@ -1,6 +1,9 @@
 docker/**/*
 docker/
 
+test/**/*
+test/
+
 **/bin/**/*
 **/bin
 
