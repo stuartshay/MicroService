@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MicroService.Data.Repository;
 using MicroService.Service.Helpers;
 using MicroService.Test.Fixture;
+using Microsoft.AspNetCore.Mvc;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -20,6 +21,7 @@ namespace MicroService.Test.Integration
             _output = output;
         }
 
+        
         [Fact(DisplayName = "Calculate_Percentile - Integration")]
         [Trait("Category", "Integration")]
         public async Task Can_Calculate_Percentile()
