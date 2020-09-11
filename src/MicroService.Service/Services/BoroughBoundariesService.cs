@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using MicroService.Service.Configuration;
 using MicroService.Service.Models;
 using Microsoft.Extensions.Options;
@@ -11,7 +12,10 @@ namespace MicroService.Service.Services
     {
         public BoroughBoundariesService(IOptions<ApplicationOptions> options)
         {
-            var shapeDirectory = $"{options.Value.ShapeConfiguration.ShapeRootDirectory}\\Borough_Boundaries\\nybb";
+            var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, "Borough_Boundaries","nybb")}";
+            
+            Console.WriteLine(shapeDirectory);
+
             string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
             GeometryFactory factory = new GeometryFactory();

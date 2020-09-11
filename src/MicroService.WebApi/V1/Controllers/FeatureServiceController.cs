@@ -42,6 +42,5 @@ namespace MicroService.WebApi.V1.Controllers
 
             return Ok(results.NumRecords);
         }
-
     }
 }
