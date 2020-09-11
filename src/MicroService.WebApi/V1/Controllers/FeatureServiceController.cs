@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using MicroService.Data.Models;
 using MicroService.Service.Services;
 using MicroService.WebApi.Extensions.Constants;
 using Microsoft.AspNetCore.Cors;
@@ -34,16 +33,15 @@ namespace MicroService.WebApi.V1.Controllers
         [Produces("application/json", Type = typeof(IEnumerable<string>))]
         [ProducesResponseType(typeof(IEnumerable<string>), 200)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<string>> Get()
+        public async Task<ActionResult<object>> Get()
         {
-            //if (results == null)
-              //  return NotFound();
+            var results = _boroughBoundariesService.GetShapeDatabaseProperties();
 
-            return Ok("string");
+            if (results == null)
+                return NotFound();
+
+            return Ok(results.NumRecords);
         }
-
-
-
 
     }
 }

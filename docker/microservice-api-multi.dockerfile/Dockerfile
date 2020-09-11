@@ -18,6 +18,9 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /publish
 COPY --from=build-env /publish .
 
+# Shape Files 
+COPY /files  /files
+
 # Set environment variables
 ENV ASPNETCORE_URLS http://*:5000
 ENV ASPNETCORE_ENVIRONMENT Docker

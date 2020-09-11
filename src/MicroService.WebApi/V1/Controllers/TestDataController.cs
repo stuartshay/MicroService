@@ -48,7 +48,7 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult<IEnumerable<TestData>>> Get()
         {
-            var results = await _testDataRepository.FindAll();
+            var results = await _testDataRepository.FindAll().ConfigureAwait(false);
             if (results == null)
                 return NotFound();
 
@@ -66,7 +66,7 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult<double>> GetPercentile()
         {
-            var results = await _calculationService.CalculatePercentile(DataConstants.ExcelPercentile);
+            var results = await _calculationService.CalculatePercentile(DataConstants.ExcelPercentile).ConfigureAwait(false);
 
             if (Math.Abs(results) < 15)
                 return NotFound();
