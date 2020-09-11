@@ -30,6 +30,8 @@ namespace MicroService.WebApi.Extensions
             var config = configuration.Get<ApplicationOptions>();
             Console.WriteLine($"Environment: {environment?.EnvironmentName}");
             Console.WriteLine($"PostgreSql: {config.ConnectionStrings.PostgreSql}");
+            Console.WriteLine($"ShapeRootDirectory Config: {config.ShapeConfiguration.ShapeRootDirectory}");
+            Console.WriteLine($"ShapeRootDirectory: {Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), config.ShapeConfiguration.ShapeRootDirectory))}");
         }
 
         /// <summary>
