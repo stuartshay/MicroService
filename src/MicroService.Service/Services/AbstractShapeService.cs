@@ -4,7 +4,7 @@ using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
-    public abstract class AbstractShapeService
+    public abstract class AbstractShapeService<T>
     {
         public ShapefileDataReader _shapeFileDataReader { get; set; }
 
@@ -19,6 +19,8 @@ namespace MicroService.Service.Services
             DbaseFileHeader header = _shapeFileDataReader.DbaseHeader;
             return header;
         }
+
+        public abstract T GetFeatureLookup(double x, double y);
 
         public List<Feature> GetFeatures()
         {

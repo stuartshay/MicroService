@@ -1,37 +1,40 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using MicroService.Service.Configuration;
+using MicroService.Service.Helpers;
 using MicroService.Service.Models;
+using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Options;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
-    public class BoroughBoundariesService : AbstractShapeService, IBoroughBoundariesService
+    public class BoroughBoundariesService : AbstractShapeService<BoroughBoundaries>, IBoroughBoundariesService
     {
         public BoroughBoundariesService(IOptions<ApplicationOptions> options)
         {
-            var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, "Borough_Boundaries","nybb")}";
+            // Get Shape Properties
+            var shapeProperties = ShapeProperties.BoroughBoundaries.GetAttribute<ShapeAttributes>();
             
-            Console.WriteLine(shapeDirectory);
-
+            var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
             string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
             GeometryFactory factory = new GeometryFactory();
             _shapeFileDataReader = new ShapefileDataReader(shapePath, factory);
         }
 
-        public BoroughBoundaries GetFeatureLookup(double x, double y)
+        public override BoroughBoundaries GetFeatureLookup(double x, double y)
         {
+            // Validate Point is in Range
             var point = new Point(x, y);
 
             var model = new BoroughBoundaries();
+            
             var features = GetFeatures();
             foreach (var f in features)
             {
-                var z = f.Geometry.Contains(point);
-                if (z)
+                var exists = f.Geometry.Contains(point);
+                if (exists)
                 {
                     model = new BoroughBoundaries
                     {
@@ -39,6 +42,12 @@ namespace MicroService.Service.Services
                         BoroName = f.Attributes["BoroName"].ToString(),
                     };
                 }
+
+            }
+
+            if(!model.ArePropertiesNotNull())
+            {
+                return null;
             }
 
             return model;
