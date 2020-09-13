@@ -1,8 +1,8 @@
 node('master') {
      
-    String helm_repository = 'chartmuseum'
-    String helm_package = 'chartmuseum/prometheus'
-    String helm_repository_api = 'https://helm.navigatorglass.com/api/charts'
+    String helm_repository = 'microservice'
+    String helm_package = 'microservice/prometheus'
+    String helm_repository_api = 'https://microservice.navigatorglass.com/api/charts'
     String helm_package_name = "helm/prometheus"
     String helm_package_version = "1.0"
     String helm_package_name_update = "prometheus"

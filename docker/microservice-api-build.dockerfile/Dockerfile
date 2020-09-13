@@ -21,7 +21,7 @@ RUN dotnet publish -o /publish -c Release  -r debian.9-x64
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 
 # Shape Files 
-COPY /files  /files
+COPY files  /files
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         curl \
