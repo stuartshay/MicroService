@@ -15,6 +15,9 @@ RUN dotnet publish -o /publish -c Release -f netcoreapp3.1
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 
+# Shape Files 
+COPY files  /files
+
 WORKDIR /publish
 COPY --from=build-env /publish .
 

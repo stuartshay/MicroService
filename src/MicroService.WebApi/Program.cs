@@ -16,7 +16,7 @@ namespace MicroService.WebApi
     public static class Program
     {
         /// <summary>
-        /// 
+        ///  Program
         /// </summary>
         public static IMetricsRoot Metrics { get; set; }
 

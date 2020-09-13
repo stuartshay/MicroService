@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
-using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services

@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using MicroService.Data.Models;
+using MicroService.Service.Helpers;
+using MicroService.Service.Models.Enum;
 using MicroService.Service.Services;
 using MicroService.WebApi.Extensions.Constants;
+using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +24,10 @@ namespace MicroService.WebApi.V1.Controllers
     {
         private readonly IBoroughBoundariesService _boroughBoundariesService;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="boroughBoundariesService"></param>
         public FeatureServiceController(IBoroughBoundariesService boroughBoundariesService)
         {
             _boroughBoundariesService = boroughBoundariesService;
@@ -33,17 +40,71 @@ namespace MicroService.WebApi.V1.Controllers
         [HttpGet]
         [Produces("application/json", Type = typeof(IEnumerable<string>))]
         [ProducesResponseType(typeof(IEnumerable<string>), 200)]
-        [ProducesResponseType(404)]
-        public async Task<ActionResult<string>> Get()
+        public ActionResult<object> Get()
         {
-            //if (results == null)
-              //  return NotFound();
+            var x = from j in EnumHelper.EnumToList<ShapeProperties>().ToList() select new
+            {
+                key = j.ToString(),
+                description = j.GetEnumDescription(),
+            };
 
-            return Ok("string");
+            return Ok(x);
         }
 
+        /// <summary>
+        ///  Get Shape Properties
+        /// </summary>
+        /// <param name="id">Shape Id</param>
+        /// <returns></returns>
+        [HttpGet("{id}", Name = "GetShapeProperties")]
+        [Produces("application/json")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public ActionResult<object> GetShapeProperties(string id)
+        {
+            if (id == null)
+                return BadRequest();
 
+            var databaseProperties = _boroughBoundariesService.GetShapeDatabaseProperties();
+            var shapeProperties = _boroughBoundariesService.GetShapeProperties();
 
+            if (databaseProperties == null)
+                return NotFound();
+
+            var result = new
+            {
+                NumFields = databaseProperties.NumFields,
+                NumRecords = databaseProperties.NumRecords,
+                Bounds = new
+                {
+                    MaxX = shapeProperties.Bounds.MaxX,
+                    MaxY = shapeProperties.Bounds.MaxY,
+                    MinX = shapeProperties.Bounds.MinX,
+                    MinY = shapeProperties.Bounds.MinY,
+                },
+                LastUpdatedDate = databaseProperties.LastUpdateDate,
+                FieldsList = databaseProperties.Fields.Select(f => new { f.Name, f.Type.FullName }),
+            };
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        ///  Get Feature Lookup
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("featurelookup", Name = "GetFeatureLookup")]
+        [Produces("application/json", Type = typeof(IEnumerable<string>))]
+        [ProducesResponseType(typeof(IEnumerable<string>), 200)]
+        [ProducesResponseType(404)]
+        public async Task<ActionResult<object>> GetFeatureLookup([FromQuery] FeatureRequestModel request)
+        {
+            var results = _boroughBoundariesService.GetFeatureLookup(request.X, request.Y);
+            if (results == null)
+                return NotFound();
+
+            return Ok(results);
+        }
 
     }
 }
