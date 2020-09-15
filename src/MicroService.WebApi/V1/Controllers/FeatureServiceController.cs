@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MicroService.Service.Helpers;
@@ -42,13 +43,15 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(typeof(IEnumerable<string>), 200)]
         public ActionResult<object> Get()
         {
-            var x = from j in EnumHelper.EnumToList<ShapeProperties>().ToList() select new
+            var result = from j in EnumHelper.EnumToList<ShapeProperties>().ToList() select new
             {
                 key = j.ToString(),
                 description = j.GetEnumDescription(),
+                fileName = j.GetAttribute<ShapeAttributes>().FileName,
+                directory = j.GetAttribute<ShapeAttributes>().Directory,
             };
 
-            return Ok(x);
+            return Ok(result);
         }
 
         /// <summary>
