@@ -99,3 +99,7 @@ variable "aspnetcore_envirnoment" {
 description = "number of days you want to retain log events"
 type        = "string"
 }
+variable "env_name" {
+  description = "name of the enviroment"
+  type        = "string"
+}
