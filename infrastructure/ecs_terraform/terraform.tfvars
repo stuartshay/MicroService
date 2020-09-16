@@ -55,3 +55,6 @@ logs_stream_prefix = "ecs"
 
 # The number of days you want to retain log events in the specified log group
 retention_days = "7"
+
+# Name of env
+env_name = "master"
