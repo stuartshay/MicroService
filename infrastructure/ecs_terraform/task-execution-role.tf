@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ecsTaskExecutionRole" {
-  name               = "${var.family_name}-execution-role-develop"
+  name               = "${var.family_name}-execution-role-${var.env_name}"
   assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
 }
 
