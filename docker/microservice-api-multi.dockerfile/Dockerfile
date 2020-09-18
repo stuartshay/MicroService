@@ -10,10 +10,10 @@ WORKDIR /app
 
 RUN dotnet restore /p:RestoreUseSkipNonexistentTargets="false"
 
-RUN  cat << \EOF >> ~/.bashrc
-RUN  export PATH="$PATH:/root/.dotnet/tools"
-RUN EOF
+RUN  cat << \EOF >> ~/.bashrc export PATH="$PATH:/root/.dotnet/tools" EOF
 RUN source ~/.bashrc
+
+
 
 RUN dotnet tool install --global dotnet-setversion --version 2.2.0 
 RUN dotnet tool install --global dotnet-dbinfo --version 1.4.0 
