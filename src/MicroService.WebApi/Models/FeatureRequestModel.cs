@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MicroService.WebApi.Models
+﻿namespace MicroService.WebApi.Models
 {
+    /// <summary>
+    /// Feature Request Model
+    /// </summary>
     public class FeatureRequestModel
     {
         /// <summary>
@@ -16,6 +14,5 @@ namespace MicroService.WebApi.Models
         ///  Y Point.
         /// </summary>
         public double Y { get; set; }
-
     }
 }
