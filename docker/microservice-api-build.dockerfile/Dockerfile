@@ -14,12 +14,9 @@ RUN export PATH="$PATH:$HOME/.dotnet/tools"
 RUN dotnet tool install --global dotnet-setversion --version 2.2.0 
 RUN dotnet tool install --global dotnet-dbinfo --version 1.4.0 
 RUN dotnet tool list -g
-RUN $HOME/.dotnet/tools/setversion 3.1.402.${BUILD_NUMBER};
-
-
-
-
+#RUN $HOME/.dotnet/tools/setversion 3.1.402.${BUILD_NUMBER};
 #RUN setversion 3.1.402.${BUILD_NUMBER}
+
 
 RUN dotnet publish -o /publish -c Release  -r debian.9-x64
 
