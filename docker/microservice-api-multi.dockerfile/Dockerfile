@@ -10,27 +10,15 @@ WORKDIR /app
 
 RUN dotnet restore /p:RestoreUseSkipNonexistentTargets="false"
 
-RUN  cat << \EOF >> ~/.bashrc export PATH="$PATH:/root/.dotnet/tools" EOF
-RUN source ~/.bashrc
-
-
-
 RUN dotnet tool install --global dotnet-setversion --version 2.2.0 
 RUN dotnet tool install --global dotnet-dbinfo --version 1.4.0 
 RUN dotnet tool list -g
 RUN echo $HOME/.dotnet/tools/setversion
 
-
-
 WORKDIR /app/src/MicroService.WebApi
 
 # Set Version & Publish
 #RUN $HOME/.dotnet/tools/setversion 3.1.402.${BUILD_NUMBER};
-RUN $HOME/.dotnet/tools/setversion --help
-#RUN /root/.dotnet/tools/setversion
-
-
-
 RUN dotnet publish -o /publish -c Release -f netcoreapp3.1
 
 
