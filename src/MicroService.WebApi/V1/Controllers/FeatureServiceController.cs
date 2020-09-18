@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MicroService.Service.Helpers;
@@ -24,14 +23,17 @@ namespace MicroService.WebApi.V1.Controllers
     public class FeatureServiceController : ControllerBase
     {
         private readonly IBoroughBoundariesService _boroughBoundariesService;
+        private readonly INypdSectorsService _nypdSectorsService;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="FeatureServiceController"/> class.
         /// </summary>
         /// <param name="boroughBoundariesService"></param>
-        public FeatureServiceController(IBoroughBoundariesService boroughBoundariesService)
+        /// <param name="nypdSectorsService"></param>
+        public FeatureServiceController(IBoroughBoundariesService boroughBoundariesService, INypdSectorsService nypdSectorsService)
         {
             _boroughBoundariesService = boroughBoundariesService;
+            _nypdSectorsService = nypdSectorsService;
         }
 
         /// <summary>
@@ -68,8 +70,11 @@ namespace MicroService.WebApi.V1.Controllers
             if (id == null)
                 return BadRequest();
 
-            var databaseProperties = _boroughBoundariesService.GetShapeDatabaseProperties();
-            var shapeProperties = _boroughBoundariesService.GetShapeProperties();
+            //var databaseProperties = _boroughBoundariesService.GetShapeDatabaseProperties();
+            //var shapeProperties = _boroughBoundariesService.GetShapeProperties();
+
+            var databaseProperties = _nypdSectorsService.GetShapeDatabaseProperties();
+            var shapeProperties = _nypdSectorsService.GetShapeProperties();
 
             if (databaseProperties == null)
                 return NotFound();
@@ -102,12 +107,13 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult<object>> GetFeatureLookup([FromQuery] FeatureRequestModel request)
         {
-            var results = _boroughBoundariesService.GetFeatureLookup(request.X, request.Y);
+            // var results = _boroughBoundariesService.GetFeatureLookup(request.X, request.Y);
+            var results = _nypdSectorsService.GetFeatureLookup(request.X, request.Y);
+
             if (results == null)
                 return NotFound();
 
             return Ok(results);
         }
-
     }
 }

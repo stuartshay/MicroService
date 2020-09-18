@@ -2,6 +2,7 @@
 using HealthChecks.UI.Client;
 using MicroService.Data.Repository;
 using MicroService.Service.Configuration;
+using MicroService.Service.Models;
 using MicroService.Service.Services;
 using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.Swagger;
@@ -77,6 +78,7 @@ namespace MicroService.WebApi
             // Services
             services.AddScoped<ICalculationService, CalculationService>();
             services.AddScoped<IBoroughBoundariesService, BoroughBoundariesService>();
+            services.AddScoped<INypdSectorsService, NypdSectorsService<NypdSectors>>();
 
             services.AddCustomControllers(Configuration);
         }

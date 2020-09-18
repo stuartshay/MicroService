@@ -10,12 +10,15 @@ namespace MicroService.Service.Models.Enum
 
         [Description("Historic Districts")]
         [ShapeAttributes("Historic_Districts", "Historic_Districts")]
-        HistoricDistricts
+        HistoricDistricts,
 
+        [Description("NYPD Police Precincts")]
+        [ShapeAttributes("NYPD_Police_Precincts", "nypp")]
+        NypdPolicePrecincts,
 
-
-
-
+        [Description("NYPD Sectors")]
+        [ShapeAttributes("NYPD_Sectors", "NYPD_Sectors")]
+        NypdSectors,
 
     }
 }
