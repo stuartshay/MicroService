@@ -15,6 +15,9 @@ RUN dotnet tool install --global dotnet-setversion --version 2.2.0
 RUN dotnet tool install --global dotnet-dbinfo --version 1.4.0 
 RUN dotnet tool list -g
 #RUN /root/.dotnet/tools/setversion 3.1.402.${BUILD_NUMBER};
+RUN setversion 3.1.402.${BUILD_NUMBER}
+
+
 
 WORKDIR /app/src/MicroService.WebApi
 RUN dotnet publish -o /publish -c Release -f netcoreapp3.1
