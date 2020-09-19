@@ -1,6 +1,18 @@
 # Build Stage
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 
+ARG BUILD_NUMBER=0
+ENV BUILD_NUMBER ${BUILD_NUMBER}
+
+
+
+RUN echo ${BUILD_NUMBER}
+
+
+
+
+
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
  && rm -rf /var/lib/apt/lists/*
