@@ -4,15 +4,6 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 ARG BUILD_NUMBER=0
 ENV BUILD_NUMBER ${BUILD_NUMBER}
 
-
-
-RUN echo ${BUILD_NUMBER}
-
-
-
-
-
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
  && rm -rf /var/lib/apt/lists/*
@@ -31,8 +22,8 @@ RUN dotnet restore /p:RestoreUseSkipNonexistentTargets="false"
 WORKDIR /app/src/MicroService.WebApi
 
 # Publish
-#RUN dotnet publish -o /publish -c Release -f netcoreapp3.1 --version-suffix ${BUILD_NUMBER}
-RUN dotnet publish -o /publish -c Release -f netcoreapp3.1 --version-suffix 999
+RUN dotnet publish -o /publish -c Release -f netcoreapp3.1 --version-suffix ${BUILD_NUMBER}
+#RUN dotnet publish -o /publish -c Release -f netcoreapp3.1 --version-suffix 999
 
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
