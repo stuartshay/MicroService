@@ -16,6 +16,7 @@ namespace MicroService.Service.Services
         {
             // Get Shape Properties
             Type typeParameterType = typeof(T);
+            var name = typeParameterType.Name;
             var shapeProperties = ShapeProperties.NypdSectors.GetAttribute<ShapeAttributes>();
 
             var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
