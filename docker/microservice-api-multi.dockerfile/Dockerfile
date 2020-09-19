@@ -24,7 +24,7 @@ WORKDIR /app/src/MicroService.WebApi
 
 # Set Version & Publish
 ##RUN $HOME/.dotnet/tools/setversion 3.1.402.${BUILD_NUMBER};
-RUN $HOME/.dotnet/tools/setversion --help
+RUN setversion --help
 
 
 
