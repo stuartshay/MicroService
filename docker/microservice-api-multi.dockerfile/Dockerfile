@@ -19,7 +19,8 @@ RUN dotnet restore /p:RestoreUseSkipNonexistentTargets="false"
 WORKDIR /app/src/MicroService.WebApi
 
 # Publish
-RUN dotnet publish -o /publish -c Release -f netcoreapp3.1 --version-suffix ${BUILD_NUMBER}
+#RUN dotnet publish -o /publish -c Release -f netcoreapp3.1 --version-suffix ${BUILD_NUMBER}
+RUN dotnet publish -o /publish -c Release -f netcoreapp3.1 --version-suffix 999
 
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
