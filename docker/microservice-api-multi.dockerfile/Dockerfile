@@ -5,33 +5,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
  && rm -rf /var/lib/apt/lists/*
 
-COPY .  /app
-WORKDIR /app
-
-RUN dotnet restore /p:RestoreUseSkipNonexistentTargets="false"
-
-
 # Install .NET Tools 
 ENV PATH="/root/.dotnet/tools:${PATH}"
 RUN dotnet tool install --global dotnet-setversion --version 2.2.0 
 RUN dotnet tool install --global dotnet-dbinfo --version 1.4.0 
 RUN dotnet tool list -g
-RUN echo $PATH
-RUN echo $HOME/.dotnet/tools/setversion
+
+COPY .  /app
+WORKDIR /app
+
+RUN dotnet restore /p:RestoreUseSkipNonexistentTargets="false"
 
 WORKDIR /app/src/MicroService.WebApi
 
-
-# Set Version & Publish
-##RUN $HOME/.dotnet/tools/setversion 3.1.402.${BUILD_NUMBER};
-RUN setversion --help
-
-
-
-RUN dotnet publish -o /publish -c Release -f netcoreapp3.1
-
-
-
+# Publish
+RUN dotnet publish -o /publish -c Release -f netcoreapp3.1 --version-suffix ${BUILD_NUMBER}
 
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
