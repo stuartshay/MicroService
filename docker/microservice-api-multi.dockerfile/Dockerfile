@@ -10,14 +10,19 @@ WORKDIR /app
 
 RUN dotnet restore /p:RestoreUseSkipNonexistentTargets="false"
 
-#RUN export PATH="$PATH:/root/.dotnet/tools
+
+# Install .NET Tools 
+ENV PATH="/root/.dotnet/tools:${PATH}"
 RUN dotnet tool install --global dotnet-setversion --version 2.2.0 
 RUN dotnet tool install --global dotnet-dbinfo --version 1.4.0 
 RUN dotnet tool list -g
-RUN echo $HOME/.dotnet/tools/setversion
 RUN echo $PATH
+RUN echo $HOME/.dotnet/tools/setversion
 
 WORKDIR /app/src/MicroService.WebApi
+
+
+
 
 # Set Version & Publish
 #RUN $HOME/.dotnet/tools/setversion 3.1.402.${BUILD_NUMBER};
