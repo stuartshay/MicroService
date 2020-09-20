@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using MicroService.Service.Configuration;
 using MicroService.WebApi.Extensions.Constants;
+using MicroService.WebApi.Extensions.Health;
 using MicroService.WebApi.Extensions.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -104,6 +105,7 @@ namespace MicroService.WebApi.Extensions
 
             // services.AddHealthChecksUI();
             services.AddHealthChecks()
+                .AddCheck<VersionHealthCheck>("Version Health Check")
                 .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
             return services;

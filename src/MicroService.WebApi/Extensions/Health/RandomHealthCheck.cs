@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace MicroService.WebApi.Extensions
+namespace MicroService.WebApi.Extensions.Health
 {
     /// <summary>
     /// 
