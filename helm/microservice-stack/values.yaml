@@ -9,7 +9,7 @@ microserviceapi:
   replicaCount: 1
   image:
     repository: stuartshay/microservice-api
-    tag: 3.1.0-multi-46-prerelease-core3x
+    tag: 3.1.402
     pullPolicy: IfNotPresent
   ASPNETCORE_ENVIRONMENT: Docker
 #  ConnectionStrings__PostgreSql: User ID=postgres;Password=password;Server=database;Port=5432;Database=postgres;Integrated Security=true;Pooling=true;
