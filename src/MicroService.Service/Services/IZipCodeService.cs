@@ -5,11 +5,11 @@ using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
-    public interface INypdSectorsService
+    public interface IZipCodeService
     {
         List<Feature> GetFeatures();
 
-        NypdSectorShape GetFeatureLookup(double x, double y);
+        ZipCodeShape GetFeatureLookup(double x, double y);
 
         ShapefileHeader GetShapeProperties();
 

@@ -10,7 +10,7 @@ using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
-    public class NypdSectorsService<T> : AbstractShapeService<NypdSectors>, INypdSectorsService
+    public class NypdSectorsService<T> : AbstractShapeService<NypdSectorShape>, INypdSectorsService
     {
         public NypdSectorsService(IOptions<ApplicationOptions> options)
         {
@@ -26,12 +26,12 @@ namespace MicroService.Service.Services
             _shapeFileDataReader = new ShapefileDataReader(shapePath, factory);
         }
 
-        public override NypdSectors GetFeatureLookup(double x, double y)
+        public override NypdSectorShape GetFeatureLookup(double x, double y)
         {
             // Validate Point is in Range
             var point = new Point(x, y);
 
-            var model = new NypdSectors();
+            var model = new NypdSectorShape();
 
             var features = GetFeatures();
             foreach (var f in features)
@@ -39,7 +39,7 @@ namespace MicroService.Service.Services
                 var exists = f.Geometry.Contains(point);
                 if (exists)
                 {
-                    model = new NypdSectors
+                    model = new NypdSectorShape
                     {
                         Pct = f.Attributes["pct"].ToString(),
                         Sector = f.Attributes["sector"].ToString(),
