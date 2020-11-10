@@ -9,7 +9,7 @@ namespace MicroService.Service.Services
     {
         List<Feature> GetFeatures();
 
-        BoroughBoundaries GetFeatureLookup(double x, double y);
+        BoroughBoundaryShape GetFeatureLookup(double x, double y);
 
         ShapefileHeader GetShapeProperties();
 

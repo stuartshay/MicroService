@@ -24,16 +24,19 @@ namespace MicroService.WebApi.V1.Controllers
     {
         private readonly IBoroughBoundariesService _boroughBoundariesService;
         private readonly INypdSectorsService _nypdSectorsService;
+        private readonly IZipCodeService _zipCodeService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureServiceController"/> class.
         /// </summary>
         /// <param name="boroughBoundariesService"></param>
         /// <param name="nypdSectorsService"></param>
-        public FeatureServiceController(IBoroughBoundariesService boroughBoundariesService, INypdSectorsService nypdSectorsService)
+        /// <param name="zipCodeService"></param>
+        public FeatureServiceController(IBoroughBoundariesService boroughBoundariesService, INypdSectorsService nypdSectorsService, IZipCodeService zipCodeService)
         {
             _boroughBoundariesService = boroughBoundariesService;
             _nypdSectorsService = nypdSectorsService;
+            _zipCodeService = zipCodeService;
         }
 
         /// <summary>
@@ -45,13 +48,13 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(typeof(IEnumerable<string>), 200)]
         public ActionResult<object> Get()
         {
-            var result = from j in EnumHelper.EnumToList<ShapeProperties>().ToList() select new
-            {
-                key = j.ToString(),
-                description = j.GetEnumDescription(),
-                fileName = j.GetAttribute<ShapeAttributes>().FileName,
-                directory = j.GetAttribute<ShapeAttributes>().Directory,
-            };
+            var result = EnumHelper.EnumToList<ShapeProperties>().ToList().Select(j => new
+                {
+                    key = j.ToString(),
+                    description = j.GetEnumDescription(),
+                    fileName = j.GetAttribute<ShapeAttributes>().FileName,
+                    directory = j.GetAttribute<ShapeAttributes>().Directory,
+                });
 
             return Ok(result);
         }
@@ -75,6 +78,9 @@ namespace MicroService.WebApi.V1.Controllers
 
             var databaseProperties = _nypdSectorsService.GetShapeDatabaseProperties();
             var shapeProperties = _nypdSectorsService.GetShapeProperties();
+
+            //var databaseProperties = _zipCodeService.GetShapeDatabaseProperties();
+            //var shapeProperties = _zipCodeService.GetShapeProperties();
 
             if (databaseProperties == null)
                 return NotFound();
@@ -108,7 +114,8 @@ namespace MicroService.WebApi.V1.Controllers
         public async Task<ActionResult<object>> GetFeatureLookup([FromQuery] FeatureRequestModel request)
         {
             // var results = _boroughBoundariesService.GetFeatureLookup(request.X, request.Y);
-            var results = _nypdSectorsService.GetFeatureLookup(request.X, request.Y);
+             var results = _nypdSectorsService.GetFeatureLookup(request.X, request.Y);
+            //var results = _zipCodeService.GetFeatureLookup(request.X, request.Y);
 
             if (results == null)
                 return NotFound();
