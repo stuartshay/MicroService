@@ -1,7 +1,9 @@
 ﻿using System.IO;
 using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
+using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Options;
 using NetTopologySuite.Geometries;
@@ -9,7 +11,7 @@ using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
-    public class BoroughBoundariesService : AbstractShapeService<BoroughBoundaryShape>, IBoroughBoundariesService
+    public class BoroughBoundariesService : AbstractShapeService<BoroughBoundaryShape>, IBoroughBoundariesService //IShapeService<BoroughBoundaryShape>
     {
         public BoroughBoundariesService(IOptions<ApplicationOptions> options)
         {

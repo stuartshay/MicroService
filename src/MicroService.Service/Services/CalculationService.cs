@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MicroService.Data.Repository;
 using MicroService.Service.Constants;
 using MicroService.Service.Helpers;
+using MicroService.Service.Interfaces;
 
 namespace MicroService.Service.Services
 {

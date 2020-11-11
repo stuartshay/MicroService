@@ -3,7 +3,7 @@ using MicroService.Service.Models;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 
-namespace MicroService.Service.Services
+namespace MicroService.Service.Interfaces
 {
     public interface IZipCodeService
     {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace MicroService.Service.Services
+namespace MicroService.Service.Interfaces
 {
     public interface ICalculationService
     {
