@@ -1,18 +1,20 @@
 ﻿using System.Collections.Generic;
 using MicroService.Service.Models;
+using MicroService.Service.Models.Base;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 
-namespace MicroService.Service.Services
+namespace MicroService.Service.Interfaces
 {
-    public interface INypdSectorsService
+    public interface IShapeService<T> where T : ShapeBase
     {
         List<Feature> GetFeatures();
 
-        NypdSectorShape GetFeatureLookup(double x, double y);
+        T GetFeatureLookup(double x, double y);
 
         ShapefileHeader GetShapeProperties();
 
         DbaseFileHeader GetShapeDatabaseProperties();
+
     }
 }

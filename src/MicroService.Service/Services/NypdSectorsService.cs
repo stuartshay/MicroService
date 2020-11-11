@@ -2,6 +2,7 @@
 using System.IO;
 using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Options;

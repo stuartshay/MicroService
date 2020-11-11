@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
@@ -11,14 +10,12 @@ using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
-    public class ZipCodeService<T> : AbstractShapeService<ZipCodeShape>, IZipCodeService
+    public class HistoricDistrictService : AbstractShapeService<HistoricDistrictShape>, IHistoricDistrictService
     {
-        public ZipCodeService(IOptions<ApplicationOptions> options)
+        public HistoricDistrictService(IOptions<ApplicationOptions> options)
         {
             // Get Shape Properties
-            Type typeParameterType = typeof(T);
-            var name = typeParameterType.Name;
-            var shapeProperties = ShapeProperties.ZipCodes.GetAttribute<ShapeAttributes>();
+            var shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttributes>();
 
             var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
             string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
@@ -27,12 +24,12 @@ namespace MicroService.Service.Services
             _shapeFileDataReader = new ShapefileDataReader(shapePath, factory);
         }
 
-        public override ZipCodeShape GetFeatureLookup(double x, double y)
+        public override HistoricDistrictShape GetFeatureLookup(double x, double y)
         {
             // Validate Point is in Range
             var point = new Point(x, y);
 
-            var model = new ZipCodeShape();
+            var model = new HistoricDistrictShape();
 
             var features = GetFeatures();
             foreach (var f in features)
@@ -40,17 +37,14 @@ namespace MicroService.Service.Services
                 var exists = f.Geometry.Contains(point);
                 if (exists)
                 {
-                    model = new ZipCodeShape
+                    model = new HistoricDistrictShape
                     {
-                        ZipCode = f.Attributes["ZIPCODE"].ToString(),
-                        BldgZip = f.Attributes["BLDGZIP"].ToString(),
-                        PostOfficeName = f.Attributes["PO_NAME"].ToString(), 
-                        Population = int.Parse(f.Attributes["POPULATION"].ToString()),
-                        Area = double.Parse(f.Attributes["AREA"].ToString()), 
-                        State = f.Attributes["STATE"].ToString(),
-                        County = f.Attributes["COUNTY"].ToString(),
+                        LPNumber = f.Attributes["LP_NUMBER"].ToString(),
+                        AreaName = f.Attributes["AREA_NAME"].ToString(),
+                        BoroName = f.Attributes["BOROUGH"].ToString(),
                     };
                 }
+
             }
 
             if (!model.ArePropertiesNotNull())

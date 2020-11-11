@@ -3,11 +3,9 @@ using NetTopologySuite.Geometries;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit.Abstractions;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using GeoAPI.Geometries;
-using Org.BouncyCastle.Bcpg.Sig;
 
 
 namespace MicroService.Test.Unit
