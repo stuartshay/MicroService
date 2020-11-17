@@ -79,9 +79,11 @@ namespace MicroService.WebApi
             // Services
             services.AddScoped<ICalculationService, CalculationService>();
 
-            // services.AddScoped<IShapeService<BoroughBoundaryShape>, BoroughBoundariesService>();
+            // Feature Service Lookups
+            // services.AddScoped<IShapeService<BoroughBoundaryShape>, BoroughBoundariesService>(); //Base Shape Service
             services.AddScoped<IBoroughBoundariesService, BoroughBoundariesService>();
             services.AddScoped<IHistoricDistrictService, HistoricDistrictService>();
+            services.AddScoped<INypdPolicePrecinctService, NypdPolicePrecinctService>();
             services.AddScoped<INypdSectorsService, NypdSectorsService<NypdSectorShape>>();
             services.AddScoped<IZipCodeService, ZipCodeService<ZipCodeShape>>();
 
