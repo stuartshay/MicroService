@@ -8,6 +8,7 @@ using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using NetTopologySuite.IO;
 
 namespace MicroService.WebApi.V1.Controllers
 {
@@ -83,20 +84,34 @@ namespace MicroService.WebApi.V1.Controllers
             if (id == null)
                 return BadRequest();
 
-            //var databaseProperties = _boroughBoundariesService.GetShapeDatabaseProperties();
-            //var shapeProperties = _boroughBoundariesService.GetShapeProperties();
+            var databaseProperties = new DbaseFileHeader();
+            var shapeProperties = new ShapefileHeader();
 
-            var databaseProperties = _nypdPolicePrecinctsService.GetShapeDatabaseProperties();
-            var shapeProperties = _nypdPolicePrecinctsService.GetShapeProperties();
-
-            //var databaseProperties = _nypdSectorsService.GetShapeDatabaseProperties();
-            //var shapeProperties = _nypdSectorsService.GetShapeProperties();
-
-            //var databaseProperties = _historicDistrictService.GetShapeDatabaseProperties();
-            //var shapeProperties = _historicDistrictService.GetShapeProperties();
-
-            //var databaseProperties = _zipCodeService.GetShapeDatabaseProperties();
-            //var shapeProperties = _zipCodeService.GetShapeProperties();
+            if (id == ShapeProperties.BoroughBoundaries.ToString())
+            {
+                databaseProperties = _boroughBoundariesService.GetShapeDatabaseProperties();
+                shapeProperties = _boroughBoundariesService.GetShapeProperties();
+            }
+            else if (id == ShapeProperties.HistoricDistricts.ToString())
+            {
+                databaseProperties = _historicDistrictService.GetShapeDatabaseProperties();
+                shapeProperties = _historicDistrictService.GetShapeProperties();
+            }
+            else if (id == ShapeProperties.NypdPolicePrecincts.ToString())
+            {
+                databaseProperties = _nypdPolicePrecinctsService.GetShapeDatabaseProperties();
+                shapeProperties = _nypdPolicePrecinctsService.GetShapeProperties();
+            }
+            else if (id == ShapeProperties.NypdSectors.ToString())
+            {
+                databaseProperties = _nypdSectorsService.GetShapeDatabaseProperties();
+                shapeProperties = _nypdSectorsService.GetShapeProperties();
+            }
+            else if (id == ShapeProperties.ZipCodes.ToString())
+            {
+                databaseProperties = _zipCodeService.GetShapeDatabaseProperties();
+                shapeProperties = _zipCodeService.GetShapeProperties();
+            }
 
             if (databaseProperties == null)
                 return NotFound();
