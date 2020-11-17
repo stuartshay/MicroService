@@ -23,24 +23,29 @@ namespace MicroService.WebApi.V1.Controllers
     public class FeatureServiceController : ControllerBase
     {
         private readonly IBoroughBoundariesService _boroughBoundariesService;
-        private readonly IHistoricDistrictService _historicDistrictService;
+        private readonly INypdPolicePrecinctService _nypdPolicePrecinctsService;
         private readonly INypdSectorsService _nypdSectorsService;
+        private readonly IHistoricDistrictService _historicDistrictService;
         private readonly IZipCodeService _zipCodeService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureServiceController"/> class.
         /// </summary>
         /// <param name="boroughBoundariesService"></param>
+        /// <param name="nypdPolicePrecinctsService"></param>
         /// <param name="nypdSectorsService"></param>
+        /// <param name="historicDistrictService"></param>
         /// <param name="zipCodeService"></param>
         public FeatureServiceController(IBoroughBoundariesService boroughBoundariesService,
+            INypdPolicePrecinctService nypdPolicePrecinctsService,
+            INypdSectorsService nypdSectorsService,
             IHistoricDistrictService historicDistrictService,
-            INypdSectorsService nypdSectorsService, 
             IZipCodeService zipCodeService)
         {
             _boroughBoundariesService = boroughBoundariesService;
-            _historicDistrictService = historicDistrictService;
+            _nypdPolicePrecinctsService = nypdPolicePrecinctsService;
             _nypdSectorsService = nypdSectorsService;
+            _historicDistrictService = historicDistrictService;
             _zipCodeService = zipCodeService;
         }
 
@@ -81,11 +86,14 @@ namespace MicroService.WebApi.V1.Controllers
             //var databaseProperties = _boroughBoundariesService.GetShapeDatabaseProperties();
             //var shapeProperties = _boroughBoundariesService.GetShapeProperties();
 
+            var databaseProperties = _nypdPolicePrecinctsService.GetShapeDatabaseProperties();
+            var shapeProperties = _nypdPolicePrecinctsService.GetShapeProperties();
+
             //var databaseProperties = _nypdSectorsService.GetShapeDatabaseProperties();
             //var shapeProperties = _nypdSectorsService.GetShapeProperties();
 
-            var databaseProperties = _historicDistrictService.GetShapeDatabaseProperties();
-            var shapeProperties = _historicDistrictService.GetShapeProperties();
+            //var databaseProperties = _historicDistrictService.GetShapeDatabaseProperties();
+            //var shapeProperties = _historicDistrictService.GetShapeProperties();
 
             //var databaseProperties = _zipCodeService.GetShapeDatabaseProperties();
             //var shapeProperties = _zipCodeService.GetShapeProperties();
@@ -133,6 +141,10 @@ namespace MicroService.WebApi.V1.Controllers
             else if (request.Key == ShapeProperties.HistoricDistricts.ToString())
             {
                 results = _historicDistrictService.GetFeatureLookup(request.X, request.Y);
+            }
+            else if (request.Key == ShapeProperties.NypdPolicePrecincts.ToString())
+            {
+                results = _nypdPolicePrecinctsService.GetFeatureLookup(request.X, request.Y);
             }
             else if (request.Key == ShapeProperties.NypdSectors.ToString())
             {
