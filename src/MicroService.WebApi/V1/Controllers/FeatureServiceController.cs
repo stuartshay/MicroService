@@ -2,12 +2,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using MicroService.Service.Helpers;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Models.Enum;
-using MicroService.Service.Services;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using NetTopologySuite.IO;
 
 namespace MicroService.WebApi.V1.Controllers
 {
@@ -23,17 +24,30 @@ namespace MicroService.WebApi.V1.Controllers
     public class FeatureServiceController : ControllerBase
     {
         private readonly IBoroughBoundariesService _boroughBoundariesService;
+        private readonly INypdPolicePrecinctService _nypdPolicePrecinctsService;
         private readonly INypdSectorsService _nypdSectorsService;
+        private readonly IHistoricDistrictService _historicDistrictService;
+        private readonly IZipCodeService _zipCodeService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureServiceController"/> class.
         /// </summary>
         /// <param name="boroughBoundariesService"></param>
+        /// <param name="nypdPolicePrecinctsService"></param>
         /// <param name="nypdSectorsService"></param>
-        public FeatureServiceController(IBoroughBoundariesService boroughBoundariesService, INypdSectorsService nypdSectorsService)
+        /// <param name="historicDistrictService"></param>
+        /// <param name="zipCodeService"></param>
+        public FeatureServiceController(IBoroughBoundariesService boroughBoundariesService,
+            INypdPolicePrecinctService nypdPolicePrecinctsService,
+            INypdSectorsService nypdSectorsService,
+            IHistoricDistrictService historicDistrictService,
+            IZipCodeService zipCodeService)
         {
             _boroughBoundariesService = boroughBoundariesService;
+            _nypdPolicePrecinctsService = nypdPolicePrecinctsService;
             _nypdSectorsService = nypdSectorsService;
+            _historicDistrictService = historicDistrictService;
+            _zipCodeService = zipCodeService;
         }
 
         /// <summary>
@@ -45,13 +59,13 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(typeof(IEnumerable<string>), 200)]
         public ActionResult<object> Get()
         {
-            var result = from j in EnumHelper.EnumToList<ShapeProperties>().ToList() select new
-            {
-                key = j.ToString(),
-                description = j.GetEnumDescription(),
-                fileName = j.GetAttribute<ShapeAttributes>().FileName,
-                directory = j.GetAttribute<ShapeAttributes>().Directory,
-            };
+            var result = EnumHelper.EnumToList<ShapeProperties>().ToList().Select(j => new
+                {
+                    key = j.ToString(),
+                    description = j.GetEnumDescription(),
+                    fileName = j.GetAttribute<ShapeAttributes>().FileName,
+                    directory = j.GetAttribute<ShapeAttributes>().Directory,
+                });
 
             return Ok(result);
         }
@@ -70,11 +84,34 @@ namespace MicroService.WebApi.V1.Controllers
             if (id == null)
                 return BadRequest();
 
-            //var databaseProperties = _boroughBoundariesService.GetShapeDatabaseProperties();
-            //var shapeProperties = _boroughBoundariesService.GetShapeProperties();
+            var databaseProperties = new DbaseFileHeader();
+            var shapeProperties = new ShapefileHeader();
 
-            var databaseProperties = _nypdSectorsService.GetShapeDatabaseProperties();
-            var shapeProperties = _nypdSectorsService.GetShapeProperties();
+            if (id == ShapeProperties.BoroughBoundaries.ToString())
+            {
+                databaseProperties = _boroughBoundariesService.GetShapeDatabaseProperties();
+                shapeProperties = _boroughBoundariesService.GetShapeProperties();
+            }
+            else if (id == ShapeProperties.HistoricDistricts.ToString())
+            {
+                databaseProperties = _historicDistrictService.GetShapeDatabaseProperties();
+                shapeProperties = _historicDistrictService.GetShapeProperties();
+            }
+            else if (id == ShapeProperties.NypdPolicePrecincts.ToString())
+            {
+                databaseProperties = _nypdPolicePrecinctsService.GetShapeDatabaseProperties();
+                shapeProperties = _nypdPolicePrecinctsService.GetShapeProperties();
+            }
+            else if (id == ShapeProperties.NypdSectors.ToString())
+            {
+                databaseProperties = _nypdSectorsService.GetShapeDatabaseProperties();
+                shapeProperties = _nypdSectorsService.GetShapeProperties();
+            }
+            else if (id == ShapeProperties.ZipCodes.ToString())
+            {
+                databaseProperties = _zipCodeService.GetShapeDatabaseProperties();
+                shapeProperties = _zipCodeService.GetShapeProperties();
+            }
 
             if (databaseProperties == null)
                 return NotFound();
@@ -107,8 +144,31 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult<object>> GetFeatureLookup([FromQuery] FeatureRequestModel request)
         {
-            // var results = _boroughBoundariesService.GetFeatureLookup(request.X, request.Y);
-            var results = _nypdSectorsService.GetFeatureLookup(request.X, request.Y);
+            if (string.IsNullOrEmpty(request?.Key))
+                return NoContent();
+
+            var results = new object();
+
+            if (request.Key == ShapeProperties.BoroughBoundaries.ToString())
+            {
+                results = _boroughBoundariesService.GetFeatureLookup(request.X, request.Y);
+            }
+            else if (request.Key == ShapeProperties.HistoricDistricts.ToString())
+            {
+                results = _historicDistrictService.GetFeatureLookup(request.X, request.Y);
+            }
+            else if (request.Key == ShapeProperties.NypdPolicePrecincts.ToString())
+            {
+                results = _nypdPolicePrecinctsService.GetFeatureLookup(request.X, request.Y);
+            }
+            else if (request.Key == ShapeProperties.NypdSectors.ToString())
+            {
+                results = _nypdSectorsService.GetFeatureLookup(request.X, request.Y);
+            }
+            else if (request.Key == ShapeProperties.ZipCodes.ToString())
+            {
+                results = _zipCodeService.GetFeatureLookup(request.X, request.Y);
+            }
 
             if (results == null)
                 return NotFound();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using MicroService.Service.Configuration;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +13,7 @@ namespace MicroService.Test.Fixture
         public ShapeServiceFixture()
         {
             var serviceProvider = new ServiceCollection()
-                .AddScoped<IBoroughBoundariesService, BoroughBoundariesService>()
+               // .AddScoped<IBoroughBoundariesService, BoroughBoundariesService>()
                 .AddOptions()
                 .Configure<ApplicationOptions>(Configuration)
                 .AddSingleton(Configuration)
