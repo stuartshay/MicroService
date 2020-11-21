@@ -14,5 +14,11 @@
         ///  Y Point.
         /// </summary>
         public double Y { get; set; }
+
+        /// <summary>
+        /// Lookup Service Key
+        /// </summary>
+        public string Key { get; set; }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MicroService.Service.Models.Base;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 
@@ -21,6 +22,12 @@ namespace MicroService.Service.Services
         }
 
         public abstract T GetFeatureLookup(double x, double y);
+
+        public ShapeBase GetShapeBaseFeatureLookup(double x, double y)
+        {
+            var shape = new ShapeBase();
+            return shape;
+        }
 
         public List<Feature> GetFeatures()
         {

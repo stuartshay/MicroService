@@ -3,13 +3,13 @@ using MicroService.Service.Models;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 
-namespace MicroService.Service.Services
+namespace MicroService.Service.Interfaces
 {
-    public interface IBoroughBoundariesService
+    public interface IZipCodeService
     {
         List<Feature> GetFeatures();
 
-        BoroughBoundaries GetFeatureLookup(double x, double y);
+        ZipCodeShape GetFeatureLookup(double x, double y);
 
         ShapefileHeader GetShapeProperties();
 
