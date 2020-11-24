@@ -9,6 +9,7 @@ using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using NetTopologySuite.IO;
+using static MicroService.WebApi.Startup;
 
 namespace MicroService.WebApi.V1.Controllers
 {
@@ -23,31 +24,31 @@ namespace MicroService.WebApi.V1.Controllers
     [EnableCors(ApiConstants.CorsPolicy)]
     public class FeatureServiceController : ControllerBase
     {
-        private readonly IBoroughBoundariesService _boroughBoundariesService;
         private readonly INypdPolicePrecinctService _nypdPolicePrecinctsService;
         private readonly INypdSectorsService _nypdSectorsService;
         private readonly IHistoricDistrictService _historicDistrictService;
         private readonly IZipCodeService _zipCodeService;
+        private readonly ShapeServiceResolver _shapeServiceResolver;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureServiceController"/> class.
         /// </summary>
-        /// <param name="boroughBoundariesService"></param>
         /// <param name="nypdPolicePrecinctsService"></param>
         /// <param name="nypdSectorsService"></param>
         /// <param name="historicDistrictService"></param>
         /// <param name="zipCodeService"></param>
-        public FeatureServiceController(IBoroughBoundariesService boroughBoundariesService,
-            INypdPolicePrecinctService nypdPolicePrecinctsService,
+        /// <param name="shapeServiceResolver"></param>
+        public FeatureServiceController(INypdPolicePrecinctService nypdPolicePrecinctsService,
             INypdSectorsService nypdSectorsService,
             IHistoricDistrictService historicDistrictService,
-            IZipCodeService zipCodeService)
+            IZipCodeService zipCodeService,
+            ShapeServiceResolver shapeServiceResolver)
         {
-            _boroughBoundariesService = boroughBoundariesService;
             _nypdPolicePrecinctsService = nypdPolicePrecinctsService;
             _nypdSectorsService = nypdSectorsService;
             _historicDistrictService = historicDistrictService;
             _zipCodeService = zipCodeService;
+            _shapeServiceResolver = shapeServiceResolver;
         }
 
         /// <summary>
@@ -89,8 +90,9 @@ namespace MicroService.WebApi.V1.Controllers
 
             if (id == ShapeProperties.BoroughBoundaries.ToString())
             {
-                databaseProperties = _boroughBoundariesService.GetShapeDatabaseProperties();
-                shapeProperties = _boroughBoundariesService.GetShapeProperties();
+                var service = _shapeServiceResolver(id);
+                databaseProperties = service.GetShapeDatabaseProperties();
+                shapeProperties = service.GetShapeProperties();
             }
             else if (id == ShapeProperties.HistoricDistricts.ToString())
             {
@@ -151,7 +153,7 @@ namespace MicroService.WebApi.V1.Controllers
 
             if (request.Key == ShapeProperties.BoroughBoundaries.ToString())
             {
-                results = _boroughBoundariesService.GetFeatureLookup(request.X, request.Y);
+                results = _shapeServiceResolver(request.Key).GetFeatureLookup(request.X, request.Y);
             }
             else if (request.Key == ShapeProperties.HistoricDistricts.ToString())
             {
