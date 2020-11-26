@@ -10,7 +10,7 @@ using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
-    public class NypdPolicePrecinctService : AbstractShapeService<NypdPrecinctShape>, INypdPolicePrecinctService
+    public class NypdPolicePrecinctService : AbstractShapeService<NypdPrecinctShape>, IShapeService<NypdPrecinctShape>
     {
         public NypdPolicePrecinctService(IOptions<ApplicationOptions> options)
         {

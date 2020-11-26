@@ -11,7 +11,7 @@ using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
-    public class ZipCodeService<T> : AbstractShapeService<ZipCodeShape>, IZipCodeService
+    public class ZipCodeService<T> : AbstractShapeService<ZipCodeShape>, IShapeService<ZipCodeShape>
     {
         public ZipCodeService(IOptions<ApplicationOptions> options)
         {
