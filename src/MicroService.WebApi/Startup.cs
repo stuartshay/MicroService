@@ -86,16 +86,20 @@ namespace MicroService.WebApi
 
             // Feature Service Lookups
             services.AddScoped<BoroughBoundariesService>();
-            services.AddScoped<IHistoricDistrictService, HistoricDistrictService>();
-            services.AddScoped<INypdPolicePrecinctService, NypdPolicePrecinctService>();
-            services.AddScoped<INypdSectorsService, NypdSectorsService<NypdSectorShape>>();
-            services.AddScoped<IZipCodeService, ZipCodeService<ZipCodeShape>>();
+            services.AddScoped<HistoricDistrictService>();
+            services.AddScoped<NypdPolicePrecinctService>();
+            services.AddScoped<NypdSectorsService<NypdSectorShape>>();
+            services.AddScoped<ZipCodeService<ZipCodeShape>>();
 
             services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>
             {
                 return key switch
                 {
                     nameof(ShapeProperties.BoroughBoundaries) => serviceProvider.GetService<BoroughBoundariesService>(),
+                    nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
+                    nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),
+                    nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService<NypdSectorShape>>(),
+                    nameof(ShapeProperties.ZipCodes) => serviceProvider.GetService<ZipCodeService<ZipCodeShape>>(),
                     _ => throw new KeyNotFoundException(key),
                 };
             });
