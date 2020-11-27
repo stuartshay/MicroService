@@ -7,7 +7,7 @@ namespace MicroService.Service.Interfaces
 {
     public interface IShapeService<out T> where T : ShapeBase
     {
-        List<Feature> GetFeatures();
+        IReadOnlyCollection<Feature> GetFeatures();
 
         T GetFeatureLookup(double x, double y);
 

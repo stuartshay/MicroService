@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using App.Metrics;
 using HealthChecks.UI.Client;
 using MicroService.Data.Repository;
 using MicroService.Service.Configuration;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Base;
@@ -14,6 +16,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -59,6 +62,7 @@ namespace MicroService.WebApi
             services.AddOptions();
             services.Configure<ApplicationOptions>(Configuration);
             services.AddSingleton(Configuration);
+            services.AddMemoryCache();
 
             var config = Configuration.Get<ApplicationOptions>();
             services.DisplayConfiguration(Configuration, HostingEnvironment);
@@ -84,6 +88,31 @@ namespace MicroService.WebApi
             // Services
             services.AddScoped<ICalculationService, CalculationService>();
 
+            services.AddScoped<ShapefileDataReaderResolver>(serviceProvider => key =>
+            {
+                ShapeAttributes shapeProperties = null;
+                if (key == nameof(ShapeProperties.BoroughBoundaries))
+                    shapeProperties = ShapeProperties.BoroughBoundaries.GetAttribute<ShapeAttributes>();
+                else if (key == nameof(ShapeProperties.HistoricDistricts))
+                    shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttributes>();
+                else if (key == nameof(ShapeProperties.NypdPolicePrecincts))
+                    shapeProperties = ShapeProperties.NypdPolicePrecincts.GetAttribute<ShapeAttributes>();
+                else if (key == nameof(ShapeProperties.NypdSectors))
+                    shapeProperties = ShapeProperties.NypdSectors.GetAttribute<ShapeAttributes>();
+                else if (key == nameof(ShapeProperties.ZipCodes))
+                    shapeProperties = ShapeProperties.ZipCodes.GetAttribute<ShapeAttributes>();
+                else
+                    throw new KeyNotFoundException(key);
+
+                var options = serviceProvider.GetService<IOptions<ApplicationOptions>>();
+                var cache = serviceProvider.GetService<IMemoryCache>();
+
+                var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
+                string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
+
+                return new CachedShapefileDataReader(cache, shapePath);
+            });
+
             // Feature Service Lookups
             services.AddScoped<BoroughBoundariesService>();
             services.AddScoped<HistoricDistrictService>();
@@ -100,7 +129,7 @@ namespace MicroService.WebApi
                     nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),
                     nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService<NypdSectorShape>>(),
                     nameof(ShapeProperties.ZipCodes) => serviceProvider.GetService<ZipCodeService<ZipCodeShape>>(),
-                    _ => throw new KeyNotFoundException(key),
+                    _ => throw new KeyNotFoundException(key)
                 };
             });
 

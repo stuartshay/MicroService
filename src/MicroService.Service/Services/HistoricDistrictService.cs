@@ -1,27 +1,16 @@
-﻿using System.IO;
-using MicroService.Service.Configuration;
-using MicroService.Service.Helpers;
+﻿using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
-using Microsoft.Extensions.Options;
 using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
     public class HistoricDistrictService : AbstractShapeService<HistoricDistrictShape>, IShapeService<HistoricDistrictShape>
     {
-        public HistoricDistrictService(IOptions<ApplicationOptions> options)
+        public HistoricDistrictService(ShapefileDataReaderResolver shapefileDataReaderResolver)
         {
-            // Get Shape Properties
-            var shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttributes>();
-
-            var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
-            string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
-
-            GeometryFactory factory = new GeometryFactory();
-            _shapeFileDataReader = new ShapefileDataReader(shapePath, factory);
+            ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.HistoricDistricts));
         }
 
         public override HistoricDistrictShape GetFeatureLookup(double x, double y)
