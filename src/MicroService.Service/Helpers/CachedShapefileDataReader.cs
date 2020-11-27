@@ -19,14 +19,16 @@ namespace MicroService.Service.Helpers
     public sealed class CachedShapefileDataReader : ShapefileDataReader, IShapefileDataReaderService
     {
         private readonly IMemoryCache _cache;
+        private readonly string _shapeProperties;
 
-        public CachedShapefileDataReader(IMemoryCache memoryCache, string fileName) : base(fileName, new GeometryFactory())
+        public CachedShapefileDataReader(IMemoryCache memoryCache, string shapeProperties, string fileName) : base(fileName, new GeometryFactory())
         {
             _cache = memoryCache;
+            _shapeProperties = shapeProperties;
         }
 
         public IReadOnlyCollection<Feature> GetFeatures() =>
-            _cache.GetOrCreate("Features", cacheEntry =>
+            _cache.GetOrCreate(_shapeProperties, cacheEntry =>
             {
                 List<Feature> features = new List<Feature>();
                 while (Read())
