@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using MicroService.Service.Helpers;
+using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
@@ -100,15 +103,21 @@ namespace MicroService.WebApi.V1.Controllers
         /// <summary>
         ///  Get Feature Lookup
         /// </summary>
+        /// <param name="request">Feature Request</param>
         /// <returns></returns>
         [HttpGet("featurelookup", Name = "GetFeatureLookup")]
-        [Produces("application/json", Type = typeof(IEnumerable<string>))]
-        [ProducesResponseType(typeof(IEnumerable<string>), 200)]
+        [Produces("application/json", Type = typeof(ShapeBase))]
+        [ProducesResponseType(typeof(ShapeBase), 200)]
+        [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         public async Task<ActionResult<object>> GetFeatureLookup([FromQuery] FeatureRequestModel request)
         {
             if (string.IsNullOrEmpty(request?.Key))
                 return NoContent();
+
+            //var validate = _shapeServiceResolver(ShapeProperties.BoroughBoundaries.ToString()).GetFeatureLookup(request.X, request.Y);
+            //if (validate == null)
+            //    return new HttpResponseMessage(HttpStatusCode.BadRequest);
 
             var results = _shapeServiceResolver(request.Key).GetFeatureLookup(request.X, request.Y);
             if (results == null)
