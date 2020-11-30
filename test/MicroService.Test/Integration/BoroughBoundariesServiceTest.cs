@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using MicroService.Service.Interfaces;
-using MicroService.Service.Services;
+using MicroService.Service.Models;
 using MicroService.Test.Fixture;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
@@ -11,7 +11,7 @@ namespace MicroService.Test.Integration
 {
     public class BoroughBoundariesServiceTest : IClassFixture<ShapeServiceFixture>
     {
-        public IBoroughBoundariesService _boroughBoundariesService;
+        public IShapeService<BoroughBoundaryShape> _boroughBoundariesService;
 
         private readonly ITestOutputHelper _testOutputHelper;
 

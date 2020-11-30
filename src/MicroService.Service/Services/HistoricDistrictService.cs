@@ -10,7 +10,7 @@ using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
-    public class HistoricDistrictService : AbstractShapeService<HistoricDistrictShape>, IHistoricDistrictService
+    public class HistoricDistrictService : AbstractShapeService<HistoricDistrictShape>, IShapeService<HistoricDistrictShape>
     {
         public HistoricDistrictService(IOptions<ApplicationOptions> options)
         {
