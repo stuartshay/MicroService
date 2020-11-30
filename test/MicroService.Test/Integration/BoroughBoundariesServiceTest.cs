@@ -53,9 +53,7 @@ namespace MicroService.Test.Integration
                 DbaseFieldDescriptor fldDescriptor = sut.Fields[i];
                 _testOutputHelper.WriteLine($"   {fldDescriptor.Name} {fldDescriptor.DbaseType}");
             }
-
         }
-
 
         [Fact(DisplayName = "Get Borough Boundaries Feature List")]
         [Trait("Category", "Integration")]
@@ -64,9 +62,7 @@ namespace MicroService.Test.Integration
             var sut = _boroughBoundariesService.GetFeatures();
             Assert.NotNull(sut);
             Assert.IsType<List<Feature>>(sut);
-
         }
-
 
         [InlineData(1006187, 232036, "Bronx")]
         //[InlineData(1000443, 0239270, "Manhattan")]
@@ -79,6 +75,5 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.BoroName);
         }
-
     }
 }
