@@ -1,27 +1,16 @@
-﻿using System.IO;
-using MicroService.Service.Configuration;
-using MicroService.Service.Helpers;
+﻿using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
-using Microsoft.Extensions.Options;
 using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
     public class NypdPolicePrecinctService : AbstractShapeService<NypdPrecinctShape>, IShapeService<NypdPrecinctShape>
     {
-        public NypdPolicePrecinctService(IOptions<ApplicationOptions> options)
+        public NypdPolicePrecinctService(ShapefileDataReaderResolver shapefileDataReaderResolver)
         {
-            // Get Shape Properties
-            var shapeProperties = ShapeProperties.NypdPolicePrecincts.GetAttribute<ShapeAttributes>();
-
-            var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
-            string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
-
-            GeometryFactory factory = new GeometryFactory();
-            _shapeFileDataReader = new ShapefileDataReader(shapePath, factory);
+            ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NypdPolicePrecincts));
         }
 
         public override NypdPrecinctShape GetFeatureLookup(double x, double y)

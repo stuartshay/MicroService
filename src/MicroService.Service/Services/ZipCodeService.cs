@@ -1,30 +1,16 @@
-﻿using System;
-using System.IO;
-using MicroService.Service.Configuration;
-using MicroService.Service.Helpers;
+﻿using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
-using Microsoft.Extensions.Options;
 using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
     public class ZipCodeService<T> : AbstractShapeService<ZipCodeShape>, IShapeService<ZipCodeShape>
     {
-        public ZipCodeService(IOptions<ApplicationOptions> options)
+        public ZipCodeService(ShapefileDataReaderResolver shapefileDataReaderResolver)
         {
-            // Get Shape Properties
-            Type typeParameterType = typeof(T);
-            var name = typeParameterType.Name;
-            var shapeProperties = ShapeProperties.ZipCodes.GetAttribute<ShapeAttributes>();
-
-            var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
-            string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
-
-            GeometryFactory factory = new GeometryFactory();
-            _shapeFileDataReader = new ShapefileDataReader(shapePath, factory);
+            ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.ZipCodes));
         }
 
         public override ZipCodeShape GetFeatureLookup(double x, double y)
