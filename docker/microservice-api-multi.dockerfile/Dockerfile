@@ -24,6 +24,7 @@ WORKDIR /app/src/MicroService.WebApi
 # Publish
 RUN echo ${BUILD_NUMBER}
 # RUN /root/.dotnet/tools/setversion 3.1.401.${BUILD_NUMBER}
+RUN ls
 RUN dotnet publish -o /publish 
 ## -c Release -f netcoreapp3.1 --version-suffix ${BUILD_NUMBER}
 
