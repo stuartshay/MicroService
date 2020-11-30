@@ -1,9 +1,12 @@
-﻿using App.Metrics;
+﻿using System.Collections.Generic;
+using App.Metrics;
 using HealthChecks.UI.Client;
 using MicroService.Data.Repository;
 using MicroService.Service.Configuration;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
+using MicroService.Service.Models.Base;
+using MicroService.Service.Models.Enum;
 using MicroService.Service.Services;
 using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.Swagger;
@@ -39,6 +42,8 @@ namespace MicroService.WebApi
         /// Configuration.
         /// </summary>
         public IConfiguration Configuration { get; }
+
+        public delegate IShapeService<ShapeBase> ShapeServiceResolver(string key);
 
         /// <summary>
         /// WebHost Environment.
@@ -80,12 +85,24 @@ namespace MicroService.WebApi
             services.AddScoped<ICalculationService, CalculationService>();
 
             // Feature Service Lookups
-            // services.AddScoped<IShapeService<BoroughBoundaryShape>, BoroughBoundariesService>(); //Base Shape Service
-            services.AddScoped<IBoroughBoundariesService, BoroughBoundariesService>();
-            services.AddScoped<IHistoricDistrictService, HistoricDistrictService>();
-            services.AddScoped<INypdPolicePrecinctService, NypdPolicePrecinctService>();
-            services.AddScoped<INypdSectorsService, NypdSectorsService<NypdSectorShape>>();
-            services.AddScoped<IZipCodeService, ZipCodeService<ZipCodeShape>>();
+            services.AddScoped<BoroughBoundariesService>();
+            services.AddScoped<HistoricDistrictService>();
+            services.AddScoped<NypdPolicePrecinctService>();
+            services.AddScoped<NypdSectorsService<NypdSectorShape>>();
+            services.AddScoped<ZipCodeService<ZipCodeShape>>();
+
+            services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>
+            {
+                return key switch
+                {
+                    nameof(ShapeProperties.BoroughBoundaries) => serviceProvider.GetService<BoroughBoundariesService>(),
+                    nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
+                    nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),
+                    nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService<NypdSectorShape>>(),
+                    nameof(ShapeProperties.ZipCodes) => serviceProvider.GetService<ZipCodeService<ZipCodeShape>>(),
+                    _ => throw new KeyNotFoundException(key),
+                };
+            });
 
             services.AddCustomControllers(Configuration);
         }

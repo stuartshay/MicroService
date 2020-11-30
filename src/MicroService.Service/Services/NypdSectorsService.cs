@@ -11,7 +11,7 @@ using NetTopologySuite.IO;
 
 namespace MicroService.Service.Services
 {
-    public class NypdSectorsService<T> : AbstractShapeService<NypdSectorShape>, INypdSectorsService
+    public class NypdSectorsService<T> : AbstractShapeService<NypdSectorShape>, IShapeService<NypdSectorShape>
     {
         public NypdSectorsService(IOptions<ApplicationOptions> options)
         {

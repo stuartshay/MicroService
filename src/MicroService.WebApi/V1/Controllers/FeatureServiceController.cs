@@ -1,14 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using MicroService.Service.Helpers;
-using MicroService.Service.Interfaces;
+using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using NetTopologySuite.IO;
+using static MicroService.WebApi.Startup;
 
 namespace MicroService.WebApi.V1.Controllers
 {
@@ -23,31 +26,15 @@ namespace MicroService.WebApi.V1.Controllers
     [EnableCors(ApiConstants.CorsPolicy)]
     public class FeatureServiceController : ControllerBase
     {
-        private readonly IBoroughBoundariesService _boroughBoundariesService;
-        private readonly INypdPolicePrecinctService _nypdPolicePrecinctsService;
-        private readonly INypdSectorsService _nypdSectorsService;
-        private readonly IHistoricDistrictService _historicDistrictService;
-        private readonly IZipCodeService _zipCodeService;
+        private readonly ShapeServiceResolver _shapeServiceResolver;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureServiceController"/> class.
         /// </summary>
-        /// <param name="boroughBoundariesService"></param>
-        /// <param name="nypdPolicePrecinctsService"></param>
-        /// <param name="nypdSectorsService"></param>
-        /// <param name="historicDistrictService"></param>
-        /// <param name="zipCodeService"></param>
-        public FeatureServiceController(IBoroughBoundariesService boroughBoundariesService,
-            INypdPolicePrecinctService nypdPolicePrecinctsService,
-            INypdSectorsService nypdSectorsService,
-            IHistoricDistrictService historicDistrictService,
-            IZipCodeService zipCodeService)
+        /// <param name="shapeServiceResolver"></param>
+        public FeatureServiceController(ShapeServiceResolver shapeServiceResolver)
         {
-            _boroughBoundariesService = boroughBoundariesService;
-            _nypdPolicePrecinctsService = nypdPolicePrecinctsService;
-            _nypdSectorsService = nypdSectorsService;
-            _historicDistrictService = historicDistrictService;
-            _zipCodeService = zipCodeService;
+            _shapeServiceResolver = shapeServiceResolver;
         }
 
         /// <summary>
@@ -87,31 +74,10 @@ namespace MicroService.WebApi.V1.Controllers
             var databaseProperties = new DbaseFileHeader();
             var shapeProperties = new ShapefileHeader();
 
-            if (id == ShapeProperties.BoroughBoundaries.ToString())
-            {
-                databaseProperties = _boroughBoundariesService.GetShapeDatabaseProperties();
-                shapeProperties = _boroughBoundariesService.GetShapeProperties();
-            }
-            else if (id == ShapeProperties.HistoricDistricts.ToString())
-            {
-                databaseProperties = _historicDistrictService.GetShapeDatabaseProperties();
-                shapeProperties = _historicDistrictService.GetShapeProperties();
-            }
-            else if (id == ShapeProperties.NypdPolicePrecincts.ToString())
-            {
-                databaseProperties = _nypdPolicePrecinctsService.GetShapeDatabaseProperties();
-                shapeProperties = _nypdPolicePrecinctsService.GetShapeProperties();
-            }
-            else if (id == ShapeProperties.NypdSectors.ToString())
-            {
-                databaseProperties = _nypdSectorsService.GetShapeDatabaseProperties();
-                shapeProperties = _nypdSectorsService.GetShapeProperties();
-            }
-            else if (id == ShapeProperties.ZipCodes.ToString())
-            {
-                databaseProperties = _zipCodeService.GetShapeDatabaseProperties();
-                shapeProperties = _zipCodeService.GetShapeProperties();
-            }
+            var service = _shapeServiceResolver(id);
+
+            databaseProperties = service.GetShapeDatabaseProperties();
+            shapeProperties = service.GetShapeProperties();
 
             if (databaseProperties == null)
                 return NotFound();
@@ -137,39 +103,23 @@ namespace MicroService.WebApi.V1.Controllers
         /// <summary>
         ///  Get Feature Lookup
         /// </summary>
+        /// <param name="request">Feature Request</param>
         /// <returns></returns>
         [HttpGet("featurelookup", Name = "GetFeatureLookup")]
-        [Produces("application/json", Type = typeof(IEnumerable<string>))]
-        [ProducesResponseType(typeof(IEnumerable<string>), 200)]
+        [Produces("application/json", Type = typeof(ShapeBase))]
+        [ProducesResponseType(typeof(ShapeBase), 200)]
+        [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         public async Task<ActionResult<object>> GetFeatureLookup([FromQuery] FeatureRequestModel request)
         {
             if (string.IsNullOrEmpty(request?.Key))
                 return NoContent();
 
-            var results = new object();
+            //var validate = _shapeServiceResolver(ShapeProperties.BoroughBoundaries.ToString()).GetFeatureLookup(request.X, request.Y);
+            //if (validate == null)
+            //    return new HttpResponseMessage(HttpStatusCode.BadRequest);
 
-            if (request.Key == ShapeProperties.BoroughBoundaries.ToString())
-            {
-                results = _boroughBoundariesService.GetFeatureLookup(request.X, request.Y);
-            }
-            else if (request.Key == ShapeProperties.HistoricDistricts.ToString())
-            {
-                results = _historicDistrictService.GetFeatureLookup(request.X, request.Y);
-            }
-            else if (request.Key == ShapeProperties.NypdPolicePrecincts.ToString())
-            {
-                results = _nypdPolicePrecinctsService.GetFeatureLookup(request.X, request.Y);
-            }
-            else if (request.Key == ShapeProperties.NypdSectors.ToString())
-            {
-                results = _nypdSectorsService.GetFeatureLookup(request.X, request.Y);
-            }
-            else if (request.Key == ShapeProperties.ZipCodes.ToString())
-            {
-                results = _zipCodeService.GetFeatureLookup(request.X, request.Y);
-            }
-
+            var results = _shapeServiceResolver(request.Key).GetFeatureLookup(request.X, request.Y);
             if (results == null)
                 return NotFound();
 

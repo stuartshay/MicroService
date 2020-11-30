@@ -1,6 +1,8 @@
-﻿namespace MicroService.Service.Models
+﻿using MicroService.Service.Models.Base;
+
+namespace MicroService.Service.Models
 {
-    public class HistoricDistrictShape
+    public class HistoricDistrictShape : ShapeBase
     {
         public string LPNumber { get; set; }
 

@@ -33,7 +33,7 @@ namespace MicroService.Test.Unit
         //[InlineData(@"LPC_Individual_Landmark_and_Historic_Building_Database\LPC_Individual_Landmark_and_Historic_Building_Database")]
         public void Shape_OutputFeatures_Borough_Boundaries(string shapeFilePath)
         {
-            string shapeDirectory = $"../../../Files/{shapeFilePath}";
+            string shapeDirectory = $"../../../../../Files/{shapeFilePath}";
             string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
             GeometryFactory factory = new GeometryFactory();
@@ -86,7 +86,7 @@ namespace MicroService.Test.Unit
             var result = features;
             foreach (var f in features)
             {
-                var z = f.Geometry.Contains(new Point(1006187, 232036));
+                var z = f.Geometry.Contains(new Point(1032999, 217570));
                 if (z)
                 {
                     var z1 = f.Attributes["pct"];
