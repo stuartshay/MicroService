@@ -31,7 +31,7 @@ namespace MicroService.Test.Fixture
                     var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
                     string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
-                    return new CachedShapefileDataReader(cache, shapePath);
+                    return new CachedShapefileDataReader(cache, key, shapePath);
                 })
                 .AddScoped<BoroughBoundariesService>()
                 .AddOptions()
