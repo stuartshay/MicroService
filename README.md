@@ -97,6 +97,11 @@ https://stackoverflow.com/questions/8137391/percentile-calculation
 ### Benchmark
 
 * [Bombardier](https://godoc.org/github.com/codesenberg/bombardier)
+* Install Crank Controller/Agent
+```
+dotnet tool install -g Microsoft.Crank.Controller --version "0.1.0-*"
+dotnet tool install -g Microsoft.Crank.Agent --version "0.1.0-*"
+```
 
 Run agent
 ```

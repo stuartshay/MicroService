@@ -15,7 +15,7 @@ scenarios:
       job: bombardier
       variables:
         serverPort: 5000
-        path: /api/v1/FeatureService/featurelookup?X=1006246&Y=174058&Key=BoroughBoundaries
+        path: /api/v1/FeatureService/FeatureLookup?X=1006246&Y=174058&Key=BoroughBoundaries
         warmup: 2
         duration: 3
         connections: 2
@@ -25,7 +25,7 @@ profiles:
   local:
     variables:
       serverAddress: localhost
-    jobs: 
+    jobs:
       application:
         endpoints:
           - http://localhost:5010
