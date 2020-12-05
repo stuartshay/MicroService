@@ -93,3 +93,17 @@ http://localhost:9090
 Percentile Calculation
 https://stackoverflow.com/questions/8137391/percentile-calculation
 ```
+
+### Benchmark
+
+* [Bombardier](https://godoc.org/github.com/codesenberg/bombardier)
+
+Run agent
+```
+crank-agent --build-path C:\benchmarks --no-cleanup
+```
+
+Run controller
+```
+crank --config ./scenarios/ms.benchmarks.yml --scenario boroughBoundaries --profile local --iterations 1 --output C:\benchmarks\results.json
+```
