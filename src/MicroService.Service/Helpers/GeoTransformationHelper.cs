@@ -17,7 +17,7 @@ namespace MicroService.Service.Helpers
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static (double?, double?) Nad83TransformWgs84(double? x, double? y)
+        public static (double?, double?) ConvertNad83ToWgs84(double? x, double? y)
         {
             if (!x.HasValue || !y.HasValue)
                 return (null, null);
@@ -41,7 +41,7 @@ namespace MicroService.Service.Helpers
         /// <param name="latitude"></param>
         /// <param name="longitude"></param>
         /// <returns></returns> 
-        public static (double?, double?) Wgs84TransformNad83(double? latitude, double? longitude)
+        public static (double?, double?) ConvertWgs84ToNad83(double? latitude, double? longitude)
         {
             if (!latitude.HasValue || !longitude.HasValue)
                 return (null, null);
