@@ -94,70 +94,13 @@ namespace MicroService.Test.Unit
                     //var z3 = f.Attributes["sector"];
                 }
             }
-
-
-
         }
-
-        private IList<IPoint> Contains(Geometry geom, List<GeoAPI.Geometries.Coordinate> cordinates)
-        {
-            var prepGeom = new NetTopologySuite.Geometries.Prepared.PreparedGeometryFactory().Create(geom);
-            
-            var res = new List<IPoint>();
-            NetTopologySuite.Geometries.Coordinate c = new NetTopologySuite.Geometries.Coordinate(232, 2323);
-
-            var p = new Point(11111, 222222);
-            var x = prepGeom.Contains(p);
-            var y = x;
-
-
-
-
-
-            //foreach (var point in cordinates)
-            //{
-            //    var p = new Point(point.X, point.Y);
-            //    if (prepGeom.Overlaps(p))
-            //    {
-            //       // res.Add(point);
-            //    }
-            //    if (prepGeom.Contains(p))
-            //    {
-            //       // res.Add(point);
-            //    }
-            //}
-
-            return res;
-        }
-
-        //private static Feature FindPoint(double lat, double lon)
-        //{
-        //    Coordinate c = new Coordinate(lat, lon);
-
-        //    IGeometry g = factory.CreateGeometry(Geometry.DefaultFactory.CreatePoint(c));
-
-        //    foreach (Feature f in Features)
-        //    {
-        //        if (f.Geometry.Overlaps(g))
-        //            return f;
-        //        if (f.Geometry.EnvelopeInternal.Contains(c))
-        //            return f;
-        //        if (f.Geometry.Boundary.Contains(g))
-        //            return f;
-        //        if (f.Geometry.Contains(g))
-        //            return f;
-        //    }
-        //    return null;
-        //}
-
-
 
         [Fact]
         public void Test_WKTReader()
         {
             WktReaderFunctions.GeometryContainsPoint();
         }
-
 
     }
 }
