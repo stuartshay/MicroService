@@ -25,9 +25,9 @@ aspnetcore_envirnoment = "Docker" # api env
 db_connection_string = "User ID=nyclandmarks;Password=nyclandmarks;Server=myrdsinstance.ckm3eyorqjco.us-east-1.rds.amazonaws.com;Port=5432;Database=nyclandmarks;Integrated Security=true;Pooling=true;"
 
 # Fargate instance CPU units to provision
-cpu_value = "1024"
+cpu_value = "4096"
 # Fargate instance memory to provision (in MiB)
-memory_value = "2048"
+memory_value = "8192"
 
 # Container port use for mapping with host
 container_port = "5000"

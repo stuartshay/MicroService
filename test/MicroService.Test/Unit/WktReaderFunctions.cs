@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using NetTopologySuite.Geometries;
 
 namespace MicroService.Test.Unit
@@ -34,9 +32,5 @@ namespace MicroService.Test.Unit
             }
         }
 
-        internal static void PolygonContainsPoints()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

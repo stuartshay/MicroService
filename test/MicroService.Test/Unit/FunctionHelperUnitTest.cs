@@ -33,11 +33,11 @@ namespace MicroService.Test.Unit
             double x = 1016637;
             double y = 187747;
 
-            var result = GeoTransformationHelper.Nad83TransformWgs84(x, y);
+            var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
             var latitude = result.Item2;
             var longitude = result.Item1;
 
-            var result2 = GeoTransformationHelper.Wgs84TransformNad83(latitude, longitude);
+            var result2 = GeoTransformationHelper.ConvertWgs84ToNad83(latitude, longitude);
             var x1 = result2.Item1;
             var y1 = result2.Item2;
 
