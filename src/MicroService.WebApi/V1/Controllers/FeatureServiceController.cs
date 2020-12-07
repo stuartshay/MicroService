@@ -115,7 +115,7 @@ namespace MicroService.WebApi.V1.Controllers
             if (string.IsNullOrEmpty(request?.Key))
                 return NoContent();
 
-            var validate = _shapeServiceResolver(ShapeProperties.BoroughBoundaries.ToString()).GetFeatureLookup(request.X, request.Y);
+            var validate = _shapeServiceResolver(request.Key).GetFeatureLookup(request.X, request.Y);
             if (validate == null)
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
 
