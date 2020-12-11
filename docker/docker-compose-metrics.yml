@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   prometheus:
-    image: stuartshay/microservice-prometheus:v2.20.1-v2.8
+    image: stuartshay/microservice-prometheus:v2.20.1-v2.9
     container_name: prometheus
     #volumes:
     #  - ./prometheus/:/etc/prometheus/
@@ -19,7 +19,7 @@ services:
       - microservice-network
 
   grafana:
-    image: stuartshay/microservice-grafana:7.3.4-v4.78
+    image: stuartshay/microservice-grafana:7.3.4-v4.79
     container_name: grafana
     ports:
       - 3000:3000
