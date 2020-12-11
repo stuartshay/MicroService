@@ -1,6 +1,6 @@
 node('buildx') {
     
-    String version_prefix = '7.3.4-v4'
+    String version_prefix = '7.3.5-v4'
     String version_suffix = ''
     String docker_image_name = 'stuartshay/microservice-grafana'
     String docker_file = 'docker/microservice-grafana.dockerfile/Dockerfile'
