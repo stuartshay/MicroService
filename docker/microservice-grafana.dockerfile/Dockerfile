@@ -1,4 +1,4 @@
-FROM grafana/grafana:6.7.4-ubuntu
+FROM grafana/grafana:7.3.4-ubuntu
 
 
 COPY ./scripts/grafana.sh /usr/local/bin
