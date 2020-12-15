@@ -5,20 +5,11 @@ using NetTopologySuite.IO;
 using Xunit.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using GeoAPI.Geometries;
-
 
 namespace MicroService.Test.Unit
 {
     public class ShapeFileTest
     {
-        //https://dominoc925.blogspot.com/2013/04/using-nettopologysuite-to-read-and.html
-        //https://gis.stackexchange.com/questions/165022/how-do-i-transform-a-point-using-nettopologysuite
-        //https://github.com/NetTopologySuite/NetTopologySuite/issues/274#issuecomment-448283176
-        //https://gis.stackexchange.com/questions/165022/how-do-i-transform-a-point-using-nettopologysuite
-
-        //https://github.com/tangxiaodao/nettopologysuite/blob/6a9137af0ed1086ca3fe8d5212c56569689dac00/NetTopologySuite.Tests.NUnit/Performance/Geometries/Prepared/PreparedLineIntersectsPerformanceTest.cs
-
         private readonly ITestOutputHelper _testOutputHelper;
 
         public ShapeFileTest(ITestOutputHelper testOutputHelper)
@@ -58,7 +49,7 @@ namespace MicroService.Test.Unit
                 _testOutputHelper.WriteLine($"   {fldDescriptor.Name} {fldDescriptor.DbaseType}");
             }
 
-            //Read through all records of the shapefile (geometry and attributes) into a feature collection 
+            // Read through all records of the shapefile (geometry and attributes) into a feature collection 
             var features = new List<Feature>();
             while (shapeFileDataReader.Read())
             {
