@@ -17,6 +17,8 @@ namespace MicroService.WebApi.V1.Controllers
         /// <summary>
         /// Wgs84 Conversion to Nad83 - New York Long Island
         /// </summary>
+        /// <param name="latitude">Latitude (Wgs84)</param>
+        /// <param name="longitude">Longitude (Wgs84)</param>
         /// <returns></returns>
         [HttpGet]
         [Route("ConvertWgs84ToNad83")]
@@ -29,7 +31,7 @@ namespace MicroService.WebApi.V1.Controllers
                 return NoContent();
 
             var result = GeoTransformationHelper.ConvertWgs84ToNad83(latitude, longitude);
-            var point = new {X = result.Item1, Y = result.Item2};
+            var point = new { X = result.Item1, Y = result.Item2 };
 
             return Ok(point);
         }
@@ -37,6 +39,8 @@ namespace MicroService.WebApi.V1.Controllers
         /// <summary>
         /// Nad83 New York Long Island  Convert to Wgs84
         /// </summary>
+        /// <param name="x">X (Nad83)</param>
+        /// <param name="y">Y {Nad83}</param>
         /// <returns></returns>
         [HttpGet]
         [Route("ConvertNad83ToWgs84")]

@@ -19,6 +19,5 @@
         /// Lookup Service Key
         /// </summary>
         public string Key { get; set; }
-
     }
 }

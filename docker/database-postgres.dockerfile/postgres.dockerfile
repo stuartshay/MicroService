@@ -1,5 +1,12 @@
 FROM postgres:9.6
 
+RUN apt-get update && apt-get install -y \
+    curl \ 
+    unzip \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /wait_for_it.sh \
+    && chmod +x /*.sh 
+
 COPY data  /data
 
 COPY docker-entrypoint-initdb.d /docker-entrypoint-initdb.d

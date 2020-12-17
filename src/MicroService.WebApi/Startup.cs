@@ -46,6 +46,11 @@ namespace MicroService.WebApi
         /// </summary>
         public IConfiguration Configuration { get; }
 
+        /// <summary>
+        /// Shape Service Resolver
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public delegate IShapeService<ShapeBase> ShapeServiceResolver(string key);
 
         /// <summary>

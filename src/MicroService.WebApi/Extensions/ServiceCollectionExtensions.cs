@@ -147,11 +147,6 @@ namespace MicroService.WebApi.Extensions
                       };
                   };
             });
-            //.AddNewtonsoftJson(setupAction =>
-            //{
-            //    setupAction.SerializerSettings.ContractResolver =
-            //       new CamelCasePropertyNamesContractResolver();
-            //})
 
             return services;
         }

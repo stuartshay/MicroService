@@ -18,7 +18,7 @@ namespace MicroService.WebApi.Extensions.Health
         /// <returns></returns>
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = new CancellationToken())
         {
-            var applicationVersionNumber = GetType().GetTypeInfo().Assembly.GetName().Version.ToString();
+            var applicationVersionNumber = GetType().GetTypeInfo().Assembly.GetName().Version?.ToString();
 
             var result = Task.FromResult(string.IsNullOrEmpty(applicationVersionNumber) ? HealthCheckResult.Unhealthy("failed") : HealthCheckResult.Healthy(applicationVersionNumber));
             return result;
