@@ -3,9 +3,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using App.Metrics;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
+using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
@@ -28,13 +30,17 @@ namespace MicroService.WebApi.V1.Controllers
     {
         private readonly ShapeServiceResolver _shapeServiceResolver;
 
+        private readonly IMetrics _metrics;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureServiceController"/> class.
         /// </summary>
         /// <param name="shapeServiceResolver"></param>
-        public FeatureServiceController(ShapeServiceResolver shapeServiceResolver)
+        /// <param name="metrics"></param>
+        public FeatureServiceController(ShapeServiceResolver shapeServiceResolver, IMetrics metrics)
         {
             _shapeServiceResolver = shapeServiceResolver;
+            _metrics = metrics;
         }
 
         /// <summary>
@@ -54,6 +60,7 @@ namespace MicroService.WebApi.V1.Controllers
                     directory = j.GetAttribute<ShapeAttributes>().Directory,
                 });
 
+            _metrics.Measure.Counter.Increment(MetricsRegistry.GetShapesCounter);
             return Ok(result);
         }
 
@@ -71,13 +78,10 @@ namespace MicroService.WebApi.V1.Controllers
             if (id == null)
                 return BadRequest();
 
-            var databaseProperties = new DbaseFileHeader();
-            var shapeProperties = new ShapefileHeader();
-
             var service = _shapeServiceResolver(id);
 
-            databaseProperties = service.GetShapeDatabaseProperties();
-            shapeProperties = service.GetShapeProperties();
+            var databaseProperties = service.GetShapeDatabaseProperties();
+            var shapeProperties = service.GetShapeProperties();
 
             if (databaseProperties == null)
                 return NotFound();
@@ -97,6 +101,7 @@ namespace MicroService.WebApi.V1.Controllers
                 FieldsList = databaseProperties.Fields.Select(f => new { f.Name, f.Type.FullName }),
             };
 
+            _metrics.Measure.Counter.Increment(MetricsRegistry.GetShapePropertiesCounter);
             return Ok(result);
         }
 
@@ -122,6 +127,8 @@ namespace MicroService.WebApi.V1.Controllers
             var results = _shapeServiceResolver(request.Key).GetFeatureLookup(request.X, request.Y);
             if (results == null)
                 return NotFound();
+
+            _metrics.Measure.Counter.Increment(MetricsRegistry.GetFeatureLookupCounter);
 
             return Ok(results);
         }

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 namespace MicroService.WebApi.Extensions.Health
 {
     /// <summary>
-    /// 
+    /// Health Check
     /// </summary>
     public class RandomHealthCheck : IHealthCheck
     {
