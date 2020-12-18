@@ -20,11 +20,12 @@ namespace MicroService.Service.Models.Enum
         [ShapeAttributes("NYPD_Sectors", "NYPD_Sectors")]
         NypdSectors,
 
+        [Description("Park")]
+        [ShapeAttributes("Park", "PARK")]
+        Parks,
+
         [Description("Zip Codes")]
         [ShapeAttributes("Zip_Codes", "ZIP_CODE_040114")]
         ZipCodes,
-
-
-
     }
 }
