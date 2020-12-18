@@ -1,0 +1,202 @@
+<metadata><idinfo><citation><citeinfo><pubdate>20160229</pubdate><title>PARK</title><edition>2016 Planimetrics</edition><geoform>vector digital data</geoform></citeinfo></citation><descript><abstract>A primary goal of the NYC Citywide GIS is to maintain the accuracy and quality of the base data which includes the orthophotography and planimetrics, collectively known as NYC Map. This base is the foundation upon which virtually all other GIS information within the City of New York is built. Ensuring its completeness and accuracy is fundamental to the Group’s core mission. 
+
+For this dataset, the source imagery was captured on the following dates:
+
+Manhattan - June 24, 2014
+
+The Bronx, Brooklyn, Queens and Staten Island  - April 1st through April 25th, 2014
+
+Final delivery of all imagery – April 10, 2015
+
+Using this orthoimagery, the planimetric base layers were updated citywide starting in March 2015 and were completed in February 2016.</abstract><purpose>The PARK feature class contains both the PARK BOUNDARY for NYC Department of Parks and Recreation (DPR) designated parks, as well as the following Park features, which are often within (overlapping) the park boundaries. 
+
+BASEBALL/SOFTBALL FIELD- Basaball or softball fields
+
+BASKETBALL COURT- Basketball courts
+
+HANDBALL COURT- Handball courts
+
+MULTIPURPOSE COURT- Multiuse areas
+
+TENNIS COURT- Tennis courts
+
+VOLLEYBALL COURT- Volleyball courts
+
+FOOTBALL FIELD- Football fields
+
+SOCCER FIELD- Soccer fields
+
+GOLF COURSE- Golf courses
+
+POOLS- Public pool areas
+
+TRACK- Running track
+
+SKATING RINK- Skating or hockey rink
+
+GREENSTREETS- These coincide with DPR Greenstreet dataset. Park adjacent to road. 
+
+Digital planimetrics are derived using the imagery products delivered with the 2014 New York Statewide Flyover (see Summary for specific flight dates), which includes raw imagery collected to support the generation of 0.5 Ft Ground Sample Distance (GSD) natural color imagery. The images were captured with 80% forward lap and side lap to support 1”=100’ mapping and meet the distortion free requirements within New York City. Planimetrics are developed to meet American Society for Photogrammetry and Remote Sensing (ASPRS) Class 1 (one) horizontal mapping standards and ASPRS vertical Class 2 (two) accuracy specifications. Planimetrics are delivered via an ESRI geodatabase in New York State Plane Coordinates, Long Island East Zone, NAD83, US foot.</purpose></descript><spdom><bounding><westbc>-74.256931</westbc><eastbc>-73.702513</eastbc><northbc>40.911431</northbc><southbc>40.496013</southbc></bounding></spdom><keywords><theme><themekey>Parks</themekey><themekey>Ball Fields</themekey><themekey>NYCMap</themekey><themekey>DPR</themekey><themekey>Fields</themekey><themekey>Landbase</themekey><themekey>Basemap</themekey><themekey>Parks and Recreation</themekey><themekey>Park Property</themekey><themekey>Planimetric</themekey><themekey>Courts</themekey><themekey>Tracks</themekey><themekey>Rinks</themekey><themekey>structure</themekey><themekey>imageryBaseMapsEarthCover</themekey><themekey>transportation</themekey></theme><theme><themekey>Parks</themekey><themekey>Ball Fields</themekey><themekey>NYCMap</themekey><themekey>DPR</themekey><themekey>Fields</themekey><themekey>Landbase</themekey><themekey>Basemap</themekey><themekey>Parks and Recreation</themekey><themekey>Park Property</themekey><themekey>Planimetric</themekey><themekey>Courts</themekey><themekey>Tracks</themekey><themekey>Rinks</themekey><themekey>structure</themekey><themekey>imageryBaseMapsEarthCover</themekey><themekey>transportation</themekey></theme></keywords><accconst>None</accconst><useconst>Limited to use defined by the Department of Information Technology and Telecommunication, City of New York</useconst><ptcontac><cntinfo><cntorgp><cntorg>DoITT - City of New York</cntorg><cntper>Colin Reilly</cntper></cntorgp><cntpos>Director, Citywide GIS</cntpos><cntaddr><addrtype>mailing</addrtype><address>2 Metrotech Center</address><city>Brooklyn</city><state>New York</state><postal>11201</postal><country>UNITED STATES</country></cntaddr><cntemail>creilly@doitt.nyc.gov</cntemail></cntinfo></ptcontac><native>Microsoft Windows 7 Version 6.1 (Build 7601) Service Pack 1; Esri ArcGIS 10.2.0.3348</native></idinfo><spdoinfo><direct>Vector</direct><ptvctinf><esriterm Name="PARK"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom code="4" Sync="TRUE"/><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">12491</efeacnt><spindex Sync="TRUE">FALSE</spindex><linrefer Sync="TRUE">FALSE</linrefer></esriterm></ptvctinf></spdoinfo><spref><horizsys><planar><planci><plance>coordinate pair</plance><coordrep><absres>0.0003280833333333335</absres><ordres>0.0003280833333333335</ordres></coordrep><plandu>foot_us</plandu></planci></planar><geodetic><horizdn>D North American 1983</horizdn><ellips>GRS 1980</ellips><semiaxis>6378137.0</semiaxis><denflat>298.257222101</denflat></geodetic></horizsys></spref><eainfo><detailed Name="PARK" xmlns=""><enttyp><enttypl>PARK</enttypl><enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">12491</enttypc></enttyp><attr xmlns=""><attrlabl>SHAPE</attrlabl><attrdef>Feature geometry.</attrdef><attrdefs>ESRI</attrdefs><attrdomv><udom>Coordinates defining the features.</udom></attrdomv><attalias Sync="TRUE">Shape</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr xmlns=""><attrlabl>PARK_NAME</attrlabl><attalias Sync="TRUE">PARK_NAME</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">50</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr xmlns=""><attrlabl>SOURCE_ID</attrlabl><attalias Sync="TRUE">SOURCE_ID</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">19</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef>Unique Feature Identification Number.</attrdef></attr><attr xmlns=""><attrlabl>LANDUSE</attrlabl><attalias Sync="TRUE">LANDUSE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">50</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr xmlns=""><attrlabl>PARKNUM</attrlabl><attalias Sync="TRUE">PARKNUM</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">15</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef>Unique park identification number corresponding with PARK_NAME</attrdef></attr><attr xmlns=""><attrlabl>STATUS</attrlabl><attalias Sync="TRUE">STATUS</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">12</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef>Attribute LookUp Table:
+
+New- Newly collected in 2014 
+Updated- Feature has changed in 2014 collection 
+Unchanged- No change in 2014 collection</attrdef></attr><attr xmlns=""><attrlabl>SYSTEM</attrlabl><attalias Sync="TRUE">SYSTEM</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">25</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr xmlns=""><attrlabl Sync="TRUE">SHAPE_Area</attrlabl><attalias Sync="TRUE">SHAPE_Area</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">19</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Area of feature in internal units squared.</attrdef><attrdefs Sync="TRUE">Esri</attrdefs><attrdomv><udom Sync="TRUE">Positive real numbers that are automatically generated.</udom></attrdomv></attr><subtype><stname Sync="TRUE">Soccer Field</stname><stcode Sync="TRUE">4930</stcode><stfield><stfldnm Sync="TRUE">FEATURE_CODE</stfldnm><stflddv Sync="TRUE">4900</stflddv></stfield><stfield><stfldnm Sync="TRUE">SUB_FEATURE_CODE</stfldnm><stflddd><domname Sync="TRUE">dSoccerField</domname><domdesc Sync="TRUE">Domain for Soccer Field</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">Integer</domfldtp></stflddd></stfield><stfield><stfldnm Sync="TRUE">STATUS</stfldnm><stflddd><domname Sync="TRUE">dStatus</domname><domdesc Sync="TRUE">Domain for Feature Update Status</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">String</domfldtp></stflddd></stfield></subtype><subtype><stname Sync="TRUE">Greenstreets</stname><stcode Sync="TRUE">4985</stcode><stfield><stfldnm Sync="TRUE">FEATURE_CODE</stfldnm><stflddv Sync="TRUE">4990</stflddv></stfield><stfield><stfldnm Sync="TRUE">SUB_FEATURE_CODE</stfldnm><stflddd><domname Sync="TRUE">dGreenstreets</domname><domdesc Sync="TRUE">Domain for Greenstreets</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">Integer</domfldtp></stflddd></stfield><stfield><stfldnm Sync="TRUE">STATUS</stfldnm><stflddd><domname Sync="TRUE">dStatus</domname><domdesc Sync="TRUE">Domain for Feature Update Status</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">String</domfldtp></stflddd></stfield></subtype><attr xmlns=""><attrlabl Sync="TRUE">FID</attrlabl><attalias Sync="TRUE">FID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Internal feature number.</attrdef><attrdefs Sync="TRUE">Esri</attrdefs><attrdomv><udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom></attrdomv></attr><subtype><stname Sync="TRUE">Football Field</stname><stcode Sync="TRUE">4920</stcode><stfield><stfldnm Sync="TRUE">FEATURE_CODE</stfldnm><stflddv Sync="TRUE">4900</stflddv></stfield><stfield><stfldnm Sync="TRUE">SUB_FEATURE_CODE</stfldnm><stflddd><domname Sync="TRUE">dFootballField</domname><domdesc Sync="TRUE">Domain for Football Field</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">Integer</domfldtp></stflddd></stfield><stfield><stfldnm Sync="TRUE">STATUS</stfldnm><stflddd><domname Sync="TRUE">dStatus</domname><domdesc Sync="TRUE">Domain for Feature Update Status</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">String</domfldtp></stflddd></stfield></subtype><subtype><stname Sync="TRUE">Skating Rink</stname><stcode Sync="TRUE">4970</stcode><stfield><stfldnm Sync="TRUE">FEATURE_CODE</stfldnm><stflddv Sync="TRUE">4900</stflddv></stfield><stfield><stfldnm Sync="TRUE">SUB_FEATURE_CODE</stfldnm><stflddd><domname Sync="TRUE">dSkatingRink</domname><domdesc Sync="TRUE">Domain for Skating Rinks</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">Integer</domfldtp></stflddd></stfield><stfield><stfldnm Sync="TRUE">STATUS</stfldnm><stflddd><domname Sync="TRUE">dStatus</domname><domdesc Sync="TRUE">Domain for Feature Update Status</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">String</domfldtp></stflddd></stfield></subtype><subtype><stname Sync="TRUE">Court</stname><stcode Sync="TRUE">4910</stcode><stfield><stfldnm Sync="TRUE">FEATURE_CODE</stfldnm><stflddv Sync="TRUE">4900</stflddv></stfield><stfield><stfldnm Sync="TRUE">SUB_FEATURE_CODE</stfldnm><stflddd><domname Sync="TRUE">dParkCourt</domname><domdesc Sync="TRUE">Domain for Park Court</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">Integer</domfldtp></stflddd></stfield><stfield><stfldnm Sync="TRUE">STATUS</stfldnm><stflddd><domname Sync="TRUE">dStatus</domname><domdesc Sync="TRUE">Domain for Feature Update Status</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">String</domfldtp></stflddd></stfield></subtype><attr xmlns=""><attrlabl Sync="TRUE">FEAT_CODE</attrlabl><attalias Sync="FALSE">FEATURE_CODE</attalias><attrtype Sync="TRUE">SmallInteger</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">4</atprecis><attscale Sync="TRUE">0</attscale><attrdef>Attribute LookUp Table:
+
+4900- Baseball/Softball Field
+4910- Court
+4920- Football Field
+4930- Soccer Field
+4940- Golf Course
+4950- Pool
+4960- Running Track
+4970- Skating Rink
+4980- Park Boundary
+4985- Greenstreets
+</attrdef></attr><attr xmlns=""><attrlabl Sync="TRUE">SUB_CODE</attrlabl><attalias Sync="FALSE">SUB_FEATURE_CODE</attalias><attrtype Sync="TRUE">Integer</attrtype><attwidth Sync="TRUE">9</attwidth><atprecis Sync="TRUE">9</atprecis><attscale Sync="TRUE">0</attscale><attrdef>Attribute LookUp Table:
+
+490000- Baseball/Softball Field
+490010- Baseball/Softball Fields, Hard Surface 
+490020- Baseball/Softball Fields, Grassy Surface 
+491000- Court, General
+491010- Courts, Basketball Full Court 
+491020- Courts, Basketball Half Court 
+491030- Courts, Handball 
+491040- Courts, Hockey 
+491050- Courts, Multipurpose 
+491060- Courts, Tennis 
+491070- Courts, Volleyball 
+492000- Football Field
+493000- Soccer Field
+494000- Golf Course
+495000- Pool
+496000- Running Track
+497000- Skating Rink
+498000- Park Boundary
+498500- Greenstreets</attrdef></attr><subtype><stname Sync="TRUE">Pool</stname><stcode Sync="TRUE">4950</stcode><stfield><stfldnm Sync="TRUE">FEATURE_CODE</stfldnm><stflddv Sync="TRUE">4900</stflddv></stfield><stfield><stfldnm Sync="TRUE">SUB_FEATURE_CODE</stfldnm><stflddd><domname Sync="TRUE">dPool</domname><domdesc Sync="TRUE">Domain for Pool</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">Integer</domfldtp></stflddd></stfield><stfield><stfldnm Sync="TRUE">STATUS</stfldnm><stflddd><domname Sync="TRUE">dStatus</domname><domdesc Sync="TRUE">Domain for Feature Update Status</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">String</domfldtp></stflddd></stfield></subtype><subtype><stname Sync="TRUE">Baseball/Softball Field</stname><stcode Sync="TRUE">4900</stcode><stfield><stfldnm Sync="TRUE">FEATURE_CODE</stfldnm><stflddv Sync="TRUE">4900</stflddv></stfield><stfield><stfldnm Sync="TRUE">SUB_FEATURE_CODE</stfldnm><stflddd><domname Sync="TRUE">dBaseballField</domname><domdesc Sync="TRUE">Domain of Baseball Field</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">Integer</domfldtp></stflddd></stfield><stfield><stfldnm Sync="TRUE">STATUS</stfldnm><stflddd><domname Sync="TRUE">dStatus</domname><domdesc Sync="TRUE">Domain for Feature Update Status</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">String</domfldtp></stflddd></stfield></subtype><subtype><stname Sync="TRUE">Golf Course</stname><stcode Sync="TRUE">4940</stcode><stfield><stfldnm Sync="TRUE">FEATURE_CODE</stfldnm><stflddv Sync="TRUE">4900</stflddv></stfield><stfield><stfldnm Sync="TRUE">SUB_FEATURE_CODE</stfldnm><stflddd><domname Sync="TRUE">dGolfCourse</domname><domdesc Sync="TRUE">Domain for Golf Course</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">Integer</domfldtp></stflddd></stfield><stfield><stfldnm Sync="TRUE">STATUS</stfldnm><stflddd><domname Sync="TRUE">dStatus</domname><domdesc Sync="TRUE">Domain for Feature Update Status</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">String</domfldtp></stflddd></stfield></subtype><subtype><stname Sync="TRUE">Running Track</stname><stcode Sync="TRUE">4960</stcode><stfield><stfldnm Sync="TRUE">FEATURE_CODE</stfldnm><stflddv Sync="TRUE">4900</stflddv></stfield><stfield><stfldnm Sync="TRUE">SUB_FEATURE_CODE</stfldnm><stflddd><domname Sync="TRUE">dRunningTrack</domname><domdesc Sync="TRUE">Domain for Running Track</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">Integer</domfldtp></stflddd></stfield><stfield><stfldnm Sync="TRUE">STATUS</stfldnm><stflddd><domname Sync="TRUE">dStatus</domname><domdesc Sync="TRUE">Domain for Feature Update Status</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">String</domfldtp></stflddd></stfield></subtype><attr xmlns=""><attrlabl Sync="TRUE">SHAPE_Leng</attrlabl><attalias Sync="TRUE">SHAPE_Leng</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">19</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><subtype><stname Sync="TRUE">Park Boundary</stname><stcode Sync="TRUE">4980</stcode><stfield><stfldnm Sync="TRUE">FEATURE_CODE</stfldnm><stflddv Sync="TRUE">4900</stflddv></stfield><stfield><stfldnm Sync="TRUE">SUB_FEATURE_CODE</stfldnm><stflddd><domname Sync="TRUE">dParkBoundary</domname><domdesc Sync="TRUE">Domain for Park Boundary</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">Integer</domfldtp></stflddd></stfield><stfield><stfldnm Sync="TRUE">STATUS</stfldnm><stflddd><domname Sync="TRUE">dStatus</domname><domdesc Sync="TRUE">Domain for Feature Update Status</domdesc><domtype Sync="TRUE">Coded Value</domtype><mrgtype Sync="TRUE">Default value</mrgtype><splttype Sync="TRUE">Default value</splttype><domowner Sync="TRUE"/><domfldtp Sync="TRUE">String</domfldtp></stflddd></stfield></subtype></detailed></eainfo><distinfo><distliab>See access and use constraints information.</distliab></distinfo><metainfo><metd>20160229</metd><metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn><metstdv>FGDC-STD-001-1998</metstdv><mettc>local time</mettc></metainfo><mdLang><languageCode value="eng"/><countryCode value="USA" Sync="TRUE"/></mdLang><mdChar><CharSetCd value="004"/></mdChar><mdHrLv><ScopeCd value="005"/></mdHrLv><mdDateSt>20160229</mdDateSt><mdStanName>ArcGIS Metadata</mdStanName><mdStanVer>1.0</mdStanVer><distInfo><distFormat><formatName Sync="TRUE">Shapefile</formatName></distFormat><distTranOps><transSize Sync="TRUE">15.185</transSize></distTranOps></distInfo><dataIdInfo><idCitation xmlns=""><resTitle>PARK</resTitle><date><pubDate>2016-02-29T00:00:00</pubDate></date><resEd>2016 Planimetrics</resEd><presForm xmlns=""><PresFormCd value="005"/></presForm><presForm xmlns=""><fgdcGeoform>vector digital data</fgdcGeoform></presForm></idCitation><idAbs>&lt;DIV STYLE="text-align:Left;"&gt;&lt;DIV&gt;&lt;DIV&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;&lt;SPAN&gt;The PARK feature class contains both the PARK BOUNDARY for NYC Department of Parks and Recreation (DPR) designated parks, as well as the following Park features, which are often within (overlapping) the park boundaries. &lt;/SPAN&gt;&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;BASEBALL/SOFTBALL FIELD- Baseball or softball fields&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;BASKETBALL COURT- Basketball courts&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;HANDBALL COURT- Handball courts&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;MULTIPURPOSE COURT- Multiuse areas&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;TENNIS COURT- Tennis courts&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;VOLLEYBALL COURT- Volleyball courts&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;FOOTBALL FIELD- Football fields&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;SOCCER FIELD- Soccer fields&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;GOLF COURSE- Golf courses&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;POOLS- Public pool areas&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;TRACK- Running track&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;SKATING RINK- Skating or hockey rink&lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 11 0;"&gt;&lt;SPAN&gt;GREENSTREETS- These coincide with DPR Greenstreet dataset. Park adjacent to road. &lt;/SPAN&gt;&lt;/P&gt;&lt;P STYLE="margin:0 0 7 0;"&gt;&lt;SPAN&gt;Digital planimetrics are derived using the imagery products delivered with the 2014 New York Statewide Flyover (see Summary for specific flight dates), which includes raw imagery collected to support the generation of 0.5 Ft Ground Sample Distance (GSD) natural color imagery. The images were captured with 80% forward lap and side lap to support 1”=100’ mapping and meet the distortion free requirements within New York City. Planimetrics are developed to meet American Society for Photogrammetry and Remote Sensing (ASPRS) Class 1 (one) horizontal mapping standards and ASPRS vertical Class 2 (two) accuracy specifications. Planimetrics are delivered via an ESRI geodatabase in New York State Plane Coordinates, Long Island East Zone, NAD83, US foot.&lt;/SPAN&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;</idAbs><idPurp>A primary goal of the NYC Citywide GIS is to maintain the accuracy and quality of the base data which includes the orthophotography and planimetrics, collectively known as NYC Map. This base is the foundation upon which virtually all other GIS information within the City of New York is built. Ensuring its completeness and accuracy is fundamental to the Group’s core mission. 
+
+For this dataset, the source imagery was captured on the following dates:
+
+Manhattan - June 24, 2014
+
+The Bronx, Brooklyn, Queens and Staten Island  - April 1st through April 25th, 2014
+
+Final delivery of all imagery – April 10, 2015
+
+Using this orthoimagery, the planimetric base layers were updated citywide starting in March 2015 and were completed in February 2016.</idPurp><idPoC><rpIndName>Colin Reilly</rpIndName><rpOrgName>DoITT - City of New York</rpOrgName><rpPosName>Director, Citywide GIS</rpPosName><rpCntInfo><cntAddress addressType="postal"><delPoint>2 Metrotech Center</delPoint><city>Brooklyn</city><adminArea>New York</adminArea><postCode>11201</postCode><country>US</country><eMailAdd>creilly@doitt.nyc.gov</eMailAdd></cntAddress></rpCntInfo><role><RoleCd value="007"/></role></idPoC><themeKeys xmlns=""><keyword>Parks</keyword><keyword>Ball Fields</keyword><keyword>NYCMap</keyword><keyword>DPR</keyword><keyword>Fields</keyword><keyword>Landbase</keyword><keyword>Basemap</keyword><keyword>Parks and Recreation</keyword><keyword>Park Property</keyword><keyword>Planimetric</keyword><keyword>Courts</keyword><keyword>Tracks</keyword><keyword>Rinks</keyword></themeKeys><themeKeys xmlns=""><thesaName><resTitle>ISO 19115 Topic Categories</resTitle></thesaName><keyword>structure</keyword><keyword>imageryBaseMapsEarthCover</keyword><keyword>transportation</keyword></themeKeys><searchKeys><keyword>Parks</keyword><keyword>Ball Fields</keyword><keyword>structure</keyword><keyword>NYCMap</keyword><keyword>DPR</keyword><keyword>imageryBaseMapsEarthCover</keyword><keyword>Fields</keyword><keyword>transportation</keyword><keyword>Landbase</keyword><keyword>Basemap</keyword><keyword>Parks and Recreation</keyword><keyword>Park Property</keyword><keyword>Planimetric</keyword><keyword>Courts</keyword><keyword>Tracks</keyword><keyword>Rinks</keyword></searchKeys><resConst><LegConsts><useLimit>See access and use constraints information.</useLimit></LegConsts></resConst><resConst><Consts><useLimit>&lt;DIV STYLE="text-align:Left;"&gt;&lt;DIV&gt;&lt;DIV&gt;&lt;P&gt;&lt;SPAN&gt;Limited to use defined by the Department of Information Technology and Telecommunication, City of New York&lt;/SPAN&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;</useLimit></Consts></resConst><spatRpType><SpatRepTypCd value="001"/></spatRpType><dataLang><languageCode value="eng"/><countryCode value="USA" Sync="TRUE"/></dataLang><envirDesc>Microsoft Windows 7 Version 6.1 (Build 7601) Service Pack 1; Esri ArcGIS 10.2.0.3348</envirDesc><dataExt><geoEle><GeoBndBox><westBL>-74.256931</westBL><eastBL>-73.702513</eastBL><southBL>40.496013</southBL><northBL>40.911431</northBL></GeoBndBox></geoEle></dataExt><dataExt><geoEle xmlns=""><GeoBndBox esriExtentType="search"><exTypeCode Sync="TRUE">1</exTypeCode><westBL Sync="TRUE">-74.256931</westBL><eastBL Sync="TRUE">-73.701097</eastBL><northBL Sync="TRUE">40.911431</northBL><southBL Sync="TRUE">40.496009</southBL></GeoBndBox></geoEle></dataExt><dataChar><CharSetCd value="004"/></dataChar><tpCat><TopicCatCd value="018"/></tpCat><tpCat><TopicCatCd value="010"/></tpCat><tpCat><TopicCatCd value="017"/></tpCat></dataIdInfo><spatRepInfo><VectSpatRep><geometObjs Name="PARK"><geoObjTyp><GeoObjTypCd value="002" Sync="TRUE"/></geoObjTyp><geoObjCnt Sync="TRUE">12491</geoObjCnt></geometObjs><topLvl><TopoLevCd value="001" Sync="TRUE"/></topLvl></VectSpatRep></spatRepInfo><Esri><CreaDate>20160219</CreaDate><CreaTime>14534700</CreaTime><ArcGISFormat>1.0</ArcGISFormat><DataProperties><itemProps><itemName Sync="TRUE">PARK</itemName><imsContentType Sync="TRUE" export="False">002</imsContentType><nativeExtBox><westBL Sync="TRUE">913233.658425</westBL><eastBL Sync="TRUE">1066867.545383</eastBL><southBL Sync="TRUE">120126.300152</southBL><northBL Sync="TRUE">271337.003963</northBL><exTypeCode Sync="TRUE">1</exTypeCode></nativeExtBox><itemLocation><linkage Sync="TRUE">file://\\doitt.nycnet\gisroot\GIS\Projects\DoITT\Planimetric update\2015\FINAL_Planimetrics\Distribution\OpenData\Shapefile\PARK.shp</linkage><protocol Sync="TRUE">Local Area Network</protocol></itemLocation><itemSize Sync="TRUE">15.185</itemSize></itemProps><coordRef><type Sync="TRUE">Projected</type><geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn><csUnits Sync="TRUE">Linear Unit: Foot_US (0.304801)</csUnits><projcsn Sync="TRUE">NAD_1983_StatePlane_New_York_Long_Island_FIPS_3104_Feet</projcsn><peXml Sync="TRUE">&lt;ProjectedCoordinateSystem xsi:type='typens:ProjectedCoordinateSystem' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:typens='http://www.esri.com/schemas/ArcGIS/10.1'&gt;&lt;WKT&gt;PROJCS[&amp;quot;NAD_1983_StatePlane_New_York_Long_Island_FIPS_3104_Feet&amp;quot;,GEOGCS[&amp;quot;GCS_North_American_1983&amp;quot;,DATUM[&amp;quot;D_North_American_1983&amp;quot;,SPHEROID[&amp;quot;GRS_1980&amp;quot;,6378137.0,298.257222101]],PRIMEM[&amp;quot;Greenwich&amp;quot;,0.0],UNIT[&amp;quot;Degree&amp;quot;,0.0174532925199433]],PROJECTION[&amp;quot;Lambert_Conformal_Conic&amp;quot;],PARAMETER[&amp;quot;False_Easting&amp;quot;,984250.0],PARAMETER[&amp;quot;False_Northing&amp;quot;,0.0],PARAMETER[&amp;quot;Central_Meridian&amp;quot;,-74.0],PARAMETER[&amp;quot;Standard_Parallel_1&amp;quot;,40.66666666666666],PARAMETER[&amp;quot;Standard_Parallel_2&amp;quot;,41.03333333333333],PARAMETER[&amp;quot;Latitude_Of_Origin&amp;quot;,40.16666666666666],UNIT[&amp;quot;Foot_US&amp;quot;,0.3048006096012192],AUTHORITY[&amp;quot;EPSG&amp;quot;,2263]]&lt;/WKT&gt;&lt;XOrigin&gt;-120039300&lt;/XOrigin&gt;&lt;YOrigin&gt;-96540300&lt;/YOrigin&gt;&lt;XYScale&gt;37212589.015695661&lt;/XYScale&gt;&lt;ZOrigin&gt;-100000&lt;/ZOrigin&gt;&lt;ZScale&gt;10000&lt;/ZScale&gt;&lt;MOrigin&gt;-100000&lt;/MOrigin&gt;&lt;MScale&gt;10000&lt;/MScale&gt;&lt;XYTolerance&gt;0.0032808333333333331&lt;/XYTolerance&gt;&lt;ZTolerance&gt;0.001&lt;/ZTolerance&gt;&lt;MTolerance&gt;0.001&lt;/MTolerance&gt;&lt;HighPrecision&gt;true&lt;/HighPrecision&gt;&lt;WKID&gt;102718&lt;/WKID&gt;&lt;LatestWKID&gt;2263&lt;/LatestWKID&gt;&lt;/ProjectedCoordinateSystem&gt;</peXml></coordRef></DataProperties><SyncDate>20160311</SyncDate><SyncTime>13515500</SyncTime><ModDate>20160311</ModDate><ModTime>13522600</ModTime><scaleRange><minScale>150000000</minScale><maxScale>5000</maxScale></scaleRange><ArcGISProfile>FGDC</ArcGISProfile><SyncOnce>FALSE</SyncOnce></Esri><Binary><Enclosure><Descript>original metadata</Descript><Data SourceMetadata="yes" OriginalFileName="source_metadata.xml" SourceMetadataDigest="e647a0f2616e92cca773454ec61a88a9" EsriPropertyType="Base64" SourceMetadataSchema="fgdc">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxtZXRhZGF0YT4NCiAgPGlk
+aW5mbz4NCiAgICA8Y2l0YXRpb24+DQogICAgICA8Y2l0ZWluZm8+DQogICAgICAgIDxwdWJkYXRl
+PjIwMTIxMTE2PC9wdWJkYXRlPg0KICAgICAgICA8dGl0bGU+TUFTVEVSLlBBUktfU0RFPC90aXRs
+ZT4NCiAgICAgICAgPGVkaXRpb24+MjAxMCBQbGFuaW1ldHJpY3M8L2VkaXRpb24+DQogICAgICAg
+IDxnZW9mb3JtPnZlY3RvciBkaWdpdGFsIGRhdGE8L2dlb2Zvcm0+DQogICAgICA8L2NpdGVpbmZv
+Pg0KICAgIDwvY2l0YXRpb24+DQogICAgPGRlc2NyaXB0Pg0KICAgICAgPGFic3RyYWN0PkRpZ2l0
+YWwgcGxhbmltZXRyaWNzIGFyZSBkZXJpdmVkIHVzaW5nIHRoZSBwcm9kdWN0cyBkZWxpdmVyZWQg
+d2l0aCB0aGUgMjAxMCBOZXcgWW9yayBTdGF0ZXdpZGUgRmx5b3Zlciwgd2hpY2ggaW5jbHVkZXMg
+cmF3IGltYWdlcnkgY29sbGVjdGVkIHRvIHN1cHBvcnQgdGhlIGdlbmVyYXRpb24gb2YgMC41IEZ0
+IEdyb3VuZCBTYW1wbGUgRGlzdGFuY2UgKEdTRCkgbmF0dXJhbCBjb2xvciBpbWFnZXJ5LiBUaGUg
+aW1hZ2VzIHdlcmUgY2FwdHVyZWQgd2l0aCA4MCUgZm9yd2FyZCBsYXAgYW5kIHNpZGUgbGFwIHRv
+IHN1cHBvcnQgMeKAnT0xMDDigJkgbWFwcGluZyBhbmQgbWVldCB0aGUgZGlzdG9ydGlvbiBmcmVl
+IHJlcXVpcmVtZW50cyB3aXRoaW4gTmV3IFlvcmsgQ2l0eS4gUGxhbmltZXRyaWNzIGFyZSBkZXZl
+bG9wZWQgdG8gbWVldCBBbWVyaWNhbiBTb2NpZXR5IGZvciBQaG90b2dyYW1tZXRyeSBhbmQgUmVt
+b3RlIFNlbnNpbmcgKEFTUFJTKSBDbGFzcyAxIChvbmUpIGhvcml6b250YWwgbWFwcGluZyBzdGFu
+ZGFyZHMgYW5kIEFTUFJTIHZlcnRpY2FsIENsYXNzIDIgKHR3bykgYWNjdXJhY3kgc3BlY2lmaWNh
+dGlvbnMuIFBsYW5pbWV0cmljcyBhcmUgZGVsaXZlcmVkIHZpYSBhbiBFU1JJIGdlb2RhdGFiYXNl
+IGluIE5ldyBZb3JrIFN0YXRlIFBsYW5lIENvb3JkaW5hdGVzLCBMb25nIElzbGFuZCBFYXN0IFpv
+bmUsIE5BRDgzLCBVUyBmb290LjwvYWJzdHJhY3Q+DQogICAgICA8cHVycG9zZT5PbmUgb2YgdGhl
+IG1pc3Npb25zIG9mIENpdHl3aWRlIEdJUyBpcyB0byBkZXZlbG9wLCBzdXBwb3J0IGFuZCBob3N0
+IGFuIGFjY3VyYXRlIGRpZ2l0YWwgbWFwIGFuZCBnZW8tcmVmZXJlbmNlZCBkYXRhIGFsb25nIHdp
+dGggYXNzb2NpYXRlZCB0b29scyBhbmQgYXBwbGljYXRpb25zIHRoYXQgYWxsb3cgYWxsIENpdHkg
+YWdlbmNpZXMgdG8gdXNlIHRoZSBzcGF0aWFsIGRhdGEgY29sbGVjdGVkIGJ5IG1hbnkgQ2l0eSBl
+bnRpdGllcy4gIFRoZSBkYXRhIGlzIHV0aWxpemVkIHRvIHN1cHBvcnQgQ2l0eSBvcGVyYXRpb25z
+LCBkYXRhIGFuYWx5c2lzLCBwb2xpY3kgbWFraW5nIGFuZCBwdWJsaWMgc2FmZXR5LiAgQSBwcmlt
+YXJ5IGdvYWwgaXMgdG8gbWFpbnRhaW4gdGhlIGFjY3VyYWN5IGFuZCBxdWFsaXR5IG9mIHRoZSBi
+YXNlIGRhdGEgd2hpY2ggaW5jbHVkZXMgdGhlIG9ydGhvcGhvdG9ncmFwaHkgYW5kIHBsYW5pbWV0
+cmljcywgY29sbGVjdGl2ZWx5IGtub3duIGFzIE5ZQyBNYXAuIFRoaXMgYmFzZSBpcyB0aGUgZm91
+bmRhdGlvbiB1cG9uIHdoaWNoIHZpcnR1YWxseSBhbGwgb3RoZXIgR0lTIHJlbGF0aXZlIGluZm9y
+bWF0aW9uIHdpdGhpbiB0aGUgQ2l0eSBvZiBOZXcgWW9yayBpcyBidWlsdC4gSW5zdXJpbmcgaXRz
+IGNvbXBsZXRlbmVzcyBhbmQgYWNjdXJhY3kgaXMgZnVuZGFtZW50YWwgdG8gdGhlIEdyb3Vw4oCZ
+cyBjb3JlIG1pc3Npb24uIFRoZSBwbGFuaW1ldHJpYyBiYXNlIGxheWVycyB3ZXJlIHVwZGF0ZWQg
+Y2l0eXdpZGUsIGluIDIwMTEgYmFzZWQgb24gb3J0aG9pbWFnZXJ5IGNhcHR1cmVkIGluIDIwMTAu
+IDwvcHVycG9zZT4NCiAgICA8L2Rlc2NyaXB0Pg0KICAgIDxzcGRvbT4NCiAgICAgIDxib3VuZGlu
+Zz4NCiAgICAgICAgPHdlc3RiYz4tNzQuMjU2OTMxPC93ZXN0YmM+DQogICAgICAgIDxlYXN0YmM+
+LTczLjcwMjUxMzwvZWFzdGJjPg0KICAgICAgICA8bm9ydGhiYz40MC45MTE0MzE8L25vcnRoYmM+
+DQogICAgICAgIDxzb3V0aGJjPjQwLjQ5NjAxMzwvc291dGhiYz4NCiAgICAgIDwvYm91bmRpbmc+
+DQogICAgPC9zcGRvbT4NCiAgICA8a2V5d29yZHM+DQogICAgICA8dGhlbWU+DQogICAgICAgIDx0
+aGVtZWt0PklTTyAxOTExNSBUb3BpYyBDYXRlZ29yaWVzPC90aGVtZWt0Pg0KICAgICAgICA8dGhl
+bWVrZXk+aW1hZ2VyeUJhc2VNYXBzRWFydGhDb3ZlcjwvdGhlbWVrZXk+DQogICAgICAgIDx0aGVt
+ZWtleT5zdHJ1Y3R1cmU8L3RoZW1la2V5Pg0KICAgICAgICA8dGhlbWVrZXk+dHJhbnNwb3J0YXRp
+b248L3RoZW1la2V5Pg0KICAgICAgPC90aGVtZT4NCiAgICAgIDx0aGVtZT4NCiAgICAgICAgPHRo
+ZW1la3Q+Tm9uZTwvdGhlbWVrdD4NCiAgICAgICAgPHRoZW1la2V5PkJhc2VtYXA8L3RoZW1la2V5
+Pg0KICAgICAgICA8dGhlbWVrZXk+UGxhbmltZXRyaWM8L3RoZW1la2V5Pg0KICAgICAgICA8dGhl
+bWVrZXk+TllDTWFwPC90aGVtZWtleT4NCiAgICAgICAgPHRoZW1la2V5PkxhbmRiYXNlPC90aGVt
+ZWtleT4NCiAgICAgICAgPHRoZW1la2V5PkRQUjwvdGhlbWVrZXk+DQogICAgICAgIDx0aGVtZWtl
+eT5QYXJrcyBhbmQgUmVjcmVhdGlvbjwvdGhlbWVrZXk+DQogICAgICAgIDx0aGVtZWtleT5QYXJr
+IFByb3BlcnR5PC90aGVtZWtleT4NCiAgICAgICAgPHRoZW1la2V5PlBhcmtzPC90aGVtZWtleT4N
+CiAgICAgICAgPHRoZW1la2V5PlJpbmtzPC90aGVtZWtleT4NCiAgICAgICAgPHRoZW1la2V5PkNv
+dXJ0czwvdGhlbWVrZXk+DQogICAgICAgIDx0aGVtZWtleT5GaWVsZHM8L3RoZW1la2V5Pg0KICAg
+ICAgICA8dGhlbWVrZXk+QmFsbCBGaWVsZHM8L3RoZW1la2V5Pg0KICAgICAgICA8dGhlbWVrZXk+
+VHJhY2tzPC90aGVtZWtleT4NCiAgICAgIDwvdGhlbWU+DQogICAgPC9rZXl3b3Jkcz4NCiAgICA8
+YWNjY29uc3Q+Tm9uZTwvYWNjY29uc3Q+DQogICAgPHVzZWNvbnN0PkxpbWl0ZWQgdG8gdXNlIGRl
+ZmluZWQgYnkgdGhlIERlcGFydG1lbnQgb2YgSW5mb3JtYXRpb24gVGVjaG5vbG9neSBhbmQgVGVs
+ZWNvbW11bmljYXRpb24sIENpdHkgb2YgTmV3IFlvcms8L3VzZWNvbnN0Pg0KICAgIDxwdGNvbnRh
+Yz4NCiAgICAgIDxjbnRpbmZvPg0KICAgICAgICA8Y250b3JncD4NCiAgICAgICAgICA8Y250b3Jn
+PkRvSVRUIC0gQ2l0eSBvZiBOZXcgWW9yazwvY250b3JnPg0KICAgICAgICAgIDxjbnRwZXI+Q29s
+aW4gUmVpbGx5PC9jbnRwZXI+DQogICAgICAgIDwvY250b3JncD4NCiAgICAgICAgPGNudHBvcz5E
+aXJlY3RvciwgQ2l0eXdpZGUgR0lTPC9jbnRwb3M+DQogICAgICAgIDxjbnRhZGRyPg0KICAgICAg
+ICAgIDxhZGRydHlwZT5tYWlsaW5nPC9hZGRydHlwZT4NCiAgICAgICAgICA8YWRkcmVzcz4yIE1l
+dHJvdGVjaCBDZW50ZXI8L2FkZHJlc3M+DQogICAgICAgICAgPGNpdHk+QnJvb2tseW48L2NpdHk+
+DQogICAgICAgICAgPHN0YXRlPk5ldyBZb3JrPC9zdGF0ZT4NCiAgICAgICAgICA8cG9zdGFsPjEx
+MjAxPC9wb3N0YWw+DQogICAgICAgICAgPGNvdW50cnk+VU5JVEVEIFNUQVRFUzwvY291bnRyeT4N
+CiAgICAgICAgPC9jbnRhZGRyPg0KICAgICAgICA8Y250ZW1haWw+Y3JlaWxseUBkb2l0dC5ueWMu
+Z292PC9jbnRlbWFpbD4NCiAgICAgIDwvY250aW5mbz4NCiAgICA8L3B0Y29udGFjPg0KICAgIDxu
+YXRpdmU+TWljcm9zb2Z0IFdpbmRvd3MgNyBWZXJzaW9uIDYuMSAoQnVpbGQgNzYwMSkgU2Vydmlj
+ZSBQYWNrIDE7IEVzcmkgQXJjR0lTIDEwLjIuMC4zMzQ4PC9uYXRpdmU+DQogIDwvaWRpbmZvPg0K
+ICA8c3Bkb2luZm8+DQogICAgPGRpcmVjdD5WZWN0b3I8L2RpcmVjdD4NCiAgICA8cHR2Y3RpbmY+
+DQogICAgICA8c2R0c3Rlcm0+DQogICAgICAgIDxzZHRzdHlwZT5HVC1wb2x5Z29uIGNvbXBvc2Vk
+IG9mIGNoYWluczwvc2R0c3R5cGU+DQogICAgICAgIDxwdHZjdGNudD4xMjcyMzwvcHR2Y3RjbnQ+
+DQogICAgICA8L3NkdHN0ZXJtPg0KICAgIDwvcHR2Y3RpbmY+DQogIDwvc3Bkb2luZm8+DQogIDxz
+cHJlZj4NCiAgICA8aG9yaXpzeXM+DQogICAgICA8cGxhbmFyPg0KICAgICAgICA8bWFwcHJvaj4N
+CiAgICAgICAgICA8bWFwcHJvam4+TkFEIDE5ODMgU3RhdGVQbGFuZSBOZXcgWW9yayBMb25nIElz
+bGFuZCBGSVBTIDMxMDQgRmVldDwvbWFwcHJvam4+DQogICAgICAgICAgPGxhbWJlcnRjPg0KICAg
+ICAgICAgICAgPHN0ZHBhcmxsPjQwLjY2NjY2NjY2NjY2NjY2PC9zdGRwYXJsbD4NCiAgICAgICAg
+ICAgIDxzdGRwYXJsbD40MS4wMzMzMzMzMzMzMzMzMzwvc3RkcGFybGw+DQogICAgICAgICAgICA8
+bG9uZ2NtPi03NC4wPC9sb25nY20+DQogICAgICAgICAgICA8bGF0cHJqbz40MC4xNjY2NjY2NjY2
+NjY2NjwvbGF0cHJqbz4NCiAgICAgICAgICAgIDxmZWFzdD45ODQyNTAuMDwvZmVhc3Q+DQogICAg
+ICAgICAgICA8Zm5vcnRoPjAuMDwvZm5vcnRoPg0KICAgICAgICAgIDwvbGFtYmVydGM+DQogICAg
+ICAgIDwvbWFwcHJvaj4NCiAgICAgICAgPHBsYW5jaT4NCiAgICAgICAgICA8cGxhbmNlPmNvb3Jk
+aW5hdGUgcGFpcjwvcGxhbmNlPg0KICAgICAgICAgIDxjb29yZHJlcD4NCiAgICAgICAgICAgIDxh
+YnNyZXM+MC4wMDAzMjgwODMzMzMzMzMzMzM1PC9hYnNyZXM+DQogICAgICAgICAgICA8b3JkcmVz
+PjAuMDAwMzI4MDgzMzMzMzMzMzMzNTwvb3JkcmVzPg0KICAgICAgICAgIDwvY29vcmRyZXA+DQog
+ICAgICAgICAgPHBsYW5kdT5mb290X3VzPC9wbGFuZHU+DQogICAgICAgIDwvcGxhbmNpPg0KICAg
+ICAgPC9wbGFuYXI+DQogICAgICA8Z2VvZGV0aWM+DQogICAgICAgIDxob3JpemRuPkQgTm9ydGgg
+QW1lcmljYW4gMTk4MzwvaG9yaXpkbj4NCiAgICAgICAgPGVsbGlwcz5HUlMgMTk4MDwvZWxsaXBz
+Pg0KICAgICAgICA8c2VtaWF4aXM+NjM3ODEzNy4wPC9zZW1pYXhpcz4NCiAgICAgICAgPGRlbmZs
+YXQ+Mjk4LjI1NzIyMjEwMTwvZGVuZmxhdD4NCiAgICAgIDwvZ2VvZGV0aWM+DQogICAgPC9ob3Jp
+enN5cz4NCiAgPC9zcHJlZj4NCiAgPGVhaW5mbz4NCiAgICA8ZGV0YWlsZWQ+DQogICAgICA8ZW50
+dHlwPg0KICAgICAgICA8ZW50dHlwbD5NQVNURVIuUEFSS19TREU8L2VudHR5cGw+DQogICAgICA8
+L2VudHR5cD4NCiAgICAgIDxhdHRyPg0KICAgICAgICA8YXR0cmxhYmw+T0JKRUNUSUQ8L2F0dHJs
+YWJsPg0KICAgICAgICA8YXR0cmRlZj5JbnRlcm5hbCBmZWF0dXJlIG51bWJlci48L2F0dHJkZWY+
+DQogICAgICAgIDxhdHRyZGVmcz5FU1JJPC9hdHRyZGVmcz4NCiAgICAgICAgPGF0dHJkb212Pg0K
+ICAgICAgICAgIDx1ZG9tPlNlcXVlbnRpYWwgdW5pcXVlIHdob2xlIG51bWJlcnMgdGhhdCBhcmUg
+YXV0b21hdGljYWxseSBnZW5lcmF0ZWQuPC91ZG9tPg0KICAgICAgICA8L2F0dHJkb212Pg0KICAg
+ICAgPC9hdHRyPg0KICAgICAgPGF0dHI+DQogICAgICAgIDxhdHRybGFibD5TSEFQRTwvYXR0cmxh
+Ymw+DQogICAgICAgIDxhdHRyZGVmPkZlYXR1cmUgZ2VvbWV0cnkuPC9hdHRyZGVmPg0KICAgICAg
+ICA8YXR0cmRlZnM+RVNSSTwvYXR0cmRlZnM+DQogICAgICAgIDxhdHRyZG9tdj4NCiAgICAgICAg
+ICA8dWRvbT5Db29yZGluYXRlcyBkZWZpbmluZyB0aGUgZmVhdHVyZXMuPC91ZG9tPg0KICAgICAg
+ICA8L2F0dHJkb212Pg0KICAgICAgPC9hdHRyPg0KICAgICAgPGF0dHI+DQogICAgICAgIDxhdHRy
+bGFibD5QQVJLX05BTUU8L2F0dHJsYWJsPg0KICAgICAgPC9hdHRyPg0KICAgICAgPGF0dHI+DQog
+ICAgICAgIDxhdHRybGFibD5TT1VSQ0VfSUQ8L2F0dHJsYWJsPg0KICAgICAgPC9hdHRyPg0KICAg
+ICAgPGF0dHI+DQogICAgICAgIDxhdHRybGFibD5GRUFUVVJFX0NPREU8L2F0dHJsYWJsPg0KICAg
+ICAgPC9hdHRyPg0KICAgICAgPGF0dHI+DQogICAgICAgIDxhdHRybGFibD5TVUJfRkVBVFVSRV9D
+T0RFPC9hdHRybGFibD4NCiAgICAgIDwvYXR0cj4NCiAgICAgIDxhdHRyPg0KICAgICAgICA8YXR0
+cmxhYmw+TEFORFVTRTwvYXR0cmxhYmw+DQogICAgICA8L2F0dHI+DQogICAgICA8YXR0cj4NCiAg
+ICAgICAgPGF0dHJsYWJsPlBBUktOVU08L2F0dHJsYWJsPg0KICAgICAgPC9hdHRyPg0KICAgICAg
+PGF0dHI+DQogICAgICAgIDxhdHRybGFibD5TVEFUVVM8L2F0dHJsYWJsPg0KICAgICAgPC9hdHRy
+Pg0KICAgICAgPGF0dHI+DQogICAgICAgIDxhdHRybGFibD5TWVNURU08L2F0dHJsYWJsPg0KICAg
+ICAgPC9hdHRyPg0KICAgICAgPGF0dHI+DQogICAgICAgIDxhdHRybGFibD5TSEFQRS5BUkVBPC9h
+dHRybGFibD4NCiAgICAgIDwvYXR0cj4NCiAgICAgIDxhdHRyPg0KICAgICAgICA8YXR0cmxhYmw+
+U0hBUEUuTEVOPC9hdHRybGFibD4NCiAgICAgIDwvYXR0cj4NCiAgICA8L2RldGFpbGVkPg0KICA8
+L2VhaW5mbz4NCiAgPGRpc3RpbmZvPg0KICAgIDxkaXN0bGlhYj5TZWUgYWNjZXNzIGFuZCB1c2Ug
+Y29uc3RyYWludHMgaW5mb3JtYXRpb24uPC9kaXN0bGlhYj4NCiAgPC9kaXN0aW5mbz4NCiAgPG1l
+dGFpbmZvPg0KICAgIDxtZXRkPjIwMTYwMjE2PC9tZXRkPg0KICAgIDxtZXRzdGRuPkZHREMgQ29u
+dGVudCBTdGFuZGFyZCBmb3IgRGlnaXRhbCBHZW9zcGF0aWFsIE1ldGFkYXRhPC9tZXRzdGRuPg0K
+ICAgIDxtZXRzdGR2PkZHREMtU1RELTAwMS0xOTk4PC9tZXRzdGR2Pg0KICAgIDxtZXR0Yz5sb2Nh
+bCB0aW1lPC9tZXR0Yz4NCiAgPC9tZXRhaW5mbz4NCjwvbWV0YWRhdGE+</Data></Enclosure></Binary><mdHrLvName Sync="TRUE">dataset</mdHrLvName><refSysInfo><RefSystem><refSysID><identCode code="2263" Sync="TRUE"/><idCodeSpace Sync="TRUE">EPSG</idCodeSpace><idVersion Sync="TRUE">8.1.1</idVersion></refSysID></RefSystem></refSysInfo></metadata>
