@@ -80,9 +80,13 @@ namespace MicroService.WebApi
                 .AsPrometheusPlainText()
                 .Build();
 
-            metrics.Options.ReportingEnabled = true;
+            MetricsHelpers.SetMetricsCustomTag(metrics, "OSDescription", System.Runtime.InteropServices.RuntimeInformation.OSDescription);
 
+            metrics.Options.ReportingEnabled = true;
             services.AddMetrics(metrics);
+            services.AddAppMetricsHealthPublishing();
+            services.AddAppMetricsCollectors();
+
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerConfiguration();
             services.AddCorsConfiguration();
@@ -104,6 +108,8 @@ namespace MicroService.WebApi
                     shapeProperties = ShapeProperties.NypdPolicePrecincts.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.NypdSectors))
                     shapeProperties = ShapeProperties.NypdSectors.GetAttribute<ShapeAttributes>();
+                else if (key == nameof(ShapeProperties.Parks))
+                    shapeProperties = ShapeProperties.Parks.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.ZipCodes))
                     shapeProperties = ShapeProperties.ZipCodes.GetAttribute<ShapeAttributes>();
                 else
@@ -123,6 +129,7 @@ namespace MicroService.WebApi
             services.AddScoped<HistoricDistrictService>();
             services.AddScoped<NypdPolicePrecinctService>();
             services.AddScoped<NypdSectorsService<NypdSectorShape>>();
+            services.AddScoped<ParkService<ParkShape>>();
             services.AddScoped<ZipCodeService<ZipCodeShape>>();
 
             services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>
@@ -133,6 +140,7 @@ namespace MicroService.WebApi
                     nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
                     nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),
                     nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService<NypdSectorShape>>(),
+                    nameof(ShapeProperties.Parks) => serviceProvider.GetService<ParkService<ParkShape>>(),
                     nameof(ShapeProperties.ZipCodes) => serviceProvider.GetService<ZipCodeService<ZipCodeShape>>(),
                     _ => throw new KeyNotFoundException(key)
                 };
