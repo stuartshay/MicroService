@@ -15,7 +15,7 @@
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
-    "iteration": 1608274479226,
+    "iteration": 1608327718805,
     "links": [],
     "panels": [
         {
@@ -77,91 +77,60 @@
             "type": "stat"
         },
         {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": null,
+            "datasource": "Prometheus",
+            "description": "",
             "fieldConfig": {
                 "defaults": {
-                    "custom": {}
+                    "custom": {},
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
                 },
                 "overrides": []
             },
-            "fill": 1,
-            "fillGradient": 0,
             "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 8
+                "h": 4,
+                "w": 5,
+                "x": 12,
+                "y": 0
             },
-            "hiddenSeries": false,
-            "id": 2,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "nullPointMode": "null",
+            "id": 6,
             "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "7.3.5",
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "Panel Title",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
+                "reduceOptions": {
+                    "calcs": [
+                        "mean"
+                    ],
+                    "fields": "",
+                    "values": false
                 },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
+            },
+            "pluginVersion": "7.3.5",
+            "targets": [
                 {
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
+                    "expr": "system_total_cpu_percentage_used{server=\"$server\"}",
+                    "interval": "",
+                    "legendFormat": "",
+                    "queryType": "randomWalk",
+                    "refId": "A"
                 }
             ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CPU Percentage Used",
+            "type": "gauge"
         }
     ],
     "refresh": "5s",
@@ -175,10 +144,9 @@
             {
                 "allValue": null,
                 "current": {
-                    "isNone": true,
                     "selected": false,
-                    "text": "None",
-                    "value": ""
+                    "text": "docker",
+                    "value": "docker"
                 },
                 "datasource": "$datasource",
                 "definition": "label_values(env)",
@@ -189,7 +157,7 @@
                 "multi": false,
                 "name": "environment",
                 "options": [],
-                "query": "",
+                "query": "label_values(env)",
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
@@ -203,7 +171,7 @@
             {
                 "allValue": null,
                 "current": {
-                    "selected": false,
+                    "selected": true,
                     "text": "MicroService.WebApi",
                     "value": "MicroService.WebApi"
                 },
@@ -251,8 +219,8 @@
                 "allValue": null,
                 "current": {
                     "selected": false,
-                    "text": "151f80fb0874",
-                    "value": "151f80fb0874"
+                    "text": "5e34aeff9162",
+                    "value": "5e34aeff9162"
                 },
                 "datasource": "$datasource",
                 "definition": "label_values(server)",
@@ -363,12 +331,12 @@
         ]
     },
     "time": {
-        "from": "now-6h",
+        "from": "now-5m",
         "to": "now"
     },
     "timepicker": {},
     "timezone": "",
     "title": "Microsevices  API - Metrics",
     "uid": "k9hker1Gk",
-    "version": 7
+    "version": 162
 }
