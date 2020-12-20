@@ -15,11 +15,11 @@
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
-    "iteration": 1608327718805,
+    "iteration": 1608344515808,
     "links": [],
     "panels": [
         {
-            "datasource": "$datasource",
+            "datasource": "Prometheus",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -30,10 +30,6 @@
                             {
                                 "color": "green",
                                 "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
                             }
                         ]
                     }
@@ -41,15 +37,15 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 8,
-                "w": 12,
+                "h": 4,
+                "w": 6,
                 "x": 0,
                 "y": 0
             },
             "id": 4,
             "options": {
                 "colorMode": "value",
-                "graphMode": "area",
+                "graphMode": "none",
                 "justifyMode": "auto",
                 "orientation": "auto",
                 "reduceOptions": {
@@ -65,6 +61,8 @@
             "targets": [
                 {
                     "expr": "application_feature_lookup_counter",
+                    "format": "time_series",
+                    "instant": false,
                     "interval": "",
                     "legendFormat": "",
                     "queryType": "randomWalk",
@@ -75,6 +73,66 @@
             "timeShift": null,
             "title": "Feature Lookup Count",
             "type": "stat"
+        },
+        {
+            "datasource": "Prometheus",
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "mappings": [],
+                    "max": 100,
+                    "min": 0,
+                    "thresholds": {
+                        "mode": "percentage",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 50
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 5,
+                "x": 6,
+                "y": 0
+            },
+            "id": 6,
+            "options": {
+                "reduceOptions": {
+                    "calcs": [
+                        "mean"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
+            },
+            "pluginVersion": "7.3.5",
+            "targets": [
+                {
+                    "expr": "system_total_cpu_percentage_used{server=\"$server\"}",
+                    "format": "table",
+                    "instant": true,
+                    "interval": "",
+                    "legendFormat": "",
+                    "queryType": "randomWalk",
+                    "refId": "A"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CPU Percentage Used",
+            "type": "gauge"
         },
         {
             "datasource": "Prometheus",
@@ -101,11 +159,11 @@
             },
             "gridPos": {
                 "h": 4,
-                "w": 5,
-                "x": 12,
+                "w": 6,
+                "x": 11,
                 "y": 0
             },
-            "id": 6,
+            "id": 10,
             "options": {
                 "reduceOptions": {
                     "calcs": [
@@ -120,7 +178,7 @@
             "pluginVersion": "7.3.5",
             "targets": [
                 {
-                    "expr": "system_total_cpu_percentage_used{server=\"$server\"}",
+                    "expr": "system_virtual_memory{server=\"$server\"}",
                     "interval": "",
                     "legendFormat": "",
                     "queryType": "randomWalk",
@@ -129,7 +187,62 @@
             ],
             "timeFrom": null,
             "timeShift": null,
-            "title": "CPU Percentage Used",
+            "title": "System Virtual Memory ",
+            "type": "gauge"
+        },
+        {
+            "datasource": "Prometheus",
+            "description": "Gets the associated process's physical memory usage, in bytes.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 6,
+                "x": 17,
+                "y": 0
+            },
+            "id": 8,
+            "options": {
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "last"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
+            },
+            "pluginVersion": "7.3.5",
+            "targets": [
+                {
+                    "expr": "system_memory_working_set{server=\"$server\"} ",
+                    "format": "table",
+                    "instant": true,
+                    "interval": "",
+                    "legendFormat": "",
+                    "queryType": "randomWalk",
+                    "refId": "A"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "System Memory Working Set",
             "type": "gauge"
         }
     ],
@@ -150,7 +263,9 @@
                 },
                 "datasource": "$datasource",
                 "definition": "label_values(env)",
-                "error": null,
+                "error": {
+                    "message": "Datasource named  was not found"
+                },
                 "hide": 0,
                 "includeAll": false,
                 "label": null,
@@ -171,13 +286,15 @@
             {
                 "allValue": null,
                 "current": {
-                    "selected": true,
+                    "selected": false,
                     "text": "MicroService.WebApi",
                     "value": "MicroService.WebApi"
                 },
                 "datasource": "$datasource",
                 "definition": "label_values(app)",
-                "error": null,
+                "error": {
+                    "message": "Datasource named  was not found"
+                },
                 "hide": 0,
                 "includeAll": false,
                 "label": null,
@@ -198,8 +315,8 @@
             {
                 "current": {
                     "selected": false,
-                    "text": "Prometheus",
-                    "value": "Prometheus"
+                    "text": "",
+                    "value": ""
                 },
                 "error": null,
                 "hide": 0,
@@ -219,12 +336,14 @@
                 "allValue": null,
                 "current": {
                     "selected": false,
-                    "text": "5e34aeff9162",
-                    "value": "5e34aeff9162"
+                    "text": "c0d39e39fd34",
+                    "value": "c0d39e39fd34"
                 },
                 "datasource": "$datasource",
                 "definition": "label_values(server)",
-                "error": null,
+                "error": {
+                    "message": "Datasource named  was not found"
+                },
                 "hide": 0,
                 "includeAll": false,
                 "label": "server",
@@ -248,8 +367,8 @@
                 "auto_min": "10s",
                 "current": {
                     "selected": false,
-                    "text": "1m",
-                    "value": "1m"
+                    "text": "5s",
+                    "value": "5s"
                 },
                 "error": null,
                 "hide": 0,
@@ -257,7 +376,7 @@
                 "name": "summarize",
                 "options": [
                     {
-                        "selected": false,
+                        "selected": true,
                         "text": "5s",
                         "value": "5s"
                     },
@@ -272,7 +391,7 @@
                         "value": "30s"
                     },
                     {
-                        "selected": true,
+                        "selected": false,
                         "text": "1m",
                         "value": "1m"
                     },
@@ -338,5 +457,5 @@
     "timezone": "",
     "title": "Microsevices  API - Metrics",
     "uid": "k9hker1Gk",
-    "version": 162
+    "version": 1
 }
