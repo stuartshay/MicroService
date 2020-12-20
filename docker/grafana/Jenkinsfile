@@ -1,13 +1,13 @@
 node('buildx') {
     
-    String version_prefix = '7.3.5-v5'
+    String version_prefix = '7.3.5-v6'
     String version_suffix = ''
     String docker_image_name = 'stuartshay/microservice-grafana'
-    String docker_file = 'docker/microservice-grafana.dockerfile/Dockerfile'
-    String docker_ignore = 'docker/microservice-grafana.dockerfile/.dockerignore'
-    String git_path = 'docker/microservice-grafana.dockerfile' 
+    String docker_file = 'docker/grafana/Dockerfile'
+    String docker_ignore = 'docker/grafana/.dockerignore'
+    String git_path = 'docker/grafana' 
     String platform = 'linux/amd64'
-    String email = 'sshay@yahoo.com' // TODO FIX
+    String email = 'sshay@yahoo.com' 
   
   stage('Git checkout') {
         def gitRepo = checkout scm
