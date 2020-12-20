@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   microservice-api:
-    container_name: 'microservice-api'
+    hostname: microservice-api
     image: "stuartshay/microservice-api:3.1.0-multi.93"
     environment:
      - ASPNETCORE_ENVIRONMENT=Docker
