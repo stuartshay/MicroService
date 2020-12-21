@@ -3,13 +3,13 @@
 ### Local Mode 
 ```
 cd docker
-docker-compose -f docker-compose.local.yml -f docker-compose-metrics.yml pull
-docker-compose -f docker-compose.local.yml -f docker-compose-metrics.yml up
+docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml pull
+docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml up
 ```
 
 #### Destroy
 ```
-docker-compose -f docker-compose.local.yml -f docker-compose-metrics.yml down
+docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml down
 docker volume prune
 ```
 
