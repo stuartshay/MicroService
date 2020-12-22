@@ -19,7 +19,7 @@ services:
       - microservice-network
 
   grafana:
-    image: stuartshay/microservice-grafana:7.3.5-v6-91-prerelease-develop
+    image: stuartshay/microservice-grafana:7.3.5-v6-92-prerelease-develop
     container_name: grafana
     ports:
       - 3000:3000
@@ -30,7 +30,7 @@ services:
       - ./grafana/datasources:/etc/grafana/datasources
       - ./grafana/dashboards:/etc/grafana/dashboards
       - ./grafana/logs/:/var/log/grafana/grafana
-      - ./grafana/config.ini /etc/grafana/config.ini
+      - ./grafana/config.ini:/etc/grafana/config.ini
     networks:
       - microservice-network
     environment:
