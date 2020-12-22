@@ -10,6 +10,9 @@ USER root
 RUN apt-get update && \
     apt-get install --no-install-recommends less && \
     rm -rf /var/lib/apt/lists/*  && \
+    apt install nano \
+    apt install net-tools \ 
+    apt install tree \
     chmod +x /usr/local/bin/grafana.sh 
 
 RUN /usr/local/bin/grafana.sh
