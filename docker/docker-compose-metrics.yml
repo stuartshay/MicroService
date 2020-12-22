@@ -5,9 +5,9 @@ services:
   prometheus:
     image: stuartshay/microservice-prometheus:v2.20.1-v2.9
     container_name: prometheus
-    #volumes:
-    #  - ./prometheus/:/etc/prometheus/
-    #  - prometheus_data:/prometheus
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -19,7 +19,7 @@ services:
       - microservice-network
 
   grafana:
-    image: stuartshay/microservice-grafana:7.3.5-v6-85-prerelease-develop
+    image: stuartshay/microservice-grafana:7.3.5-v6-86-prerelease-develop
     container_name: grafana
     ports:
       - 3000:3000
@@ -29,7 +29,8 @@ services:
       - grafana_data:/var/lib/grafana
       - ./grafana/datasources:/etc/grafana/datasources
       - ./grafana/dashboards:/etc/grafana/dashboards
-      - ./grafana/setup.sh:/setup.sh  
+      - ./grafana/logs/:/var/log/grafana/grafana
+      - ./grafana/config.ini /etc/grafana/config.ini
     networks:
       - microservice-network
     environment:
