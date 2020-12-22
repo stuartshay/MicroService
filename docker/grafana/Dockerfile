@@ -8,9 +8,10 @@ COPY ./dashboards /var/lib/grafana/dashboards
 
 USER root
 RUN apt-get update && \
+    apt install nano && \
     apt-get install --no-install-recommends less && \
     rm -rf /var/lib/apt/lists/*  && \
-    #apt install nano && \
+    #
     #apt install net-tools && \
     #apt install tree && \
     chmod +x /usr/local/bin/grafana.sh 
