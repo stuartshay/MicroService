@@ -5,9 +5,9 @@ services:
   prometheus:
     image: stuartshay/microservice-prometheus:v2.20.1-v2.9
     container_name: prometheus
-    #volumes:
-    #  - ./prometheus/:/etc/prometheus/
-    #  - prometheus_data:/prometheus
+    volumes:
+      - prometheus_data:/prometheus
+      - ./prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -19,7 +19,7 @@ services:
       - microservice-network
 
   grafana:
-    image: stuartshay/microservice-grafana:7.3.5-v5-83-prerelease-develop
+    image: stuartshay/microservice-grafana:7.3.5-v6-92-prerelease-develop
     container_name: grafana
     ports:
       - 3000:3000
@@ -27,11 +27,12 @@ services:
       - prometheus
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./grafana/datasources:/etc/grafana/datasources
-      - ./grafana/dashboards:/etc/grafana/dashboards
-      - ./grafana/setup.sh:/setup.sh  
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/logs/:/var/log/grafana/grafana
+      - ./grafana/config.ini:/etc/grafana/config.ini
     networks:
-      - microservice-network
+      - microservice-network  
     environment:
       - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
       - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
