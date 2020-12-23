@@ -3,11 +3,11 @@ node('buildx') {
     String version_prefix = 'v2.23.0-v2'
     String version_suffix = ''
     String docker_image_name = 'stuartshay/microservice-prometheus'
-    String docker_file = 'docker/microservice-prometheus.dockerfile/Dockerfile'
-    String docker_ignore = 'docker/microservice-prometheus.dockerfile/.dockerignore'
+    String docker_file = 'docker/prometheus/Dockerfile'
+    String docker_ignore = 'docker/prometheus/.dockerignore'
     String platform = 'linux/amd64'
-    String git_path = 'docker/microservice-prometheus.dockerfile'   
-    String email = 'sshay@yahoo.com' // TODO FIX
+    String git_path = 'docker/prometheus'   
+    String email = 'sshay@yahoo.com'
 
      stage('Git checkout') {
         def gitRepo = checkout scm

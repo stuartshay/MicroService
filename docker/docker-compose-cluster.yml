@@ -1,0 +1,46 @@
+version: '3.3'
+
+services:
+  
+  api:
+    image: "stuartshay/microservice-api:3.1.0-multi-95-prerelease-develop"
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Docker
+     - ConnectionStrings:PostgreSql=User ID=postgres;Password=password;Server=database;Port=5432;Database=postgres;Integrated Security=true;Pooling=true;
+    ports:
+     - "5000"
+    networks:
+      - microservice-network
+
+  nginx:
+    container_name: nginx
+    hostname: 'nginx'
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - '443:443'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/proxy.conf:/etc/nginx/proxy.conf:ro
+      - ./nginx/ssl/localhost.crt:/etc/ssl/certs/localhost.crt:ro
+      - ./nginx/ssl/localhost.key:/etc/ssl/certs/localhost.key:ro
+      - ./nginx/logs/:/var/log/nginx/
+    networks:
+      - microservice-network
+    restart: always
+
+  database:
+    container_name: 'database'
+    image: "stuartshay/microservice-database:v1"
+    ports:
+     - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+    networks:
+      - microservice-network
+
+volumes:
+  nginx-log-volume:
+
+networks:
+  aspnetcoreapp-network:

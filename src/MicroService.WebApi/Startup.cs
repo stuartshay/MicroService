@@ -15,6 +15,7 @@ using MicroService.WebApi.Extensions.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
@@ -147,6 +148,10 @@ namespace MicroService.WebApi
             });
 
             services.AddCustomControllers(Configuration);
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
         }
 
         /// <summary>
@@ -157,6 +162,14 @@ namespace MicroService.WebApi
         /// <param name="provider">IApiVersionDescriptionProvider</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
+            var forwardedHeaderOptions = new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+            };
+            forwardedHeaderOptions.KnownNetworks.Clear();
+            forwardedHeaderOptions.KnownProxies.Clear();
+            app.UseForwardedHeaders(forwardedHeaderOptions);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -3,7 +3,6 @@
 ## Plugins 
 grafana-cli plugins install grafana-piechart-panel
 grafana-cli plugins install grafana-clock-panel
-grafana-cli plugins install grafana-worldmap-panel
 grafana-cli plugins install briangann-datatable-panel
 grafana-cli plugins install briangann-gauge-panel
 grafana-cli plugins install bessler-pictureit-panel
