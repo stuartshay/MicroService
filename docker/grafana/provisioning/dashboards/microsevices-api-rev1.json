@@ -15,7 +15,7 @@
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
-    "iteration": 1608344515808,
+    "iteration": 1608682347356,
     "links": [],
     "panels": [
         {
@@ -95,7 +95,8 @@
                                 "value": 50
                             }
                         ]
-                    }
+                    },
+                    "unit": "percent"
                 },
                 "overrides": []
             },
@@ -109,7 +110,7 @@
             "options": {
                 "reduceOptions": {
                     "calcs": [
-                        "mean"
+                        "lastNotNull"
                     ],
                     "fields": "",
                     "values": false
@@ -244,6 +245,179 @@
             "timeShift": null,
             "title": "System Memory Working Set",
             "type": "gauge"
+        },
+        {
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "mappings": [],
+                    "max": 100,
+                    "min": 0,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 5,
+                "x": 6,
+                "y": 4
+            },
+            "id": 12,
+            "options": {
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
+            },
+            "pluginVersion": "7.3.5",
+            "targets": [
+                {
+                    "expr": "system_user_cpu_percentage_used{server=\"$server\"}",
+                    "format": "table",
+                    "instant": false,
+                    "interval": "",
+                    "legendFormat": "",
+                    "queryType": "randomWalk",
+                    "refId": "A"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CPU Percentage Used - User",
+            "type": "gauge"
+        },
+        {
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 6,
+                "x": 11,
+                "y": 4
+            },
+            "id": 16,
+            "options": {
+                "reduceOptions": {
+                    "calcs": [
+                        "mean"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
+            },
+            "pluginVersion": "7.3.5",
+            "targets": [
+                {
+                    "expr": "system_private_memory{server=\"$server\"}",
+                    "instant": true,
+                    "interval": "",
+                    "legendFormat": "",
+                    "queryType": "randomWalk",
+                    "refId": "A"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "system_private_memory",
+            "type": "gauge"
+        },
+        {
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "percent"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 5,
+                "x": 6,
+                "y": 8
+            },
+            "id": 14,
+            "options": {
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
+            },
+            "pluginVersion": "7.3.5",
+            "targets": [
+                {
+                    "expr": "system_privileged_cpu_percentage_used{server=\"$server\"} * 100",
+                    "format": "table",
+                    "instant": true,
+                    "interval": "",
+                    "legendFormat": "",
+                    "queryType": "randomWalk",
+                    "refId": "A"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "system_privileged_cpu_percentage_used",
+            "type": "gauge"
         }
     ],
     "refresh": "5s",
@@ -263,9 +437,7 @@
                 },
                 "datasource": "$datasource",
                 "definition": "label_values(env)",
-                "error": {
-                    "message": "Datasource named  was not found"
-                },
+                "error": null,
                 "hide": 0,
                 "includeAll": false,
                 "label": null,
@@ -292,9 +464,7 @@
                 },
                 "datasource": "$datasource",
                 "definition": "label_values(app)",
-                "error": {
-                    "message": "Datasource named  was not found"
-                },
+                "error": null,
                 "hide": 0,
                 "includeAll": false,
                 "label": null,
@@ -315,8 +485,8 @@
             {
                 "current": {
                     "selected": false,
-                    "text": "",
-                    "value": ""
+                    "text": "Prometheus",
+                    "value": "Prometheus"
                 },
                 "error": null,
                 "hide": 0,
@@ -336,14 +506,12 @@
                 "allValue": null,
                 "current": {
                     "selected": false,
-                    "text": "c0d39e39fd34",
-                    "value": "c0d39e39fd34"
+                    "text": "microservice-api",
+                    "value": "microservice-api"
                 },
                 "datasource": "$datasource",
                 "definition": "label_values(server)",
-                "error": {
-                    "message": "Datasource named  was not found"
-                },
+                "error": null,
                 "hide": 0,
                 "includeAll": false,
                 "label": "server",
@@ -455,7 +623,7 @@
     },
     "timepicker": {},
     "timezone": "",
-    "title": "Microsevices  API - Metrics",
+    "title": "Microsevices API - Metrics",
     "uid": "k9hker1Gk",
     "version": 1
 }
