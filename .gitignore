@@ -26,8 +26,9 @@ tools/
 .sonarqube/
 .test-results/
 healthchecksdb
-docker/postgres/data/nyc_pluto_20v7_csv.zip
-docker/postgres/data/pluto/
+
+# Project Specific Files
+docker/postgres/data/
 
 # Coverage Test Files 
 *coverage*
