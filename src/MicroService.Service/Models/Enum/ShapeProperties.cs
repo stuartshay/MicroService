@@ -12,6 +12,10 @@ namespace MicroService.Service.Models.Enum
         [ShapeAttributes("Historic_Districts", "Historic_Districts")]
         HistoricDistricts,
 
+        [Description("Neighborhoods")]
+        [ShapeAttributes("Neighborhoods", "nynta")]
+        Neighborhoods,
+
         [Description("NYPD Police Precincts")]
         [ShapeAttributes("NYPD_Police_Precincts", "nypp")]
         NypdPolicePrecincts,
@@ -23,6 +27,10 @@ namespace MicroService.Service.Models.Enum
         [Description("Park")]
         [ShapeAttributes("Park", "PARK")]
         Parks,
+
+        [Description("Subway")]
+        [ShapeAttributes("Subway_Stations", "subway")]
+        Subway,
 
         [Description("Zip Codes")]
         [ShapeAttributes("Zip_Codes", "ZIP_CODE_040114")]

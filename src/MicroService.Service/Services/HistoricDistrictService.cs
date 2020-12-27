@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Helpers;
+﻿using System.Collections.Generic;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -43,5 +44,26 @@ namespace MicroService.Service.Services
 
             return model;
         }
+
+        public IEnumerable<HistoricDistrictShape> GetFeatureAttributes()
+        {
+            var features = GetFeatures();
+            var results = new List<HistoricDistrictShape>(features.Count);
+
+            foreach (var f in features)
+            {
+                var model = new HistoricDistrictShape
+                {
+                    LPNumber = f.Attributes["LP_NUMBER"].ToString(),
+                    AreaName = f.Attributes["AREA_NAME"].ToString(),
+                    BoroName = f.Attributes["BOROUGH"].ToString(),
+                };
+
+                results.Add(model);
+            }
+
+            return results;
+        }
+
     }
 }

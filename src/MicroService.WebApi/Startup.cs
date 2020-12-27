@@ -105,12 +105,16 @@ namespace MicroService.WebApi
                     shapeProperties = ShapeProperties.BoroughBoundaries.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.HistoricDistricts))
                     shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttributes>();
+                else if (key == nameof(ShapeProperties.Neighborhoods))
+                    shapeProperties = ShapeProperties.Neighborhoods.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.NypdPolicePrecincts))
                     shapeProperties = ShapeProperties.NypdPolicePrecincts.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.NypdSectors))
                     shapeProperties = ShapeProperties.NypdSectors.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.Parks))
                     shapeProperties = ShapeProperties.Parks.GetAttribute<ShapeAttributes>();
+                else if (key == nameof(ShapeProperties.Subway))
+                    shapeProperties = ShapeProperties.Subway.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.ZipCodes))
                     shapeProperties = ShapeProperties.ZipCodes.GetAttribute<ShapeAttributes>();
                 else
@@ -128,9 +132,11 @@ namespace MicroService.WebApi
             // Feature Service Lookups
             services.AddScoped<BoroughBoundariesService>();
             services.AddScoped<HistoricDistrictService>();
+            services.AddScoped<NeighborhoodsService<NeighborhoodShape>>();
             services.AddScoped<NypdPolicePrecinctService>();
             services.AddScoped<NypdSectorsService<NypdSectorShape>>();
             services.AddScoped<ParkService<ParkShape>>();
+            services.AddScoped<SubwayService<SubwayShape>>();
             services.AddScoped<ZipCodeService<ZipCodeShape>>();
 
             services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>
@@ -139,9 +145,11 @@ namespace MicroService.WebApi
                 {
                     nameof(ShapeProperties.BoroughBoundaries) => serviceProvider.GetService<BoroughBoundariesService>(),
                     nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
+                    nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService<NeighborhoodShape>>(),
                     nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),
                     nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService<NypdSectorShape>>(),
                     nameof(ShapeProperties.Parks) => serviceProvider.GetService<ParkService<ParkShape>>(),
+                    nameof(ShapeProperties.Subway) => serviceProvider.GetService<SubwayService<SubwayShape>>(),
                     nameof(ShapeProperties.ZipCodes) => serviceProvider.GetService<ZipCodeService<ZipCodeShape>>(),
                     _ => throw new KeyNotFoundException(key)
                 };
