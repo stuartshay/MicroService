@@ -113,6 +113,8 @@ namespace MicroService.WebApi
                     shapeProperties = ShapeProperties.NypdSectors.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.Parks))
                     shapeProperties = ShapeProperties.Parks.GetAttribute<ShapeAttributes>();
+                else if (key == nameof(ShapeProperties.Subway))
+                    shapeProperties = ShapeProperties.Subway.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.ZipCodes))
                     shapeProperties = ShapeProperties.ZipCodes.GetAttribute<ShapeAttributes>();
                 else
@@ -134,6 +136,7 @@ namespace MicroService.WebApi
             services.AddScoped<NypdPolicePrecinctService>();
             services.AddScoped<NypdSectorsService<NypdSectorShape>>();
             services.AddScoped<ParkService<ParkShape>>();
+            services.AddScoped<SubwayService<SubwayShape>>();
             services.AddScoped<ZipCodeService<ZipCodeShape>>();
 
             services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>
@@ -146,6 +149,7 @@ namespace MicroService.WebApi
                     nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),
                     nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService<NypdSectorShape>>(),
                     nameof(ShapeProperties.Parks) => serviceProvider.GetService<ParkService<ParkShape>>(),
+                    nameof(ShapeProperties.Subway) => serviceProvider.GetService<SubwayService<SubwayShape>>(),
                     nameof(ShapeProperties.ZipCodes) => serviceProvider.GetService<ZipCodeService<ZipCodeShape>>(),
                     _ => throw new KeyNotFoundException(key)
                 };
