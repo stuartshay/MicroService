@@ -34,7 +34,19 @@ namespace MicroService.WebApi.Extensions
             Name = "Feature Lookup Counter",
             MeasurementUnit = Unit.Calls,
         };
+
+        /// <summary>
+        /// Get Feature Lookup Counter
+        /// </summary>
+        public static CounterOptions GetFeatureTypeLookupCounter(string type) => new CounterOptions
+        {
+            Name = $"{type}-Feature Request Lookup Counter",
+            MeasurementUnit = Unit.Calls,
+            Tags = new MetricTags("Feature",type),
+        };
     }
+
+ 
 
     /// <summary>
     /// App Metrics Helpers

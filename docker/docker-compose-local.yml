@@ -15,13 +15,20 @@ services:
 
   database:
     container_name: 'database'
-    image: "stuartshay/microservice-database:v1"
+    image: postgres:9.6.20
     ports:
      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./postgres/data:/data
     networks:
       - microservice-network
+
+volumes:
+  postgres_data:
 
 networks:
   microservice-network:
