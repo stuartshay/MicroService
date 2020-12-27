@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Helpers;
+﻿using System.Collections.Generic;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -40,6 +41,24 @@ namespace MicroService.Service.Services
             }
 
             return model;
+        }
+
+        public IEnumerable<NypdPrecinctShape> GetFeatureAttributes()
+        {
+            var features = GetFeatures();
+            var results = new List<NypdPrecinctShape>(features.Count);
+
+            foreach (var f in features)
+            {
+                var model = new NypdPrecinctShape
+                {
+                    Precinct = f.Attributes["Precinct"].ToString(),
+                };
+
+                results.Add(model);
+            }
+
+            return results;
         }
     }
 }

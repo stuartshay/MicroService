@@ -106,10 +106,29 @@ namespace MicroService.WebApi.V1.Controllers
         }
 
         /// <summary>
-        ///  Get Feature Lookup
+        ///  Get Feature Attributes
         /// </summary>
-        /// <param name="request">Feature Request</param>
+        /// <param name="request">Feature Attribute Request</param>
         /// <returns></returns>
+        [HttpGet("featureAttributes", Name = "GetFeatureAttributes")]
+        [Produces("application/json", Type = typeof(ShapeBase))]
+        [ProducesResponseType(typeof(IEnumerable<ShapeBase>), 200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public async Task<ActionResult<object>> GetFeatureAttributes([FromQuery] FeatureAttributeRequestModel request)
+        {
+            if (string.IsNullOrEmpty(request?.Key))
+                return NoContent();
+
+            var results = _shapeServiceResolver(request.Key).GetFeatureAttributes();
+            return Ok(results);
+        }
+
+        /// <summary>
+            ///  Get Feature Lookup
+            /// </summary>
+            /// <param name="request">Feature Request</param>
+            /// <returns></returns>
         [HttpGet("featurelookup", Name = "GetFeatureLookup")]
         [Produces("application/json", Type = typeof(ShapeBase))]
         [ProducesResponseType(typeof(ShapeBase), 200)]

@@ -25,7 +25,7 @@
         "ConnectionStrings:PostgreSql": "User ID=nyclandmarks;Password=nyclandmarks;Server=myrdsinstance.ckm3eyorqjco.us-east-1.rds.amazonaws.com;Port=5432;Database=nyclandmarks;Integrated Security=true;Pooling=true;",
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5000;https://localhost:5001"
+      "applicationUrl": "http://localhost:5000"
     }
   }
 }
