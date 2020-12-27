@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Helpers;
+﻿using System.Collections.Generic;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -45,6 +46,30 @@ namespace MicroService.Service.Services
             }
 
             return model;
+        }
+
+        public IEnumerable<ZipCodeShape> GetFeatureAttributes()
+        {
+            var features = GetFeatures();
+            var results = new List<ZipCodeShape>(features.Count);
+
+            foreach (var f in features)
+            {
+                var model = new ZipCodeShape
+                {
+                    ZipCode = f.Attributes["ZIPCODE"].ToString(),
+                    BldgZip = f.Attributes["BLDGZIP"].ToString(),
+                    PostOfficeName = f.Attributes["PO_NAME"].ToString(),
+                    Population = int.Parse(f.Attributes["POPULATION"].ToString()),
+                    Area = double.Parse(f.Attributes["AREA"].ToString()),
+                    State = f.Attributes["STATE"].ToString(),
+                    County = f.Attributes["COUNTY"].ToString(),
+                };
+
+                results.Add(model);
+            }
+
+            return results;
         }
     }
 }

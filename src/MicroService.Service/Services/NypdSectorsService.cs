@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Helpers;
+﻿using System.Collections.Generic;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -42,5 +43,26 @@ namespace MicroService.Service.Services
 
             return model;
         }
+
+        public IEnumerable<NypdSectorShape> GetFeatureAttributes()
+        {
+            var features = GetFeatures();
+            var results = new List<NypdSectorShape>(features.Count);
+
+            foreach (var f in features)
+            {
+                var model = new NypdSectorShape
+                {
+                    Pct = f.Attributes["pct"].ToString(),
+                    Sector = f.Attributes["sector"].ToString(),
+                    PatrolBoro = f.Attributes["patrol_bor"].ToString(),
+                };
+
+                results.Add(model);
+            }
+
+            return results;
+        }
+
     }
 }

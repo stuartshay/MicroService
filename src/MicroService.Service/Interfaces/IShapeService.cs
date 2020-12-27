@@ -11,6 +11,8 @@ namespace MicroService.Service.Interfaces
 
         T GetFeatureLookup(double x, double y);
 
+        IEnumerable<T> GetFeatureAttributes();
+
         ShapefileHeader GetShapeProperties();
 
         DbaseFileHeader GetShapeDatabaseProperties();

@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Helpers;
+﻿using System.Collections.Generic;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -45,5 +46,29 @@ namespace MicroService.Service.Services
 
             return model;
         }
+
+        public IEnumerable<ParkShape> GetFeatureAttributes()
+        {
+            var features = GetFeatures();
+            var results = new List<ParkShape>(features.Count);
+
+            foreach (var f in features)
+            {
+                var model = new ParkShape
+                {
+                    ParkName = f.Attributes["PARK_NAME"].ToString(),
+                    ParkNumber = f.Attributes["PARKNUM"].ToString(),
+                    SourceId = long.Parse(f.Attributes["SOURCE_ID"].ToString()),
+                    FeatureCode = int.Parse(f.Attributes["FEAT_CODE"].ToString()),
+                    SubCode = int.Parse(f.Attributes["SUB_CODE"].ToString()),
+                    LandUse = f.Attributes["LANDUSE"].ToString(),
+                };
+
+                results.Add(model);
+            }
+
+            return results;
+        }
+
     }
 }
