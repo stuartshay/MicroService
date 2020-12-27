@@ -105,6 +105,8 @@ namespace MicroService.WebApi
                     shapeProperties = ShapeProperties.BoroughBoundaries.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.HistoricDistricts))
                     shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttributes>();
+                else if (key == nameof(ShapeProperties.Neighborhoods))
+                    shapeProperties = ShapeProperties.Neighborhoods.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.NypdPolicePrecincts))
                     shapeProperties = ShapeProperties.NypdPolicePrecincts.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.NypdSectors))
@@ -128,6 +130,7 @@ namespace MicroService.WebApi
             // Feature Service Lookups
             services.AddScoped<BoroughBoundariesService>();
             services.AddScoped<HistoricDistrictService>();
+            services.AddScoped<NeighborhoodsService<NeighborhoodShape>>();
             services.AddScoped<NypdPolicePrecinctService>();
             services.AddScoped<NypdSectorsService<NypdSectorShape>>();
             services.AddScoped<ParkService<ParkShape>>();
@@ -139,6 +142,7 @@ namespace MicroService.WebApi
                 {
                     nameof(ShapeProperties.BoroughBoundaries) => serviceProvider.GetService<BoroughBoundariesService>(),
                     nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
+                    nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService<NeighborhoodShape>>(),
                     nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),
                     nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService<NypdSectorShape>>(),
                     nameof(ShapeProperties.Parks) => serviceProvider.GetService<ParkService<ParkShape>>(),
