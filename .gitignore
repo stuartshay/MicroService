@@ -27,6 +27,9 @@ tools/
 .test-results/
 healthchecksdb
 
+# Project Specific Files
+docker/postgres/data/
+
 # Coverage Test Files 
 *coverage*
 

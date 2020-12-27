@@ -3,9 +3,9 @@ node('buildx') {
     String version_prefix = 'v2.1'
     String version_suffix = ''
     String docker_image_name = 'stuartshay/microservice-database'
-    String docker_file = 'docker/database-postgres.dockerfile/postgres.dockerfile'
-    String docker_ignore = 'docker/database-postgres.dockerfile/.dockerignore'
-    String git_path = 'docker/database-postgres.dockerfile' 
+    String docker_file = 'docker/postgres/postgres.dockerfile'
+    String docker_ignore = 'docker/postgres/.dockerignore'
+    String git_path = 'docker/postgres' 
     String platform = 'linux/amd64'
     String email = 'sshay@yahoo.com' // TODO FIX
   

@@ -117,6 +117,8 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult<object>> GetFeatureLookup([FromQuery] FeatureRequestModel request)
         {
+            _metrics.Measure.Counter.Increment(MetricsRegistry.GetFeatureLookupCounter);
+
             if (string.IsNullOrEmpty(request?.Key))
                 return NoContent();
 
@@ -128,7 +130,7 @@ namespace MicroService.WebApi.V1.Controllers
             if (results == null)
                 return NotFound();
 
-            _metrics.Measure.Counter.Increment(MetricsRegistry.GetFeatureLookupCounter);
+            _metrics.Measure.Counter.Increment(MetricsRegistry.GetFeatureTypeLookupCounter(request.Key));
 
             return Ok(results);
         }
