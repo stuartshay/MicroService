@@ -10,8 +10,6 @@ namespace MicroService.Service.Models
 
         public string Name { get; set; }
 
-        public string Notes { get; set; }
-
         public double Distance { get; set; }
     }
 }

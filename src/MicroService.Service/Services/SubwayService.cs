@@ -31,7 +31,6 @@ namespace MicroService.Service.Services
                 {
                         Line = f.Attributes["line"].ToString(),
                         Name = f.Attributes["name"].ToString(),
-                        Notes = f.Attributes["notes"].ToString(),
                         ObjectId = int.Parse(f.Attributes["objectid"].ToString()),
                         Distance = distance,
                 };
@@ -39,7 +38,6 @@ namespace MicroService.Service.Services
                 subwayStops.Add(model);
             }
 
-            //TODO: Groupby Stations within Distance
             var orderedStops = subwayStops.OrderBy(x => x.Distance);
             var nearest = orderedStops.FirstOrDefault();
 
@@ -55,8 +53,7 @@ namespace MicroService.Service.Services
             results.AddRange(features.Select(f => new SubwayShape
             {
                 Line = f.Attributes["line"].ToString(), 
-                Name = f.Attributes["name"].ToString(), 
-                Notes = f.Attributes["notes"].ToString(), 
+                Name = f.Attributes["name"].ToString(),
                 ObjectId = int.Parse(f.Attributes["objectid"].ToString()),
             }));
 
