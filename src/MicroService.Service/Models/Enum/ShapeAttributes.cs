@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MicroService.Service.Models.Enum
+﻿namespace MicroService.Service.Models.Enum
 {
     public class ShapeAttributes : System.Attribute
     {

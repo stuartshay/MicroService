@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using App.Metrics;
 using MicroService.Service.Helpers;
@@ -12,7 +11,6 @@ using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using NetTopologySuite.IO;
 using static MicroService.WebApi.Startup;
 
 namespace MicroService.WebApi.V1.Controllers
@@ -75,7 +73,7 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public ActionResult<object> GetShapeProperties(string id)
         {
-            if (id == null)
+            if (id == null || !Enum.IsDefined(typeof(ShapeProperties), id))
                 return BadRequest();
 
             var service = _shapeServiceResolver(id);
@@ -117,8 +115,8 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult<object>> GetFeatureAttributes([FromQuery] FeatureAttributeRequestModel request)
         {
-            if (string.IsNullOrEmpty(request?.Key))
-                return NoContent();
+            if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
+                return BadRequest();
 
             var results = _shapeServiceResolver(request.Key).GetFeatureAttributes();
             return Ok(results);
@@ -138,12 +136,12 @@ namespace MicroService.WebApi.V1.Controllers
         {
             _metrics.Measure.Counter.Increment(MetricsRegistry.GetFeatureLookupCounter);
 
-            if (string.IsNullOrEmpty(request?.Key))
-                return NoContent();
+            if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
+                return BadRequest();
 
             var validate = _shapeServiceResolver(ShapeProperties.BoroughBoundaries.ToString()).GetFeatureLookup(request.X, request.Y);
             if (validate == null)
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+                return NoContent();
 
             var results = _shapeServiceResolver(request.Key).GetFeatureLookup(request.X, request.Y);
             if (results == null)
