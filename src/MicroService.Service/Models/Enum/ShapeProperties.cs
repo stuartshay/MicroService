@@ -29,7 +29,7 @@ namespace MicroService.Service.Models.Enum
         Parks,
 
         [Description("Subway")]
-        [ShapeAttributes("Subway_Stations", "subway")]
+        [ShapeAttributes("Subway_Entrances", "Subway_Entrances")]
         Subway,
 
         [Description("Zip Codes")]
