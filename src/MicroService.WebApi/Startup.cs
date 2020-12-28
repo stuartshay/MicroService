@@ -9,7 +9,9 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
+using MicroService.Service.Models.FlatFileModels;
 using MicroService.Service.Services;
+using MicroService.Service.Services.FlatFileService;
 using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.Swagger;
 using Microsoft.AspNetCore.Builder;
@@ -53,6 +55,8 @@ namespace MicroService.WebApi
         /// <param name="key"></param>
         /// <returns></returns>
         public delegate IShapeService<ShapeBase> ShapeServiceResolver(string key);
+
+        public delegate IFlatFileService<FlatFileBase> FlatFileResolver(string key);
 
         /// <summary>
         /// WebHost Environment.
@@ -154,6 +158,21 @@ namespace MicroService.WebApi
                     _ => throw new KeyNotFoundException(key)
                 };
             });
+
+            // Flat File Service Lookups
+            services.AddScoped<StationFlatFileService>();
+            services.AddScoped<StationComplexFlatFileService>();
+
+            services.AddScoped<FlatFileResolver>(serviceProvider => key =>
+            {
+                return key switch
+                {
+                    nameof(FlatFileProperties.SubwayStationLocations) => serviceProvider.GetService<StationFlatFileService>(),
+                    nameof(FlatFileProperties.SubwayStationComplex) => serviceProvider.GetService<StationComplexFlatFileService>(),
+                    _ => throw new KeyNotFoundException(key)
+                };
+            });
+
 
             services.AddCustomControllers(Configuration);
             services.Configure<ForwardedHeadersOptions>(options =>
