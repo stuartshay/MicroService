@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Base;
@@ -9,6 +11,7 @@ using MicroService.Service.Models.FlatFileModels;
 using MicroService.WebApi.Extensions.Constants;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using NetTopologySuite.Triangulate;
 
 namespace MicroService.WebApi.V1.Controllers
 {
@@ -68,14 +71,14 @@ namespace MicroService.WebApi.V1.Controllers
                 return BadRequest();
 
             var service = _flatFileResolver(id);
+            var modelName = Enum.Parse<FlatFileProperties>(id).GetAttribute<FlatFileAttributes>().ModelName;
 
-            // TODO Fix Logic
-            if (id == "SubwayStationLocations")
+            if (modelName == "StationFlatFile")
             {
                 var results = service.GetAll().Cast<StationFlatFile>().ToList();
                 return Ok(results);
             }
-            else if (id == "SubwayStationComplex")
+            else if (modelName == "StationComplexFlatFile")
             {
                 var results = service.GetAll().Cast<StationComplexFlatFile>().ToList();
                 return Ok(results);
@@ -83,11 +86,5 @@ namespace MicroService.WebApi.V1.Controllers
 
             return NotFound();
         }
-
-
-
-
-
-
     }
 }
