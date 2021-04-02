@@ -14,6 +14,7 @@ using MicroService.Service.Services;
 using MicroService.Service.Services.FlatFileService;
 using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.Swagger;
+using MicroService.WebApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -173,12 +174,13 @@ namespace MicroService.WebApi
                 };
             });
 
-
             services.AddCustomControllers(Configuration);
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
             });
+
+            services.AddHostedService<InMemoryCacheShapefileBackgroundService>();
         }
 
         /// <summary>
