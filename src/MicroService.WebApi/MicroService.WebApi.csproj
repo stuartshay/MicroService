@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <Import Project="..\..\common.props" />
+  
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <IsPackable>false</IsPackable>
@@ -9,6 +10,7 @@
     <CodeAnalysisRuleSet>StyleCopRules.ruleset</CodeAnalysisRuleSet>
     <Version>3.1.402.1</Version>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="App.Metrics" Version="4.2.0-preview.0.25" />
     <PackageReference Include="App.Metrics.App.All" Version="4.2.0-preview.0.25" />
@@ -25,15 +27,19 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
   </ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+  
   <ItemGroup>
+    <ProjectReference Include="..\..\MicroService.Common\MicroService.Common.csproj" />
     <ProjectReference Include="..\MicroService.Service\MicroService.Service.csproj" />
   </ItemGroup>
+  
   <ItemGroup>
     <Content Update="appsettings.Development.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -48,7 +54,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  
   <PropertyGroup>
     <ProjectGuid>{9A19103F-16F7-4668-BE54-9A1E7A4F7963}</ProjectGuid>
   </PropertyGroup>
+
 </Project>

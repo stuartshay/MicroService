@@ -4,9 +4,11 @@ using System.Linq;
 using App.Metrics;
 using App.Metrics.AspNetCore;
 using App.Metrics.Formatters.Prometheus;
+using MicroService.Common.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace MicroService.WebApi
 {
@@ -65,6 +67,7 @@ namespace MicroService.WebApi
                             endpointsOptions.MetricsEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
                         };
                     })
+                   .UseSerilog(Logging.ConfigureLogger)
                    .Build();
     }
 }
