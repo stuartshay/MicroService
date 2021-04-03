@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -20,8 +21,13 @@ namespace MicroService.WebApi.Services
         private readonly IMemoryCache _cache;
         private readonly IOptions<ApplicationOptions> _applicationOptions;
         private readonly ILogger _logger;
+        private List<(string, string)> _entries;
 
-        public InMemoryCacheShapefileCronJobService(IScheduleConfig<InMemoryCacheShapefileCronJobService> scheduleConfig, IMemoryCache memoryCache, IOptions<ApplicationOptions> applicationOptions, ILogger<InMemoryCacheShapefileCronJobService> logger)
+        public InMemoryCacheShapefileCronJobService(
+            IScheduleConfig<InMemoryCacheShapefileCronJobService> scheduleConfig,
+            IMemoryCache memoryCache,
+            IOptions<ApplicationOptions> applicationOptions,
+            ILogger<InMemoryCacheShapefileCronJobService> logger)
             : base(scheduleConfig.CronExpression, scheduleConfig.TimeZoneInfo)
         {
             _cache = memoryCache;
@@ -33,13 +39,7 @@ namespace MicroService.WebApi.Services
         {
             _logger.LogInformation($"[Start] {nameof(InMemoryCacheShapefileCronJobService)}");
 
-            return base.StartAsync(cancellationToken);
-        }
-
-        public override Task DoWork(CancellationToken cancellationToken)
-        {
-            _logger.LogInformation($"{DateTime.Now:hh:mm:ss} {nameof(InMemoryCacheShapefileCronJobService)} is working.");
-
+            _entries = new List<(string, string)>();
             var nameWithShapeAttributes = typeof(ShapeProperties).GetFields()
                 .Where(x => x.IsLiteral)
                 .Select(x => (x.Name, (ShapeAttributes)x.GetCustomAttributes(typeof(ShapeAttributes), false).Single()));
@@ -48,6 +48,32 @@ namespace MicroService.WebApi.Services
                 var shapeDirectory = $"{Path.Combine(_applicationOptions.Value.ShapeConfiguration.ShapeRootDirectory, shapeAttribute.Directory, shapeAttribute.FileName)}";
                 string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
+                var fileSystemWatcher = new FileSystemWatcher()
+                {
+                    NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.LastAccess,
+                    Filter = $"{shapeAttribute.FileName}.dbf",
+                    Path = Path.GetDirectoryName(shapePath),
+                    EnableRaisingEvents = true
+                };
+                fileSystemWatcher.Changed += async (sender, e) =>
+                {
+                    _logger.LogInformation($"File {e.Name} was changed");
+
+                    await DoWork(CancellationToken.None);
+                };
+
+                _entries.Add((name, shapePath));
+            }
+
+            return base.StartAsync(cancellationToken);
+        }
+
+        public override Task DoWork(CancellationToken cancellationToken)
+        {
+            _logger.LogInformation($"{DateTime.Now:hh:mm:ss} {nameof(InMemoryCacheShapefileCronJobService)} is working.");
+
+            foreach (var (name, shapePath) in _entries)
+            {
                 var shapefileDataReader = new ShapefileDataReader(shapePath, new GeometryFactory());
 
                 var features = shapefileDataReader.ReadFeatures();
