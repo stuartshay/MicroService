@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using App.Metrics;
 using HealthChecks.UI.Client;
@@ -9,11 +10,11 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
-using MicroService.Service.Models.FlatFileModels;
 using MicroService.Service.Services;
 using MicroService.Service.Services.FlatFileService;
 using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.Swagger;
+using MicroService.WebApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -173,11 +174,16 @@ namespace MicroService.WebApi
                 };
             });
 
-
             services.AddCustomControllers(Configuration);
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
+
+            services.AddCronJob<InMemoryCacheShapefileCronJobService>(x =>
+            {
+                x.TimeZoneInfo = TimeZoneInfo.Local;
+                x.CronExpression = @"*/1 * * * *";
             });
         }
 

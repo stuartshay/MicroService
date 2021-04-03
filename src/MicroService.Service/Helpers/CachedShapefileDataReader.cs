@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using MicroService.Service.Extensions;
+using Microsoft.Extensions.Caching.Memory;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
@@ -30,30 +31,7 @@ namespace MicroService.Service.Helpers
         public IReadOnlyCollection<Feature> GetFeatures() =>
             _cache.GetOrCreate(_shapeProperties, cacheEntry =>
             {
-                List<Feature> features = new List<Feature>();
-                while (Read())
-                {
-                    Feature feature = new Feature();
-                    AttributesTable attributesTable = new AttributesTable();
-                    DbaseFileHeader header = DbaseHeader;
-
-                    string[] keys = new string[header.NumFields];
-                    var geometry = Geometry;
-
-                    for (int i = 0; i < header.NumFields; i++)
-                    {
-                        DbaseFieldDescriptor fldDescriptor = header.Fields[i];
-                        keys[i] = fldDescriptor.Name;
-
-                        // First Field Geometry
-                        var value = GetValue(i + 1);
-                        attributesTable.Add(fldDescriptor.Name, value);
-                    }
-
-                    feature.Geometry = geometry;
-                    feature.Attributes = attributesTable;
-                    features.Add(feature);
-                }
+                var features = this.ReadFeatures();
 
                 cacheEntry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(3);
 
