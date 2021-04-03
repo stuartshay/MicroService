@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using MicroService.Service.Helpers;
-using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.FlatFileModels;
 using MicroService.WebApi.Extensions.Constants;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using NetTopologySuite.Triangulate;
 
 namespace MicroService.WebApi.V1.Controllers
 {
