@@ -1,7 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <Import Project="..\..\common.props" />
+  
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <NoWarn>$(NoWarn),1701;1702;1705</NoWarn>
@@ -9,30 +10,37 @@
     <CodeAnalysisRuleSet>StyleCopRules.ruleset</CodeAnalysisRuleSet>
     <Version>3.1.402.1</Version>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="App.Metrics" Version="4.2.0-preview.0.25" />
     <PackageReference Include="App.Metrics.App.All" Version="4.2.0-preview.0.25" />
     <PackageReference Include="App.Metrics.AspNetCore" Version="4.2.0-preview.0.25" />
     <PackageReference Include="App.Metrics.Extensions.Collectors" Version="4.2.0-preview.0.25" />
     <PackageReference Include="App.Metrics.Formatters.Prometheus" Version="4.2.0-preview.0.25" />
-    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="3.1.1" />
-    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="3.1.3" />
-    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="3.1.2" />
-    <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="3.1.2" />
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="5.0.2" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="5.0.1" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="5.0.1" />
+    <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="5.0.1" />
+    <PackageReference Include="CronExpressionDescriptor" Version="2.16.0" />
+    <PackageReference Include="Cronos" Version="0.7.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Api.Analyzers" Version="2.2.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.2.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
   </ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+  
   <ItemGroup>
+    <ProjectReference Include="..\..\MicroService.Common\MicroService.Common.csproj" />
     <ProjectReference Include="..\MicroService.Service\MicroService.Service.csproj" />
   </ItemGroup>
+  
   <ItemGroup>
     <Content Update="appsettings.Development.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -47,7 +55,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  
   <PropertyGroup>
     <ProjectGuid>{9A19103F-16F7-4668-BE54-9A1E7A4F7963}</ProjectGuid>
   </PropertyGroup>
+
 </Project>
