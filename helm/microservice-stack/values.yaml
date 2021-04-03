@@ -40,7 +40,7 @@ prometheus:
   replicaCount: 1
   image:
     repository: prom/prometheus
-    tag: v2.20.1
+    tag: v2.26.0
     pull_policy: IfNotPresent
   service:
     type: NodePort
