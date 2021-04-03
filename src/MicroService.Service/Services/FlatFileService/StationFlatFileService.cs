@@ -2,11 +2,9 @@
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using CsvHelper;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Base;
-using MicroService.Service.Models.DataMaps;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.FlatFileModels;
 
@@ -29,7 +27,7 @@ namespace MicroService.Service.Services.FlatFileService
             using var reader = new StreamReader(inputPath);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
-            csv.Configuration.RegisterClassMap<StationDataMap>();
+            //csv.Configuration.RegisterClassMap<StationDataMap>();
             list = csv.GetRecords<StationFlatFile>();
             //var list = csv.GetRecordsAsync<StationFlatFile>();
 
