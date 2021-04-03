@@ -29,7 +29,7 @@ namespace MicroService.Service.Services.FlatFileService
             using var reader = new StreamReader(inputPath);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
-            csv.Configuration.RegisterClassMap<StationDataMap>();
+            //csv.Configuration.RegisterClassMap<StationDataMap>();
             list = csv.GetRecords<StationFlatFile>();
             //var list = csv.GetRecordsAsync<StationFlatFile>();
 
