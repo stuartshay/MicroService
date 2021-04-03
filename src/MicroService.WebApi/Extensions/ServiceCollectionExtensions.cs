@@ -5,6 +5,7 @@ using MicroService.Service.Configuration;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Extensions.Health;
 using MicroService.WebApi.Extensions.Swagger;
+using MicroService.WebApi.Services.Cron;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -168,6 +169,27 @@ namespace MicroService.WebApi.Extensions
                         options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"MicroService.WebApi - {description.GroupName.ToUpperInvariant()}");
                     }
                 });
+        }
+
+        public static IServiceCollection AddCronJob<T>(this IServiceCollection services, Action<IScheduleConfig<T>> options)
+            where T : CronJobService
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options), @"Please provide Schedule Configurations.");
+            }
+
+            var scheduleConfig = new ScheduleConfig<T>();
+            options.Invoke(scheduleConfig);
+            if (string.IsNullOrWhiteSpace(scheduleConfig.CronExpression))
+            {
+                throw new ArgumentNullException(nameof(ScheduleConfig<T>.CronExpression), @"Empty Cron Expression is not allowed.");
+            }
+
+            services.AddSingleton<IScheduleConfig<T>>(scheduleConfig);
+            services.AddHostedService<T>();
+
+            return services;
         }
 
         private static string GetXmlCommentsPath()
