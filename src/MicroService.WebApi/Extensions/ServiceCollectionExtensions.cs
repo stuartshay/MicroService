@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using MicroService.Common.Health;
 using MicroService.Service.Configuration;
 using MicroService.WebApi.Extensions.Constants;
-using MicroService.WebApi.Extensions.Health;
 using MicroService.WebApi.Extensions.Swagger;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.AspNetCore.Builder;
@@ -27,13 +27,17 @@ namespace MicroService.WebApi.Extensions
         /// <param name="services"></param>
         /// <param name="configuration"></param>
         /// <param name="environment"></param>
-        public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment environment)
+        public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration,IWebHostEnvironment environment)
         {
             var config = configuration.Get<ApplicationOptions>();
+            var shapeCronExpressionDescription = CronExpressionDescriptor.ExpressionDescriptor.GetDescription(config.ShapeConfiguration.CronExpression);
+
             Console.WriteLine($"Environment: {environment?.EnvironmentName}");
             Console.WriteLine($"PostgreSql: {config.ConnectionStrings.PostgreSql}");
             Console.WriteLine($"ShapeRootDirectory Config: {config.ShapeConfiguration.ShapeRootDirectory}");
             Console.WriteLine($"ShapeRootDirectory: {Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), config.ShapeConfiguration.ShapeRootDirectory))}");
+            Console.WriteLine($"Shape CronExpression: {config.ShapeConfiguration.CronExpression}");
+            Console.WriteLine($"Shape Cron Description: {shapeCronExpressionDescription}");
         }
 
         /// <summary>
