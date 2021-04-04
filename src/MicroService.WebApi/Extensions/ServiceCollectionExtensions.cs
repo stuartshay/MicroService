@@ -111,6 +111,9 @@ namespace MicroService.WebApi.Extensions
             // services.AddHealthChecksUI();
             services.AddHealthChecks()
                 .AddCheck<VersionHealthCheck>("Version Health Check")
+
+            //    .AddDiskStorageHealthCheck(s => s.AddDrive("C:\\", 1024))
+                
                 .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
             return services;
