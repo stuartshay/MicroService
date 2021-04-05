@@ -38,12 +38,7 @@ namespace MicroService.WebApi.Services
 
         public override Task StartAsync(CancellationToken cancellationToken)
         {
-            //_logger.LogInformation($"[Start]{ServiceName}", nameof(InMemoryCacheShapefileCronJobService));
-           // _logger.LogInformation($"Cache Refresh:{{ServiceName}}|Name:{{Name}}|CacheTimeSpan:{memCacheTimeSpan}}}", nameof(InMemoryCacheShapefileCronJobService), name, memCacheTimeSpan);
-
             _logger.LogInformation($"[Start]:{{ServiceName}}", nameof(InMemoryCacheShapefileCronJobService));
-
-
 
             _entries = new List<(string, string, FileSystemWatcher)>();
             var nameWithShapeAttributes = typeof(ShapeProperties).GetFields()
@@ -63,7 +58,7 @@ namespace MicroService.WebApi.Services
                 };
                 fileSystemWatcher.Changed += async (sender, e) =>
                 {
-                    _logger.LogInformation($"File {e.Name} was changed");
+                    _logger.LogInformation($"[FileChanged]:{{ServiceName}}|FileName:{{Name}}", nameof(InMemoryCacheShapefileCronJobService), e.Name);
 
                     await DoWork(CancellationToken.None);
                 };
@@ -85,7 +80,7 @@ namespace MicroService.WebApi.Services
                 var memCacheTimeSpan = TimeSpan.FromHours(3);
                 _cache.Set(name, features, memCacheTimeSpan);
 
-                _logger.LogInformation($"[CacheRefresh]:{{ServiceName}}|Name:{{Name}}|CacheTimeSpan:{memCacheTimeSpan}}}", nameof(InMemoryCacheShapefileCronJobService), name, memCacheTimeSpan);
+                _logger.LogInformation($"[CacheRefresh]:{{ServiceName}}|ShapeName:{{ShapeName}}|CacheTimeSpan:{{memCacheTimeSpan}}", nameof(InMemoryCacheShapefileCronJobService), name, memCacheTimeSpan);
             }
 
             return Task.CompletedTask;
