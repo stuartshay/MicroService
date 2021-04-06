@@ -202,7 +202,6 @@ namespace MicroService.WebApi
                     .AddHealthChecks()
                     .Services
                     .AddControllers();
-
         }
 
         /// <summary>

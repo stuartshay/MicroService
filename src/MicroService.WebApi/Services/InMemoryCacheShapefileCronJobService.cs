@@ -11,7 +11,6 @@ using MicroService.WebApi.Services.Cron;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.VisualBasic;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 
@@ -49,11 +48,19 @@ namespace MicroService.WebApi.Services
                 var shapeDirectory = $"{Path.Combine(_applicationOptions.Value.ShapeConfiguration.ShapeRootDirectory, shapeAttribute.Directory, shapeAttribute.FileName)}";
                 string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
+                var shapeDirectoryPath = Path.GetDirectoryName(shapePath);
+                if (!Directory.Exists(shapeDirectoryPath))
+                {
+                    _logger.LogError($"Shape directory in {{ServiceName}} doesn't exists.", nameof(InMemoryCacheShapefileCronJobService));
+
+                    return Task.CompletedTask;
+                }
+
                 var fileSystemWatcher = new FileSystemWatcher()
                 {
                     NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName,
                     Filter = $"{shapeAttribute.FileName}.dbf",
-                    Path = Path.GetDirectoryName(shapePath),
+                    Path = shapeDirectoryPath,
                     EnableRaisingEvents = true,
                 };
                 fileSystemWatcher.Changed += async (sender, e) =>
