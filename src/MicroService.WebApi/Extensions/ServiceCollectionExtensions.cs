@@ -27,7 +27,7 @@ namespace MicroService.WebApi.Extensions
         /// <param name="services"></param>
         /// <param name="configuration"></param>
         /// <param name="environment"></param>
-        public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration,IWebHostEnvironment environment)
+        public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment environment)
         {
             var config = configuration.Get<ApplicationOptions>();
             var shapeCronExpressionDescription = CronExpressionDescriptor.ExpressionDescriptor.GetDescription(config.ShapeConfiguration.CronExpression);
@@ -111,6 +111,7 @@ namespace MicroService.WebApi.Extensions
             // services.AddHealthChecksUI();
             services.AddHealthChecks()
                 .AddCheck<VersionHealthCheck>("Version Health Check")
+                //.AddDiskStorageHealthCheck(s => s.AddDrive("C:\\", 1024))
                 .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
             return services;

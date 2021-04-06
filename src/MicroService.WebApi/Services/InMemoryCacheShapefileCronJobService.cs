@@ -11,6 +11,7 @@ using MicroService.WebApi.Services.Cron;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.VisualBasic;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 
@@ -21,7 +22,7 @@ namespace MicroService.WebApi.Services
         private readonly IMemoryCache _cache;
         private readonly IOptions<ApplicationOptions> _applicationOptions;
         private readonly ILogger _logger;
-        private List<(string, string)> _entries;
+        private List<(string, string, FileSystemWatcher)> _entries;
 
         public InMemoryCacheShapefileCronJobService(
             IScheduleConfig<InMemoryCacheShapefileCronJobService> scheduleConfig,
@@ -37,9 +38,9 @@ namespace MicroService.WebApi.Services
 
         public override Task StartAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"[Start] {nameof(InMemoryCacheShapefileCronJobService)}");
+            _logger.LogInformation($"[Start]:{{ServiceName}}", nameof(InMemoryCacheShapefileCronJobService));
 
-            _entries = new List<(string, string)>();
+            _entries = new List<(string, string, FileSystemWatcher)>();
             var nameWithShapeAttributes = typeof(ShapeProperties).GetFields()
                 .Where(x => x.IsLiteral)
                 .Select(x => (x.Name, (ShapeAttributes)x.GetCustomAttributes(typeof(ShapeAttributes), false).Single()));
@@ -50,19 +51,19 @@ namespace MicroService.WebApi.Services
 
                 var fileSystemWatcher = new FileSystemWatcher()
                 {
-                    NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.LastAccess,
+                    NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName,
                     Filter = $"{shapeAttribute.FileName}.dbf",
                     Path = Path.GetDirectoryName(shapePath),
-                    EnableRaisingEvents = true
+                    EnableRaisingEvents = true,
                 };
                 fileSystemWatcher.Changed += async (sender, e) =>
                 {
-                    _logger.LogInformation($"File {e.Name} was changed");
+                    _logger.LogInformation($"[FileChanged]:{{ServiceName}}|FileName:{{Name}}", nameof(InMemoryCacheShapefileCronJobService), e.Name);
 
                     await DoWork(CancellationToken.None);
                 };
 
-                _entries.Add((name, shapePath));
+                _entries.Add((name, shapePath, fileSystemWatcher));
             }
 
             return base.StartAsync(cancellationToken);
@@ -70,15 +71,16 @@ namespace MicroService.WebApi.Services
 
         public override Task DoWork(CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"{DateTime.Now:hh:mm:ss} {nameof(InMemoryCacheShapefileCronJobService)} is working.");
-
-            foreach (var (name, shapePath) in _entries)
+            foreach (var (name, shapePath, _) in _entries)
             {
                 var shapefileDataReader = new ShapefileDataReader(shapePath, new GeometryFactory());
 
                 var features = shapefileDataReader.ReadFeatures();
 
-                _cache.Set(name, features, TimeSpan.FromHours(3));
+                var memCacheTimeSpan = TimeSpan.FromHours(3);
+                _cache.Set(name, features, memCacheTimeSpan);
+
+                _logger.LogInformation($"[CacheRefresh]:{{ServiceName}}|ShapeName:{{ShapeName}}|CacheTimeSpan:{{memCacheTimeSpan}}", nameof(InMemoryCacheShapefileCronJobService), name, memCacheTimeSpan);
             }
 
             return Task.CompletedTask;

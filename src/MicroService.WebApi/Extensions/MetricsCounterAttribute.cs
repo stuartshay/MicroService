@@ -15,7 +15,6 @@ namespace MicroService.WebApi.Extensions
             _metrics = metrics;
         }
 
-
         public void OnResultExecuting(ResultExecutingContext context)
         {
             throw new System.NotImplementedException();
@@ -30,7 +29,5 @@ namespace MicroService.WebApi.Extensions
         {
             _metrics.Measure.Counter.Increment(MetricsRegistry.GetFeatureLookupCounter);
         }
-
-
     }
 }

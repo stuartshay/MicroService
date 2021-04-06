@@ -123,10 +123,10 @@ namespace MicroService.WebApi.V1.Controllers
         }
 
         /// <summary>
-            ///  Get Feature Lookup
-            /// </summary>
-            /// <param name="request">Feature Request</param>
-            /// <returns></returns>
+        ///  Get Feature Lookup
+        /// </summary>
+        /// <param name="request">Feature Request</param>
+        /// <returns></returns>
         [HttpGet("featurelookup", Name = "GetFeatureLookup")]
         [Produces("application/json", Type = typeof(ShapeBase))]
         [ProducesResponseType(typeof(ShapeBase), 200)]
