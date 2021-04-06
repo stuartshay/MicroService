@@ -110,10 +110,9 @@ namespace MicroService.WebApi.Extensions
 
             var shapeRootDirectory = config.ShapeConfiguration.ShapeRootDirectory;
 
-            // services.AddHealthChecksUI();
             services.AddHealthChecks()
                 .AddCheck<VersionHealthCheck>("Version Health Check")
-                //.AddDiskStorageHealthCheck(s => s.AddDrive("C:\\", 1024))
+                .AddFolderHealthCheck(shapeRootDirectory, "Shape Root Directory")
                 .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
             return services;
