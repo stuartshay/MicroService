@@ -23,6 +23,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -84,7 +85,6 @@ namespace MicroService.WebApi
             services.DisplayConfiguration(Configuration, HostingEnvironment);
 
             services.AddCustomApiVersioning();
-            services.AddCustomHealthCheck(Configuration);
 
             var metrics = AppMetrics.CreateDefaultBuilder()
                 .OutputMetrics
@@ -190,6 +190,19 @@ namespace MicroService.WebApi
                 x.TimeZoneInfo = TimeZoneInfo.Local;
                 x.CronExpression = config.ShapeConfiguration.CronExpression;
             });
+
+            // Health Checks
+            services.AddRazorPages();
+
+            services.AddCustomHealthCheck(Configuration);
+
+            services.AddHealthChecksUI(setupSettings: setup => { })
+                    .AddInMemoryStorage()
+                    .Services
+                    .AddHealthChecks()
+                    .Services
+                    .AddControllers();
+
         }
 
         /// <summary>
@@ -213,12 +226,6 @@ namespace MicroService.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHealthChecks("/healthz", new HealthCheckOptions()
-            {
-                Predicate = _ => true,
-                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
-            });
-
             app.ConfigureSwagger(provider);
             app.UseHttpsRedirection();
 
@@ -228,12 +235,24 @@ namespace MicroService.WebApi
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHealthChecksUI(config =>
-                {
-                    config.UIPath = $"/healthcheck-ui";
-                });
                 endpoints.MapControllers();
+                endpoints.MapRazorPages();
+
+                endpoints.MapHealthChecks("health", new HealthCheckOptions()
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+                });
+
+                // Health Check UI Configuration
+                endpoints.MapHealthChecksUI(setup =>
+                {
+                    setup.UIPath = "/health-ui";
+                    setup.ApiPath = "/health-ui-api";
+                    setup.AddCustomStylesheet("dotnet.css");
+                });
             });
+
         }
     }
 }
