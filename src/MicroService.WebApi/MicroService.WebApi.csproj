@@ -18,6 +18,7 @@
     <PackageReference Include="App.Metrics.Extensions.Collectors" Version="4.2.0-preview.0.25" />
     <PackageReference Include="App.Metrics.Formatters.Prometheus" Version="4.2.0-preview.0.25" />
     <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="5.0.2" />
+    <PackageReference Include="AspNetCore.HealthChecks.System" Version="5.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="5.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="5.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="5.0.1" />
@@ -37,7 +38,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\MicroService.Common\MicroService.Common.csproj" />
+	  <ProjectReference Include="..\MicroService.Common\MicroService.Common.csproj" />
     <ProjectReference Include="..\MicroService.Service\MicroService.Service.csproj" />
   </ItemGroup>
   
