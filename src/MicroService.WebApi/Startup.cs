@@ -46,18 +46,23 @@ namespace MicroService.WebApi
         }
 
         /// <summary>
-        /// Configuration.
-        /// </summary>
-        public IConfiguration Configuration { get; }
-
-        /// <summary>
         /// Shape Service Resolver
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
         public delegate IShapeService<ShapeBase> ShapeServiceResolver(string key);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public delegate IFlatFileService<FlatFileBase> FlatFileResolver(string key);
+
+        /// <summary>
+        /// Configuration.
+        /// </summary>
+        public IConfiguration Configuration { get; }
 
         /// <summary>
         /// WebHost Environment.
@@ -179,7 +184,6 @@ namespace MicroService.WebApi
             {
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
             });
-
 
             services.AddCronJob<InMemoryCacheShapefileCronJobService>(x =>
             {
