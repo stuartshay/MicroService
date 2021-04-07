@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,66 +20,39 @@ namespace MicroService.WebApi.Services
     internal class InMemoryCacheShapefileCronJobService : CronJobService
     {
         private readonly IMemoryCache _cache;
+        private readonly CronJobServiceHealthCheck _cronJobServiceHealthCheck;
         private readonly IOptions<ApplicationOptions> _applicationOptions;
         private readonly ILogger _logger;
-        private List<(string, string, FileSystemWatcher)> _entries;
+        private readonly ConcurrentDictionary<string, (string, FileSystemWatcher)> _entries = new ConcurrentDictionary<string, (string, FileSystemWatcher)>();
 
         public InMemoryCacheShapefileCronJobService(
             IScheduleConfig<InMemoryCacheShapefileCronJobService> scheduleConfig,
             IMemoryCache memoryCache,
+            CronJobServiceHealthCheck cronJobServiceHealthCheck,
             IOptions<ApplicationOptions> applicationOptions,
             ILogger<InMemoryCacheShapefileCronJobService> logger)
             : base(scheduleConfig.CronExpression, scheduleConfig.TimeZoneInfo)
         {
             _cache = memoryCache;
+            _cronJobServiceHealthCheck = cronJobServiceHealthCheck;
             _applicationOptions = applicationOptions;
             _logger = logger;
         }
 
-        public override Task StartAsync(CancellationToken cancellationToken)
+        public override async Task StartAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation($"[Start]:{{ServiceName}}", nameof(InMemoryCacheShapefileCronJobService));
 
-            _entries = new List<(string, string, FileSystemWatcher)>();
-            var nameWithShapeAttributes = typeof(ShapeProperties).GetFields()
-                .Where(x => x.IsLiteral)
-                .Select(x => (x.Name, (ShapeAttributes)x.GetCustomAttributes(typeof(ShapeAttributes), false).Single()));
-            foreach (var (name, shapeAttribute) in nameWithShapeAttributes)
-            {
-                var shapeDirectory = $"{Path.Combine(_applicationOptions.Value.ShapeConfiguration.ShapeRootDirectory, shapeAttribute.Directory, shapeAttribute.FileName)}";
-                string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
+            await base.StartAsync(cancellationToken);
 
-                var shapeDirectoryPath = Path.GetDirectoryName(shapePath);
-                if (!Directory.Exists(shapeDirectoryPath))
-                {
-                    _logger.LogError($"Shape directory in {{ServiceName}} doesn't exists.", nameof(InMemoryCacheShapefileCronJobService));
-
-                    return Task.CompletedTask;
-                }
-
-                var fileSystemWatcher = new FileSystemWatcher()
-                {
-                    NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName,
-                    Filter = $"{shapeAttribute.FileName}.dbf",
-                    Path = shapeDirectoryPath,
-                    EnableRaisingEvents = true,
-                };
-                fileSystemWatcher.Changed += async (sender, e) =>
-                {
-                    _logger.LogInformation($"[FileChanged]:{{ServiceName}}|FileName:{{Name}}", nameof(InMemoryCacheShapefileCronJobService), e.Name);
-
-                    await DoWork(CancellationToken.None);
-                };
-
-                _entries.Add((name, shapePath, fileSystemWatcher));
-            }
-
-            return base.StartAsync(cancellationToken);
+            _cronJobServiceHealthCheck.StartupTaskCompleted = true;
         }
 
         public override Task DoWork(CancellationToken cancellationToken)
         {
-            foreach (var (name, shapePath, _) in _entries)
+            UpdateEntries();
+
+            foreach (var (name, (shapePath, _)) in _entries)
             {
                 var shapefileDataReader = new ShapefileDataReader(shapePath, new GeometryFactory());
 
@@ -100,6 +74,47 @@ namespace MicroService.WebApi.Services
             _cache.Dispose();
 
             return base.StopAsync(cancellationToken);
+        }
+
+        private void UpdateEntries()
+        {
+            var nameWithShapeAttributes = typeof(ShapeProperties).GetFields()
+                .Where(x => x.IsLiteral)
+                .Select(x => (x.Name, (ShapeAttributes)x.GetCustomAttributes(typeof(ShapeAttributes), false).Single()));
+            foreach (var (name, shapeAttribute) in nameWithShapeAttributes)
+            {
+                var shapeDirectory = $"{Path.Combine(_applicationOptions.Value.ShapeConfiguration.ShapeRootDirectory, shapeAttribute.Directory, shapeAttribute.FileName)}";
+                string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
+
+                var shapeDirectoryPath = Path.GetDirectoryName(shapePath);
+                if (!Directory.Exists(shapeDirectoryPath) || !File.Exists(shapePath))
+                {
+                    _entries.Remove(name, out _);
+
+                    _logger.LogError($"Shape directory {{Path}} in {{ServiceName}} doesn't exists.", shapeDirectoryPath, nameof(InMemoryCacheShapefileCronJobService));
+
+                    continue;
+                }
+
+                if (!_entries.TryGetValue(name, out _))
+                {
+                    var fileSystemWatcher = new FileSystemWatcher
+                    {
+                        NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName,
+                        Filter = $"{shapeAttribute.FileName}.dbf",
+                        Path = shapeDirectoryPath,
+                        EnableRaisingEvents = true,
+                    };
+                    fileSystemWatcher.Changed += async (sender, e) =>
+                    {
+                        _logger.LogInformation($"[FileChanged]:{{ServiceName}}|FileName:{{Name}}", nameof(InMemoryCacheShapefileCronJobService), e.Name);
+
+                        await DoWork(CancellationToken.None);
+                    };
+
+                    _entries.TryAdd(name, (shapePath, fileSystemWatcher));
+                }
+            }
         }
     }
 }

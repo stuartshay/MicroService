@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using MicroService.Common.Constants;
 using MicroService.Common.Health;
 using MicroService.Service.Configuration;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Extensions.Swagger;
+using MicroService.WebApi.Services;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -112,6 +114,7 @@ namespace MicroService.WebApi.Extensions
 
             services.AddHealthChecks()
                 .AddCheck<VersionHealthCheck>("Version Health Check")
+                .AddCheck<CronJobServiceHealthCheck>("Cron Job Health Check", tags: new[] { HealthCheckType.ReadinessCheck.ToString() })
                 .AddFolderHealthCheck(shapeRootDirectory, "Shape Root Directory")
                 .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
