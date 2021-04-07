@@ -80,6 +80,7 @@ namespace MicroService.WebApi
             services.Configure<ApplicationOptions>(Configuration);
             services.AddSingleton(Configuration);
             services.AddMemoryCache();
+            services.AddSingleton<CronJobServiceHealthCheck>();
 
             var config = Configuration.Get<ApplicationOptions>();
             services.DisplayConfiguration(Configuration, HostingEnvironment);
@@ -251,7 +252,6 @@ namespace MicroService.WebApi
                     setup.AddCustomStylesheet("dotnet.css");
                 });
             });
-
         }
     }
 }
