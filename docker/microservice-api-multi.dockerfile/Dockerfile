@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install .NET Tools 
 ENV PATH="/root/.dotnet/tools:${PATH}"
-RUN dotnet tool install --global dotnet-setversion --version 2.2.0 
+RUN dotnet tool install --global dotnet-setversion --version 2.2.0
 RUN dotnet tool install --global sempack --version 1.1.7057.22950
 RUN dotnet tool install --global dotnet-dbinfo --version 1.4.0 
 RUN dotnet tool list -g
@@ -23,7 +23,7 @@ RUN dotnet restore /p:RestoreUseSkipNonexistentTargets="false"
 WORKDIR /app/src/MicroService.WebApi
 
 # Publish
-RUN setversion 5.0.1.${BUILD_NUMBER}
+#RUN setversion 5.0.1.${BUILD_NUMBER}
 RUN dotnet publish -o /publish -c Release -f net5.0  
 
 # Release Stage 
