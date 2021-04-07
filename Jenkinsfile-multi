@@ -1,12 +1,12 @@
-node('buildx') {
+node("${NODE}") {
     
-    String version_prefix = '3.1.0-multi'
+    String version_prefix = "${VERSION_PREFIX}"
     String version_suffix = ''
     String docker_image_name = 'stuartshay/microservice-api'
     String docker_file = 'docker/microservice-api-multi.dockerfile/Dockerfile'
     String docker_ignore = 'docker/microservice-api-multi.dockerfile/.dockerignore'
     String git_path = '' 
-    String platform = 'linux/amd64'
+    String platform = "${PLATFORM}"
     String email = 'sshay@yahoo.com' // TODO FIX
 
     stage('Git checkout') {

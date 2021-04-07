@@ -108,6 +108,8 @@ namespace MicroService.WebApi.Extensions
         {
             var config = configuration.Get<ApplicationOptions>();
 
+            var shapeRootDirectory = config.ShapeConfiguration.ShapeRootDirectory;
+
             // services.AddHealthChecksUI();
             services.AddHealthChecks()
                 .AddCheck<VersionHealthCheck>("Version Health Check")

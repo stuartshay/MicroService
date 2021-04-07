@@ -8,8 +8,18 @@
     <NoWarn>$(NoWarn),1701;1702;1705</NoWarn>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(MSBuildThisFileName).xml</DocumentationFile>
     <CodeAnalysisRuleSet>StyleCopRules.ruleset</CodeAnalysisRuleSet>
-    <Version>3.1.402.1</Version>
+    <Version>5.1.402.1</Version>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Remove="dotnet.css" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="dotnet.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="App.Metrics" Version="4.2.0-preview.0.25" />
@@ -21,6 +31,7 @@
     <PackageReference Include="AspNetCore.HealthChecks.System" Version="5.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="5.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="5.0.1" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="5.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="5.0.1" />
     <PackageReference Include="CronExpressionDescriptor" Version="2.16.0" />
     <PackageReference Include="Cronos" Version="0.7.0" />
