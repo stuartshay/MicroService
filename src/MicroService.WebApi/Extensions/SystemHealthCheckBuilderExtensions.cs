@@ -21,30 +21,40 @@ namespace MicroService.WebApi.Extensions
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class FolderHealthCheck : IHealthCheck
     {
         private readonly string _folderPath;
+        private readonly string _exists;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="folderPath"></param>
         public FolderHealthCheck(string folderPath)
         {
             _folderPath = folderPath;
         }
 
+
+
+
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
-            try
+            bool exists = System.IO.Directory.Exists(_folderPath);
+            if (exists)
             {
-                if (Directory.Exists(Path.GetFullPath(_folderPath)))
-                    return Task.FromResult(HealthCheckResult.Healthy());
+                return Task.FromResult(HealthCheckResult.Healthy());
+            }
+            else
+            {
+                return Task.FromResult(new HealthCheckResult(
+                    context.Registration.FailureStatus, 
+                    description: $"Folder path {_folderPath} is not exists on system"));
+            }
 
-                return Task.FromResult(
-                    new HealthCheckResult(context.Registration.FailureStatus, description: $"Folder path {_folderPath} is not exists on system"));
-            }
-            catch (Exception ex)
-            {
-                return Task.FromResult(
-                     new HealthCheckResult(context.Registration.FailureStatus, exception: ex));
-            }
         }
     }
 }

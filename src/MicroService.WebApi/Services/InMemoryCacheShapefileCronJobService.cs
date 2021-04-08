@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MicroService.Service.Configuration;
 using MicroService.Service.Extensions;
+using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.Extensions.Caching.Memory;
@@ -52,10 +53,16 @@ namespace MicroService.WebApi.Services
         {
             UpdateEntries();
 
-            foreach (var (name, (shapePath, _)) in _entries)
+            foreach (var (name, _) in _entries)
             {
-                var shapefileDataReader = new ShapefileDataReader(shapePath, new GeometryFactory());
+                var rootDirectory = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), _applicationOptions.Value.ShapeConfiguration.ShapeRootDirectory));
+                var directory = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttributes>().Directory;
+                var file = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttributes>().FileName;
 
+                // ShapeFile Path without File Extension
+                var shapeFilePath = Path.Combine(rootDirectory, directory, file);
+
+                var shapefileDataReader = new ShapefileDataReader(shapeFilePath, new GeometryFactory());
                 var features = shapefileDataReader.ReadFeatures();
 
                 var memCacheTimeSpan = TimeSpan.FromHours(3);
@@ -69,8 +76,7 @@ namespace MicroService.WebApi.Services
 
         public override Task StopAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"[Stop] {nameof(InMemoryCacheShapefileCronJobService)}");
-
+            _logger.LogInformation($"[Stop]:{{ServiceName}}", nameof(InMemoryCacheShapefileCronJobService));
             _cache.Dispose();
 
             return base.StopAsync(cancellationToken);
@@ -81,28 +87,24 @@ namespace MicroService.WebApi.Services
             var nameWithShapeAttributes = typeof(ShapeProperties).GetFields()
                 .Where(x => x.IsLiteral)
                 .Select(x => (x.Name, (ShapeAttributes)x.GetCustomAttributes(typeof(ShapeAttributes), false).Single()));
+
             foreach (var (name, shapeAttribute) in nameWithShapeAttributes)
             {
-                var shapeDirectory = $"{Path.Combine(_applicationOptions.Value.ShapeConfiguration.ShapeRootDirectory, shapeAttribute.Directory, shapeAttribute.FileName)}";
-                string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
+                var shapeDirectory = $"{Path.Combine(_applicationOptions.Value.ShapeConfiguration.ShapeRootDirectory, shapeAttribute.Directory)}";
+                var shapeDirectoryPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
-                var shapeDirectoryPath = Path.GetDirectoryName(shapePath);
-                if (!Directory.Exists(shapeDirectoryPath) || !File.Exists(shapePath))
-                {
-                    _entries.Remove(name, out _);
+                // Watch with File Extension
+                var fileName = $"{shapeAttribute.FileName}.dbf";
+                string shapeFilePath = Path.Combine(shapeDirectoryPath,fileName);
 
-                    _logger.LogError($"Shape directory {{Path}} in {{ServiceName}} doesn't exists.", shapeDirectoryPath, nameof(InMemoryCacheShapefileCronJobService));
-
-                    continue;
-                }
-
-                if (!_entries.TryGetValue(name, out _))
+                // Watch on *.shp File 
+                if (File.Exists(shapeFilePath))
                 {
                     var fileSystemWatcher = new FileSystemWatcher
                     {
                         NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName,
-                        Filter = $"{shapeAttribute.FileName}.dbf",
-                        Path = shapeDirectoryPath,
+                        Filter = fileName,
+                        Path = shapeDirectory,
                         EnableRaisingEvents = true,
                     };
                     fileSystemWatcher.Changed += async (sender, e) =>
@@ -112,7 +114,12 @@ namespace MicroService.WebApi.Services
                         await DoWork(CancellationToken.None);
                     };
 
-                    _entries.TryAdd(name, (shapePath, fileSystemWatcher));
+                    _entries.TryAdd(name, (shapeDirectory, fileSystemWatcher));
+                }
+                else
+                {
+                    _entries.Remove(name, out _);
+                    _logger.LogInformation($"[FileNotExists]:{{ServiceName}}|Directory:{{Name}}", nameof(InMemoryCacheShapefileCronJobService), shapeFilePath);
                 }
             }
         }
