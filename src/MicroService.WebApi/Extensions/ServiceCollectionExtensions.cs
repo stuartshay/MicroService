@@ -110,12 +110,13 @@ namespace MicroService.WebApi.Extensions
         {
             var config = configuration.Get<ApplicationOptions>();
 
-            var shapeRootDirectory = config.ShapeConfiguration.ShapeRootDirectory;
+            var shapeDirectory = config.ShapeConfiguration.ShapeRootDirectory;
+            string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
             services.AddHealthChecks()
                 .AddCheck<VersionHealthCheck>("Version Health Check")
                 .AddCheck<CronJobServiceHealthCheck>("Cron Job Health Check", tags: new[] { HealthCheckType.ReadinessCheck.ToString() })
-                .AddFolderHealthCheck(shapeRootDirectory, "Shape Root Directory")
+                .AddFolderHealthCheck(shapePath, "Shape Root Directory")
                 .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
             return services;
