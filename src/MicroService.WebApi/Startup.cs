@@ -134,10 +134,13 @@ namespace MicroService.WebApi
                 var options = serviceProvider.GetService<IOptions<ApplicationOptions>>();
                 var cache = serviceProvider.GetService<IMemoryCache>();
 
-                var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
-                string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
+                //var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
+                //string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
-                return new CachedShapefileDataReader(cache, key, shapePath);
+                var rootDirectory = options?.Value?.ShapeConfiguration.ShapeSystemRootDirectory;
+                string shapeFileNamePath = Path.Combine(rootDirectory, shapeProperties.Directory, shapeProperties.FileName);
+
+                return new CachedShapefileDataReader(cache, key, shapeFileNamePath);
             });
 
             // Feature Service Lookups
