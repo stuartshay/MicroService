@@ -55,7 +55,7 @@ namespace MicroService.WebApi.Services
 
             foreach (var (name, _) in _entries)
             {
-                var rootDirectory = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), _applicationOptions.Value.ShapeConfiguration.ShapeRootDirectory));
+                var rootDirectory = _applicationOptions.Value.ShapeConfiguration.ShapeSystemRootDirectory;
                 var directory = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttributes>().Directory;
                 var file = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttributes>().FileName;
 
@@ -90,21 +90,21 @@ namespace MicroService.WebApi.Services
 
             foreach (var (name, shapeAttribute) in nameWithShapeAttributes)
             {
-                var shapeDirectory = $"{Path.Combine(_applicationOptions.Value.ShapeConfiguration.ShapeRootDirectory, shapeAttribute.Directory)}";
-                var shapeDirectoryPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
+                var rootDirectory = _applicationOptions.Value.ShapeConfiguration.ShapeSystemRootDirectory;
+                var directory = shapeAttribute.Directory;
+                var file = $"{shapeAttribute.FileName}.dbf";
 
-                // Watch with File Extension
-                var fileName = $"{shapeAttribute.FileName}.dbf";
-                string shapeFilePath = Path.Combine(shapeDirectoryPath,fileName);
+                string shapeDirectoryPath = Path.Combine(rootDirectory, directory);
+                string shapeFilePath = Path.Combine(shapeDirectoryPath, file);
 
-                // Watch on *.shp File 
+                // Watch on *.dbf File
                 if (File.Exists(shapeFilePath))
                 {
                     var fileSystemWatcher = new FileSystemWatcher
                     {
                         NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName,
-                        Filter = fileName,
-                        Path = shapeDirectory,
+                        Filter = file,
+                        Path = shapeDirectoryPath,
                         EnableRaisingEvents = true,
                     };
                     fileSystemWatcher.Changed += async (sender, e) =>
@@ -114,7 +114,7 @@ namespace MicroService.WebApi.Services
                         await DoWork(CancellationToken.None);
                     };
 
-                    _entries.TryAdd(name, (shapeDirectory, fileSystemWatcher));
+                    _entries.TryAdd(name, (shapeFilePath, fileSystemWatcher));
                 }
                 else
                 {
