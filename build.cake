@@ -16,7 +16,7 @@
 
 #addin nuget:?package=Cake.MiniCover&version=0.29.0-next20180721071547&prerelease
 #addin nuget:?package=Cake.Sonar&version=1.1.25
-#addin nuget:?package=Cake.DocFx&version=0.13.1
+#addin nuget:?package=Cake.DocFx&version=1.0.0
 
 SetMiniCoverToolsProject("./build/tools.csproj");
 
