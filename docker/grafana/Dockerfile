@@ -3,7 +3,6 @@ FROM grafana/grafana:7.5.4-ubuntu
 COPY ./scripts/grafana.sh /usr/local/bin
 COPY  config.ini /etc/grafana/config.ini
 COPY  ./provisioning /etc/grafana/provisioning
-COPY ./dashboards /var/lib/grafana/dashboards
 
 USER root
 RUN apt-get update && \
