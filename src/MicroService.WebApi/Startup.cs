@@ -23,7 +23,6 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -80,6 +79,7 @@ namespace MicroService.WebApi
             services.Configure<ApplicationOptions>(Configuration);
             services.AddSingleton(Configuration);
             services.AddMemoryCache();
+            services.AddSingleton<CronJobServiceHealthCheck>();
 
             var config = Configuration.Get<ApplicationOptions>();
             services.DisplayConfiguration(Configuration, HostingEnvironment);
@@ -133,10 +133,10 @@ namespace MicroService.WebApi
                 var options = serviceProvider.GetService<IOptions<ApplicationOptions>>();
                 var cache = serviceProvider.GetService<IMemoryCache>();
 
-                var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
-                string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
+                var rootDirectory = options?.Value?.ShapeConfiguration.ShapeSystemRootDirectory;
+                string shapeFileNamePath = Path.Combine(rootDirectory, shapeProperties.Directory, shapeProperties.FileName);
 
-                return new CachedShapefileDataReader(cache, key, shapePath);
+                return new CachedShapefileDataReader(cache, key, shapeFileNamePath);
             });
 
             // Feature Service Lookups
@@ -202,7 +202,6 @@ namespace MicroService.WebApi
                     .AddHealthChecks()
                     .Services
                     .AddControllers();
-
         }
 
         /// <summary>
@@ -252,7 +251,6 @@ namespace MicroService.WebApi
                     setup.AddCustomStylesheet("dotnet.css");
                 });
             });
-
         }
     }
 }

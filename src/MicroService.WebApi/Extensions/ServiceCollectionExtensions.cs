@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using MicroService.Common.Constants;
 using MicroService.Common.Health;
 using MicroService.Service.Configuration;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Extensions.Swagger;
+using MicroService.WebApi.Services;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -108,12 +110,13 @@ namespace MicroService.WebApi.Extensions
         {
             var config = configuration.Get<ApplicationOptions>();
 
-            var shapeRootDirectory = config.ShapeConfiguration.ShapeRootDirectory;
+            var shapeDirectory = config.ShapeConfiguration.ShapeRootDirectory;
+            string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
-            // services.AddHealthChecksUI();
             services.AddHealthChecks()
                 .AddCheck<VersionHealthCheck>("Version Health Check")
-                //.AddDiskStorageHealthCheck(s => s.AddDrive("C:\\", 1024))
+                .AddCheck<CronJobServiceHealthCheck>("Cron Job Health Check", tags: new[] { HealthCheckType.ReadinessCheck.ToString() })
+                .AddFolderHealthCheck(shapePath, "Shape Root Directory")
                 .AddNpgSql(config.ConnectionStrings.PostgreSql);
 
             return services;
