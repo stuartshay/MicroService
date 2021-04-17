@@ -23,7 +23,6 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -133,9 +132,6 @@ namespace MicroService.WebApi
 
                 var options = serviceProvider.GetService<IOptions<ApplicationOptions>>();
                 var cache = serviceProvider.GetService<IMemoryCache>();
-
-                //var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
-                //string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
                 var rootDirectory = options?.Value?.ShapeConfiguration.ShapeSystemRootDirectory;
                 string shapeFileNamePath = Path.Combine(rootDirectory, shapeProperties.Directory, shapeProperties.FileName);
