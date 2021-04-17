@@ -19,7 +19,7 @@ services:
       - microservice-network
 
   grafana:
-    image: stuartshay/microservice-grafana:7.3.5-v6-92-prerelease-develop
+    image: stuartshay/microservice-grafana:7.5.4-v6-95-prerelease-develop
     container_name: grafana
     ports:
       - 3000:3000
