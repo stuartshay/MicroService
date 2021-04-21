@@ -3,8 +3,8 @@
 ### Local Mode 
 ```
 cd docker
-docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml -f docker-compose-logging.yml pull
-docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml -f docker-compose-logging.yml up
+docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml -f docker-compose-logging.yml -f docker-compose-tracing.yml pull
+docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml -f docker-compose-logging.yml -f docker-compose-tracing.yml up
 ```
 
 #### Destroy
