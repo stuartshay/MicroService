@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+
+  tempo:
+    image: grafana/tempo:latest
+    command: ["-config.file=/etc/tempo.yaml"]
+    volumes:
+      - ./tempo/tempo-local.yaml:/etc/tempo.yaml
+     # - ./example-data/tempo:/tmp/tempo
+    ports:
+      - "14268"  # jaeger ingest
+      - "3100"   # tempo
+    networks:
+      - microservice-network
