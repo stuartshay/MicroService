@@ -1,0 +1,27 @@
+version: '3.3'
+
+networks:
+  microservice-network:
+
+services:
+  loki:
+    image: grafana/loki:2.2.1
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+#    volumes:
+#      - ./loki/loki-configuration.yaml:/etc/loki/local-config.yaml
+    networks:
+      - microservice-network
+
+  promtail:
+    image: grafana/promtail:2.2.1
+    volumes:
+      - /var/log:/var/log
+      - ./loki/promtail-config.yaml:/etc/promtail/config.yml
+    command: -config.file=/etc/promtail/config.yml
+    networks:
+      - microservice-network
+
+
+

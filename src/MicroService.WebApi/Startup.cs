@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using App.Metrics;
 using HealthChecks.UI.Client;
 using MicroService.Data.Repository;
@@ -92,6 +93,7 @@ namespace MicroService.WebApi
                 .Build();
 
             MetricsHelpers.SetMetricsCustomTag(metrics, "OSDescription", System.Runtime.InteropServices.RuntimeInformation.OSDescription);
+            MetricsHelpers.SetMetricsCustomTag(metrics, "instance", Dns.GetHostName());
 
             metrics.Options.ReportingEnabled = true;
             services.AddMetrics(metrics);
