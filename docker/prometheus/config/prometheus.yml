@@ -39,4 +39,6 @@ scrape_configs:
     static_configs:
         - targets: ['microservice-api:5000']
 
-  
+  - job_name: 'tempo'
+    static_configs:
+    - targets: ['tempo:3100']
