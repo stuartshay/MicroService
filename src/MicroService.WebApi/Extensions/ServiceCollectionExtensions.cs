@@ -95,7 +95,6 @@ namespace MicroService.WebApi.Extensions
                options =>
                {
                    options.OperationFilter<SwaggerDefaultValues>();
-                   // options.DocumentFilter<Swagger.SwaggerDocumentFilter>();
                    options.IncludeXmlComments(GetXmlCommentsPath());
                });
         }
@@ -132,13 +131,7 @@ namespace MicroService.WebApi.Extensions
         {
             var config = configuration.Get<ApplicationOptions>();
 
-            services.AddControllers(setupAction =>
-            {
-                // setupAction.ReturnHttpNotAcceptable = true;
-                // setupAction.CacheProfiles.Add("240SecondsCacheProfile",new CacheProfile(){Duration = 240});
-            })
-            //  .AddXmlDataContractSerializerFormatters()
-            .ConfigureApiBehaviorOptions(setupAction =>
+            services.AddControllers(setupAction => { }).ConfigureApiBehaviorOptions(setupAction =>
              {
                setupAction.InvalidModelStateResponseFactory = context =>
                {
@@ -181,6 +174,13 @@ namespace MicroService.WebApi.Extensions
                 });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="services"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public static IServiceCollection AddCronJob<T>(this IServiceCollection services, Action<IScheduleConfig<T>> options)
             where T : CronJobService
         {
