@@ -54,7 +54,7 @@ namespace MicroService.WebApi
         public delegate IShapeService<ShapeBase> ShapeServiceResolver(string key);
 
         /// <summary>
-        /// 
+        /// Flat File Service
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -78,6 +78,7 @@ namespace MicroService.WebApi
         {
             services.AddOptions();
             services.Configure<ApplicationOptions>(Configuration);
+            services.Configure<Common.Configuration.ApplicationOptions>(Configuration);
             services.AddSingleton(Configuration);
             services.AddMemoryCache();
             services.AddSingleton<CronJobServiceHealthCheck>();

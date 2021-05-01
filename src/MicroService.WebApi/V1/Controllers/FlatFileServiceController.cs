@@ -25,7 +25,7 @@ namespace MicroService.WebApi.V1.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="FlatFileServiceController"/> class.
         /// </summary>
-        /// <param name="fileService"></param>
+        /// <param name="flatFileResolver"></param>
         public FlatFileServiceController(Startup.FlatFileResolver flatFileResolver)
         {
             _flatFileResolver = flatFileResolver;
