@@ -12,14 +12,11 @@ Build Image  | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/i
 │   ├── Dockerfile              # Dockerfile
 │   ├── config.ini              # Grafana config
 |   |
-│   ├── dashboards              # Grafana dashboards
-│   │   └── dashboards.json
-|   │
 │   └── provisioning
 │       ├── dashboards
-│       │   └── all.yml         # Configuration dashboard provisioning
+│       │   └── dashboard-id-rev.yml    # Dashboard Folder
 │       └── datasources
-│           └── all.yml         # Configuration datasources provisioning
+│           └── datasources.yml         # Configuration datasources provisioning
 |
 │   └── scripts
 │       └── grafana.sh          # Grafana cli configuration
