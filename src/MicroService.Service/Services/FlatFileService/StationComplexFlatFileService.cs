@@ -5,6 +5,7 @@ using System.Linq;
 using CsvHelper;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Base;
+using MicroService.Service.Models.DataMaps;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.FlatFileModels;
 
@@ -25,8 +26,7 @@ namespace MicroService.Service.Services.FlatFileService
 
             using var reader = new StreamReader(inputPath);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-
-            //csv.Configuration..RegisterClassMap<StationComplexDataMap>();
+            csv.Context.RegisterClassMap<StationComplexDataMap>();
             var list = csv.GetRecords<StationComplexFlatFile>();
 
             return list.ToList();
