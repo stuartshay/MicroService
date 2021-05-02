@@ -8,6 +8,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
  && rm -rf /var/lib/apt/lists/*
 
+# Install Additional SDK/Runtimes
+RUN apt-get update && apt-get install -y \
+    wget \
+    apt-transport-https 
+
+RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb 
+RUN dpkg -i packages-microsoft-prod.deb 
+
+RUN apt-get update && apt-get install -y \
+    dotnet-sdk-3.1 
+
 # Install .NET Tools 
 ENV PATH="/root/.dotnet/tools:${PATH}"
 RUN dotnet tool install --global dotnet-setversion --version 2.2.0
