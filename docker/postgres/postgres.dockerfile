@@ -1,4 +1,4 @@
-FROM postgres:9.6.20
+FROM postgres:9.6.21
 
 RUN apt-get update && apt-get install -y \
     curl \ 
