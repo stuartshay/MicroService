@@ -4,7 +4,7 @@ services:
 
   microservice-api:
     hostname: microservice-api
-    image: "stuartshay/microservice-api:5.0.1-build.110"
+    image: "stuartshay/microservice-api:5.0.1-build.113"
     environment:
      - ASPNETCORE_ENVIRONMENT=Docker
      - ConnectionStrings:PostgreSql=User ID=postgres;Password=password;Server=database;Port=5432;Database=postgres;Integrated Security=true;Pooling=true;
