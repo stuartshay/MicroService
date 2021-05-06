@@ -8,6 +8,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
  && rm -rf /var/lib/apt/lists/*
 
+# Install Additional SDK/Runtimes
+RUN apt-get update && apt-get install -y \
+    wget \
+    apt-transport-https 
+
+RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb 
+RUN dpkg -i packages-microsoft-prod.deb 
+
+RUN apt-get update && apt-get install -y \
+    dotnet-sdk-3.1 
+
 # Install .NET Tools 
 ENV PATH="/root/.dotnet/tools:${PATH}"
 RUN dotnet tool install --global dotnet-setversion --version 2.2.0
@@ -23,7 +34,7 @@ RUN dotnet restore /p:RestoreUseSkipNonexistentTargets="false"
 WORKDIR /app/src/MicroService.WebApi
 
 # Publish
-#RUN setversion 5.0.1.${BUILD_NUMBER}
+RUN setversion 5.0.1.${BUILD_NUMBER}
 RUN dotnet publish -o /publish -c Release -f net5.0  
 
 # Release Stage 
