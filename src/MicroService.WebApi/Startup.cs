@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using App.Metrics;
@@ -16,6 +17,7 @@ using MicroService.Service.Services.FlatFileService;
 using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.Swagger;
 using MicroService.WebApi.Services;
+using MicroService.WebApi.V1.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +28,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using OpenTelemetry;
+using OpenTelemetry.Exporter;
+using OpenTelemetry.Exporter.Jaeger;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace MicroService.WebApi
@@ -87,6 +94,48 @@ namespace MicroService.WebApi
             services.DisplayConfiguration(Configuration, HostingEnvironment);
 
             services.AddCustomApiVersioning();
+
+            //services.AddOpenTelemetryTracing(
+            //    builder =>
+            //    {
+            //        builder
+            //            .SetResourceBuilder(ResourceBuilder
+            //                .CreateDefault()
+            //                .AddService(HostingEnvironment.ApplicationName))
+            //                .AddSource(nameof(WeatherForecastController))
+            //                .AddAspNetCoreInstrumentation()
+            //                .AddHttpClientInstrumentation()
+            //                .AddOtlpExporter(options => options.Endpoint = "http://192.168.1.12:4317")
+            //                .SetSampler(new AlwaysOnSampler());
+
+            //        if (HostingEnvironment.IsDevelopment())
+            //        {
+            //            builder.AddConsoleExporter(options => options.Targets = ConsoleExporterOutputTargets.Console);
+            //        }
+            //    });
+
+
+            services.AddOpenTelemetryTracing(
+                builder =>
+                {
+                    builder
+                        .SetResourceBuilder(ResourceBuilder.CreateDefault()
+                            .AddService(HostingEnvironment.ApplicationName))
+                        .AddSource(nameof(WeatherForecastController))
+                        .AddAspNetCoreInstrumentation()
+                        .AddHttpClientInstrumentation()
+                        .AddJaegerExporter(o =>
+                        {
+                            o.AgentHost = "192.168.1.12";
+                            o.AgentPort = 6831;
+                        });
+
+                    if (HostingEnvironment.IsDevelopment())
+                    {
+                        builder.AddConsoleExporter(options => options.Targets = ConsoleExporterOutputTargets.Console);
+                    }
+                });
+
 
             var metrics = AppMetrics.CreateDefaultBuilder()
                 .OutputMetrics

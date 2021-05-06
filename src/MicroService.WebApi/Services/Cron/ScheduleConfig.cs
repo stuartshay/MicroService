@@ -2,6 +2,10 @@
 
 namespace MicroService.WebApi.Services.Cron
 {
+    /// <summary>
+    ///
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IScheduleConfig<T>
     {
         string CronExpression { get; set; }
@@ -9,6 +13,10 @@ namespace MicroService.WebApi.Services.Cron
         TimeZoneInfo TimeZoneInfo { get; set; }
     }
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class ScheduleConfig<T> : IScheduleConfig<T>
     {
         public string CronExpression { get; set; }
