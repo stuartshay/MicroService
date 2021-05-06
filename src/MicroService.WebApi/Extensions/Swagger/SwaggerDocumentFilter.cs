@@ -19,7 +19,6 @@ namespace MicroService.WebApi.Extensions.Swagger
             }
 
             swaggerDoc.Tags = new List<OpenApiTag> { new OpenApiTag { Name = "RoutingApi", Description = "This is a description for the api routes" }, };
-            // swaggerDoc.Paths = swaggerDoc.Paths.OrderBy(pair => pair.Key).ToDictionary(pair => pair.Key, pair => pair.Value);
         }
     }
 }

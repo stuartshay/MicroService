@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using MicroService.Common.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -23,6 +22,7 @@ namespace MicroService.Common.Logging
                loggerConfiguration.MinimumLevel.Information()
                    .Enrich.FromLogContext()
                    .Enrich.WithExceptionDetails()
+                   .Enrich.WithThreadId()
                    .Enrich.WithMachineName()
                    .Enrich.WithProperty("Version", Assembly.GetEntryAssembly()?.GetName().Version)
                    .Enrich.WithProperty("ApplicationName", env.ApplicationName)

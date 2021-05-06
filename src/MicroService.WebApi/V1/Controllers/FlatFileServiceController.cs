@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.FlatFileModels;
@@ -61,7 +60,7 @@ namespace MicroService.WebApi.V1.Controllers
         [Produces("application/json")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<dynamic>> GetFlatFile(string id)
+        public ActionResult<dynamic> GetFlatFile(string id)
         {
             if (id == null || !Enum.IsDefined(typeof(FlatFileProperties), id))
                 return BadRequest();
