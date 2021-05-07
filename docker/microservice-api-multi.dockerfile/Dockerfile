@@ -38,7 +38,7 @@ RUN setversion 5.0.1.${BUILD_NUMBER}
 RUN dotnet publish -o /publish -c Release -f net5.0  
 
 # Release Stage 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
 
 # Shape Files 
 COPY files  /files
