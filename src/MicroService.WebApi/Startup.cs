@@ -95,38 +95,18 @@ namespace MicroService.WebApi
 
             services.AddCustomApiVersioning();
 
-            //services.AddOpenTelemetryTracing(
-            //    builder =>
-            //    {
-            //        builder
-            //            .SetResourceBuilder(ResourceBuilder
-            //                .CreateDefault()
-            //                .AddService(HostingEnvironment.ApplicationName))
-            //                .AddSource(nameof(WeatherForecastController))
-            //                .AddAspNetCoreInstrumentation()
-            //                .AddHttpClientInstrumentation()
-            //                .AddOtlpExporter(options => options.Endpoint = "http://192.168.1.12:4317")
-            //                .SetSampler(new AlwaysOnSampler());
-
-            //        if (HostingEnvironment.IsDevelopment())
-            //        {
-            //            builder.AddConsoleExporter(options => options.Targets = ConsoleExporterOutputTargets.Console);
-            //        }
-            //    });
-
-
             services.AddOpenTelemetryTracing(
                 builder =>
                 {
                     builder
                         .SetResourceBuilder(ResourceBuilder.CreateDefault()
                             .AddService(HostingEnvironment.ApplicationName))
-                        .AddSource(nameof(WeatherForecastController))
+                        .AddSource(nameof(FeatureServiceController))
                         .AddAspNetCoreInstrumentation()
                         .AddHttpClientInstrumentation()
                         .AddJaegerExporter(o =>
                         {
-                            o.AgentHost = "192.168.1.12";
+                            o.AgentHost = "jaeger";
                             o.AgentPort = 6831;
                         });
 
