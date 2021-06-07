@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="GeoAPI" Version="1.7.5" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
     <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="NetTopologySuite" Version="2.2.0" />
     <PackageReference Include="NetTopologySuite.Features" Version="2.1.0" />
