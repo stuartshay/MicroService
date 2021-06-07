@@ -9,7 +9,7 @@ docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml -f dock
 
 #### Destroy
 ```
-docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml down
+docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml -f docker-compose-tracing.yml down
 docker volume prune
 ```
 
