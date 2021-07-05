@@ -24,6 +24,10 @@ namespace MicroService.Service.Models.Enum
         [ShapeAttributes("NYPD_Sectors", "NYPD_Sectors")]
         NypdSectors,
 
+        [Description("NYCHA_Developments")]
+        [ShapeAttributes("NYCHA_Developments", "NYCHA_Developments")]
+        NychaDevelopments,
+
         [Description("Park")]
         [ShapeAttributes("Park", "PARK")]
         Parks,
