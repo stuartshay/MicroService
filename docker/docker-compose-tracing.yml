@@ -15,7 +15,7 @@ services:
       - microservice-network
 
   synthetic-load-generator:
-    image: omnition/synthetic-load-generator:1.0.25
+    image: omnition/synthetic-load-generator:1.0.29
     volumes:
       - ./etc/load-generator.json:/etc/load-generator.json
       - ./tempo/load-generator.json:/etc/load-generator.json
