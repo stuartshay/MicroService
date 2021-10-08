@@ -145,6 +145,8 @@ namespace MicroService.WebApi
                 ShapeAttributes shapeProperties = null;
                 if (key == nameof(ShapeProperties.BoroughBoundaries))
                     shapeProperties = ShapeProperties.BoroughBoundaries.GetAttribute<ShapeAttributes>();
+                else if (key == nameof(ShapeProperties.CommunityDistricts))
+                    shapeProperties = ShapeProperties.CommunityDistricts.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.HistoricDistricts))
                     shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.Neighborhoods))
@@ -175,6 +177,7 @@ namespace MicroService.WebApi
 
             // Feature Service Lookups
             services.AddScoped<BoroughBoundariesService>();
+            services.AddScoped<CommunityDistrictsService>();
             services.AddScoped<HistoricDistrictService>();
             services.AddScoped<NeighborhoodsService<NeighborhoodShape>>();
             services.AddScoped<NypdPolicePrecinctService>();
@@ -189,6 +192,7 @@ namespace MicroService.WebApi
                 return key switch
                 {
                     nameof(ShapeProperties.BoroughBoundaries) => serviceProvider.GetService<BoroughBoundariesService>(),
+                    nameof(ShapeProperties.CommunityDistricts) => serviceProvider.GetService<CommunityDistrictsService>(),
                     nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
                     nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService<NeighborhoodShape>>(),
                     nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),

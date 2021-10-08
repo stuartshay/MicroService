@@ -8,6 +8,10 @@ namespace MicroService.Service.Models.Enum
         [ShapeAttributes("Borough_Boundaries", "nybb")]
         BoroughBoundaries,
 
+        [Description("Community_Districts")]
+        [ShapeAttributes("Community_Districts", "nycd")]
+        CommunityDistricts,
+
         [Description("Historic Districts")]
         [ShapeAttributes("Historic_Districts", "Historic_Districts")]
         HistoricDistricts,
