@@ -2,6 +2,9 @@
 ### Borough Boundaries
 https://data.cityofnewyork.us/City-Government/Borough-Boundaries/tqmj-j8zm
 
+### Community Districts 
+https://data.cityofnewyork.us/City-Government/Community-Districts/yfnk-k7r4
+
 ### Fire Companies
 https://data.cityofnewyork.us/Public-Safety/Fire-Companies/iiv7-jaj9
 
