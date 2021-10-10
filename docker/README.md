@@ -50,3 +50,16 @@ https://prometheus.io/
 
 ![](../assets/prometheus.png)
 
+
+### Tag & Push Google Cloud Repository
+
+Tag
+```
+docker tag  5eab36ab4873  \
+us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-build.113   
+```
+
+Push
+```
+docker push us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-build.113
+```
