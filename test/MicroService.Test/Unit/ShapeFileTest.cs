@@ -17,7 +17,7 @@ namespace MicroService.Test.Unit
             _testOutputHelper = testOutputHelper;
         }
    
-        [Theory(DisplayName = "Shape OutputFeatures Borough Boundaries")]
+        [Theory(Skip = "Ignore", DisplayName = "Shape OutputFeatures Borough Boundaries")]
        // [InlineData(@"Borough_Boundaries\nybb")]
         //[InlineData(@"Historic_Districts\LPC_HD_OpenData_2015March")]
         [InlineData(@"NYPD_Sectors\NYPD_Sectors")]
