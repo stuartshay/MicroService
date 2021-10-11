@@ -8,7 +8,7 @@
 
 ### Purpose
 
-The New York Application Team has been tasked with designing a microservice for there TestData System. The Application will be used by high profile clients and internal groups in the organization for Machine Learning Research and the Calculation Engine Product.
+The New York Application Team has been tasked with designing a microservice for their Enrichment Data pipeline which will be utilized by high profile clients and internal groups in the organization for Machine Learning Research and the Geospatial Engine Product.
 
 The Application will be a complete rearchitected solution using the cloud for optimal price and performance.  The API Schema has been enhanced and key performance metrics have been added. The API will implement versioning so end clients can seamlessly update to the new enhanced schema when ready.
 

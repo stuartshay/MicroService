@@ -9,5 +9,7 @@ namespace MicroService.Service.Models
         public string Sector { get; set; }
 
         public string PatrolBoro { get; set; }
+
+        public string Phase { get; set; }
     }
 }

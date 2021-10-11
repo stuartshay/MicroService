@@ -1,0 +1,499 @@
+[
+    {
+        "cd": 101,
+        "boroCd": 1,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 102,
+        "boroCd": 2,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 103,
+        "boroCd": 3,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 104,
+        "boroCd": 4,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 105,
+        "boroCd": 5,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 106,
+        "boroCd": 6,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 107,
+        "boroCd": 7,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 108,
+        "boroCd": 8,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 109,
+        "boroCd": 9,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 110,
+        "boroCd": 10,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 111,
+        "boroCd": 11,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 112,
+        "boroCd": 12,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 164,
+        "boroCd": 64,
+        "boroCode": 1,
+        "borough": "MN",
+        "boroName": "Manhattan"
+    },
+    {
+        "cd": 201,
+        "boroCd": 1,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 202,
+        "boroCd": 2,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 203,
+        "boroCd": 3,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 204,
+        "boroCd": 4,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 205,
+        "boroCd": 5,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 206,
+        "boroCd": 6,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 207,
+        "boroCd": 7,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 208,
+        "boroCd": 8,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 209,
+        "boroCd": 9,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 210,
+        "boroCd": 10,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 211,
+        "boroCd": 11,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 212,
+        "boroCd": 12,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 226,
+        "boroCd": 26,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 227,
+        "boroCd": 27,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 228,
+        "boroCd": 28,
+        "boroCode": 2,
+        "borough": "BX",
+        "boroName": "Bronx"
+    },
+    {
+        "cd": 301,
+        "boroCd": 1,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 302,
+        "boroCd": 2,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 303,
+        "boroCd": 3,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 304,
+        "boroCd": 4,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 305,
+        "boroCd": 5,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 306,
+        "boroCd": 6,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 307,
+        "boroCd": 7,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 308,
+        "boroCd": 8,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 309,
+        "boroCd": 9,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 310,
+        "boroCd": 10,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 311,
+        "boroCd": 11,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 312,
+        "boroCd": 12,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 313,
+        "boroCd": 13,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 314,
+        "boroCd": 14,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 315,
+        "boroCd": 15,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 316,
+        "boroCd": 16,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 317,
+        "boroCd": 17,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 318,
+        "boroCd": 18,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 355,
+        "boroCd": 55,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 356,
+        "boroCd": 56,
+        "boroCode": 3,
+        "borough": "BK",
+        "boroName": "Brooklyn"
+    },
+    {
+        "cd": 401,
+        "boroCd": 1,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 402,
+        "boroCd": 2,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 403,
+        "boroCd": 3,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 404,
+        "boroCd": 4,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 405,
+        "boroCd": 5,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 406,
+        "boroCd": 6,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 407,
+        "boroCd": 7,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 408,
+        "boroCd": 8,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 409,
+        "boroCd": 9,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 410,
+        "boroCd": 10,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 411,
+        "boroCd": 11,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 412,
+        "boroCd": 12,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 413,
+        "boroCd": 13,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 414,
+        "boroCd": 14,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 480,
+        "boroCd": 80,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 481,
+        "boroCd": 81,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 482,
+        "boroCd": 82,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 483,
+        "boroCd": 83,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 484,
+        "boroCd": 84,
+        "boroCode": 4,
+        "borough": "QN",
+        "boroName": "Queens"
+    },
+    {
+        "cd": 501,
+        "boroCd": 1,
+        "boroCode": 5,
+        "borough": "SI",
+        "boroName": "Staten Island"
+    },
+    {
+        "cd": 502,
+        "boroCd": 2,
+        "boroCode": 5,
+        "borough": "SI",
+        "boroName": "Staten Island"
+    },
+    {
+        "cd": 503,
+        "boroCd": 3,
+        "boroCode": 5,
+        "borough": "SI",
+        "boroName": "Staten Island"
+    },
+    {
+        "cd": 595,
+        "boroCd": 95,
+        "boroCode": 5,
+        "borough": "SI",
+        "boroName": "Staten Island"
+    }
+]

@@ -32,6 +32,7 @@ namespace MicroService.Service.Services
                         Pct = f.Attributes["pct"].ToString(),
                         Sector = f.Attributes["sector"].ToString(),
                         PatrolBoro = f.Attributes["patrol_bor"].ToString(),
+                        Phase = f.Attributes["phase"].ToString(),
                     };
                 }
             }
@@ -56,6 +57,7 @@ namespace MicroService.Service.Services
                     Pct = f.Attributes["pct"].ToString(),
                     Sector = f.Attributes["sector"].ToString(),
                     PatrolBoro = f.Attributes["patrol_bor"].ToString(),
+                    Phase = f.Attributes["phase"].ToString(),
                 };
 
                 results.Add(model);
