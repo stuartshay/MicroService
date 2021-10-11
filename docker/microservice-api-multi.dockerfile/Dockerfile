@@ -35,7 +35,7 @@ WORKDIR /app/src/MicroService.WebApi
 
 # Publish
 # RUN setversion 5.0.1.${BUILD_NUMBER}
-RUN dotnet publish -o /publish -c Release -f net5.0  
+RUN dotnet publish MicroService.WebApi.csproj -o /publish -c Release -f net5.0  
 
 # Release Stage 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
