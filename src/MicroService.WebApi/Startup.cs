@@ -23,6 +23,7 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -151,6 +152,8 @@ namespace MicroService.WebApi
                     shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.Neighborhoods))
                     shapeProperties = ShapeProperties.Neighborhoods.GetAttribute<ShapeAttributes>();
+                else if (key == nameof(ShapeProperties.NeighborhoodTabulationAreas))
+                    shapeProperties = ShapeProperties.NeighborhoodTabulationAreas.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.NypdPolicePrecincts))
                     shapeProperties = ShapeProperties.NypdPolicePrecincts.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.NypdSectors))
@@ -180,6 +183,7 @@ namespace MicroService.WebApi
             services.AddScoped<CommunityDistrictsService>();
             services.AddScoped<HistoricDistrictService>();
             services.AddScoped<NeighborhoodsService<NeighborhoodShape>>();
+            services.AddScoped<NeighborhoodTabulationAreasService>();
             services.AddScoped<NypdPolicePrecinctService>();
             services.AddScoped<NypdSectorsService<NypdSectorShape>>();
             services.AddScoped<NychaDevelopmentService<NychaDevelopmentShape>>();
@@ -195,6 +199,7 @@ namespace MicroService.WebApi
                     nameof(ShapeProperties.CommunityDistricts) => serviceProvider.GetService<CommunityDistrictsService>(),
                     nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
                     nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService<NeighborhoodShape>>(),
+                    nameof(ShapeProperties.NeighborhoodTabulationAreas) => serviceProvider.GetService<NeighborhoodTabulationAreasService>(),
                     nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),
                     nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService<NypdSectorShape>>(),
                     nameof(ShapeProperties.NychaDevelopments) => serviceProvider.GetService<NychaDevelopmentService<NychaDevelopmentShape>>(),
@@ -291,6 +296,11 @@ namespace MicroService.WebApi
                     setup.AddCustomStylesheet("dotnet.css");
                 });
             });
+
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
+
         }
     }
 }
