@@ -43,8 +43,7 @@ jobs:
         run: dotnet test --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
 
       - name: "Build image"
-        run: docker build -f docker/microservice-api-multi.dockerfile/Dockerfile . --tag ${{ env.REGISTRY_URL }}/${{ env.REGISTRY_IMAGE }}:latest
-
+        run: docker build -f docker/microservice-api-multi.dockerfile/Dockerfile . 
 
 
 
