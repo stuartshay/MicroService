@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
@@ -63,7 +64,7 @@ namespace MicroService.Service.Services
                 results.Add(model);
             }
 
-            return results;
+            return results.OrderBy(x => x.BoroCode);
         }
 
     }

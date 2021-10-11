@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
@@ -29,7 +30,7 @@ namespace MicroService.Service.Services
                 {
                     model = new BoroughBoundaryShape
                     {
-                        BoroCode = f.Attributes["BoroCode"].ToString(),
+                        BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
                         BoroName = f.Attributes["BoroName"].ToString(),
                     };
                 }
@@ -52,14 +53,14 @@ namespace MicroService.Service.Services
             {
                 var model = new BoroughBoundaryShape
                 {
-                    BoroCode = f.Attributes["BoroCode"].ToString(),
+                    BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
                     BoroName = f.Attributes["BoroName"].ToString(),
                 };
 
                 results.Add(model);
             }
 
-            return results;
+            return results.OrderBy(x => x.BoroCode);
         }
 
     }
