@@ -21,7 +21,7 @@ namespace MicroService.Test.Integration
             _testOutputHelper = output;
         }
 
-        [Fact(DisplayName = "Get Shape File Properties")]
+        [Fact(Skip = "Ignore", DisplayName = "Get Shape File Properties")]
         [Trait("Category", "Integration")]
         public void Get_Shape_Properties()
         {
@@ -37,7 +37,7 @@ namespace MicroService.Test.Integration
         }
 
 
-        [Fact(DisplayName = "Get Shape File Database Properties")]
+        [Fact(Skip = "Ignore", DisplayName = "Get Shape File Database Properties")]
         [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
         {
@@ -55,7 +55,7 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Borough Boundaries Feature List")]
+        [Fact(Skip = "Ignore", DisplayName = "Get Borough Boundaries Feature List")]
         [Trait("Category", "Integration")]
         public void Get_Borough_Boundaries_Feature_Collection()
         {
@@ -66,7 +66,7 @@ namespace MicroService.Test.Integration
 
         [InlineData(1006187, 232036, "Bronx")]
         //[InlineData(1000443, 0239270, "Manhattan")]
-        [Theory(DisplayName = "Get Feature Point Lookup")]
+        [Theory(Skip = "Ignore", DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
         public void Get_Borough_Boundaries_Feature_Lookup(double x, double y, string expected)
         {

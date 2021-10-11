@@ -1,0 +1,54 @@
+name: build and test
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet: [ '5.0.x' ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup dotnet ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          project_id: ${{ secrets.gcp_project }}
+          service_account_key: ${{ secrets.gcp_credentials }}
+          export_default_credentials: true 
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Test with dotnet
+        run: dotnet test --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

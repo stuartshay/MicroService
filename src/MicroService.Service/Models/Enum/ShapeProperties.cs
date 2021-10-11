@@ -20,6 +20,10 @@ namespace MicroService.Service.Models.Enum
         [ShapeAttributes("Neighborhoods", "nynta")]
         Neighborhoods,
 
+        [Description("Neighborhood Tabulation Areas 2020")]
+        [ShapeAttributes("Neighborhood_Tabulation_Areas", "nynta2020")]
+        NeighborhoodTabulationAreas,
+
         [Description("NYPD Police Precincts")]
         [ShapeAttributes("NYPD_Police_Precincts", "nypp")]
         NypdPolicePrecincts,
@@ -28,7 +32,7 @@ namespace MicroService.Service.Models.Enum
         [ShapeAttributes("NYPD_Sectors", "NYPD_Sectors")]
         NypdSectors,
 
-        [Description("NYCHA_Developments")]
+        [Description("NYCHA Developments")]
         [ShapeAttributes("NYCHA_Developments", "NYCHA_Developments")]
         NychaDevelopments,
 
