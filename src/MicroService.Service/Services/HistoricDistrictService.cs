@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
@@ -27,11 +29,13 @@ namespace MicroService.Service.Services
                 var exists = f.Geometry.Contains(point);
                 if (exists)
                 {
+                    var borough = f.Attributes["BOROUGH"].ToString();
                     model = new HistoricDistrictShape
                     {
                         LPNumber = f.Attributes["LP_NUMBER"].ToString(),
                         AreaName = f.Attributes["AREA_NAME"].ToString(),
-                        BoroName = f.Attributes["BOROUGH"].ToString(),
+                        BoroName = borough,
+                        BoroCode = (int)Enum.Parse(typeof(Borough), borough),
                     };
                 }
 
@@ -52,11 +56,13 @@ namespace MicroService.Service.Services
 
             foreach (var f in features)
             {
+                var borough = f.Attributes["BOROUGH"].ToString();
                 var model = new HistoricDistrictShape
                 {
                     LPNumber = f.Attributes["LP_NUMBER"].ToString(),
                     AreaName = f.Attributes["AREA_NAME"].ToString(),
-                    BoroName = f.Attributes["BOROUGH"].ToString(),
+                    BoroName = borough,
+                    BoroCode = (int)Enum.Parse(typeof(Borough), borough),
                 };
 
                 results.Add(model);
