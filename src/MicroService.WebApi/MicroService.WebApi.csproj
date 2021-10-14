@@ -53,7 +53,7 @@
     <PackageReference Include="OpenTelemetry" Version="1.0.0-rc1.1" />
     <PackageReference Include="OpenTelemetry.Api" Version="1.0.0-rc1.1" />
 	  
-    <PackageReference Include="Jaeger" Version="1.0.2" />
+    <PackageReference Include="Jaeger" Version="1.0.3" />
     <PackageReference Include="Jaeger.Core" Version="1.0.2" />
     <PackageReference Include="Jaeger.Senders.Thrift" Version="1.0.2" />
   </ItemGroup>
