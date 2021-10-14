@@ -32,6 +32,18 @@ jobs:
       - name: Use Google Cloud CLI
         run: gcloud info
 
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@main
+        with:
+          service: microservice-api
+          image:  us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-build.113
+          credentials: ${{ secrets.GCP_SA_KEY }}
+
+
+
+
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
