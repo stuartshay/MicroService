@@ -9,5 +9,7 @@ namespace MicroService.Service.Models
         public string AreaName { get; set; }
 
         public string BoroName { get; set; }
+
+        public int BoroCode { get; set; }
     }
 }
