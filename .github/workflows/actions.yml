@@ -50,9 +50,10 @@ jobs:
         if: ${{ always() }}
 
       - name: "Build image"
-        run: docker build -f docker/microservice-api-multi.dockerfile/Dockerfile -t stuartshay/microservice-api:3.1-buildx . 
+        run: docker build -f docker/microservice-api-multi.dockerfile/Dockerfile -t stuartshay/microservice-api:3.1-buildx:latest . 
 
-
+      - name: Docker Hub Push
+        run: docker push stuartshay/microservice-api:3.1-buildx:latest
 
 
 
