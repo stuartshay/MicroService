@@ -32,13 +32,6 @@ jobs:
       - name: Use Google Cloud CLI
         run: gcloud info
 
-      - name: Google Cloud Artifacts/Authorize Docker push
-        run: gcloud auth configure-docker
-
-
-
-
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -66,13 +59,22 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build image
-        run: docker build -f docker/microservice-api-multi.dockerfile/Dockerfile -t stuartshay/microservice-api:5.1-buildx -t gcr.io/us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx  . 
+        run: docker build -f docker/microservice-api-multi.dockerfile/Dockerfile -t stuartshay/microservice-api:5.1-buildx:${{ github.sha }} -t us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx  . 
 
       - name: Docker Hub Push
-        run: docker push stuartshay/microservice-api:5.1-buildx
+        run: docker push stuartshay/microservice-api:5.1-buildx:${{ github.sha }}
+
+
+
+
+
+
+      - name: Google Cloud Artifacts/Authorize Docker push
+        run: gcloud auth configure-docker
+
 
       - name: GCP Artifact Registry
-        run: docker push gcr.io/us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx
+        run: docker push us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx
 
 
 
