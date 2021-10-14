@@ -24,6 +24,10 @@ jobs:
           service_account_key: ${{ secrets.gcp_credentials }}
           export_default_credentials: true 
 
+      - name: Use Google Cloud CLI
+        run: gcloud info
+
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -50,7 +54,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: "Build image"
+      - name: Build image
         run: docker build -f docker/microservice-api-multi.dockerfile/Dockerfile -t stuartshay/microservice-api:5.1-buildx -t us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx  . 
 
       - name: Docker Hub Push
