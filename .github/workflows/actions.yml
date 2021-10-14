@@ -1,6 +1,11 @@
-name: build and test
+name: Build/Test/Deploy
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  SERVICE: microservice-api 
+  REGION: us-east4 
 
 on: [push]
+
 
 jobs:
   build:
@@ -29,7 +34,12 @@ jobs:
 
       - name: Google Cloud Artifacts Locations
         run: gcloud artifacts locations list
-        
+
+      - name: Google Cloud Artifacts/Authorize Docker push
+        run: gcloud auth configure-docker
+
+
+
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
