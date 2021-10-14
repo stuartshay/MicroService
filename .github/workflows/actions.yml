@@ -51,7 +51,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: "Build image"
-        run: docker build -f docker/microservice-api-multi.dockerfile/Dockerfile -t stuartshay/microservice-api:5.1-buildx . 
+        run: docker build -f docker/microservice-api-multi.dockerfile/Dockerfile -t stuartshay/microservice-api:5.1-buildx -t us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx  . 
+
+
+         
+
 
       - name: Docker Hub Push
         run: docker push stuartshay/microservice-api:5.1-buildx
