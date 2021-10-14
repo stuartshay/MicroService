@@ -22,6 +22,24 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
 
+      - name: Get Branch
+        id: branch
+        run: echo "git_branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_BRANCH
+
+      - name: Check Branch
+        run: echo "${{ env.branch }}"
+
+      - name: Get Hash
+        id: hash
+        run: echo "git_hash=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_HASH
+
+      - name: Check Hash
+        run: echo "${{ env.hash }}"
+
+
+
+
+
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.2.0
         with:
