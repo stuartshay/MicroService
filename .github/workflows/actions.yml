@@ -75,13 +75,13 @@ jobs:
       - name: Build image
         id: docker_build
         run: |-
-          docker build -f docker/microservice-api-multi.dockerfile/Dockerfile -t stuartshay/microservice-api:5.1-buildx:${{ env.ci-container-tag }} -t us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx  . 
+          docker build -f docker/microservice-api-multi.dockerfile/Dockerfile -t stuartshay/microservice-api:5.1-buildx -t us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx  . 
 
 
 
       - name: Docker Hub Push
         id: docker_push
-        run: docker push stuartshay/microservice-api:5.1-buildx:${{ env.ci-container-tag }}
+        run: docker push stuartshay/microservice-api:5.1-buildx
 
 
 
