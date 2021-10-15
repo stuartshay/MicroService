@@ -69,7 +69,6 @@ jobs:
         id: docker_push
         run: docker push stuartshay/microservice-api:5.1-buildx-${{ github.sha }}
 
-
       - name: Google Cloud Artifacts/Authorize Docker push
         run: gcloud auth configure-docker
 
@@ -84,12 +83,6 @@ jobs:
           image:  us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-build.113
           region: ${{ env.REGION }}
           credentials: ${{ secrets.GCP_SA_KEY }}
-
-
-
-
-
-
 
 
 
