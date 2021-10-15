@@ -1,6 +1,12 @@
-name: build and test
+name: Build/Test/Deploy
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  SERVICE: microservice-api 
+  REGION: us-east4 
+  DOCKER_CONTAINER_TAG: 5.1-buildx-${{ github.sha }}
 
 on: [push]
+
 
 jobs:
   build:
@@ -27,10 +33,6 @@ jobs:
       - name: Use Google Cloud CLI
         run: gcloud info
 
-      - name: Google Cloud Artifacts Locations
-        run: gcloud artifacts locations list
-        
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -50,33 +52,42 @@ jobs:
             path: TestResults-${{ matrix.dotnet-version }}
         if: ${{ always() }}
 
-
+      - name: Build image
+        id: docker_build
+        run: |-
+          docker build . -f docker/microservice-api-multi.dockerfile/Dockerfile \
+              -t stuartshay/microservice-api:5.1-buildx-${{ github.sha }} \
+              -t us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx  
+      
       - name: Login to DockerHub
         uses: docker/login-action@v1 
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build image
-        run: docker build -f docker/microservice-api-multi.dockerfile/Dockerfile -t stuartshay/microservice-api:5.1-buildx -t us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx  . 
-
       - name: Docker Hub Push
-        run: docker push stuartshay/microservice-api:5.1-buildx
+        id: docker_push
+        run: docker push stuartshay/microservice-api:5.1-buildx-${{ github.sha }}
+
+      - name: Google Cloud Artifacts/Authorize Docker push
+        run: gcloud auth configure-docker
 
       - name: GCP Artifact Registry
         run: docker push us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx
 
+      - name: Terraform
+        shell: bash
+        run: |
+          echo "Terraform Build Provider:TODO"
 
-
-
-
-
-
-
-
-
-
-
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@main
+        with:
+          service: microservice-api
+          image:  us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-build.113
+          region: ${{ env.REGION }}
+          credentials: ${{ secrets.GCP_SA_KEY }}
 
 
 
