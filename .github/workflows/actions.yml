@@ -75,6 +75,11 @@ jobs:
       - name: GCP Artifact Registry
         run: docker push us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx
 
+      - name: Terraform
+        shell: bash
+        run: |
+          echo "Terraform Build Provider:TODO"
+
       - name: Deploy to Cloud Run
         id: deploy
         uses: google-github-actions/deploy-cloudrun@main
