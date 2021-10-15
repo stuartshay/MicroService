@@ -73,7 +73,7 @@ jobs:
         run: gcloud auth configure-docker
 
       - name: GCP Artifact Registry
-        run: docker push gus-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx
+        run: docker push us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-buildx
 
       - name: Deploy to Cloud Run
         id: deploy
