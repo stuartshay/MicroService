@@ -1,6 +1,6 @@
 node('buildx') {
     
-    String version_prefix = 'v2.1'
+    String version_prefix = '9.6.23-v2'
     String version_suffix = ''
     String docker_image_name = 'stuartshay/microservice-database'
     String docker_file = 'docker/postgres/postgres.dockerfile'
