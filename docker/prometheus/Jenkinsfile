@@ -1,6 +1,6 @@
 node('buildx') {
     
-    String version_prefix = 'v2.26.0-v2'
+    String version_prefix = 'v2.30.3-v2'
     String version_suffix = ''
     String docker_image_name = 'stuartshay/microservice-prometheus'
     String docker_file = 'docker/prometheus/Dockerfile'
