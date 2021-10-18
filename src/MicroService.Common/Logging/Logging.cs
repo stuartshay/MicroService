@@ -31,8 +31,9 @@ namespace MicroService.Common.Logging
                    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
                    .MinimumLevel.Override("System.Net.Http.HttpClient", LogEventLevel.Warning)
                    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
-                   .WriteTo.Console()
-                   .WriteTo.GrafanaLoki(lokiUri);
+                   //.WriteTo.GrafanaLoki(lokiUri) -- Check Loki Enabled Option
+                   .WriteTo.Console();
+                   
            };
 
     }
