@@ -99,17 +99,17 @@ namespace MicroService.WebApi
             services.AddOpenTelemetryTracing(
                 builder =>
                 {
-                    builder
-                        .SetResourceBuilder(ResourceBuilder.CreateDefault()
-                            .AddService(HostingEnvironment.ApplicationName))
-                        .AddSource(nameof(FeatureServiceController))
-                        .AddAspNetCoreInstrumentation()
-                        .AddHttpClientInstrumentation()
-                        .AddJaegerExporter(o =>
-                        {
-                            o.AgentHost = "jaeger";
-                            o.AgentPort = 6831;
-                        });
+                    //builder
+                    //    .SetResourceBuilder(ResourceBuilder.CreateDefault()
+                    //        .AddService(HostingEnvironment.ApplicationName))
+                    //    .AddSource(nameof(FeatureServiceController))
+                    //    .AddAspNetCoreInstrumentation()
+                    //    .AddHttpClientInstrumentation()
+                    //    .AddJaegerExporter(o =>
+                    //    {
+                    //        o.AgentHost = "jaeger";
+                    //        o.AgentPort = 6831;
+                    //    });
 
                     if (HostingEnvironment.IsDevelopment())
                     {
