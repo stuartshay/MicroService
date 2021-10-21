@@ -8,12 +8,16 @@ env:
   DH_DOCKER_IMAGE: stuartshay/microservice-api
   DOCKER_CONTAINER_TAG: 5.1-buildx-${{ github.sha }}
 
-on: [push]
-
+on: 
+  push:
+   branches:
+      - main
+      - develop
+      - 'feature/**'
+      - 'fix/**'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
