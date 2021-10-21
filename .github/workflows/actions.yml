@@ -4,7 +4,8 @@ env:
   SERVICE: microservice-api-test
   REGION: us-east4
   ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
-  DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
+  GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
+  DOCKER_IMAGE: stuartshay/microservice-api
   DOCKER_IMAGE_TAG: 5.1-buildx
   DOCKER_CONTAINER_TAG: 5.1-buildx-${{ github.sha }}
 
@@ -60,19 +61,19 @@ jobs:
         run: |-
           docker build . -f docker/microservice-api-multi.dockerfile/Dockerfile \
               -t stuartshay/microservice-api:5.1-buildx-${{ github.sha }} \
-              -t ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
+              -t ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
 
       - name: Google Cloud Artifacts/Authorize Docker push
         run: gcloud auth configure-docker ${{ env.ARTIFACT_REGISTRY_HOST }}
 
       - name: GCP Artifact Registry
-        run: docker push ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
+        run: docker push ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
 
       - name: Deploy to Cloud Run
         id: deploy
         uses: google-github-actions/deploy-cloudrun@main
         with:
           service: ${{ env.SERVICE }}
-          image:  ${{ env.DOCKER_IMAGE }}:5.0.1-build.113 #TODO: replace with DOCKER_IMAGE_TAG after the app is fixed and can be started as a container without errors
+          image:  ${{ env.GCP_DOCKER_IMAGE }}:5.0.1-build.113 
           region: ${{ env.REGION }}
           flags: "--memory 1Gi --port 5000"
