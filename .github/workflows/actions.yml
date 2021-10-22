@@ -1,7 +1,7 @@
 name: Build/Test/Deploy
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
-  SERVICE: microservice-api-${{ ${GITHUB_REF##*/}}
+  SERVICE: microservice-api-${{ GITHUB_REF##* }}
   REGION: us-east4
   ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
