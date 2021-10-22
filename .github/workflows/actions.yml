@@ -7,7 +7,7 @@ env:
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
   DH_DOCKER_IMAGE: stuartshay/microservice-api
   DOCKER_IMAGE_TAG: 5.1-buildx-${{ github.sha }}
-  DOCKER_IMAGE_PLATFORM: linux/amd64
+  DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
 
 on: 
   push:
@@ -72,7 +72,9 @@ jobs:
       - name: Build image
         id: docker_build
         run: |-
-          docker build . -f docker/microservice-api-multi.dockerfile/Dockerfile \
+          docker buildx build . -f docker/microservice-api-multi.dockerfile/Dockerfile \
+              --platform linux/amd64,linux/arm/v7 \
+              --output "type=image,push=false" \
               -t ${{ env.DH_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}} \
               -t ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
 
