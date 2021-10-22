@@ -1,7 +1,7 @@
 name: Build/Test/Deploy
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
-  SERVICE: microservice-api-${{ github.head_ref }}
+  SERVICE: microservice-api-${{ ${GITHUB_REF##*/}}
   REGION: us-east4
   ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
@@ -31,8 +31,9 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
 
       - name: Branch name
-        run: echo running on branch ${GITHUB_REF##*/}
-
+        run: |-
+             echo running on branch ${GITHUB_REF##*/}
+             echo service name ${SERVICE}
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.2.0
