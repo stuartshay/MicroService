@@ -81,7 +81,7 @@ jobs:
         id: deploy
         uses: google-github-actions/deploy-cloudrun@main
         with:
-          service: ${{ env.SERVICE }}-Develop
+          service: ${{ env.SERVICE }}-${{ steps.extract_branch.outputs.branch }}
           image:  ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
           region: ${{ env.REGION }}
           flags: "--memory 1Gi --port 5000"
