@@ -1,7 +1,7 @@
 name: Build/Test/Deploy
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
-  SERVICE: microservice-api-${{ GITHUB_REF##* }}
+  SERVICE: microservice-api
   REGION: us-east4
   ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
@@ -81,7 +81,7 @@ jobs:
         id: deploy
         uses: google-github-actions/deploy-cloudrun@main
         with:
-          service: ${{ env.SERVICE }}
+          service: ${{ env.SERVICE }}-${GITHUB_REF##*/}
           image:  ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
           region: ${{ env.REGION }}
           flags: "--memory 1Gi --port 5000"
