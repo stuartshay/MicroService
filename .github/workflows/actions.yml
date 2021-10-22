@@ -35,6 +35,19 @@ jobs:
              echo running on branch ${GITHUB_REF##*/}
              echo service name ${SERVICE}
 
+      - uses: FranzDiebold/github-env-vars-action@v1.2.0
+      - name: Print environment variables
+        run: |-
+          echo "GITHUB_REPOSITORY_SLUG=$GITHUB_REPOSITORY_SLUG"
+          echo "GITHUB_REPOSITORY_OWNER=$GITHUB_REPOSITORY_OWNER"
+          echo "GITHUB_REPOSITORY_OWNER_SLUG=$GITHUB_REPOSITORY_OWNER_SLUG"
+          echo "GITHUB_REPOSITORY_NAME=$GITHUB_REPOSITORY_NAME"
+          echo "GITHUB_REPOSITORY_NAME_SLUG=$GITHUB_REPOSITORY_NAME_SLUG"
+          echo "GITHUB_REF_SLUG=$GITHUB_REF_SLUG"
+          echo "GITHUB_REF_NAME=$GITHUB_REF_NAME"
+          echo "GITHUB_REF_NAME_SLUG=$GITHUB_REF_NAME_SLUG"
+          echo "GITHUB_SHA_SHORT=$GITHUB_SHA_SHORT"
+
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.2.0
         with:
@@ -81,7 +94,7 @@ jobs:
         id: deploy
         uses: google-github-actions/deploy-cloudrun@main
         with:
-          service: ${{ env.SERVICE }}-${GITHUB_REF##*/}
+          service: ${{ env.SERVICE }}-${{ $GITHUB_REF_NAME }}
           image:  ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
           region: ${{ env.REGION }}
           flags: "--memory 1Gi --port 5000"
