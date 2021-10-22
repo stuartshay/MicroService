@@ -84,4 +84,4 @@ jobs:
           service: ${{ env.SERVICE }}-${{ steps.extract_branch.outputs.branch }}
           image:  ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
           region: ${{ env.REGION }}
-          flags: "--memory 1Gi --port 5000"
+          flags: "--memory 1Gi --port 5000 --allow-unauthenticated"
