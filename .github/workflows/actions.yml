@@ -73,7 +73,7 @@ jobs:
         id: docker_build
         run: |-
           docker buildx build . -f docker/microservice-api-multi.dockerfile/Dockerfile \
-              --platform linux/amd64,linux/arm/v7 \
+              --platform linux/amd64 \
               --output "type=image,push=false" \
               -t ${{ env.DH_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}} \
               -t ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
