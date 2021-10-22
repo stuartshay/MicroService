@@ -6,7 +6,7 @@ env:
   ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
   DH_DOCKER_IMAGE: stuartshay/microservice-api
-  DOCKER_CONTAINER_TAG: 5.1-buildx-${{ github.sha }}
+  DOCKER_IMAGE_TAG: 5.1-buildx-${{ github.sha }}
 
 on: 
   push:
@@ -29,6 +29,10 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Branch name
+        run: echo running on branch ${GITHUB_REF##*/}
+
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.2.0
@@ -63,20 +67,20 @@ jobs:
         id: docker_build
         run: |-
           docker build . -f docker/microservice-api-multi.dockerfile/Dockerfile \
-              -t ${{ env.DH_DOCKER_IMAGE }}:${{ env.DOCKER_CONTAINER_TAG}} \
-              -t ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_CONTAINER_TAG}}
+              -t ${{ env.DH_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}} \
+              -t ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
 
       - name: Google Cloud Artifacts/Authorize Docker push
         run: gcloud auth configure-docker ${{ env.ARTIFACT_REGISTRY_HOST }}
 
       - name: GCP Artifact Registry
-        run: docker push ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_CONTAINER_TAG }}
+        run: docker push ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
 
       - name: Deploy to Cloud Run
         id: deploy
         uses: google-github-actions/deploy-cloudrun@main
         with:
           service: ${{ env.SERVICE }}
-          image:  ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_CONTAINER_TAG }}
+          image:  ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
           region: ${{ env.REGION }}
           flags: "--memory 1Gi --port 5000"
