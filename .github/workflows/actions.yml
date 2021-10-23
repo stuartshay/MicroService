@@ -7,6 +7,8 @@ env:
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
   DH_DOCKER_IMAGE: stuartshay/microservice-api
   DOCKER_IMAGE_TAG: 5.1-buildx-${{ github.sha }}
+  DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
+  BUILD_NUMBER: ${{ github.sha }} 
 
 on: 
   push:
@@ -49,7 +51,11 @@ jobs:
         uses: docker/setup-qemu-action@v1
 
       - name: Set up Docker Buildx
+        id: buildx
         uses: docker/setup-buildx-action@v1
+
+      - name: Available platforms
+        run: echo ${{ steps.buildx.outputs.platforms }}
 
       - name: Install dependencies
         run: dotnet restore
@@ -67,9 +73,10 @@ jobs:
       - name: Build image
         id: docker_build
         run: |-
-          docker build . -f docker/microservice-api-multi.dockerfile/Dockerfile \
-              -t ${{ env.DH_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}} \
-              -t ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
+          docker build . -f docker/microservice-api-multi.dockerfile/Dockerfile  \
+              --build-arg BUILD_NUMBER=${{env.BUILD_NUMBER}} \
+              --tag ${{ env.DH_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}} \
+              --tag ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}} 
 
       - name: Google Cloud Artifacts/Authorize Docker push
         run: gcloud auth configure-docker ${{ env.ARTIFACT_REGISTRY_HOST }}
