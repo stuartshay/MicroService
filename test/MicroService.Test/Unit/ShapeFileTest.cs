@@ -27,8 +27,8 @@ namespace MicroService.Test.Unit
             string shapeDirectory = $"../../../../../Files/{shapeFilePath}";
             string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
-            GeometryFactory factory = new GeometryFactory();
-            ShapefileDataReader shapeFileDataReader = new ShapefileDataReader(shapePath, factory);
+            GeometryFactory factory = new();
+            ShapefileDataReader shapeFileDataReader = new(shapePath, factory);
 
             ShapefileHeader shpHeader = shapeFileDataReader.ShapeHeader;
             _testOutputHelper.WriteLine($"Shape type: {shpHeader.ShapeType}");
@@ -53,8 +53,8 @@ namespace MicroService.Test.Unit
             var features = new List<Feature>();
             while (shapeFileDataReader.Read())
             {
-                Feature feature = new Feature();
-                AttributesTable attributesTable = new AttributesTable();
+                Feature feature = new();
+                AttributesTable attributesTable = new();
 
                 string[] keys = new string[header.NumFields];
                 var geometry = shapeFileDataReader.Geometry;
