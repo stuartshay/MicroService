@@ -33,8 +33,8 @@ RUN dotnet restore /p:RestoreUseSkipNonexistentTargets="false"
 
 WORKDIR /app/src/MicroService.WebApi
 
-# Publish
-RUN setversion 5.0.1.${BUILD_NUMBER} MicroService.WebApi.csproj 
+# Publish ${BUILD_NUMBER}
+RUN setversion 5.0.1.125 MicroService.WebApi.csproj 
 RUN dotnet publish MicroService.WebApi.csproj -o /publish -c Release -f net5.0  
 
 # Release Stage 
