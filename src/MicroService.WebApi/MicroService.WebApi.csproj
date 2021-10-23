@@ -42,7 +42,7 @@
     
     <PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="6.0.1" />
     
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     
     <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.0.0-rc1.1" />
     <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.0.0-rc1.1" />
@@ -71,6 +71,9 @@
   </ItemGroup>
   
   <ItemGroup>
+    <Content Update="appsettings.CloudRun.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="appsettings.Development.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
