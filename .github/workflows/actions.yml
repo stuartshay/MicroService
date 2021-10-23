@@ -8,6 +8,7 @@ env:
   DH_DOCKER_IMAGE: stuartshay/microservice-api
   DOCKER_IMAGE_TAG: 5.1-buildx-${{ github.sha }}
   DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
+  BUILD_NUMBER: ${{ github.sha }} 
 
 on: 
   push:
@@ -73,6 +74,7 @@ jobs:
         id: docker_build
         run: |-
           docker build . -f docker/microservice-api-multi.dockerfile/Dockerfile  \
+              --build-arg BUILD_NUMBER=${{BUILD_NUMBER}} \
               --tag ${{ env.DH_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}} \
               --tag ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}} 
 
