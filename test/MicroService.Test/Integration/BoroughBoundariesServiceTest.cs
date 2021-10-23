@@ -21,7 +21,7 @@ namespace MicroService.Test.Integration
             _testOutputHelper = output;
         }
 
-        [Fact(Skip = "Ignore", DisplayName = "Get Shape File Properties")]
+        [Fact(DisplayName = "Get Shape File Properties")]
         [Trait("Category", "Integration")]
         public void Get_Shape_Properties()
         {
@@ -37,7 +37,7 @@ namespace MicroService.Test.Integration
         }
 
 
-        [Fact(Skip = "Ignore", DisplayName = "Get Shape File Database Properties")]
+        [Fact( DisplayName = "Get Shape File Database Properties")]
         [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
         {
