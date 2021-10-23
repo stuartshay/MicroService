@@ -51,7 +51,7 @@ COPY --from=build-env /publish .
 
 # Set environment variables
 ENV ASPNETCORE_URLS http://*:5000
-ENV ASPNETCORE_ENVIRONMENT ${BUILD_ENV}
+ENV ASPNETCORE_ENVIRONMENT Docker
 
 # Open up port
 EXPOSE 5000
