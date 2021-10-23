@@ -117,7 +117,6 @@ namespace MicroService.WebApi
                     }
                 });
 
-
             var metrics = AppMetrics.CreateDefaultBuilder()
                 .OutputMetrics
                 .AsPrometheusPlainText()

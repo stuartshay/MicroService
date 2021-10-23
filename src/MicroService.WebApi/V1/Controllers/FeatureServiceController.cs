@@ -118,8 +118,8 @@ namespace MicroService.WebApi.V1.Controllers
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();
 
-            var results = _shapeServiceResolver(request.Key).GetFeatureAttributes();
-            return Ok(results);
+            IEnumerable<ShapeBase> results = _shapeServiceResolver(request.Key).GetFeatureAttributes();
+            return await Task.FromResult(Ok(results));
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace MicroService.WebApi.V1.Controllers
 
             _metrics.Measure.Counter.Increment(MetricsRegistry.GetFeatureTypeLookupCounter(request.Key));
 
-            return Ok(results);
+            return await Task.FromResult(Ok(results));
         }
     }
 }
