@@ -4,6 +4,9 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
 ARG BUILD_NUMBER=0
 ENV BUILD_NUMBER ${BUILD_NUMBER}
 
+ARG BUILD_ENV=Docker
+ENV BUILD_ENV ${BUILD_ENV}
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
  && rm -rf /var/lib/apt/lists/*
@@ -48,7 +51,7 @@ COPY --from=build-env /publish .
 
 # Set environment variables
 ENV ASPNETCORE_URLS http://*:5000
-ENV ASPNETCORE_ENVIRONMENT Docker
+ENV ASPNETCORE_ENVIRONMENT ${BUILD_ENV}
 
 # Open up port
 EXPOSE 5000
