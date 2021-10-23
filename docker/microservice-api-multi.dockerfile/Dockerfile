@@ -4,6 +4,9 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
 ARG BUILD_NUMBER=0
 ENV BUILD_NUMBER ${BUILD_NUMBER}
 
+ARG BUILD_ENV=Docker
+ENV BUILD_ENV ${BUILD_ENV}
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
  && rm -rf /var/lib/apt/lists/*
@@ -21,7 +24,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install .NET Tools 
 ENV PATH="/root/.dotnet/tools:${PATH}"
-RUN dotnet tool install --global dotnet-setversion --version 2.2.0
+RUN dotnet tool install --global dotnet-setversion --version 2.3.0
 RUN dotnet tool install --global sempack --version 1.1.7057.22950
 RUN dotnet tool install --global dotnet-dbinfo --version 1.4.0 
 RUN dotnet tool list -g
@@ -33,8 +36,8 @@ RUN dotnet restore /p:RestoreUseSkipNonexistentTargets="false"
 
 WORKDIR /app/src/MicroService.WebApi
 
-# Publish
-# RUN setversion 5.0.1.${BUILD_NUMBER}
+# Publish ${BUILD_NUMBER}
+RUN setversion 5.0.1.125 MicroService.WebApi.csproj 
 RUN dotnet publish MicroService.WebApi.csproj -o /publish -c Release -f net5.0  
 
 # Release Stage 

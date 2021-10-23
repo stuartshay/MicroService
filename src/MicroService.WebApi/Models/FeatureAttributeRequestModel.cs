@@ -1,7 +1,7 @@
 ﻿namespace MicroService.WebApi.Models
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class FeatureAttributeRequestModel
     {
