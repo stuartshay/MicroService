@@ -60,7 +60,6 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
-
       - name: Test with dotnet
         uses: zyborg/dotnet-tests-report@v1
         with:
@@ -68,10 +67,6 @@ jobs:
           report_name: MicroService.Test
           report_title: MicroService.Test
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-
-
-
 
       - name: Build image
         id: docker_build
