@@ -60,22 +60,13 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
+
       - name: Test with dotnet
-        run: dotnet test --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
-
-      - name: Upload dotnet test results
-        uses: actions/upload-artifact@v2
-        with:
-            name: dotnet-results-${{ matrix.dotnet-version }}
-            path: TestResults-${{ matrix.dotnet-version }}
-        if: ${{ always() }}
-
-      - name: use this action, test solution dir
         uses: zyborg/dotnet-tests-report@v1
         with:
           project_path: test/MicroService.Test
-          report_name: my_project_tests
-          report_title: My Project Tests
+          report_name: MicroService.Test
+          report_title: MicroService.Test
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
 
