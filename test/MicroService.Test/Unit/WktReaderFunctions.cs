@@ -16,7 +16,7 @@ namespace MicroService.Test.Unit
 
             var points = new List<NetTopologySuite.Geometries.Geometry>(new[]
             {
-                reader.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(429012.5, 360443.18)),   
+                reader.Factory.CreatePoint(new Coordinate(429012.5, 360443.18)),   
                 reader.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(429001.59, 360446.98)),
                 reader.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(429003.31, 360425.45)),
                 reader.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(429016.9, 360413.04))

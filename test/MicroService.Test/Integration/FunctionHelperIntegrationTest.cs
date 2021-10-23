@@ -20,7 +20,7 @@ namespace MicroService.Test.Integration
             _output = output;
         }
 
-        [Fact(Skip = "Ignore", DisplayName = "Calculate_Percentile - Integration")]
+        [Fact(DisplayName = "Calculate_Percentile - Integration")]
         [Trait("Category", "Integration")]
         public async Task Can_Calculate_Percentile()
         {
