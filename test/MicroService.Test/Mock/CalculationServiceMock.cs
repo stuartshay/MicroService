@@ -39,7 +39,7 @@ namespace MicroService.Test.Mock
 
         private CalculationService GetCalculationService(ITestDataRepository testDataRepository = null)
         {
-            testDataRepository = testDataRepository ?? new Mock<ITestDataRepository>().Object;
+            testDataRepository ??= new Mock<ITestDataRepository>().Object;
 
             return new CalculationService(testDataRepository);
         }

@@ -46,7 +46,7 @@ namespace MicroService.Common.Health
         private DateTime GetAssemblyLastModifiedDate()
         {
             Assembly assembly = Assembly.GetEntryAssembly();
-            System.IO.FileInfo fileInfo = new System.IO.FileInfo(assembly?.Location ?? string.Empty);
+            System.IO.FileInfo fileInfo = new(assembly?.Location ?? string.Empty);
             DateTime lastModified = fileInfo.LastWriteTime;
 
             return lastModified.ToUniversalTime();
