@@ -6,30 +6,47 @@ using Microsoft.Extensions.Hosting;
 
 namespace MicroService.WebApi.Services.Cron
 {
+    /// <summary>
+    /// CronJobService
+    /// </summary>
     public abstract class CronJobService : IHostedService, IDisposable
     {
         private readonly CronExpression _expression;
         private readonly TimeZoneInfo _timeZoneInfo;
         private System.Timers.Timer _timer;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CronJobService"/> class.
+        /// </summary>
+        /// <param name="cronExpression"></param>
+        /// <param name="timeZoneInfo"></param>
         protected CronJobService(string cronExpression, TimeZoneInfo timeZoneInfo)
         {
             _expression = CronExpression.Parse(cronExpression);
             _timeZoneInfo = timeZoneInfo;
         }
 
+        /// <inheritdoc/>
         public virtual async Task StartAsync(CancellationToken cancellationToken) => await ScheduleJob(cancellationToken);
 
+        /// <inheritdoc/>
         public virtual async Task DoWork(CancellationToken cancellationToken) => await Task.Delay(5000, cancellationToken);
 
+        /// <inheritdoc/>
         public virtual async Task StopAsync(CancellationToken cancellationToken)
         {
             _timer?.Stop();
             await Task.CompletedTask;
         }
 
+        /// <inheritdoc/>
         public virtual void Dispose() => _timer?.Dispose();
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         protected virtual async Task ScheduleJob(CancellationToken cancellationToken)
         {
             var next = _expression.GetNextOccurrence(DateTimeOffset.Now, _timeZoneInfo, true);
