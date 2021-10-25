@@ -135,7 +135,7 @@ jobs:
         uses: google-github-actions/deploy-cloudrun@main
         with:
           service: ${{ env.SERVICE }}-${{ env.GITHUB_REF_SLUG }}
-          image: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.1-buildx-a6cb479bb83bc724e865299c09b70e49d772bdf7
+          image: ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
           region: ${{ env.REGION }}
           flags: "--memory 1Gi --port 5000 --allow-unauthenticated"
 
