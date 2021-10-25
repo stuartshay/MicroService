@@ -299,7 +299,6 @@ namespace MicroService.WebApi
             var option = new RewriteOptions();
             option.AddRedirect("^$", "swagger");
             app.UseRewriter(option);
-
         }
     }
 }
