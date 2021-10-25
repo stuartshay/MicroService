@@ -87,6 +87,7 @@ jobs:
           project_path: test/MicroService.Test
           report_name: MicroService.Test
           report_title: MicroService.Test
+          set_check_status_from_test_outcome: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
