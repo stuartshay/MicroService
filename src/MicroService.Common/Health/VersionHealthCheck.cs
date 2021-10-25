@@ -13,10 +13,13 @@ namespace MicroService.Common.Health
 
         private readonly DateTime _applicationBuildDate;
 
+        private readonly string _environment;
+
         public VersionHealthCheck()
         {
             _applicationVersionNumber = Assembly.GetEntryAssembly()?.GetName().Version?.ToString();
             _applicationBuildDate = GetAssemblyLastModifiedDate();
+            _environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
         }
 
         /// <summary>
@@ -31,6 +34,7 @@ namespace MicroService.Common.Health
             {
                 {"BuildDate", _applicationBuildDate},
                 {"BuildVersion", _applicationVersionNumber},
+                {"Environment", _environment},
             };
 
             var healthStatus = !string.IsNullOrEmpty(_applicationVersionNumber) ? HealthStatus.Healthy : HealthStatus.Degraded;

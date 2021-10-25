@@ -4,6 +4,7 @@
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=security_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
 [![SonarCloud](http://sonar.navigatorglass.com:9000/api/project_badges/measure?project=db762c49b56bd854f8e7fb1d03f7106468a27387&metric=sqale_rating)](http://sonar.navigatorglass.com:9000/dashboard?id=db762c49b56bd854f8e7fb1d03f7106468a27387)
 
+[![Build/Test/Deploy](https://github.com/stuartshay/MicroService/actions/workflows/actions.yml/badge.svg)](https://github.com/stuartshay/MicroService/actions/workflows/actions.yml)
 [![Build Status](https://travis-ci.org/stuartshay/MicroService.svg?branch=develop)](https://travis-ci.org/stuartshay/MicroService)
 
 ### Purpose
@@ -11,8 +12,6 @@
 The New York Application Team has been tasked with designing a microservice for their Enrichment Data pipeline which will be utilized by high profile clients and internal groups in the organization for Machine Learning Research and the Geospatial Engine Product.
 
 The Application will be a complete rearchitected solution using the cloud for optimal price and performance.  The API Schema has been enhanced and key performance metrics have been added. The API will implement versioning so end clients can seamlessly update to the new enhanced schema when ready.
-
-The Business has defined the Percentile Function will use the same algorithm as MS Excel "PERCENTILE.INC" the database is serving data using float(8) and the application has defined the double data type for precision.
 
 The Requirements for this project can be viewed at the following.
 
@@ -85,11 +84,4 @@ docfx docfx/docfx.json
 docfx docfx/docfx.json -p 9090 --serve
 
 http://localhost:9090
-```
-
-### Reference
-
-```
-Percentile Calculation
-https://stackoverflow.com/questions/8137391/percentile-calculation
 ```
