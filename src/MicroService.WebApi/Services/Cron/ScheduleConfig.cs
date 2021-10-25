@@ -19,8 +19,10 @@ namespace MicroService.WebApi.Services.Cron
     /// <typeparam name="T"></typeparam>
     public class ScheduleConfig<T> : IScheduleConfig<T>
     {
+        /// <inheritdoc/>
         public string CronExpression { get; set; }
 
+        /// <inheritdoc/>
         public TimeZoneInfo TimeZoneInfo { get; set; }
     }
 }

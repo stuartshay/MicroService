@@ -46,19 +46,19 @@ namespace MicroService.WebApi.Extensions
             _folderPath = folderPath;
         }
 
+        /// <inheritdoc/>
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
             bool exists = System.IO.Directory.Exists(_folderPath);
-            if (exists)
+
+            var data = new Dictionary<string, object>
             {
-                return Task.FromResult(HealthCheckResult.Healthy());
-            }
-            else
-            {
-                return Task.FromResult(new HealthCheckResult(
-                    context.Registration.FailureStatus,
-                    description: $"Folder path {_folderPath} is not exists on system"));
-            }
+                {"FolderPath", _folderPath},
+            };
+
+            var healthStatus = exists ? HealthStatus.Healthy : HealthStatus.Unhealthy;
+            var healthCheckResult = new HealthCheckResult(healthStatus, "Folder Path Health Check", null, data);
+            return Task.FromResult(healthCheckResult);
         }
     }
 }

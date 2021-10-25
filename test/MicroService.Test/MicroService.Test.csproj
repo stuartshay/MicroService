@@ -38,6 +38,12 @@
     <ProjectReference Include="..\..\src\MicroService.WebApi\MicroService.WebApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsettings.CloudRun.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <PropertyGroup>
     <ProjectGuid>{9A19103F-16F7-4668-BE54-9A1E7A4F7964}</ProjectGuid>
   </PropertyGroup>
