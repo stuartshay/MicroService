@@ -53,7 +53,7 @@ namespace MicroService.WebApi.Extensions
 
             var data = new Dictionary<string, object>
             {
-                {"folderPath", _folderPath},
+                { "folderPath", _folderPath },
             };
 
             var healthStatus = exists ? HealthStatus.Healthy : HealthStatus.Unhealthy;

@@ -175,9 +175,9 @@ namespace MicroService.WebApi.Extensions
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">CronJobService Type</typeparam>
         /// <param name="services"></param>
         /// <param name="options"></param>
         /// <returns></returns>
