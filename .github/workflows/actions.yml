@@ -13,6 +13,10 @@ env:
 
 on: 
   push:
+   paths:
+      - src 
+      - test
+      - .github
    branches:
       - master
       - develop
