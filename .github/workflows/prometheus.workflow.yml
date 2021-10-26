@@ -37,7 +37,9 @@ jobs:
 
       - name: Build image
         id: docker_build
-        run: echo "DOCKER FILE ${{ env.DOCKER_FILE }}"
+        run:  |
+          echo "DOCKER FILE ${{ env.DOCKER_FILE }}"
+          echo "GCP_DOCKER_IMAGE ${{ env.GCP_DOCKER_IMAGE}}:${{ env.DOCKER_IMAGE_TAG}}"
 
 
 
