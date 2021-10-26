@@ -2,7 +2,7 @@ name: Prometheus Workflow
 on:
   push:
     paths:
-    - 'docker/prometheus/**' 
+    - 'docker/**' 
     - '.github/workflows/prometheus.workflow.yml'
      
     branches:
