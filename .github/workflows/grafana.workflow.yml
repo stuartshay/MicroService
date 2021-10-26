@@ -1,9 +1,9 @@
-name: Prometheus Workflow
+name: Grafana Workflow
 on:
   push:
     paths:
-    - 'docker/**' 
-    - '.github/workflows/prometheus.workflow.yml'
+    - 'docker/grafana/**' 
+    - '.github/workflows/grafana.workflow.yml'
      
     branches:
     - master
