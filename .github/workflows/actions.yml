@@ -60,7 +60,7 @@ jobs:
         with:
           build-args: |
             BUILD_NUMBER=${{ env.BUILD_NUMBER }}
-          file: ${{ DOCKER_FILE }}
+          file: ${{ env.DOCKER_FILE }}
           tags: ${{ env.DH_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}, ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
           outputs: type=docker,dest=image.tar
           cache-from: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache
