@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using App.Metrics;
@@ -31,7 +30,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using OpenTelemetry;
 using OpenTelemetry.Exporter;
-using OpenTelemetry.Exporter.Jaeger;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -99,17 +97,20 @@ namespace MicroService.WebApi
             services.AddOpenTelemetryTracing(
                 builder =>
                 {
-                    //builder
-                    //    .SetResourceBuilder(ResourceBuilder.CreateDefault()
-                    //        .AddService(HostingEnvironment.ApplicationName))
-                    //    .AddSource(nameof(FeatureServiceController))
-                    //    .AddAspNetCoreInstrumentation()
-                    //    .AddHttpClientInstrumentation()
-                    //    .AddJaegerExporter(o =>
-                    //    {
-                    //        o.AgentHost = "jaeger";
-                    //        o.AgentPort = 6831;
-                    //    });
+                    if (HostingEnvironment.EnvironmentName == "Docker")
+                    {
+                        builder
+                            .SetResourceBuilder(ResourceBuilder.CreateDefault()
+                                .AddService(HostingEnvironment.ApplicationName))
+                            .AddSource(nameof(FeatureServiceController))
+                            .AddAspNetCoreInstrumentation()
+                            .AddHttpClientInstrumentation()
+                            .AddJaegerExporter(o =>
+                            {
+                                o.AgentHost = "jaeger";
+                                o.AgentPort = 6831;
+                            });
+                    }
 
                     if (HostingEnvironment.IsDevelopment())
                     {
