@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 namespace MicroService.WebApi.Services.Cron
 {
     /// <summary>
-    /// CronJobService
+    /// Cron JobS ervice
     /// </summary>
     public abstract class CronJobService : IHostedService, IDisposable
     {
@@ -29,17 +29,27 @@ namespace MicroService.WebApi.Services.Cron
         /// <inheritdoc/>
         public virtual async Task StartAsync(CancellationToken cancellationToken) => await ScheduleJob(cancellationToken);
 
-        /// <inheritdoc/>
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public virtual async Task DoWork(CancellationToken cancellationToken) => await Task.Delay(5000, cancellationToken);
 
-        /// <inheritdoc/>
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public virtual async Task StopAsync(CancellationToken cancellationToken)
         {
             _timer?.Stop();
             await Task.CompletedTask;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        ///
+        /// </summary>
         public virtual void Dispose() => _timer?.Dispose();
 
         /// <summary>
