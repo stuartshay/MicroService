@@ -6,7 +6,6 @@ env:
   ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
   DH_DOCKER_IMAGE: stuartshay/microservice-api
-  DOCKER_FILE: docker/microservice-api-multi.dockerfile/Dockerfile
   DOCKER_IMAGE_TAG: 5.1-buildx-${{ github.sha }}
   DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
   BUILD_NUMBER: ${{ github.sha }}
@@ -54,14 +53,24 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v1
 
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          project_id: ${{ secrets.gcp_project }}
+          service_account_key: ${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT }}
+          export_default_credentials: true
+
+      - name: Google Cloud Artifacts/Authorize Docker push
+        run: gcloud auth configure-docker ${{ env.ARTIFACT_REGISTRY_HOST }}
+
       - name: Build image
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           build-args: |
             BUILD_NUMBER=${{ env.BUILD_NUMBER }}
-          file: ${{ env.DOCKER_FILE }}
-          tags: ${{ env.DH_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}, ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
+          file: docker/microservice-api-multi.dockerfile/Dockerfile
+          tags: ${{ env.DH_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}, ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
           outputs: type=docker,dest=image.tar
           cache-from: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache
           cache-to: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache,mode=max
