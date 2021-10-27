@@ -53,16 +53,6 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v0.2.0
-        with:
-          project_id: ${{ secrets.gcp_project }}
-          service_account_key: ${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT }}
-          export_default_credentials: true
-
-      - name: Google Cloud Artifacts/Authorize Docker push
-        run: gcloud auth configure-docker ${{ env.ARTIFACT_REGISTRY_HOST }}
-
       - name: Build image
         id: docker_build
         uses: docker/build-push-action@v2
