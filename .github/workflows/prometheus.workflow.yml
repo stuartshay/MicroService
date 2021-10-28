@@ -87,4 +87,4 @@ jobs:
         run: gcloud auth configure-docker ${{ env.ARTIFACT_REGISTRY_HOST }}
 
       - name: GCP Artifact Registry
-        run: docker push ${{ env.GCP_DOCKER_IMAGE }} --all-tags 
+        run: docker push ${{ env.GCP_DOCKER_IMAGE }} --all-tags
