@@ -62,7 +62,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: prometheus
+          name: docker
           path: image.tar
 
    publish:
@@ -74,7 +74,7 @@ jobs:
 
       - name: Load images
         run: |
-          docker load --input prometheus/image.tar
+          docker load --input docker/image.tar
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.2.0
