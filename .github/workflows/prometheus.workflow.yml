@@ -50,7 +50,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: ${{ env.DOCKER_CONTEXT }}
+          context: docker/prometheus
           build-args: |
             BUILD_NUMBER=${{ env.BUILD_NUMBER }}
           file: ${{ env.DOCKER_FILE }}
