@@ -1,4 +1,15 @@
 name: Grafana Workflow
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  REGION: us-east4
+  ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
+  GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-grafana
+  DH_DOCKER_IMAGE: stuartshay/microservice-grafana
+  DOCKER_FILE: 'docker/grafana/Dockerfile'
+  DOCKER_IMAGE_TAG: 8.2.1-v7-${{ github.sha }}
+  DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
+  BUILD_NUMBER: ${{ github.sha }}
+
 on:
   push:
     paths:
