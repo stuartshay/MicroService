@@ -58,6 +58,15 @@ jobs:
           cache-from: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache
           cache-to: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache,mode=max
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: prometheus
+          path: image.tar
+
+
+
+
 
 
    publish:
