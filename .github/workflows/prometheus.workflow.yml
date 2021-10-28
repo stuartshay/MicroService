@@ -5,6 +5,7 @@ env:
   ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-prometheus
   DH_DOCKER_IMAGE: stuartshay/microservice-prometheus
+  DOCKER_SCRIPT_PATH: docker/prometheus
   DOCKER_FILE: 'docker/prometheus/Dockerfile'
   DOCKER_IMAGE_TAG: v2.30.3-v2-${{ github.sha }}
   DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
@@ -49,7 +50,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: docker/prometheus
+          context: ${{ env.DOCKER_SCRIPT_PATH }}
           build-args: |
             BUILD_NUMBER=${{ env.BUILD_NUMBER }}
           file: ${{ env.DOCKER_FILE }}
@@ -61,7 +62,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: prometheus
+          name: docker
           path: image.tar
 
    publish:
@@ -73,7 +74,7 @@ jobs:
 
       - name: Load images
         run: |
-          docker load --input prometheus/image.tar
+          docker load --input docker/image.tar
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.2.0
