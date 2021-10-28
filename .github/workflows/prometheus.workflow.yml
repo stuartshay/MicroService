@@ -5,7 +5,7 @@ env:
   ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-prometheus
   DH_DOCKER_IMAGE: stuartshay/microservice-prometheus
-  DOCKER_CONTEXT: docker/prometheus
+  DOCKER_SCRIPT_PATH: docker/prometheus
   DOCKER_FILE: 'docker/prometheus/Dockerfile'
   DOCKER_IMAGE_TAG: v2.30.3-v2-${{ github.sha }}
   DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
