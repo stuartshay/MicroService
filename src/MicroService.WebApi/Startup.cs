@@ -92,24 +92,27 @@ namespace MicroService.WebApi
             var config = Configuration.Get<ApplicationOptions>();
             services.DisplayConfiguration(Configuration, HostingEnvironment);
 
+            var commonConfig = Configuration.Get<MicroService.Common.Configuration.ApplicationOptions>();
+
             services.AddCustomApiVersioning();
 
             services.AddOpenTelemetryTracing(
                 builder =>
                 {
-                    if (HostingEnvironment.EnvironmentName == "Docker")
+                    _ = builder
+                   .SetResourceBuilder(ResourceBuilder.CreateDefault()
+                   .AddService(HostingEnvironment.ApplicationName))
+                   .AddSource(nameof(FeatureServiceController))
+                   .AddAspNetCoreInstrumentation()
+                   .AddHttpClientInstrumentation();
+
+                    if (commonConfig.JaegerConfiguration.Enabled)
                     {
-                        builder
-                            .SetResourceBuilder(ResourceBuilder.CreateDefault()
-                                .AddService(HostingEnvironment.ApplicationName))
-                            .AddSource(nameof(FeatureServiceController))
-                            .AddAspNetCoreInstrumentation()
-                            .AddHttpClientInstrumentation()
-                            .AddJaegerExporter(o =>
-                            {
-                                o.AgentHost = "jaeger";
-                                o.AgentPort = 6831;
-                            });
+                      builder.AddJaegerExporter(o =>
+                      {
+                          o.AgentHost = commonConfig.JaegerConfiguration.Host;
+                          o.AgentPort = commonConfig.JaegerConfiguration.Port;
+                      });
                     }
 
                     if (HostingEnvironment.IsDevelopment())
