@@ -1,6 +1,14 @@
-name: Greetings
+name: Shapefile Deployment
 
-on: [pull_request, issues]
+on:
+  push:
+    paths:
+    - 'files/Borough_Boundaries/**' 
+    - '.github/workflows/shapefile.yml'
+
+
+
+
 
 jobs:
   greeting:
