@@ -38,7 +38,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-          name: ${{ matrix.dotnet }}
+          name: Borough_Boundaries
           path: files/Borough_Boundaries
 
 
