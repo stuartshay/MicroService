@@ -1,16 +1,35 @@
-name: Greetings
+name: Shapefile Deployment
 
-on: [pull_request, issues]
+on:
+  push:
+    paths:
+    - 'files/Borough_Boundaries/**' 
+    - '.github/workflows/shapefile.yml'
+
+    branches:
+    - master
+    - develop
+    - 'feature/**'
+    - 'fix/**'
 
 jobs:
-  greeting:
+  copyfiles:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
-    steps:
-    - uses: actions/first-interaction@v1
+    steps:    
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@master
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: 'Message that will be displayed on users first issue'
-        pr-message: 'Message that will be displayed on users first pull request'
+       project_id: ${{ secrets.gcp_project }}
+       service_account_key: ${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT }}
+       export_default_credentials: true
+
+    - name: Use gcloud CLI
+      run: gcloud info
+
+
+
+
+
