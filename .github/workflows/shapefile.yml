@@ -6,19 +6,24 @@ on:
     - 'files/Borough_Boundaries/**' 
     - '.github/workflows/shapefile.yml'
 
-
-
-
+    branches:
+    - master
+    - develop
+    - 'feature/**'
+    - 'fix/**'
 
 jobs:
-  greeting:
+  copyfiles:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
-    steps:
-    - uses: actions/first-interaction@v1
+    steps:    
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup - gcloud / gsutil
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: 'Message that will be displayed on users first issue'
-        pr-message: 'Message that will be displayed on users first pull request'
+       service_account_key: ${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT }}
+       project_id: ${{ secrets.gcp_project }}
+       export_default_credentials: true
+
+
