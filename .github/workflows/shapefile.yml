@@ -35,4 +35,14 @@ jobs:
        path: files/Borough_Boundaries
        destination: files-shapes
 
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+          name: ${{ matrix.dotnet }}
+          path: files/Borough_Boundaries
+
+
+
+
+
 
