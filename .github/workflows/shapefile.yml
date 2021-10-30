@@ -41,8 +41,12 @@ jobs:
           name: Borough_Boundaries
           path: files/Borough_Boundaries
 
-
-
+  publish:
+    runs-on: ubuntu-latest
+    needs: [ build, test ]
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
 
 
 
