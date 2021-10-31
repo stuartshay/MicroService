@@ -35,7 +35,7 @@ jobs:
        path: files/Borough_Boundaries
        destination: files-shapes
 
-    - name: Upload artifact
+    - name: Upload raw artifacts
       uses: actions/upload-artifact@v2
       with:
           name: Borough_Boundaries
@@ -56,3 +56,8 @@ jobs:
         run: |
           echo "ogr2ogr files/Borough_Boundaries/nybb.shp =>  nybb.json "
 
+      - name: Upload GeoJson artifacts
+        run: |
+          echo "Install ogr2ogr"
+
+          
