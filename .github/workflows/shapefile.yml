@@ -48,7 +48,11 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v2
 
+      - name:  Install ogr2ogr
+        run: |
+          echo "Install ogr2ogr"
+
       - name:  Shapefile to GeoJSON
         run: |
-          echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+          echo "ogr2ogr files/Borough_Boundaries/nybb.shp =>  nybb.json "
 
