@@ -62,7 +62,7 @@ jobs:
 
   load:
     runs-on: ubuntu-latest
-    needs: [ copyfiles ]
+    needs: [ transform]
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v2
