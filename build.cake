@@ -8,7 +8,7 @@
 #tool nuget:?package=MSBuild.SonarQube.Runner.Tool&version=4.8.0
 #tool nuget:?package=xunit.runner.console&version=2.4.1
 #tool nuget:?package=xunit.runner.visualstudio&version=2.4.3
-#tool nuget:?package=DocFx.Console&version=2.56.2
+#tool nuget:?package=DocFx.Console&version=2.58.9
 
 //////////////////////////////////////////////////////////////////////
 // ADDINS
