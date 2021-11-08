@@ -55,8 +55,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name:  Pull Docker Image 
-        run: |
-          echo "Pull Docker Image 
+        run: docker pull stuartshay/microservice-gdal:1.1.1-v1
 
       - name:  Shapefile to GeoJSON (Run Docker Image)
         run: |
