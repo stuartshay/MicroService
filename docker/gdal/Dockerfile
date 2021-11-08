@@ -1,7 +1,6 @@
 FROM osgeo/gdal
 
-
-COPY ./scripts/app.sh /scripts
+COPY scripts  /scripts
 
 USER root
 RUN apt-get update && \
