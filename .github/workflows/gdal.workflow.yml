@@ -55,6 +55,12 @@ jobs:
           name: docker
           path: image.tar
 
+  test:
+     runs-on: ubuntu-latest
+     needs: [ build ]
+     steps:
+      - run: echo "TODO:Functional/Unit Tests"
+
   publish:
      runs-on: ubuntu-latest
      needs: [ build ]
@@ -72,20 +78,5 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      - name: Docker Hub Registry
+      - name: Docker Hub Registry Push
         run: docker push ${{ env.DH_DOCKER_IMAGE }} --all-tags 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
