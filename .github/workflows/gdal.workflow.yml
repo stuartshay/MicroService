@@ -72,7 +72,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-
+      - name: Docker Hub Registry
+        run: docker push ${{ env.DH_DOCKER_IMAGE }} --all-tags 
 
 
 
