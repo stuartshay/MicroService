@@ -2,7 +2,7 @@ name: Gdal Tools
 env: 
   DH_DOCKER_IMAGE: stuartshay/microservice-gdal
   DOCKER_SCRIPT_PATH: docker/gdal
-  DOCKER_IMAGE_TAG: 1.1.1-v1-${{ github.sha }}
+  DOCKER_IMAGE_TAG: 1.1.1-v1   ## Version Tag: -${{ github.sha }}
 
 on:
   push:
