@@ -48,11 +48,11 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v2
 
-      - name:  Install ogr2ogr
+      - name:  Pull Docker Image 
         run: |
-          echo "Install ogr2ogr"
+          echo "Pull Docker Image 
 
-      - name:  Shapefile to GeoJSON
+      - name:  Shapefile to GeoJSON (Run Docker Image)
         run: |
           echo "ogr2ogr files/Borough_Boundaries/nybb.shp =>  nybb.json "
 
