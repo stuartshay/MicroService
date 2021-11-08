@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+
+  gdal:
+    image: osgeo/gdal
+    container_name: gdal
+    volumes:
+      - gdal_data:/gdal
+    networks:
+      - microservice-network
+  
+volumes:
+  gdal_data:
+
+networks:
+ microservice-network:
+
+
