@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   gdal:
-    image: osgeo/gdal
+    image: stuartshay/microservice-gdal:1.1.1-v1
     container_name: gdal
     volumes:
       - gdal_data:/gdal
