@@ -1,4 +1,7 @@
 name: Shapefile Deployment
+env: 
+  DH_DOCKER_IMAGE: stuartshay/microservice-gdal
+  DOCKER_IMAGE_TAG: 1.1.1-v1   ## HardCode Tag 
 
 on:
   push:
@@ -54,8 +57,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name:  Pull Docker Image 
-        run: docker pull stuartshay/microservice-gdal:1.1.1-v1
+      - name: Pull Docker Image 
+        run: docker pull ${{ env.DH_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
 
       - name:  Shapefile to GeoJSON (Run Docker Image)
         run: |
