@@ -8,7 +8,7 @@ Jenkins | Status
 Build Image  | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService-Infrastructure/microservice-grafana)](https://jenkins.navigatorglass.com/job/MicroService-Infrastructure/job/microservice-grafana/)
 
 ```
-├── docker-grafana
+├── grafana
 │   ├── Dockerfile              # Dockerfile
 │   ├── config.ini              # Grafana config
 |   |
