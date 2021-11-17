@@ -1,7 +1,14 @@
 FROM osgeo/gdal
 
-COPY scripts  /scripts
+COPY ./scripts/  /scripts/
+COPY ./scripts/from_shapefile  /scripts/from_shapefile
+COPY ./scripts/to_GeoJSON  /scripts/to_GeoJSON 
 
-#USER root
-#RUN chmod +x /scripts/app.sh
-#ENTRYPOINT ["/scripts/app.sh"]
+WORKDIR /scripts
+ 
+ENTRYPOINT [ "python" ]
+
+CMD [ "app.py" ]
+
+
+
