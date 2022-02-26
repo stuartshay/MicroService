@@ -244,12 +244,12 @@ namespace MicroService.WebApi
 
             services.AddCustomHealthCheck(Configuration);
 
-            services.AddHealthChecksUI(setupSettings: setup => { })
-                    .AddInMemoryStorage()
-                    .Services
-                    .AddHealthChecks()
-                    .Services
-                    .AddControllers();
+            //services.AddHealthChecksUI(setupSettings: setup => { })
+            //        .AddInMemoryStorage()
+            //        .Services
+            //        .AddHealthChecks()
+            //        .Services
+            //        .AddControllers();
         }
 
         /// <summary>
