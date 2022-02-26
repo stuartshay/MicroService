@@ -38,6 +38,7 @@ namespace MicroService.WebApi.Extensions
         /// <summary>
         /// Get Feature Lookup Counter
         /// </summary>
+        /// <returns></returns>
         public static CounterOptions GetFeatureTypeLookupCounter(string type) => new CounterOptions
         {
             Name = $"{type}-Feature Request Lookup Counter",
