@@ -10,11 +10,16 @@ namespace MicroService.WebApi.Extensions
     {
         private readonly IMetrics _metrics;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MetricsCounterAttribute"/> class.
+        /// </summary>
+        /// <param name="metrics"></param>
         public MetricsCounterAttribute(IMetrics metrics)
         {
             _metrics = metrics;
         }
 
+        /// <inheritdoc/>
         public void OnResultExecuting(ResultExecutingContext context)
         {
             throw new System.NotImplementedException();
