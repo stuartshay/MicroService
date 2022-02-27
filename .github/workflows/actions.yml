@@ -7,9 +7,9 @@ env:
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
   DH_DOCKER_IMAGE: stuartshay/microservice-api
   DOCKER_FILE: docker/microservice-api-multi.dockerfile/Dockerfile
-  DOCKER_IMAGE_TAG: 5.1-buildx-${{ github.sha }}
+  DOCKER_IMAGE_TAG: 6.0.${{ github.run_number }}-buildx-${{ github.sha }}
   DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
-  BUILD_NUMBER: ${{ github.sha }}
+  BUILD_NUMBER: ${{ github.run_number }}
   ASPNETCORE_ENVIRONMENT: CloudRun
 
 on:
@@ -32,7 +32,7 @@ jobs:
       dotnet: ${{ steps.dotnet-version.outputs.dotnet }}
     strategy:
       matrix:
-        dotnet: ['5.0.x']
+        dotnet: ['6.0.x']
 
     steps:
       - id: dotnet-version
