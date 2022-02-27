@@ -151,6 +151,8 @@ namespace MicroService.WebApi
                     shapeProperties = ShapeProperties.BoroughBoundaries.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.CommunityDistricts))
                     shapeProperties = ShapeProperties.CommunityDistricts.GetAttribute<ShapeAttributes>();
+                else if (key == nameof(ShapeProperties.DSNYDistricts))
+                    shapeProperties = ShapeProperties.DSNYDistricts.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.HistoricDistricts))
                     shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttributes>();
                 else if (key == nameof(ShapeProperties.Neighborhoods))
@@ -184,6 +186,7 @@ namespace MicroService.WebApi
             // Feature Service Lookups
             services.AddScoped<BoroughBoundariesService>();
             services.AddScoped<CommunityDistrictsService>();
+            services.AddScoped<DSNYDistrictsService>();
             services.AddScoped<HistoricDistrictService>();
             services.AddScoped<NeighborhoodsService<NeighborhoodShape>>();
             services.AddScoped<NeighborhoodTabulationAreasService>();
@@ -200,6 +203,7 @@ namespace MicroService.WebApi
                 {
                     nameof(ShapeProperties.BoroughBoundaries) => serviceProvider.GetService<BoroughBoundariesService>(),
                     nameof(ShapeProperties.CommunityDistricts) => serviceProvider.GetService<CommunityDistrictsService>(),
+                    nameof(ShapeProperties.DSNYDistricts) => serviceProvider.GetService<DSNYDistrictsService>(),
                     nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
                     nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService<NeighborhoodShape>>(),
                     nameof(ShapeProperties.NeighborhoodTabulationAreas) => serviceProvider.GetService<NeighborhoodTabulationAreasService>(),
