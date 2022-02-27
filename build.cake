@@ -8,16 +8,15 @@
 #tool nuget:?package=MSBuild.SonarQube.Runner.Tool&version=4.8.0
 #tool nuget:?package=xunit.runner.console&version=2.4.1
 #tool nuget:?package=xunit.runner.visualstudio&version=2.4.3
-#tool nuget:?package=DocFx.Console&version=2.56.2
+#tool nuget:?package=DocFx.Console&version=2.58.9
 
 //////////////////////////////////////////////////////////////////////
 // ADDINS
 //////////////////////////////////////////////////////////////////////
 
 #addin nuget:?package=Cake.MiniCover&version=0.29.0-next20180721071547&prerelease
-#addin nuget:?package=Cake.Sonar&version=1.1.25
-#addin nuget:?package=Cake.DocFx&version=0.13.1
-
+#addin nuget:?package=Cake.Sonar&version=1.1.29
+#addin nuget:?package=Cake.DocFx&version=1.0.0
 SetMiniCoverToolsProject("./build/tools.csproj");
 
 //////////////////////////////////////////////////////////////////////
@@ -112,7 +111,7 @@ Task("Test")
         var projects = GetFiles("./test/**/*.csproj");
         foreach(var project in projects)
         {
-           Information("Testing project " + project);  
+           Information("Testing project " + project);
            DotNetCoreTest(project.FullPath, new DotNetCoreTestSettings
            {
                Configuration = configuration,
@@ -127,10 +126,10 @@ Task("Test")
 
 Task("Coverage")
    .IsDependentOn("Test")
-   .Does(() => 
+   .Does(() =>
    {
-        Information("Code Coverage");  
-        MiniCover(tool => 
+        Information("Code Coverage");
+        MiniCover(tool =>
         {
             foreach(var project in GetFiles("./test/**/*.csproj"))
             {
@@ -167,7 +166,7 @@ Task("Publish")
 
 //Task("Generate-Docs")
 //    .IsDependentOn("Clean")
-//    .Does(() => 
+//    .Does(() =>
 //   {
 //       DocFxBuild("./docfx/docfx.json");
 //       Zip("./docfx/_site/", "./artifacts/docfx.zip");
@@ -177,7 +176,7 @@ Task("Clean-Sonarqube")
   .WithCriteria(BuildSystem.IsLocalBuild)
   .Does(()=>{
     CleanDirectory(sonarDirectory);
-}); 
+});
 
 
 Task("SonarBegin")
@@ -191,9 +190,9 @@ Task("SonarBegin")
         .Append(Settings.SonarExcludeDuplications)
     });
 });
-  
+
 Task("SonarEnd")
-    .Does(() => { 
+    .Does(() => {
         SonarEnd(new SonarEndSettings{});
     });
 
@@ -217,7 +216,7 @@ Task("Pack")
 Task("Push-Myget")
     .IsDependentOn("Pack")
     .Does(() => {
-        var pushSettings = new DotNetCoreNuGetPushSettings 
+        var pushSettings = new DotNetCoreNuGetPushSettings
         {
             Source = Settings.MyGetSource,
             ApiKey = mygetApiKey
@@ -226,19 +225,19 @@ Task("Push-Myget")
         Information($"artifactsDirectory \"{artifactsDirectory}\".");
 
         var packages = GetFiles("./artifacts/*.nupkg");
-        foreach(var package in packages) 
+        foreach(var package in packages)
         {
-            if(!IsNuGetPublished(package)) 
+            if(!IsNuGetPublished(package))
             {
                 Information($"Publishing \"{package}\".");
                 DotNetCoreNuGetPush(package.FullPath, pushSettings);
             }
             else {
                 Information($"Bypassing publishing \"{package}\" as it is already published.");
-            }    
+            }
         }
 });
-    
+
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
