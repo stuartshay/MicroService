@@ -7,7 +7,7 @@ env:
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
   DH_DOCKER_IMAGE: stuartshay/microservice-api
   DOCKER_FILE: docker/microservice-api-multi.dockerfile/Dockerfile
-  DOCKER_IMAGE_TAG: 5.1-buildx-${{ github.sha }}
+  DOCKER_IMAGE_TAG: 6.0.1-buildx-${{ github.sha }}
   DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
   BUILD_NUMBER: ${{ github.sha }}
   ASPNETCORE_ENVIRONMENT: CloudRun
