@@ -1,6 +1,6 @@
-## Docker Files 
+## Docker Files
 
-### Local Mode 
+### Local Mode
 ```
 cd docker
 docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml -f docker-compose-logging.yml -f docker-compose-tracing.yml pull
@@ -16,7 +16,8 @@ docker volume prune
 ### Cluster Mode
 ```
 cd docker
-docker-compose -f docker-compose-cluser.yml --scale api=4
+docker-compose -f docker-compose-cluster.yml pull
+docker-compose -f docker-compose-cluster.yml up --scale api=4
 ```
 
 ## Grafana UI
@@ -51,12 +52,12 @@ https://prometheus.io/
 ![](../assets/prometheus.png)
 
 
-### Tag & Push Google Cloud Repository     
+### Tag & Push Google Cloud Repository
 
 Tag
 ```
 docker tag  5eab36ab4873  \
-us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-build.113   
+us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api:5.0.1-build.113
 ```
 
 Push
