@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  
+
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <DotNetCliToolReference Include="MiniCover" Version="2.0.0-ci-*" />
+    <DotNetCliToolReference Include="MiniCover" Version="3.4.3" />
   </ItemGroup>
 
   <PropertyGroup>
