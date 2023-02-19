@@ -1,15 +1,17 @@
 name: Build/Test/Deploy
 env:
+  DOCKER_REPOSITORY: stuartshay/microservice-api
+  DOCKER_REPOSITORY_IMAGE: stuartshay/microservice-api
+  DOCKER_IMAGE_TAG: 7.0.${{ github.run_number }}
+  BUILD_NUMBER: ${{ github.run_number }}
+  DOCKER_FILE: docker/microservice-api-multi.dockerfile/Dockerfile
+  BRANCH_NAME: '${{ github.ref_name }}'
+  GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
+  ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   SERVICE: microservice-api
   REGION: us-east4
-  ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
-  GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/velvety-byway-327718/microservice-api/microservice-api
-  DH_DOCKER_IMAGE: stuartshay/microservice-api
-  DOCKER_FILE: docker/microservice-api-multi.dockerfile/Dockerfile
-  DOCKER_IMAGE_TAG: 6.0.${{ github.run_number }}-buildx-${{ github.sha }}
   DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
-  BUILD_NUMBER: ${{ github.run_number }}
   ASPNETCORE_ENVIRONMENT: CloudRun
 
 on:
@@ -18,12 +20,8 @@ on:
     paths:
       - 'src/**'
       - 'test/**'
-      - '.github/workflows/actions.yml'
     branches:
       - master
-      - develop
-      - 'feature/**'
-      - 'fix/**'
 
 jobs:
   build:
@@ -32,7 +30,7 @@ jobs:
       dotnet: ${{ steps.dotnet-version.outputs.dotnet }}
     strategy:
       matrix:
-        dotnet: ['6.0.x']
+        dotnet: ['7.0.x']
 
     steps:
       - id: dotnet-version
@@ -72,7 +70,7 @@ jobs:
           build-args: |
             BUILD_NUMBER=${{ env.BUILD_NUMBER }}
           file: ${{ env.DOCKER_FILE }}
-          tags: ${{ env.DH_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}, ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
+          tags: ${{ env.DOCKER_REPOSITORY_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}, ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
           outputs: type=docker,dest=image.tar
           cache-from: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache
           cache-to: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache,mode=max
