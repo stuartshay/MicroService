@@ -12,7 +12,6 @@ env:
   SERVICE: microservice-api
   REGION: us-east4
   DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
-  BUILD_NUMBER: ${{ github.run_number }}
   ASPNETCORE_ENVIRONMENT: CloudRun
 
 on:
