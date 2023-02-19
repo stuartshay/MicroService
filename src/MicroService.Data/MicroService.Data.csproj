@@ -13,8 +13,4 @@
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
   </ItemGroup>
 
-<PropertyGroup>
-  <ProjectGuid>{E7416C7C-91B7-4E4D-AAE7-9A6FAF4058B8}</ProjectGuid>
-</PropertyGroup>
-
 </Project>

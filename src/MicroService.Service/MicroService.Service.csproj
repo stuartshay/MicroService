@@ -7,21 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="27.2.1" />
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
     <PackageReference Include="ProjNET4GeoAPI" Version="1.4.1" />
-    <PackageReference Include="NetTopologySuite" Version="2.4.0" />
+    <PackageReference Include="NetTopologySuite" Version="2.5.0" />
     <PackageReference Include="NetTopologySuite.Features" Version="2.1.0" />
-    <PackageReference Include="NetTopologySuite.IO.ShapeFile" Version="2.0.0" />
+    <PackageReference Include="NetTopologySuite.IO.ShapeFile" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MicroService.Data\MicroService.Data.csproj" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <ProjectGuid>{9A19103F-16F7-4668-BE54-9A1E7A4F7962}</ProjectGuid>
-  </PropertyGroup>
 
 </Project>
