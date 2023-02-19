@@ -1,7 +1,0 @@
-**/*.pdb
-launchSettings.json
-
-**/obj/**/*
-**/obj
-
-
