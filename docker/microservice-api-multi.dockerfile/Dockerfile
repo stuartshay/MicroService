@@ -1,5 +1,5 @@
 # Build Stage
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
 
 ARG BUILD_NUMBER=0
 ENV BUILD_NUMBER ${BUILD_NUMBER}
@@ -29,7 +29,7 @@ RUN echo $BUILD_NUMBER
 RUN dotnet publish MicroService.WebApi.csproj -o /publish -c Release -f net6.0
 
 # Release Stage
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
 
 # Shape Files
 COPY files  /files
