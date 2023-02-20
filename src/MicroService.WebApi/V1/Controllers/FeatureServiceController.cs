@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using App.Metrics;
-using MicroService.Service.Helpers;
+﻿using MicroService.Service.Helpers;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
-using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using static MicroService.WebApi.Startup;
 
 namespace MicroService.WebApi.V1.Controllers
@@ -28,17 +26,15 @@ namespace MicroService.WebApi.V1.Controllers
     {
         private readonly ShapeServiceResolver _shapeServiceResolver;
 
-        private readonly IMetrics _metrics;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureServiceController"/> class.
         /// </summary>
         /// <param name="shapeServiceResolver"></param>
         /// <param name="metrics"></param>
-        public FeatureServiceController(ShapeServiceResolver shapeServiceResolver, IMetrics metrics)
+        public FeatureServiceController(ShapeServiceResolver shapeServiceResolver)
         {
             _shapeServiceResolver = shapeServiceResolver;
-            _metrics = metrics;
         }
 
         /// <summary>
@@ -51,14 +47,13 @@ namespace MicroService.WebApi.V1.Controllers
         public ActionResult<object> Get()
         {
             var result = EnumHelper.EnumToList<ShapeProperties>().ToList().Select(j => new
-                {
-                    key = j.ToString(),
-                    description = j.GetEnumDescription(),
-                    fileName = j.GetAttribute<ShapeAttributes>().FileName,
-                    directory = j.GetAttribute<ShapeAttributes>().Directory,
-                });
+            {
+                key = j.ToString(),
+                description = j.GetEnumDescription(),
+                fileName = j.GetAttribute<ShapeAttributes>().FileName,
+                directory = j.GetAttribute<ShapeAttributes>().Directory,
+            });
 
-            _metrics.Measure.Counter.Increment(MetricsRegistry.GetShapesCounter);
             return Ok(result);
         }
 
@@ -99,7 +94,6 @@ namespace MicroService.WebApi.V1.Controllers
                 FieldsList = databaseProperties.Fields.Select(f => new { f.Name, f.Type.FullName }),
             };
 
-            _metrics.Measure.Counter.Increment(MetricsRegistry.GetShapePropertiesCounter);
             return Ok(result);
         }
 
@@ -134,8 +128,6 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult<object>> GetFeatureLookup([FromQuery] FeatureRequestModel request)
         {
-            _metrics.Measure.Counter.Increment(MetricsRegistry.GetFeatureLookupCounter);
-
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();
 
@@ -147,7 +139,6 @@ namespace MicroService.WebApi.V1.Controllers
             if (results == null)
                 return NotFound();
 
-            _metrics.Measure.Counter.Increment(MetricsRegistry.GetFeatureTypeLookupCounter(request.Key));
 
             return await Task.FromResult(Ok(results));
         }

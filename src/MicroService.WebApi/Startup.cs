@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using App.Metrics;
-using HealthChecks.UI.Client;
+﻿using HealthChecks.UI.Client;
 using MicroService.Data.Repository;
 using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
@@ -28,11 +23,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using OpenTelemetry;
 using OpenTelemetry.Exporter;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace MicroService.WebApi
 {
@@ -108,11 +105,11 @@ namespace MicroService.WebApi
 
                     if (commonConfig.JaegerConfiguration.Enabled)
                     {
-                      builder.AddJaegerExporter(o =>
-                      {
-                          o.AgentHost = commonConfig.JaegerConfiguration.Host;
-                          o.AgentPort = commonConfig.JaegerConfiguration.Port;
-                      });
+                        builder.AddJaegerExporter(o =>
+                        {
+                            o.AgentHost = commonConfig.JaegerConfiguration.Host;
+                            o.AgentPort = commonConfig.JaegerConfiguration.Port;
+                        });
                     }
 
                     if (HostingEnvironment.IsDevelopment())
@@ -121,18 +118,6 @@ namespace MicroService.WebApi
                     }
                 });
 
-            var metrics = AppMetrics.CreateDefaultBuilder()
-                .OutputMetrics
-                .AsPrometheusPlainText()
-                .Build();
-
-            MetricsHelpers.SetMetricsCustomTag(metrics, "OSDescription", System.Runtime.InteropServices.RuntimeInformation.OSDescription);
-            MetricsHelpers.SetMetricsCustomTag(metrics, "instance", Dns.GetHostName());
-
-            metrics.Options.ReportingEnabled = true;
-            services.AddMetrics(metrics);
-            services.AddAppMetricsHealthPublishing();
-            services.AddAppMetricsCollectors();
 
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerConfiguration();
@@ -282,7 +267,6 @@ namespace MicroService.WebApi
 
             app.UseRouting();
             app.UseCors();
-            app.UseMetricsEndpoint();
 
             app.UseEndpoints(endpoints =>
             {
