@@ -3,8 +3,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
-		<IsPackable>false</IsPackable>
-		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
 		<NoWarn>$(NoWarn),1701;1702;1705</NoWarn>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<UserSecretsId>e6ef6136-7df3-42dd-a53a-8522668d24d7</UserSecretsId>
@@ -14,21 +12,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="dotnet.css" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Content Include="dotnet.css">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="App.Metrics" Version="4.3.0" />
-		<PackageReference Include="App.Metrics.App.All" Version="4.3.0" />
-		<PackageReference Include="App.Metrics.AspNetCore" Version="4.3.0" />
-		<PackageReference Include="App.Metrics.Extensions.Collectors" Version="4.3.0" />
-		<PackageReference Include="App.Metrics.Formatters.Prometheus" Version="4.3.0" />
 		<PackageReference Include="CronExpressionDescriptor" Version="2.19.0" />
 		<PackageReference Include="Cronos" Version="0.7.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
@@ -48,6 +31,16 @@
 		<PackageReference Include="OpenTelemetry.Exporter.Jaeger" Version="1.4.0-rc.4" />
 		<PackageReference Include="OpenTelemetry" Version="1.4.0-rc.4" />
 		<PackageReference Include="OpenTelemetry.Api" Version="1.4.0-rc.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="dotnet.css" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="dotnet.css">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 	<ItemGroup>
