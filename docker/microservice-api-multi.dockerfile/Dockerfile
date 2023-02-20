@@ -29,7 +29,7 @@ WORKDIR /app/src/MicroService.WebApi
 
 # Publish ${BUILD_NUMBER}
 RUN echo $BUILD_NUMBER
-RUN setversion 7.0.1.${BUILD_NUMBER}
+#RUN setversion 7.0.1.${BUILD_NUMBER}
 RUN dotnet publish MicroService.WebApi.csproj -o /publish -c Release -f net7.0
 
 
