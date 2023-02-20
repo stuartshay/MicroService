@@ -1,14 +1,10 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using App.Metrics;
-using App.Metrics.AspNetCore;
-using App.Metrics.Formatters.Prometheus;
-using MicroService.Common.Logging;
+﻿using MicroService.Common.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using System;
+using System.IO;
 
 namespace MicroService.WebApi
 {
@@ -17,10 +13,6 @@ namespace MicroService.WebApi
     /// </summary>
     public static class Program
     {
-        /// <summary>
-        ///  Program
-        /// </summary>
-        public static IMetricsRoot Metrics { get; set; }
 
         /// <summary>
         /// Configuration
@@ -37,10 +29,6 @@ namespace MicroService.WebApi
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            Metrics = AppMetrics.CreateDefaultBuilder()
-                .OutputMetrics.AsPrometheusPlainText()
-                .Build();
-
             BuildWebHost(args).Run();
         }
 
@@ -53,21 +41,9 @@ namespace MicroService.WebApi
            Host.CreateDefaultBuilder(args)
                .ConfigureWebHostDefaults(webBuilder =>
                    {
-                     webBuilder.UseStartup<Startup>();
+                       webBuilder.UseStartup<Startup>();
                    })
-                   .UseMetrics(options =>
-                    {
-                        options.EndpointOptions = endpointsOptions =>
-                        {
-                            endpointsOptions.MetricsTextEndpointEnabled = true;
-                            endpointsOptions.EnvironmentInfoEndpointEnabled = true;
-                            endpointsOptions.MetricsEndpointEnabled = true;
-
-                            endpointsOptions.MetricsTextEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
-                            endpointsOptions.MetricsEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
-                        };
-                    })
-                   .UseSerilog(Logging.ConfigureLogger)
+               .UseSerilog(Logging.ConfigureLogger)
                    .Build();
     }
 }
