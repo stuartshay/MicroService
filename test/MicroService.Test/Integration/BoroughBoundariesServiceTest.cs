@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Test.Fixture;
 using NetTopologySuite.Features;

@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MicroService.WebApi.V2.Models
 {
@@ -31,6 +30,6 @@ namespace MicroService.WebApi.V2.Models
         /// </summary>
         /// <value>The name of the customer that placed the order.</value>
         [Required]
-        public string Customer { get; set; }
+        public string? Customer { get; set; }
     }
 }

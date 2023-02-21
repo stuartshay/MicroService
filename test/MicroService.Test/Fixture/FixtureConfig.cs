@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace MicroService.Test.Fixture
 {
@@ -18,14 +16,15 @@ namespace MicroService.Test.Fixture
                 .AddEnvironmentVariables()
                 .Build();
 
-            DbConnection = builder.GetConnectionString("PostgreSql");
+            DbConnection = builder.GetConnectionString("PostgreSql")!;
             Console.WriteLine("DbConnection:" + DbConnection);
         }
 
-        public string DbConnection { get; }
+        public string DbConnection { get; } = null!;
 
         public virtual void Dispose()
         {
+            GC.SuppressFinalize(this);
         }
     }
 }
