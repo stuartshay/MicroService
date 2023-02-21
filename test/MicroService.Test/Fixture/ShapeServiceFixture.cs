@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using MicroService.Service.Configuration;
+﻿using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
@@ -21,14 +19,14 @@ namespace MicroService.Test.Fixture
                 .AddMemoryCache()
                 .AddScoped<ShapefileDataReaderResolver>(serviceProvider => key =>
                 {
-                    ShapeAttributes shapeProperties = null;
+                    ShapeAttributes shapeProperties = null!;
                     if (key == nameof(ShapeProperties.BoroughBoundaries))
                         shapeProperties = ShapeProperties.BoroughBoundaries.GetAttribute<ShapeAttributes>();
-                    
+
                     var options = serviceProvider.GetService<IOptions<ApplicationOptions>>();
                     var cache = serviceProvider.GetService<IMemoryCache>();
 
-                    var shapeDirectory = $"{Path.Combine(options.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties.Directory, shapeProperties.FileName)}";
+                    var shapeDirectory = $"{Path.Combine(options!.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties!.Directory, shapeProperties.FileName)}";
                     string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
                     return new CachedShapefileDataReader(cache, key, shapePath);

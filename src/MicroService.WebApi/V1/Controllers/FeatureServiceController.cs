@@ -39,7 +39,7 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(typeof(IEnumerable<string>), 200)]
         public ActionResult<object> Get()
         {
-            var result = EnumHelper.EnumToList<ShapeProperties>().ToList().Select(j => new
+            var result = EnumHelper.EnumToList<ShapeProperties>().Select(j => new
             {
                 key = j.ToString(),
                 description = j.GetEnumDescription(),

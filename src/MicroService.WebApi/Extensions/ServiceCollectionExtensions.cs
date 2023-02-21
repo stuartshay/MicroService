@@ -28,7 +28,6 @@ namespace MicroService.WebApi.Extensions
             var config = configuration.Get<ApplicationOptions>();
             var shapeCronExpressionDescription = CronExpressionDescriptor.ExpressionDescriptor.GetDescription(config!.ShapeConfiguration.CronExpression);
 
-            //Console.WriteLine($"Environment: {environment?.EnvironmentName}");
             Console.WriteLine($"PostgreSql: {config.ConnectionStrings.PostgreSql}");
             Console.WriteLine($"ShapeRootDirectory Config: {config.ShapeConfiguration.ShapeRootDirectory}");
             Console.WriteLine($"ShapeRootDirectory: {Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), config.ShapeConfiguration.ShapeRootDirectory))}");
@@ -164,8 +163,6 @@ namespace MicroService.WebApi.Extensions
         /// <returns></returns>
         public static IServiceCollection AddCustomControllers(this IServiceCollection services, IConfiguration configuration)
         {
-            var config = configuration.Get<ApplicationOptions>();
-
             services.AddControllers(setupAction => { }).ConfigureApiBehaviorOptions(setupAction =>
              {
                  setupAction.InvalidModelStateResponseFactory = context =>
@@ -210,11 +207,12 @@ namespace MicroService.WebApi.Extensions
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         /// <typeparam name="T">CronJobService Type</typeparam>
         /// <param name="services"></param>
         /// <param name="options"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         public static IServiceCollection AddCronJob<T>(this IServiceCollection services, Action<IScheduleConfig<T>> options)
             where T : CronJobService
@@ -235,15 +233,6 @@ namespace MicroService.WebApi.Extensions
             services.AddHostedService<T>();
 
             return services;
-        }
-
-        private static string GetXmlCommentsPath()
-        {
-            var basePath = AppContext.BaseDirectory;
-            var assemblyName = Assembly.GetEntryAssembly()?.GetName().Name;
-            var fileName = Path.GetFileName(assemblyName + ".xml");
-
-            return Path.Combine(basePath, fileName);
         }
     }
 }

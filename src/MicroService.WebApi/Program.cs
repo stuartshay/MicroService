@@ -199,7 +199,7 @@ void AddMappings()
 void AddHealthCheckServices()
 {
     var config = configuration.Get<ApplicationOptions>();
-    var shapeDirectory = config.ShapeConfiguration.ShapeRootDirectory;
+    var shapeDirectory = config!.ShapeConfiguration.ShapeRootDirectory;
     string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
     services
