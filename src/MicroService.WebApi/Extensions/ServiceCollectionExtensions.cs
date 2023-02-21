@@ -1,20 +1,15 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using MicroService.Common.Constants;
-using MicroService.Common.Health;
-using MicroService.Service.Configuration;
+﻿using MicroService.Service.Configuration;
 using MicroService.WebApi.Extensions.Constants;
-using MicroService.WebApi.Extensions.Swagger;
-using MicroService.WebApi.Services;
 using MicroService.WebApi.Services.Cron;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using MicroService.WebApi.V1.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+using OpenTelemetry.Exporter;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using Swashbuckle.AspNetCore.Filters;
+using System.Reflection;
 
 namespace MicroService.WebApi.Extensions
 {
@@ -28,13 +23,12 @@ namespace MicroService.WebApi.Extensions
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        /// <param name="environment"></param>
-        public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment environment)
+        public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             var config = configuration.Get<ApplicationOptions>();
-            var shapeCronExpressionDescription = CronExpressionDescriptor.ExpressionDescriptor.GetDescription(config.ShapeConfiguration.CronExpression);
+            var shapeCronExpressionDescription = CronExpressionDescriptor.ExpressionDescriptor.GetDescription(config!.ShapeConfiguration.CronExpression);
 
-            Console.WriteLine($"Environment: {environment?.EnvironmentName}");
+            //Console.WriteLine($"Environment: {environment?.EnvironmentName}");
             Console.WriteLine($"PostgreSql: {config.ConnectionStrings.PostgreSql}");
             Console.WriteLine($"ShapeRootDirectory Config: {config.ShapeConfiguration.ShapeRootDirectory}");
             Console.WriteLine($"ShapeRootDirectory: {Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), config.ShapeConfiguration.ShapeRootDirectory))}");
@@ -90,35 +84,76 @@ namespace MicroService.WebApi.Extensions
         /// <param name="services"></param>
         public static void AddSwaggerConfiguration(this IServiceCollection services)
         {
-            // Swagger
-            _ = services.AddSwaggerGen(
-               options =>
-               {
-                   options.OperationFilter<SwaggerDefaultValues>();
-                   options.IncludeXmlComments(GetXmlCommentsPath());
-               });
+            services.AddSwaggerGen(c =>
+            {
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "oauth2 Access token to authenticate and authorize the user",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
+                var xmlFilePath = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
+
+                //c.EnableAnnotations();
+                //c.ExampleFilters();
+                c.IncludeXmlComments(xmlFilePath);
+            });
+
+            services.AddSwaggerExamplesFromAssemblies(Assembly.GetEntryAssembly());
+
         }
 
         /// <summary>
-        ///   Custom Health Check.
+        /// Open Telemetry Tracing Custom
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddCustomHealthCheck(this IServiceCollection services, IConfiguration configuration)
+        /// <param name="env"></param>
+        public static void AddOpenTelemetryTracingCustom(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
-            var config = configuration.Get<ApplicationOptions>();
+            var commonConfig = configuration.Get<MicroService.Common.Configuration.ApplicationOptions>();
+            if (commonConfig!.JaegerConfiguration.Enabled)
+            {
+                services.AddOpenTelemetryTracing(
+                    builder =>
+                    {
+                        _ = builder
+                            .SetResourceBuilder(ResourceBuilder.CreateDefault()
+                                .AddService(env.ApplicationName))
+                            .AddSource(nameof(FeatureServiceController))
+                            .AddAspNetCoreInstrumentation()
+                            .AddHttpClientInstrumentation();
 
-            var shapeDirectory = config.ShapeConfiguration.ShapeRootDirectory;
-            string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
+                        if (commonConfig!.JaegerConfiguration.Enabled && commonConfig.JaegerConfiguration.RemoteAgentEnabled)
+                        {
+                            builder.AddJaegerExporter(o =>
+                            {
+                                o.AgentHost = commonConfig!.JaegerConfiguration.AgentHost;
+                                o.AgentPort = commonConfig!.JaegerConfiguration.AgentPort;
+                            });
+                        }
 
-            services.AddHealthChecks()
-                .AddCheck<VersionHealthCheck>("Version Health Check")
-                .AddCheck<CronJobServiceHealthCheck>("Cron Job Health Check", tags: new[] { HealthCheckType.ReadinessCheck.ToString() })
-                .AddFolderHealthCheck(shapePath, "Shape Root Directory")
-                .AddNpgSql(config.ConnectionStrings.PostgreSql);
-
-            return services;
+                        if (env.IsDevelopment())
+                        {
+                            builder.AddConsoleExporter(options => options.Targets = ConsoleExporterOutputTargets.Console);
+                        }
+                    });
+            }
         }
 
         /// <summary>
@@ -133,24 +168,24 @@ namespace MicroService.WebApi.Extensions
 
             services.AddControllers(setupAction => { }).ConfigureApiBehaviorOptions(setupAction =>
              {
-               setupAction.InvalidModelStateResponseFactory = context =>
-               {
-                  var problemDetails = new ValidationProblemDetails(context.ModelState)
-                  {
-                     Type = "https://courselibrary.com/modelvalidationproblem",
-                     Title = "One or more model validation errors occurred.",
-                     Status = StatusCodes.Status422UnprocessableEntity,
-                     Detail = "See the errors property for details.",
-                     Instance = context.HttpContext.Request.Path,
-                  };
+                 setupAction.InvalidModelStateResponseFactory = context =>
+                 {
+                     var problemDetails = new ValidationProblemDetails(context.ModelState)
+                     {
+                         Type = "https://courselibrary.com/modelvalidationproblem",
+                         Title = "One or more model validation errors occurred.",
+                         Status = StatusCodes.Status422UnprocessableEntity,
+                         Detail = "See the errors property for details.",
+                         Instance = context.HttpContext.Request.Path,
+                     };
 
-                  problemDetails.Extensions.Add("traceId", context.HttpContext.TraceIdentifier);
-                  return new UnprocessableEntityObjectResult(problemDetails)
-                      {
-                          ContentTypes = { "application/problem+json" },
-                      };
-                  };
-            });
+                     problemDetails.Extensions.Add("traceId", context.HttpContext.TraceIdentifier);
+                     return new UnprocessableEntityObjectResult(problemDetails)
+                     {
+                         ContentTypes = { "application/problem+json" },
+                     };
+                 };
+             });
 
             return services;
         }
@@ -160,7 +195,7 @@ namespace MicroService.WebApi.Extensions
         /// </summary>
         /// <param name="app"></param>
         /// <param name="provider"></param>
-        public static void ConfigureSwagger(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
+        public static void UseSwaggerCustom(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {
             app.UseSwagger();
             app.UseSwaggerUI(

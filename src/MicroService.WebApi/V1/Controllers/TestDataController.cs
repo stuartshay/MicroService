@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using MicroService.Data.Models;
+﻿using MicroService.Data.Models;
 using MicroService.Data.Repository;
 using MicroService.Service.Constants;
 using MicroService.Service.Interfaces;

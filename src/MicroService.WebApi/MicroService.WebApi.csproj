@@ -3,6 +3,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 		<NoWarn>$(NoWarn),1701;1702;1705</NoWarn>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<UserSecretsId>e6ef6136-7df3-42dd-a53a-8522668d24d7</UserSecretsId>
@@ -17,6 +19,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.6" />
 	</ItemGroup>
 
 	<ItemGroup>

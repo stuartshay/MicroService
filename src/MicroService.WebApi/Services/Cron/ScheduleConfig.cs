@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MicroService.WebApi.Services.Cron
+﻿namespace MicroService.WebApi.Services.Cron
 {
     /// <summary>
     ///
@@ -8,7 +6,7 @@ namespace MicroService.WebApi.Services.Cron
     /// <typeparam name="T"></typeparam>
     public interface IScheduleConfig<T>
     {
-        string CronExpression { get; set; }
+        string? CronExpression { get; set; }
 
         TimeZoneInfo TimeZoneInfo { get; set; }
     }
@@ -20,9 +18,9 @@ namespace MicroService.WebApi.Services.Cron
     public class ScheduleConfig<T> : IScheduleConfig<T>
     {
         /// <inheritdoc/>
-        public string CronExpression { get; set; }
+        public string? CronExpression { get; set; }
 
         /// <inheritdoc/>
-        public TimeZoneInfo TimeZoneInfo { get; set; }
+        public TimeZoneInfo? TimeZoneInfo { get; set; }
     }
 }

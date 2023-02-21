@@ -1,13 +1,9 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Cronos;
-using Microsoft.Extensions.Hosting;
+﻿using Cronos;
 
 namespace MicroService.WebApi.Services.Cron
 {
     /// <summary>
-    /// Cron JobS ervice
+    /// Cron Job Service
     /// </summary>
     public abstract class CronJobService : IHostedService, IDisposable
     {

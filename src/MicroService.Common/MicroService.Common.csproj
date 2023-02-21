@@ -1,30 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	  <TargetFramework>net7.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 
 	<ItemGroup>
-
-		<PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="5.0.2" />
-		<PackageReference Include="AspNetCore.HealthChecks.System" Version="5.0.1" />
-		<PackageReference Include="AspNetCore.HealthChecks.Uris" Version="5.0.1" />
-
-		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="5.0.1" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="5.0.1" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="5.0.1" />
-
-
-
-
-
+		<PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="6.0.2" />
+		<PackageReference Include="AspNetCore.HealthChecks.System" Version="6.0.5" />
+		<PackageReference Include="AspNetCore.HealthChecks.Uris" Version="6.0.3" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="6.0.5" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.5" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.5" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
-
 		<PackageReference Include="Flurl" Version="3.0.7" />
+		<PackageReference Include="prometheus-net.AspNetCore" Version="8.0.0" />
+		<PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="8.0.0" />
 		<PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
 		<PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
 		<PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
