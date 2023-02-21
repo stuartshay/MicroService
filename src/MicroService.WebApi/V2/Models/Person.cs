@@ -19,7 +19,7 @@ namespace MicroService.WebApi.V2.Models
         /// <value>The person's first name.</value>
         [Required]
         [StringLength(25)]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         /// <summary>
         /// Gets or sets the last name of a person.
@@ -27,12 +27,12 @@ namespace MicroService.WebApi.V2.Models
         /// <value>The person's last name.</value>
         [Required]
         [StringLength(25)]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         /// <summary>
         /// Gets or sets the email address for a person.
         /// </summary>
         /// <value>The person's email address.</value>
-        public string Email { get; set; }
+        public string? Email { get; set; }
     }
 }
