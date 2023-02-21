@@ -2,10 +2,15 @@
 {
     public class JaegerConfiguration
     {
-        public string Host { get; set; }
+        public string AgentHost { get; set; }
 
-        public int Port { get; set; }
+        public string ServiceName { get; set; }
+
+        public int AgentPort { get; set; }
 
         public bool Enabled { get; set; }
+
+        public bool RemoteAgentEnabled { get; set; }
+
     }
 }

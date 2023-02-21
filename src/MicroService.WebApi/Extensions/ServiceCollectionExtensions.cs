@@ -1,9 +1,13 @@
 ﻿using MicroService.Service.Configuration;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Services.Cron;
+using MicroService.WebApi.V1.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.OpenApi.Models;
+using OpenTelemetry.Exporter;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using Swashbuckle.AspNetCore.Filters;
 using System.Reflection;
 
@@ -114,6 +118,43 @@ namespace MicroService.WebApi.Extensions
 
         }
 
+        /// <summary>
+        /// Open Telemetry Tracing Custom
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <param name="env"></param>
+        public static void AddOpenTelemetryTracingCustom(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
+        {
+            var commonConfig = configuration.Get<MicroService.Common.Configuration.ApplicationOptions>();
+            if (commonConfig!.JaegerConfiguration.Enabled)
+            {
+                services.AddOpenTelemetryTracing(
+                    builder =>
+                    {
+                        _ = builder
+                            .SetResourceBuilder(ResourceBuilder.CreateDefault()
+                                .AddService(env.ApplicationName))
+                            .AddSource(nameof(FeatureServiceController))
+                            .AddAspNetCoreInstrumentation()
+                            .AddHttpClientInstrumentation();
+
+                        if (commonConfig!.JaegerConfiguration.Enabled && commonConfig.JaegerConfiguration.RemoteAgentEnabled)
+                        {
+                            builder.AddJaegerExporter(o =>
+                            {
+                                o.AgentHost = commonConfig!.JaegerConfiguration.AgentHost;
+                                o.AgentPort = commonConfig!.JaegerConfiguration.AgentPort;
+                            });
+                        }
+
+                        if (env.IsDevelopment())
+                        {
+                            builder.AddConsoleExporter(options => options.Targets = ConsoleExporterOutputTargets.Console);
+                        }
+                    });
+            }
+        }
 
         /// <summary>
         ///  Custom Controllers
