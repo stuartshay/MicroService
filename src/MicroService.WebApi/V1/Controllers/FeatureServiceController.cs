@@ -5,11 +5,6 @@ using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using static MicroService.WebApi.Startup;
 
 namespace MicroService.WebApi.V1.Controllers
 {
@@ -26,12 +21,10 @@ namespace MicroService.WebApi.V1.Controllers
     {
         private readonly ShapeServiceResolver _shapeServiceResolver;
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureServiceController"/> class.
         /// </summary>
         /// <param name="shapeServiceResolver"></param>
-        /// <param name="metrics"></param>
         public FeatureServiceController(ShapeServiceResolver shapeServiceResolver)
         {
             _shapeServiceResolver = shapeServiceResolver;
