@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
+﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace MicroService.WebApi.Extensions
 {
@@ -22,8 +17,8 @@ namespace MicroService.WebApi.Extensions
         /// <param name="tags"></param>
         /// <param name="timeout"></param>
         /// <returns></returns>
-        public static IHealthChecksBuilder AddFolderHealthCheck(this IHealthChecksBuilder builder, string folderPath, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default, TimeSpan? timeout = default) => builder.Add(new HealthCheckRegistration(
-                name ?? "folder",
+        public static IHealthChecksBuilder AddFolderHealthCheck(this IHealthChecksBuilder builder, string folderPath, string? name = default, HealthStatus? failureStatus = default, IEnumerable<string>? tags = default, TimeSpan? timeout = default) => builder.Add(new HealthCheckRegistration(
+                name ?? "Folder Health Check",
                 sp => new FolderHealthCheck(folderPath),
                 failureStatus,
                 tags,

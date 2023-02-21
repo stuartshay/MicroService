@@ -1,6 +1,4 @@
 ﻿using MicroService.Service.Helpers;
-using MicroService.WebApi.Extensions.Constants;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MicroService.WebApi.V1.Controllers
@@ -11,7 +9,7 @@ namespace MicroService.WebApi.V1.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    [EnableCors(ApiConstants.CorsPolicy)]
+    // [EnableCors(ApiConstants.CorsPolicy)]
     public class TransformationServiceController : ControllerBase
     {
         /// <summary>

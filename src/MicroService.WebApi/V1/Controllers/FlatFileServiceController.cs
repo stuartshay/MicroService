@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using MicroService.Service.Helpers;
+﻿using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.FlatFileModels;
 using MicroService.WebApi.Extensions.Constants;
@@ -19,13 +16,13 @@ namespace MicroService.WebApi.V1.Controllers
     [EnableCors(ApiConstants.CorsPolicy)]
     public class FlatFileServiceController : ControllerBase
     {
-        private readonly Startup.FlatFileResolver _flatFileResolver;
+        private readonly FlatFileResolver _flatFileResolver;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FlatFileServiceController"/> class.
         /// </summary>
         /// <param name="flatFileResolver"></param>
-        public FlatFileServiceController(Startup.FlatFileResolver flatFileResolver)
+        public FlatFileServiceController(FlatFileResolver flatFileResolver)
         {
             _flatFileResolver = flatFileResolver;
         }
