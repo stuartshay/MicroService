@@ -27,6 +27,7 @@ using System.Text.Json;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 var services = builder.Services;
+var env = builder.Environment;
 
 SetupLogger();
 SetupConfiguration();
@@ -71,6 +72,9 @@ void SetupServices()
     services.AddCustomApiVersioning();
 
     services.AddHttpContextAccessor();
+
+    // Open Telemetry Tracing
+    services.AddOpenTelemetryTracingCustom(configuration, env);
 
     services.AddMemoryCache();
     services.AddSingleton<CronJobServiceHealthCheck>();
