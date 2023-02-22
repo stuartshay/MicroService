@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using MicroService.Service.Helpers;
+﻿using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
+using System.Collections.Generic;
 
 namespace MicroService.Service.Services
 {
@@ -31,7 +31,7 @@ namespace MicroService.Service.Services
                     {
                         ParkName = f.Attributes["PARK_NAME"].ToString(),
                         ParkNumber = f.Attributes["PARKNUM"].ToString(),
-                        SourceId =  long.Parse(f.Attributes["SOURCE_ID"].ToString()),
+                        SourceId = long.Parse(f.Attributes["SOURCE_ID"].ToString()),
                         FeatureCode = int.Parse(f.Attributes["FEAT_CODE"].ToString()),
                         SubCode = int.Parse(f.Attributes["SUB_CODE"].ToString()),
                         LandUse = f.Attributes["LANDUSE"].ToString(),
@@ -40,11 +40,16 @@ namespace MicroService.Service.Services
             }
 
             if (!model.ArePropertiesNotNull())
-            { 
+            {
                 return null;
             }
 
             return model;
+        }
+
+        public override IEnumerable<ParkShape> GetFeatureLookup(List<KeyValuePair<string, string>> features)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEnumerable<ParkShape> GetFeatureAttributes()

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using MicroService.Service.Models.Base;
+﻿using MicroService.Service.Models.Base;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
+using System.Collections.Generic;
 
 namespace MicroService.Service.Interfaces
 {
@@ -10,6 +10,8 @@ namespace MicroService.Service.Interfaces
         IReadOnlyCollection<Feature> GetFeatures();
 
         T GetFeatureLookup(double x, double y);
+
+        IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, string>> features);
 
         IEnumerable<T> GetFeatureAttributes();
 

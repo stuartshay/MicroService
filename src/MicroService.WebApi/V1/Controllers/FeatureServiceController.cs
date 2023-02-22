@@ -21,13 +21,17 @@ namespace MicroService.WebApi.V1.Controllers
     {
         private readonly ShapeServiceResolver _shapeServiceResolver;
 
+        private readonly ILogger<FeatureServiceController> _logger;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureServiceController"/> class.
         /// </summary>
         /// <param name="shapeServiceResolver"></param>
-        public FeatureServiceController(ShapeServiceResolver shapeServiceResolver)
+        /// <param name="logger"></param>
+        public FeatureServiceController(ShapeServiceResolver shapeServiceResolver, ILogger<FeatureServiceController> logger)
         {
             _shapeServiceResolver = shapeServiceResolver;
+            _logger = logger;
         }
 
         /// <summary>
@@ -46,6 +50,8 @@ namespace MicroService.WebApi.V1.Controllers
                 fileName = j.GetAttribute<ShapeAttributes>().FileName,
                 directory = j.GetAttribute<ShapeAttributes>().Directory,
             });
+
+            _logger.LogInformation("{@ShapeProperties}", result);
 
             return Ok(result);
         }
@@ -132,8 +138,37 @@ namespace MicroService.WebApi.V1.Controllers
             if (results == null)
                 return NotFound();
 
-
             return await Task.FromResult(Ok(results));
+        }
+
+
+        /// <summary>
+        ///  Get Feature Attribute Lookup
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("attributelookup", Name = "GetAttributeLookup")]
+        [Produces("application/json", Type = typeof(ShapeBase))]
+        [ProducesResponseType(typeof(ShapeBase), 200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public async Task<ActionResult<List<object>>> GetAttributeLookup([FromBody] FeatureAttributeLookupRequestModel request)
+        {
+            if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
+                return BadRequest();
+
+            var keys = request.Attributes!.Select(kv => kv.Key).ToList();
+            var service = _shapeServiceResolver(request?.Key!);
+            var fields = from f in service.GetShapeDatabaseProperties().Fields select f.Name;
+
+            var validItems = keys.All(x => fields.Contains(x));
+            if (!validItems)
+                return BadRequest();
+
+            var results = _shapeServiceResolver(request!.Key).GetFeatureLookup(request.Attributes);
+            if (results == null)
+                return NotFound();
+
+            return Ok(results);
         }
     }
 }

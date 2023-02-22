@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using MicroService.Service.Helpers;
+﻿using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
+using System.Collections.Generic;
 
 namespace MicroService.Service.Services
 {
@@ -43,6 +43,11 @@ namespace MicroService.Service.Services
             }
 
             return model;
+        }
+
+        public override IEnumerable<NypdSectorShape> GetFeatureLookup(List<KeyValuePair<string, string>> features)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEnumerable<NypdSectorShape> GetFeatureAttributes()

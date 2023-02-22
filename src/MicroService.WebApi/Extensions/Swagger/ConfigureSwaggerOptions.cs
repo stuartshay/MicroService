@@ -1,7 +1,5 @@
-﻿using System;
-using MicroService.WebApi.Extensions.Constants;
+﻿using MicroService.WebApi.Extensions.Constants;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;

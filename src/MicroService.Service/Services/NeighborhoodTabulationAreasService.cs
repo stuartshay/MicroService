@@ -36,7 +36,7 @@ namespace MicroService.Service.Services
                         NTA2020 = f.Attributes["NTA2020"].ToString(),
                         NTAName = f.Attributes["BoroCode"].ToString(),
                         NTAAbbrev = f.Attributes["NTAName"].ToString(),
-                        
+
                         NTAType = int.Parse(f.Attributes["NTAType"].ToString()),
 
 
@@ -53,6 +53,12 @@ namespace MicroService.Service.Services
             }
 
             return model;
+        }
+
+        public override IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureLookup(
+            List<KeyValuePair<string, string>> features)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureAttributes()
