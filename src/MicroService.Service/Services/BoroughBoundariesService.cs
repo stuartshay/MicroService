@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using MicroService.Service.Helpers;
+﻿using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MicroService.Service.Services
 {
@@ -42,6 +42,11 @@ namespace MicroService.Service.Services
             }
 
             return model;
+        }
+
+        public override IEnumerable<BoroughBoundaryShape> GetFeatureLookup(List<KeyValuePair<string, string>> features)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEnumerable<BoroughBoundaryShape> GetFeatureAttributes()

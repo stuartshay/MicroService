@@ -20,4 +20,5 @@
         /// </summary>
         public string? Key { get; set; }
     }
+
 }

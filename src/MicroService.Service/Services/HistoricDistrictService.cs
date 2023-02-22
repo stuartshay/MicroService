@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using MicroService.Data.Enum;
+﻿using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
+using System;
+using System.Collections.Generic;
 
 namespace MicroService.Service.Services
 {
@@ -47,6 +47,40 @@ namespace MicroService.Service.Services
             }
 
             return model;
+        }
+
+        public override IEnumerable<HistoricDistrictShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        {
+            var list = new List<HistoricDistrictShape>();
+
+            var features = GetFeatures();
+            foreach (var f in features)
+            {
+                var found = true;
+                foreach (var pair in attributes)
+                {
+                    if (f.Attributes[pair.Key] as string != pair.Value)
+                    {
+                        found = false;
+                        break;
+                    }
+                }
+
+                if (found)
+                {
+                    var borough = f.Attributes["BOROUGH"].ToString();
+                    var model = new HistoricDistrictShape
+                    {
+                        LPNumber = f.Attributes["LP_NUMBER"].ToString(),
+                        AreaName = f.Attributes["AREA_NAME"].ToString(),
+                        BoroName = borough,
+                        BoroCode = (int)Enum.Parse(typeof(Borough), borough),
+                    };
+                    list.Add(model);
+                }
+            }
+
+            return list;
         }
 
         public IEnumerable<HistoricDistrictShape> GetFeatureAttributes()

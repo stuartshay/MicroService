@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using MicroService.Service.Helpers;
+﻿using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MicroService.Service.Services
 {
@@ -23,16 +23,16 @@ namespace MicroService.Service.Services
 
             var features = GetFeatures();
             var subwayStops = new List<SubwayShape>(features.Count);
-            
+
             foreach (var f in features)
             {
                 var distance = f.Geometry.Distance(point);
                 var model = new SubwayShape
                 {
-                        Line = f.Attributes["line"].ToString(),
-                        Name = f.Attributes["name"].ToString(),
-                        ObjectId = int.Parse(f.Attributes["objectid"].ToString()),
-                        Distance = distance,
+                    Line = f.Attributes["line"].ToString(),
+                    Name = f.Attributes["name"].ToString(),
+                    ObjectId = int.Parse(f.Attributes["objectid"].ToString()),
+                    Distance = distance,
                 };
 
                 subwayStops.Add(model);
@@ -44,15 +44,20 @@ namespace MicroService.Service.Services
             return nearest;
         }
 
+        public override IEnumerable<SubwayShape> GetFeatureLookup(List<KeyValuePair<string, string>> features)
+        {
+            throw new System.NotImplementedException();
+        }
+
 
         public IEnumerable<SubwayShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
             var results = new List<SubwayShape>(features.Count);
-            
+
             results.AddRange(features.Select(f => new SubwayShape
             {
-                Line = f.Attributes["line"].ToString(), 
+                Line = f.Attributes["line"].ToString(),
                 Name = f.Attributes["name"].ToString(),
                 ObjectId = int.Parse(f.Attributes["objectid"].ToString()),
             }));

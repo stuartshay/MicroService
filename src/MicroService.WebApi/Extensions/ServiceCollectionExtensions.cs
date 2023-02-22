@@ -109,7 +109,7 @@ namespace MicroService.WebApi.Extensions
                 var xmlFilePath = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
 
                 //c.EnableAnnotations();
-                //c.ExampleFilters();
+                c.ExampleFilters();
                 c.IncludeXmlComments(xmlFilePath);
             });
 
