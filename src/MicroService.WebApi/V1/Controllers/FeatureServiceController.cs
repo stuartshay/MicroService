@@ -165,7 +165,7 @@ namespace MicroService.WebApi.V1.Controllers
                 return BadRequest();
 
             var results = _shapeServiceResolver(request!.Key).GetFeatureLookup(request.Attributes);
-            if (results == null)
+            if (!results.Any())
                 return NotFound();
 
             return Ok(results);
