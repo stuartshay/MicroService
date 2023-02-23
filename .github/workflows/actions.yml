@@ -196,7 +196,7 @@ jobs:
     needs: deploy-googlecloud
     uses: stuartshay/WorkflowCommon/.github/workflows/health-check.yml@master
     with:
-      test_url: ${{ needs.post-deploy.outputs.app_url }}/health
+      test_url: ${{ needs.deploy.outputs.url }}/health
 
   cleanup:
     runs-on: ubuntu-latest

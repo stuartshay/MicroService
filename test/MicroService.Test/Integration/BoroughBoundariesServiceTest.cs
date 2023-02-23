@@ -63,8 +63,10 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
+        //TODO: WRITE TEST FOR ALL SHAPES
+
         [InlineData(1006187, 232036, "Bronx")]
-        //[InlineData(1000443, 0239270, "Manhattan")]
+        // [InlineData(1000443, 0239270, "Manhattan")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
         public void Get_Borough_Boundaries_Feature_Lookup(double x, double y, string expected)
