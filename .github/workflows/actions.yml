@@ -192,6 +192,12 @@ jobs:
       - run: |
           curl --fail -s --retry ${{ env.max-attempts }} --retry-delay ${{ env.retry-delay-sec }} --retry-connrefused ${{ env.url }} -L  | jq
 
+  health-check:
+    needs: deploy-googlecloud
+    uses: stuartshay/WorkflowCommon/.github/workflows/health-check.yml@master
+    with:
+      test_url: ${{ needs.post-deploy.outputs.app_url }}/health
+
   cleanup:
     runs-on: ubuntu-latest
     needs: [health-googlecloud]
