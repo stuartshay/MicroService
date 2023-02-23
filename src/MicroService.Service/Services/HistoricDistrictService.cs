@@ -75,6 +75,8 @@ namespace MicroService.Service.Services
                         AreaName = f.Attributes["AREA_NAME"].ToString(),
                         BoroName = borough,
                         BoroCode = (int)Enum.Parse(typeof(Borough), borough),
+                        ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
+                        ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
                     };
                     list.Add(model);
                 }
