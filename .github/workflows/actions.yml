@@ -76,12 +76,16 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v1
 
+      - name: Google Auth
+        id: 'auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.GH_ACTIONS_NAVIGATOR  }}'
+
       - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v0.2.0
+        uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.gcp_project }}
-          service_account_key: ${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT }}
-          export_default_credentials: true
 
       - name: Google Cloud Artifacts/Authorize Docker push
         run: gcloud auth configure-docker ${{ env.ARTIFACT_REGISTRY_HOST }}
@@ -139,12 +143,16 @@ jobs:
         run: |
           docker load --input ${{ needs.build.outputs.dotnet }}/image.tar
 
+      - name: Google Auth
+        id: 'auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.GH_ACTIONS_NAVIGATOR  }}'
+
       - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v0.2.0
+        uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.gcp_project }}
-          service_account_key: ${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT }}
-          export_default_credentials: true
 
       - name: Google Cloud Artifacts/Authorize Docker push
         run: gcloud auth configure-docker ${{ env.ARTIFACT_REGISTRY_HOST }}
@@ -161,18 +169,20 @@ jobs:
     outputs:
       url: ${{ steps.deploy.outputs.url }}
     steps:
-      - uses: rlespinasse/github-slug-action@v3.x
+      - name: Google Auth
+        id: 'auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.GH_ACTIONS_NAVIGATOR  }}'
 
       - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v0.2.0
+        uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.gcp_project }}
-          service_account_key: ${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT }}
-          export_default_credentials: true
 
       - name: Deploy to Cloud Run
         id: deploy
-        uses: google-github-actions/deploy-cloudrun@main
+        uses: 'google-github-actions/deploy-cloudrun@v1'
         with:
           service: ${{ env.SERVICE }}-${{ env.GITHUB_REF_SLUG }}
           image: ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
@@ -191,12 +201,6 @@ jobs:
     steps:
       - run: |
           curl --fail -s --retry ${{ env.max-attempts }} --retry-delay ${{ env.retry-delay-sec }} --retry-connrefused ${{ env.url }} -L  | jq
-
-  health-check:
-    needs: deploy-googlecloud
-    uses: stuartshay/WorkflowCommon/.github/workflows/health-check.yml@master
-    with:
-      test_url: ${{ needs.deploy.outputs.url }}/health
 
   cleanup:
     runs-on: ubuntu-latest
