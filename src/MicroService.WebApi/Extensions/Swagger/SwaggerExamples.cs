@@ -14,15 +14,26 @@ namespace MicroService.WebApi.Extensions.Swagger
         /// <returns></returns>
         public FeatureAttributeLookupRequestModel GetExamples()
         {
+            //var attributes = new List<KeyValuePair<string, string>>
+            //{
+            //    new("BOROUGH", "BX"),
+            //    new("LP_NUMBER", "LP-02403")
+            //};
+
+            //return new FeatureAttributeLookupRequestModel
+            //{
+            //    Key = "HistoricDistricts",
+            //    Attributes = attributes,
+            //};
+
             var attributes = new List<KeyValuePair<string, string>>
             {
-                new("BOROUGH", "BX"),
-                new("LP_NUMBER", "LP-02403")
+                new("lp_number", "LP-00860")
             };
 
             return new FeatureAttributeLookupRequestModel
             {
-                Key = "HistoricDistricts",
+                Key = "ScenicLandmarks",
                 Attributes = attributes,
             };
         }

@@ -11,7 +11,7 @@ namespace MicroService.Service.Interfaces
 
         T GetFeatureLookup(double x, double y);
 
-        IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, string>> features);
+        IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, string>> attributes);
 
         IEnumerable<T> GetFeatureAttributes();
 

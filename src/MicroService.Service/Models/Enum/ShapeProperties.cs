@@ -44,9 +44,15 @@ namespace MicroService.Service.Models.Enum
         [ShapeAttributes("Park", "PARK")]
         Parks,
 
+        [Description("Scenic Landmarks")]
+        [ShapeAttributes("Scenic_Landmarks", "Scenic_Landmarks")]
+        ScenicLandmarks,
+
+
         [Description("Subway")]
         [ShapeAttributes("Subway_Entrances", "Subway_Entrances")]
         Subway,
+
 
         [Description("Zip Codes")]
         [ShapeAttributes("Zip_Codes", "ZIP_CODE_040114")]
