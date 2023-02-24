@@ -11,21 +11,3 @@ updates:
       interval: daily
       time: '10:00'
     open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: '/docker/microservice-api-base.dockerfile'
-    schedule:
-      interval: daily
-      time: '10:00'
-    open-pull-requests-limit: 10
-  - package-ecosystem: terraform
-    directory: '/infrastructure/postgres_rds_terraform'
-    schedule:
-      interval: daily
-      time: '10:00'
-    open-pull-requests-limit: 10
-  - package-ecosystem: terraform
-    directory: '/infrastructure/ecs_terraform'
-    schedule:
-      interval: daily
-      time: '10:00'
-    open-pull-requests-limit: 10

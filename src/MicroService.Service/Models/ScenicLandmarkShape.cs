@@ -2,7 +2,7 @@
 
 namespace MicroService.Service.Models
 {
-    public class ScenicLandmarkShape : ShapeBase
+    public class ScenicLandmarkShape : ShapeBase, ILandmark
     {
         public string LPNumber { get; set; }
 
