@@ -148,11 +148,11 @@ void AddServices()
     services.AddScoped<NeighborhoodsService<NeighborhoodShape>>();
     services.AddScoped<NeighborhoodTabulationAreasService>();
     services.AddScoped<NypdPolicePrecinctService>();
-    services.AddScoped<NypdSectorsService<NypdSectorShape>>();
+    services.AddScoped<NypdSectorsService>();
     services.AddScoped<NychaDevelopmentService<NychaDevelopmentShape>>();
     services.AddScoped<ParkService>();
     services.AddScoped<ScenicLandmarkService>();
-    services.AddScoped<SubwayService<SubwayShape>>();
+    services.AddScoped<SubwayService>();
     services.AddScoped<ZipCodeService>();
 
     services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>
@@ -167,11 +167,11 @@ void AddServices()
             nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService<NeighborhoodShape>>(),
             nameof(ShapeProperties.NeighborhoodTabulationAreas) => serviceProvider.GetService<NeighborhoodTabulationAreasService>(),
             nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),
-            nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService<NypdSectorShape>>(),
+            nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService>(),
             nameof(ShapeProperties.NychaDevelopments) => serviceProvider.GetService<NychaDevelopmentService<NychaDevelopmentShape>>(),
             nameof(ShapeProperties.Parks) => serviceProvider.GetService<ParkService>(),
             nameof(ShapeProperties.ScenicLandmarks) => serviceProvider.GetService<ScenicLandmarkService>(),
-            nameof(ShapeProperties.Subway) => serviceProvider.GetService<SubwayService<SubwayShape>>(),
+            nameof(ShapeProperties.Subway) => serviceProvider.GetService<SubwayService>(),
             nameof(ShapeProperties.ZipCodes) => serviceProvider.GetService<ZipCodeService>(),
             _ => throw new KeyNotFoundException(key)
         })!;
