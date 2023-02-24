@@ -6,6 +6,7 @@ using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
+using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
@@ -26,10 +27,12 @@ namespace MicroService.Service.Services
                 var borough = f.Attributes["borough"].ToString();
                 var model = new IndividualLandmarkSiteShape
                 {
-                    //LPNumber = f.Attributes["LP_NUMBER"].ToString(),
-                    //AreaName = f.Attributes["AREA_NAME"].ToString(),
+                    LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
+                    AreaName = f.Attributes["lpc_name"].ToString(),
                     BoroName = borough,
                     BoroCode = (int)Enum.Parse(typeof(Borough), borough),
+                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
                 };
 
                 results.Add(model);
@@ -58,12 +61,13 @@ namespace MicroService.Service.Services
                     var borough = f.Attributes["borough"].ToString();
                     model = new IndividualLandmarkSiteShape
                     {
-                        LPNumber = f.Attributes["lpc_name"].ToString(),
-                        AreaName = f.Attributes["scen_lm_na"].ToString(),
+                        LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
+                        AreaName = f.Attributes["lpc_name"].ToString(),
                         BoroName = borough,
                         BoroCode = (int)Enum.Parse(typeof(Borough), borough),
                         ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
                         ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+                        Coordinates = new List<Coordinate>(),
                     };
                 }
             }
