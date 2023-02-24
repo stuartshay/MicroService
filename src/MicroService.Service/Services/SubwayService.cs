@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class SubwayService<T> : AbstractShapeService<SubwayShape>, IShapeService<SubwayShape>
+    public class SubwayService : AbstractShapeService<SubwayShape>, IShapeService<SubwayShape>
     {
         public SubwayService(ShapefileDataReaderResolver shapefileDataReaderResolver)
         {
