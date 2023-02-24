@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using MicroService.Data.Models;
+﻿using MicroService.Data.Models;
 using MicroService.Data.Repository;
 using MicroService.Service.Services;
 using Moq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace MicroService.Test.Mock
@@ -37,7 +37,7 @@ namespace MicroService.Test.Mock
             Assert.Equal(result, sut);
         }
 
-        private CalculationService GetCalculationService(ITestDataRepository testDataRepository = null)
+        private CalculationService GetCalculationService(ITestDataRepository? testDataRepository = null)
         {
             testDataRepository ??= new Mock<ITestDataRepository>().Object;
 

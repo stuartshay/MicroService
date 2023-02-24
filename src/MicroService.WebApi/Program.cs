@@ -108,6 +108,8 @@ void AddServices()
             shapeProperties = ShapeProperties.DSNYDistricts.GetAttribute<ShapeAttributes>();
         else if (key == nameof(ShapeProperties.HistoricDistricts))
             shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttributes>();
+        else if (key == nameof(ShapeProperties.IndividualLandmarkSite))
+            shapeProperties = ShapeProperties.IndividualLandmarkSite.GetAttribute<ShapeAttributes>();
         else if (key == nameof(ShapeProperties.Neighborhoods))
             shapeProperties = ShapeProperties.Neighborhoods.GetAttribute<ShapeAttributes>();
         else if (key == nameof(ShapeProperties.NeighborhoodTabulationAreas))
@@ -120,6 +122,8 @@ void AddServices()
             shapeProperties = ShapeProperties.NychaDevelopments.GetAttribute<ShapeAttributes>();
         else if (key == nameof(ShapeProperties.Parks))
             shapeProperties = ShapeProperties.Parks.GetAttribute<ShapeAttributes>();
+        else if (key == nameof(ShapeProperties.ScenicLandmarks))
+            shapeProperties = ShapeProperties.ScenicLandmarks.GetAttribute<ShapeAttributes>();
         else if (key == nameof(ShapeProperties.Subway))
             shapeProperties = ShapeProperties.Subway.GetAttribute<ShapeAttributes>();
         else if (key == nameof(ShapeProperties.ZipCodes))
@@ -141,12 +145,14 @@ void AddServices()
     services.AddScoped<CommunityDistrictsService>();
     services.AddScoped<DSNYDistrictsService>();
     services.AddScoped<HistoricDistrictService>();
+    services.AddScoped<IndividualLandmarkSiteService>();
     services.AddScoped<NeighborhoodsService<NeighborhoodShape>>();
     services.AddScoped<NeighborhoodTabulationAreasService>();
     services.AddScoped<NypdPolicePrecinctService>();
     services.AddScoped<NypdSectorsService<NypdSectorShape>>();
     services.AddScoped<NychaDevelopmentService<NychaDevelopmentShape>>();
     services.AddScoped<ParkService<ParkShape>>();
+    services.AddScoped<ScenicLandmarkService>();
     services.AddScoped<SubwayService<SubwayShape>>();
     services.AddScoped<ZipCodeService<ZipCodeShape>>();
 
@@ -158,12 +164,14 @@ void AddServices()
             nameof(ShapeProperties.CommunityDistricts) => serviceProvider.GetService<CommunityDistrictsService>(),
             nameof(ShapeProperties.DSNYDistricts) => serviceProvider.GetService<DSNYDistrictsService>(),
             nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
+            nameof(ShapeProperties.IndividualLandmarkSite) => serviceProvider.GetService<IndividualLandmarkSiteService>(),
             nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService<NeighborhoodShape>>(),
             nameof(ShapeProperties.NeighborhoodTabulationAreas) => serviceProvider.GetService<NeighborhoodTabulationAreasService>(),
             nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),
             nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService<NypdSectorShape>>(),
             nameof(ShapeProperties.NychaDevelopments) => serviceProvider.GetService<NychaDevelopmentService<NychaDevelopmentShape>>(),
             nameof(ShapeProperties.Parks) => serviceProvider.GetService<ParkService<ParkShape>>(),
+            nameof(ShapeProperties.ScenicLandmarks) => serviceProvider.GetService<ScenicLandmarkService>(),
             nameof(ShapeProperties.Subway) => serviceProvider.GetService<SubwayService<SubwayShape>>(),
             nameof(ShapeProperties.ZipCodes) => serviceProvider.GetService<ZipCodeService<ZipCodeShape>>(),
             _ => throw new KeyNotFoundException(key)
@@ -199,7 +207,7 @@ void AddMappings()
 void AddHealthCheckServices()
 {
     var config = configuration.Get<ApplicationOptions>();
-    var shapeDirectory = config.ShapeConfiguration.ShapeRootDirectory;
+    var shapeDirectory = config!.ShapeConfiguration.ShapeRootDirectory;
     string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
     services

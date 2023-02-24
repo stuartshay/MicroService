@@ -75,3 +75,11 @@ docfx docfx/docfx.json -p 9090 --serve
 
 http://localhost:9090
 ```
+
+## Sonar
+
+```
+dotnet sonarscanner begin /k:"MicroService.Api" /d:sonar.host.url="http://192.168.1.172:9100"  /d:sonar.login="***REMOVED-SONAR-TOKEN***"
+dotnet build
+dotnet sonarscanner end /d:sonar.login="***REMOVED-SONAR-TOKEN***"
+```

@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using MicroService.Service.Helpers;
+﻿using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
+using System.Collections.Generic;
+using System.Linq;
+using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
@@ -32,6 +33,9 @@ namespace MicroService.Service.Services
                     {
                         BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
                         BoroName = f.Attributes["BoroName"].ToString(),
+                        ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                        ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+                        Coordinates = new List<Coordinate>()
                     };
                 }
             }
@@ -42,6 +46,11 @@ namespace MicroService.Service.Services
             }
 
             return model;
+        }
+
+        public override IEnumerable<BoroughBoundaryShape> GetFeatureLookup(List<KeyValuePair<string, string>> features)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEnumerable<BoroughBoundaryShape> GetFeatureAttributes()

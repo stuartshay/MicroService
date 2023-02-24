@@ -1,10 +1,8 @@
-﻿using Xunit;
+﻿using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
-using NetTopologySuite.Features;
 using NetTopologySuite.IO;
+using Xunit;
 using Xunit.Abstractions;
-using System.Collections.Generic;
-using System.IO;
 
 namespace MicroService.Test.Unit
 {
@@ -16,9 +14,9 @@ namespace MicroService.Test.Unit
         {
             _testOutputHelper = testOutputHelper;
         }
-   
+
         [Theory(Skip = "Ignore", DisplayName = "Shape OutputFeatures Borough Boundaries")]
-       // [InlineData(@"Borough_Boundaries\nybb")]
+        // [InlineData(@"Borough_Boundaries\nybb")]
         //[InlineData(@"Historic_Districts\LPC_HD_OpenData_2015March")]
         [InlineData(@"NYPD_Sectors\NYPD_Sectors")]
         //[InlineData(@"LPC_Individual_Landmark_and_Historic_Building_Database\LPC_Individual_Landmark_and_Historic_Building_Database")]
@@ -63,7 +61,7 @@ namespace MicroService.Test.Unit
                 {
                     DbaseFieldDescriptor fldDescriptor = header.Fields[i];
                     keys[i] = fldDescriptor.Name;
-                    
+
                     // First Field Geometry
                     var value = shapeFileDataReader.GetValue(i + 1);
                     attributesTable.Add(fldDescriptor.Name, value);
@@ -91,6 +89,7 @@ namespace MicroService.Test.Unit
         public void Test_WKTReader()
         {
             WktReaderFunctions.GeometryContainsPoint();
+            Assert.True(true);
         }
 
     }

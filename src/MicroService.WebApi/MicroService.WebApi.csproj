@@ -5,7 +5,7 @@
 		<TargetFramework>net7.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<NoWarn>$(NoWarn),1701;1702;1705</NoWarn>
+		<NoWarn>$(NoWarn),1701;1702;1705,NU1803</NoWarn>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<UserSecretsId>e6ef6136-7df3-42dd-a53a-8522668d24d7</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>

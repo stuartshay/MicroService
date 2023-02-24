@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using MicroService.Service.Configuration;
+﻿using MicroService.Service.Configuration;
 using MicroService.Service.Extensions;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
+using System.Collections.Concurrent;
 
 namespace MicroService.WebApi.Services
 {
@@ -32,7 +25,7 @@ namespace MicroService.WebApi.Services
             CronJobServiceHealthCheck cronJobServiceHealthCheck,
             IOptions<ApplicationOptions> applicationOptions,
             ILogger<InMemoryCacheShapefileCronJobService> logger)
-            : base(scheduleConfig.CronExpression, scheduleConfig.TimeZoneInfo)
+            : base(scheduleConfig.CronExpression!, scheduleConfig.TimeZoneInfo)
         {
             _cache = memoryCache;
             _cronJobServiceHealthCheck = cronJobServiceHealthCheck;

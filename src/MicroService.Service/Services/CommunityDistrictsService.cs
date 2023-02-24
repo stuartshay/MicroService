@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using MicroService.Data.Enum;
+﻿using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MicroService.Service.Services
 {
@@ -47,6 +47,12 @@ namespace MicroService.Service.Services
 
             return model;
 
+        }
+
+        public override IEnumerable<CommunityDistrictShape> GetFeatureLookup(
+            List<KeyValuePair<string, string>> features)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEnumerable<CommunityDistrictShape> GetFeatureAttributes()

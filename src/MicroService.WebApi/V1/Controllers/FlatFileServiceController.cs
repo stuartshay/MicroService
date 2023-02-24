@@ -36,7 +36,7 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(typeof(IEnumerable<string>), 200)]
         public ActionResult<object> Get()
         {
-            var result = EnumHelper.EnumToList<FlatFileProperties>().ToList().Select(j => new
+            var result = EnumHelper.EnumToList<FlatFileProperties>().Select(j => new
             {
                 key = j.ToString(),
                 description = j.GetEnumDescription(),
