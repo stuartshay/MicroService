@@ -26,7 +26,7 @@ namespace MicroService.Service.Services
 
         public abstract T GetFeatureLookup(double x, double y);
 
-        public abstract IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, string>> features);
+        public abstract IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, string>> attributes);
 
         public ShapeBase GetShapeBaseFeatureLookup(double x, double y)
         {

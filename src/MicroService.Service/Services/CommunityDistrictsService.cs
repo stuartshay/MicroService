@@ -6,6 +6,7 @@ using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
+using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
@@ -35,7 +36,10 @@ namespace MicroService.Service.Services
                         BoroCd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
                         BoroCode = int.Parse(f.Attributes["BoroCD"].ToString().Substring(0, 1)),
                         Borough = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().ToString(),
-                        BoroName = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription()
+                        BoroName = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
+                        ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                        ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+                        Coordinates = new List<Coordinate>()
                     };
                 }
             }
