@@ -54,7 +54,7 @@ namespace MicroService.Service.Helpers
                 }
             }
 
-            throw new ArgumentException("Not found.", "description"); // or return default(T);    
+            throw new ArgumentException("Not found.", nameof(description));
         }
 
         public static IEnumerable<T> EnumToList<T>()
@@ -76,7 +76,5 @@ namespace MicroService.Service.Helpers
 
             return enumValList;
         }
-
-
     }
 }

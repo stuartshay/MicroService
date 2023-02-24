@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using MicroService.Service.Helpers;
+﻿using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
+using System.Collections.Generic;
 
 namespace MicroService.Service.Services
 {
@@ -31,9 +31,9 @@ namespace MicroService.Service.Services
                     {
                         ZipCode = f.Attributes["ZIPCODE"].ToString(),
                         BldgZip = f.Attributes["BLDGZIP"].ToString(),
-                        PostOfficeName = f.Attributes["PO_NAME"].ToString(), 
+                        PostOfficeName = f.Attributes["PO_NAME"].ToString(),
                         Population = int.Parse(f.Attributes["POPULATION"].ToString()),
-                        Area = double.Parse(f.Attributes["AREA"].ToString()), 
+                        Area = double.Parse(f.Attributes["AREA"].ToString()),
                         State = f.Attributes["STATE"].ToString(),
                         County = f.Attributes["COUNTY"].ToString(),
                     };
@@ -46,6 +46,11 @@ namespace MicroService.Service.Services
             }
 
             return model;
+        }
+
+        public override IEnumerable<ZipCodeShape> GetFeatureLookup(List<KeyValuePair<string, string>> features)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEnumerable<ZipCodeShape> GetFeatureAttributes()

@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using MicroService.Data.Enum;
+﻿using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
+using System;
+using System.Collections.Generic;
+using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
@@ -36,6 +37,8 @@ namespace MicroService.Service.Services
                         AreaName = f.Attributes["AREA_NAME"].ToString(),
                         BoroName = borough,
                         BoroCode = (int)Enum.Parse(typeof(Borough), borough),
+                        ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
+                        ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
                     };
                 }
 
@@ -47,6 +50,53 @@ namespace MicroService.Service.Services
             }
 
             return model;
+        }
+
+        public override IEnumerable<HistoricDistrictShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        {
+            var list = new List<HistoricDistrictShape>();
+
+            var features = GetFeatures();
+            foreach (var f in features)
+            {
+                var found = true;
+                foreach (var pair in attributes)
+                {
+                    if (f.Attributes[pair.Key] as string != pair.Value)
+                    {
+                        found = false;
+                        break;
+                    }
+                }
+
+                if (found)
+                {
+                    var borough = f.Attributes["BOROUGH"].ToString();
+                    var coordinates = new List<Coordinate>();
+                    foreach (var c in f.Geometry.Coordinates)
+                    {
+                        coordinates.Add(new Coordinate
+                        {
+                            X = c.X,
+                            Y = c.Y,
+                        });
+                    }
+
+                    var model = new HistoricDistrictShape
+                    {
+                        LPNumber = f.Attributes["LP_NUMBER"].ToString(),
+                        AreaName = f.Attributes["AREA_NAME"].ToString(),
+                        BoroName = borough,
+                        BoroCode = (int)Enum.Parse(typeof(Borough), borough),
+                        ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
+                        ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
+                        Coordinates = coordinates,
+                    };
+                    list.Add(model);
+                }
+            }
+
+            return list;
         }
 
         public IEnumerable<HistoricDistrictShape> GetFeatureAttributes()
