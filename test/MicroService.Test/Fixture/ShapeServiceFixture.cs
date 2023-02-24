@@ -72,7 +72,7 @@ namespace MicroService.Test.Fixture
                 .AddScoped<ParkService<ParkShape>>()
                 .AddScoped<ScenicLandmarkService>()
                 .AddScoped<SubwayService<SubwayShape>>()
-                .AddScoped<ZipCodeService<ZipCodeShape>>()
+                .AddScoped<ZipCodeService>()
                 .AddOptions()
                 .Configure<ApplicationOptions>(Configuration)
                 .AddSingleton(Configuration)
@@ -84,8 +84,13 @@ namespace MicroService.Test.Fixture
             HistoricDistrictService = serviceProvider.GetRequiredService<HistoricDistrictService>();
             IndividualLandmarkSiteService = serviceProvider.GetRequiredService<IndividualLandmarkSiteService>();
             NeighborhoodService = serviceProvider.GetRequiredService<NeighborhoodsService<NeighborhoodShape>>();
+            NeighborhoodTabulationAreasService = serviceProvider.GetRequiredService<NeighborhoodTabulationAreasService>();
 
-            //services.AddScoped            <NeighborhoodTabulationAreasService>();
+
+
+
+
+
             //services.AddScoped            <NypdPolicePrecinctService>();
             //services.AddScoped            <NypdSectorsService<NypdSectorShape>>();
             //services.AddScoped            <NychaDevelopmentService<NychaDevelopmentShape>>();
@@ -93,7 +98,7 @@ namespace MicroService.Test.Fixture
 
             ScenicLandmarkService = serviceProvider.GetRequiredService<ScenicLandmarkService>();
             SubwayService = serviceProvider.GetRequiredService<SubwayService<SubwayShape>>();
-            ZipCodeService = serviceProvider.GetRequiredService<ZipCodeService<ZipCodeShape>>();
+            ZipCodeService = serviceProvider.GetRequiredService<ZipCodeService>();
         }
 
         public IShapeService<BoroughBoundaryShape> BoroughBoundariesService { get; set; }
@@ -108,9 +113,10 @@ namespace MicroService.Test.Fixture
 
         public IShapeService<NeighborhoodShape> NeighborhoodService { get; set; }
 
+        public IShapeService<NeighborhoodTabulationAreaShape> NeighborhoodTabulationAreasService { get; set; }
 
 
-        //services.AddScoped<NeighborhoodTabulationAreasService>();
+
         //services.AddScoped<NypdPolicePrecinctService>();
         //services.AddScoped<NypdSectorsService<NypdSectorShape>>();
         //services.AddScoped<NychaDevelopmentService<NychaDevelopmentShape>>();

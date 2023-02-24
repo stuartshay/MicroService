@@ -10,6 +10,7 @@ namespace MicroService.WebApi.Services.Cron
         private readonly CronExpression _expression;
         private readonly TimeZoneInfo _timeZoneInfo;
         private System.Timers.Timer? _timer;
+        private bool _disposed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CronJobService"/> class.
@@ -44,9 +45,32 @@ namespace MicroService.WebApi.Services.Cron
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
-        public virtual void Dispose() => _timer?.Dispose();
+        public virtual void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                _timer?.Dispose();
+            }
+
+            _disposed = true;
+        }
 
         /// <summary>
         ///

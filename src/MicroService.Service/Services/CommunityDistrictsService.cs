@@ -54,7 +54,7 @@ namespace MicroService.Service.Services
         }
 
         public override IEnumerable<CommunityDistrictShape> GetFeatureLookup(
-            List<KeyValuePair<string, string>> features)
+            List<KeyValuePair<string, string>> attributes)
         {
             throw new System.NotImplementedException();
         }
