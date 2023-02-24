@@ -4,10 +4,11 @@ using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
-    public class ZipCodeService<T> : AbstractShapeService<ZipCodeShape>, IShapeService<ZipCodeShape>
+    public class ZipCodeService : AbstractShapeService<ZipCodeShape>, IShapeService<ZipCodeShape>
     {
         public ZipCodeService(ShapefileDataReaderResolver shapefileDataReaderResolver)
         {
@@ -36,6 +37,9 @@ namespace MicroService.Service.Services
                         Area = double.Parse(f.Attributes["AREA"].ToString()),
                         State = f.Attributes["STATE"].ToString(),
                         County = f.Attributes["COUNTY"].ToString(),
+                        ShapeArea = double.Parse(f.Attributes["SHAPE_AREA"].ToString()),
+                        ShapeLength = double.Parse(f.Attributes["SHAPE_LEN"].ToString()),
+                        Coordinates = new List<Coordinate>(),
                     };
                 }
             }
@@ -48,7 +52,7 @@ namespace MicroService.Service.Services
             return model;
         }
 
-        public override IEnumerable<ZipCodeShape> GetFeatureLookup(List<KeyValuePair<string, string>> features)
+        public override IEnumerable<ZipCodeShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
         {
             throw new System.NotImplementedException();
         }
@@ -69,6 +73,8 @@ namespace MicroService.Service.Services
                     Area = double.Parse(f.Attributes["AREA"].ToString()),
                     State = f.Attributes["STATE"].ToString(),
                     County = f.Attributes["COUNTY"].ToString(),
+                    ShapeArea = double.Parse(f.Attributes["SHAPE_AREA"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["SHAPE_LEN"].ToString()),
                 };
 
                 results.Add(model);

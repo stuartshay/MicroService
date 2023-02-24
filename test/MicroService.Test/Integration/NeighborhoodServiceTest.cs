@@ -8,15 +8,15 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class BoroughBoundariesServiceTest : IClassFixture<ShapeServiceFixture>
+    public class NeighborhoodServiceTest : IClassFixture<ShapeServiceFixture>
     {
-        public IShapeService<BoroughBoundaryShape> _service;
+        public IShapeService<NeighborhoodShape> _service;
 
         private readonly ITestOutputHelper _testOutputHelper;
 
-        public BoroughBoundariesServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
+        public NeighborhoodServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
         {
-            _service = fixture.BoroughBoundariesService;
+            _service = fixture.NeighborhoodService;
             _testOutputHelper = output;
         }
 

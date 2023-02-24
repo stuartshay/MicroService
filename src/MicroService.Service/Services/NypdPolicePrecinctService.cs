@@ -43,7 +43,7 @@ namespace MicroService.Service.Services
             return model;
         }
 
-        public override IEnumerable<NypdPrecinctShape> GetFeatureLookup(List<KeyValuePair<string, string>> features)
+        public override IEnumerable<NypdPrecinctShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
         {
             throw new System.NotImplementedException();
         }

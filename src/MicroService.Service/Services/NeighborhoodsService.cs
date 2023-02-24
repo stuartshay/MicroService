@@ -5,6 +5,7 @@ using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
+using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
@@ -34,6 +35,9 @@ namespace MicroService.Service.Services
                         CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
                         NTACode = f.Attributes["NTACode"].ToString(),
                         NTAName = f.Attributes["NTAName"].ToString(),
+                        ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                        ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+                        Coordinates = new List<Coordinate>(),
                     };
                 }
             }
@@ -45,7 +49,7 @@ namespace MicroService.Service.Services
             return model;
         }
 
-        public override IEnumerable<NeighborhoodShape> GetFeatureLookup(List<KeyValuePair<string, string>> features)
+        public override IEnumerable<NeighborhoodShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
         {
             throw new System.NotImplementedException();
         }
@@ -64,6 +68,8 @@ namespace MicroService.Service.Services
                     CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
                     NTACode = f.Attributes["NTACode"].ToString(),
                     NTAName = f.Attributes["NTAName"].ToString(),
+                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
                 };
 
                 results.Add(model);

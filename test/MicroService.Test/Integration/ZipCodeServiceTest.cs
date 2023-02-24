@@ -8,15 +8,15 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class BoroughBoundariesServiceTest : IClassFixture<ShapeServiceFixture>
+    public class ZipCodeServiceTest : IClassFixture<ShapeServiceFixture>
     {
-        public IShapeService<BoroughBoundaryShape> _service;
+        public IShapeService<ZipCodeShape> _service;
 
         private readonly ITestOutputHelper _testOutputHelper;
 
-        public BoroughBoundariesServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
+        public ZipCodeServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
         {
-            _service = fixture.BoroughBoundariesService;
+            _service = fixture.ZipCodeService;
             _testOutputHelper = output;
         }
 
@@ -54,7 +54,7 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Borough Boundaries Feature List")]
+        [Fact(DisplayName = "Get Feature List")]
         [Trait("Category", "Integration")]
         public void Get_Borough_Boundaries_Feature_Collection()
         {
@@ -65,7 +65,7 @@ namespace MicroService.Test.Integration
 
 
         [InlineData(1006187, 232036, "Bronx")]
-        [InlineData(1000443, 0239270, "Manhattan")]
+        [InlineData(1000443, 0239270, "New York")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup(double x, double y, string expected)
@@ -73,7 +73,7 @@ namespace MicroService.Test.Integration
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
-            Assert.Equal(expected, sut.BoroName);
+            Assert.Equal(expected, sut.County);
         }
     }
 }

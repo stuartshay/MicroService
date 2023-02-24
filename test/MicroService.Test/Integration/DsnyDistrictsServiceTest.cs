@@ -8,15 +8,15 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class BoroughBoundariesServiceTest : IClassFixture<ShapeServiceFixture>
+    public class DsnyDistrictsServiceTest : IClassFixture<ShapeServiceFixture>
     {
-        public IShapeService<BoroughBoundaryShape> _service;
+        public IShapeService<DSNYDistrictsShape> _service;
 
         private readonly ITestOutputHelper _testOutputHelper;
 
-        public BoroughBoundariesServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
+        public DsnyDistrictsServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
         {
-            _service = fixture.BoroughBoundariesService;
+            _service = fixture.DSNYDistrictsService;
             _testOutputHelper = output;
         }
 
@@ -35,7 +35,6 @@ namespace MicroService.Test.Integration
             _testOutputHelper.WriteLine($"Max bounds: ({bounds.MaxX},{bounds.MaxY})");
         }
 
-
         [Fact(DisplayName = "Get Shape File Database Properties")]
         [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
@@ -43,7 +42,7 @@ namespace MicroService.Test.Integration
             var sut = _service.GetShapeDatabaseProperties();
             Assert.NotNull(sut);
 
-            //Display summary information about the Shape file
+            //Display summary information about the Dbase file
             _testOutputHelper.WriteLine("Dbase info");
             _testOutputHelper.WriteLine($"{sut.Fields.Length} Columns, {sut.NumRecords} Records");
 
@@ -56,7 +55,7 @@ namespace MicroService.Test.Integration
 
         [Fact(DisplayName = "Get Borough Boundaries Feature List")]
         [Trait("Category", "Integration")]
-        public void Get_Borough_Boundaries_Feature_Collection()
+        public void Get_Feature_Collection()
         {
             var sut = _service.GetFeatures();
             Assert.NotNull(sut);
@@ -64,16 +63,17 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(1006187, 232036, "Bronx")]
-        [InlineData(1000443, 0239270, "Manhattan")]
+        [InlineData(1006187, 232036, "Bronx", 201)]
+        [InlineData(1000443, 0239270, "Manhattan", 110)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int expectedDistrictCode)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
-            Assert.Equal(expected, sut.BoroName);
+            Assert.Equal(expected, sut.OperationZoneName);
+            Assert.Equal(expectedDistrictCode, sut.DistrictCode);
         }
     }
 }
