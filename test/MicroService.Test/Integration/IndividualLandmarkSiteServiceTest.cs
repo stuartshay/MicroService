@@ -64,16 +64,15 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(1006187, 232036, "Bronx")]
-        // [InlineData(1000443, 0239270, "Manhattan")]
-        [Theory(Skip = "TODO", DisplayName = "Get Feature Point Lookup")]
+        [InlineData(987615.655217366, 211953.9590513381, "Empire State Building")]
+        [Theory(Skip = "TODO: FIX", DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Lookup(double x, double y, string expected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
-            Assert.Equal(expected, sut.BoroName);
+            Assert.Equal(expected, sut.AreaName);
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace MicroService.Common.Health
 {
@@ -43,7 +43,7 @@ namespace MicroService.Common.Health
             return Task.FromResult(healthCheckResult);
         }
 
-        private DateTime GetAssemblyLastModifiedDate()
+        private static DateTime GetAssemblyLastModifiedDate()
         {
             Assembly assembly = Assembly.GetEntryAssembly();
             System.IO.FileInfo fileInfo = new(assembly?.Location ?? string.Empty);

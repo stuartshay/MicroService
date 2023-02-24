@@ -53,7 +53,7 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Borough Boundaries Feature List")]
+        [Fact(DisplayName = "Get Feature List")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Collection()
         {

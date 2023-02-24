@@ -64,6 +64,8 @@ namespace MicroService.Service.Services
                 {
                     BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
                     BoroName = f.Attributes["BoroName"].ToString(),
+                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
                 };
 
                 results.Add(model);

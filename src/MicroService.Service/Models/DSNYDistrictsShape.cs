@@ -6,7 +6,7 @@ namespace MicroService.Service.Models
     {
         public string District { get; set; }
 
-        public string DistrictCode { get; set; }
+        public int DistrictCode { get; set; }
 
         public string OperationZone { get; set; }
 

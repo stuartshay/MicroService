@@ -40,8 +40,12 @@ namespace MicroService.Service.Services
 
         public override IndividualLandmarkSiteShape GetFeatureLookup(double x, double y)
         {
+            // Convert Nad83 to Wgs 
+            var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
+            var wgs84Point = new { X = result.Item1, Y = result.Item2 };
+
             // Validate Point is in Range
-            var point = new Point(x, y);
+            var point = new Point(wgs84Point.X.Value, wgs84Point.Y.Value);
 
             var model = new IndividualLandmarkSiteShape();
 
