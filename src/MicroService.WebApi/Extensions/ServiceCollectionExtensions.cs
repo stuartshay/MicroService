@@ -214,7 +214,7 @@ namespace MicroService.WebApi.Extensions
         /// <param name="options"></param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
-        public static IServiceCollection AddCronJob<T>(this IServiceCollection services, Action<IScheduleConfig<T>> options)
+        public static IServiceCollection AddCronJob<T>(this IServiceCollection services, Action<IScheduleConfig> options)
             where T : CronJobService
         {
             if (options == null)
@@ -222,14 +222,14 @@ namespace MicroService.WebApi.Extensions
                 throw new ArgumentNullException(nameof(options), @"Please provide Schedule Configurations.");
             }
 
-            var scheduleConfig = new ScheduleConfig<T>();
+            var scheduleConfig = new ScheduleConfig();
             options.Invoke(scheduleConfig);
             if (string.IsNullOrWhiteSpace(scheduleConfig.CronExpression))
             {
-                throw new ArgumentNullException(nameof(ScheduleConfig<T>.CronExpression), @"Empty Cron Expression is not allowed.");
+                throw new ArgumentNullException(nameof(ScheduleConfig.CronExpression), @"Empty Cron Expression is not allowed.");
             }
 
-            services.AddSingleton<IScheduleConfig<T>>(scheduleConfig);
+            services.AddSingleton<IScheduleConfig>(scheduleConfig);
             services.AddHostedService<T>();
 
             return services;

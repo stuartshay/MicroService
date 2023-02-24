@@ -44,7 +44,7 @@ namespace MicroService.Service.Services
             return nearest;
         }
 
-        public override IEnumerable<SubwayShape> GetFeatureLookup(List<KeyValuePair<string, string>> features)
+        public override IEnumerable<SubwayShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
         {
             throw new System.NotImplementedException();
         }

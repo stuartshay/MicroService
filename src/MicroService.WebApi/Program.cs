@@ -32,7 +32,6 @@ var env = builder.Environment;
 SetupLogger();
 SetupConfiguration();
 SetupServices();
-AddMappings();
 AddServices();
 AddHealthCheckServices();
 
@@ -154,7 +153,7 @@ void AddServices()
     services.AddScoped<ParkService<ParkShape>>();
     services.AddScoped<ScenicLandmarkService>();
     services.AddScoped<SubwayService<SubwayShape>>();
-    services.AddScoped<ZipCodeService<ZipCodeShape>>();
+    services.AddScoped<ZipCodeService>();
 
     services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>
     {
@@ -173,7 +172,7 @@ void AddServices()
             nameof(ShapeProperties.Parks) => serviceProvider.GetService<ParkService<ParkShape>>(),
             nameof(ShapeProperties.ScenicLandmarks) => serviceProvider.GetService<ScenicLandmarkService>(),
             nameof(ShapeProperties.Subway) => serviceProvider.GetService<SubwayService<SubwayShape>>(),
-            nameof(ShapeProperties.ZipCodes) => serviceProvider.GetService<ZipCodeService<ZipCodeShape>>(),
+            nameof(ShapeProperties.ZipCodes) => serviceProvider.GetService<ZipCodeService>(),
             _ => throw new KeyNotFoundException(key)
         })!;
     });
@@ -198,10 +197,6 @@ void AddServices()
         x.TimeZoneInfo = TimeZoneInfo.Local;
         x.CronExpression = config!.ShapeConfiguration.CronExpression;
     });
-}
-
-void AddMappings()
-{
 }
 
 void AddHealthCheckServices()
