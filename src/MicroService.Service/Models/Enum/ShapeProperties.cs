@@ -20,6 +20,10 @@ namespace MicroService.Service.Models.Enum
         [ShapeAttributes("Historic_Districts", "Historic_Districts")]
         HistoricDistricts,
 
+        [Description("Individual Landmark Sites")]
+        [ShapeAttributes("Individual_Landmark_Sites", "Individual_Landmark_Sites")]
+        IndividualLandmarkSite,
+
         [Description("Neighborhoods")]
         [ShapeAttributes("Neighborhoods", "nynta")]
         Neighborhoods,

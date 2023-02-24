@@ -108,6 +108,8 @@ void AddServices()
             shapeProperties = ShapeProperties.DSNYDistricts.GetAttribute<ShapeAttributes>();
         else if (key == nameof(ShapeProperties.HistoricDistricts))
             shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttributes>();
+        else if (key == nameof(ShapeProperties.IndividualLandmarkSite))
+            shapeProperties = ShapeProperties.IndividualLandmarkSite.GetAttribute<ShapeAttributes>();
         else if (key == nameof(ShapeProperties.Neighborhoods))
             shapeProperties = ShapeProperties.Neighborhoods.GetAttribute<ShapeAttributes>();
         else if (key == nameof(ShapeProperties.NeighborhoodTabulationAreas))
@@ -143,6 +145,7 @@ void AddServices()
     services.AddScoped<CommunityDistrictsService>();
     services.AddScoped<DSNYDistrictsService>();
     services.AddScoped<HistoricDistrictService>();
+    services.AddScoped<IndividualLandmarkSiteService>();
     services.AddScoped<NeighborhoodsService<NeighborhoodShape>>();
     services.AddScoped<NeighborhoodTabulationAreasService>();
     services.AddScoped<NypdPolicePrecinctService>();
@@ -161,6 +164,7 @@ void AddServices()
             nameof(ShapeProperties.CommunityDistricts) => serviceProvider.GetService<CommunityDistrictsService>(),
             nameof(ShapeProperties.DSNYDistricts) => serviceProvider.GetService<DSNYDistrictsService>(),
             nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
+            nameof(ShapeProperties.IndividualLandmarkSite) => serviceProvider.GetService<IndividualLandmarkSiteService>(),
             nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService<NeighborhoodShape>>(),
             nameof(ShapeProperties.NeighborhoodTabulationAreas) => serviceProvider.GetService<NeighborhoodTabulationAreasService>(),
             nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),
