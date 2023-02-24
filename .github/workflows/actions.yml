@@ -165,11 +165,12 @@ jobs:
     outputs:
       url: ${{ steps.deploy.outputs.url }}
 
+    steps:
       - name: Google Auth
-        id: "auth"
-        uses: "google-github-actions/auth@v1"
+        id: 'auth'
+        uses: 'google-github-actions/auth@v1'
         with:
-          credentials_json: "${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT  }}"
+          credentials_json: '${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT  }}'
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
