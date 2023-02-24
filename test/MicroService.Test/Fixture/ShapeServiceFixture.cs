@@ -69,7 +69,7 @@ namespace MicroService.Test.Fixture
                 .AddScoped<NypdPolicePrecinctService>()
                 .AddScoped<NypdSectorsService<NypdSectorShape>>()
                 .AddScoped<NychaDevelopmentService<NychaDevelopmentShape>>()
-                .AddScoped<ParkService<ParkShape>>()
+                .AddScoped<ParkService>()
                 .AddScoped<ScenicLandmarkService>()
                 .AddScoped<SubwayService<SubwayShape>>()
                 .AddScoped<ZipCodeService>()
@@ -87,15 +87,11 @@ namespace MicroService.Test.Fixture
             NeighborhoodTabulationAreasService = serviceProvider.GetRequiredService<NeighborhoodTabulationAreasService>();
 
 
-
-
-
-
             //services.AddScoped            <NypdPolicePrecinctService>();
             //services.AddScoped            <NypdSectorsService<NypdSectorShape>>();
             //services.AddScoped            <NychaDevelopmentService<NychaDevelopmentShape>>();
-            //services.AddScoped            <ParkService<ParkShape>>();
 
+            ParkService = serviceProvider.GetRequiredService<ParkService>();
             ScenicLandmarkService = serviceProvider.GetRequiredService<ScenicLandmarkService>();
             SubwayService = serviceProvider.GetRequiredService<SubwayService<SubwayShape>>();
             ZipCodeService = serviceProvider.GetRequiredService<ZipCodeService>();

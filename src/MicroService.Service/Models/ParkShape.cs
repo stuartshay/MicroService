@@ -5,7 +5,7 @@ namespace MicroService.Service.Models
     public class ParkShape : ShapeBase
     {
         public string ParkName { get; set; }
-        
+
         public string ParkNumber { get; set; }
 
         public long SourceId { get; set; }
@@ -14,6 +14,6 @@ namespace MicroService.Service.Models
 
         public int SubCode { get; set; }
 
-        public string LandUse { get; set; }
+        public string? LandUse { get; set; }
     }
 }
