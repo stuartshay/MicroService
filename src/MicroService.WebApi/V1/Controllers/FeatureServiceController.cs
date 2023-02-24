@@ -57,10 +57,13 @@ namespace MicroService.WebApi.V1.Controllers
         }
 
         /// <summary>
-        ///  Get Shape Properties
+        ///  Get Shape Attributes
         /// </summary>
+        /// <remarks>
+        ///   Attribute List of Shape
+        /// </remarks>
         /// <param name="id">Shape Id</param>
-        /// <returns></returns>
+        /// <returns>Attribute List of Shape </returns>
         [HttpGet("{id}", Name = "GetShapeProperties")]
         [Produces("application/json")]
         [ProducesResponseType(200)]
@@ -97,16 +100,19 @@ namespace MicroService.WebApi.V1.Controllers
         }
 
         /// <summary>
-        ///  Get Feature Attributes
+        ///  Get Feature List
         /// </summary>
+        /// <remarks>
+        ///   List of features with attributes 
+        /// </remarks>
         /// <param name="request">Feature Attribute Request</param>
-        /// <returns></returns>
-        [HttpGet("featureAttributes", Name = "GetFeatureAttributes")]
+        /// <returns>List of features with attributes</returns>
+        [HttpGet("featureListAttributes", Name = "GetFeatureListAttributes")]
         [Produces("application/json", Type = typeof(ShapeBase))]
         [ProducesResponseType(typeof(IEnumerable<ShapeBase>), 200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<object>> GetFeatureAttributes([FromQuery] FeatureAttributeRequestModel request)
+        public async Task<ActionResult<object>> GetFeatureListAttributes([FromQuery] FeatureAttributeRequestModel request)
         {
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();

@@ -20,7 +20,7 @@ namespace MicroService.WebApi.Services
         private readonly ConcurrentDictionary<string, (string, FileSystemWatcher)> _entries = new ConcurrentDictionary<string, (string, FileSystemWatcher)>();
 
         public InMemoryCacheShapefileCronJobService(
-            IScheduleConfig<InMemoryCacheShapefileCronJobService> scheduleConfig,
+            IScheduleConfig scheduleConfig,
             IMemoryCache memoryCache,
             CronJobServiceHealthCheck cronJobServiceHealthCheck,
             IOptions<ApplicationOptions> applicationOptions,

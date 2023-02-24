@@ -8,15 +8,15 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class BoroughBoundariesServiceTest : IClassFixture<ShapeServiceFixture>
+    public class IndividualLandmarkSiteServiceTest : IClassFixture<ShapeServiceFixture>
     {
-        public IShapeService<BoroughBoundaryShape> _service;
+        public IShapeService<IndividualLandmarkSiteShape> _service;
 
         private readonly ITestOutputHelper _testOutputHelper;
 
-        public BoroughBoundariesServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
+        public IndividualLandmarkSiteServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
         {
-            _service = fixture.BoroughBoundariesService;
+            _service = fixture.IndividualLandmarkSiteService;
             _testOutputHelper = output;
         }
 
@@ -43,7 +43,7 @@ namespace MicroService.Test.Integration
             var sut = _service.GetShapeDatabaseProperties();
             Assert.NotNull(sut);
 
-            //Display summary information about the Shape file
+            //Display summary information about the Dbase file
             _testOutputHelper.WriteLine("Dbase info");
             _testOutputHelper.WriteLine($"{sut.Fields.Length} Columns, {sut.NumRecords} Records");
 
@@ -54,9 +54,9 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Borough Boundaries Feature List")]
+        [Fact(DisplayName = "Get Feature List")]
         [Trait("Category", "Integration")]
-        public void Get_Borough_Boundaries_Feature_Collection()
+        public void Get_Feature_Collection()
         {
             var sut = _service.GetFeatures();
             Assert.NotNull(sut);
@@ -64,16 +64,15 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(1006187, 232036, "Bronx")]
-        [InlineData(1000443, 0239270, "Manhattan")]
+        [InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected)
+        public void Get_Feature_Lookup(double x, double y, string expected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
-            Assert.Equal(expected, sut.BoroName);
+            Assert.Equal(expected, sut.AreaName);
         }
     }
 }

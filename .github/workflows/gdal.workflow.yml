@@ -1,45 +1,42 @@
 name: Gdal Tools
-env: 
+env:
   DH_DOCKER_IMAGE: stuartshay/microservice-gdal
   DOCKER_SCRIPT_PATH: docker/gdal
-  DOCKER_IMAGE_TAG: 1.1.1-v1   ## Version Tag: -${{ github.sha }}
+  DOCKER_IMAGE_TAG: 1.1.1-v1 ## Version Tag: -${{ github.sha }}
 
 on:
   push:
     paths:
-    - 'docker/gdal/**' 
-    - '.github/workflows/gdal.workflow.yml'
+      - 'docker/gdal/**'
+      - '.github/workflows/gdal.workflow.yml'
 
     branches:
-    - master
-    - develop
-    - 'feature/**'
-    - 'fix/**'
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:    
-    - name: Checkout
-      uses: actions/checkout@v2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v1
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
 
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v1
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
 
-    - name: Login to Docker Hub
-      uses: docker/login-action@v1
-      with:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build image
-      id: docker_build
-      uses: docker/build-push-action@v2
-      with:
+      - name: Build image
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
           context: ${{ env.DOCKER_SCRIPT_PATH }}
           build-args: |
             BUILD_NUMBER=${{ env.BUILD_NUMBER }}
@@ -49,25 +46,25 @@ jobs:
           cache-from: type=registry,ref=${{ env.DH_DOCKER_IMAGE }}:buildcache
           cache-to: type=registry,ref=${{ env.DH_DOCKER_IMAGE }}:buildcache,mode=max
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
           name: docker
           path: image.tar
 
   test:
-     runs-on: ubuntu-latest
-     needs: [ build ]
-     steps:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
       - run: echo "TODO:Functional/Unit Tests"
 
   publish:
-     runs-on: ubuntu-latest
-     needs: [ test ]
-     steps:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
       - name: Download artifacts
         uses: actions/download-artifact@v2
-      
+
       - name: Load images
         run: |
           docker load --input docker/image.tar
@@ -77,6 +74,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
+
       - name: Docker Hub Registry Push
-        run: docker push ${{ env.DH_DOCKER_IMAGE }} --all-tags 
+        run: docker push ${{ env.DH_DOCKER_IMAGE }} --all-tags

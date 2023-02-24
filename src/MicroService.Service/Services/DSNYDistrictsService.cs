@@ -6,6 +6,7 @@ using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
+using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
@@ -40,9 +41,12 @@ namespace MicroService.Service.Services
                     model = new DSNYDistrictsShape
                     {
                         District = district,
-                        DistrictCode = f.Attributes["districtco"].ToString(),
+                        DistrictCode = int.Parse(f.Attributes["districtco"].ToString()),
                         OperationZone = operationZone,
-                        OperationZoneName = operationZoneName
+                        OperationZoneName = operationZoneName,
+                        ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                        ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+                        Coordinates = new List<Coordinate>(),
                     };
                 }
             }
@@ -55,7 +59,7 @@ namespace MicroService.Service.Services
             return model;
         }
 
-        public override IEnumerable<DSNYDistrictsShape> GetFeatureLookup(List<KeyValuePair<string, string>> features)
+        public override IEnumerable<DSNYDistrictsShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
         {
             throw new System.NotImplementedException();
         }
@@ -74,9 +78,11 @@ namespace MicroService.Service.Services
                 var model = new DSNYDistrictsShape
                 {
                     District = district,
-                    DistrictCode = f.Attributes["districtco"].ToString(),
+                    DistrictCode = int.Parse(f.Attributes["districtco"].ToString()),
                     OperationZone = operationZone,
                     OperationZoneName = operationZoneName,
+                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
                 };
 
                 results.Add(model);

@@ -1,8 +1,6 @@
-﻿using MicroService.Service.Models.Base;
-
-namespace MicroService.Service.Models
+﻿namespace MicroService.Service.Models.Base
 {
-    public class HistoricDistrictShape : ShapeBase, ILandmark
+    internal interface ILandmark
     {
         public string LPNumber { get; set; }
 
