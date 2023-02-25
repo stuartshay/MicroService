@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using NetTopologySuite.Features;
+﻿using NetTopologySuite.Features;
 using NetTopologySuite.IO;
+using System.Collections.Generic;
 
 namespace MicroService.Service.Extensions
 {
@@ -30,6 +30,8 @@ namespace MicroService.Service.Extensions
 
                 feature.Geometry = geometry;
                 feature.Attributes = attributesTable;
+                feature.BoundingBox = geometry.EnvelopeInternal;
+
                 features.Add(feature);
             }
 
