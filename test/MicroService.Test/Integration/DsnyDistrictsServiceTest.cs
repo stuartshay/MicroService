@@ -10,7 +10,7 @@ namespace MicroService.Test.Integration
 {
     public class DsnyDistrictsServiceTest : IClassFixture<ShapeServiceFixture>
     {
-        public IShapeService<DSNYDistrictsShape> _service;
+        public IShapeService<DsnyDistrictsShape> _service;
 
         private readonly ITestOutputHelper _testOutputHelper;
 

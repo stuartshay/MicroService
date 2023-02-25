@@ -6,6 +6,7 @@ using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
@@ -103,25 +104,16 @@ namespace MicroService.Service.Services
         public IEnumerable<HistoricDistrictShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<HistoricDistrictShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new HistoricDistrictShape
             {
-                var borough = f.Attributes["BOROUGH"].ToString();
-                var model = new HistoricDistrictShape
-                {
-                    LPNumber = f.Attributes["LP_NUMBER"].ToString(),
-                    AreaName = f.Attributes["AREA_NAME"].ToString(),
-                    BoroName = borough,
-                    BoroCode = (int)Enum.Parse(typeof(Borough), borough),
-                    ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
-                };
-
-                results.Add(model);
-            }
-
-            return results;
+                LPNumber = f.Attributes["LP_NUMBER"].ToString(),
+                AreaName = f.Attributes["AREA_NAME"].ToString(),
+                BoroName = f.Attributes["BOROUGH"].ToString(),
+                BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["BOROUGH"].ToString()),
+                ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
+                ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
+            });
         }
 
     }

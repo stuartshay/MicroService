@@ -56,22 +56,16 @@ namespace MicroService.Service.Services
         public IEnumerable<BoroughBoundaryShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<BoroughBoundaryShape>(features.Count);
 
-            foreach (var f in features)
+            var results = features.Select(f => new BoroughBoundaryShape
             {
-                var model = new BoroughBoundaryShape
-                {
-                    BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                    BoroName = f.Attributes["BoroName"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                };
+                BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
+                BoroName = f.Attributes["BoroName"].ToString(),
+                ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+            }).OrderBy(x => x.BoroCode);
 
-                results.Add(model);
-            }
-
-            return results.OrderBy(x => x.BoroCode);
+            return results;
         }
 
     }

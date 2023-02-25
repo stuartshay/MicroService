@@ -57,25 +57,18 @@ namespace MicroService.Service.Services
         public IEnumerable<NeighborhoodShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<NeighborhoodShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new NeighborhoodShape
             {
-                var model = new NeighborhoodShape
-                {
-                    BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                    BoroName = f.Attributes["BoroName"].ToString(),
-                    CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
-                    NTACode = f.Attributes["NTACode"].ToString(),
-                    NTAName = f.Attributes["NTAName"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                };
-
-                results.Add(model);
-            }
-
-            return results.OrderBy(x => x.BoroCode);
+                BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
+                BoroName = f.Attributes["BoroName"].ToString(),
+                CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
+                NTACode = f.Attributes["NTACode"].ToString(),
+                NTAName = f.Attributes["NTAName"].ToString(),
+                ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+            })
+                .OrderBy(x => x.BoroCode);
         }
 
     }

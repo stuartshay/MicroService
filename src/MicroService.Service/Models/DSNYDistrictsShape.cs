@@ -2,7 +2,7 @@
 
 namespace MicroService.Service.Models
 {
-    public class DSNYDistrictsShape : ShapeBase
+    public class DsnyDistrictsShape : ShapeBase
     {
         public string District { get; set; }
 
@@ -11,6 +11,5 @@ namespace MicroService.Service.Models
         public string OperationZone { get; set; }
 
         public string OperationZoneName { get; set; }
-
     }
 }
