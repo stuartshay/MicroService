@@ -1,8 +1,8 @@
 ﻿namespace MicroService.Service.Models.Enum
 {
-    public class FlatFileAttributes : System.Attribute
+    public class FlatFileAttribute : System.Attribute
     {
-        public FlatFileAttributes(string directory, string fileName, string modelName, FileTypes fileType)
+        public FlatFileAttribute(string directory, string fileName, string modelName, FileTypes fileType)
         {
             Directory = directory;
             FileName = fileName;

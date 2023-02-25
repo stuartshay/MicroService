@@ -1,8 +1,8 @@
 ﻿namespace MicroService.Service.Models.Enum
 {
-    public class ShapeAttributes : System.Attribute
+    public class ShapeAttribute : System.Attribute
     {
-        public ShapeAttributes(string directory, string fileName)
+        public ShapeAttribute(string directory, string fileName)
         {
             Directory = directory;
             FileName = fileName;
