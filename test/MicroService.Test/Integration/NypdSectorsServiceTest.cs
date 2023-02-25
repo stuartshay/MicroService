@@ -65,6 +65,7 @@ namespace MicroService.Test.Integration
 
 
         [InlineData(1006187, 232036, "40A")]
+        [InlineData(1021192.9426658918, 212550.01741990919, "115D")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup(double x, double y, string expected)

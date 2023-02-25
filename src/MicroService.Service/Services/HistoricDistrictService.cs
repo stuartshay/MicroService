@@ -1,5 +1,4 @@
 ﻿using MicroService.Data.Enum;
-using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -20,38 +19,28 @@ namespace MicroService.Service.Services
 
         public override HistoricDistrictShape GetFeatureLookup(double x, double y)
         {
-            // Validate Point is in Range
             var point = new Point(x, y);
 
-            var model = new HistoricDistrictShape();
-
             var features = GetFeatures();
-            foreach (var f in features)
-            {
-                var exists = f.Geometry.Contains(point);
-                if (exists)
-                {
-                    var borough = f.Attributes["BOROUGH"].ToString();
-                    model = new HistoricDistrictShape
-                    {
-                        LPNumber = f.Attributes["LP_NUMBER"].ToString(),
-                        AreaName = f.Attributes["AREA_NAME"].ToString(),
-                        BoroName = borough,
-                        BoroCode = (int)Enum.Parse(typeof(Borough), borough),
-                        ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
-                        ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
-                        Coordinates = new List<Coordinate>(),
-                    };
-                }
+            var feature = features.FirstOrDefault(f => f.Geometry.Contains(point));
 
-            }
-
-            if (!model.ArePropertiesNotNull())
+            if (feature == null)
             {
                 return null;
             }
 
-            return model;
+            var borough = feature.Attributes["BOROUGH"].ToString();
+
+            return new HistoricDistrictShape
+            {
+                LPNumber = feature.Attributes["LP_NUMBER"].ToString(),
+                AreaName = feature.Attributes["AREA_NAME"].ToString(),
+                BoroName = borough,
+                BoroCode = (int)Enum.Parse(typeof(Borough), borough),
+                ShapeArea = double.Parse(feature.Attributes["Shape_area"].ToString()),
+                ShapeLength = double.Parse(feature.Attributes["Shape_len"].ToString()),
+                Coordinates = new List<Coordinate>(),
+            };
         }
 
         public override IEnumerable<HistoricDistrictShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
@@ -74,15 +63,7 @@ namespace MicroService.Service.Services
                 if (found)
                 {
                     var borough = f.Attributes["BOROUGH"].ToString();
-                    var coordinates = new List<Coordinate>();
-                    foreach (var c in f.Geometry.Coordinates)
-                    {
-                        coordinates.Add(new Coordinate
-                        {
-                            X = c.X,
-                            Y = c.Y,
-                        });
-                    }
+
 
                     var model = new HistoricDistrictShape
                     {
@@ -92,7 +73,7 @@ namespace MicroService.Service.Services
                         BoroCode = (int)Enum.Parse(typeof(Borough), borough),
                         ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
                         ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
-                        Coordinates = coordinates,
+                        Coordinates = new List<Coordinate>(),
                     };
                     list.Add(model);
                 }
@@ -115,6 +96,5 @@ namespace MicroService.Service.Services
                 ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
             });
         }
-
     }
 }
