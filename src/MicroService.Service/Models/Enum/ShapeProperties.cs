@@ -5,61 +5,61 @@ namespace MicroService.Service.Models.Enum
     public enum ShapeProperties
     {
         [Description("Borough Boundaries")]
-        [ShapeAttributes("Borough_Boundaries", "nybb")]
+        [ShapeAttribute("Borough_Boundaries", "nybb")]
         BoroughBoundaries,
 
         [Description("Community_Districts")]
-        [ShapeAttributes("Community_Districts", "nycd")]
+        [ShapeAttribute("Community_Districts", "nycd")]
         CommunityDistricts,
 
         [Description("DSNY_Districts")]
-        [ShapeAttributes("DSNY_Districts", "dsny")]
+        [ShapeAttribute("DSNY_Districts", "dsny")]
         DSNYDistricts,
 
         [Description("Historic Districts")]
-        [ShapeAttributes("Historic_Districts", "Historic_Districts")]
+        [ShapeAttribute("Historic_Districts", "Historic_Districts")]
         HistoricDistricts,
 
         [Description("Individual Landmark Sites")]
-        [ShapeAttributes("Individual_Landmark_Sites", "Individual_Landmark_Sites")]
+        [ShapeAttribute("Individual_Landmark_Sites", "Individual_Landmark_Sites")]
         IndividualLandmarkSite,
 
         [Description("Neighborhoods")]
-        [ShapeAttributes("Neighborhoods", "nynta")]
+        [ShapeAttribute("Neighborhoods", "nynta")]
         Neighborhoods,
 
         [Description("Neighborhood Tabulation Areas 2020")]
-        [ShapeAttributes("Neighborhood_Tabulation_Areas", "nynta2020")]
+        [ShapeAttribute("Neighborhood_Tabulation_Areas", "nynta2020")]
         NeighborhoodTabulationAreas,
 
         [Description("NYPD Police Precincts")]
-        [ShapeAttributes("NYPD_Police_Precincts", "nypp")]
+        [ShapeAttribute("NYPD_Police_Precincts", "nypp")]
         NypdPolicePrecincts,
 
         [Description("NYPD Sectors")]
-        [ShapeAttributes("NYPD_Sectors", "NYPD_Sectors")]
+        [ShapeAttribute("NYPD_Sectors", "NYPD_Sectors")]
         NypdSectors,
 
         [Description("NYCHA Developments")]
-        [ShapeAttributes("NYCHA_Developments", "NYCHA_Developments")]
+        [ShapeAttribute("NYCHA_Developments", "NYCHA_Developments")]
         NychaDevelopments,
 
         [Description("Park")]
-        [ShapeAttributes("Park", "PARK")]
+        [ShapeAttribute("Park", "PARK")]
         Parks,
 
         [Description("Scenic Landmarks")]
-        [ShapeAttributes("Scenic_Landmarks", "Scenic_Landmarks")]
+        [ShapeAttribute("Scenic_Landmarks", "Scenic_Landmarks")]
         ScenicLandmarks,
 
 
         [Description("Subway")]
-        [ShapeAttributes("Subway_Entrances", "Subway_Entrances")]
+        [ShapeAttribute("Subway_Entrances", "Subway_Entrances")]
         Subway,
 
 
         [Description("Zip Codes")]
-        [ShapeAttributes("Zip_Codes", "ZIP_CODE_040114")]
+        [ShapeAttribute("Zip_Codes", "ZIP_CODE_040114")]
         ZipCodes,
     }
 }

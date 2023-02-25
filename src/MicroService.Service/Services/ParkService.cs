@@ -4,10 +4,11 @@ using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
-    public class ParkService<T> : AbstractShapeService<ParkShape>, IShapeService<ParkShape>
+    public class ParkService : AbstractShapeService<ParkShape>, IShapeService<ParkShape>
     {
         public ParkService(ShapefileDataReaderResolver shapefileDataReaderResolver)
         {
@@ -34,7 +35,10 @@ namespace MicroService.Service.Services
                         SourceId = long.Parse(f.Attributes["SOURCE_ID"].ToString()),
                         FeatureCode = int.Parse(f.Attributes["FEAT_CODE"].ToString()),
                         SubCode = int.Parse(f.Attributes["SUB_CODE"].ToString()),
-                        LandUse = f.Attributes["LANDUSE"].ToString(),
+                        LandUse = f.Attributes["LANDUSE"] != null ? f.Attributes["LANDUSE"].ToString() : string.Empty,
+                        ShapeArea = double.Parse(f.Attributes["SHAPE_Area"].ToString()),
+                        ShapeLength = double.Parse(f.Attributes["SHAPE_Leng"].ToString()),
+                        Coordinates = new List<Coordinate>(),
                     };
                 }
             }
@@ -67,6 +71,8 @@ namespace MicroService.Service.Services
                     FeatureCode = int.Parse(f.Attributes["FEAT_CODE"].ToString()),
                     SubCode = int.Parse(f.Attributes["SUB_CODE"].ToString()),
                     LandUse = f.Attributes["LANDUSE"].ToString(),
+                    ShapeArea = double.Parse(f.Attributes["SHAPE_Area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["SHAPE_Leng"].ToString()),
                 };
 
                 results.Add(model);

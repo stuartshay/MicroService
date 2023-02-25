@@ -19,35 +19,35 @@ namespace MicroService.Test.Fixture
                 .AddMemoryCache()
                 .AddScoped<ShapefileDataReaderResolver>(serviceProvider => key =>
                 {
-                    ShapeAttributes shapeProperties = null!;
+                    ShapeAttribute shapeProperties = null!;
                     if (key == nameof(ShapeProperties.BoroughBoundaries))
-                        shapeProperties = ShapeProperties.BoroughBoundaries.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.BoroughBoundaries.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.CommunityDistricts))
-                        shapeProperties = ShapeProperties.CommunityDistricts.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.CommunityDistricts.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.DSNYDistricts))
-                        shapeProperties = ShapeProperties.DSNYDistricts.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.DSNYDistricts.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.HistoricDistricts))
-                        shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.IndividualLandmarkSite))
-                        shapeProperties = ShapeProperties.IndividualLandmarkSite.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.IndividualLandmarkSite.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.Neighborhoods))
-                        shapeProperties = ShapeProperties.Neighborhoods.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.Neighborhoods.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.NeighborhoodTabulationAreas))
-                        shapeProperties = ShapeProperties.NeighborhoodTabulationAreas.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.NeighborhoodTabulationAreas.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.NypdPolicePrecincts))
-                        shapeProperties = ShapeProperties.NypdPolicePrecincts.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.NypdPolicePrecincts.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.NypdSectors))
-                        shapeProperties = ShapeProperties.NypdSectors.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.NypdSectors.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.NychaDevelopments))
-                        shapeProperties = ShapeProperties.NychaDevelopments.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.NychaDevelopments.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.Parks))
-                        shapeProperties = ShapeProperties.Parks.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.Parks.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.ScenicLandmarks))
-                        shapeProperties = ShapeProperties.ScenicLandmarks.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.ScenicLandmarks.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.Subway))
-                        shapeProperties = ShapeProperties.Subway.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.Subway.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.ZipCodes))
-                        shapeProperties = ShapeProperties.ZipCodes.GetAttribute<ShapeAttributes>();
+                        shapeProperties = ShapeProperties.ZipCodes.GetAttribute<ShapeAttribute>();
                     else
                         throw new KeyNotFoundException(key);
 
@@ -64,14 +64,14 @@ namespace MicroService.Test.Fixture
                 .AddScoped<DSNYDistrictsService>()
                 .AddScoped<HistoricDistrictService>()
                 .AddScoped<IndividualLandmarkSiteService>()
-                .AddScoped<NeighborhoodsService<NeighborhoodShape>>()
+                .AddScoped<NeighborhoodsService>()
                 .AddScoped<NeighborhoodTabulationAreasService>()
                 .AddScoped<NypdPolicePrecinctService>()
-                .AddScoped<NypdSectorsService<NypdSectorShape>>()
-                .AddScoped<NychaDevelopmentService<NychaDevelopmentShape>>()
-                .AddScoped<ParkService<ParkShape>>()
+                .AddScoped<NypdSectorsService>()
+                .AddScoped<NychaDevelopmentService>()
+                .AddScoped<ParkService>()
                 .AddScoped<ScenicLandmarkService>()
-                .AddScoped<SubwayService<SubwayShape>>()
+                .AddScoped<SubwayService>()
                 .AddScoped<ZipCodeService>()
                 .AddOptions()
                 .Configure<ApplicationOptions>(Configuration)
@@ -83,21 +83,14 @@ namespace MicroService.Test.Fixture
             DSNYDistrictsService = serviceProvider.GetRequiredService<DSNYDistrictsService>();
             HistoricDistrictService = serviceProvider.GetRequiredService<HistoricDistrictService>();
             IndividualLandmarkSiteService = serviceProvider.GetRequiredService<IndividualLandmarkSiteService>();
-            NeighborhoodService = serviceProvider.GetRequiredService<NeighborhoodsService<NeighborhoodShape>>();
+            NeighborhoodService = serviceProvider.GetRequiredService<NeighborhoodsService>();
             NeighborhoodTabulationAreasService = serviceProvider.GetRequiredService<NeighborhoodTabulationAreasService>();
-
-
-
-
-
-
-            //services.AddScoped            <NypdPolicePrecinctService>();
-            //services.AddScoped            <NypdSectorsService<NypdSectorShape>>();
-            //services.AddScoped            <NychaDevelopmentService<NychaDevelopmentShape>>();
-            //services.AddScoped            <ParkService<ParkShape>>();
-
+            NypdPolicePrecinctService = serviceProvider.GetRequiredService<NypdPolicePrecinctService>();
+            NypdSectorsService = serviceProvider.GetRequiredService<NypdSectorsService>();
+            NychaDevelopmentService = serviceProvider.GetRequiredService<NychaDevelopmentService>();
+            ParkService = serviceProvider.GetRequiredService<ParkService>();
             ScenicLandmarkService = serviceProvider.GetRequiredService<ScenicLandmarkService>();
-            SubwayService = serviceProvider.GetRequiredService<SubwayService<SubwayShape>>();
+            SubwayService = serviceProvider.GetRequiredService<SubwayService>();
             ZipCodeService = serviceProvider.GetRequiredService<ZipCodeService>();
         }
 
@@ -115,11 +108,11 @@ namespace MicroService.Test.Fixture
 
         public IShapeService<NeighborhoodTabulationAreaShape> NeighborhoodTabulationAreasService { get; set; }
 
+        public IShapeService<NypdPrecinctShape> NypdPolicePrecinctService { get; set; }
 
+        public IShapeService<NypdSectorShape> NypdSectorsService { get; set; }
 
-        //services.AddScoped<NypdPolicePrecinctService>();
-        //services.AddScoped<NypdSectorsService<NypdSectorShape>>();
-        //services.AddScoped<NychaDevelopmentService<NychaDevelopmentShape>>();
+        public IShapeService<NychaDevelopmentShape> NychaDevelopmentService { get; set; }
 
         public IShapeService<ParkShape> ParkService { get; set; }
 

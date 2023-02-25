@@ -4,10 +4,11 @@ using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
-    public class NychaDevelopmentService<T> : AbstractShapeService<NychaDevelopmentShape>, IShapeService<NychaDevelopmentShape>
+    public class NychaDevelopmentService : AbstractShapeService<NychaDevelopmentShape>, IShapeService<NychaDevelopmentShape>
     {
         public NychaDevelopmentService(ShapefileDataReaderResolver shapefileDataReaderResolver)
         {
@@ -31,6 +32,9 @@ namespace MicroService.Service.Services
                         Development = f.Attributes["DEVELOPMEN"].ToString(),
                         TdsNumber = f.Attributes["TDS_NUM"].ToString(),
                         Borough = f.Attributes["BOROUGH"].ToString(),
+                        ShapeArea = 0,
+                        ShapeLength = 0,
+                        Coordinates = new List<Coordinate>(),
                     };
                 }
             }
