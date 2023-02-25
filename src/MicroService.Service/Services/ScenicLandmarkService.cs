@@ -102,7 +102,5 @@ namespace MicroService.Service.Services
                 ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
             });
         }
-
     }
-
 }

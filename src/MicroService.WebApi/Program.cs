@@ -234,15 +234,12 @@ void SetupApp()
     app.MapControllers();
 
     app.UseHttpMetrics();
+    app.MapMetrics();
 
-    app.UseEndpoints(endpoints =>
+    app.MapHealthChecks("/healthz", new HealthCheckOptions
     {
-        endpoints.MapMetrics();
-        endpoints.MapHealthChecks("/healthz", new HealthCheckOptions
-        {
-            Predicate = _ => true,
-            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-        });
+        Predicate = _ => true,
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
     });
 
     app.UseHealthChecks($"/health");

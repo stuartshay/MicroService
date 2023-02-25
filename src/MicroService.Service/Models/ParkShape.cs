@@ -14,6 +14,6 @@ namespace MicroService.Service.Models
 
         public int SubCode { get; set; }
 
-        public string? LandUse { get; set; }
+        public string LandUse { get; set; }
     }
 }

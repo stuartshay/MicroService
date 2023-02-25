@@ -1,5 +1,4 @@
-﻿using MicroService.Service.Helpers;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
@@ -21,35 +20,25 @@ namespace MicroService.Service.Services
             // Validate Point is in Range
             var point = new Point(x, y);
 
-            var model = new ParkShape();
+            var feature = GetFeatures().FirstOrDefault(f => f.Geometry.Contains(point));
 
-            var features = GetFeatures();
-            foreach (var f in features)
-            {
-                var exists = f.Geometry.Contains(point);
-                if (exists)
-                {
-                    model = new ParkShape
-                    {
-                        ParkName = f.Attributes["PARK_NAME"].ToString(),
-                        ParkNumber = f.Attributes["PARKNUM"].ToString(),
-                        SourceId = long.Parse(f.Attributes["SOURCE_ID"].ToString()),
-                        FeatureCode = int.Parse(f.Attributes["FEAT_CODE"].ToString()),
-                        SubCode = int.Parse(f.Attributes["SUB_CODE"].ToString()),
-                        LandUse = f.Attributes["LANDUSE"] != null ? f.Attributes["LANDUSE"].ToString() : string.Empty,
-                        ShapeArea = double.Parse(f.Attributes["SHAPE_Area"].ToString()),
-                        ShapeLength = double.Parse(f.Attributes["SHAPE_Leng"].ToString()),
-                        Coordinates = new List<Coordinate>(),
-                    };
-                }
-            }
-
-            if (!model.ArePropertiesNotNull())
+            if (feature == null)
             {
                 return null;
             }
 
-            return model;
+            return new ParkShape
+            {
+                ParkName = feature.Attributes["PARK_NAME"].ToString(),
+                ParkNumber = feature.Attributes["PARKNUM"].ToString(),
+                SourceId = long.Parse(feature.Attributes["SOURCE_ID"].ToString()),
+                FeatureCode = int.Parse(feature.Attributes["FEAT_CODE"].ToString()),
+                SubCode = int.Parse(feature.Attributes["SUB_CODE"].ToString()),
+                LandUse = feature.Attributes["LANDUSE"] != null ? feature.Attributes["LANDUSE"].ToString() : string.Empty,
+                ShapeArea = double.Parse(feature.Attributes["SHAPE_Area"].ToString()),
+                ShapeLength = double.Parse(feature.Attributes["SHAPE_Leng"].ToString()),
+                Coordinates = new List<Coordinate>(),
+            };
         }
 
         public override IEnumerable<ParkShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)

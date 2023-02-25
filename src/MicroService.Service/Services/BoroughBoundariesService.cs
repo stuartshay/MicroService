@@ -1,5 +1,4 @@
-﻿using MicroService.Service.Helpers;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
@@ -18,34 +17,24 @@ namespace MicroService.Service.Services
 
         public override BoroughBoundaryShape GetFeatureLookup(double x, double y)
         {
-            // Validate Point is in Range
             var point = new Point(x, y);
 
-            var model = new BoroughBoundaryShape();
-
             var features = GetFeatures();
-            foreach (var f in features)
-            {
-                var exists = f.Geometry.Contains(point);
-                if (exists)
-                {
-                    model = new BoroughBoundaryShape
-                    {
-                        BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                        BoroName = f.Attributes["BoroName"].ToString(),
-                        ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                        ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                        Coordinates = new List<Coordinate>()
-                    };
-                }
-            }
+            var feature = features.FirstOrDefault(f => f.Geometry.Contains(point));
 
-            if (!model.ArePropertiesNotNull())
+            if (feature == null)
             {
                 return null;
             }
 
-            return model;
+            return new BoroughBoundaryShape
+            {
+                BoroCode = int.Parse(feature.Attributes["BoroCode"].ToString()),
+                BoroName = feature.Attributes["BoroName"].ToString(),
+                ShapeArea = double.Parse(feature.Attributes["Shape_Area"].ToString()),
+                ShapeLength = double.Parse(feature.Attributes["Shape_Leng"].ToString()),
+                Coordinates = new List<Coordinate>()
+            };
         }
 
         public override IEnumerable<BoroughBoundaryShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
