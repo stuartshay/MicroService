@@ -4,10 +4,11 @@ using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
-    public class NypdSectorsService<T> : AbstractShapeService<NypdSectorShape>, IShapeService<NypdSectorShape>
+    public class NypdSectorsService : AbstractShapeService<NypdSectorShape>, IShapeService<NypdSectorShape>
     {
         public NypdSectorsService(ShapefileDataReaderResolver shapefileDataReaderResolver)
         {
@@ -33,6 +34,9 @@ namespace MicroService.Service.Services
                         Sector = f.Attributes["sector"].ToString(),
                         PatrolBoro = f.Attributes["patrol_bor"].ToString(),
                         Phase = f.Attributes["phase"].ToString(),
+                        ShapeArea = 0, // Convert 
+                        ShapeLength = 0, // Convert
+                        Coordinates = new List<Coordinate>(),
                     };
                 }
             }

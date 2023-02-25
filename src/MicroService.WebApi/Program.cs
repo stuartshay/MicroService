@@ -6,7 +6,6 @@ using MicroService.Data.Repository;
 using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
-using MicroService.Service.Models;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Services;
@@ -98,35 +97,35 @@ void AddServices()
 
     services.AddScoped<ShapefileDataReaderResolver>(serviceProvider => key =>
     {
-        ShapeAttributes? shapeProperties;
+        ShapeAttribute? shapeProperties;
         if (key == nameof(ShapeProperties.BoroughBoundaries))
-            shapeProperties = ShapeProperties.BoroughBoundaries.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.BoroughBoundaries.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.CommunityDistricts))
-            shapeProperties = ShapeProperties.CommunityDistricts.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.CommunityDistricts.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.DSNYDistricts))
-            shapeProperties = ShapeProperties.DSNYDistricts.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.DSNYDistricts.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.HistoricDistricts))
-            shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.IndividualLandmarkSite))
-            shapeProperties = ShapeProperties.IndividualLandmarkSite.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.IndividualLandmarkSite.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.Neighborhoods))
-            shapeProperties = ShapeProperties.Neighborhoods.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.Neighborhoods.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.NeighborhoodTabulationAreas))
-            shapeProperties = ShapeProperties.NeighborhoodTabulationAreas.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.NeighborhoodTabulationAreas.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.NypdPolicePrecincts))
-            shapeProperties = ShapeProperties.NypdPolicePrecincts.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.NypdPolicePrecincts.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.NypdSectors))
-            shapeProperties = ShapeProperties.NypdSectors.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.NypdSectors.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.NychaDevelopments))
-            shapeProperties = ShapeProperties.NychaDevelopments.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.NychaDevelopments.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.Parks))
-            shapeProperties = ShapeProperties.Parks.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.Parks.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.ScenicLandmarks))
-            shapeProperties = ShapeProperties.ScenicLandmarks.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.ScenicLandmarks.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.Subway))
-            shapeProperties = ShapeProperties.Subway.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.Subway.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.ZipCodes))
-            shapeProperties = ShapeProperties.ZipCodes.GetAttribute<ShapeAttributes>();
+            shapeProperties = ShapeProperties.ZipCodes.GetAttribute<ShapeAttribute>();
         else
             throw new KeyNotFoundException(key);
 
@@ -145,14 +144,14 @@ void AddServices()
     services.AddScoped<DSNYDistrictsService>();
     services.AddScoped<HistoricDistrictService>();
     services.AddScoped<IndividualLandmarkSiteService>();
-    services.AddScoped<NeighborhoodsService<NeighborhoodShape>>();
+    services.AddScoped<NeighborhoodsService>();
     services.AddScoped<NeighborhoodTabulationAreasService>();
     services.AddScoped<NypdPolicePrecinctService>();
-    services.AddScoped<NypdSectorsService<NypdSectorShape>>();
-    services.AddScoped<NychaDevelopmentService<NychaDevelopmentShape>>();
-    services.AddScoped<ParkService<ParkShape>>();
+    services.AddScoped<NypdSectorsService>();
+    services.AddScoped<NychaDevelopmentService>();
+    services.AddScoped<ParkService>();
     services.AddScoped<ScenicLandmarkService>();
-    services.AddScoped<SubwayService<SubwayShape>>();
+    services.AddScoped<SubwayService>();
     services.AddScoped<ZipCodeService>();
 
     services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>
@@ -164,14 +163,14 @@ void AddServices()
             nameof(ShapeProperties.DSNYDistricts) => serviceProvider.GetService<DSNYDistrictsService>(),
             nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
             nameof(ShapeProperties.IndividualLandmarkSite) => serviceProvider.GetService<IndividualLandmarkSiteService>(),
-            nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService<NeighborhoodShape>>(),
+            nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService>(),
             nameof(ShapeProperties.NeighborhoodTabulationAreas) => serviceProvider.GetService<NeighborhoodTabulationAreasService>(),
             nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),
-            nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService<NypdSectorShape>>(),
-            nameof(ShapeProperties.NychaDevelopments) => serviceProvider.GetService<NychaDevelopmentService<NychaDevelopmentShape>>(),
-            nameof(ShapeProperties.Parks) => serviceProvider.GetService<ParkService<ParkShape>>(),
+            nameof(ShapeProperties.NypdSectors) => serviceProvider.GetService<NypdSectorsService>(),
+            nameof(ShapeProperties.NychaDevelopments) => serviceProvider.GetService<NychaDevelopmentService>(),
+            nameof(ShapeProperties.Parks) => serviceProvider.GetService<ParkService>(),
             nameof(ShapeProperties.ScenicLandmarks) => serviceProvider.GetService<ScenicLandmarkService>(),
-            nameof(ShapeProperties.Subway) => serviceProvider.GetService<SubwayService<SubwayShape>>(),
+            nameof(ShapeProperties.Subway) => serviceProvider.GetService<SubwayService>(),
             nameof(ShapeProperties.ZipCodes) => serviceProvider.GetService<ZipCodeService>(),
             _ => throw new KeyNotFoundException(key)
         })!;
@@ -265,4 +264,4 @@ public delegate IShapeService<ShapeBase> ShapeServiceResolver(string key);
 /// </summary>
 /// <param name="key"></param>
 /// <returns></returns>
-public delegate IFlatFileService<FlatFileBase> FlatFileResolver(string key);
+public delegate IFlatFileService FlatFileResolver(string key);

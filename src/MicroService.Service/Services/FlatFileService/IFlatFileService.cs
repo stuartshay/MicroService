@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using MicroService.Service.Models.Base;
+﻿using MicroService.Service.Models.Base;
+using System.Collections.Generic;
 
 namespace MicroService.Service.Services.FlatFileService
 {
-    public interface IFlatFileService<out T> where T : FlatFileBase
+    public interface IFlatFileService
     {
         IEnumerable<FlatFileBase> GetAll();
 

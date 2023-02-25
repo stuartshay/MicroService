@@ -47,8 +47,8 @@ namespace MicroService.WebApi.V1.Controllers
             {
                 key = j.ToString(),
                 description = j.GetEnumDescription(),
-                fileName = j.GetAttribute<ShapeAttributes>().FileName,
-                directory = j.GetAttribute<ShapeAttributes>().Directory,
+                fileName = j.GetAttribute<ShapeAttribute>().FileName,
+                directory = j.GetAttribute<ShapeAttribute>().Directory,
             });
 
             _logger.LogInformation("{@ShapeProperties}", result);

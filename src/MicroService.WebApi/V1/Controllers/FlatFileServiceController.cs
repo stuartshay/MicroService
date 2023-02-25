@@ -40,9 +40,9 @@ namespace MicroService.WebApi.V1.Controllers
             {
                 key = j.ToString(),
                 description = j.GetEnumDescription(),
-                fileName = j.GetAttribute<FlatFileAttributes>().FileName,
-                directory = j.GetAttribute<FlatFileAttributes>().Directory,
-                fileType = j.GetAttribute<FlatFileAttributes>().FileType.ToString(),
+                fileName = j.GetAttribute<FlatFileAttribute>().FileName,
+                directory = j.GetAttribute<FlatFileAttribute>().Directory,
+                fileType = j.GetAttribute<FlatFileAttribute>().FileType.ToString(),
             });
 
             return Ok(result);
@@ -63,7 +63,7 @@ namespace MicroService.WebApi.V1.Controllers
                 return BadRequest();
 
             var service = _flatFileResolver(id);
-            var modelName = Enum.Parse<FlatFileProperties>(id).GetAttribute<FlatFileAttributes>().ModelName;
+            var modelName = Enum.Parse<FlatFileProperties>(id).GetAttribute<FlatFileAttribute>().ModelName;
 
             if (modelName == "StationFlatFile")
             {

@@ -49,8 +49,8 @@ namespace MicroService.WebApi.Services
             foreach (var (name, _) in _entries)
             {
                 var rootDirectory = _applicationOptions.Value.ShapeConfiguration.ShapeSystemRootDirectory;
-                var directory = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttributes>().Directory;
-                var file = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttributes>().FileName;
+                var directory = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttribute>().Directory;
+                var file = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttribute>().FileName;
 
                 // ShapeFile Path without File Extension
                 var shapeFilePath = Path.Combine(rootDirectory, directory, file);
@@ -79,7 +79,7 @@ namespace MicroService.WebApi.Services
         {
             var nameWithShapeAttributes = typeof(ShapeProperties).GetFields()
                 .Where(x => x.IsLiteral)
-                .Select(x => (x.Name, (ShapeAttributes)x.GetCustomAttributes(typeof(ShapeAttributes), false).Single()));
+                .Select(x => (x.Name, (ShapeAttribute)x.GetCustomAttributes(typeof(ShapeAttribute), false).Single()));
 
             foreach (var (name, shapeAttribute) in nameWithShapeAttributes)
             {

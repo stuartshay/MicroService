@@ -8,15 +8,15 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class BoroughBoundariesServiceTest : IClassFixture<ShapeServiceFixture>
+    public class ParkServiceTest : IClassFixture<ShapeServiceFixture>
     {
-        public IShapeService<BoroughBoundaryShape> _service;
+        public IShapeService<ParkShape> _service;
 
         private readonly ITestOutputHelper _testOutputHelper;
 
-        public BoroughBoundariesServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
+        public ParkServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
         {
-            _service = fixture.BoroughBoundariesService;
+            _service = fixture.ParkService;
             _testOutputHelper = output;
         }
 
@@ -64,8 +64,7 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(1006187, 232036, "Bronx")]
-        [InlineData(1000443, 0239270, "Manhattan")]
+        [InlineData(1015142.9358798683, 266180.4226125971, "Van Cortlandt Park")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup(double x, double y, string expected)
@@ -73,7 +72,7 @@ namespace MicroService.Test.Integration
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
-            Assert.Equal(expected, sut.BoroName);
+            Assert.Equal(expected, sut.ParkName);
         }
     }
 }
