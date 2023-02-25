@@ -9,7 +9,7 @@ using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
-    public class NeighborhoodsService<T> : AbstractShapeService<NeighborhoodShape>, IShapeService<NeighborhoodShape>
+    public class NeighborhoodsService : AbstractShapeService<NeighborhoodShape>, IShapeService<NeighborhoodShape>
     {
         public NeighborhoodsService(ShapefileDataReaderResolver shapefileDataReaderResolver)
         {
