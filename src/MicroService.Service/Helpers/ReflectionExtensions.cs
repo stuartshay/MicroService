@@ -21,5 +21,11 @@ namespace MicroService.Service.Helpers
             public static IReadOnlyCollection<PropertyInfo> PublicProperties => PropertyCache<T>.publicPropertiesLazy.Value;
         }
 
+        public static TAttribute GetAttributeFromProperty<TAttribute>(object obj, string propertyName) where TAttribute : Attribute
+        {
+            var property = obj.GetType().GetProperty(propertyName);
+            return property!.GetCustomAttribute<TAttribute>();
+        }
+
     }
 }

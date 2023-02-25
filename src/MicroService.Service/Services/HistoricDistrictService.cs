@@ -29,14 +29,12 @@ namespace MicroService.Service.Services
                 return null;
             }
 
-            var borough = feature.Attributes["BOROUGH"].ToString();
-
             return new HistoricDistrictShape
             {
                 LPNumber = feature.Attributes["LP_NUMBER"].ToString(),
                 AreaName = feature.Attributes["AREA_NAME"].ToString(),
-                BoroName = borough,
-                BoroCode = (int)Enum.Parse(typeof(Borough), borough),
+                BoroName = feature.Attributes["BOROUGH"].ToString(),
+                BoroCode = (int)Enum.Parse(typeof(Borough), feature.Attributes["BOROUGH"].ToString()),
                 ShapeArea = double.Parse(feature.Attributes["Shape_area"].ToString()),
                 ShapeLength = double.Parse(feature.Attributes["Shape_len"].ToString()),
                 Coordinates = new List<Coordinate>(),
@@ -45,41 +43,28 @@ namespace MicroService.Service.Services
 
         public override IEnumerable<HistoricDistrictShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
         {
-            var list = new List<HistoricDistrictShape>();
-
-            var features = GetFeatures();
-            foreach (var f in features)
+            // Get Shape Feature Names
+            for (int i = 0; i < attributes.Count; i++)
             {
-                var found = true;
-                foreach (var pair in attributes)
-                {
-                    if (f.Attributes[pair.Key] as string != pair.Value)
-                    {
-                        found = false;
-                        break;
-                    }
-                }
-
-                if (found)
-                {
-                    var borough = f.Attributes["BOROUGH"].ToString();
-
-
-                    var model = new HistoricDistrictShape
-                    {
-                        LPNumber = f.Attributes["LP_NUMBER"].ToString(),
-                        AreaName = f.Attributes["AREA_NAME"].ToString(),
-                        BoroName = borough,
-                        BoroCode = (int)Enum.Parse(typeof(Borough), borough),
-                        ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
-                        ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
-                        Coordinates = new List<Coordinate>(),
-                    };
-                    list.Add(model);
-                }
+                var key = attributes[i].Key;
+                var featureName = GetFeatureName(key);
+                attributes[i] = new KeyValuePair<string, string>(featureName, attributes[i].Value);
             }
 
-            return list;
+            var results = from f in GetFeatures()
+                          where attributes.All(pair => f.Attributes[pair.Key] as string == pair.Value)
+                          select new HistoricDistrictShape
+                          {
+                              LPNumber = f.Attributes["LP_NUMBER"].ToString(),
+                              AreaName = f.Attributes["AREA_NAME"].ToString(),
+                              BoroName = f.Attributes["BOROUGH"].ToString(),
+                              BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["BOROUGH"].ToString()),
+                              ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
+                              ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
+                              Coordinates = new List<Coordinate>(),
+                          };
+
+            return results;
         }
 
         public IEnumerable<HistoricDistrictShape> GetFeatureAttributes()
