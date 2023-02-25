@@ -49,20 +49,16 @@ namespace MicroService.Service.Services
             throw new System.NotImplementedException();
         }
 
-
         public IEnumerable<SubwayShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<SubwayShape>(features.Count);
 
-            results.AddRange(features.Select(f => new SubwayShape
+            return features.Select(f => new SubwayShape
             {
                 Line = f.Attributes["line"].ToString(),
                 Name = f.Attributes["name"].ToString(),
                 ObjectId = int.Parse(f.Attributes["objectid"].ToString()),
-            }));
-
-            return results;
+            });
         }
     }
 }

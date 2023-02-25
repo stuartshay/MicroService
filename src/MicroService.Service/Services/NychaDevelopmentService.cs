@@ -4,6 +4,7 @@ using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using System.Linq;
 using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
@@ -54,21 +55,13 @@ namespace MicroService.Service.Services
         public IEnumerable<NychaDevelopmentShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<NychaDevelopmentShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new NychaDevelopmentShape
             {
-                var model = new NychaDevelopmentShape
-                {
-                    Development = f.Attributes["DEVELOPMEN"].ToString(),
-                    TdsNumber = f.Attributes["TDS_NUM"].ToString(),
-                    Borough = f.Attributes["BOROUGH"].ToString(),
-                };
-
-                results.Add(model);
-            }
-
-            return results;
+                Development = f.Attributes["DEVELOPMEN"].ToString(),
+                TdsNumber = f.Attributes["TDS_NUM"].ToString(),
+                Borough = f.Attributes["BOROUGH"].ToString(),
+            });
         }
     }
 }

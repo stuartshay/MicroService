@@ -6,6 +6,7 @@ using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MicroService.Service.Services
 {
@@ -90,26 +91,18 @@ namespace MicroService.Service.Services
         public IEnumerable<ScenicLandmarkShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<ScenicLandmarkShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new ScenicLandmarkShape
             {
-                var borough = f.Attributes["borough"].ToString();
-                var model = new ScenicLandmarkShape
-                {
-                    LPNumber = f.Attributes["lp_number"].ToString(),
-                    AreaName = f.Attributes["scen_lm_na"].ToString(),
-                    BoroName = borough,
-                    BoroCode = (int)Enum.Parse(typeof(Borough), borough),
-                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                };
-
-                results.Add(model);
-            }
-
-            return results;
+                LPNumber = f.Attributes["lp_number"].ToString(),
+                AreaName = f.Attributes["scen_lm_na"].ToString(),
+                BoroName = f.Attributes["borough"].ToString(),
+                BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
+                ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+            });
         }
+
     }
 
 }

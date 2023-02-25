@@ -4,6 +4,7 @@ using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using System.Linq;
 using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
@@ -63,30 +64,21 @@ namespace MicroService.Service.Services
         public IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<NeighborhoodTabulationAreaShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new NeighborhoodTabulationAreaShape
             {
-                var model = new NeighborhoodTabulationAreaShape
-                {
-                    BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                    BoroName = f.Attributes["BoroName"].ToString(),
-                    CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
-                    NTA2020 = f.Attributes["NTA2020"].ToString(),
-                    NTAName = f.Attributes["BoroCode"].ToString(),
-                    NTAAbbrev = f.Attributes["NTAName"].ToString(),
-                    NTAType = int.Parse(f.Attributes["NTAType"].ToString()),
-                    CDTA2020 = f.Attributes["CDTA2020"].ToString(),
-                    CDTAName = f.Attributes["CDTAName"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                };
-
-                results.Add(model);
-            }
-
-            return results;
+                BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
+                BoroName = f.Attributes["BoroName"].ToString(),
+                CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
+                NTA2020 = f.Attributes["NTA2020"].ToString(),
+                NTAName = f.Attributes["BoroCode"].ToString(),
+                NTAAbbrev = f.Attributes["NTAName"].ToString(),
+                NTAType = int.Parse(f.Attributes["NTAType"].ToString()),
+                CDTA2020 = f.Attributes["CDTA2020"].ToString(),
+                CDTAName = f.Attributes["CDTAName"].ToString(),
+                ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+            });
         }
-
     }
 }

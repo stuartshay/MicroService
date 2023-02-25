@@ -4,6 +4,7 @@ using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using System.Linq;
 using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
@@ -57,23 +58,14 @@ namespace MicroService.Service.Services
         public IEnumerable<NypdSectorShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<NypdSectorShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new NypdSectorShape
             {
-                var model = new NypdSectorShape
-                {
-                    Pct = f.Attributes["pct"].ToString(),
-                    Sector = f.Attributes["sector"].ToString(),
-                    PatrolBoro = f.Attributes["patrol_bor"].ToString(),
-                    Phase = f.Attributes["phase"].ToString(),
-                };
-
-                results.Add(model);
-            }
-
-            return results;
+                Pct = f.Attributes["pct"].ToString(),
+                Sector = f.Attributes["sector"].ToString(),
+                PatrolBoro = f.Attributes["patrol_bor"].ToString(),
+                Phase = f.Attributes["phase"].ToString(),
+            });
         }
-
     }
 }
