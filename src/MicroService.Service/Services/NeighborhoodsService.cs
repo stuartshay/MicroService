@@ -67,8 +67,7 @@ namespace MicroService.Service.Services
                 NTAName = f.Attributes["NTAName"].ToString(),
                 ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
                 ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-            })
-                .OrderBy(x => x.BoroCode);
+            }).OrderBy(x => x.BoroCode);
         }
 
     }

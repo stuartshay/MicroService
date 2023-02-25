@@ -4,6 +4,7 @@ using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using System.Linq;
 using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
@@ -60,27 +61,19 @@ namespace MicroService.Service.Services
         public IEnumerable<ZipCodeShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<ZipCodeShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new ZipCodeShape
             {
-                var model = new ZipCodeShape
-                {
-                    ZipCode = f.Attributes["ZIPCODE"].ToString(),
-                    BldgZip = f.Attributes["BLDGZIP"].ToString(),
-                    PostOfficeName = f.Attributes["PO_NAME"].ToString(),
-                    Population = int.Parse(f.Attributes["POPULATION"].ToString()),
-                    Area = double.Parse(f.Attributes["AREA"].ToString()),
-                    State = f.Attributes["STATE"].ToString(),
-                    County = f.Attributes["COUNTY"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["SHAPE_AREA"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["SHAPE_LEN"].ToString()),
-                };
-
-                results.Add(model);
-            }
-
-            return results;
+                ZipCode = f.Attributes["ZIPCODE"].ToString(),
+                BldgZip = f.Attributes["BLDGZIP"].ToString(),
+                PostOfficeName = f.Attributes["PO_NAME"].ToString(),
+                Population = int.Parse(f.Attributes["POPULATION"].ToString()),
+                Area = double.Parse(f.Attributes["AREA"].ToString()),
+                State = f.Attributes["STATE"].ToString(),
+                County = f.Attributes["COUNTY"].ToString(),
+                ShapeArea = double.Parse(f.Attributes["SHAPE_AREA"].ToString()),
+                ShapeLength = double.Parse(f.Attributes["SHAPE_LEN"].ToString()),
+            });
         }
     }
 }

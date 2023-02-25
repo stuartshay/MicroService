@@ -4,6 +4,7 @@ using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using System.Linq;
 using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
@@ -59,27 +60,18 @@ namespace MicroService.Service.Services
         public IEnumerable<ParkShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<ParkShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new ParkShape
             {
-                var model = new ParkShape
-                {
-                    ParkName = f.Attributes["PARK_NAME"].ToString(),
-                    ParkNumber = f.Attributes["PARKNUM"].ToString(),
-                    SourceId = long.Parse(f.Attributes["SOURCE_ID"].ToString()),
-                    FeatureCode = int.Parse(f.Attributes["FEAT_CODE"].ToString()),
-                    SubCode = int.Parse(f.Attributes["SUB_CODE"].ToString()),
-                    LandUse = f.Attributes["LANDUSE"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["SHAPE_Area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["SHAPE_Leng"].ToString()),
-                };
-
-                results.Add(model);
-            }
-
-            return results;
+                ParkName = f.Attributes["PARK_NAME"].ToString(),
+                ParkNumber = f.Attributes["PARKNUM"].ToString(),
+                SourceId = long.Parse(f.Attributes["SOURCE_ID"].ToString()),
+                FeatureCode = int.Parse(f.Attributes["FEAT_CODE"].ToString()),
+                SubCode = int.Parse(f.Attributes["SUB_CODE"].ToString()),
+                LandUse = f.Attributes["LANDUSE"].ToString(),
+                ShapeArea = double.Parse(f.Attributes["SHAPE_Area"].ToString()),
+                ShapeLength = double.Parse(f.Attributes["SHAPE_Leng"].ToString()),
+            });
         }
-
     }
 }

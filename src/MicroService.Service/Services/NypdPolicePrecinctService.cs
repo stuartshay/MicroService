@@ -4,6 +4,7 @@ using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using System.Linq;
 using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
@@ -55,19 +56,12 @@ namespace MicroService.Service.Services
         public IEnumerable<NypdPrecinctShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<NypdPrecinctShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new NypdPrecinctShape
             {
-                var model = new NypdPrecinctShape
-                {
-                    Precinct = f.Attributes["Precinct"].ToString(),
-                };
-
-                results.Add(model);
-            }
-
-            return results;
+                Precinct = f.Attributes["Precinct"].ToString(),
+            });
         }
+
     }
 }
