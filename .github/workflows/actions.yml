@@ -88,7 +88,7 @@ jobs:
 
       - name: Build image
         id: docker_build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
           build-args: |
             BUILD_NUMBER=${{ env.BUILD_NUMBER }}
