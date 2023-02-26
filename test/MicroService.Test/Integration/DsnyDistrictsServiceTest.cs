@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Test.Fixture;
+using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit;
@@ -8,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class DsnyDistrictsServiceTest : IClassFixture<ShapeServiceFixture>
+    public class DsnyDistrictsServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
         public IShapeService<DsnyDistrictsShape> _service;
 
@@ -66,14 +67,13 @@ namespace MicroService.Test.Integration
         [InlineData(1006187, 232036, "Bronx", 201)]
         [InlineData(1000443, 0239270, "Manhattan", 110)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int expectedDistrictCode)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.OperationZoneName);
-            Assert.Equal(expectedDistrictCode, sut.DistrictCode);
+            Assert.Equal(lookupExpected, sut.DistrictCode);
         }
 
         [InlineData(1006187, 732036, null)]
@@ -86,6 +86,24 @@ namespace MicroService.Test.Integration
             Assert.Null(sut);
             Assert.Equal(expected, sut?.OperationZone);
         }
+
+
+        [InlineData("BKN01", "", "Brooklyn North")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
+        public void Get_Feature_Attribute_Lookup(string value1, string value2, string expected)
+        {
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("District", value1),
+            };
+
+            var sut = _service.GetFeatureLookup(attributes);
+            var result = sut.FirstOrDefault();
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, result?.OperationZoneName);
+        }
+
 
     }
 }

@@ -47,7 +47,7 @@ namespace MicroService.Service.Services
         }
 
         public override IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureLookup(
-            List<KeyValuePair<string, string>> attributes)
+            List<KeyValuePair<string, object>> attributes)
         {
             throw new System.NotImplementedException();
         }

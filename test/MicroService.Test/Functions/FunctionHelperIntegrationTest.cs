@@ -1,12 +1,10 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using MicroService.Data.Repository;
+﻿using MicroService.Data.Repository;
 using MicroService.Service.Helpers;
 using MicroService.Test.Fixture;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace MicroService.Test.Integration
+namespace MicroService.Test.Functions
 {
     public class FunctionHelperIntegrationTest : IClassFixture<TestDataFixture>
     {

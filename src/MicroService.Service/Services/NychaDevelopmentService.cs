@@ -47,7 +47,7 @@ namespace MicroService.Service.Services
             return model;
         }
 
-        public override IEnumerable<NychaDevelopmentShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        public override IEnumerable<NychaDevelopmentShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             throw new System.NotImplementedException();
         }

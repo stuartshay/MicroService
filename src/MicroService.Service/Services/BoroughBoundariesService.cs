@@ -37,9 +37,22 @@ namespace MicroService.Service.Services
             };
         }
 
-        public override IEnumerable<BoroughBoundaryShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        public override IEnumerable<BoroughBoundaryShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+
+            var results = from f in GetFeatures()
+                          where attributes.All(pair => f.Attributes[pair.Key] as string == pair.Value.ToString())
+                          select new BoroughBoundaryShape
+                          {
+                              BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
+                              BoroName = f.Attributes["BoroName"].ToString(),
+                              ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                              ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+                              Coordinates = new List<Coordinate>(),
+                          };
+
+            return results;
         }
 
         public IEnumerable<BoroughBoundaryShape> GetFeatureAttributes()

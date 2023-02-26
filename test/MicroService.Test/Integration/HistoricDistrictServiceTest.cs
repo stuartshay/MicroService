@@ -89,7 +89,7 @@ namespace MicroService.Test.Integration
         [Fact]
         public void Get_Feature_Attribute_Lookup()
         {
-            var attributes = new List<KeyValuePair<string, string>>
+            var attributes = new List<KeyValuePair<string, object>>
             {
                 new("LPNumber", "LP-02403"),
                 new("BoroName", "BX"),

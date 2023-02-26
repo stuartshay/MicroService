@@ -41,18 +41,12 @@ namespace MicroService.Service.Services
             };
         }
 
-        public override IEnumerable<HistoricDistrictShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        public override IEnumerable<HistoricDistrictShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            // Get Shape Feature Names
-            for (int i = 0; i < attributes.Count; i++)
-            {
-                var key = attributes[i].Key;
-                var featureName = GetFeatureName(key);
-                attributes[i] = new KeyValuePair<string, string>(featureName, attributes[i].Value);
-            }
+            attributes = ValidateFeatureKey(attributes);
 
             var results = from f in GetFeatures()
-                          where attributes.All(pair => f.Attributes[pair.Key] as string == pair.Value)
+                          where attributes.All(pair => f.Attributes[pair.Key] as string == pair.Value.ToString())
                           select new HistoricDistrictShape
                           {
                               LPNumber = f.Attributes["LP_NUMBER"].ToString(),

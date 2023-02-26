@@ -14,7 +14,7 @@ namespace MicroService.WebApi.Extensions.Swagger
         /// <returns></returns>
         public FeatureAttributeLookupRequestModel GetExamples()
         {
-            var attributes = new List<KeyValuePair<string, string>>
+            var attributes = new List<KeyValuePair<string, object>>
             {
                 new("LPNumber", "LP-02403"),
                 new("BoroName", "BX"),
