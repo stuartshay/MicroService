@@ -43,7 +43,7 @@ namespace MicroService.Service.Services
             };
         }
 
-        public override IEnumerable<ZipCodeShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        public override IEnumerable<ZipCodeShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             throw new System.NotImplementedException();
         }

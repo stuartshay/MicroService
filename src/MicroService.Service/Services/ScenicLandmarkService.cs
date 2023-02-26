@@ -52,7 +52,7 @@ namespace MicroService.Service.Services
             return model;
         }
 
-        public override IEnumerable<ScenicLandmarkShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        public override IEnumerable<ScenicLandmarkShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             var list = new List<ScenicLandmarkShape>();
 
