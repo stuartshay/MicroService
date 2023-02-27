@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Test.Fixture;
+using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit;
@@ -8,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class ScenicLandmarkServiceTest : IClassFixture<ShapeServiceFixture>
+    public class ScenicLandmarkServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
         public IShapeService<ScenicLandmarkShape> _service;
 
@@ -75,6 +76,30 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.BoroName);
         }
+
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        [InlineData("LP-00879", "MN", "Bryant Park")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
+        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
+        {
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("LPNumber", value1),
+                new("BoroName", value2),
+            };
+
+            var sut = _service.GetFeatureLookup(attributes);
+            var result = sut.FirstOrDefault();
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, result?.AreaName);
+        }
+
 
         [InlineData(1006187, 732036, null)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
