@@ -14,58 +14,51 @@ namespace MicroService.WebApi.Extensions.Swagger
         /// <returns></returns>
         public FeatureAttributeLookupRequestModel GetExamples()
         {
+            var shapeType = "BoroughBoundaries";
+
             // BoroughBoundaries
-            //var attributes = new List<KeyValuePair<string, object>>
-            //{
-            //    new("BoroCode", 1),
-            //    new("BoroName", "Manhattan"),
-            //};
+            if (shapeType == "BoroughBoundaries")
+            {
+                return new FeatureAttributeLookupRequestModel
+                {
+                    Key = "BoroughBoundaries",
+                    Attributes = new List<KeyValuePair<string, object>>
+                    {
+                        new("BoroCode", 1),
+                        new("BoroName", "Manhattan"),
+                    },
+                };
+            }
 
-            //return new FeatureAttributeLookupRequestModel
-            //{
-            //    Key = "BoroughBoundaries",
-            //    Attributes = attributes,
-            //};
-
-            //// HistoricDistricts
-            //var attributes = new List<KeyValuePair<string, object>>
-            //{
-            //    new("LPNumber", "LP-02403"),
-            //    new("BoroName", "BX"),
-            //};
-
-            //return new FeatureAttributeLookupRequestModel
-            //{
-            //    Key = "HistoricDistricts",
-            //    Attributes = attributes,
-            //};
+            // HistoricDistricts
+            if (shapeType == "HistoricDistricts")
+            {
+                return new FeatureAttributeLookupRequestModel
+                {
+                    Key = "HistoricDistricts",
+                    Attributes = new List<KeyValuePair<string, object>>
+                    {
+                        new("LPNumber", "LP-02403"),
+                        new("BoroName", "BX"),
+                    },
+                };
+            }
 
             // IndividualLandmarkSite
-            var attributes = new List<KeyValuePair<string, object>>
+            if (shapeType == "IndividualLandmarkSite")
             {
-                new("LPNumber", "LP-00001"),
-                new("BBL", "3079170009"),
-            };
+                return new FeatureAttributeLookupRequestModel
+                {
+                    Key = "IndividualLandmarkSite",
+                    Attributes = new List<KeyValuePair<string, object>>
+                    {
+                        new("LPNumber", "LP-00001"),
+                        new("BBL", "3079170009"),
+                    },
+                };
+            }
 
-            return new FeatureAttributeLookupRequestModel
-            {
-                Key = "IndividualLandmarkSite",
-                Attributes = attributes,
-            };
-
-
-
-
-            //var attributes = new List<KeyValuePair<string, string>>
-            //{
-            //    new("lp_number", "LP-00860")
-            //};
-
-            //return new FeatureAttributeLookupRequestModel
-            //{
-            //    Key = "ScenicLandmarks",
-            //    Attributes = attributes,
-            //};
+            throw new ArgumentException($"Invalid Swagger Example Request");
         }
     }
 }
