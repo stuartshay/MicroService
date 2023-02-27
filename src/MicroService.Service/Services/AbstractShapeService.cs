@@ -41,37 +41,6 @@ namespace MicroService.Service.Services
         /// </summary>
         /// <param name="attributes"></param>
         /// <returns></returns>
-        //public List<KeyValuePair<string, object>> ValidateFeatureKey(List<KeyValuePair<string, object>> attributes)
-        //{
-        //    var shapeClass = Activator.CreateInstance<T>(); // create an instance of the class
-
-        //    for (int i = 0; i < attributes.Count; i++)
-        //    {
-        //        var key = attributes[i].Key;
-        //        var featureName = GetFeatureName(key);
-        //        var propertyInfo = typeof(T).GetProperty(key);
-
-        //        if (propertyInfo != null)
-        //        {
-        //            var typeOfMyProperty = propertyInfo.PropertyType;
-        //            var value = attributes[i].Value;
-
-        //            if (value != null && value.GetType() != typeOfMyProperty)
-        //            {
-        //                var convertedValue = Convert.ChangeType(value, typeOfMyProperty);
-        //                propertyInfo.SetValue(shapeClass, convertedValue);
-
-        //                attributes[i] = new KeyValuePair<string, object>(featureName, convertedValue);
-        //            }
-        //            else
-        //            {
-        //                attributes[i] = new KeyValuePair<string, object>(featureName, value);
-        //            }
-        //        }
-        //    }
-
-        //    return attributes;
-        //}
         public List<KeyValuePair<string, object>> ValidateFeatureKey(List<KeyValuePair<string, object>> attributes)
         {
             var shapeClass = Activator.CreateInstance<T>(); // create an instance of the class
@@ -91,14 +60,20 @@ namespace MicroService.Service.Services
                     {
                         try
                         {
-                            object convertedValue;
+                            object convertedValue = null;
                             if (typeOfMyProperty == typeof(int))
                             {
-                                convertedValue = Convert.ToInt32(value);
+                                if (int.TryParse(value.ToString(), out int intValue))
+                                {
+                                    convertedValue = intValue;
+                                }
                             }
                             else if (typeOfMyProperty == typeof(double))
                             {
-                                convertedValue = Convert.ToDouble(value);
+                                if (double.TryParse(value.ToString(), out double doubleValue))
+                                {
+                                    convertedValue = doubleValue;
+                                }
                             }
                             else if (typeOfMyProperty == typeof(string))
                             {
@@ -108,6 +83,12 @@ namespace MicroService.Service.Services
                             {
                                 throw new NotSupportedException($"Converting type {value.GetType()} to {typeOfMyProperty} is not supported.");
                             }
+
+                            if (convertedValue == null)
+                            {
+                                throw new FormatException($"Failed to convert value of type {value.GetType()} to {typeOfMyProperty}.");
+                            }
+
                             propertyInfo.SetValue(shapeClass, convertedValue);
                             attributes[i] = new KeyValuePair<string, object>(featureName, convertedValue);
                         }
@@ -125,76 +106,6 @@ namespace MicroService.Service.Services
 
             return attributes;
         }
-
-        //public List<KeyValuePair<string, object>> ValidateFeatureKey(List<KeyValuePair<string, object>> attributes)
-        //{
-        //    var shapeClass = Activator.CreateInstance<T>(); // create an instance of the class
-
-        //    for (int i = 0; i < attributes.Count; i++)
-        //    {
-        //        var key = attributes[i].Key;
-        //        var featureName = GetFeatureName(key);
-        //        var propertyInfo = typeof(T).GetProperty(key);
-
-        //        if (propertyInfo != null)
-        //        {
-        //            var typeOfMyProperty = propertyInfo.PropertyType;
-        //            var value = attributes[i].Value;
-
-        //            if (value != null && value.GetType() != typeOfMyProperty)
-        //            {
-        //                try
-        //                {
-        //                    object convertedValue = null;
-        //                    if (typeOfMyProperty == typeof(int))
-        //                    {
-        //                        if (int.TryParse(value.ToString(), out int intValue))
-        //                        {
-        //                            convertedValue = intValue;
-        //                        }
-        //                    }
-        //                    else if (typeOfMyProperty == typeof(double))
-        //                    {
-        //                        if (double.TryParse(value.ToString(), out double doubleValue))
-        //                        {
-        //                            convertedValue = doubleValue;
-        //                        }
-        //                    }
-        //                    else if (typeOfMyProperty == typeof(string))
-        //                    {
-        //                        convertedValue = Convert.ToString(value);
-        //                    }
-        //                    else
-        //                    {
-        //                        throw new NotSupportedException($"Converting type {value.GetType()} to {typeOfMyProperty} is not supported.");
-        //                    }
-
-        //                    if (convertedValue == null)
-        //                    {
-        //                        throw new FormatException($"Failed to convert value of type {value.GetType()} to {typeOfMyProperty}.");
-        //                    }
-
-        //                    propertyInfo.SetValue(shapeClass, convertedValue);
-        //                    attributes[i] = new KeyValuePair<string, object>(featureName, convertedValue);
-        //                }
-        //                catch (FormatException ex)
-        //                {
-        //                    throw new FormatException($"Failed to convert value of type {value.GetType()} to {typeOfMyProperty}.", ex);
-        //                }
-        //            }
-        //            else
-        //            {
-        //                attributes[i] = new KeyValuePair<string, object>(featureName, value);
-        //            }
-        //        }
-        //    }
-
-        //    return attributes;
-        //}
-
-
-
-
 
         protected object MatchAttributeValue(object value, object expectedValue)
         {

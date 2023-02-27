@@ -13,6 +13,9 @@ namespace MicroService.Service.Models
         [FeatureName("lpc_name")]
         public string AreaName { get; set; }
 
+        [FeatureName("bbl")]
+        public double BBL { get; set; }
+
         [FeatureName("borough")]
         public string BoroName { get; set; }
     }
