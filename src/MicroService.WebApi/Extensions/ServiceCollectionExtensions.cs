@@ -1,11 +1,9 @@
 ﻿using MicroService.Service.Configuration;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Services.Cron;
-using MicroService.WebApi.V1.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.OpenApi.Models;
-using OpenTelemetry.Exporter;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Swashbuckle.AspNetCore.Filters;
@@ -108,7 +106,7 @@ namespace MicroService.WebApi.Extensions
                 });
                 var xmlFilePath = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
 
-                //c.EnableAnnotations();
+                c.EnableAnnotations();
                 c.ExampleFilters();
                 c.IncludeXmlComments(xmlFilePath);
             });
@@ -125,33 +123,50 @@ namespace MicroService.WebApi.Extensions
         /// <param name="env"></param>
         public static void AddOpenTelemetryTracingCustom(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
+            var serviceVersion = Assembly.GetEntryAssembly()?.GetName().Version?.ToString();
+
             var commonConfig = configuration.Get<MicroService.Common.Configuration.ApplicationOptions>();
             if (commonConfig!.JaegerConfiguration.Enabled)
             {
-                services.AddOpenTelemetryTracing(
-                    builder =>
-                    {
-                        _ = builder
-                            .SetResourceBuilder(ResourceBuilder.CreateDefault()
-                                .AddService(env.ApplicationName))
-                            .AddSource(nameof(FeatureServiceController))
-                            .AddAspNetCoreInstrumentation()
-                            .AddHttpClientInstrumentation();
+                services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
+                {
+                    tracerProviderBuilder
+                        .AddConsoleExporter()
+                        .AddSource(env.ApplicationName).SetResourceBuilder(ResourceBuilder.CreateDefault()
+                          .AddService(serviceName: env.ApplicationName, serviceVersion: serviceVersion))
+                          .AddHttpClientInstrumentation()
+                          .AddAspNetCoreInstrumentation();
+                });
 
-                        if (commonConfig!.JaegerConfiguration.Enabled && commonConfig.JaegerConfiguration.RemoteAgentEnabled)
-                        {
-                            builder.AddJaegerExporter(o =>
-                            {
-                                o.AgentHost = commonConfig!.JaegerConfiguration.AgentHost;
-                                o.AgentPort = commonConfig!.JaegerConfiguration.AgentPort;
-                            });
-                        }
 
-                        if (env.IsDevelopment())
-                        {
-                            builder.AddConsoleExporter(options => options.Targets = ConsoleExporterOutputTargets.Console);
-                        }
-                    });
+
+
+
+
+                //    builder =>
+                //    {
+                //        _ = builder
+                //            .SetResourceBuilder(ResourceBuilder.CreateDefault()
+                //                .AddService(env.ApplicationName))
+                //            .AddSource(nameof(FeatureServiceController))
+                //            .AddAspNetCoreInstrumentation()
+                //            .AddHttpClientInstrumentation();
+
+                //        if (commonConfig!.JaegerConfiguration.Enabled && commonConfig.JaegerConfiguration.RemoteAgentEnabled)
+                //        {
+                //            builder.AddJaegerExporter(o =>
+                //            {
+                //                o.AgentHost = commonConfig!.JaegerConfiguration.AgentHost;
+                //                o.AgentPort = commonConfig!.JaegerConfiguration.AgentPort;
+                //            });
+                //        }
+
+                //        if (env.IsDevelopment())
+                //        {
+                //            builder.AddConsoleExporter(options => options.Targets = ConsoleExporterOutputTargets.Console);
+                //        }
+                //    }
+                //);
             }
         }
 

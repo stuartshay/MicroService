@@ -1,5 +1,4 @@
 ﻿using MicroService.Service.Helpers;
-using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
@@ -29,12 +28,6 @@ namespace MicroService.Service.Services
         public abstract T GetFeatureLookup(double x, double y);
 
         public abstract IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, object>> attributes);
-
-        public ShapeBase GetShapeBaseFeatureLookup(double x, double y)
-        {
-            var shape = new ShapeBase();
-            return shape;
-        }
 
         /// <summary>
         /// Validate/Map Shape Feature Properties
