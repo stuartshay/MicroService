@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,9 @@ namespace MicroService.Service.Services
 {
     public class ParkService : AbstractShapeService<ParkShape>, IShapeService<ParkShape>
     {
-        public ParkService(ShapefileDataReaderResolver shapefileDataReaderResolver)
+        public ParkService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            ILogger<ParkService> logger)
+            : base(logger)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Parks));
         }
@@ -29,12 +32,14 @@ namespace MicroService.Service.Services
 
             return new ParkShape
             {
-                ParkName = feature.Attributes["PARK_NAME"].ToString(),
+                ParkName = feature.Attributes["PARK_NAME"]?.ToString(),
                 ParkNumber = feature.Attributes["PARKNUM"].ToString(),
                 SourceId = long.Parse(feature.Attributes["SOURCE_ID"].ToString()),
                 FeatureCode = int.Parse(feature.Attributes["FEAT_CODE"].ToString()),
                 SubCode = int.Parse(feature.Attributes["SUB_CODE"].ToString()),
-                LandUse = feature.Attributes["LANDUSE"] != null ? feature.Attributes["LANDUSE"].ToString() : string.Empty,
+                LandUse = feature.Attributes["LANDUSE"]?.ToString(),
+                System = feature.Attributes["SYSTEM"]?.ToString(),
+                Status = feature.Attributes["STATUS"]?.ToString(),
                 ShapeArea = double.Parse(feature.Attributes["SHAPE_Area"].ToString()),
                 ShapeLength = double.Parse(feature.Attributes["SHAPE_Leng"].ToString()),
                 Coordinates = new List<Coordinate>(),
@@ -50,17 +55,21 @@ namespace MicroService.Service.Services
         {
             var features = GetFeatures();
 
+            _logger.LogInformation("Feature Count|{count}", features.Count);
+
             return features.Select(f => new ParkShape
             {
-                ParkName = f.Attributes["PARK_NAME"].ToString(),
+                ParkName = f.Attributes["PARK_NAME"]?.ToString(),
                 ParkNumber = f.Attributes["PARKNUM"].ToString(),
                 SourceId = long.Parse(f.Attributes["SOURCE_ID"].ToString()),
                 FeatureCode = int.Parse(f.Attributes["FEAT_CODE"].ToString()),
                 SubCode = int.Parse(f.Attributes["SUB_CODE"].ToString()),
-                LandUse = f.Attributes["LANDUSE"].ToString(),
+                LandUse = f.Attributes["LANDUSE"]?.ToString(),
+                System = f.Attributes["SYSTEM"]?.ToString(),
+                Status = f.Attributes["STATUS"]?.ToString(),
                 ShapeArea = double.Parse(f.Attributes["SHAPE_Area"].ToString()),
                 ShapeLength = double.Parse(f.Attributes["SHAPE_Leng"].ToString()),
-            });
+            }).Take(20);
         }
     }
 }
