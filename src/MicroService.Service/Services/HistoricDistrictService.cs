@@ -2,6 +2,7 @@
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,9 @@ namespace MicroService.Service.Services
 {
     public class HistoricDistrictService : AbstractShapeService<HistoricDistrictShape>, IShapeService<HistoricDistrictShape>
     {
-        public HistoricDistrictService(ShapefileDataReaderResolver shapefileDataReaderResolver)
+        public HistoricDistrictService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            ILogger<HistoricDistrictService> logger)
+            : base(logger)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.HistoricDistricts));
         }

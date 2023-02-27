@@ -17,6 +17,7 @@ namespace MicroService.Test.Fixture
         {
             var serviceProvider = new ServiceCollection()
                 .AddMemoryCache()
+                .AddLogging()
                 .AddScoped<ShapefileDataReaderResolver>(serviceProvider => key =>
                 {
                     ShapeAttribute shapeProperties = null!;

@@ -1,5 +1,6 @@
 ﻿using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
+using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using System;
@@ -9,9 +10,22 @@ namespace MicroService.Service.Services
 {
     public delegate IShapefileDataReaderService ShapefileDataReaderResolver(string key);
 
-    public abstract class AbstractShapeService<T> where T : new()
+
+    public abstract class AbstractShapeService<T> where T : class, new()
     {
         public IShapefileDataReaderService ShapeFileDataReader { get; internal set; }
+
+        public readonly ILogger _logger;
+
+        public AbstractShapeService()
+        {
+
+        }
+
+        public AbstractShapeService(ILogger logger)
+        {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
 
         public ShapefileHeader GetShapeProperties()
         {

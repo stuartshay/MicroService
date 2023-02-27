@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Test.Fixture;
+using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit;
@@ -8,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class ZipCodeServiceTest : IClassFixture<ShapeServiceFixture>
+    public class ZipCodeServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
         public IShapeService<ZipCodeShape> _service;
 
@@ -64,18 +65,36 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(1006187, 232036, "Bronx")]
-        [InlineData(1000443, 0239270, "New York")]
-        [InlineData(1021192.9426658918, 212550.01741990919, "Queens")]
+        [InlineData(1006187, 232036, "Bronx", null)]
+        [InlineData(1000443, 0239270, "New York", null)]
+        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", null)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.County);
         }
+
+        [InlineData("11436", "Jamaica", "Jamaica")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
+        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
+        {
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("ZipCode", value1),
+                //new("BoroName", value2),
+            };
+
+            var sut = _service.GetFeatureLookup(attributes);
+            var result = sut.FirstOrDefault();
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, result?.PostOfficeName);
+        }
+
 
         [InlineData(1006187, 732036, null)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
@@ -88,6 +107,12 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, sut?.PostOfficeName);
         }
 
+        [Fact]
+        public void Get_Feature_List()
+        {
+            var sut = _service.GetFeatureAttributes();
 
+            Assert.NotNull(sut);
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,9 @@ namespace MicroService.Service.Services
 {
     public class NypdSectorsService : AbstractShapeService<NypdSectorShape>, IShapeService<NypdSectorShape>
     {
-        public NypdSectorsService(ShapefileDataReaderResolver shapefileDataReaderResolver)
+        public NypdSectorsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            ILogger<NypdSectorsService> logger)
+            : base(logger)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NypdSectors));
         }
