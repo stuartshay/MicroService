@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Test.Fixture;
+using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit;
@@ -8,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class CommunityDistrictServiceTest : IClassFixture<ShapeServiceFixture>
+    public class CommunityDistrictServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
         public IShapeService<CommunityDistrictShape> _service;
 
@@ -67,7 +68,7 @@ namespace MicroService.Test.Integration
         [InlineData(1000443, 0239270, "Manhattan", 110)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int expectedCd)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? expectedCd)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
@@ -76,6 +77,11 @@ namespace MicroService.Test.Integration
             Assert.Equal(expectedCd, sut.Cd);
         }
 
+
+        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
+        {
+            throw new NotImplementedException();
+        }
 
         [InlineData(1006187, 732036, null)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
