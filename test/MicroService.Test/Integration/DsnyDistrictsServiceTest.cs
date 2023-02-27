@@ -90,7 +90,8 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData("BKN01", "", "Brooklyn North")]
+        [InlineData("MN01", "", "Manhattan")]
+        [InlineData("SI02", "", "Staten Island")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
