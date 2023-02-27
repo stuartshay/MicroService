@@ -1,6 +1,6 @@
 ﻿using MicroService.Data.Models;
 using MicroService.Data.Repository;
-using MicroService.Service.Services;
+using MicroService.Service.Services.DataService;
 using Moq;
 using System.Collections.Generic;
 using System.Threading.Tasks;

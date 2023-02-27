@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using MicroService.Data.Repository;
+﻿using MicroService.Data.Repository;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace MicroService.Service.Services
+namespace MicroService.Service.Services.DataService
 {
     public class CalculationService : ICalculationService
     {

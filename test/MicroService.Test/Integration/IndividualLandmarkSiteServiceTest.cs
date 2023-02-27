@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Test.Fixture;
+using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit;
@@ -8,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class IndividualLandmarkSiteServiceTest : IClassFixture<ShapeServiceFixture>
+    public class IndividualLandmarkSiteServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
         public IShapeService<IndividualLandmarkSiteShape> _service;
 
@@ -81,6 +82,13 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, sut.AreaName);
         }
 
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
         [InlineData(1006187, 732036, null)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
@@ -92,16 +100,16 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, sut?.BoroName);
         }
 
-        [InlineData("LP-00001", "BK", "Pieter Claesen Wyckoff House")]
-        [InlineData("LP-00010", "MN", "428 Lafayette Street Building")]
+        [InlineData("LP-00001", "3079170009", "Pieter Claesen Wyckoff House")]
+        [InlineData("LP-00010", "1005450040", "428 Lafayette Street Building")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Attribute_Lookup(string lbNumber, string boroName, string expected)
+        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
             var attributes = new List<KeyValuePair<string, object>>
             {
-                new("LPNumber", lbNumber),
-                new("BoroName", boroName),
+                new("LPNumber", value1),
+                new("BBL", value2),
             };
 
             var sut = _service.GetFeatureLookup(attributes);
@@ -110,5 +118,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, result?.AreaName);
         }
+
     }
 }

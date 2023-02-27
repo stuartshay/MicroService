@@ -74,26 +74,27 @@ namespace MicroService.Service.Services
 
         public override IEnumerable<IndividualLandmarkSiteShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            // Get Shape Feature Names
-            for (int i = 0; i < attributes.Count; i++)
-            {
-                var key = attributes[i].Key;
-                var featureName = GetFeatureName(key);
-                attributes[i] = new KeyValuePair<string, object>(featureName, attributes[i].Value);
-            }
+            attributes = ValidateFeatureKey(attributes);
 
-            var results = from f in GetFeatures()
-                          where attributes.All(pair => f.Attributes[pair.Key] as string == pair.Value.ToString())
-                          select new IndividualLandmarkSiteShape
-                          {
-                              LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
-                              AreaName = f.Attributes["lpc_name"].ToString(),
-                              BoroName = f.Attributes["borough"].ToString(),
-                              BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
-                              ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                              ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                              Coordinates = new List<Coordinate>(),
-                          };
+            var results = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => new IndividualLandmarkSiteShape
+                {
+                    LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
+                    AreaName = f.Attributes["lpc_name"].ToString(),
+                    BBL = Double.Parse(f.Attributes["bbl"].ToString()),
+                    BoroName = f.Attributes["borough"].ToString(),
+                    BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
+                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+                    Coordinates = new List<Coordinate>(),
+                });
 
             return results;
         }
