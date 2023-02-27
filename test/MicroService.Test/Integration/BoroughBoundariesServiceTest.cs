@@ -64,7 +64,6 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-
         [InlineData(1006187, 232036, "Bronx", null)]
         [InlineData(1000443, 0239270, "Manhattan", null)]
         [InlineData(1021192.9426658918, 212550.01741990919, "Queens", null)]
@@ -76,9 +75,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.BoroName);
         }
-
-
-
 
         [InlineData(1006187, 732036, null)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
@@ -108,5 +104,15 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, result?.BoroName);
         }
+
+        [Fact]
+        public void Get_Feature_List()
+        {
+            var sut = _service.GetFeatureAttributes();
+
+            Assert.NotNull(sut);
+        }
+
+
     }
 }

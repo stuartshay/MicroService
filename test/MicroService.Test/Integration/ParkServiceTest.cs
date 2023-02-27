@@ -86,5 +86,15 @@ namespace MicroService.Test.Integration
             Assert.Null(sut);
             Assert.Equal(expected, sut?.ParkName);
         }
+
+        [Fact]
+        public void Get_Feature_List()
+        {
+            var sut = _service.GetFeatureAttributes();
+
+            Assert.NotNull(sut);
+        }
+
+
     }
 }

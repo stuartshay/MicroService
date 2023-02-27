@@ -107,6 +107,12 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, result?.OperationZoneName);
         }
 
+        [Fact]
+        public void Get_Feature_List()
+        {
+            var sut = _service.GetFeatureAttributes();
 
+            Assert.NotNull(sut);
+        }
     }
 }
