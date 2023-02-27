@@ -7,8 +7,6 @@ on:
   push:
     paths:
       - 'files/Borough_Boundaries/**'
-      - '.github/workflows/shapefile.yml'
-
     branches:
       - master
 
@@ -70,7 +68,7 @@ jobs:
     needs: [transform]
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/upload-artifact@v3
 
       - name: Insert GeoJSON data
         run: |
