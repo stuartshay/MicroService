@@ -54,38 +54,66 @@ namespace MicroService.Service.Services
 
         public override IEnumerable<ScenicLandmarkShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            var list = new List<ScenicLandmarkShape>();
+            attributes = ValidateFeatureKey(attributes);
 
-            var features = GetFeatures();
-            foreach (var f in features)
-            {
-                var found = true;
-                foreach (var pair in attributes)
-                {
-                    if (f.Attributes[pair.Key] as string != pair.Value)
-                    {
-                        found = false;
-                        break;
-                    }
-                }
+            var results = from f in GetFeatures()
+                          where attributes.All(pair =>
+                          {
+                              var value = f.Attributes[pair.Key];
+                              var expectedValue = pair.Value;
+                              var matchedValue = MatchAttributeValue(value, expectedValue);
+                              return matchedValue != null;
+                          })
+                          select new ScenicLandmarkShape
+                          {
+                              LPNumber = f.Attributes["lp_number"].ToString(),
+                              AreaName = f.Attributes["scen_lm_na"].ToString(),
+                              BoroName = f.Attributes["borough"].ToString(),
+                              BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
+                              ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                              ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+                          };
 
-                if (found)
-                {
-                    var borough = f.Attributes["borough"].ToString();
-                    var model = new ScenicLandmarkShape
-                    {
-                        LPNumber = f.Attributes["lp_number"].ToString(),
-                        AreaName = f.Attributes["scen_lm_na"].ToString(),
-                        BoroName = borough,
-                        BoroCode = (int)Enum.Parse(typeof(Borough), borough),
-                        ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                        ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                    };
-                    list.Add(model);
-                }
-            }
+            return results;
 
-            return list;
+
+
+
+
+
+
+            //var list = new List<ScenicLandmarkShape>();
+
+            //var features = GetFeatures();
+            //foreach (var f in features)
+            //{
+            //    var found = true;
+            //    foreach (var pair in attributes)
+            //    {
+            //        if (f.Attributes[pair.Key] as string != pair.Value)
+            //        {
+            //            found = false;
+            //            break;
+            //        }
+            //    }
+
+            //    if (found)
+            //    {
+            //        var borough = f.Attributes["borough"].ToString();
+            //        var model = new ScenicLandmarkShape
+            //        {
+            //            LPNumber = f.Attributes["lp_number"].ToString(),
+            //            AreaName = f.Attributes["scen_lm_na"].ToString(),
+            //            BoroName = borough,
+            //            BoroCode = (int)Enum.Parse(typeof(Borough), borough),
+            //            ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+            //            ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+            //        };
+            //        list.Add(model);
+            //    }
+            //}
+
+            //return list;
         }
 
         public IEnumerable<ScenicLandmarkShape> GetFeatureAttributes()

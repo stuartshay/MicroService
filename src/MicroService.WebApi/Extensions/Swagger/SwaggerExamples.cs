@@ -14,7 +14,7 @@ namespace MicroService.WebApi.Extensions.Swagger
         /// <returns></returns>
         public FeatureAttributeLookupRequestModel GetExamples()
         {
-            var shapeType = "BoroughBoundaries";
+            var shapeType = "ScenicLandmarks";
 
             // BoroughBoundaries
             if (shapeType == "BoroughBoundaries")
@@ -57,6 +57,21 @@ namespace MicroService.WebApi.Extensions.Swagger
                     },
                 };
             }
+
+            // ScenicLandmarks
+            if (shapeType == "ScenicLandmarks")
+            {
+                return new FeatureAttributeLookupRequestModel
+                {
+                    Key = "ScenicLandmarks",
+                    Attributes = new List<KeyValuePair<string, object>>
+                    {
+                        new("LPNumber", "LP-00879"),
+                        new("BoroName", "MN"),
+                    },
+                };
+            }
+
 
             throw new ArgumentException($"Invalid Swagger Example Request");
         }
