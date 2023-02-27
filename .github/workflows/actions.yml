@@ -30,10 +30,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup dotnet ${{ needs.build.outputs.dotnet }}
-        uses: actions/setup-dotnet@v3
+      - name: Setup dotnet 7.0.x
+        uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: ${{ needs.build.outputs.dotnet }}
+          dotnet-version: 7.0.x
+          include-prerelease: true
 
       - name: Install dependencies
         run: dotnet restore
@@ -123,7 +124,7 @@ jobs:
     needs: [build]
     steps:
       - name: Download artifacts
-        ses: actions/download-artifact@v3
+        uses: actions/download-artifact@v3
 
       - name: Load images
         run: |
