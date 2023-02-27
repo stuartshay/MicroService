@@ -13,6 +13,7 @@ env:
   REGION: us-east4
   DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
   ASPNETCORE_ENVIRONMENT: CloudRun
+  ASPNETCORE_URLS: 'http://*:5000'
 
 on:
   workflow_dispatch:
