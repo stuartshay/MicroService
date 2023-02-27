@@ -48,7 +48,32 @@ namespace MicroService.Service.Services
 
         public override IEnumerable<ParkShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+
+            var results = from f in GetFeatures()
+                          where attributes.All(pair =>
+                          {
+                              var value = f.Attributes[pair.Key];
+                              var expectedValue = pair.Value;
+                              var matchedValue = MatchAttributeValue(value, expectedValue);
+                              return matchedValue != null;
+                          })
+                          select new ParkShape
+                          {
+                              ParkName = f.Attributes["PARK_NAME"]?.ToString(),
+                              ParkNumber = f.Attributes["PARKNUM"].ToString(),
+                              SourceId = long.Parse(f.Attributes["SOURCE_ID"].ToString()),
+                              FeatureCode = int.Parse(f.Attributes["FEAT_CODE"].ToString()),
+                              SubCode = int.Parse(f.Attributes["SUB_CODE"].ToString()),
+                              LandUse = f.Attributes["LANDUSE"]?.ToString(),
+                              System = f.Attributes["SYSTEM"]?.ToString(),
+                              Status = f.Attributes["STATUS"]?.ToString(),
+                              ShapeArea = double.Parse(f.Attributes["SHAPE_Area"].ToString()),
+                              ShapeLength = double.Parse(f.Attributes["SHAPE_Leng"].ToString()),
+                              Coordinates = new List<Coordinate>(),
+                          };
+
+            return results;
         }
 
         public IEnumerable<ParkShape> GetFeatureAttributes()
