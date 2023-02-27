@@ -14,7 +14,7 @@ namespace MicroService.WebApi.Extensions.Swagger
         /// <returns></returns>
         public FeatureAttributeLookupRequestModel GetExamples()
         {
-            var shapeType = "ScenicLandmarks";
+            var shapeType = "IndividualLandmarkSite";
 
             // BoroughBoundaries
             if (shapeType == "BoroughBoundaries")
@@ -53,7 +53,7 @@ namespace MicroService.WebApi.Extensions.Swagger
                     Attributes = new List<KeyValuePair<string, object>>
                     {
                         new("LPNumber", "LP-00001"),
-                        new("BBL", "3079170009"),
+                        new("BBL", 3079170009),
                     },
                 };
             }
