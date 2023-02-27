@@ -34,7 +34,7 @@ jobs:
           destination: files-shapes
 
       - name: Upload raw artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Borough_Boundaries
           path: files/Borough_Boundaries
