@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,9 @@ namespace MicroService.Service.Services
 {
     public class NypdPolicePrecinctService : AbstractShapeService<NypdPrecinctShape>, IShapeService<NypdPrecinctShape>
     {
-        public NypdPolicePrecinctService(ShapefileDataReaderResolver shapefileDataReaderResolver)
+        public NypdPolicePrecinctService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            ILogger<NypdPolicePrecinctService> logger)
+            : base(logger)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NypdPolicePrecincts));
         }
@@ -27,7 +30,7 @@ namespace MicroService.Service.Services
 
             return new NypdPrecinctShape
             {
-                Precinct = feature.Attributes["Precinct"].ToString(),
+                Precinct = int.Parse(feature.Attributes["Precinct"].ToString()),
                 ShapeArea = double.Parse(feature.Attributes["Shape_Area"].ToString()),
                 ShapeLength = double.Parse(feature.Attributes["Shape_Leng"].ToString()),
                 Coordinates = new List<Coordinate>(),
@@ -36,7 +39,24 @@ namespace MicroService.Service.Services
 
         public override IEnumerable<NypdPrecinctShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+
+            var results = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => new NypdPrecinctShape
+                {
+                    Precinct = int.Parse(f.Attributes["Precinct"].ToString()),
+                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+                });
+
+            return results;
         }
 
         public IEnumerable<NypdPrecinctShape> GetFeatureAttributes()
@@ -45,7 +65,9 @@ namespace MicroService.Service.Services
 
             return features.Select(f => new NypdPrecinctShape
             {
-                Precinct = f.Attributes["Precinct"].ToString(),
+                Precinct = int.Parse(f.Attributes["Precinct"].ToString()),
+                ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
             });
         }
 

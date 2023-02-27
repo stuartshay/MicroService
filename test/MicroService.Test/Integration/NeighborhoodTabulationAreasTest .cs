@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Test.Fixture;
+using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit;
@@ -8,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class NeighborhoodTabulationAreasTest : IClassFixture<ShapeServiceFixture>
+    public class NeighborhoodTabulationAreasTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
         public IShapeService<NeighborhoodTabulationAreaShape> _service;
 
@@ -64,16 +65,34 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(1006187, 232036, "Bronx")]
-        [InlineData(1000443, 0239270, "Manhattan")]
+        [InlineData(1006187, 232036, "Bronx", null)]
+        [InlineData(1000443, 0239270, "Manhattan", null)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.BoroName);
+        }
+
+        [InlineData("12", "MN1202", "MN12 Washington Heights-Inwood (CD 12 Equivalent)")]
+        [InlineData(12, "MN1202", "MN12 Washington Heights-Inwood (CD 12 Equivalent)")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
+        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
+        {
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("BoroCode", value1),
+                new("NTA2020", value2),
+            };
+
+            var sut = _service.GetFeatureLookup(attributes);
+            var result = sut.FirstOrDefault();
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, result?.CDTAName);
         }
 
 
@@ -87,6 +106,15 @@ namespace MicroService.Test.Integration
             Assert.Null(sut);
             Assert.Equal(expected, sut?.BoroName);
         }
+
+        [Fact]
+        public void Get_Feature_List()
+        {
+            var sut = _service.GetFeatureAttributes();
+
+            Assert.NotNull(sut);
+        }
+
 
     }
 }

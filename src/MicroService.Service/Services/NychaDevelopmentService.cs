@@ -2,6 +2,7 @@
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,9 @@ namespace MicroService.Service.Services
 {
     public class NychaDevelopmentService : AbstractShapeService<NychaDevelopmentShape>, IShapeService<NychaDevelopmentShape>
     {
-        public NychaDevelopmentService(ShapefileDataReaderResolver shapefileDataReaderResolver)
+        public NychaDevelopmentService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            ILogger<NychaDevelopmentService> logger)
+            : base(logger)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NychaDevelopments));
         }

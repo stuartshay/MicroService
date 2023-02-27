@@ -2,6 +2,7 @@
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,9 @@ namespace MicroService.Service.Services
 {
     public class SubwayService : AbstractShapeService<SubwayShape>, IShapeService<SubwayShape>
     {
-        public SubwayService(ShapefileDataReaderResolver shapefileDataReaderResolver)
+        public SubwayService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            ILogger<SubwayService> logger)
+            : base(logger)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Subway));
         }
