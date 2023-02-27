@@ -77,10 +77,26 @@ namespace MicroService.Test.Integration
 
 
 
+        [InlineData("B222", "Pierrepont Playground", "Pierrepont Playground")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
-            throw new NotImplementedException();
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("ParkNumber", value1),
+                new("ParkName", value2),
+            };
+
+            var sut = _service.GetFeatureLookup(attributes);
+            var result = sut.FirstOrDefault();
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, result?.ParkName);
+            Assert.Equal(value1, result?.ParkNumber);
         }
+
+
+
 
         [InlineData(1006187, 732036, null)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
