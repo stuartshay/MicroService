@@ -10,14 +10,14 @@ using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
-    public class DSNYDistrictsService : AbstractShapeService<DSNYDistrictsShape>, IShapeService<DSNYDistrictsShape>
+    public class DsnyDistrictsService : AbstractShapeService<DsnyDistrictsShape>, IShapeService<DsnyDistrictsShape>
     {
-        public DSNYDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver)
+        public DsnyDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.DSNYDistricts));
         }
 
-        public override DSNYDistrictsShape GetFeatureLookup(double x, double y)
+        public override DsnyDistrictsShape GetFeatureLookup(double x, double y)
         {
             // Convert Nad83 to Wgs 
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
@@ -26,7 +26,7 @@ namespace MicroService.Service.Services
             // Validate Point is in Range
             var point = new Point(wgs84Point.X.Value, wgs84Point.Y.Value);
 
-            var model = new DSNYDistrictsShape();
+            var model = new DsnyDistrictsShape();
 
             var features = GetFeatures();
             foreach (var f in features)
@@ -38,7 +38,7 @@ namespace MicroService.Service.Services
                     var operationZone = district.RemoveIntegers();
                     var operationZoneName = EnumHelper.ParseEnum<DsnyOperationZone>(operationZone).GetEnumDescription();
 
-                    model = new DSNYDistrictsShape
+                    model = new DsnyDistrictsShape
                     {
                         District = district,
                         DistrictCode = int.Parse(f.Attributes["districtco"].ToString()),
@@ -59,36 +59,67 @@ namespace MicroService.Service.Services
             return model;
         }
 
-        public override IEnumerable<DSNYDistrictsShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        public override IEnumerable<DsnyDistrictsShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+            var results = from f in GetFeatures()
+                          where attributes.All(pair => f.Attributes[pair.Key] as string == pair.Value.ToString())
+                          select new DsnyDistrictsShape
+                          {
+                              District = f.Attributes["district"].ToString(),
+                              DistrictCode = int.Parse(f.Attributes["districtco"].ToString()),
+                              OperationZone = f.Attributes["district"].ToString().RemoveIntegers(),
+                              OperationZoneName = f.Attributes["district"].ToString().RemoveIntegers().ParseEnum<DsnyOperationZone>().GetEnumDescription(),
+                              ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                              ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+                              Coordinates = new List<Coordinate>(),
+                          };
+
+            return results;
         }
 
-        public IEnumerable<DSNYDistrictsShape> GetFeatureAttributes()
+        //public override IEnumerable<DsnyDistrictsShape> GetFeatureLookup(List<KeyValuePair<string, object> attributes)
+        //{
+        //    attributes = ValidateFeatureKey(attributes);
+
+        //    var results = from f in GetFeatures()
+        //                  where attributes.All(pair => f.Attributes[pair.Key] as string == pair.Value)
+        //                  select new DsnyDistrictsShape
+        //                  {
+        //                      District = f.Attributes["district"].ToString(),
+        //                      DistrictCode = int.Parse(f.Attributes["districtco"].ToString()),
+        //                      OperationZone = f.Attributes["district"].ToString().RemoveIntegers(),
+        //                      OperationZoneName = f.Attributes["district"].ToString().RemoveIntegers().ParseEnum<DsnyOperationZone>().GetEnumDescription(),
+        //                      ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+        //                      ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+        //                      Coordinates = new List<Coordinate>(),
+        //                  };
+
+        //    return results;
+        //}
+
+        public IEnumerable<DsnyDistrictsShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<DSNYDistrictsShape>(features.Count);
 
-            foreach (var f in features)
+            var districts = features.Select(f => new
             {
-                var district = f.Attributes["district"].ToString();
-                var operationZone = district.RemoveIntegers();
-                var operationZoneName = EnumHelper.ParseEnum<DsnyOperationZone>(operationZone).GetEnumDescription();
+                District = f.Attributes["district"].ToString(),
+                DistrictCode = int.Parse(f.Attributes["districtco"].ToString()),
+                OperationZone = f.Attributes["district"].ToString().RemoveIntegers(),
+                ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString())
+            }).ToList();
 
-                var model = new DSNYDistrictsShape
-                {
-                    District = district,
-                    DistrictCode = int.Parse(f.Attributes["districtco"].ToString()),
-                    OperationZone = operationZone,
-                    OperationZoneName = operationZoneName,
-                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                };
-
-                results.Add(model);
-            }
-
-            return results.ToList().OrderBy(x => x.District);
+            return districts.Select(d => new DsnyDistrictsShape
+            {
+                District = d.District,
+                DistrictCode = d.DistrictCode,
+                OperationZone = d.OperationZone,
+                OperationZoneName = d.OperationZone.ParseEnum<DsnyOperationZone>().GetEnumDescription(),
+                ShapeArea = d.ShapeArea,
+                ShapeLength = d.ShapeLength
+            }).OrderBy(x => x.District).ToList();
         }
     }
 }

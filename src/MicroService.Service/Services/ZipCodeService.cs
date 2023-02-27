@@ -1,9 +1,9 @@
-﻿using MicroService.Service.Helpers;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using System.Linq;
 using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
@@ -20,39 +20,30 @@ namespace MicroService.Service.Services
             // Validate Point is in Range
             var point = new Point(x, y);
 
-            var model = new ZipCodeShape();
-
             var features = GetFeatures();
-            foreach (var f in features)
-            {
-                var exists = f.Geometry.Contains(point);
-                if (exists)
-                {
-                    model = new ZipCodeShape
-                    {
-                        ZipCode = f.Attributes["ZIPCODE"].ToString(),
-                        BldgZip = f.Attributes["BLDGZIP"].ToString(),
-                        PostOfficeName = f.Attributes["PO_NAME"].ToString(),
-                        Population = int.Parse(f.Attributes["POPULATION"].ToString()),
-                        Area = double.Parse(f.Attributes["AREA"].ToString()),
-                        State = f.Attributes["STATE"].ToString(),
-                        County = f.Attributes["COUNTY"].ToString(),
-                        ShapeArea = double.Parse(f.Attributes["SHAPE_AREA"].ToString()),
-                        ShapeLength = double.Parse(f.Attributes["SHAPE_LEN"].ToString()),
-                        Coordinates = new List<Coordinate>(),
-                    };
-                }
-            }
+            var matchingFeature = features.FirstOrDefault(f => f.Geometry.Contains(point));
 
-            if (!model.ArePropertiesNotNull())
+            if (matchingFeature == null)
             {
                 return null;
             }
 
-            return model;
+            return new ZipCodeShape
+            {
+                ZipCode = matchingFeature.Attributes["ZIPCODE"].ToString(),
+                BldgZip = matchingFeature.Attributes["BLDGZIP"].ToString(),
+                PostOfficeName = matchingFeature.Attributes["PO_NAME"].ToString(),
+                Population = int.Parse(matchingFeature.Attributes["POPULATION"].ToString()),
+                Area = double.Parse(matchingFeature.Attributes["AREA"].ToString()),
+                State = matchingFeature.Attributes["STATE"].ToString(),
+                County = matchingFeature.Attributes["COUNTY"].ToString(),
+                ShapeArea = double.Parse(matchingFeature.Attributes["SHAPE_AREA"].ToString()),
+                ShapeLength = double.Parse(matchingFeature.Attributes["SHAPE_LEN"].ToString()),
+                Coordinates = new List<Coordinate>(),
+            };
         }
 
-        public override IEnumerable<ZipCodeShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        public override IEnumerable<ZipCodeShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             throw new System.NotImplementedException();
         }
@@ -60,27 +51,19 @@ namespace MicroService.Service.Services
         public IEnumerable<ZipCodeShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<ZipCodeShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new ZipCodeShape
             {
-                var model = new ZipCodeShape
-                {
-                    ZipCode = f.Attributes["ZIPCODE"].ToString(),
-                    BldgZip = f.Attributes["BLDGZIP"].ToString(),
-                    PostOfficeName = f.Attributes["PO_NAME"].ToString(),
-                    Population = int.Parse(f.Attributes["POPULATION"].ToString()),
-                    Area = double.Parse(f.Attributes["AREA"].ToString()),
-                    State = f.Attributes["STATE"].ToString(),
-                    County = f.Attributes["COUNTY"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["SHAPE_AREA"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["SHAPE_LEN"].ToString()),
-                };
-
-                results.Add(model);
-            }
-
-            return results;
+                ZipCode = f.Attributes["ZIPCODE"].ToString(),
+                BldgZip = f.Attributes["BLDGZIP"].ToString(),
+                PostOfficeName = f.Attributes["PO_NAME"].ToString(),
+                Population = int.Parse(f.Attributes["POPULATION"].ToString()),
+                Area = double.Parse(f.Attributes["AREA"].ToString()),
+                State = f.Attributes["STATE"].ToString(),
+                County = f.Attributes["COUNTY"].ToString(),
+                ShapeArea = double.Parse(f.Attributes["SHAPE_AREA"].ToString()),
+                ShapeLength = double.Parse(f.Attributes["SHAPE_LEN"].ToString()),
+            });
         }
     }
 }

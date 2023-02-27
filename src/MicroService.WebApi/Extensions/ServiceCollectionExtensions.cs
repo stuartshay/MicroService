@@ -195,10 +195,10 @@ namespace MicroService.WebApi.Extensions
         public static void UseSwaggerCustom(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {
             app.UseSwagger();
+
             app.UseSwaggerUI(
                 options =>
                 {
-                    // build a swagger endpoint for each discovered API version
                     foreach (var description in provider.ApiVersionDescriptions)
                     {
                         options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"MicroService.WebApi - {description.GroupName.ToUpperInvariant()}");

@@ -1,9 +1,9 @@
-﻿using MicroService.Service.Helpers;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using System.Linq;
 using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
@@ -17,37 +17,24 @@ namespace MicroService.Service.Services
 
         public override NypdPrecinctShape GetFeatureLookup(double x, double y)
         {
-            // Validate Point is in Range
             var point = new Point(x, y);
 
-            var model = new NypdPrecinctShape();
-
-            var features = GetFeatures();
-            foreach (var f in features)
-            {
-                var exists = f.Geometry.Contains(point);
-                if (exists)
-                {
-                    model = new NypdPrecinctShape
-                    {
-                        Precinct = f.Attributes["Precinct"].ToString(),
-                        ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                        ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                        Coordinates = new List<Coordinate>(),
-                    };
-                }
-
-            }
-
-            if (!model.ArePropertiesNotNull())
+            var feature = GetFeatures().FirstOrDefault(f => f.Geometry.Contains(point));
+            if (feature == null)
             {
                 return null;
             }
 
-            return model;
+            return new NypdPrecinctShape
+            {
+                Precinct = feature.Attributes["Precinct"].ToString(),
+                ShapeArea = double.Parse(feature.Attributes["Shape_Area"].ToString()),
+                ShapeLength = double.Parse(feature.Attributes["Shape_Leng"].ToString()),
+                Coordinates = new List<Coordinate>(),
+            };
         }
 
-        public override IEnumerable<NypdPrecinctShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        public override IEnumerable<NypdPrecinctShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             throw new System.NotImplementedException();
         }
@@ -55,19 +42,12 @@ namespace MicroService.Service.Services
         public IEnumerable<NypdPrecinctShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<NypdPrecinctShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new NypdPrecinctShape
             {
-                var model = new NypdPrecinctShape
-                {
-                    Precinct = f.Attributes["Precinct"].ToString(),
-                };
-
-                results.Add(model);
-            }
-
-            return results;
+                Precinct = f.Attributes["Precinct"].ToString(),
+            });
         }
+
     }
 }

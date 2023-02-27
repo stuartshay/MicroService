@@ -1,9 +1,9 @@
-﻿using MicroService.Service.Helpers;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
+using System.Linq;
 using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
@@ -17,39 +17,25 @@ namespace MicroService.Service.Services
 
         public override NypdSectorShape GetFeatureLookup(double x, double y)
         {
-            // Validate Point is in Range
             var point = new Point(x, y);
 
-            var model = new NypdSectorShape();
-
-            var features = GetFeatures();
-            foreach (var f in features)
-            {
-                var exists = f.Geometry.Contains(point);
-                if (exists)
-                {
-                    model = new NypdSectorShape
-                    {
-                        Pct = f.Attributes["pct"].ToString(),
-                        Sector = f.Attributes["sector"].ToString(),
-                        PatrolBoro = f.Attributes["patrol_bor"].ToString(),
-                        Phase = f.Attributes["phase"].ToString(),
-                        ShapeArea = 0, // Convert 
-                        ShapeLength = 0, // Convert
-                        Coordinates = new List<Coordinate>(),
-                    };
-                }
-            }
-
-            if (!model.ArePropertiesNotNull())
+            var feature = GetFeatures().FirstOrDefault(f => f.Geometry.Contains(point));
+            if (feature == null)
             {
                 return null;
             }
 
-            return model;
+            return new NypdSectorShape
+            {
+                Pct = feature.Attributes["pct"]?.ToString(),
+                Sector = feature.Attributes["sector"]?.ToString(),
+                PatrolBoro = feature.Attributes["patrol_bor"]?.ToString(),
+                Phase = feature.Attributes["phase"]?.ToString(),
+                Coordinates = new List<Coordinate>(),
+            };
         }
 
-        public override IEnumerable<NypdSectorShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        public override IEnumerable<NypdSectorShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             throw new System.NotImplementedException();
         }
@@ -57,23 +43,14 @@ namespace MicroService.Service.Services
         public IEnumerable<NypdSectorShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<NypdSectorShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new NypdSectorShape
             {
-                var model = new NypdSectorShape
-                {
-                    Pct = f.Attributes["pct"].ToString(),
-                    Sector = f.Attributes["sector"].ToString(),
-                    PatrolBoro = f.Attributes["patrol_bor"].ToString(),
-                    Phase = f.Attributes["phase"].ToString(),
-                };
-
-                results.Add(model);
-            }
-
-            return results;
+                Pct = f.Attributes["pct"].ToString(),
+                Sector = f.Attributes["sector"].ToString(),
+                PatrolBoro = f.Attributes["patrol_bor"].ToString(),
+                Phase = f.Attributes["phase"].ToString(),
+            });
         }
-
     }
 }

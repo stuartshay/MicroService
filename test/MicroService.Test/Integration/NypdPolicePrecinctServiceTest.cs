@@ -66,6 +66,7 @@ namespace MicroService.Test.Integration
 
         [InlineData(1006187, 232036, "40")]
         [InlineData(1000443, 0239270, "32")]
+        [InlineData(1021192.9426658918, 212550.01741990919, "115")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup(double x, double y, string expected)
@@ -75,5 +76,18 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.Precinct);
         }
+
+        [InlineData(1006187, 732036, null)]
+        [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
+        [Trait("Category", "Integration")]
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
+        {
+            var sut = _service.GetFeatureLookup(x, y);
+
+            Assert.Null(sut);
+            Assert.Equal(expected, sut?.Precinct);
+        }
+
+
     }
 }

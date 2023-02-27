@@ -13,7 +13,7 @@
         /// <summary>
         /// Attribute Key Value Pairs
         /// </summary>
-        public List<KeyValuePair<string, string>>? Attributes { get; set; }
+        public List<KeyValuePair<string, object>>? Attributes { get; set; }
 
     }
 }
