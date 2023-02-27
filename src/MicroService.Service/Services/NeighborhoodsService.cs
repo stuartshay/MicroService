@@ -42,7 +42,29 @@ namespace MicroService.Service.Services
 
         public override IEnumerable<NeighborhoodShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+
+            var results = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => new NeighborhoodShape
+                {
+                    BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
+                    BoroName = f.Attributes["BoroName"].ToString(),
+                    CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
+                    NTACode = f.Attributes["NTACode"].ToString(),
+                    NTAName = f.Attributes["NTAName"].ToString(),
+                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+                    Coordinates = new List<Coordinate>(),
+                });
+
+            return results;
         }
 
         public IEnumerable<NeighborhoodShape> GetFeatureAttributes()
