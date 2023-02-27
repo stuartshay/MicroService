@@ -75,45 +75,6 @@ namespace MicroService.Service.Services
                           };
 
             return results;
-
-
-
-
-
-
-
-            //var list = new List<ScenicLandmarkShape>();
-
-            //var features = GetFeatures();
-            //foreach (var f in features)
-            //{
-            //    var found = true;
-            //    foreach (var pair in attributes)
-            //    {
-            //        if (f.Attributes[pair.Key] as string != pair.Value)
-            //        {
-            //            found = false;
-            //            break;
-            //        }
-            //    }
-
-            //    if (found)
-            //    {
-            //        var borough = f.Attributes["borough"].ToString();
-            //        var model = new ScenicLandmarkShape
-            //        {
-            //            LPNumber = f.Attributes["lp_number"].ToString(),
-            //            AreaName = f.Attributes["scen_lm_na"].ToString(),
-            //            BoroName = borough,
-            //            BoroCode = (int)Enum.Parse(typeof(Borough), borough),
-            //            ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-            //            ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-            //        };
-            //        list.Add(model);
-            //    }
-            //}
-
-            //return list;
         }
 
         public IEnumerable<ScenicLandmarkShape> GetFeatureAttributes()
