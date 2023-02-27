@@ -43,7 +43,29 @@ namespace MicroService.Service.Services
 
         public override IEnumerable<CommunityDistrictShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+
+            var results = from f in GetFeatures()
+                          where attributes.All(pair =>
+                          {
+                              var value = f.Attributes[pair.Key];
+                              var expectedValue = pair.Value;
+                              var matchedValue = MatchAttributeValue(value, expectedValue);
+                              return matchedValue != null;
+                          })
+                          select new CommunityDistrictShape
+                          {
+                              Cd = int.Parse(f.Attributes["BoroCD"].ToString()),
+                              BoroCd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                              BoroCode = int.Parse(f.Attributes["BoroCD"].ToString().Substring(0, 1)),
+                              Borough = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().ToString(),
+                              BoroName = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
+                              ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                              ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+                              Coordinates = new List<Coordinate>()
+                          };
+
+            return results;
         }
 
         public IEnumerable<CommunityDistrictShape> GetFeatureAttributes()
