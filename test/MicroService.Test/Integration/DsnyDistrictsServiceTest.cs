@@ -76,6 +76,8 @@ namespace MicroService.Test.Integration
             Assert.Equal(lookupExpected, sut.DistrictCode);
         }
 
+
+
         [InlineData(1006187, 732036, null)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
@@ -90,7 +92,7 @@ namespace MicroService.Test.Integration
 
         [InlineData("BKN01", "", "Brooklyn North")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
-        public void Get_Feature_Attribute_Lookup(string value1, string value2, string expected)
+        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
             var attributes = new List<KeyValuePair<string, object>>
             {

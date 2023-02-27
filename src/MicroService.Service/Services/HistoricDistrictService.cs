@@ -46,7 +46,13 @@ namespace MicroService.Service.Services
             attributes = ValidateFeatureKey(attributes);
 
             var results = from f in GetFeatures()
-                          where attributes.All(pair => f.Attributes[pair.Key] as string == pair.Value.ToString())
+                          where attributes.All(pair =>
+                          {
+                              var value = f.Attributes[pair.Key];
+                              var expectedValue = pair.Value;
+                              var matchedValue = MatchAttributeValue(value, expectedValue);
+                              return matchedValue != null;
+                          })
                           select new HistoricDistrictShape
                           {
                               LPNumber = f.Attributes["LP_NUMBER"].ToString(),
