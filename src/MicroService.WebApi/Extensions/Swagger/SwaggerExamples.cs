@@ -14,7 +14,7 @@ namespace MicroService.WebApi.Extensions.Swagger
         /// <returns></returns>
         public FeatureAttributeLookupRequestModel GetExamples()
         {
-            var shapeType = "BoroughBoundaries";
+            var shapeType = "DSNYDistricts";
 
             // BoroughBoundaries
             if (shapeType == "BoroughBoundaries")
@@ -26,6 +26,32 @@ namespace MicroService.WebApi.Extensions.Swagger
                     {
                         new("BoroCode", 1),
                         new("BoroName", "Manhattan"),
+                    },
+                };
+            }
+
+            // CommunityDistricts
+            if (shapeType == "CommunityDistricts")
+            {
+                return new FeatureAttributeLookupRequestModel
+                {
+                    Key = "CommunityDistricts",
+                    Attributes = new List<KeyValuePair<string, object>>
+                    {
+                        new("BoroCd", 101),
+                    },
+                };
+            }
+
+            // DSNYDistricts
+            if (shapeType == "DSNYDistricts")
+            {
+                return new FeatureAttributeLookupRequestModel
+                {
+                    Key = "DSNYDistricts",
+                    Attributes = new List<KeyValuePair<string, object>>
+                    {
+                        new("District","SI02"),
                     },
                 };
             }
@@ -53,10 +79,25 @@ namespace MicroService.WebApi.Extensions.Swagger
                     Attributes = new List<KeyValuePair<string, object>>
                     {
                         new("LPNumber", "LP-00001"),
-                        new("BBL", "3079170009"),
+                        new("BBL", 3079170009),
                     },
                 };
             }
+
+            // ScenicLandmarks
+            if (shapeType == "ScenicLandmarks")
+            {
+                return new FeatureAttributeLookupRequestModel
+                {
+                    Key = "ScenicLandmarks",
+                    Attributes = new List<KeyValuePair<string, object>>
+                    {
+                        new("LPNumber", "LP-00879"),
+                        new("BoroName", "MN"),
+                    },
+                };
+            }
+
 
             throw new ArgumentException($"Invalid Swagger Example Request");
         }
