@@ -107,12 +107,12 @@ namespace MicroService.WebApi.V1.Controllers
         /// </remarks>
         /// <param name="request">Feature Attribute Request</param>
         /// <returns>List of features with attributes</returns>
-        [HttpGet("featureListAttributes", Name = "GetFeatureListAttributes")]
+        [HttpGet("featureList", Name = "GetFeatureList")]
         [Produces("application/json", Type = typeof(ShapeBase))]
         [ProducesResponseType(typeof(IEnumerable<ShapeBase>), 200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<object>> GetFeatureListAttributes([FromQuery] FeatureAttributeRequestModel request)
+        public async Task<ActionResult<object>> GetFeatureList([FromQuery] FeatureAttributeRequestModel request)
         {
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();

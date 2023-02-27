@@ -3,6 +3,7 @@ using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,13 @@ namespace MicroService.Service.Services
 {
     public class IndividualLandmarkSiteService : AbstractShapeService<IndividualLandmarkSiteShape>, IShapeService<IndividualLandmarkSiteShape>
     {
-        public IndividualLandmarkSiteService(ShapefileDataReaderResolver shapefileDataReaderResolver)
+        public IndividualLandmarkSiteService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            ILogger<IndividualLandmarkSiteService> logger)
+            : base(logger)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkSite));
         }
+
 
         public IEnumerable<IndividualLandmarkSiteShape> GetFeatureAttributes()
         {

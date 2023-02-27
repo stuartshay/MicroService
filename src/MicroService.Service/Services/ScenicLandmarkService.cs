@@ -3,6 +3,7 @@ using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,9 @@ namespace MicroService.Service.Services
 {
     public class ScenicLandmarkService : AbstractShapeService<ScenicLandmarkShape>, IShapeService<ScenicLandmarkShape>
     {
-        public ScenicLandmarkService(ShapefileDataReaderResolver shapefileDataReaderResolver)
+        public ScenicLandmarkService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            ILogger<ScenicLandmarkService> logger)
+            : base(logger)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.ScenicLandmarks));
         }

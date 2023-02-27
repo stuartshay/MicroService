@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,13 @@ namespace MicroService.Service.Services
 {
     public class BoroughBoundariesService : AbstractShapeService<BoroughBoundaryShape>, IShapeService<BoroughBoundaryShape>
     {
-        public BoroughBoundariesService(ShapefileDataReaderResolver shapefileDataReaderResolver)
+        public BoroughBoundariesService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            ILogger<BoroughBoundariesService> logger)
+            : base(logger)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.BoroughBoundaries));
         }
+
 
         public override BoroughBoundaryShape GetFeatureLookup(double x, double y)
         {
