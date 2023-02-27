@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Test.Fixture;
+using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit;
@@ -8,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class BoroughBoundariesServiceTest : IClassFixture<ShapeServiceFixture>
+    public class BoroughBoundariesServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
         public IShapeService<BoroughBoundaryShape> _service;
 
@@ -64,16 +65,44 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(1006187, 232036, "Bronx")]
-        [InlineData(1000443, 0239270, "Manhattan")]
+        [InlineData(1006187, 232036, "Bronx", null)]
+        [InlineData(1000443, 0239270, "Manhattan", null)]
+        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", null)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected = null)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.BoroName);
+        }
+
+        [InlineData(1006187, 732036, null)]
+        [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
+        [Trait("Category", "Integration")]
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
+        {
+            var sut = _service.GetFeatureLookup(x, y);
+
+            Assert.Null(sut);
+            Assert.Equal(expected, sut?.BoroName);
+        }
+
+        [InlineData("1", "Manhattan", "Manhattan")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
+        public void Get_Feature_Attribute_Lookup(string value1, string value2, string expected)
+        {
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                //new("BoroCode", value1), // Cast to Object Type
+                new("BoroName", value2),
+            };
+
+            var sut = _service.GetFeatureLookup(attributes);
+            var result = sut.FirstOrDefault();
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, result?.BoroName);
         }
     }
 }

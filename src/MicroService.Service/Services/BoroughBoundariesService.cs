@@ -1,5 +1,4 @@
-﻿using MicroService.Service.Helpers;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
@@ -18,60 +17,57 @@ namespace MicroService.Service.Services
 
         public override BoroughBoundaryShape GetFeatureLookup(double x, double y)
         {
-            // Validate Point is in Range
             var point = new Point(x, y);
 
-            var model = new BoroughBoundaryShape();
-
             var features = GetFeatures();
-            foreach (var f in features)
-            {
-                var exists = f.Geometry.Contains(point);
-                if (exists)
-                {
-                    model = new BoroughBoundaryShape
-                    {
-                        BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                        BoroName = f.Attributes["BoroName"].ToString(),
-                        ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                        ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                        Coordinates = new List<Coordinate>()
-                    };
-                }
-            }
+            var feature = features.FirstOrDefault(f => f.Geometry.Contains(point));
 
-            if (!model.ArePropertiesNotNull())
+            if (feature == null)
             {
                 return null;
             }
 
-            return model;
+            return new BoroughBoundaryShape
+            {
+                BoroCode = int.Parse(feature.Attributes["BoroCode"].ToString()),
+                BoroName = feature.Attributes["BoroName"].ToString(),
+                ShapeArea = double.Parse(feature.Attributes["Shape_Area"].ToString()),
+                ShapeLength = double.Parse(feature.Attributes["Shape_Leng"].ToString()),
+                Coordinates = new List<Coordinate>()
+            };
         }
 
-        public override IEnumerable<BoroughBoundaryShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        public override IEnumerable<BoroughBoundaryShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+
+            var results = from f in GetFeatures()
+                          where attributes.All(pair => f.Attributes[pair.Key] as string == pair.Value.ToString())
+                          select new BoroughBoundaryShape
+                          {
+                              BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
+                              BoroName = f.Attributes["BoroName"].ToString(),
+                              ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                              ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+                              Coordinates = new List<Coordinate>(),
+                          };
+
+            return results;
         }
 
         public IEnumerable<BoroughBoundaryShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<BoroughBoundaryShape>(features.Count);
 
-            foreach (var f in features)
+            var results = features.Select(f => new BoroughBoundaryShape
             {
-                var model = new BoroughBoundaryShape
-                {
-                    BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                    BoroName = f.Attributes["BoroName"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                };
+                BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
+                BoroName = f.Attributes["BoroName"].ToString(),
+                ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+            }).OrderBy(x => x.BoroCode);
 
-                results.Add(model);
-            }
-
-            return results.OrderBy(x => x.BoroCode);
+            return results;
         }
 
     }

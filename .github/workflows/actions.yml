@@ -13,6 +13,7 @@ env:
   REGION: us-east4
   DOCKER_IMAGE_PLATFORM: linux/amd64,linux/arm/v7
   ASPNETCORE_ENVIRONMENT: CloudRun
+  ASPNETCORE_URLS: 'http://*:5000'
 
 on:
   workflow_dispatch:
@@ -88,7 +89,7 @@ jobs:
 
       - name: Build image
         id: docker_build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
           build-args: |
             BUILD_NUMBER=${{ env.BUILD_NUMBER }}
@@ -166,25 +167,29 @@ jobs:
       url: ${{ steps.deploy.outputs.url }}
 
     steps:
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          project_id: ${{ secrets.GCP_PROJECT }}
+          service_account_key: ${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT}}
+          export_default_credentials: true
+
       - name: Google Auth
         id: 'auth'
-        uses: 'google-github-actions/auth@v1'
+        uses: 'google-github-actions/auth@v0'
         with:
-          credentials_json: '${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT  }}'
-
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
-        with:
-          project_id: ${{ secrets.gcp_project }}
+          credentials_json: '${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT }}'
 
       - name: Deploy to Cloud Run
         id: deploy
-        uses: google-github-actions/setup-gcloud@v1
+        uses: 'google-github-actions/deploy-cloudrun@v0'
         with:
-          service: ${{ env.SERVICE }}-${{ env.GITHUB_REF_SLUG }}
+          service: ${{ env.SERVICE }}
           image: ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
           region: ${{ env.REGION }}
-          env_vars: 'ASPNETCORE_ENVIRONMENT=${{ env.ASPNETCORE_ENVIRONMENT }}'
+          env_vars: |
+            ASPNETCORE_ENVIRONMENT=${{ env.ASPNETCORE_ENVIRONMENT }}
+            ASPNETCORE_URLS=${{ env.ASPNETCORE_URLS }}
           flags: '--memory 1Gi --port 5000 --allow-unauthenticated'
 
   health-googlecloud:

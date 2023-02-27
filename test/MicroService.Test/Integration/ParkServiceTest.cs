@@ -64,7 +64,7 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(1015142.9358798683, 266180.4226125971, "Van Cortlandt Park")]
+        [InlineData(1015142.9358798683, 266180.4226125971, "Van Cortlandt Golf Course")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup(double x, double y, string expected)
@@ -73,6 +73,18 @@ namespace MicroService.Test.Integration
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.ParkName);
+        }
+
+
+        [InlineData(1006187, 732036, null)]
+        [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
+        [Trait("Category", "Integration")]
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
+        {
+            var sut = _service.GetFeatureLookup(x, y);
+
+            Assert.Null(sut);
+            Assert.Equal(expected, sut?.ParkName);
         }
     }
 }

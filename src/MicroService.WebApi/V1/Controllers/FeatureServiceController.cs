@@ -162,13 +162,13 @@ namespace MicroService.WebApi.V1.Controllers
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();
 
-            var keys = request.Attributes!.Select(kv => kv.Key).ToList();
-            var service = _shapeServiceResolver(request?.Key!);
-            var fields = from f in service.GetShapeDatabaseProperties().Fields select f.Name;
+            //var keys = request.Attributes!.Select(kv => kv.Key).ToList();
+            //var service = _shapeServiceResolver(request?.Key!);
+            //var fields = from f in service.GetShapeDatabaseProperties().Fields select f.Name;
 
-            var validItems = keys.All(x => fields.Contains(x));
-            if (!validItems)
-                return BadRequest();
+            //var validItems = keys.All(x => fields.Contains(x));
+            //if (!validItems)
+            //    return BadRequest();
 
             var results = _shapeServiceResolver(request!.Key).GetFeatureLookup(request.Attributes);
             if (!results.Any())

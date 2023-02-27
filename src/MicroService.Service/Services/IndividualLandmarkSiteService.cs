@@ -6,6 +6,7 @@ using MicroService.Service.Models.Enum;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
@@ -20,25 +21,16 @@ namespace MicroService.Service.Services
         public IEnumerable<IndividualLandmarkSiteShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            var results = new List<IndividualLandmarkSiteShape>(features.Count);
 
-            foreach (var f in features)
+            return features.Select(f => new IndividualLandmarkSiteShape
             {
-                var borough = f.Attributes["borough"].ToString();
-                var model = new IndividualLandmarkSiteShape
-                {
-                    LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
-                    AreaName = f.Attributes["lpc_name"].ToString(),
-                    BoroName = borough,
-                    BoroCode = (int)Enum.Parse(typeof(Borough), borough),
-                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                };
-
-                results.Add(model);
-            }
-
-            return results;
+                LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
+                AreaName = f.Attributes["lpc_name"].ToString(),
+                BoroName = f.Attributes["borough"].ToString(),
+                BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
+                ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+            });
         }
 
         public override IndividualLandmarkSiteShape GetFeatureLookup(double x, double y)
@@ -80,9 +72,30 @@ namespace MicroService.Service.Services
             return model;
         }
 
-        public override IEnumerable<IndividualLandmarkSiteShape> GetFeatureLookup(List<KeyValuePair<string, string>> attributes)
+        public override IEnumerable<IndividualLandmarkSiteShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            // Get Shape Feature Names
+            for (int i = 0; i < attributes.Count; i++)
+            {
+                var key = attributes[i].Key;
+                var featureName = GetFeatureName(key);
+                attributes[i] = new KeyValuePair<string, object>(featureName, attributes[i].Value);
+            }
+
+            var results = from f in GetFeatures()
+                          where attributes.All(pair => f.Attributes[pair.Key] as string == pair.Value.ToString())
+                          select new IndividualLandmarkSiteShape
+                          {
+                              LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
+                              AreaName = f.Attributes["lpc_name"].ToString(),
+                              BoroName = f.Attributes["borough"].ToString(),
+                              BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
+                              ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                              ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+                              Coordinates = new List<Coordinate>(),
+                          };
+
+            return results;
         }
     }
 }

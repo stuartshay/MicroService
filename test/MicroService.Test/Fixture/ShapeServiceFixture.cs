@@ -61,7 +61,7 @@ namespace MicroService.Test.Fixture
                 })
                 .AddScoped<BoroughBoundariesService>()
                 .AddScoped<CommunityDistrictsService>()
-                .AddScoped<DSNYDistrictsService>()
+                .AddScoped<DsnyDistrictsService>()
                 .AddScoped<HistoricDistrictService>()
                 .AddScoped<IndividualLandmarkSiteService>()
                 .AddScoped<NeighborhoodsService>()
@@ -80,7 +80,7 @@ namespace MicroService.Test.Fixture
 
             BoroughBoundariesService = serviceProvider.GetRequiredService<BoroughBoundariesService>();
             CommunityDistrictService = serviceProvider.GetRequiredService<CommunityDistrictsService>();
-            DSNYDistrictsService = serviceProvider.GetRequiredService<DSNYDistrictsService>();
+            DSNYDistrictsService = serviceProvider.GetRequiredService<DsnyDistrictsService>();
             HistoricDistrictService = serviceProvider.GetRequiredService<HistoricDistrictService>();
             IndividualLandmarkSiteService = serviceProvider.GetRequiredService<IndividualLandmarkSiteService>();
             NeighborhoodService = serviceProvider.GetRequiredService<NeighborhoodsService>();
@@ -98,7 +98,7 @@ namespace MicroService.Test.Fixture
 
         public IShapeService<CommunityDistrictShape> CommunityDistrictService { get; set; }
 
-        public IShapeService<DSNYDistrictsShape> DSNYDistrictsService { get; set; }
+        public IShapeService<DsnyDistrictsShape> DSNYDistrictsService { get; set; }
 
         public IShapeService<HistoricDistrictShape> HistoricDistrictService { get; set; }
 

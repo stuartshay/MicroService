@@ -35,7 +35,6 @@ namespace MicroService.Test.Integration
             _testOutputHelper.WriteLine($"Max bounds: ({bounds.MaxX},{bounds.MaxY})");
         }
 
-
         [Fact(DisplayName = "Get Shape File Database Properties")]
         [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
@@ -54,7 +53,7 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Feature List")]
+        [Fact(DisplayName = "Get Feature Collection")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Collection()
         {
@@ -63,6 +62,13 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
+        [Fact(DisplayName = "Get Feature List")]
+        [Trait("Category", "Integration")]
+        public void Get_Feature_List()
+        {
+            var sut = _service.GetFeatureAttributes();
+            Assert.NotNull(sut);
+        }
 
         [InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
@@ -73,6 +79,36 @@ namespace MicroService.Test.Integration
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.AreaName);
+        }
+
+        [InlineData(1006187, 732036, null)]
+        [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
+        [Trait("Category", "Integration")]
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
+        {
+            var sut = _service.GetFeatureLookup(x, y);
+
+            Assert.Null(sut);
+            Assert.Equal(expected, sut?.BoroName);
+        }
+
+        [InlineData("LP-00001", "BK", "Pieter Claesen Wyckoff House")]
+        [InlineData("LP-00010", "MN", "428 Lafayette Street Building")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
+        [Trait("Category", "Integration")]
+        public void Get_Feature_Attribute_Lookup(string lbNumber, string boroName, string expected)
+        {
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("LPNumber", lbNumber),
+                new("BoroName", boroName),
+            };
+
+            var sut = _service.GetFeatureLookup(attributes);
+            var result = sut.FirstOrDefault();
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, result?.AreaName);
         }
     }
 }

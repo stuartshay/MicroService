@@ -141,7 +141,7 @@ void AddServices()
     // Feature Service Lookups
     services.AddScoped<BoroughBoundariesService>();
     services.AddScoped<CommunityDistrictsService>();
-    services.AddScoped<DSNYDistrictsService>();
+    services.AddScoped<DsnyDistrictsService>();
     services.AddScoped<HistoricDistrictService>();
     services.AddScoped<IndividualLandmarkSiteService>();
     services.AddScoped<NeighborhoodsService>();
@@ -160,7 +160,7 @@ void AddServices()
         {
             nameof(ShapeProperties.BoroughBoundaries) => serviceProvider.GetService<BoroughBoundariesService>(),
             nameof(ShapeProperties.CommunityDistricts) => serviceProvider.GetService<CommunityDistrictsService>(),
-            nameof(ShapeProperties.DSNYDistricts) => serviceProvider.GetService<DSNYDistrictsService>(),
+            nameof(ShapeProperties.DSNYDistricts) => serviceProvider.GetService<DsnyDistrictsService>(),
             nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
             nameof(ShapeProperties.IndividualLandmarkSite) => serviceProvider.GetService<IndividualLandmarkSiteService>(),
             nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService>(),
@@ -234,15 +234,12 @@ void SetupApp()
     app.MapControllers();
 
     app.UseHttpMetrics();
+    app.MapMetrics();
 
-    app.UseEndpoints(endpoints =>
+    app.MapHealthChecks("/healthz", new HealthCheckOptions
     {
-        endpoints.MapMetrics();
-        endpoints.MapHealthChecks("/healthz", new HealthCheckOptions
-        {
-            Predicate = _ => true,
-            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-        });
+        Predicate = _ => true,
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
     });
 
     app.UseHealthChecks($"/health");
