@@ -106,7 +106,8 @@ jobs:
 
       - name: Load images
         run: |
-          docker load --input ${{ needs.build.outputs.dotnet }}/image.tar
+          docker load --input docker-artifact/image.tar
+
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
@@ -126,7 +127,7 @@ jobs:
 
       - name: Load images
         run: |
-          docker load --input ${{ needs.build.outputs.dotnet }}/image.tar
+          docker load --input docker-artifact/image.tar
 
       - name: Google Auth
         id: 'auth'
