@@ -6,7 +6,7 @@ namespace MicroService.Service.Models
     public class BoroughBoundaryShape : ShapeBase
     {
         [FeatureName("BoroCode")]
-        public int BoroCode { get; set; }
+        public double BoroCode { get; set; }
 
         [FeatureName("BoroName")]
         public string BoroName { get; set; }
