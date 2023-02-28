@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Interfaces;
+﻿using AutoMapper;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -12,8 +13,9 @@ namespace MicroService.Service.Services
     public class ParkService : AbstractShapeService<ParkShape>, IShapeService<ParkShape>
     {
         public ParkService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
             ILogger<ParkService> logger)
-            : base(logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Parks));
         }
@@ -80,7 +82,7 @@ namespace MicroService.Service.Services
         {
             var features = GetFeatures();
 
-            _logger.LogInformation("Feature Count|{count}", features.Count);
+            Logger.LogInformation("Feature Count|{count}", features.Count);
 
             return features.Select(f => new ParkShape
             {

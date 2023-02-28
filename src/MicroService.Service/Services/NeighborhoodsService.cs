@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Interfaces;
+﻿using AutoMapper;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -12,8 +13,9 @@ namespace MicroService.Service.Services
     public class NeighborhoodsService : AbstractShapeService<NeighborhoodShape>, IShapeService<NeighborhoodShape>
     {
         public NeighborhoodsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
             ILogger<NeighborhoodsService> logger)
-            : base(logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Neighborhoods));
         }

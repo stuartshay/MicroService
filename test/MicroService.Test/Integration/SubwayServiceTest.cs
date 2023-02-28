@@ -9,15 +9,15 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class NypdPolicePrecinctServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
+    public class SubwayServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
-        public IShapeService<NypdPrecinctShape> _service;
+        public IShapeService<SubwayShape> _service;
 
         private readonly ITestOutputHelper _testOutputHelper;
 
-        public NypdPolicePrecinctServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
+        public SubwayServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
         {
-            _service = fixture.NypdPolicePrecinctService;
+            _service = fixture.SubwayService;
             _testOutputHelper = output;
         }
 
@@ -64,44 +64,44 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-
-        [InlineData(1006187, 232036, "40", null)]
-        [InlineData(1000443, 0239270, "32", null)]
-        [InlineData(1021192.9426658918, 212550.01741990919, "115", null)]
+        [InlineData(1006187, 232036, "Bronx", null)]
+        [InlineData(1000443, 0239270, "Manhattan", null)]
+        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", null)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected = null)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
-            Assert.Equal(int.Parse(expected), sut.Precinct);
-        }
-
-        [InlineData(10, "", "10")]
-        [Theory(Skip = "TODO FIX - Not Filtering", DisplayName = "Get Feature Attribute Lookup")]
-        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
-        {
-            var attributes = new List<KeyValuePair<string, object>>
-            {
-                new("Precinct", value1),
-            };
-
-            var sut = _service.GetFeatureLookup(attributes);
-            var result = sut.FirstOrDefault();
-
-            Assert.NotNull(sut);
-            Assert.Equal(int.Parse(expected), result?.Precinct);
+            //Assert.Equal(expected, sut.BoroName);
         }
 
         [InlineData(1006187, 732036, null)]
-        [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
+        [Theory(Skip = "TODO - Point Lookup", DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.Null(sut);
+            //Assert.Equal(expected, sut?.BoroName);
+        }
+
+        [InlineData("Junction Boulevard & Roosevelt Avenue at NE corner", "", "1789")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
+        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
+        {
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                 new("Name", "Junction Boulevard & Roosevelt Avenue at NE corner"),
+            };
+
+            var sut = _service.GetFeatureLookup(attributes);
+            var result = sut.FirstOrDefault();
+
+            Assert.NotNull(sut);
+            Assert.Equal(value1, result?.Name);
+            Assert.Equal(Double.Parse(expected), result?.ObjectId);
         }
 
         [Fact]
@@ -111,5 +111,6 @@ namespace MicroService.Test.Integration
 
             Assert.NotNull(sut);
         }
+
     }
 }

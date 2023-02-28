@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Interfaces;
+﻿using AutoMapper;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -12,8 +13,9 @@ namespace MicroService.Service.Services
     public class BoroughBoundariesService : AbstractShapeService<BoroughBoundaryShape>, IShapeService<BoroughBoundaryShape>
     {
         public BoroughBoundariesService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
             ILogger<BoroughBoundariesService> logger)
-            : base(logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.BoroughBoundaries));
         }
@@ -24,6 +26,7 @@ namespace MicroService.Service.Services
             var point = new Point(x, y);
 
             var features = GetFeatures();
+
             var feature = features.FirstOrDefault(f => f.Geometry.Contains(point));
 
             if (feature == null)
@@ -68,6 +71,7 @@ namespace MicroService.Service.Services
         public IEnumerable<BoroughBoundaryShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
+            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count());
 
             var results = features.Select(f => new BoroughBoundaryShape
             {

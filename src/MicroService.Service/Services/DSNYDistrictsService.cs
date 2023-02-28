@@ -1,4 +1,5 @@
-﻿using MicroService.Data.Enum;
+﻿using AutoMapper;
+using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
@@ -14,8 +15,9 @@ namespace MicroService.Service.Services
     public class DsnyDistrictsService : AbstractShapeService<DsnyDistrictsShape>, IShapeService<DsnyDistrictsShape>
     {
         public DsnyDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
             ILogger<DsnyDistrictsService> logger)
-            : base(logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.DSNYDistricts));
         }
