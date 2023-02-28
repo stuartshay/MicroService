@@ -18,6 +18,7 @@ namespace MicroService.Service.Services
             : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.BoroughBoundaries));
+            Mapper.ConfigurationProvider.AssertConfigurationIsValid();
         }
 
 
@@ -46,6 +47,7 @@ namespace MicroService.Service.Services
 
         public override IEnumerable<BoroughBoundaryShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
+            //var shape = Mapper.Map<BoroughBoundaryShape>(attributes);
             attributes = ValidateFeatureKey(attributes);
 
             var results = from f in GetFeatures()

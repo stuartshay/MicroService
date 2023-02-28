@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using MicroService.Service.Models;
 using MicroService.Service.Models.Base;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MicroService.Service.Mappings
 {
@@ -8,14 +10,15 @@ namespace MicroService.Service.Mappings
     {
         public ShapeMappings()
         {
-            CreateMap<KeyValuePair<string, object>, ShapeBase>()
-                .ConvertUsing(new KeyValuePairToShapeClassConverter<ShapeBase>());
+            CreateMap<KeyValuePair<string, object>, BoroughBoundaryShape>()
+                .ConvertUsing(new KeyValuePairToShapeClassConverter<BoroughBoundaryShape>());
 
-
-        }
-
-        public void ValidateMappings()
-        {
+            CreateMap<List<KeyValuePair<string, object>>, BoroughBoundaryShape>()
+                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => int.Parse(src.FirstOrDefault(kvp => kvp.Key == "BoroCode").Value.ToString())))
+                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => src.FirstOrDefault(kvp => kvp.Key == "BoroName").Value.ToString()))
+                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => double.Parse(src.FirstOrDefault(kvp => kvp.Key == "Shape_Area").Value.ToString())))
+                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => double.Parse(src.FirstOrDefault(kvp => kvp.Key == "Shape_Leng").Value.ToString())))
+                .ForMember(dest => dest.Coordinates, opt => opt.MapFrom(src => new List<Coordinate>()));
 
         }
 
