@@ -74,9 +74,9 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, sut?.BoroName);
         }
 
-        [InlineData(1005244.0510830927, 241013.96112274204, "Grand Concourse Historic District", null)]
+        [InlineData(1005244.0510830927, 241013.96112274204, "Grand Concourse Historic District", 0)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 

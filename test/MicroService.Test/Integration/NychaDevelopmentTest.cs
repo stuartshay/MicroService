@@ -64,10 +64,10 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [InlineData(999190.2011541898, 230264.8100294829, "MANHATTAN", null)]
+        [InlineData(999190.2011541898, 230264.8100294829, "MANHATTAN", 0)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 

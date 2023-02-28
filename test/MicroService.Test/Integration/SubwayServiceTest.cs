@@ -64,11 +64,11 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [InlineData(1006187, 232036, "Bronx", null)]
-        [InlineData(1000443, 0239270, "Manhattan", null)]
-        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", null)]
+        [InlineData(1006187, 232036, "Bronx", 0)]
+        [InlineData(1000443, 0239270, "Manhattan", 0)]
+        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", 0)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected = null)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int lookupExpectedl)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
