@@ -1,4 +1,5 @@
-﻿using MicroService.Data.Enum;
+﻿using AutoMapper;
+using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
@@ -14,8 +15,9 @@ namespace MicroService.Service.Services
     public class ScenicLandmarkService : AbstractShapeService<ScenicLandmarkShape>, IShapeService<ScenicLandmarkShape>
     {
         public ScenicLandmarkService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
             ILogger<ScenicLandmarkService> logger)
-            : base(logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.ScenicLandmarks));
         }

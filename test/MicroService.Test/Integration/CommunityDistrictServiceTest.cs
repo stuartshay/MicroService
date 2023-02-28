@@ -78,8 +78,7 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData("101", "", "Bronx")]
-        [InlineData(101, "", "Bronx")]
+        [InlineData(312, "", "312")]
         [Theory(Skip = "FIX TODO", DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
@@ -92,7 +91,7 @@ namespace MicroService.Test.Integration
             var result = sut.FirstOrDefault();
 
             Assert.NotNull(sut);
-            Assert.Equal(expected, result?.BoroName);
+            Assert.Equal(int.Parse(expected), result?.Cd);
         }
 
 

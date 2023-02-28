@@ -1,4 +1,5 @@
-﻿using MicroService.Data.Enum;
+﻿using AutoMapper;
+using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
@@ -13,11 +14,15 @@ namespace MicroService.Service.Services
 {
     public class CommunityDistrictsService : AbstractShapeService<CommunityDistrictShape>, IShapeService<CommunityDistrictShape>
     {
+        private readonly IMapper _mapper;
+
         public CommunityDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
             ILogger<CommunityDistrictsService> logger)
-            : base(logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.CommunityDistricts));
+            _mapper = mapper;
         }
 
         public override CommunityDistrictShape GetFeatureLookup(double x, double y)
