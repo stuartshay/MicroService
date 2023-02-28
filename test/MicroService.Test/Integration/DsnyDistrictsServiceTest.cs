@@ -54,7 +54,7 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Borough Boundaries Feature List")]
+        [Fact(DisplayName = "Get Feature Collection")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Collection()
         {
@@ -67,7 +67,7 @@ namespace MicroService.Test.Integration
         [InlineData(1006187, 232036, "Bronx", 201)]
         [InlineData(1000443, 0239270, "Manhattan", 110)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 

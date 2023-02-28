@@ -55,7 +55,16 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Feature List")]
+
+        [Fact(DisplayName = "Get Feature Collection")]
+        public void Get_Feature_Collection()
+        {
+            var sut = _service.GetFeatures();
+            Assert.NotNull(sut);
+            Assert.IsType<List<Feature>>(sut);
+        }
+
+        [Fact(DisplayName = "Get Feature Collection")]
         [Trait("Category", "Integration")]
         public void Get_Borough_Boundaries_Feature_Collection()
         {
@@ -65,27 +74,28 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(1006187, 232036, "Bronx", 0)]
-        [InlineData(1000443, 0239270, "New York", 0)]
-        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", 0)]
+        [InlineData(1006187, 232036, "Bronx", "10454")]
+        [InlineData(1000443, 0239270, "New York", "10039")]
+        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", "11368")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.County);
+            Assert.Equal(expected2, sut.ZipCode);
         }
 
-        [InlineData("11436", "Jamaica", "Jamaica")]
+        [InlineData("11436", "Queens", "Jamaica")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
             var attributes = new List<KeyValuePair<string, object>>
             {
                 new("ZipCode", value1),
-                //new("BoroName", value2),
+                new("County", value2),
             };
 
             var sut = _service.GetFeatureLookup(attributes);

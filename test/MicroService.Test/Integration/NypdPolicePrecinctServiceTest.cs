@@ -22,7 +22,6 @@ namespace MicroService.Test.Integration
         }
 
         [Fact(DisplayName = "Get Shape File Properties")]
-        [Trait("Category", "Integration")]
         public void Get_Shape_Properties()
         {
             var sut = _service.GetShapeProperties();
@@ -36,9 +35,7 @@ namespace MicroService.Test.Integration
             _testOutputHelper.WriteLine($"Max bounds: ({bounds.MaxX},{bounds.MaxY})");
         }
 
-
         [Fact(DisplayName = "Get Shape File Database Properties")]
-        [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
         {
             var sut = _service.GetShapeDatabaseProperties();
@@ -55,8 +52,7 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Feature List")]
-        [Trait("Category", "Integration")]
+        [Fact(DisplayName = "Get Feature Collection")]
         public void Get_Feature_Collection()
         {
             var sut = _service.GetFeatures();
@@ -69,8 +65,7 @@ namespace MicroService.Test.Integration
         [InlineData(1000443, 0239270, "32", 0)]
         [InlineData(1021192.9426658918, 212550.01741990919, "115", 0)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
@@ -96,7 +91,6 @@ namespace MicroService.Test.Integration
 
         [InlineData(1006187, 732036, null)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
-        [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
         {
             var sut = _service.GetFeatureLookup(x, y);

@@ -100,7 +100,7 @@ namespace MicroService.WebApi.V1.Controllers
         }
 
         /// <summary>
-        ///  Get Feature List
+        ///  Get Feature Collection
         /// </summary>
         /// <remarks>
         ///   List of features with attributes 
