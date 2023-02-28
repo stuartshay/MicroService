@@ -18,6 +18,7 @@ namespace MicroService.Test.Mappings
             // Act and Assert
             mapperConfig.AssertConfigurationIsValid();
         }
+
     }
 }
 
