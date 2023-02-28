@@ -55,7 +55,15 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Borough Boundaries Feature List")]
+        [Fact(DisplayName = "Get Feature Collection")]
+        public void Get_Feature_Collection()
+        {
+            var sut = _service.GetFeatures();
+            Assert.NotNull(sut);
+            Assert.IsType<List<Feature>>(sut);
+        }
+
+        [Fact(DisplayName = "Get Feature Collection")]
         [Trait("Category", "Integration")]
         public void Get_Borough_Boundaries_Feature_Collection()
         {
@@ -69,7 +77,7 @@ namespace MicroService.Test.Integration
         [InlineData(1021192.9426658918, 212550.01741990919, "Queens", 0)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 

@@ -55,7 +55,7 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Feature List")]
+        [Fact(DisplayName = "Get Feature Collection")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Collection()
         {
@@ -67,7 +67,7 @@ namespace MicroService.Test.Integration
         [InlineData(999190.2011541898, 230264.8100294829, "MANHATTAN", 0)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 

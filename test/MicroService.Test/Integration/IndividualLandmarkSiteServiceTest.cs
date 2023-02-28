@@ -63,7 +63,7 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [Fact(DisplayName = "Get Feature List")]
+        [Fact(DisplayName = "Get Feature Collection")]
         [Trait("Category", "Integration")]
         public void Get_Feature_List()
         {
@@ -82,7 +82,7 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, sut.AreaName);
         }
 
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
         {
             throw new NotImplementedException();
         }
