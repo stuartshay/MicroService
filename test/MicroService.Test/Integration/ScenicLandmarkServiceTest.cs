@@ -57,7 +57,7 @@ namespace MicroService.Test.Integration
 
         [Fact(DisplayName = "Get Borough Boundaries Feature List")]
         [Trait("Category", "Integration")]
-        public void Get_Borough_Boundaries_Feature_Collection()
+        public void Get_Borough_Feature_Collection()
         {
             var sut = _service.GetFeatures();
             Assert.NotNull(sut);
@@ -65,23 +65,16 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(1006187, 232036, "Bronx")]
-        // [InlineData(1000443, 0239270, "Manhattan")]
-        [Theory(Skip = "TODO", DisplayName = "Get Feature Point Lookup")]
+        [InlineData(991228.1942826601, 220507.29488507056, "Central Park", null)]// 40.7677792,-73.969123  
+        [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Borough_Boundaries_Feature_Lookup(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
-            Assert.Equal(expected, sut.BoroName);
+            Assert.Equal(expected, sut.AreaName);
         }
-
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
-        {
-            throw new NotImplementedException();
-        }
-
 
         [InlineData("LP-00879", "MN", "Bryant Park")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
