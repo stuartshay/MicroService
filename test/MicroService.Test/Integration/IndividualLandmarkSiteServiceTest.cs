@@ -82,7 +82,7 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, sut.AreaName);
         }
 
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int lookupExpected)
         {
             throw new NotImplementedException();
         }

@@ -38,8 +38,8 @@ namespace MicroService.Service.Services
 
             return new CommunityDistrictShape
             {
-                Cd = int.Parse(feature.Attributes["BoroCD"].ToString()),
-                BoroCd = int.Parse(feature.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                Cd = int.Parse(feature.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                BoroCd = int.Parse(feature.Attributes["BoroCD"].ToString()),
                 BoroCode = int.Parse(feature.Attributes["BoroCD"].ToString().Substring(0, 1)),
                 Borough = feature.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().ToString(),
                 BoroName = feature.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
@@ -63,8 +63,8 @@ namespace MicroService.Service.Services
                           })
                           select new CommunityDistrictShape
                           {
-                              Cd = int.Parse(f.Attributes["BoroCD"].ToString()),
-                              BoroCd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                              Cd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                              BoroCd = int.Parse(f.Attributes["BoroCD"].ToString()),
                               BoroCode = int.Parse(f.Attributes["BoroCD"].ToString().Substring(0, 1)),
                               Borough = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().ToString(),
                               BoroName = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
@@ -82,8 +82,8 @@ namespace MicroService.Service.Services
 
             return features.Select(f => new CommunityDistrictShape
             {
-                Cd = int.Parse(f.Attributes["BoroCD"].ToString()),
-                BoroCd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                Cd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                BoroCd = int.Parse(f.Attributes["BoroCD"].ToString()),
                 BoroCode = int.Parse(f.Attributes["BoroCD"].ToString().Substring(0, 1)),
                 Borough = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().ToString(),
                 BoroName = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),

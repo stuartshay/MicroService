@@ -8,7 +8,7 @@ namespace MicroService.Service.Models
         public int Cd { get; set; }
 
         [FeatureName("BoroCD")]
-        public int BoroCd { get; set; }
+        public double BoroCd { get; set; }
 
         public int BoroCode { get; set; }
 

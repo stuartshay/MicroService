@@ -65,10 +65,10 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(991228.1942826601, 220507.29488507056, "Central Park", null)]// 40.7677792,-73.969123  
+        [InlineData(991228.1942826601, 220507.29488507056, "Central Park", 0)]// 40.7677792,-73.969123  
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, int lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
