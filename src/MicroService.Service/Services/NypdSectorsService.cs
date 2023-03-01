@@ -42,7 +42,26 @@ namespace MicroService.Service.Services
 
         public override IEnumerable<NypdSectorShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+
+            var results = from f in GetFeatures()
+                          where attributes.All(pair =>
+                          {
+                              var value = f.Attributes[pair.Key];
+                              var expectedValue = pair.Value;
+                              var matchedValue = MatchAttributeValue(value, expectedValue);
+                              return matchedValue != null;
+                          })
+                          select new NypdSectorShape
+                          {
+                              Pct = f.Attributes["pct"].ToString(),
+                              Sector = f.Attributes["sector"].ToString(),
+                              PatrolBoro = f.Attributes["patrol_bor"].ToString(),
+                              Phase = f.Attributes["phase"].ToString(),
+                              Coordinates = new List<Coordinate>(),
+                          };
+
+            return results;
         }
 
         public IEnumerable<NypdSectorShape> GetFeatureAttributes()

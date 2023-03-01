@@ -73,10 +73,13 @@ namespace MicroService.Test.Integration
             Assert.Equal(int.Parse(expected), sut.Precinct);
         }
 
-        [InlineData(10, "", "10")]
+
+        [InlineData("14", "", "14")]
         [Theory(Skip = "TODO FIX - Not Filtering", DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
+            // var value = Convert.ToDouble(value1);
+            // var value = Convert.ToString(value1);
             var attributes = new List<KeyValuePair<string, object>>
             {
                 new("Precinct", value1),
@@ -89,9 +92,9 @@ namespace MicroService.Test.Integration
             Assert.Equal(int.Parse(expected), result?.Precinct);
         }
 
-        [InlineData(1006187, 732036, null)]
+        [InlineData(1006187, 732036l)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
-        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
 

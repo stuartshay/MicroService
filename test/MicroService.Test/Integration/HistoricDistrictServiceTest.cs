@@ -63,25 +63,25 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [InlineData(1006187, 732036, null)]
+        [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.Null(sut);
-            Assert.Equal(expected, sut?.BoroName);
         }
 
-        [InlineData(1005244.0510830927, 241013.96112274204, "Grand Concourse Historic District")]
+        [InlineData(1005244.0510830927, 241013.96112274204, "Grand Concourse Historic District", "LP-02403")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected = null)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.AreaName);
+            Assert.Equal(expected2, sut.LPNumber);
         }
 
         [InlineData("LP-02403", "BX", "Grand Concourse Historic District")]

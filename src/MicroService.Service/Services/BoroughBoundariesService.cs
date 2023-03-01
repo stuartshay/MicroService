@@ -47,7 +47,7 @@ namespace MicroService.Service.Services
 
         public override IEnumerable<BoroughBoundaryShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            //var shape = Mapper.Map<BoroughBoundaryShape>(attributes);
+            // var shape = Mapper.Map<BoroughBoundaryShape>(attributes);
             attributes = ValidateFeatureKey(attributes);
 
             var results = from f in GetFeatures()
@@ -73,7 +73,7 @@ namespace MicroService.Service.Services
         public IEnumerable<BoroughBoundaryShape> GetFeatureAttributes()
         {
             var features = GetFeatures();
-            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count());
+            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
 
             var results = features.Select(f => new BoroughBoundaryShape
             {
