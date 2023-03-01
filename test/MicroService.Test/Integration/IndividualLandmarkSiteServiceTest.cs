@@ -22,7 +22,6 @@ namespace MicroService.Test.Integration
         }
 
         [Fact(DisplayName = "Get Shape File Properties")]
-        [Trait("Category", "Integration")]
         public void Get_Shape_Properties()
         {
             var sut = _service.GetShapeProperties();
@@ -37,7 +36,6 @@ namespace MicroService.Test.Integration
         }
 
         [Fact(DisplayName = "Get Shape File Database Properties")]
-        [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
         {
             var sut = _service.GetShapeDatabaseProperties();
@@ -55,7 +53,6 @@ namespace MicroService.Test.Integration
         }
 
         [Fact(DisplayName = "Get Feature Collection")]
-        [Trait("Category", "Integration")]
         public void Get_Feature_Collection()
         {
             var sut = _service.GetFeatures();
@@ -63,18 +60,16 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [Fact(DisplayName = "Get Feature Collection")]
-        [Trait("Category", "Integration")]
+        [Fact(DisplayName = "Get Feature List")]
         public void Get_Feature_List()
         {
-            var sut = _service.GetFeatureAttributes();
+            var sut = _service.GetFeatureList();
             Assert.NotNull(sut);
         }
 
 
         [InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique", "MN")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
@@ -87,7 +82,6 @@ namespace MicroService.Test.Integration
 
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
-        [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
@@ -98,7 +92,6 @@ namespace MicroService.Test.Integration
         [InlineData("LP-00001", "3079170009", "Pieter Claesen Wyckoff House")]
         [InlineData("LP-00010", "1005450040", "428 Lafayette Street Building")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
-        [Trait("Category", "Integration")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
             var attributes = new List<KeyValuePair<string, object>>

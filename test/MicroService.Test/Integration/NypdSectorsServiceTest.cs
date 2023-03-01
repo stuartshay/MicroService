@@ -117,7 +117,7 @@ namespace MicroService.Test.Integration
         [Fact]
         public void Get_Feature_List()
         {
-            var sut = _service.GetFeatureAttributes();
+            var sut = _service.GetFeatureList();
 
             Assert.NotNull(sut);
         }

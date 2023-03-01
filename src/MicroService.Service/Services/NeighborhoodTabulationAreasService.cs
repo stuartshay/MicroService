@@ -82,7 +82,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureAttributes()
+        public IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureList()
         {
             var features = GetFeatures();
 

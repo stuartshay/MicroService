@@ -64,7 +64,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<NypdSectorShape> GetFeatureAttributes()
+        public IEnumerable<NypdSectorShape> GetFeatureList()
         {
             var features = GetFeatures();
 

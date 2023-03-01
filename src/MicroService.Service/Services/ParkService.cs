@@ -78,7 +78,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<ParkShape> GetFeatureAttributes()
+        public IEnumerable<ParkShape> GetFeatureList()
         {
             var features = GetFeatures();
 

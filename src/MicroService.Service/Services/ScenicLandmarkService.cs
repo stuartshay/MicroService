@@ -74,7 +74,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<ScenicLandmarkShape> GetFeatureAttributes()
+        public IEnumerable<ScenicLandmarkShape> GetFeatureList()
         {
             var features = GetFeatures();
 
