@@ -27,5 +27,9 @@ namespace MicroService.Service.Helpers
             return property!.GetCustomAttribute<TAttribute>();
         }
 
+        public static PropertyInfo[] GetPropertiesWithCustomAttribute<T>(this Type type) where T : Attribute
+        {
+            return type.GetProperties().Where(p => p.GetCustomAttribute<T>() != null).ToArray();
+        }
     }
 }

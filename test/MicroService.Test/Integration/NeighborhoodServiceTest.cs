@@ -55,7 +55,15 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Borough Boundaries Feature List")]
+        [Fact(DisplayName = "Get Feature Collection")]
+        public void Get_Feature_Collection()
+        {
+            var sut = _service.GetFeatures();
+            Assert.NotNull(sut);
+            Assert.IsType<List<Feature>>(sut);
+        }
+
+        [Fact(DisplayName = "Get Feature Collection")]
         [Trait("Category", "Integration")]
         public void Get_Borough_Boundaries_Feature_Collection()
         {
@@ -64,12 +72,12 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [InlineData(1006187, 232036, "Bronx", null)]
-        [InlineData(1000443, 0239270, "Manhattan", null)]
-        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", null)]
+        [InlineData(1006187, 232036, "Bronx", 0)]
+        [InlineData(1000443, 0239270, "Manhattan", 0)]
+        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", 0)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
@@ -95,21 +103,20 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, result?.NTAName);
         }
 
-        [InlineData(1006187, 732036, null)]
+        [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.Null(sut);
-            Assert.Equal(expected, sut?.BoroName);
         }
 
         [Fact]
         public void Get_Feature_List()
         {
-            var sut = _service.GetFeatureAttributes();
+            var sut = _service.GetFeatureList();
 
             Assert.NotNull(sut);
         }

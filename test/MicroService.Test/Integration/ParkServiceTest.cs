@@ -55,7 +55,7 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Feature List")]
+        [Fact(DisplayName = "Get Feature Collection")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Collection()
         {
@@ -64,10 +64,10 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [InlineData(1015142.9358798683, 266180.4226125971, "Van Cortlandt Golf Course", null)]
+        [InlineData(1015142.9358798683, 266180.4226125971, "Van Cortlandt Golf Course", 0)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, int? lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
@@ -77,26 +77,41 @@ namespace MicroService.Test.Integration
 
 
 
+        [InlineData("B222", "Pierrepont Playground", "Pierrepont Playground")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
-            throw new NotImplementedException();
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("ParkNumber", value1),
+                new("ParkName", value2),
+            };
+
+            var sut = _service.GetFeatureLookup(attributes);
+            var result = sut.FirstOrDefault();
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, result?.ParkName);
+            Assert.Equal(value1, result?.ParkNumber);
         }
 
-        [InlineData(1006187, 732036, null)]
+
+
+
+        [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.Null(sut);
-            Assert.Equal(expected, sut?.ParkName);
         }
 
         [Fact]
         public void Get_Feature_List()
         {
-            var sut = _service.GetFeatureAttributes();
+            var sut = _service.GetFeatureList();
 
             Assert.NotNull(sut);
         }

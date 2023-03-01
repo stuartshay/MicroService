@@ -1,4 +1,5 @@
-﻿using HealthChecks.UI.Client;
+﻿using AutoMapper;
+using HealthChecks.UI.Client;
 using MicroService.Common.Constants;
 using MicroService.Common.Health;
 using MicroService.Common.Logging;
@@ -6,6 +7,7 @@ using MicroService.Data.Repository;
 using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
+using MicroService.Service.Mappings;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Services;
@@ -31,6 +33,7 @@ var env = builder.Environment;
 
 SetupLogger();
 SetupConfiguration();
+SetupMappings();
 SetupServices();
 AddServices();
 AddHealthCheckServices();
@@ -52,6 +55,15 @@ void SetupConfiguration()
     services.AddSingleton(configuration);
 
     services.DisplayConfiguration(configuration);
+}
+
+void SetupMappings()
+{
+    services.AddSingleton(_ => new MapperConfiguration(cfg =>
+    {
+        cfg.AddProfile<ShapeMappings>();
+    }).CreateMapper());
+
 }
 
 void SetupServices()

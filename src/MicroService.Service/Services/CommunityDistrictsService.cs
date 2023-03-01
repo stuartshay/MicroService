@@ -1,4 +1,5 @@
-﻿using MicroService.Data.Enum;
+﻿using AutoMapper;
+using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
@@ -14,8 +15,9 @@ namespace MicroService.Service.Services
     public class CommunityDistrictsService : AbstractShapeService<CommunityDistrictShape>, IShapeService<CommunityDistrictShape>
     {
         public CommunityDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
             ILogger<CommunityDistrictsService> logger)
-            : base(logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.CommunityDistricts));
         }
@@ -33,8 +35,8 @@ namespace MicroService.Service.Services
 
             return new CommunityDistrictShape
             {
-                Cd = int.Parse(feature.Attributes["BoroCD"].ToString()),
-                BoroCd = int.Parse(feature.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                Cd = int.Parse(feature.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                BoroCd = int.Parse(feature.Attributes["BoroCD"].ToString()),
                 BoroCode = int.Parse(feature.Attributes["BoroCD"].ToString().Substring(0, 1)),
                 Borough = feature.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().ToString(),
                 BoroName = feature.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
@@ -58,8 +60,8 @@ namespace MicroService.Service.Services
                           })
                           select new CommunityDistrictShape
                           {
-                              Cd = int.Parse(f.Attributes["BoroCD"].ToString()),
-                              BoroCd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                              Cd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                              BoroCd = int.Parse(f.Attributes["BoroCD"].ToString()),
                               BoroCode = int.Parse(f.Attributes["BoroCD"].ToString().Substring(0, 1)),
                               Borough = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().ToString(),
                               BoroName = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
@@ -71,14 +73,14 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<CommunityDistrictShape> GetFeatureAttributes()
+        public IEnumerable<CommunityDistrictShape> GetFeatureList()
         {
             var features = GetFeatures();
 
             return features.Select(f => new CommunityDistrictShape
             {
-                Cd = int.Parse(f.Attributes["BoroCD"].ToString()),
-                BoroCd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                Cd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
+                BoroCd = int.Parse(f.Attributes["BoroCD"].ToString()),
                 BoroCode = int.Parse(f.Attributes["BoroCD"].ToString().Substring(0, 1)),
                 Borough = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().ToString(),
                 BoroName = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),

@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Test.Fixture;
+using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit;
@@ -8,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class NychaDevelopmentServiceTest : IClassFixture<ShapeServiceFixture>
+    public class NychaDevelopmentServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
         public IShapeService<NychaDevelopmentShape> _service;
 
@@ -54,7 +55,7 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Feature List")]
+        [Fact(DisplayName = "Get Feature Collection")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Collection()
         {
@@ -63,10 +64,10 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [InlineData(999190.2011541898, 230264.8100294829, "MANHATTAN")]
+        [InlineData(999190.2011541898, 230264.8100294829, "MANHATTAN", 0)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
@@ -74,21 +75,38 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, sut.Borough);
         }
 
-        [InlineData(1006187, 732036, null)]
+
+        [InlineData("FULTON", "", "FULTON")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
+        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
+        {
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("Development", value1),
+            };
+
+            var sut = _service.GetFeatureLookup(attributes);
+            var result = sut.FirstOrDefault();
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, result?.Development);
+        }
+
+
+        [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.Null(sut);
-            Assert.Equal(expected, sut?.Borough);
         }
 
         [Fact]
         public void Get_Feature_List()
         {
-            var sut = _service.GetFeatureAttributes();
+            var sut = _service.GetFeatureList();
 
             Assert.NotNull(sut);
         }

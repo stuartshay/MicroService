@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Test.Fixture;
+using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit;
@@ -8,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class HistoricDistrictServiceTest : IClassFixture<ShapeServiceFixture>
+    public class HistoricDistrictServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
         public IShapeService<HistoricDistrictShape> _service;
 
@@ -53,7 +54,7 @@ namespace MicroService.Test.Integration
             }
         }
 
-        [Fact(DisplayName = "Get Borough Boundaries Feature List")]
+        [Fact(DisplayName = "Get Feature Collection")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Collection()
         {
@@ -62,48 +63,48 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-
-        [InlineData(1005244.0510830927, 241013.96112274204, "Grand Concourse Historic District")]
-        [Theory(DisplayName = "Get Feature Point Lookup")]
+        [InlineData(1006187, 732036)]
+        [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Lookup(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
+        {
+            var sut = _service.GetFeatureLookup(x, y);
+
+            Assert.Null(sut);
+        }
+
+        [InlineData(1005244.0510830927, 241013.96112274204, "Grand Concourse Historic District", "LP-02403")]
+        [Theory(DisplayName = "Get Feature Point Lookup")]
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.AreaName);
+            Assert.Equal(expected2, sut.LPNumber);
         }
 
-        [InlineData(1006187, 732036, null)]
-        [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
-        [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
-        {
-            var sut = _service.GetFeatureLookup(x, y);
-
-            Assert.Null(sut);
-            Assert.Equal(expected, sut?.BoroName);
-        }
-
-
-        [Fact]
-        public void Get_Feature_Attribute_Lookup()
+        [InlineData("LP-02403", "BX", "Grand Concourse Historic District")]
+        [Theory(DisplayName = "Get Feature Point Lookup")]
+        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
             var attributes = new List<KeyValuePair<string, object>>
             {
-                new("LPNumber", "LP-02403"),
-                new("BoroName", "BX"),
+                new("LPNumber", value1),
+                new("BoroName", value2),
             };
 
             var sut = _service.GetFeatureLookup(attributes);
+            var value = sut?.FirstOrDefault();
 
             Assert.NotNull(sut);
+            Assert.Equal(expected, value?.AreaName);
         }
 
         [Fact]
         public void Get_Feature_List()
         {
-            var sut = _service.GetFeatureAttributes();
+            var sut = _service.GetFeatureList();
 
             Assert.NotNull(sut);
         }

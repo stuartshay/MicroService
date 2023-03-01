@@ -8,6 +8,7 @@ namespace MicroService.Service.Models
         [FeatureName("PARK_NAME")]
         public string ParkName { get; set; }
 
+        [FeatureName("PARKNUM")]
         public string ParkNumber { get; set; }
 
         [FeatureName("SOURCE_ID")]

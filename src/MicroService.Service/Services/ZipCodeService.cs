@@ -1,6 +1,8 @@
-﻿using MicroService.Service.Interfaces;
+﻿using AutoMapper;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,10 @@ namespace MicroService.Service.Services
 {
     public class ZipCodeService : AbstractShapeService<ZipCodeShape>, IShapeService<ZipCodeShape>
     {
-        public ZipCodeService(ShapefileDataReaderResolver shapefileDataReaderResolver)
+        public ZipCodeService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
+            ILogger<SubwayService> logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.ZipCodes));
         }
@@ -78,7 +83,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<ZipCodeShape> GetFeatureAttributes()
+        public IEnumerable<ZipCodeShape> GetFeatureList()
         {
             var features = GetFeatures();
 
