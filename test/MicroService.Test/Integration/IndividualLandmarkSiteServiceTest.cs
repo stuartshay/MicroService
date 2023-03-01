@@ -71,18 +71,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
         }
 
-        //[InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique")]
-        //[Theory(DisplayName = "Get Feature Point Lookup")]
-        //[Trait("Category", "Integration")]
-        //public void Get_Feature_Lookup(double x, double y, string expected)
-        //{
-        //    var sut = _service.GetFeatureLookup(x, y);
-
-        //    Assert.NotNull(sut);
-        //    Assert.Equal(expected, sut.AreaName);
-        //}
-
-
 
         [InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique", "MN")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
@@ -95,11 +83,6 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, sut.AreaName);
             Assert.Equal(expected2, sut.BoroName);
         }
-
-
-
-
-
 
 
         [InlineData(1006187, 732036)]
