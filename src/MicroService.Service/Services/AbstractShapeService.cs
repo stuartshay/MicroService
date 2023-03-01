@@ -19,7 +19,7 @@ namespace MicroService.Service.Services
 
         protected readonly ILogger Logger;
 
-        public AbstractShapeService(ILogger logger, IMapper mapper)
+        protected AbstractShapeService(ILogger logger, IMapper mapper)
         {
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             Mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));

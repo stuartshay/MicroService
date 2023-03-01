@@ -103,15 +103,14 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, result?.NTAName);
         }
 
-        [InlineData(1006187, 732036, null)]
+        [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.Null(sut);
-            Assert.Equal(expected, sut?.BoroName);
         }
 
         [Fact]

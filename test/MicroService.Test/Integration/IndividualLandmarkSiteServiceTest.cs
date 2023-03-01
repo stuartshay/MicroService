@@ -71,33 +71,45 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
         }
 
-        [InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique")]
+        //[InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique")]
+        //[Theory(DisplayName = "Get Feature Point Lookup")]
+        //[Trait("Category", "Integration")]
+        //public void Get_Feature_Lookup(double x, double y, string expected)
+        //{
+        //    var sut = _service.GetFeatureLookup(x, y);
+
+        //    Assert.NotNull(sut);
+        //    Assert.Equal(expected, sut.AreaName);
+        //}
+
+
+
+        [InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique", "MN")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Lookup(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.AreaName);
-        }
-
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
-        {
-            throw new NotImplementedException();
+            Assert.Equal(expected2, sut.BoroName);
         }
 
 
 
-        [InlineData(1006187, 732036, null)]
+
+
+
+
+        [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.Null(sut);
-            Assert.Equal(expected, sut?.BoroName);
         }
 
         [InlineData("LP-00001", "3079170009", "Pieter Claesen Wyckoff House")]
@@ -118,8 +130,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, result?.AreaName);
         }
-
-
 
 
     }

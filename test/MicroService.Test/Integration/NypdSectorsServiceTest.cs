@@ -61,16 +61,24 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-
-
-
-
-
-
+        [InlineData("102", "102C", "PBQS")]
+        [InlineData(102, "102C", "PBQS")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
-            throw new NotImplementedException();
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("Pct", value1),
+                new("Sector", value2),
+            };
+
+            var sut = _service.GetFeatureLookup(attributes);
+            var result = sut.FirstOrDefault();
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, result?.PatrolBoro);
         }
+
 
         [Fact(DisplayName = "Get Feature Collection")]
         [Trait("Category", "Integration")]
@@ -96,15 +104,13 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(1006187, 732036, null)]
+        [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
-        [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup_Not_Found(double x, double y, string expected)
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.Null(sut);
-            Assert.Equal(expected, sut?.PatrolBoro);
         }
 
 

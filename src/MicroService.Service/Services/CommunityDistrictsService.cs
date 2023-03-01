@@ -14,15 +14,12 @@ namespace MicroService.Service.Services
 {
     public class CommunityDistrictsService : AbstractShapeService<CommunityDistrictShape>, IShapeService<CommunityDistrictShape>
     {
-        private readonly IMapper _mapper;
-
         public CommunityDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
             ILogger<CommunityDistrictsService> logger)
             : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.CommunityDistricts));
-            _mapper = mapper;
         }
 
         public override CommunityDistrictShape GetFeatureLookup(double x, double y)
