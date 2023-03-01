@@ -73,7 +73,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<NeighborhoodShape> GetFeatureAttributes()
+        public IEnumerable<NeighborhoodShape> GetFeatureList()
         {
             var features = GetFeatures();
 

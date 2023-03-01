@@ -65,7 +65,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<NychaDevelopmentShape> GetFeatureAttributes()
+        public IEnumerable<NychaDevelopmentShape> GetFeatureList()
         {
             var features = GetFeatures();
 

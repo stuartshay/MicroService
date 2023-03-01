@@ -13,7 +13,7 @@ namespace MicroService.Service.Interfaces
 
         IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, object>> attributes);
 
-        IEnumerable<T> GetFeatureAttributes();
+        IEnumerable<T> GetFeatureList();
 
         ShapefileHeader GetShapeProperties();
 

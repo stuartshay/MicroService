@@ -74,7 +74,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<SubwayShape> GetFeatureAttributes()
+        public IEnumerable<SubwayShape> GetFeatureList()
         {
             var features = GetFeatures();
 

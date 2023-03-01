@@ -70,7 +70,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<BoroughBoundaryShape> GetFeatureAttributes()
+        public IEnumerable<BoroughBoundaryShape> GetFeatureList()
         {
             var features = GetFeatures();
             Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);

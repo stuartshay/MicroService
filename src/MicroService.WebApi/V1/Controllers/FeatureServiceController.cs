@@ -117,7 +117,7 @@ namespace MicroService.WebApi.V1.Controllers
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();
 
-            IEnumerable<ShapeBase> results = _shapeServiceResolver!(request.Key).GetFeatureAttributes();
+            IEnumerable<ShapeBase> results = _shapeServiceResolver!(request.Key).GetFeatureList();
             return await Task.FromResult(Ok(results));
         }
 

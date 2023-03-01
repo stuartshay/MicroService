@@ -83,7 +83,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<ZipCodeShape> GetFeatureAttributes()
+        public IEnumerable<ZipCodeShape> GetFeatureList()
         {
             var features = GetFeatures();
 

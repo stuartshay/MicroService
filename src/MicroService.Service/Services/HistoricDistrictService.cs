@@ -72,7 +72,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<HistoricDistrictShape> GetFeatureAttributes()
+        public IEnumerable<HistoricDistrictShape> GetFeatureList()
         {
             var features = GetFeatures();
 

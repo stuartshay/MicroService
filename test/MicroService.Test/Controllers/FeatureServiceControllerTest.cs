@@ -27,7 +27,7 @@ namespace MicroService.Test.Controllers
             var request = new FeatureAttributeRequestModel { Key = key };
 
             var shapeServiceMock = new Mock<IShapeService<ShapeBase>>();
-            shapeServiceMock.Setup(s => s.GetFeatureAttributes()).Returns(expectedResults);
+            shapeServiceMock.Setup(s => s.GetFeatureList()).Returns(expectedResults);
 
             var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
             shapeServiceResolver.Setup(r => r!(request.Key)).Returns(shapeServiceMock.Object);

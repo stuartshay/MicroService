@@ -90,7 +90,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<DsnyDistrictsShape> GetFeatureAttributes()
+        public IEnumerable<DsnyDistrictsShape> GetFeatureList()
         {
             var features = GetFeatures();
 
