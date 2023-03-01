@@ -19,7 +19,7 @@ namespace MicroService.WebApi.V1.Controllers
     [EnableCors(ApiConstants.CorsPolicy)]
     public class FeatureServiceController : ControllerBase
     {
-        private readonly ShapeServiceResolver _shapeServiceResolver;
+        private readonly ShapeServiceResolver? _shapeServiceResolver;
 
         private readonly ILogger<FeatureServiceController> _logger;
 
@@ -28,7 +28,7 @@ namespace MicroService.WebApi.V1.Controllers
         /// </summary>
         /// <param name="shapeServiceResolver"></param>
         /// <param name="logger"></param>
-        public FeatureServiceController(ShapeServiceResolver shapeServiceResolver, ILogger<FeatureServiceController> logger)
+        public FeatureServiceController(ShapeServiceResolver? shapeServiceResolver, ILogger<FeatureServiceController> logger)
         {
             _shapeServiceResolver = shapeServiceResolver;
             _logger = logger;
@@ -73,7 +73,7 @@ namespace MicroService.WebApi.V1.Controllers
             if (id == null || !Enum.IsDefined(typeof(ShapeProperties), id))
                 return BadRequest();
 
-            var service = _shapeServiceResolver(id);
+            var service = _shapeServiceResolver!(id);
 
             var databaseProperties = service.GetShapeDatabaseProperties();
             var shapeProperties = service.GetShapeProperties();
@@ -100,7 +100,7 @@ namespace MicroService.WebApi.V1.Controllers
         }
 
         /// <summary>
-        ///  Get Feature List
+        ///  Get Feature Collection
         /// </summary>
         /// <remarks>
         ///   List of features with attributes 
@@ -117,7 +117,7 @@ namespace MicroService.WebApi.V1.Controllers
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();
 
-            IEnumerable<ShapeBase> results = _shapeServiceResolver(request.Key).GetFeatureAttributes();
+            IEnumerable<ShapeBase> results = _shapeServiceResolver!(request.Key).GetFeatureList();
             return await Task.FromResult(Ok(results));
         }
 
@@ -136,11 +136,11 @@ namespace MicroService.WebApi.V1.Controllers
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();
 
-            var validate = _shapeServiceResolver(ShapeProperties.BoroughBoundaries.ToString()).GetFeatureLookup(request.X, request.Y);
+            var validate = _shapeServiceResolver!(ShapeProperties.BoroughBoundaries.ToString()).GetFeatureLookup(request.X, request.Y);
             if (validate == null)
                 return NoContent();
 
-            var results = _shapeServiceResolver(request.Key).GetFeatureLookup(request.X, request.Y);
+            var results = _shapeServiceResolver!(request.Key).GetFeatureLookup(request.X, request.Y);
             if (results == null)
                 return NotFound();
 
@@ -162,13 +162,18 @@ namespace MicroService.WebApi.V1.Controllers
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();
 
-            //var keys = request.Attributes!.Select(kv => kv.Key).ToList();
-            //var service = _shapeServiceResolver(request?.Key!);
-            //var fields = from f in service.GetShapeDatabaseProperties().Fields select f.Name;
+            var keys = request.Attributes!.Select(kv => kv.Key).ToList();
+            var service = _shapeServiceResolver!(request?.Key!);
 
-            //var validItems = keys.All(x => fields.Contains(x));
-            //if (!validItems)
-            //    return BadRequest();
+            var shapeType = service.GetType().GetInterface("IShapeService`1")!.GetGenericArguments()[0];
+            var fields = shapeType.GetPropertiesWithCustomAttribute<FeatureNameAttribute>().Select(x => x.Name).ToList();
+
+            var invalidItems = keys.Where(x => !fields.Contains(x)).ToList();
+            if (invalidItems.Any())
+            {
+                var invalidFields = string.Join(", ", invalidItems);
+                return BadRequest($"The following attributes are not valid for the selected shape type: {invalidFields}");
+            }
 
             var results = _shapeServiceResolver(request!.Key).GetFeatureLookup(request.Attributes);
             if (!results.Any())

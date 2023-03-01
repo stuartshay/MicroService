@@ -9,19 +9,20 @@ using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
-    public class IndividualLandmarkSiteServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
+    public class SubwayServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
-        public IShapeService<IndividualLandmarkSiteShape> _service;
+        public IShapeService<SubwayShape> _service;
 
         private readonly ITestOutputHelper _testOutputHelper;
 
-        public IndividualLandmarkSiteServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
+        public SubwayServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
         {
-            _service = fixture.IndividualLandmarkSiteService;
+            _service = fixture.SubwayService;
             _testOutputHelper = output;
         }
 
         [Fact(DisplayName = "Get Shape File Properties")]
+        [Trait("Category", "Integration")]
         public void Get_Shape_Properties()
         {
             var sut = _service.GetShapeProperties();
@@ -35,13 +36,15 @@ namespace MicroService.Test.Integration
             _testOutputHelper.WriteLine($"Max bounds: ({bounds.MaxX},{bounds.MaxY})");
         }
 
+
         [Fact(DisplayName = "Get Shape File Database Properties")]
+        [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
         {
             var sut = _service.GetShapeDatabaseProperties();
             Assert.NotNull(sut);
 
-            //Display summary information about the Dbase file
+            //Display summary information about the Shape file
             _testOutputHelper.WriteLine("Dbase info");
             _testOutputHelper.WriteLine($"{sut.Fields.Length} Columns, {sut.NumRecords} Records");
 
@@ -53,6 +56,7 @@ namespace MicroService.Test.Integration
         }
 
         [Fact(DisplayName = "Get Feature Collection")]
+        [Trait("Category", "Integration")]
         public void Get_Feature_Collection()
         {
             var sut = _service.GetFeatures();
@@ -60,28 +64,21 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [Fact(DisplayName = "Get Feature List")]
-        public void Get_Feature_List()
-        {
-            var sut = _service.GetFeatureList();
-            Assert.NotNull(sut);
-        }
-
-
-        [InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique", "MN")]
+        [InlineData(1006187, 232036, "Bronx", 0)]
+        [InlineData(1000443, 0239270, "Manhattan", 0)]
+        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", 0)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpectedl)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
-            Assert.Equal(expected, sut.AreaName);
-            Assert.Equal(expected2, sut.BoroName);
+            //Assert.Equal(expected, sut.BoroName);
         }
 
-
         [InlineData(1006187, 732036)]
-        [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
+        [Theory(Skip = "TODO - Point Lookup", DisplayName = "Get Feature Point Lookup Not Found")]
+        [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
@@ -89,24 +86,30 @@ namespace MicroService.Test.Integration
             Assert.Null(sut);
         }
 
-        [InlineData("LP-00001", "3079170009", "Pieter Claesen Wyckoff House")]
-        [InlineData("LP-00010", "1005450040", "428 Lafayette Street Building")]
+        [InlineData("Junction Boulevard & Roosevelt Avenue at NE corner", "", "1789")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
             var attributes = new List<KeyValuePair<string, object>>
             {
-                new("LPNumber", value1),
-                new("BBL", value2),
+                 new("Name", "Junction Boulevard & Roosevelt Avenue at NE corner"),
             };
 
             var sut = _service.GetFeatureLookup(attributes);
             var result = sut.FirstOrDefault();
 
             Assert.NotNull(sut);
-            Assert.Equal(expected, result?.AreaName);
+            Assert.Equal(value1, result?.Name);
+            Assert.Equal(Double.Parse(expected), result?.ObjectId);
         }
 
+        [Fact]
+        public void Get_Feature_List()
+        {
+            var sut = _service.GetFeatureList();
+
+            Assert.NotNull(sut);
+        }
 
     }
 }

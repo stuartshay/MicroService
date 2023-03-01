@@ -1,4 +1,5 @@
-﻿using MicroService.Data.Enum;
+﻿using AutoMapper;
+using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
@@ -14,45 +15,38 @@ namespace MicroService.Service.Services
     public class ScenicLandmarkService : AbstractShapeService<ScenicLandmarkShape>, IShapeService<ScenicLandmarkShape>
     {
         public ScenicLandmarkService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
             ILogger<ScenicLandmarkService> logger)
-            : base(logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.ScenicLandmarks));
         }
 
         public override ScenicLandmarkShape GetFeatureLookup(double x, double y)
         {
-            // Validate Point is in Range
-            var point = new Point(x, y);
+            // Convert Nad83 to Wgs 
+            var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
+            var wgs84Point = new { X = result.Item2, Y = result.Item1 };
 
-            var model = new ScenicLandmarkShape();
+            var point = new Point(wgs84Point.Y.Value, wgs84Point.X.Value);
 
             var features = GetFeatures();
-            foreach (var f in features)
-            {
-                var exists = f.Geometry.Contains(point);
-                if (exists)
-                {
-                    var borough = f.Attributes["BOROUGH"].ToString();
-                    model = new ScenicLandmarkShape
-                    {
-                        LPNumber = f.Attributes["lp_number"].ToString(),
-                        AreaName = f.Attributes["scen_lm_na"].ToString(),
-                        BoroName = borough,
-                        BoroCode = (int)Enum.Parse(typeof(Borough), borough),
-                        ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                        ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                    };
-                }
+            var feature = features.FirstOrDefault(f => f.Geometry.Contains(point));
 
-            }
-
-            if (!model.ArePropertiesNotNull())
+            if (feature == null)
             {
                 return null;
             }
 
-            return model;
+            return new ScenicLandmarkShape
+            {
+                LPNumber = feature.Attributes["lp_number"].ToString(),
+                AreaName = feature.Attributes["scen_lm_na"].ToString(),
+                BoroName = feature.Attributes["borough"].ToString(),
+                BoroCode = (int)Enum.Parse(typeof(Borough), feature.Attributes["borough"].ToString()),
+                ShapeArea = double.Parse(feature.Attributes["shape_area"].ToString()),
+                ShapeLength = double.Parse(feature.Attributes["shape_leng"].ToString()),
+            };
         }
 
         public override IEnumerable<ScenicLandmarkShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
@@ -80,7 +74,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<ScenicLandmarkShape> GetFeatureAttributes()
+        public IEnumerable<ScenicLandmarkShape> GetFeatureList()
         {
             var features = GetFeatures();
 

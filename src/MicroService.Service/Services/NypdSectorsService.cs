@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Interfaces;
+﻿using AutoMapper;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -12,8 +13,9 @@ namespace MicroService.Service.Services
     public class NypdSectorsService : AbstractShapeService<NypdSectorShape>, IShapeService<NypdSectorShape>
     {
         public NypdSectorsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
             ILogger<NypdSectorsService> logger)
-            : base(logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NypdSectors));
         }
@@ -40,10 +42,29 @@ namespace MicroService.Service.Services
 
         public override IEnumerable<NypdSectorShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+
+            var results = from f in GetFeatures()
+                          where attributes.All(pair =>
+                          {
+                              var value = f.Attributes[pair.Key];
+                              var expectedValue = pair.Value;
+                              var matchedValue = MatchAttributeValue(value, expectedValue);
+                              return matchedValue != null;
+                          })
+                          select new NypdSectorShape
+                          {
+                              Pct = f.Attributes["pct"].ToString(),
+                              Sector = f.Attributes["sector"].ToString(),
+                              PatrolBoro = f.Attributes["patrol_bor"].ToString(),
+                              Phase = f.Attributes["phase"].ToString(),
+                              Coordinates = new List<Coordinate>(),
+                          };
+
+            return results;
         }
 
-        public IEnumerable<NypdSectorShape> GetFeatureAttributes()
+        public IEnumerable<NypdSectorShape> GetFeatureList()
         {
             var features = GetFeatures();
 

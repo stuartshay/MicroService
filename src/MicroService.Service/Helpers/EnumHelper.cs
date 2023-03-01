@@ -76,5 +76,13 @@ namespace MicroService.Service.Helpers
 
             return enumValList;
         }
+
+        public static bool IsEnumValid<T>(string value) where T : struct, Enum
+        {
+            return Enum.TryParse(value, out T result) && Enum.IsDefined(typeof(T), result);
+        }
+
+
+
     }
 }

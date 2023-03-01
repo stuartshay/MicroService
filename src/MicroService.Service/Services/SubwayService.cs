@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Helpers;
+﻿using AutoMapper;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -12,8 +13,9 @@ namespace MicroService.Service.Services
     public class SubwayService : AbstractShapeService<SubwayShape>, IShapeService<SubwayShape>
     {
         public SubwayService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
             ILogger<SubwayService> logger)
-            : base(logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Subway));
         }
@@ -49,10 +51,30 @@ namespace MicroService.Service.Services
 
         public override IEnumerable<SubwayShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+
+            var results = from f in GetFeatures()
+                          where attributes.All(pair =>
+                          {
+                              var value = f.Attributes[pair.Key];
+                              var expectedValue = pair.Value;
+                              var matchedValue = MatchAttributeValue(value, expectedValue);
+                              return matchedValue != null;
+                          })
+                          select new SubwayShape
+                          {
+                              Line = f.Attributes["line"].ToString(),
+                              Name = f.Attributes["name"].ToString(),
+                              ObjectId = int.Parse(f.Attributes["objectid"].ToString()),
+                              //ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                              //ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+                              //Coordinates = new List<Coordinate>(),
+                          };
+
+            return results;
         }
 
-        public IEnumerable<SubwayShape> GetFeatureAttributes()
+        public IEnumerable<SubwayShape> GetFeatureList()
         {
             var features = GetFeatures();
 

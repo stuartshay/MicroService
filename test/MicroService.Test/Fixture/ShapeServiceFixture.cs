@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
+using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Services;
@@ -77,6 +78,7 @@ namespace MicroService.Test.Fixture
                 .AddOptions()
                 .Configure<ApplicationOptions>(Configuration)
                 .AddSingleton(Configuration)
+                .AddAutoMapper(typeof(ShapeMappings))
                 .BuildServiceProvider();
 
             BoroughBoundariesService = serviceProvider.GetRequiredService<BoroughBoundariesService>();

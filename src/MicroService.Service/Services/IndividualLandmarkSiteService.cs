@@ -1,4 +1,5 @@
-﻿using MicroService.Data.Enum;
+﻿using AutoMapper;
+using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
@@ -15,14 +16,14 @@ namespace MicroService.Service.Services
     public class IndividualLandmarkSiteService : AbstractShapeService<IndividualLandmarkSiteShape>, IShapeService<IndividualLandmarkSiteShape>
     {
         public IndividualLandmarkSiteService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
             ILogger<IndividualLandmarkSiteService> logger)
-            : base(logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkSite));
         }
 
-
-        public IEnumerable<IndividualLandmarkSiteShape> GetFeatureAttributes()
+        public IEnumerable<IndividualLandmarkSiteShape> GetFeatureList()
         {
             var features = GetFeatures();
 
@@ -30,8 +31,14 @@ namespace MicroService.Service.Services
             {
                 LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
                 AreaName = f.Attributes["lpc_name"].ToString(),
-                BoroName = f.Attributes["borough"].ToString(),
-                BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
+
+                BoroCode = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
+                             (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()) : 0,
+
+                BoroName = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
+                           f.Attributes["borough"].ToString() : null,
+
+                BBL = f.Attributes["bbl"] != null ? Double.Parse(f.Attributes["bbl"].ToString()) : 0,
                 ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
                 ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
             });
@@ -43,37 +50,32 @@ namespace MicroService.Service.Services
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
             var wgs84Point = new { X = result.Item1, Y = result.Item2 };
 
-            // Validate Point is in Range
             var point = new Point(wgs84Point.X.Value, wgs84Point.Y.Value);
 
-            var model = new IndividualLandmarkSiteShape();
-
             var features = GetFeatures();
-            foreach (var f in features)
-            {
-                var exists = f.Geometry.Contains(point);
-                if (exists)
-                {
-                    var borough = f.Attributes["borough"].ToString();
-                    model = new IndividualLandmarkSiteShape
-                    {
-                        LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
-                        AreaName = f.Attributes["lpc_name"].ToString(),
-                        BoroName = borough,
-                        BoroCode = (int)Enum.Parse(typeof(Borough), borough),
-                        ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                        ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                        Coordinates = new List<Coordinate>(),
-                    };
-                }
-            }
 
-            if (!model.ArePropertiesNotNull())
+            var feature = features.FirstOrDefault(f => f.Geometry.Contains(point));
+
+            if (feature == null)
             {
                 return null;
             }
 
-            return model;
+            return new IndividualLandmarkSiteShape
+            {
+                LPNumber = feature.Attributes["lpc_lpnumb"].ToString(),
+                AreaName = feature.Attributes["lpc_name"].ToString(),
+                BoroCode = EnumHelper.IsEnumValid<Borough>(feature.Attributes["borough"].ToString()) && feature.Attributes["borough"] != null ?
+                                (int)Enum.Parse(typeof(Borough), feature.Attributes["borough"].ToString()) : 0,
+
+                BoroName = EnumHelper.IsEnumValid<Borough>(feature.Attributes["borough"].ToString()) && feature.Attributes["borough"] != null ?
+                                feature.Attributes["borough"].ToString() : null,
+
+                BBL = feature.Attributes["bbl"] != null ? Double.Parse(feature.Attributes["bbl"].ToString()) : 0,
+                ShapeArea = double.Parse(feature.Attributes["shape_area"].ToString()),
+                ShapeLength = double.Parse(feature.Attributes["shape_leng"].ToString()),
+                Coordinates = new List<Coordinate>(),
+            };
         }
 
         public override IEnumerable<IndividualLandmarkSiteShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
@@ -92,9 +94,11 @@ namespace MicroService.Service.Services
                 {
                     LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
                     AreaName = f.Attributes["lpc_name"].ToString(),
-                    BBL = Double.Parse(f.Attributes["bbl"].ToString()),
-                    BoroName = f.Attributes["borough"].ToString(),
-                    BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
+                    BoroCode = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
+                        (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()) : 0,
+                    BoroName = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
+                        f.Attributes["borough"].ToString() : null,
+                    BBL = f.Attributes["bbl"] != null ? Double.Parse(f.Attributes["bbl"].ToString()) : 0,
                     ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
                     ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
                     Coordinates = new List<Coordinate>(),

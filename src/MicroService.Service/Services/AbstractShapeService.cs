@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Helpers;
+﻿using AutoMapper;
+using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
@@ -10,21 +11,18 @@ namespace MicroService.Service.Services
 {
     public delegate IShapefileDataReaderService ShapefileDataReaderResolver(string key);
 
-
     public abstract class AbstractShapeService<T> where T : class, new()
     {
-        public IShapefileDataReaderService ShapeFileDataReader { get; internal set; }
+        protected IShapefileDataReaderService ShapeFileDataReader { get; set; }
 
-        public readonly ILogger _logger;
+        protected IMapper Mapper { get; }
 
-        public AbstractShapeService()
+        protected readonly ILogger Logger;
+
+        protected AbstractShapeService(ILogger logger, IMapper mapper)
         {
-
-        }
-
-        public AbstractShapeService(ILogger logger)
-        {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public ShapefileHeader GetShapeProperties()
@@ -140,7 +138,8 @@ namespace MicroService.Service.Services
                 {
                     return (int)d == ei ? d : default;
                 }
-                else if (expectedValue is double ed)
+
+                if (expectedValue is double ed)
                 {
                     return d == ed ? d : default;
                 }

@@ -1,4 +1,5 @@
-﻿using MicroService.Data.Enum;
+﻿using AutoMapper;
+using MicroService.Data.Enum;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -14,8 +15,9 @@ namespace MicroService.Service.Services
     public class HistoricDistrictService : AbstractShapeService<HistoricDistrictShape>, IShapeService<HistoricDistrictShape>
     {
         public HistoricDistrictService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IMapper mapper,
             ILogger<HistoricDistrictService> logger)
-            : base(logger)
+            : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.HistoricDistricts));
         }
@@ -70,7 +72,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public IEnumerable<HistoricDistrictShape> GetFeatureAttributes()
+        public IEnumerable<HistoricDistrictShape> GetFeatureList()
         {
             var features = GetFeatures();
 
