@@ -19,7 +19,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NeighborhoodTabulationAreas));
         }
 
-        public override NeighborhoodTabulationAreaShape GetFeatureLookup(double x, double y)
+        public virtual NeighborhoodTabulationAreaShape GetFeatureLookup(double x, double y)
         {
             // Validate Point is in Range
             var point = new Point(x, y);
@@ -80,6 +80,11 @@ namespace MicroService.Service.Services
             return results;
         }
 
+        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureList()
         {
             var features = GetFeatures();
@@ -99,5 +104,6 @@ namespace MicroService.Service.Services
                 ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
             });
         }
+
     }
 }

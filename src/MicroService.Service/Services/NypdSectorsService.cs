@@ -19,7 +19,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NypdSectors));
         }
 
-        public override NypdSectorShape GetFeatureLookup(double x, double y)
+        public virtual NypdSectorShape GetFeatureLookup(double x, double y)
         {
             var point = new Point(x, y);
 
@@ -61,6 +61,11 @@ namespace MicroService.Service.Services
             return results;
         }
 
+        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<NypdSectorShape> GetFeatureList()
         {
             var features = GetFeatures();
@@ -73,5 +78,7 @@ namespace MicroService.Service.Services
                 Phase = f.Attributes["phase"].ToString(),
             });
         }
+
+
     }
 }

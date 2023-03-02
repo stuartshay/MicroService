@@ -19,7 +19,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NypdPolicePrecincts));
         }
 
-        public override NypdPrecinctShape GetFeatureLookup(double x, double y)
+        public virtual NypdPrecinctShape GetFeatureLookup(double x, double y)
         {
             var point = new Point(x, y);
 
@@ -59,6 +59,11 @@ namespace MicroService.Service.Services
             return results;
         }
 
+        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<NypdPrecinctShape> GetFeatureList()
         {
             var features = GetFeatures();
@@ -70,6 +75,7 @@ namespace MicroService.Service.Services
                 ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
             });
         }
+
 
     }
 }

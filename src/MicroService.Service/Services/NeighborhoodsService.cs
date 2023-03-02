@@ -20,7 +20,7 @@ namespace MicroService.Service.Services
         }
 
 
-        public override NeighborhoodShape GetFeatureLookup(double x, double y)
+        public virtual NeighborhoodShape GetFeatureLookup(double x, double y)
         {
             // Validate Point is in Range
             var point = new Point(x, y);
@@ -68,6 +68,11 @@ namespace MicroService.Service.Services
                 });
 
             return results;
+        }
+
+        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEnumerable<NeighborhoodShape> GetFeatureList()

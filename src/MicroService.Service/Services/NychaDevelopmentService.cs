@@ -19,7 +19,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NychaDevelopments));
         }
 
-        public override NychaDevelopmentShape GetFeatureLookup(double x, double y)
+        public virtual NychaDevelopmentShape GetFeatureLookup(double x, double y)
         {
             var point = new Point(x, y);
 
@@ -63,6 +63,11 @@ namespace MicroService.Service.Services
             return results;
         }
 
+        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<NychaDevelopmentShape> GetFeatureList()
         {
             var features = GetFeatures();
@@ -74,5 +79,7 @@ namespace MicroService.Service.Services
                 Borough = f.Attributes["BOROUGH"]?.ToString(),
             });
         }
+
+
     }
 }
