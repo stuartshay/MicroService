@@ -20,7 +20,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Subway));
         }
 
-        public override SubwayShape GetFeatureLookup(double x, double y)
+        public virtual SubwayShape GetFeatureLookup(double x, double y)
         {
             // Validate Point is in Range
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
@@ -84,6 +84,11 @@ namespace MicroService.Service.Services
                 Name = f.Attributes["name"].ToString(),
                 ObjectId = int.Parse(f.Attributes["objectid"].ToString()),
             });
+        }
+
+        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

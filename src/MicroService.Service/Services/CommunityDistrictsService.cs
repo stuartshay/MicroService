@@ -21,7 +21,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.CommunityDistricts));
         }
 
-        public override CommunityDistrictShape GetFeatureLookup(double x, double y)
+        public virtual CommunityDistrictShape GetFeatureLookup(double x, double y)
         {
             var point = new Point(x, y);
 
@@ -68,6 +68,11 @@ namespace MicroService.Service.Services
                           };
 
             return results;
+        }
+
+        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEnumerable<CommunityDistrictShape> GetFeatureList()

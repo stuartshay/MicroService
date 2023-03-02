@@ -21,7 +21,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.HistoricDistricts));
         }
 
-        public override HistoricDistrictShape GetFeatureLookup(double x, double y)
+        public virtual HistoricDistrictShape GetFeatureLookup(double x, double y)
         {
             var point = new Point(x, y);
 
@@ -69,6 +69,11 @@ namespace MicroService.Service.Services
             return results;
         }
 
+        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<HistoricDistrictShape> GetFeatureList()
         {
             var features = GetFeatures();
@@ -83,5 +88,7 @@ namespace MicroService.Service.Services
                 ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
             });
         }
+
+
     }
 }

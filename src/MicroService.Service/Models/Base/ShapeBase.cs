@@ -1,4 +1,7 @@
-﻿namespace MicroService.Service.Models.Base
+﻿using NetTopologySuite.Geometries;
+using System.Text.Json.Serialization;
+
+namespace MicroService.Service.Models.Base
 {
     public class ShapeBase
     {
@@ -7,6 +10,9 @@
         public double ShapeLength { get; set; }
 
         public BoundingBox BoundingBox { get; set; }
+
+        [JsonIgnore]
+        public Geometry Geometry { get; set; }
     }
 
     public class BoundingBox

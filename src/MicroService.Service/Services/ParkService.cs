@@ -19,7 +19,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Parks));
         }
 
-        public override ParkShape GetFeatureLookup(double x, double y)
+        public virtual ParkShape GetFeatureLookup(double x, double y)
         {
             // Validate Point is in Range
             var point = new Point(x, y);
@@ -75,6 +75,11 @@ namespace MicroService.Service.Services
             return results;
         }
 
+        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<ParkShape> GetFeatureList()
         {
             var features = GetFeatures();
@@ -95,5 +100,7 @@ namespace MicroService.Service.Services
                 ShapeLength = double.Parse(f.Attributes["SHAPE_Leng"].ToString()),
             }).Take(20);
         }
+
+
     }
 }

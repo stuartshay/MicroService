@@ -21,7 +21,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.DSNYDistricts));
         }
 
-        public override DsnyDistrictsShape GetFeatureLookup(double x, double y)
+        public virtual DsnyDistrictsShape GetFeatureLookup(double x, double y)
         {
             // Convert Nad83 to Wgs 
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
@@ -74,6 +74,11 @@ namespace MicroService.Service.Services
             return results;
         }
 
+        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<DsnyDistrictsShape> GetFeatureList()
         {
             var features = GetFeatures();
@@ -97,5 +102,7 @@ namespace MicroService.Service.Services
                 ShapeLength = d.ShapeLength
             }).OrderBy(x => x.District).ToList();
         }
+
+
     }
 }

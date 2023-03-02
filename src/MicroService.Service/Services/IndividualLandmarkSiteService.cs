@@ -43,7 +43,7 @@ namespace MicroService.Service.Services
             });
         }
 
-        public override IndividualLandmarkSiteShape GetFeatureLookup(double x, double y)
+        public virtual IndividualLandmarkSiteShape GetFeatureLookup(double x, double y)
         {
             // Convert Nad83 to Wgs 
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
@@ -103,5 +103,15 @@ namespace MicroService.Service.Services
 
             return results;
         }
+
+        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
+
+
+
     }
 }

@@ -23,7 +23,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.ScenicLandmarks));
         }
 
-        public override ScenicLandmarkShape GetFeatureLookup(double x, double y)
+        public virtual ScenicLandmarkShape GetFeatureLookup(double x, double y)
         {
             // Convert Nad83 to Wgs 
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
@@ -86,9 +86,20 @@ namespace MicroService.Service.Services
                             MaxExtent = f.BoundingBox.MaxExtent,
                         }
                         : null,
+                    Geometry = f.Geometry,
                 });
 
             return results;
+        }
+
+
+        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            var shapes = GetFeatureLookup(attributes);
+            foreach (var shape in shapes)
+            {
+                yield return shape.Geometry;
+            }
         }
 
         public IEnumerable<ScenicLandmarkShape> GetFeatureList()
@@ -105,5 +116,7 @@ namespace MicroService.Service.Services
                 ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
             });
         }
+
+
     }
 }
