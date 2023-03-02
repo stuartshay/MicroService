@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
-
-namespace MicroService.Service.Models.Base
+﻿namespace MicroService.Service.Models.Base
 {
     public class ShapeBase
     {
@@ -9,20 +6,39 @@ namespace MicroService.Service.Models.Base
 
         public double ShapeLength { get; set; }
 
-        [JsonIgnore]
-        public List<Coordinate> Coordinates { get; set; }
+        public BoundingBox BoundingBox { get; set; }
     }
 
-    public class Coordinate
+    public class BoundingBox
+    {
+        public double Area { get; set; }
+
+        public CentrePoint Centre { get; set; }
+
+        public double Diameter { get; set; }
+
+        public double MinX { get; set; }
+
+        public double MaxX { get; set; }
+
+        public double MinY { get; set; }
+
+        public double MaxY { get; set; }
+
+        public double Width => MaxX - MinX;
+
+        public double Height => MaxY - MinY;
+
+        public double MinExtent { get; set; }
+
+        public double MaxExtent { get; set; }
+    }
+
+    public class CentrePoint
     {
         public double X { get; set; }
 
         public double Y { get; set; }
 
-        public double Latitude { get; set; }
-
-        public double Longitude { get; set; }
     }
-
-
 }

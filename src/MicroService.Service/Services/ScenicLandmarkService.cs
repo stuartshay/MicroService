@@ -3,6 +3,7 @@ using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
+using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
@@ -53,23 +54,39 @@ namespace MicroService.Service.Services
         {
             attributes = ValidateFeatureKey(attributes);
 
-            var results = from f in GetFeatures()
-                          where attributes.All(pair =>
-                          {
-                              var value = f.Attributes[pair.Key];
-                              var expectedValue = pair.Value;
-                              var matchedValue = MatchAttributeValue(value, expectedValue);
-                              return matchedValue != null;
-                          })
-                          select new ScenicLandmarkShape
-                          {
-                              LPNumber = f.Attributes["lp_number"].ToString(),
-                              AreaName = f.Attributes["scen_lm_na"].ToString(),
-                              BoroName = f.Attributes["borough"].ToString(),
-                              BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
-                              ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                              ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                          };
+            var results = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => new ScenicLandmarkShape
+                {
+                    LPNumber = f.Attributes["lp_number"].ToString(),
+                    AreaName = f.Attributes["scen_lm_na"].ToString(),
+                    BoroName = f.Attributes["borough"].ToString(),
+                    BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
+                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+                    BoundingBox = !f.BoundingBox.IsNull
+                        ? new BoundingBox
+                        {
+                            Area = f.BoundingBox.Area,
+                            Centre = f.BoundingBox.Centre.IsValid
+                                    ? new CentrePoint { X = f.BoundingBox.Centre.X, Y = f.BoundingBox.Centre.Y, }
+                                    : null,
+                            Diameter = f.BoundingBox.Diameter,
+                            MaxX = f.BoundingBox.MaxX,
+                            MaxY = f.BoundingBox.MaxY,
+                            MinX = f.BoundingBox.MinX,
+                            MinY = f.BoundingBox.MinY,
+                            MinExtent = f.BoundingBox.MinExtent,
+                            MaxExtent = f.BoundingBox.MaxExtent,
+                        }
+                        : null,
+                });
 
             return results;
         }

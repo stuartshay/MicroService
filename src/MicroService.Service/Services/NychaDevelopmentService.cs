@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
-using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
@@ -59,7 +58,6 @@ namespace MicroService.Service.Services
                               Borough = f.Attributes["BOROUGH"]?.ToString(),
                               ShapeArea = 0,
                               ShapeLength = 0,
-                              Coordinates = new List<Coordinate>(),
                           };
 
             return results;

@@ -58,7 +58,7 @@ namespace MicroService.Test.Controllers
             Assert.IsType<BadRequestResult>(result.Result);
         }
 
-        private FeatureServiceController GetFeatureServiceController(ShapeServiceResolver? resolver = null,
+        private static FeatureServiceController GetFeatureServiceController(ShapeServiceResolver? resolver = null,
             IShapeService<ShapeBase>? shapeService = null)
         {
 

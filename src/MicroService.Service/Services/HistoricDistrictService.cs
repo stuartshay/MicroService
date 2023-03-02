@@ -8,7 +8,6 @@ using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
@@ -42,7 +41,6 @@ namespace MicroService.Service.Services
                 BoroCode = (int)Enum.Parse(typeof(Borough), feature.Attributes["BOROUGH"].ToString()),
                 ShapeArea = double.Parse(feature.Attributes["Shape_area"].ToString()),
                 ShapeLength = double.Parse(feature.Attributes["Shape_len"].ToString()),
-                Coordinates = new List<Coordinate>(),
             };
         }
 
@@ -66,7 +64,6 @@ namespace MicroService.Service.Services
                               BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["BOROUGH"].ToString()),
                               ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
                               ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
-                              Coordinates = new List<Coordinate>(),
                           };
 
             return results;

@@ -92,7 +92,7 @@ namespace MicroService.Test.Integration
             Assert.Equal(int.Parse(expected), result?.Precinct);
         }
 
-        [InlineData(1006187, 732036l)]
+        [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
