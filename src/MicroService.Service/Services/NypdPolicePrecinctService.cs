@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
-using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
@@ -35,7 +34,6 @@ namespace MicroService.Service.Services
                 Precinct = int.Parse(feature.Attributes["Precinct"].ToString()),
                 ShapeArea = double.Parse(feature.Attributes["Shape_Area"].ToString()),
                 ShapeLength = double.Parse(feature.Attributes["Shape_Leng"].ToString()),
-                Coordinates = new List<Coordinate>(),
             };
         }
 
