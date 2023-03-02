@@ -5,6 +5,8 @@ using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using NetTopologySuite.Geometries;
+using Newtonsoft.Json;
 
 namespace MicroService.WebApi.V1.Controllers
 {
@@ -181,6 +183,49 @@ namespace MicroService.WebApi.V1.Controllers
                 return NotFound();
 
             return await Task.FromResult(Ok(results));
+        }
+
+
+        /// <summary>
+        ///  Get Feature Geometry Lookup
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("geometrylookup", Name = "GetGeometryLookup")]
+        [Produces("application/json")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public async Task<ActionResult<object>> GetGeometryLookup([FromBody] FeatureAttributeLookupRequestModel request)
+        {
+            if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
+                return BadRequest();
+
+            var keys = request.Attributes!.Select(kv => kv.Key).ToList();
+            var service = _shapeServiceResolver!(request?.Key!);
+
+            var shapeType = service.GetType().GetInterface("IShapeService`1")!.GetGenericArguments()[0];
+            var fields = shapeType.GetPropertiesWithCustomAttribute<FeatureNameAttribute>().Select(x => x.Name).ToList();
+
+            var invalidItems = keys.Where(x => !fields.Contains(x)).ToList();
+            if (invalidItems.Any())
+            {
+                var invalidFields = string.Join(", ", invalidItems);
+                return BadRequest($"The following attributes are not valid for the selected shape type: {invalidFields}");
+            }
+
+            IEnumerable<Geometry> geometries = _shapeServiceResolver(request!.Key).GetGeometryLookup(request.Attributes);
+
+            var writer = new NetTopologySuite.IO.GeoJsonWriter();
+            var geoJson = writer.Write(geometries);
+
+            var formattedJson = JsonConvert.SerializeObject(
+                JsonConvert.DeserializeObject(geoJson),
+                Formatting.Indented,
+                new JsonSerializerSettings { StringEscapeHandling = StringEscapeHandling.Default }
+            );
+
+
+            return await Task.FromResult(Ok(formattedJson)); ;
         }
     }
 }
