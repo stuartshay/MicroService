@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
-using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
@@ -36,7 +35,6 @@ namespace MicroService.Service.Services
                 Sector = feature.Attributes["sector"]?.ToString(),
                 PatrolBoro = feature.Attributes["patrol_bor"]?.ToString(),
                 Phase = feature.Attributes["phase"]?.ToString(),
-                Coordinates = new List<Coordinate>(),
             };
         }
 
@@ -58,7 +56,6 @@ namespace MicroService.Service.Services
                               Sector = f.Attributes["sector"].ToString(),
                               PatrolBoro = f.Attributes["patrol_bor"].ToString(),
                               Phase = f.Attributes["phase"].ToString(),
-                              Coordinates = new List<Coordinate>(),
                           };
 
             return results;

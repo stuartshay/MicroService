@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <DotNetCliToolReference Include="MiniCover" Version="3.4.3" />
+    <DotNetCliToolReference Include="MiniCover" Version="3.6.0" />
   </ItemGroup>
 
   <PropertyGroup>
