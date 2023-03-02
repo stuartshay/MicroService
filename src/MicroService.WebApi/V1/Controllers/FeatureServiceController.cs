@@ -49,6 +49,7 @@ namespace MicroService.WebApi.V1.Controllers
                 description = j.GetEnumDescription(),
                 fileName = j.GetAttribute<ShapeAttribute>().FileName,
                 directory = j.GetAttribute<ShapeAttribute>().Directory,
+                datum = j.GetAttribute<ShapeAttribute>().Datum.ToString(),
             });
 
             _logger.LogInformation("{@ShapeProperties}", result);
@@ -179,7 +180,7 @@ namespace MicroService.WebApi.V1.Controllers
             if (!results.Any())
                 return NotFound();
 
-            return Ok(results);
+            return await Task.FromResult(Ok(results));
         }
     }
 }

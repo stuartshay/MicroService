@@ -5,61 +5,61 @@ namespace MicroService.Service.Models.Enum
     public enum ShapeProperties
     {
         [Description("Borough Boundaries")]
-        [Shape("Borough_Boundaries", "nybb")]
+        [Shape("Borough_Boundaries/NAD83", "nybb", Datum.Nad83)]
         BoroughBoundaries,
 
         [Description("Community_Districts")]
-        [Shape("Community_Districts", "nycd")]
+        [Shape("Community_Districts", "nycd", Datum.Nad83)]
         CommunityDistricts,
 
         [Description("DSNY_Districts")]
-        [Shape("DSNY_Districts", "dsny")]
+        [Shape("DSNY_Districts/WGS84", "dsny", Datum.Wgs84)]
         DSNYDistricts,
 
         [Description("Historic Districts")]
-        [Shape("Historic_Districts", "Historic_Districts")]
+        [Shape("Historic_Districts", "Historic_Districts", Datum.Nad83)]
         HistoricDistricts,
 
         [Description("Individual Landmark Sites")]
-        [Shape("Individual_Landmark_Sites", "Individual_Landmark_Sites")]
+        [Shape("Individual_Landmark_Sites", "Individual_Landmark_Sites", Datum.Wgs84)]
         IndividualLandmarkSite,
 
         [Description("Neighborhoods")]
-        [Shape("Neighborhoods", "nynta")]
+        [Shape("Neighborhoods", "nynta", Datum.Nad83)]
         Neighborhoods,
 
         [Description("Neighborhood Tabulation Areas 2020")]
-        [Shape("Neighborhood_Tabulation_Areas", "nynta2020")]
+        [Shape("Neighborhood_Tabulation_Areas", "nynta2020", Datum.Nad83)]
         NeighborhoodTabulationAreas,
 
         [Description("NYPD Police Precincts")]
-        [Shape("NYPD_Police_Precincts", "nypp")]
+        [Shape("NYPD_Police_Precincts", "nypp", Datum.Nad83)]
         NypdPolicePrecincts,
 
         [Description("NYPD Sectors")]
-        [Shape("NYPD_Sectors", "NYPD_Sectors")]
+        [Shape("NYPD_Sectors", "NYPD_Sectors", Datum.Nad83)]
         NypdSectors,
 
         [Description("NYCHA Developments")]
-        [Shape("NYCHA_Developments", "NYCHA_Developments")]
+        [Shape("NYCHA_Developments", "NYCHA_Developments", Datum.Nad83)]
         NychaDevelopments,
 
         [Description("Park")]
-        [Shape("Park", "PARK")]
+        [Shape("Park", "PARK", Datum.Nad83)]
         Parks,
 
         [Description("Scenic Landmarks")]
-        [Shape("Scenic_Landmarks", "Scenic_Landmarks")]
+        [Shape("Scenic_Landmarks/WGS84", "Scenic_Landmarks", Datum.Wgs84)]
         ScenicLandmarks,
 
 
         [Description("Subway")]
-        [Shape("Subway_Entrances", "Subway_Entrances")]
+        [Shape("Subway_Entrances", "Subway_Entrances", Datum.Nad83)]
         Subway,
 
 
         [Description("Zip Codes")]
-        [Shape("Zip_Codes", "ZIP_CODE_040114")]
+        [Shape("Zip_Codes", "ZIP_CODE_040114", Datum.Nad83)]
         ZipCodes,
     }
 }

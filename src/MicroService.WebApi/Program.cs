@@ -25,6 +25,7 @@ using Prometheus;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -77,6 +78,7 @@ void SetupServices()
         configure.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
         configure.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
         configure.JsonSerializerOptions.WriteIndented = true;
+        configure.JsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals;
     });
 
     services.AddEndpointsApiExplorer();

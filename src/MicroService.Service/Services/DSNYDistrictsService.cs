@@ -8,7 +8,6 @@ using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
-using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
@@ -31,37 +30,23 @@ namespace MicroService.Service.Services
             // Validate Point is in Range
             var point = new Point(wgs84Point.X.Value, wgs84Point.Y.Value);
 
-            var model = new DsnyDistrictsShape();
-
             var features = GetFeatures();
-            foreach (var f in features)
-            {
-                var exists = f.Geometry.Contains(point);
-                if (exists)
-                {
-                    var district = f.Attributes["district"].ToString();
-                    var operationZone = district.RemoveIntegers();
-                    var operationZoneName = EnumHelper.ParseEnum<DsnyOperationZone>(operationZone).GetEnumDescription();
+            var feature = features.FirstOrDefault(f => f.Geometry.Contains(point));
 
-                    model = new DsnyDistrictsShape
-                    {
-                        District = district,
-                        DistrictCode = int.Parse(f.Attributes["districtco"].ToString()),
-                        OperationZone = operationZone,
-                        OperationZoneName = operationZoneName,
-                        ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                        ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                        Coordinates = new List<Coordinate>(),
-                    };
-                }
-            }
-
-            if (!model.ArePropertiesNotNull())
+            if (feature == null)
             {
                 return null;
             }
 
-            return model;
+            return new DsnyDistrictsShape
+            {
+                District = feature.Attributes["district"].ToString(),
+                DistrictCode = int.Parse(feature.Attributes["districtco"].ToString()),
+                OperationZone = feature.Attributes["district"].ToString().RemoveIntegers(),
+                OperationZoneName = EnumHelper.ParseEnum<DsnyOperationZone>(feature.Attributes["district"].ToString().RemoveIntegers()).GetEnumDescription(),
+                ShapeArea = double.Parse(feature.Attributes["shape_area"].ToString()),
+                ShapeLength = double.Parse(feature.Attributes["shape_leng"].ToString()),
+            };
         }
 
         public override IEnumerable<DsnyDistrictsShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
@@ -84,7 +69,6 @@ namespace MicroService.Service.Services
                     OperationZoneName = f.Attributes["district"].ToString().RemoveIntegers().ParseEnum<DsnyOperationZone>().GetEnumDescription(),
                     ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
                     ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                    Coordinates = new List<Coordinate>(),
                 });
 
             return results;

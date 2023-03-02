@@ -156,7 +156,6 @@ namespace MicroService.Service.Services
             return featureName?.AttributeName;
         }
 
-
         public IReadOnlyCollection<Feature> GetFeatures() =>
                 ShapeFileDataReader.GetFeatures();
     }

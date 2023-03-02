@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
-using Coordinate = MicroService.Service.Models.Base.Coordinate;
 
 namespace MicroService.Service.Services
 {
@@ -44,7 +43,6 @@ namespace MicroService.Service.Services
                 Status = feature.Attributes["STATUS"]?.ToString(),
                 ShapeArea = double.Parse(feature.Attributes["SHAPE_Area"].ToString()),
                 ShapeLength = double.Parse(feature.Attributes["SHAPE_Leng"].ToString()),
-                Coordinates = new List<Coordinate>(),
             };
         }
 
@@ -72,7 +70,6 @@ namespace MicroService.Service.Services
                               Status = f.Attributes["STATUS"]?.ToString(),
                               ShapeArea = double.Parse(f.Attributes["SHAPE_Area"].ToString()),
                               ShapeLength = double.Parse(f.Attributes["SHAPE_Leng"].ToString()),
-                              Coordinates = new List<Coordinate>(),
                           };
 
             return results;
