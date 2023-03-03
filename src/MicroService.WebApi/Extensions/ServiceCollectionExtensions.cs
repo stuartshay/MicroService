@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Swashbuckle.AspNetCore.Filters;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace MicroService.WebApi.Extensions
@@ -14,6 +15,7 @@ namespace MicroService.WebApi.Extensions
     /// <summary>
     ///     Service Collection Extensions
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class ServiceCollectionExtensions
     {
         /// <summary>

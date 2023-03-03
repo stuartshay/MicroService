@@ -1,6 +1,5 @@
 ﻿using MicroService.Service.Models.Base;
 using NetTopologySuite.Features;
-using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 using System.Collections.Generic;
 
@@ -14,13 +13,12 @@ namespace MicroService.Service.Interfaces
 
         IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, object>> attributes);
 
+        FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes);
+
         IEnumerable<T> GetFeatureList();
 
         ShapefileHeader GetShapeProperties();
 
         DbaseFileHeader GetShapeDatabaseProperties();
-
-        IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes);
-
     }
 }

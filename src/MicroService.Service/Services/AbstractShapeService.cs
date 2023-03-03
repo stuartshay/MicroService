@@ -3,7 +3,6 @@ using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
-using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 using System;
 using System.Collections.Generic;
@@ -111,8 +110,6 @@ namespace MicroService.Service.Services
         }
 
         public abstract IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, object>> attributes);
-
-        public abstract IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes);
 
         protected object MatchAttributeValue(object value, object expectedValue)
         {

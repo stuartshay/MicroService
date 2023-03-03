@@ -5,8 +5,7 @@ using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using NetTopologySuite.Geometries;
-using Newtonsoft.Json;
+using NetTopologySuite.IO;
 
 namespace MicroService.WebApi.V1.Controllers
 {
@@ -190,12 +189,12 @@ namespace MicroService.WebApi.V1.Controllers
         ///  Get Feature Geometry Lookup
         /// </summary>
         /// <returns></returns>
-        [HttpPost("geometrylookup", Name = "GetGeometryLookup")]
-        [Produces("application/json")]
+        [HttpPost("attributelookupgeojson", Name = "GetLookupFeatureGeoJson")]
+        [Produces("application/geo+json")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<object>> GetGeometryLookup([FromBody] FeatureAttributeLookupRequestModel request)
+        public async Task<ActionResult<object>> GetLookupFeatureGeoJson([FromBody] FeatureAttributeLookupRequestModel request)
         {
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();
@@ -213,19 +212,12 @@ namespace MicroService.WebApi.V1.Controllers
                 return BadRequest($"The following attributes are not valid for the selected shape type: {invalidFields}");
             }
 
-            IEnumerable<Geometry> geometries = _shapeServiceResolver(request!.Key).GetGeometryLookup(request.Attributes);
+            var featureCollection = _shapeServiceResolver(request!.Key).GetFeatureCollection(request.Attributes);
 
-            var writer = new NetTopologySuite.IO.GeoJsonWriter();
-            var geoJson = writer.Write(geometries);
+            var writer = new GeoJsonWriter();
+            var geoJsonString = writer.Write(featureCollection);
 
-            var formattedJson = JsonConvert.SerializeObject(
-                JsonConvert.DeserializeObject(geoJson),
-                Formatting.Indented,
-                new JsonSerializerSettings { StringEscapeHandling = StringEscapeHandling.Default }
-            );
-
-
-            return await Task.FromResult(Ok(formattedJson)); ;
+            return await Task.FromResult(Ok(geoJsonString));
         }
     }
 }

@@ -6,6 +6,7 @@ using MicroService.Service.Models;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
@@ -92,15 +93,42 @@ namespace MicroService.Service.Services
             return results;
         }
 
-
-        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
-            var shapes = GetFeatureLookup(attributes);
-            foreach (var shape in shapes)
+            attributes = ValidateFeatureKey(attributes);
+            var featureCollection = new FeatureCollection();
+
+            var features = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => new ScenicLandmarkShape
+                {
+                    LPNumber = f.Attributes["lp_number"].ToString(),
+                    AreaName = f.Attributes["scen_lm_na"].ToString(),
+                    BoroName = f.Attributes["borough"].ToString(),
+                    BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
+                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+                    Geometry = f.Geometry,
+                });
+
+            foreach (var feature in features)
             {
-                yield return shape.Geometry;
+                var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<ScenicLandmarkShape, FeatureCollectionExcludeAttribute>();
+                var featureAttributes = featureProperties
+                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
+
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
+
+            return featureCollection;
         }
+
 
         public IEnumerable<ScenicLandmarkShape> GetFeatureList()
         {
