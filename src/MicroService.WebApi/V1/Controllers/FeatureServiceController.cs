@@ -5,7 +5,10 @@ using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using NetTopologySuite.Features;
 using NetTopologySuite.IO;
+using Newtonsoft.Json.Linq;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MicroService.WebApi.V1.Controllers
 {
@@ -186,15 +189,16 @@ namespace MicroService.WebApi.V1.Controllers
 
 
         /// <summary>
-        ///  Get Feature Geometry Lookup
+        ///  Get Feature Attribute Lookup GeoJson
         /// </summary>
         /// <returns></returns>
         [HttpPost("attributelookupgeojson", Name = "GetLookupFeatureGeoJson")]
         [Produces("application/geo+json")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Returns a list of features", typeof(FeatureCollection))]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<object>> GetLookupFeatureGeoJson([FromBody] FeatureAttributeLookupRequestModel request)
+        public async Task<ActionResult<FeatureCollection>> GetLookupFeatureGeoJson([FromBody] FeatureAttributeLookupRequestModel request)
         {
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();
@@ -216,6 +220,7 @@ namespace MicroService.WebApi.V1.Controllers
 
             var writer = new GeoJsonWriter();
             var geoJsonString = writer.Write(featureCollection);
+            JObject json = JObject.Parse(geoJsonString);
 
             return await Task.FromResult(Ok(geoJsonString));
         }
