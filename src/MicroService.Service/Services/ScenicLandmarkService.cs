@@ -129,7 +129,6 @@ namespace MicroService.Service.Services
             return featureCollection;
         }
 
-
         public IEnumerable<ScenicLandmarkShape> GetFeatureList()
         {
             var features = GetFeatures();
@@ -144,7 +143,6 @@ namespace MicroService.Service.Services
                 ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
             });
         }
-
 
     }
 }

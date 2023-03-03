@@ -74,6 +74,7 @@ void SetupServices()
 
     services.AddControllers().AddJsonOptions(configure =>
     {
+        configure.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
         configure.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
         configure.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
         configure.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
