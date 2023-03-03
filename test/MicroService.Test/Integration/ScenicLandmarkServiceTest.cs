@@ -112,11 +112,9 @@ namespace MicroService.Test.Integration
             Assert.Null(sut);
         }
 
-        //Get Geometry  Lookup
-
         [InlineData("LP-00879", "MN", "Bryant Park")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
-        public void Get_Geometry_Attribute_Lookup(object value1, object value2, string expected)
+        public void Get_FeatureCollection_Attribute_Lookup(object value1, object value2, string expected)
         {
             var attributes = new List<KeyValuePair<string, object>>
             {
@@ -124,11 +122,11 @@ namespace MicroService.Test.Integration
                 new("BoroName", value2),
             };
 
-            var sut = _service.GetGeometryLookup(attributes);
+            var sut = _service.GetFeatureCollection(attributes);
             var result = sut.FirstOrDefault();
 
             Assert.NotNull(sut);
-            //Assert.Equal(expected, result?.AreaName);
+            Assert.Equal(expected, result?.Attributes["AreaName"]);
         }
 
 

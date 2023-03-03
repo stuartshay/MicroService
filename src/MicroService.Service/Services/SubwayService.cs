@@ -4,6 +4,7 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,6 +75,11 @@ namespace MicroService.Service.Services
             return results;
         }
 
+        public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<SubwayShape> GetFeatureList()
         {
             var features = GetFeatures();
@@ -86,9 +92,5 @@ namespace MicroService.Service.Services
             });
         }
 
-        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

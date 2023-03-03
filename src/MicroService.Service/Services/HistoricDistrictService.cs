@@ -4,6 +4,7 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
@@ -69,7 +70,7 @@ namespace MicroService.Service.Services
             return results;
         }
 
-        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
+        public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
             throw new NotImplementedException();
         }

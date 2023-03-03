@@ -82,6 +82,21 @@ namespace MicroService.Service.Helpers
             return Enum.TryParse(value, out T result) && Enum.IsDefined(typeof(T), result);
         }
 
+        public static List<PropertyInfo> GetPropertiesWithAttribute<TAttr>(Type type) where TAttr : Attribute
+        {
+            return type.GetProperties()
+                .Where(p => p.GetCustomAttributes(typeof(TAttr), true).Length > 0)
+                .ToList();
+        }
+
+        public static List<PropertyInfo> GetPropertiesWithoutExcludedAttribute<T, TAttr>()
+            where TAttr : Attribute
+        {
+            return typeof(T).GetProperties()
+                .Where(p => p.GetCustomAttributes(typeof(TAttr), true).Length == 0)
+                .ToList();
+        }
+
 
 
     }

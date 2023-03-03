@@ -5,6 +5,7 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,11 @@ namespace MicroService.Service.Services
             : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkSite));
+        }
+
+        public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<IndividualLandmarkSiteShape> GetFeatureList()
@@ -103,15 +109,6 @@ namespace MicroService.Service.Services
 
             return results;
         }
-
-        public override IEnumerable<Geometry> GetGeometryLookup(List<KeyValuePair<string, object>> attributes)
-        {
-            throw new System.NotImplementedException();
-        }
-
-
-
-
 
     }
 }
