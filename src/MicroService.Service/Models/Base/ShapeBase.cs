@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Models.Enum;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
+using System.Text.Json.Serialization;
 
 namespace MicroService.Service.Models.Base
 {
@@ -14,9 +15,11 @@ namespace MicroService.Service.Models.Base
         public BoundingBox BoundingBox { get; set; }
 
         [FeatureCollectionExclude]
+        [JsonIgnore]
         public Geometry Geometry { get; set; }
 
         [FeatureCollectionExclude]
+        [JsonIgnore]
         public FeatureCollection Feature { get; set; }
 
     }
