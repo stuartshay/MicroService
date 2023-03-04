@@ -77,7 +77,6 @@ namespace MicroService.Test.Integration
         }
 
 
-
         [InlineData("B222", "Pierrepont Playground", "Pierrepont Playground")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
@@ -97,16 +96,37 @@ namespace MicroService.Test.Integration
         }
 
 
-
-
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
-
             Assert.Null(sut);
+        }
+
+
+        [InlineData("B222", "Pierrepont Playground", "Neighborhood Park")]
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("ParkNumber", value1),
+                new("ParkName", value2),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+            Assert.IsType<Feature>(result);
+            Assert.Equal(expected, result.Attributes["LandUse"]);
         }
 
         [Fact]
