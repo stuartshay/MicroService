@@ -91,8 +91,6 @@ namespace MicroService.Service.Services
                                 throw new FormatException($"Failed to convert value of type {value.GetType()} to {typeOfMyProperty}.");
                             }
 
-                            Type type = convertedValue.GetType();
-
                             propertyInfo.SetValue(shapeClass, convertedValue);
                             attributes[i] = new KeyValuePair<string, object>(featureName, convertedValue);
                         }

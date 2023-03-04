@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -66,7 +67,37 @@ namespace MicroService.Service.Services
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+            var featureCollection = new FeatureCollection();
+
+            var features = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => new NychaDevelopmentShape
+                {
+                    Development = f.Attributes["DEVELOPMEN"].ToString(),
+                    TdsNumber = f.Attributes["TDS_NUM"]?.ToString(),
+                    Borough = f.Attributes["BOROUGH"]?.ToString(),
+                    ShapeArea = 0,
+                    ShapeLength = 0,
+                    Geometry = f.Geometry,
+                });
+
+            foreach (var feature in features)
+            {
+                var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<NychaDevelopmentShape, FeatureCollectionExcludeAttribute>();
+                var featureAttributes = featureProperties
+                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
+
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
+            }
+
+            return featureCollection;
         }
 
         public IEnumerable<NychaDevelopmentShape> GetFeatureList()
