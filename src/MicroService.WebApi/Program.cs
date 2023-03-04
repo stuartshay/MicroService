@@ -26,6 +26,8 @@ using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using NetTopologySuite.IO.Converters;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -72,14 +74,15 @@ void SetupServices()
     // Cors Configuration
     services.AddCorsConfiguration();
 
-    services.AddControllers().AddJsonOptions(configure =>
+    services.AddControllers().AddJsonOptions(options =>
     {
-        configure.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-        configure.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-        configure.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
-        configure.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-        configure.JsonSerializerOptions.WriteIndented = true;
-        configure.JsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals;
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+        options.JsonSerializerOptions.WriteIndented = true;
+        options.JsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals;
+        options.JsonSerializerOptions.Converters.Add(new GeoJsonConverterFactory());
     });
 
     services.AddEndpointsApiExplorer();
