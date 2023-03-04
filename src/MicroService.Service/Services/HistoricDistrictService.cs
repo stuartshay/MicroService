@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MicroService.Data.Enum;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -45,7 +46,7 @@ namespace MicroService.Service.Services
             };
         }
 
-        public override IEnumerable<HistoricDistrictShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public IEnumerable<HistoricDistrictShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 
@@ -72,7 +73,38 @@ namespace MicroService.Service.Services
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
-            throw new NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+            var featureCollection = new FeatureCollection();
+
+            var features = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => new HistoricDistrictShape
+                {
+                    LPNumber = f.Attributes["LP_NUMBER"].ToString(),
+                    AreaName = f.Attributes["AREA_NAME"].ToString(),
+                    BoroName = f.Attributes["BOROUGH"].ToString(),
+                    BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["BOROUGH"].ToString()),
+                    ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
+                    Geometry = f.Geometry,
+                });
+
+            foreach (var feature in features)
+            {
+                var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<HistoricDistrictShape, FeatureCollectionExcludeAttribute>();
+                var featureAttributes = featureProperties
+                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
+
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
+            }
+
+            return featureCollection;
         }
 
         public IEnumerable<HistoricDistrictShape> GetFeatureList()

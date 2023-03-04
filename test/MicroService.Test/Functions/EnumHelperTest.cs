@@ -71,5 +71,25 @@ namespace MicroService.Test.Functions
                 Assert.Contains(actualProperties, p => p.Name == expectedProperty.Name);
             }
         }
+
+        [Fact]
+        public void EnumToList_Returns_Expected_Values()
+        {
+            // Arrange
+            var expectedValues = new List<Borough>
+            {
+                Borough.MN,
+                Borough.BX,
+                Borough.BK,
+                Borough.QN,
+                Borough.SI
+            };
+
+            // Act
+            var actualValues = EnumHelper.EnumToList<Borough>();
+
+            // Assert
+            Assert.Equal(expectedValues, actualValues);
+        }
     }
 }

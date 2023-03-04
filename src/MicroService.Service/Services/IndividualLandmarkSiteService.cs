@@ -25,7 +25,43 @@ namespace MicroService.Service.Services
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
-            throw new NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+            var featureCollection = new FeatureCollection();
+
+            var features = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => new IndividualLandmarkSiteShape
+                {
+                    LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
+                    AreaName = f.Attributes["lpc_name"].ToString(),
+                    BoroCode = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
+                        (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()) : 0,
+
+                    BoroName = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
+                        f.Attributes["borough"].ToString() : null,
+
+                    BBL = f.Attributes["bbl"] != null ? Double.Parse(f.Attributes["bbl"].ToString()) : 0,
+                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+                    Geometry = f.Geometry,
+                });
+
+            foreach (var feature in features)
+            {
+                var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<IndividualLandmarkSiteShape, FeatureCollectionExcludeAttribute>();
+                var featureAttributes = featureProperties
+                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
+
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
+            }
+
+            return featureCollection;
         }
 
         public IEnumerable<IndividualLandmarkSiteShape> GetFeatureList()
@@ -82,7 +118,7 @@ namespace MicroService.Service.Services
             };
         }
 
-        public override IEnumerable<IndividualLandmarkSiteShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public IEnumerable<IndividualLandmarkSiteShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 

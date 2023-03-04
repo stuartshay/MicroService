@@ -22,7 +22,6 @@ namespace MicroService.Service.Services
 
         public virtual NeighborhoodTabulationAreaShape GetFeatureLookup(double x, double y)
         {
-            // Validate Point is in Range
             var point = new Point(x, y);
 
             var features = GetFeatures();
@@ -50,7 +49,7 @@ namespace MicroService.Service.Services
 
         }
 
-        public override IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureLookup(
+        public IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureLookup(
             List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);

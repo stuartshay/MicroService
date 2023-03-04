@@ -40,7 +40,7 @@ namespace MicroService.Service.Services
             };
         }
 
-        public override IEnumerable<NychaDevelopmentShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public IEnumerable<NychaDevelopmentShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 

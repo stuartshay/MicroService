@@ -47,7 +47,7 @@ namespace MicroService.Service.Services
             };
         }
 
-        public override IEnumerable<ParkShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public IEnumerable<ParkShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 

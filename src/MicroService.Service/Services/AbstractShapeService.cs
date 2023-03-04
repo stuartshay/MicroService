@@ -91,6 +91,8 @@ namespace MicroService.Service.Services
                                 throw new FormatException($"Failed to convert value of type {value.GetType()} to {typeOfMyProperty}.");
                             }
 
+                            Type type = convertedValue.GetType();
+
                             propertyInfo.SetValue(shapeClass, convertedValue);
                             attributes[i] = new KeyValuePair<string, object>(featureName, convertedValue);
                         }
@@ -108,8 +110,6 @@ namespace MicroService.Service.Services
 
             return attributes;
         }
-
-        public abstract IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, object>> attributes);
 
         protected object MatchAttributeValue(object value, object expectedValue)
         {
