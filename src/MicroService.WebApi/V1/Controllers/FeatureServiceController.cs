@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace MicroService.WebApi.V1.Controllers
@@ -217,15 +217,20 @@ namespace MicroService.WebApi.V1.Controllers
             }
 
             var featureCollection = _shapeServiceResolver(request!.Key).GetFeatureCollection(request.Attributes);
-
             var writer = new GeoJsonWriter();
             var geoJsonString = writer.Write(featureCollection);
 
-            JObject json = JObject.Parse(geoJsonString);
 
+            FeatureCollection geometry = null;
+            var serializer = GeoJsonSerializer.Create();
+            using (var stringReader = new StringReader(geoJsonString))
+            using (var jsonReader = new JsonTextReader(stringReader))
+            {
+                geometry = serializer.Deserialize<FeatureCollection>(jsonReader);
+            }
 
+            return await Task.FromResult(Ok(geometry));
 
-            return await Task.FromResult(Ok(geoJsonString));
         }
     }
 }
