@@ -22,7 +22,6 @@ namespace MicroService.Test.Integration
         }
 
         [Fact(DisplayName = "Get Shape File Properties")]
-        [Trait("Category", "Integration")]
         public void Get_Shape_Properties()
         {
             var sut = _service.GetShapeProperties();
@@ -36,9 +35,7 @@ namespace MicroService.Test.Integration
             _testOutputHelper.WriteLine($"Max bounds: ({bounds.MaxX},{bounds.MaxY})");
         }
 
-
         [Fact(DisplayName = "Get Shape File Database Properties")]
-        [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
         {
             var sut = _service.GetShapeDatabaseProperties();
@@ -55,7 +52,6 @@ namespace MicroService.Test.Integration
             }
         }
 
-
         [Fact(DisplayName = "Get Feature Collection")]
         public void Get_Feature_Collection()
         {
@@ -65,7 +61,6 @@ namespace MicroService.Test.Integration
         }
 
         [Fact(DisplayName = "Get Feature Collection")]
-        [Trait("Category", "Integration")]
         public void Get_Borough_Boundaries_Feature_Collection()
         {
             var sut = _service.GetFeatures();
@@ -73,12 +68,10 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-
         [InlineData(1006187, 232036, "Bronx", "10454")]
         [InlineData(1000443, 0239270, "New York", "10039")]
         [InlineData(1021192.9426658918, 212550.01741990919, "Queens", "11368")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
@@ -105,7 +98,6 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, result?.PostOfficeName);
         }
 
-
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
@@ -114,6 +106,30 @@ namespace MicroService.Test.Integration
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.Null(sut);
+        }
+
+        [InlineData("11436", "Queens", "Jamaica")]
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("ZipCode", value1),
+                new("County", value2),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+            Assert.IsType<Feature>(result);
+            Assert.Equal(value2, result.Attributes["County"]);
+            Assert.Equal(expected, result.Attributes["PostOfficeName"]);
         }
 
         [Fact]

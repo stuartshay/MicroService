@@ -220,7 +220,10 @@ namespace MicroService.WebApi.V1.Controllers
 
             var writer = new GeoJsonWriter();
             var geoJsonString = writer.Write(featureCollection);
+
             JObject json = JObject.Parse(geoJsonString);
+
+
 
             return await Task.FromResult(Ok(geoJsonString));
         }

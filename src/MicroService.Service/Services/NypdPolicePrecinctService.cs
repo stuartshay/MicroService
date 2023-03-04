@@ -38,7 +38,7 @@ namespace MicroService.Service.Services
             };
         }
 
-        public override IEnumerable<NypdPrecinctShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public IEnumerable<NypdPrecinctShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 

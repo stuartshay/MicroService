@@ -96,8 +96,5 @@ namespace MicroService.Service.Helpers
                 .Where(p => p.GetCustomAttributes(typeof(TAttr), true).Length == 0)
                 .ToList();
         }
-
-
-
     }
 }

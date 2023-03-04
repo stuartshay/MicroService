@@ -114,6 +114,29 @@ namespace MicroService.Test.Integration
         }
 
 
+        [InlineData("102", "102C", "PBQS")]
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("Pct", value1),
+                new("Sector", value2),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+            Assert.IsType<Feature>(result);
+            Assert.Equal(expected, result.Attributes["PatrolBoro"]);
+        }
+
         [Fact]
         public void Get_Feature_List()
         {

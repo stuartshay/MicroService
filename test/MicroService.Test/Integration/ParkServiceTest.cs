@@ -64,15 +64,16 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [InlineData(1015142.9358798683, 266180.4226125971, "Van Cortlandt Golf Course", 0)]
+        [InlineData(1015142.9358798683, 266180.4226125971, "Van Cortlandt Golf Course", "X092")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.ParkName);
+            Assert.Equal(expected2, sut.ParkNumber);
         }
 
 

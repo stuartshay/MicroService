@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -22,7 +23,6 @@ namespace MicroService.Service.Services
 
         public virtual ZipCodeShape GetFeatureLookup(double x, double y)
         {
-            // Validate Point is in Range
             var point = new Point(x, y);
 
             var features = GetFeatures();
@@ -50,7 +50,7 @@ namespace MicroService.Service.Services
             };
         }
 
-        public override IEnumerable<ZipCodeShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public IEnumerable<ZipCodeShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 
@@ -83,7 +83,44 @@ namespace MicroService.Service.Services
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+            var featureCollection = new FeatureCollection();
+
+            var features = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => new ZipCodeShape
+                {
+                    ZipCode = f.Attributes["ZIPCODE"].ToString(),
+                    BldgZip = f.Attributes["BLDGZIP"].ToString(),
+                    PostOfficeName = f.Attributes["PO_NAME"].ToString(),
+                    Population = int.Parse(f.Attributes["POPULATION"].ToString()),
+                    Area = double.Parse(f.Attributes["AREA"].ToString()),
+                    State = f.Attributes["STATE"].ToString(),
+                    County = f.Attributes["COUNTY"].ToString(),
+                    StateFibs = f.Attributes["ST_FIPS"].ToString(),
+                    CityFibs = f.Attributes["CTY_FIPS"].ToString(),
+                    Url = f.Attributes["URL"].ToString(),
+                    ShapeArea = double.Parse(f.Attributes["SHAPE_AREA"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["SHAPE_LEN"].ToString()),
+                    Geometry = f.Geometry,
+                });
+
+            foreach (var feature in features)
+            {
+                var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<ZipCodeShape, FeatureCollectionExcludeAttribute>();
+                var featureAttributes = featureProperties
+                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
+
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
+            }
+
+            return featureCollection;
         }
 
         public IEnumerable<ZipCodeShape> GetFeatureList()

@@ -50,7 +50,7 @@ namespace MicroService.Service.Services
             return nearest;
         }
 
-        public override IEnumerable<SubwayShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public IEnumerable<SubwayShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 
