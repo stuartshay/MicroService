@@ -220,17 +220,13 @@ namespace MicroService.WebApi.V1.Controllers
             var writer = new GeoJsonWriter();
             var geoJsonString = writer.Write(featureCollection);
 
-
-            FeatureCollection geometry = null;
             var serializer = GeoJsonSerializer.Create();
-            using (var stringReader = new StringReader(geoJsonString))
-            using (var jsonReader = new JsonTextReader(stringReader))
-            {
-                geometry = serializer.Deserialize<FeatureCollection>(jsonReader);
-            }
+            using var stringReader = new StringReader(geoJsonString);
+            using var jsonReader = new JsonTextReader(stringReader);
+
+            var geometry = serializer.Deserialize<FeatureCollection>(jsonReader);
 
             return await Task.FromResult(Ok(geometry));
-
         }
     }
 }
