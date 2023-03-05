@@ -1,11 +1,15 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Base;
+using MicroService.Service.Models.Enum;
 using MicroService.WebApi.Models;
 using MicroService.WebApi.V1.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
+using NetTopologySuite.Geometries;
+using NetTopologySuite.IO;
+using System.Text;
 using Xunit;
 
 namespace MicroService.Test.Controllers
@@ -57,6 +61,100 @@ namespace MicroService.Test.Controllers
             // Assert
             Assert.IsType<BadRequestResult>(result.Result);
         }
+
+        [Fact]
+        public void Get_ReturnsAvailableShapes()
+        {
+            // Arrange
+            var controller = GetFeatureServiceController();
+
+            // Act
+            var sut = controller.Get();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(sut.Result);
+            var shapesResult = Assert.IsAssignableFrom<IEnumerable<object>>(okResult.Value);
+
+            Assert.All(shapesResult, Assert.NotNull);
+        }
+
+        [Fact]
+        public void GetShapeProperties_ReturnsOkResult()
+        {
+            // Arrange
+            var id = "BoroughBoundaries";
+            var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
+            shapeServiceMock.Setup(s => s.GetShapeDatabaseProperties()).Returns(new DbaseFileHeader
+            {
+                NumFields = 4,
+                NumRecords = 5,
+                Encoding = Encoding.UTF32,
+                LastUpdateDate = new DateTime(2022, 01, 01),
+            });
+
+            shapeServiceMock.Setup(x => x.GetShapeProperties()).Returns(new ShapefileHeader
+            {
+                Bounds = new Envelope(1, 2, 3, 4),
+                ShapeType = ShapeGeometryType.Polygon,
+            });
+
+            var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
+            shapeServiceResolver.Setup(r => r!(id)).Returns(shapeServiceMock.Object);
+
+            var controller = GetFeatureServiceController(shapeServiceResolver.Object, shapeServiceMock.Object);
+
+            // Act
+            var sut = controller.GetShapeProperties(id);
+
+            // Assert
+            Assert.IsType<OkObjectResult>(sut.Result);
+        }
+
+
+        [InlineData("InvalidKey")]
+        [Theory]
+        public async Task GetShapeProperties_ReturnsBadRequestResult(string key)
+        {
+            //Arrange
+            var controller = GetFeatureServiceController(null, null);
+
+            // Act
+            var sut = controller.GetShapeProperties(key);
+
+            // Assert
+            Assert.IsType<BadRequestResult>(sut.Result);
+        }
+
+        [Fact]
+        public async Task GetFeatureLookup_ReturnsOkResult_WhenRequestIsValid()
+        {
+            // Arrange
+            var id = "BoroughBoundaries";
+            var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
+            shapeServiceMock.Setup(s => s.GetFeatureLookup(1, 1)).Returns(new BoroughBoundaryShape { BoroCode = 1 });
+
+            var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
+            shapeServiceResolver.Setup(r => r!(id)).Returns(shapeServiceMock.Object);
+
+            var controller = GetFeatureServiceController(shapeServiceResolver.Object, shapeServiceMock.Object);
+            var request = new FeatureRequestModel
+            {
+                Key = ShapeProperties.BoroughBoundaries.ToString(),
+                X = -74.0064,
+                Y = 40.7142
+            };
+
+            // Act
+            var result = await controller.GetFeatureLookup(request);
+
+            // Assert
+            //var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            //var shapeResult = Assert.IsType<ShapeBase>(okResult.Value);
+            //Assert.NotNull(shapeResult);
+        }
+
+
+
 
         private static FeatureServiceController GetFeatureServiceController(ShapeServiceResolver? resolver = null,
             IShapeService<ShapeBase>? shapeService = null)

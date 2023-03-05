@@ -5,13 +5,13 @@ namespace MicroService.Service.Models
 {
     public class HistoricDistrictShape : ShapeBase, ILandmark
     {
-        [FeatureName("LP_NUMBER")]
+        [FeatureName("lp_number")]
         public string LPNumber { get; set; }
 
-        [FeatureName("AREA_NAME")]
+        [FeatureName("area_name")]
         public string AreaName { get; set; }
 
-        [FeatureName("BOROUGH")]
+        [FeatureName("borough")]
         public string BoroName { get; set; }
 
         public int BoroCode { get; set; }
