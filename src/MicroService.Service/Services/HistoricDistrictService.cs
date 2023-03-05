@@ -37,7 +37,7 @@ namespace MicroService.Service.Services
 
             return new HistoricDistrictShape
             {
-                LPNumber = feature.Attributes["LP_NUMBER"].ToString(),
+
                 AreaName = feature.Attributes["AREA_NAME"].ToString(),
                 BoroName = feature.Attributes["BOROUGH"].ToString(),
                 BoroCode = (int)Enum.Parse(typeof(Borough), feature.Attributes["BOROUGH"].ToString()),
@@ -60,12 +60,12 @@ namespace MicroService.Service.Services
                           })
                           select new HistoricDistrictShape
                           {
-                              LPNumber = f.Attributes["LP_NUMBER"].ToString(),
-                              AreaName = f.Attributes["AREA_NAME"].ToString(),
-                              BoroName = f.Attributes["BOROUGH"].ToString(),
-                              BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["BOROUGH"].ToString()),
-                              ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
-                              ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
+                              LPNumber = f.Attributes["lp_number"].ToString(),
+                              AreaName = f.Attributes["area_name"].ToString(),
+                              BoroName = f.Attributes["borough"].ToString(),
+                              BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
+                              ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                              ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
                           };
 
             return results;
