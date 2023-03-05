@@ -27,8 +27,6 @@ namespace MicroService.Service.Services
             // Convert Nad83 to Wgs 
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
             var wgs84Point = new { X = result.Item1, Y = result.Item2 };
-
-            // Validate Point is in Range
             var point = new Point(wgs84Point.X.Value, wgs84Point.Y.Value);
 
             var features = GetFeatures();

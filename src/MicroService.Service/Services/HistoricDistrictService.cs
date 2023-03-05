@@ -25,7 +25,9 @@ namespace MicroService.Service.Services
 
         public virtual HistoricDistrictShape GetFeatureLookup(double x, double y)
         {
-            var point = new Point(x, y);
+            var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
+            var wgs84Point = new { X = result.Item1, Y = result.Item2 };
+            var point = new Point(wgs84Point.X.Value, wgs84Point.Y.Value);
 
             var features = GetFeatures();
             var feature = features.FirstOrDefault(f => f.Geometry.Contains(point));
@@ -37,12 +39,12 @@ namespace MicroService.Service.Services
 
             return new HistoricDistrictShape
             {
-
-                AreaName = feature.Attributes["AREA_NAME"].ToString(),
-                BoroName = feature.Attributes["BOROUGH"].ToString(),
-                BoroCode = (int)Enum.Parse(typeof(Borough), feature.Attributes["BOROUGH"].ToString()),
-                ShapeArea = double.Parse(feature.Attributes["Shape_area"].ToString()),
-                ShapeLength = double.Parse(feature.Attributes["Shape_len"].ToString()),
+                LPNumber = feature.Attributes["lp_number"].ToString(),
+                AreaName = feature.Attributes["area_name"].ToString(),
+                BoroName = feature.Attributes["borough"].ToString(),
+                BoroCode = (int)Enum.Parse(typeof(Borough), feature.Attributes["borough"].ToString()),
+                ShapeArea = double.Parse(feature.Attributes["shape_area"].ToString()),
+                ShapeLength = double.Parse(feature.Attributes["shape_leng"].ToString()),
             };
         }
 
@@ -86,12 +88,12 @@ namespace MicroService.Service.Services
                 }))
                 .Select(f => new HistoricDistrictShape
                 {
-                    LPNumber = f.Attributes["LP_NUMBER"].ToString(),
-                    AreaName = f.Attributes["AREA_NAME"].ToString(),
-                    BoroName = f.Attributes["BOROUGH"].ToString(),
-                    BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["BOROUGH"].ToString()),
-                    ShapeArea = double.Parse(f.Attributes["Shape_area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
+                    LPNumber = f.Attributes["lp_number"].ToString(),
+                    AreaName = f.Attributes["area_name"].ToString(),
+                    BoroName = f.Attributes["borough"].ToString(),
+                    BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
+                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
                     Geometry = f.Geometry,
                 });
 
@@ -121,7 +123,5 @@ namespace MicroService.Service.Services
                 ShapeLength = double.Parse(f.Attributes["Shape_len"].ToString()),
             });
         }
-
-
     }
 }
