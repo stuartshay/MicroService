@@ -70,6 +70,8 @@ void SetupMappings()
         cfg.AddProfile<GeometryProfile>();
         cfg.AddProfile<FeatureToBoroughBoundaryShapeProfile>();
         cfg.AddProfile<FeatureToNationalRegisterHistoricPlacesShapeProfile>();
+        cfg.AddProfile<FeatureToParkShapeProfile>();
+        cfg.AddProfile<FeatureToZipCodeMappingsProfile>();
     }).CreateMapper());
 }
 
