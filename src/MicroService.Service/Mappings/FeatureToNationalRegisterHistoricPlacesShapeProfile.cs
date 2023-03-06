@@ -17,8 +17,6 @@ namespace MicroService.Service.Mappings
             CreateMap<NetTopologySuite.Geometries.Coordinate, MicroService.Service.Models.Base.CentrePoint>();
             CreateMap<NetTopologySuite.Geometries.Envelope, MicroService.Service.Models.Base.BoundingBox>();
 
-
-
             CreateMap<Feature, NationalRegisterHistoricPlacesShape>()
                 .ForMember(dest => dest.BBL, opt => opt.MapFrom(src => double.Parse(src.Attributes["bbl"].ToString())))
                 .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => src.Attributes["borough"].ToString()))
@@ -33,11 +31,7 @@ namespace MicroService.Service.Mappings
                     opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_area"].ToString())))
                 .ForMember(dest => dest.ShapeLength,
                     opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_leng"].ToString())))
-
-            //.ForAllOtherMembers(opt => opt.Ignore())
-
-            //.ReverseMap()
-            ;
+                .ForMember(dest => dest.Feature, opt => opt.Ignore());
         }
     }
 
