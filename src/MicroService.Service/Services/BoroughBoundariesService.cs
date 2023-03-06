@@ -42,15 +42,15 @@ namespace MicroService.Service.Services
         {
             attributes = ValidateFeatureKey(attributes);
 
-            var results = from f in GetFeatures()
-                          where attributes.All(pair =>
-                                    {
-                                        var value = f.Attributes[pair.Key];
-                                        var expectedValue = pair.Value;
-                                        var matchedValue = MatchAttributeValue(value, expectedValue);
-                                        return matchedValue != null;
-                                    })
-                          select Mapper.Map<BoroughBoundaryShape>(f);
+            var results = GetFeatures()
+                            .Where(f => attributes.All(pair =>
+                            {
+                                var value = f.Attributes[pair.Key];
+                                var expectedValue = pair.Value;
+                                var matchedValue = MatchAttributeValue(value, expectedValue);
+                                return matchedValue != null;
+                            }))
+                            .Select(f => Mapper.Map<BoroughBoundaryShape>(f));
 
             return results;
         }

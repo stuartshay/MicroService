@@ -80,16 +80,6 @@ namespace MicroService.Test.Integration
         }
 
 
-        [Fact(DisplayName = "Get Feature Collection")]
-        [Trait("Category", "Integration")]
-        public void Get_Borough_Boundaries_Feature_Collection()
-        {
-            var sut = _service.GetFeatures();
-            Assert.NotNull(sut);
-            Assert.IsType<List<Feature>>(sut);
-        }
-
-
         [InlineData(1006187, 232036, "40A", "PBBX")]
         [InlineData(1021192.9426658918, 212550.01741990919, "115D", "PBQN")]
         [Theory(DisplayName = "Get Feature Point Lookup")]

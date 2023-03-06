@@ -33,12 +33,7 @@ namespace MicroService.Service.Services
                 return null;
             }
 
-            return new NychaDevelopmentShape
-            {
-                Development = feature.Attributes["DEVELOPMEN"].ToString(),
-                TdsNumber = feature.Attributes["TDS_NUM"]?.ToString(),
-                Borough = feature.Attributes["BOROUGH"]?.ToString(),
-            };
+            return Mapper.Map<NychaDevelopmentShape>(feature);
         }
 
         public IEnumerable<NychaDevelopmentShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
@@ -104,12 +99,8 @@ namespace MicroService.Service.Services
         {
             var features = GetFeatures();
 
-            return features.Select(f => new NychaDevelopmentShape
-            {
-                Development = f.Attributes["DEVELOPMEN"].ToString(),
-                TdsNumber = f.Attributes["TDS_NUM"]?.ToString(),
-                Borough = f.Attributes["BOROUGH"]?.ToString(),
-            });
+            var results = Mapper.Map<IEnumerable<NychaDevelopmentShape>>(features);
+            return results;
         }
 
     }
