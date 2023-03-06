@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Internal;
 using HealthChecks.UI.Client;
 using MicroService.Common.Constants;
 using MicroService.Common.Health;
@@ -8,6 +9,7 @@ using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
+using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Services;
@@ -63,11 +65,12 @@ void SetupMappings()
 {
     services.AddSingleton(_ => new MapperConfiguration(cfg =>
     {
+        cfg.Internal().AllowAdditiveTypeMapCreation = true;
         cfg.AddProfile<ShapeMappings>();
+        cfg.AddProfile<GeometryProfile>();
+        cfg.AddProfile<FeatureToBoroughBoundaryShapeProfile>();
         cfg.AddProfile<FeatureToNationalRegisterHistoricPlacesShapeProfile>();
     }).CreateMapper());
-
-
 }
 
 void SetupServices()
