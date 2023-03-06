@@ -25,4 +25,8 @@
 		<ProjectReference Include="..\MicroService.Data\MicroService.Data.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Mappings\Base\" />
+	</ItemGroup>
+
 </Project>
