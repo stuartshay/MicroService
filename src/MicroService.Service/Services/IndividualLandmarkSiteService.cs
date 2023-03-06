@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
@@ -7,7 +6,6 @@ using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,21 +34,7 @@ namespace MicroService.Service.Services
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => new IndividualLandmarkSiteShape
-                {
-                    LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
-                    AreaName = f.Attributes["lpc_name"].ToString(),
-                    BoroCode = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
-                        (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()) : 0,
-
-                    BoroName = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
-                        f.Attributes["borough"].ToString() : null,
-
-                    BBL = f.Attributes["bbl"] != null ? Double.Parse(f.Attributes["bbl"].ToString()) : 0,
-                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                    Geometry = f.Geometry,
-                });
+                .Select(f => Mapper.Map<IndividualLandmarkSiteShape>(f));
 
             foreach (var feature in features)
             {
