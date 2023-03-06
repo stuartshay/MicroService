@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class SubwayService : AbstractShapeService<SubwayShape>, IShapeService<SubwayShape>
+    public class SubwayService : AbstractShapeService<SubwayShape>, IShapeService<SubwayShape>, IPointService<SubwayShape>
     {
         public SubwayService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
