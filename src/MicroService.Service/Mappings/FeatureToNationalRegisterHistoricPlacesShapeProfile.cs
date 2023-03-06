@@ -2,9 +2,7 @@
 using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models;
-using MicroService.Service.Models.Base;
 using NetTopologySuite.Features;
-using NetTopologySuite.Geometries;
 using System;
 
 namespace MicroService.Service.Mappings
@@ -13,9 +11,7 @@ namespace MicroService.Service.Mappings
     {
         public FeatureToNationalRegisterHistoricPlacesShapeProfile()
         {
-            CreateMap<Envelope, BoundingBox>();
-            CreateMap<NetTopologySuite.Geometries.Coordinate, MicroService.Service.Models.Base.CentrePoint>();
-            CreateMap<NetTopologySuite.Geometries.Envelope, MicroService.Service.Models.Base.BoundingBox>();
+
 
             CreateMap<Feature, NationalRegisterHistoricPlacesShape>()
                 .ForMember(dest => dest.BBL, opt => opt.MapFrom(src => double.Parse(src.Attributes["bbl"].ToString())))

@@ -32,16 +32,7 @@ namespace MicroService.Service.Services
                 return null;
             }
 
-            return new NeighborhoodShape
-            {
-                BoroCode = int.Parse(feature.Attributes["BoroCode"].ToString()),
-                BoroName = feature.Attributes["BoroName"].ToString(),
-                CountyFIPS = feature.Attributes["CountyFIPS"].ToString(),
-                NTACode = feature.Attributes["NTACode"].ToString(),
-                NTAName = feature.Attributes["NTAName"].ToString(),
-                ShapeArea = double.Parse(feature.Attributes["Shape_Area"].ToString()),
-                ShapeLength = double.Parse(feature.Attributes["Shape_Leng"].ToString()),
-            };
+            return Mapper.Map<NeighborhoodShape>(feature);
         }
 
 
@@ -57,16 +48,7 @@ namespace MicroService.Service.Services
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => new NeighborhoodShape
-                {
-                    BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                    BoroName = f.Attributes["BoroName"].ToString(),
-                    CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
-                    NTACode = f.Attributes["NTACode"].ToString(),
-                    NTAName = f.Attributes["NTAName"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                });
+                .Select(f => Mapper.Map<NeighborhoodShape>(f));
 
             return results;
         }
@@ -112,16 +94,8 @@ namespace MicroService.Service.Services
         {
             var features = GetFeatures();
 
-            return features.Select(f => new NeighborhoodShape
-            {
-                BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                BoroName = f.Attributes["BoroName"].ToString(),
-                CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
-                NTACode = f.Attributes["NTACode"].ToString(),
-                NTAName = f.Attributes["NTAName"].ToString(),
-                ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-            }).OrderBy(x => x.BoroCode);
+            var results = Mapper.Map<IEnumerable<NeighborhoodShape>>(features).OrderBy(x => x.BoroCode);
+            return results;
         }
 
     }
