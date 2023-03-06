@@ -69,18 +69,18 @@ void SetupMappings()
         cfg.AddProfile<ShapeMappings>();
         cfg.AddProfile<GeometryProfile>();
         cfg.AddProfile<FeatureToBoroughBoundaryShapeProfile>();
-
+        cfg.AddProfile<FeatureToDsnyDistrictsShapeProfile>();
         cfg.AddProfile<FeatureToHistoricDistrictShapeProfile>();
         cfg.AddProfile<FeatureToIndividualLandmarkSiteShapeProfile>();
-
-
         cfg.AddProfile<FeatureToNationalRegisterHistoricPlacesShapeProfile>();
-
         cfg.AddProfile<FeatureToNeighborhoodShapeMappingsProfile>();
+        cfg.AddProfile<FeatureToNeighborhoodTabulationAreaShapeProfile>();
         cfg.AddProfile<FeatureToNychaDevelopmentShapeProfile>();
-
         cfg.AddProfile<FeatureToNypdPrecinctShapeProfile>();
         cfg.AddProfile<FeatureToParkShapeProfile>();
+
+        cfg.AddProfile<FeatureToScenicLandmarkShapeProfile>();
+
         cfg.AddProfile<FeatureToZipCodeMappingsProfile>();
     }).CreateMapper());
 }

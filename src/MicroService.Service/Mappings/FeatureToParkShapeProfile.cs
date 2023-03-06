@@ -19,6 +19,7 @@ namespace MicroService.Service.Mappings
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Attributes["STATUS"].ToString()))
                 .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => double.Parse(src.Attributes["SHAPE_Area"].ToString())))
                 .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => double.Parse(src.Attributes["SHAPE_Leng"].ToString())))
+                .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
                 .ForMember(dest => dest.Feature, opt => opt.Ignore());
         }
     }

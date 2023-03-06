@@ -68,14 +68,8 @@ namespace MicroService.Service.Services
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => new BoroughBoundaryShape
-                {
-                    BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                    BoroName = f.Attributes["BoroName"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                    Geometry = f.Geometry,
-                });
+                .Select(f => Mapper.Map<BoroughBoundaryShape>(f));
+
 
             foreach (var feature in features)
             {
