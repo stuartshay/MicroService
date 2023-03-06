@@ -73,7 +73,7 @@ namespace MicroService.WebApi.V1.Controllers
         [Produces("application/json")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public ActionResult<object> GetShapeProperties(string id)
+        public ActionResult<object> GetShapeProperties(string id = "NationalRegisterHistoricPlaces")
         {
             if (id == null || !Enum.IsDefined(typeof(ShapeProperties), id))
                 return BadRequest();

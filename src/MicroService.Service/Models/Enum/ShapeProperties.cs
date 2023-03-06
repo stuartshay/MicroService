@@ -24,6 +24,10 @@ namespace MicroService.Service.Models.Enum
         [Shape("Individual_Landmark_Sites", "Individual_Landmark_Sites", Datum.Wgs84)]
         IndividualLandmarkSite,
 
+        [Description("National Register Historic_Places")]
+        [Shape("National_Register_ Historic_Places/WGS84", "HRHP", Datum.Wgs84)]
+        NationalRegisterHistoricPlaces,
+
         [Description("Neighborhoods")]
         [Shape("Neighborhoods", "nynta", Datum.Nad83)]
         Neighborhoods,
