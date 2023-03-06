@@ -73,15 +73,16 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData(991228.1942826601, 220507.29488507056, "Central Park", 0)]// 40.7677792,-73.969123  
+        [InlineData(991228.1942826601, 220507.29488507056, "Central Park", "MN")]// 40.7677792,-73.969123  
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.AreaName);
+            Assert.Equal(expected2, sut.BoroName);
         }
 
         [InlineData("LP-00879", "MN", "Bryant Park")]
@@ -110,6 +111,56 @@ namespace MicroService.Test.Integration
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.Null(sut);
+        }
+
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        [InlineData("LP-00879", "MN", "Bryant Park")]
+        [InlineData("LP-00851", "MN", "Central Park")]
+        [InlineData("LP-00857", "MN", "Verdi Square")]
+        [InlineData("LP-00871", "BK", "Ocean Parkway")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("LPNumber", value1),
+                new("BoroName", value2),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+            Assert.IsType<Feature>(result);
+            Assert.Equal(expected, result.Attributes["AreaName"]);
+            Assert.Equal(value1, result.Attributes["LPNumber"]);
+            Assert.Equal(value2, result.Attributes["BoroName"]);
+        }
+
+        [Theory(DisplayName = "GetFeatureCollection returns empty feature collection")]
+        [InlineData("LP-99999", "MN")] // Invalid LPNumber
+        [InlineData("LP-00879", "XX")] // Invalid BoroName
+        [InlineData("LP-99999", "XX")] // Invalid LPNumber and BoroName
+        public void GetFeatureCollection_InvalidInput_ReturnsEmptyFeatureCollection(string value1, string value2)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("LPNumber", value1),
+                new("BoroName", value2),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.Empty(sut);
         }
 
         [Fact]

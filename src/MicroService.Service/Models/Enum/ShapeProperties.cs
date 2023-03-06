@@ -17,12 +17,16 @@ namespace MicroService.Service.Models.Enum
         DSNYDistricts,
 
         [Description("Historic Districts")]
-        [Shape("Historic_Districts", "Historic_Districts", Datum.Nad83)]
+        [Shape("Historic_Districts/WGS84", "Historic_Districts", Datum.Wgs84)]
         HistoricDistricts,
 
         [Description("Individual Landmark Sites")]
         [Shape("Individual_Landmark_Sites", "Individual_Landmark_Sites", Datum.Wgs84)]
         IndividualLandmarkSite,
+
+        [Description("National Register Historic_Places")]
+        [Shape("National_Register_ Historic_Places/WGS84", "HRHP", Datum.Wgs84)]
+        NationalRegisterHistoricPlaces,
 
         [Description("Neighborhoods")]
         [Shape("Neighborhoods", "nynta", Datum.Nad83)]

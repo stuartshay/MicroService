@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Internal;
 using HealthChecks.UI.Client;
 using MicroService.Common.Constants;
 using MicroService.Common.Health;
@@ -8,6 +9,7 @@ using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
+using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Services;
@@ -21,11 +23,12 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
+using NetTopologySuite.IO.Converters;
 using Prometheus;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text.Json;
-using System.Text.Json.Serialization;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -62,9 +65,24 @@ void SetupMappings()
 {
     services.AddSingleton(_ => new MapperConfiguration(cfg =>
     {
+        cfg.Internal().AllowAdditiveTypeMapCreation = true;
         cfg.AddProfile<ShapeMappings>();
-    }).CreateMapper());
+        cfg.AddProfile<GeometryProfile>();
+        cfg.AddProfile<FeatureToBoroughBoundaryShapeProfile>();
 
+        cfg.AddProfile<FeatureToHistoricDistrictShapeProfile>();
+        cfg.AddProfile<FeatureToIndividualLandmarkSiteShapeProfile>();
+
+
+        cfg.AddProfile<FeatureToNationalRegisterHistoricPlacesShapeProfile>();
+
+        cfg.AddProfile<FeatureToNeighborhoodShapeMappingsProfile>();
+        cfg.AddProfile<FeatureToNychaDevelopmentShapeProfile>();
+
+        cfg.AddProfile<FeatureToNypdPrecinctShapeProfile>();
+        cfg.AddProfile<FeatureToParkShapeProfile>();
+        cfg.AddProfile<FeatureToZipCodeMappingsProfile>();
+    }).CreateMapper());
 }
 
 void SetupServices()
@@ -72,13 +90,13 @@ void SetupServices()
     // Cors Configuration
     services.AddCorsConfiguration();
 
-    services.AddControllers().AddJsonOptions(configure =>
+    services.AddControllers().AddJsonOptions(options =>
     {
-        configure.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-        configure.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
-        configure.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-        configure.JsonSerializerOptions.WriteIndented = true;
-        configure.JsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals;
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+        options.JsonSerializerOptions.WriteIndented = true;
+        options.JsonSerializerOptions.Converters.Add(new GeoJsonConverterFactory());
     });
 
     services.AddEndpointsApiExplorer();
@@ -123,6 +141,8 @@ void AddServices()
             shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.IndividualLandmarkSite))
             shapeProperties = ShapeProperties.IndividualLandmarkSite.GetAttribute<ShapeAttribute>();
+        else if (key == nameof(ShapeProperties.NationalRegisterHistoricPlaces))
+            shapeProperties = ShapeProperties.NationalRegisterHistoricPlaces.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.Neighborhoods))
             shapeProperties = ShapeProperties.Neighborhoods.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.NeighborhoodTabulationAreas))
@@ -159,6 +179,10 @@ void AddServices()
     services.AddScoped<DsnyDistrictsService>();
     services.AddScoped<HistoricDistrictService>();
     services.AddScoped<IndividualLandmarkSiteService>();
+
+    services.AddScoped<NationalRegisterHistoricPlacesService>();
+
+
     services.AddScoped<NeighborhoodsService>();
     services.AddScoped<NeighborhoodTabulationAreasService>();
     services.AddScoped<NypdPolicePrecinctService>();
@@ -178,6 +202,7 @@ void AddServices()
             nameof(ShapeProperties.DSNYDistricts) => serviceProvider.GetService<DsnyDistrictsService>(),
             nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
             nameof(ShapeProperties.IndividualLandmarkSite) => serviceProvider.GetService<IndividualLandmarkSiteService>(),
+            nameof(ShapeProperties.NationalRegisterHistoricPlaces) => serviceProvider.GetService<NationalRegisterHistoricPlacesService>(),
             nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService>(),
             nameof(ShapeProperties.NeighborhoodTabulationAreas) => serviceProvider.GetService<NeighborhoodTabulationAreasService>(),
             nameof(ShapeProperties.NypdPolicePrecincts) => serviceProvider.GetService<NypdPolicePrecinctService>(),

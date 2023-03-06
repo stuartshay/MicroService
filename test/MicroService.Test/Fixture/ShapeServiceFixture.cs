@@ -1,7 +1,10 @@
-﻿using MicroService.Service.Configuration;
+﻿using AutoMapper;
+using AutoMapper.Internal;
+using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
+using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Services;
@@ -32,6 +35,8 @@ namespace MicroService.Test.Fixture
                         shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.IndividualLandmarkSite))
                         shapeProperties = ShapeProperties.IndividualLandmarkSite.GetAttribute<ShapeAttribute>();
+                    else if (key == nameof(ShapeProperties.NationalRegisterHistoricPlaces))
+                        shapeProperties = ShapeProperties.NationalRegisterHistoricPlaces.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.Neighborhoods))
                         shapeProperties = ShapeProperties.Neighborhoods.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.NeighborhoodTabulationAreas))
@@ -66,6 +71,9 @@ namespace MicroService.Test.Fixture
                 .AddScoped<DsnyDistrictsService>()
                 .AddScoped<HistoricDistrictService>()
                 .AddScoped<IndividualLandmarkSiteService>()
+
+                .AddScoped<NationalRegisterHistoricPlacesService>()
+
                 .AddScoped<NeighborhoodsService>()
                 .AddScoped<NeighborhoodTabulationAreasService>()
                 .AddScoped<NypdPolicePrecinctService>()
@@ -78,14 +86,36 @@ namespace MicroService.Test.Fixture
                 .AddOptions()
                 .Configure<ApplicationOptions>(Configuration)
                 .AddSingleton(Configuration)
-                .AddAutoMapper(typeof(ShapeMappings))
+
+                .AddSingleton(_ => new MapperConfiguration(cfg =>
+                {
+                    cfg.Internal().AllowAdditiveTypeMapCreation = true;
+                    cfg.AddProfile<ShapeMappings>();
+                    cfg.AddProfile<GeometryProfile>();
+                    cfg.AddProfile<FeatureToBoroughBoundaryShapeProfile>();
+
+                    cfg.AddProfile<FeatureToHistoricDistrictShapeProfile>();
+                    cfg.AddProfile<FeatureToIndividualLandmarkSiteShapeProfile>();
+
+                    cfg.AddProfile<FeatureToNationalRegisterHistoricPlacesShapeProfile>();
+                    cfg.AddProfile<FeatureToNeighborhoodShapeMappingsProfile>();
+
+                    cfg.AddProfile<FeatureToNychaDevelopmentShapeProfile>();
+
+                    cfg.AddProfile<FeatureToNypdPrecinctShapeProfile>();
+                    cfg.AddProfile<FeatureToParkShapeProfile>();
+                    cfg.AddProfile<FeatureToZipCodeMappingsProfile>();
+                }).CreateMapper())
+
                 .BuildServiceProvider();
+
 
             BoroughBoundariesService = serviceProvider.GetRequiredService<BoroughBoundariesService>();
             CommunityDistrictService = serviceProvider.GetRequiredService<CommunityDistrictsService>();
             DSNYDistrictsService = serviceProvider.GetRequiredService<DsnyDistrictsService>();
             HistoricDistrictService = serviceProvider.GetRequiredService<HistoricDistrictService>();
             IndividualLandmarkSiteService = serviceProvider.GetRequiredService<IndividualLandmarkSiteService>();
+            NationalRegisterHistoricPlacesService = serviceProvider.GetRequiredService<NationalRegisterHistoricPlacesService>();
             NeighborhoodService = serviceProvider.GetRequiredService<NeighborhoodsService>();
             NeighborhoodTabulationAreasService = serviceProvider.GetRequiredService<NeighborhoodTabulationAreasService>();
             NypdPolicePrecinctService = serviceProvider.GetRequiredService<NypdPolicePrecinctService>();
@@ -106,6 +136,8 @@ namespace MicroService.Test.Fixture
         public IShapeService<HistoricDistrictShape> HistoricDistrictService { get; set; }
 
         public IShapeService<IndividualLandmarkSiteShape> IndividualLandmarkSiteService { get; set; }
+
+        public IShapeService<NationalRegisterHistoricPlacesShape> NationalRegisterHistoricPlacesService { get; set; }
 
         public IShapeService<NeighborhoodShape> NeighborhoodService { get; set; }
 

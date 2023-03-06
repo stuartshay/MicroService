@@ -4,13 +4,14 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class SubwayService : AbstractShapeService<SubwayShape>, IShapeService<SubwayShape>
+    public class SubwayService : AbstractShapeService<SubwayShape>, IShapeService<SubwayShape>, IPointService<SubwayShape>
     {
         public SubwayService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
@@ -20,7 +21,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Subway));
         }
 
-        public override SubwayShape GetFeatureLookup(double x, double y)
+        public virtual SubwayShape GetFeatureLookup(double x, double y)
         {
             // Validate Point is in Range
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
@@ -49,7 +50,7 @@ namespace MicroService.Service.Services
             return nearest;
         }
 
-        public override IEnumerable<SubwayShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public IEnumerable<SubwayShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 
@@ -74,6 +75,11 @@ namespace MicroService.Service.Services
             return results;
         }
 
+        public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<SubwayShape> GetFeatureList()
         {
             var features = GetFeatures();
@@ -85,5 +91,6 @@ namespace MicroService.Service.Services
                 ObjectId = int.Parse(f.Attributes["objectid"].ToString()),
             });
         }
+
     }
 }

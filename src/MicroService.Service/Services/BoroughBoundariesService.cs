@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +22,7 @@ namespace MicroService.Service.Services
             Mapper.ConfigurationProvider.AssertConfigurationIsValid();
         }
 
-
-        public override BoroughBoundaryShape GetFeatureLookup(double x, double y)
+        public virtual BoroughBoundaryShape GetFeatureLookup(double x, double y)
         {
             var point = new Point(x, y);
 
@@ -34,38 +35,58 @@ namespace MicroService.Service.Services
                 return null;
             }
 
-            return new BoroughBoundaryShape
-            {
-                BoroCode = int.Parse(feature.Attributes["BoroCode"].ToString()),
-                BoroName = feature.Attributes["BoroName"].ToString(),
-                ShapeArea = double.Parse(feature.Attributes["Shape_Area"].ToString()),
-                ShapeLength = double.Parse(feature.Attributes["Shape_Leng"].ToString()),
-            };
+            return Mapper.Map<BoroughBoundaryShape>(feature);
         }
 
-        public override IEnumerable<BoroughBoundaryShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public IEnumerable<BoroughBoundaryShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
-            // var shape = Mapper.Map<BoroughBoundaryShape>(attributes);
             attributes = ValidateFeatureKey(attributes);
 
-            var results = from f in GetFeatures()
-                          where attributes.All(pair =>
-                                    {
-                                        var value = f.Attributes[pair.Key];
-                                        var expectedValue = pair.Value;
-                                        var matchedValue = MatchAttributeValue(value, expectedValue);
-                                        return matchedValue != null;
-                                    })
-                          select new BoroughBoundaryShape
-                          {
-                              BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                              BoroName = f.Attributes["BoroName"].ToString(),
-                              ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                              ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                              //BoundingBox = f.BoundingBox,
-                          };
+            var results = GetFeatures()
+                            .Where(f => attributes.All(pair =>
+                            {
+                                var value = f.Attributes[pair.Key];
+                                var expectedValue = pair.Value;
+                                var matchedValue = MatchAttributeValue(value, expectedValue);
+                                return matchedValue != null;
+                            }))
+                            .Select(f => Mapper.Map<BoroughBoundaryShape>(f));
 
             return results;
+        }
+
+        public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
+        {
+            attributes = ValidateFeatureKey(attributes);
+            var featureCollection = new FeatureCollection();
+
+            var features = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => new BoroughBoundaryShape
+                {
+                    BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
+                    BoroName = f.Attributes["BoroName"].ToString(),
+                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
+                    Geometry = f.Geometry,
+                });
+
+            foreach (var feature in features)
+            {
+                var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<BoroughBoundaryShape, FeatureCollectionExcludeAttribute>();
+                var featureAttributes = featureProperties
+                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
+
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
+            }
+
+            return featureCollection;
         }
 
         public IEnumerable<BoroughBoundaryShape> GetFeatureList()
@@ -73,16 +94,8 @@ namespace MicroService.Service.Services
             var features = GetFeatures();
             Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
 
-            var results = features.Select(f => new BoroughBoundaryShape
-            {
-                BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                BoroName = f.Attributes["BoroName"].ToString(),
-                ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-            }).OrderBy(x => x.BoroCode);
-
+            var results = Mapper.Map<IEnumerable<BoroughBoundaryShape>>(features).OrderBy(x => x.BoroCode);
             return results;
         }
-
     }
 }

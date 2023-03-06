@@ -80,16 +80,6 @@ namespace MicroService.Test.Integration
         }
 
 
-        [Fact(DisplayName = "Get Feature Collection")]
-        [Trait("Category", "Integration")]
-        public void Get_Borough_Boundaries_Feature_Collection()
-        {
-            var sut = _service.GetFeatures();
-            Assert.NotNull(sut);
-            Assert.IsType<List<Feature>>(sut);
-        }
-
-
         [InlineData(1006187, 232036, "40A", "PBBX")]
         [InlineData(1021192.9426658918, 212550.01741990919, "115D", "PBQN")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
@@ -113,6 +103,29 @@ namespace MicroService.Test.Integration
             Assert.Null(sut);
         }
 
+
+        [InlineData("102", "102C", "PBQS")]
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("Pct", value1),
+                new("Sector", value2),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+            Assert.IsType<Feature>(result);
+            Assert.Equal(expected, result.Attributes["PatrolBoro"]);
+        }
 
         [Fact]
         public void Get_Feature_List()

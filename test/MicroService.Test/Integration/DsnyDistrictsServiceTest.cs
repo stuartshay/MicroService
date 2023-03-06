@@ -106,6 +106,34 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, result?.OperationZoneName);
         }
 
+
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        [InlineData("MN01", "", "Manhattan")]
+        [InlineData("SI02", "", "Staten Island")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("District", value1),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+
+            Assert.Equal(expected, result.Attributes["OperationZoneName"]);
+        }
+
+
+
+
+
         [Fact]
         public void Get_Feature_List()
         {
