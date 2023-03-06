@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
@@ -7,7 +6,6 @@ using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -70,16 +68,7 @@ namespace MicroService.Service.Services
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => new HistoricDistrictShape
-                {
-                    LPNumber = f.Attributes["lp_number"].ToString(),
-                    AreaName = f.Attributes["area_name"].ToString(),
-                    BoroName = f.Attributes["borough"].ToString(),
-                    BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
-                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                    Geometry = f.Geometry,
-                });
+                .Select(f => Mapper.Map<HistoricDistrictShape>(f));
 
             foreach (var feature in features)
             {

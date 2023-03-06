@@ -58,30 +58,15 @@ namespace MicroService.Service.Services
             attributes = ValidateFeatureKey(attributes);
             var featureCollection = new FeatureCollection();
 
-            var features = GetFeatures()
-                .Where(f => attributes.All(pair =>
-                {
-                    var value = f.Attributes[pair.Key];
-                    var expectedValue = pair.Value;
-                    var matchedValue = MatchAttributeValue(value, expectedValue);
-                    return matchedValue != null;
-                }))
-                .Select(f => new ZipCodeShape
-                {
-                    ZipCode = f.Attributes["ZIPCODE"].ToString(),
-                    BldgZip = f.Attributes["BLDGZIP"].ToString(),
-                    PostOfficeName = f.Attributes["PO_NAME"].ToString(),
-                    Population = int.Parse(f.Attributes["POPULATION"].ToString()),
-                    Area = double.Parse(f.Attributes["AREA"].ToString()),
-                    State = f.Attributes["STATE"].ToString(),
-                    County = f.Attributes["COUNTY"].ToString(),
-                    StateFibs = f.Attributes["ST_FIPS"].ToString(),
-                    CityFibs = f.Attributes["CTY_FIPS"].ToString(),
-                    Url = f.Attributes["URL"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["SHAPE_AREA"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["SHAPE_LEN"].ToString()),
-                    Geometry = f.Geometry,
-                });
+            var features = from f in GetFeatures()
+                           where attributes.All(pair =>
+                           {
+                               var value = f.Attributes[pair.Key];
+                               var expectedValue = pair.Value;
+                               var matchedValue = MatchAttributeValue(value, expectedValue);
+                               return matchedValue != null;
+                           })
+                           select Mapper.Map<ZipCodeShape>(f);
 
             foreach (var feature in features)
             {
