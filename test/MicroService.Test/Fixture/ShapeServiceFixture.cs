@@ -93,6 +93,10 @@ namespace MicroService.Test.Fixture
                     cfg.AddProfile<ShapeMappings>();
                     cfg.AddProfile<GeometryProfile>();
                     cfg.AddProfile<FeatureToBoroughBoundaryShapeProfile>();
+
+                    cfg.AddProfile<FeatureToHistoricDistrictShapeProfile>();
+                    cfg.AddProfile<FeatureToIndividualLandmarkSiteShapeProfile>();
+
                     cfg.AddProfile<FeatureToNationalRegisterHistoricPlacesShapeProfile>();
                     cfg.AddProfile<FeatureToNeighborhoodShapeMappingsProfile>();
 
