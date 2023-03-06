@@ -87,6 +87,8 @@ namespace MicroService.Test.Integration
 
         [InlineData("1", "MN40", "Upper East Side-Carnegie Hill")]
         [InlineData(1, "MN40", "Upper East Side-Carnegie Hill")]
+        [InlineData("1", "MN15", "Clinton")]
+        [InlineData("1", "MN25", "Battery Park City-Lower Manhattan")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
@@ -111,6 +113,32 @@ namespace MicroService.Test.Integration
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.Null(sut);
+        }
+
+
+        [InlineData("1", "MN15", "Clinton")]
+        [InlineData("1", "MN25", "Battery Park City-Lower Manhattan")]
+        [InlineData("1", "MN40", "Upper East Side-Carnegie Hill")]
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("BoroCode", value1),
+                new("NTACode", value2),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+
+            Assert.Equal(expected, result.Attributes["NTAName"]);
         }
 
         [Fact]

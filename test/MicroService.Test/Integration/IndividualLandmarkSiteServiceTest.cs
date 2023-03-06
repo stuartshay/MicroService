@@ -108,5 +108,28 @@ namespace MicroService.Test.Integration
         }
 
 
+        [InlineData("LP-00001", "3079170009", "Pieter Claesen Wyckoff House")]
+        [InlineData("LP-00010", "1005450040", "428 Lafayette Street Building")]
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("LPNumber", value1),
+                new("BBL", value2),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+
+            Assert.Equal(expected, result.Attributes["AreaName"]);
+        }
     }
 }

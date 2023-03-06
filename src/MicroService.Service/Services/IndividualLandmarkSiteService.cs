@@ -5,6 +5,7 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
@@ -22,28 +23,57 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkSite));
         }
 
+        public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
+        {
+            attributes = ValidateFeatureKey(attributes);
+            var featureCollection = new FeatureCollection();
+
+            var features = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => new IndividualLandmarkSiteShape
+                {
+                    LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
+                    AreaName = f.Attributes["lpc_name"].ToString(),
+                    BoroCode = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
+                        (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()) : 0,
+
+                    BoroName = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
+                        f.Attributes["borough"].ToString() : null,
+
+                    BBL = f.Attributes["bbl"] != null ? Double.Parse(f.Attributes["bbl"].ToString()) : 0,
+                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
+                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
+                    Geometry = f.Geometry,
+                });
+
+            foreach (var feature in features)
+            {
+                var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<IndividualLandmarkSiteShape, FeatureCollectionExcludeAttribute>();
+                var featureAttributes = featureProperties
+                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
+
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
+            }
+
+            return featureCollection;
+        }
+
         public IEnumerable<IndividualLandmarkSiteShape> GetFeatureList()
         {
             var features = GetFeatures();
+            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
 
-            return features.Select(f => new IndividualLandmarkSiteShape
-            {
-                LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
-                AreaName = f.Attributes["lpc_name"].ToString(),
-
-                BoroCode = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
-                             (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()) : 0,
-
-                BoroName = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
-                           f.Attributes["borough"].ToString() : null,
-
-                BBL = f.Attributes["bbl"] != null ? Double.Parse(f.Attributes["bbl"].ToString()) : 0,
-                ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-            });
+            var results = Mapper.Map<IEnumerable<IndividualLandmarkSiteShape>>(features);
+            return results;
         }
 
-        public override IndividualLandmarkSiteShape GetFeatureLookup(double x, double y)
+        public virtual IndividualLandmarkSiteShape GetFeatureLookup(double x, double y)
         {
             // Convert Nad83 to Wgs 
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
@@ -60,23 +90,10 @@ namespace MicroService.Service.Services
                 return null;
             }
 
-            return new IndividualLandmarkSiteShape
-            {
-                LPNumber = feature.Attributes["lpc_lpnumb"].ToString(),
-                AreaName = feature.Attributes["lpc_name"].ToString(),
-                BoroCode = EnumHelper.IsEnumValid<Borough>(feature.Attributes["borough"].ToString()) && feature.Attributes["borough"] != null ?
-                                (int)Enum.Parse(typeof(Borough), feature.Attributes["borough"].ToString()) : 0,
-
-                BoroName = EnumHelper.IsEnumValid<Borough>(feature.Attributes["borough"].ToString()) && feature.Attributes["borough"] != null ?
-                                feature.Attributes["borough"].ToString() : null,
-
-                BBL = feature.Attributes["bbl"] != null ? Double.Parse(feature.Attributes["bbl"].ToString()) : 0,
-                ShapeArea = double.Parse(feature.Attributes["shape_area"].ToString()),
-                ShapeLength = double.Parse(feature.Attributes["shape_leng"].ToString()),
-            };
+            return Mapper.Map<IndividualLandmarkSiteShape>(feature);
         }
 
-        public override IEnumerable<IndividualLandmarkSiteShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public IEnumerable<IndividualLandmarkSiteShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 
@@ -88,20 +105,10 @@ namespace MicroService.Service.Services
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => new IndividualLandmarkSiteShape
-                {
-                    LPNumber = f.Attributes["lpc_lpnumb"].ToString(),
-                    AreaName = f.Attributes["lpc_name"].ToString(),
-                    BoroCode = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
-                        (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()) : 0,
-                    BoroName = EnumHelper.IsEnumValid<Borough>(f.Attributes["borough"].ToString()) && f.Attributes["borough"] != null ?
-                        f.Attributes["borough"].ToString() : null,
-                    BBL = f.Attributes["bbl"] != null ? Double.Parse(f.Attributes["bbl"].ToString()) : 0,
-                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                });
+                .Select(f => Mapper.Map<IndividualLandmarkSiteShape>(f));
 
             return results;
         }
+
     }
 }

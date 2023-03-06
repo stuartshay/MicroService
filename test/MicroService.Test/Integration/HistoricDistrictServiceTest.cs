@@ -84,21 +84,51 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, sut.LPNumber);
         }
 
+        [InlineData("LP-00099", "BK", "Brooklyn Heights Historic District")]
+        [InlineData("LP-00224", "MN", "Charlton-King-Vandam Historic District")]
         [InlineData("LP-02403", "BX", "Grand Concourse Historic District")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
+            // Arrange
             var attributes = new List<KeyValuePair<string, object>>
             {
                 new("LPNumber", value1),
                 new("BoroName", value2),
             };
 
+            // Act
             var sut = _service.GetFeatureLookup(attributes);
             var value = sut?.FirstOrDefault();
 
+            // Assert
             Assert.NotNull(sut);
             Assert.Equal(expected, value?.AreaName);
+        }
+
+        [InlineData("LP-00099", "BK", "Brooklyn Heights Historic District")]
+        [InlineData("LP-00224", "MN", "Charlton-King-Vandam Historic District")]
+        [InlineData("LP-02403", "BX", "Grand Concourse Historic District")]
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("LPNumber", value1),
+                new("BoroName", value2),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+
+            Assert.Equal(expected, result.Attributes["AreaName"]);
         }
 
         [Fact]

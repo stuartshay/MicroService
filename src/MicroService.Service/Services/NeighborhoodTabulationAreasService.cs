@@ -3,6 +3,7 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,8 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NeighborhoodTabulationAreas));
         }
 
-        public override NeighborhoodTabulationAreaShape GetFeatureLookup(double x, double y)
+        public virtual NeighborhoodTabulationAreaShape GetFeatureLookup(double x, double y)
         {
-            // Validate Point is in Range
             var point = new Point(x, y);
 
             var features = GetFeatures();
@@ -49,7 +49,7 @@ namespace MicroService.Service.Services
 
         }
 
-        public override IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureLookup(
+        public IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureLookup(
             List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
@@ -80,6 +80,11 @@ namespace MicroService.Service.Services
             return results;
         }
 
+        public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureList()
         {
             var features = GetFeatures();
@@ -99,5 +104,6 @@ namespace MicroService.Service.Services
                 ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
             });
         }
+
     }
 }

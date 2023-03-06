@@ -25,15 +25,10 @@ namespace MicroService.Service.Helpers
         {
             FieldInfo fi = value.GetType().GetField(value.ToString());
 
-            var attributes =
-                (DescriptionAttribute[])fi.GetCustomAttributes(
-                    typeof(DescriptionAttribute),
-                    false);
+            var attributes = fi.GetCustomAttributes(typeof(DescriptionAttribute), false)
+                .OfType<DescriptionAttribute>();
 
-            if (attributes.Length > 0)
-                return attributes[0].Description;
-            else
-                return value.ToString();
+            return attributes.FirstOrDefault()?.Description ?? value.ToString();
         }
 
         public static T GetValueFromDescription<T>(string description)
@@ -82,7 +77,19 @@ namespace MicroService.Service.Helpers
             return Enum.TryParse(value, out T result) && Enum.IsDefined(typeof(T), result);
         }
 
+        public static List<PropertyInfo> GetPropertiesWithAttribute<TAttr>(Type type) where TAttr : Attribute
+        {
+            return type.GetProperties()
+                .Where(p => p.GetCustomAttributes(typeof(TAttr), true).Length > 0)
+                .ToList();
+        }
 
-
+        public static List<PropertyInfo> GetPropertiesWithoutExcludedAttribute<T, TAttr>()
+            where TAttr : Attribute
+        {
+            return typeof(T).GetProperties()
+                .Where(p => p.GetCustomAttributes(typeof(TAttr), true).Length == 0)
+                .ToList();
+        }
     }
 }

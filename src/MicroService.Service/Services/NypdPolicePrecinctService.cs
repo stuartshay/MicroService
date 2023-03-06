@@ -3,6 +3,7 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NypdPolicePrecincts));
         }
 
-        public override NypdPrecinctShape GetFeatureLookup(double x, double y)
+        public virtual NypdPrecinctShape GetFeatureLookup(double x, double y)
         {
             var point = new Point(x, y);
 
@@ -29,15 +30,10 @@ namespace MicroService.Service.Services
                 return null;
             }
 
-            return new NypdPrecinctShape
-            {
-                Precinct = int.Parse(feature.Attributes["Precinct"].ToString()),
-                ShapeArea = double.Parse(feature.Attributes["Shape_Area"].ToString()),
-                ShapeLength = double.Parse(feature.Attributes["Shape_Leng"].ToString()),
-            };
+            return Mapper.Map<NypdPrecinctShape>(feature);
         }
 
-        public override IEnumerable<NypdPrecinctShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public IEnumerable<NypdPrecinctShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 
@@ -49,27 +45,22 @@ namespace MicroService.Service.Services
                               var matchedValue = MatchAttributeValue(value, expectedValue);
                               return matchedValue != null;
                           })
-                          select new NypdPrecinctShape
-                          {
-                              Precinct = int.Parse(f.Attributes["Precinct"].ToString()),
-                              ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                              ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                          };
+                          select Mapper.Map<NypdPrecinctShape>(f);
 
             return results;
+        }
+
+        public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEnumerable<NypdPrecinctShape> GetFeatureList()
         {
             var features = GetFeatures();
 
-            return features.Select(f => new NypdPrecinctShape
-            {
-                Precinct = int.Parse(f.Attributes["Precinct"].ToString()),
-                ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-            });
+            var results = Mapper.Map<IEnumerable<NypdPrecinctShape>>(features);
+            return results;
         }
-
     }
 }

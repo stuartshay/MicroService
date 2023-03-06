@@ -5,6 +5,10 @@ using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using NetTopologySuite.Features;
+using NetTopologySuite.IO;
+using Newtonsoft.Json;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MicroService.WebApi.V1.Controllers
 {
@@ -69,7 +73,7 @@ namespace MicroService.WebApi.V1.Controllers
         [Produces("application/json")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public ActionResult<object> GetShapeProperties(string id)
+        public ActionResult<object> GetShapeProperties(string id = "NationalRegisterHistoricPlaces")
         {
             if (id == null || !Enum.IsDefined(typeof(ShapeProperties), id))
                 return BadRequest();
@@ -181,6 +185,48 @@ namespace MicroService.WebApi.V1.Controllers
                 return NotFound();
 
             return await Task.FromResult(Ok(results));
+        }
+
+
+        /// <summary>
+        ///  Get Feature Attribute Lookup GeoJson
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("attributelookupgeojson", Name = "GetLookupFeatureGeoJson")]
+        [Produces("application/geo+json")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Returns a list of features", typeof(FeatureCollection))]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public async Task<ActionResult<FeatureCollection>> GetLookupFeatureGeoJson([FromBody] FeatureAttributeLookupRequestModel request)
+        {
+            if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
+                return BadRequest();
+
+            var keys = request.Attributes!.Select(kv => kv.Key).ToList();
+            var service = _shapeServiceResolver!(request?.Key!);
+
+            var shapeType = service.GetType().GetInterface("IShapeService`1")!.GetGenericArguments()[0];
+            var fields = shapeType.GetPropertiesWithCustomAttribute<FeatureNameAttribute>().Select(x => x.Name).ToList();
+
+            var invalidItems = keys.Where(x => !fields.Contains(x)).ToList();
+            if (invalidItems.Any())
+            {
+                var invalidFields = string.Join(", ", invalidItems);
+                return BadRequest($"The following attributes are not valid for the selected shape type: {invalidFields}");
+            }
+
+            var featureCollection = _shapeServiceResolver(request!.Key).GetFeatureCollection(request.Attributes);
+            var writer = new GeoJsonWriter();
+            var geoJsonString = writer.Write(featureCollection);
+
+            var serializer = GeoJsonSerializer.Create();
+            using var stringReader = new StringReader(geoJsonString);
+            using var jsonReader = new JsonTextReader(stringReader);
+
+            var geometry = serializer.Deserialize<FeatureCollection>(jsonReader);
+
+            return await Task.FromResult(Ok(geometry));
         }
     }
 }

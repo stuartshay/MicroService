@@ -38,12 +38,12 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
-      - name: Test with dotnet
+      - name: MicroService.Test - Unit Test
         uses: zyborg/dotnet-tests-report@v1
         with:
           project_path: test/MicroService.Test
-          report_name: MicroService.Test
-          report_title: MicroService.Test
+          report_name: microService_test
+          report_title: MicroService Unit Test
           fail_build_on_failed_tests: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
 

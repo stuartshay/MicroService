@@ -37,9 +37,6 @@ namespace MicroService.Service.Services
             return header;
         }
 
-        public abstract T GetFeatureLookup(double x, double y);
-
-        public abstract IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, object>> attributes);
 
         /// <summary>
         /// Validate/Map Shape Feature Properties

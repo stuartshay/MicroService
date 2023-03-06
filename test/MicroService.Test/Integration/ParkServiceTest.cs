@@ -64,17 +64,17 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [InlineData(1015142.9358798683, 266180.4226125971, "Van Cortlandt Golf Course", 0)]
+        [InlineData(1015142.9358798683, 266180.4226125971, "Van Cortlandt Golf Course", "X092")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.ParkName);
+            Assert.Equal(expected2, sut.ParkNumber);
         }
-
 
 
         [InlineData("B222", "Pierrepont Playground", "Pierrepont Playground")]
@@ -96,16 +96,37 @@ namespace MicroService.Test.Integration
         }
 
 
-
-
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
         [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
-
             Assert.Null(sut);
+        }
+
+
+        [InlineData("B222", "Pierrepont Playground", "Neighborhood Park")]
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("ParkNumber", value1),
+                new("ParkName", value2),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+            Assert.IsType<Feature>(result);
+            Assert.Equal(expected, result.Attributes["LandUse"]);
         }
 
         [Fact]
