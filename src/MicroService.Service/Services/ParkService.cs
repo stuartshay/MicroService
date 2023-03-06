@@ -98,7 +98,8 @@ namespace MicroService.Service.Services
 
             Logger.LogInformation("Feature Count|{count}", features.Count);
 
-            return Mapper.Map<IEnumerable<ParkShape>>(features);
+            // HARD CODE TAKE 100
+            return Mapper.Map<IEnumerable<ParkShape>>(features).Take(100);
         }
     }
 }
