@@ -94,6 +94,8 @@ namespace MicroService.Test.Fixture
                     cfg.AddProfile<GeometryProfile>();
                     cfg.AddProfile<FeatureToBoroughBoundaryShapeProfile>();
                     cfg.AddProfile<FeatureToNationalRegisterHistoricPlacesShapeProfile>();
+                    cfg.AddProfile<FeatureToParkShapeProfile>();
+                    cfg.AddProfile<FeatureToZipCodeMappingsProfile>();
                 }).CreateMapper())
 
                 .BuildServiceProvider();

@@ -15,7 +15,7 @@ namespace MicroService.Service.Services
     {
         public ZipCodeService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
-            ILogger<SubwayService> logger)
+            ILogger<ZipCodeService> logger)
             : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.ZipCodes));
@@ -33,21 +33,7 @@ namespace MicroService.Service.Services
                 return null;
             }
 
-            return new ZipCodeShape
-            {
-                ZipCode = feature.Attributes["ZIPCODE"].ToString(),
-                BldgZip = feature.Attributes["BLDGZIP"].ToString(),
-                PostOfficeName = feature.Attributes["PO_NAME"].ToString(),
-                Population = int.Parse(feature.Attributes["POPULATION"].ToString()),
-                Area = double.Parse(feature.Attributes["AREA"].ToString()),
-                State = feature.Attributes["STATE"].ToString(),
-                County = feature.Attributes["COUNTY"].ToString(),
-                StateFibs = feature.Attributes["ST_FIPS"].ToString(),
-                CityFibs = feature.Attributes["CTY_FIPS"].ToString(),
-                Url = feature.Attributes["URL"].ToString(),
-                ShapeArea = double.Parse(feature.Attributes["SHAPE_AREA"].ToString()),
-                ShapeLength = double.Parse(feature.Attributes["SHAPE_LEN"].ToString()),
-            };
+            return Mapper.Map<ZipCodeShape>(feature);
         }
 
         public IEnumerable<ZipCodeShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
@@ -62,21 +48,7 @@ namespace MicroService.Service.Services
                               var matchedValue = MatchAttributeValue(value, expectedValue);
                               return matchedValue != null;
                           })
-                          select new ZipCodeShape
-                          {
-                              ZipCode = f.Attributes["ZIPCODE"].ToString(),
-                              BldgZip = f.Attributes["BLDGZIP"].ToString(),
-                              PostOfficeName = f.Attributes["PO_NAME"].ToString(),
-                              Population = int.Parse(f.Attributes["POPULATION"].ToString()),
-                              Area = double.Parse(f.Attributes["AREA"].ToString()),
-                              State = f.Attributes["STATE"].ToString(),
-                              County = f.Attributes["COUNTY"].ToString(),
-                              StateFibs = f.Attributes["ST_FIPS"].ToString(),
-                              CityFibs = f.Attributes["CTY_FIPS"].ToString(),
-                              Url = f.Attributes["URL"].ToString(),
-                              ShapeArea = double.Parse(f.Attributes["SHAPE_AREA"].ToString()),
-                              ShapeLength = double.Parse(f.Attributes["SHAPE_LEN"].ToString()),
-                          };
+                          select Mapper.Map<ZipCodeShape>(f);
 
             return results;
         }
@@ -126,22 +98,7 @@ namespace MicroService.Service.Services
         public IEnumerable<ZipCodeShape> GetFeatureList()
         {
             var features = GetFeatures();
-
-            return features.Select(f => new ZipCodeShape
-            {
-                ZipCode = f.Attributes["ZIPCODE"].ToString(),
-                BldgZip = f.Attributes["BLDGZIP"].ToString(),
-                PostOfficeName = f.Attributes["PO_NAME"].ToString(),
-                Population = int.Parse(f.Attributes["POPULATION"].ToString()),
-                State = f.Attributes["STATE"].ToString(),
-                County = f.Attributes["COUNTY"].ToString(),
-                StateFibs = f.Attributes["ST_FIPS"].ToString(),
-                CityFibs = f.Attributes["CTY_FIPS"].ToString(),
-                Url = f.Attributes["URL"].ToString(),
-                ShapeArea = double.Parse(f.Attributes["SHAPE_AREA"].ToString()),
-                ShapeLength = double.Parse(f.Attributes["SHAPE_LEN"].ToString()),
-            });
+            return Mapper.Map<IEnumerable<ZipCodeShape>>(features);
         }
-
     }
 }
