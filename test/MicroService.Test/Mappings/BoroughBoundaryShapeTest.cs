@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using MicroService.Service.Models;
+using MicroService.Test.Mappings.Base;
 using Xunit;
 
 namespace MicroService.Test.Mappings;
 
-public class BoroughBoundaryShapeTest : BaseMapperTest<BoroughBoundaryShape>
+public class BoroughBoundaryShapeTest : BaseMapper<BoroughBoundaryShape>
 {
     [InlineData(1, "Manhattan", 1, "Manhattan")]
     [InlineData("1", "Manhattan", 1, "Manhattan")]

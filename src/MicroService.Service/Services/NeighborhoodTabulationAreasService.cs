@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -32,21 +33,7 @@ namespace MicroService.Service.Services
                 return null;
             }
 
-            return new NeighborhoodTabulationAreaShape
-            {
-                BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                BoroName = f.Attributes["BoroName"].ToString(),
-                CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
-                NTA2020 = f.Attributes["NTA2020"].ToString(),
-                NTAName = f.Attributes["BoroCode"].ToString(),
-                NTAAbbrev = f.Attributes["NTAName"].ToString(),
-                NTAType = int.Parse(f.Attributes["NTAType"].ToString()),
-                CDTA2020 = f.Attributes["CDTA2020"].ToString(),
-                CDTAName = f.Attributes["CDTAName"].ToString(),
-                ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-            };
-
+            return Mapper.Map<NeighborhoodTabulationAreaShape>(f);
         }
 
         public IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureLookup(
@@ -54,55 +41,50 @@ namespace MicroService.Service.Services
         {
             attributes = ValidateFeatureKey(attributes);
 
-            var results = GetFeatures()
-                .Where(f => attributes.All(pair =>
-                {
-                    var value = f.Attributes[pair.Key];
-                    var expectedValue = pair.Value;
-                    var matchedValue = MatchAttributeValue(value, expectedValue);
-                    return matchedValue != null;
-                }))
-                .Select(f => new NeighborhoodTabulationAreaShape
-                {
-                    BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                    BoroName = f.Attributes["BoroName"].ToString(),
-                    CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
-                    NTA2020 = f.Attributes["NTA2020"].ToString(),
-                    NTAName = f.Attributes["BoroCode"].ToString(),
-                    NTAAbbrev = f.Attributes["NTAName"].ToString(),
-                    NTAType = int.Parse(f.Attributes["NTAType"].ToString()),
-                    CDTA2020 = f.Attributes["CDTA2020"].ToString(),
-                    CDTAName = f.Attributes["CDTAName"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                });
+            var results = from f in GetFeatures()
+                          where attributes.All(pair =>
+                          {
+                              var value = f.Attributes[pair.Key];
+                              var expectedValue = pair.Value;
+                              var matchedValue = MatchAttributeValue(value, expectedValue);
+                              return matchedValue != null;
+                          })
+                          select Mapper.Map<NeighborhoodTabulationAreaShape>(f);
 
             return results;
         }
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            attributes = ValidateFeatureKey(attributes);
+            var featureCollection = new FeatureCollection();
+
+            var features = from f in GetFeatures()
+                           where attributes.All(pair =>
+                           {
+                               var value = f.Attributes[pair.Key];
+                               var expectedValue = pair.Value;
+                               var matchedValue = MatchAttributeValue(value, expectedValue);
+                               return matchedValue != null;
+                           })
+                           select Mapper.Map<NeighborhoodTabulationAreaShape>(f);
+
+            foreach (var feature in features)
+            {
+                var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<NeighborhoodTabulationAreaShape, FeatureCollectionExcludeAttribute>();
+                var featureAttributes = featureProperties
+                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
+
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
+            }
+
+            return featureCollection;
         }
 
         public IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureList()
         {
             var features = GetFeatures();
-
-            return features.Select(f => new NeighborhoodTabulationAreaShape
-            {
-                BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                BoroName = f.Attributes["BoroName"].ToString(),
-                CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
-                NTA2020 = f.Attributes["NTA2020"].ToString(),
-                NTAName = f.Attributes["BoroCode"].ToString(),
-                NTAAbbrev = f.Attributes["NTAName"].ToString(),
-                NTAType = int.Parse(f.Attributes["NTAType"].ToString()),
-                CDTA2020 = f.Attributes["CDTA2020"].ToString(),
-                CDTAName = f.Attributes["CDTAName"].ToString(),
-                ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-            });
+            return Mapper.Map<IEnumerable<NeighborhoodTabulationAreaShape>>(features);
         }
 
     }

@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using MicroService.Service.Models;
+using MicroService.Test.Mappings.Base;
 using Xunit;
 
 namespace MicroService.Test.Mappings
 {
-    public class CommunityDistrictShapeTest : BaseMapperTest<CommunityDistrictShape>
+    public class CommunityDistrictShapeTest : BaseMapper<CommunityDistrictShape>
     {
         [InlineData(401, 401)]
         [Theory(Skip = "TODO:FIX", DisplayName = "Validate Mappings")]

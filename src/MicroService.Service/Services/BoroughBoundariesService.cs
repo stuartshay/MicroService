@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -68,23 +67,25 @@ namespace MicroService.Service.Services
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => new BoroughBoundaryShape
-                {
-                    BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                    BoroName = f.Attributes["BoroName"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                    Geometry = f.Geometry,
-                });
+                .Select(f => Mapper.Map<BoroughBoundaryShape>(f));
+
 
             foreach (var feature in features)
             {
-                var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<BoroughBoundaryShape, FeatureCollectionExcludeAttribute>();
-                var featureAttributes = featureProperties
-                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
-
+                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
+
+
+
+            //foreach (var feature in features)
+            //{
+            //    var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<BoroughBoundaryShape, FeatureCollectionExcludeAttribute>();
+            //    var featureAttributes = featureProperties
+            //        .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
+
+            //    featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
+            //}
 
             return featureCollection;
         }
