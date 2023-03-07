@@ -1,17 +1,17 @@
 ﻿using AutoMapper;
 using MicroService.Service.Mappings;
 
-namespace MicroService.Test.Mappings
+namespace MicroService.Test.Mappings.Base
 {
-    public abstract class BaseMapperTest<T> where T : class
+    public abstract class BaseMapper<T> where T : class
     {
         protected readonly IMapper Mapper;
 
-        protected BaseMapperTest()
+        protected BaseMapper()
         {
             var mapperConfig = new MapperConfiguration(config =>
             {
-                config.AddProfile<ShapeMappings>();
+                config.AddMaps(typeof(FeatureToBoroughBoundaryShapeProfile).Assembly);
             });
 
             Mapper = mapperConfig.CreateMapper();

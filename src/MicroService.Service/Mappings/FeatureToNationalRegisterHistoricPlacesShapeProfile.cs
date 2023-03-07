@@ -1,18 +1,16 @@
-﻿using AutoMapper;
-using MicroService.Data.Enum;
+﻿using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
+using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 using System;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToNationalRegisterHistoricPlacesShapeProfile : Profile
+    public class FeatureToNationalRegisterHistoricPlacesShapeProfile : ShapeProfile<NationalRegisterHistoricPlacesShape>
     {
         public FeatureToNationalRegisterHistoricPlacesShapeProfile()
         {
-
-
             CreateMap<Feature, NationalRegisterHistoricPlacesShape>()
                 .ForMember(dest => dest.BBL, opt => opt.MapFrom(src => double.Parse(src.Attributes["bbl"].ToString())))
                 .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => src.Attributes["borough"].ToString()))

@@ -66,7 +66,6 @@ void SetupMappings()
     services.AddSingleton(_ => new MapperConfiguration(cfg =>
     {
         cfg.Internal().AllowAdditiveTypeMapCreation = true;
-        cfg.AddProfile<ShapeMappings>();
         cfg.AddProfile<GeometryProfile>();
         cfg.AddProfile<FeatureToBoroughBoundaryShapeProfile>();
         cfg.AddProfile<FeatureToCommunityDistrictShapeProfile>();
@@ -81,7 +80,7 @@ void SetupMappings()
         cfg.AddProfile<FeatureToNypdSectorShapeProfile>();
         cfg.AddProfile<FeatureToParkShapeProfile>();
         cfg.AddProfile<FeatureToScenicLandmarkShapeProfile>();
-        // Subway 
+        cfg.AddProfile<FeatureToSubwayShapeProfile>();
         cfg.AddProfile<FeatureToZipCodeMappingsProfile>();
     }).CreateMapper());
 }

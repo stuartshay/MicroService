@@ -1,13 +1,13 @@
-﻿using AutoMapper;
-using MicroService.Data.Enum;
+﻿using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
+using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 using System;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToIndividualLandmarkSiteShapeProfile : Profile
+    public class FeatureToIndividualLandmarkSiteShapeProfile : ShapeProfile<IndividualLandmarkSiteShape>
     {
         public FeatureToIndividualLandmarkSiteShapeProfile()
         {

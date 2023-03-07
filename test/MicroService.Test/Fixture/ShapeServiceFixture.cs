@@ -90,7 +90,6 @@ namespace MicroService.Test.Fixture
                 .AddSingleton(_ => new MapperConfiguration(cfg =>
                 {
                     cfg.Internal().AllowAdditiveTypeMapCreation = true;
-                    cfg.AddProfile<ShapeMappings>();
                     cfg.AddProfile<GeometryProfile>();
                     cfg.AddProfile<FeatureToBoroughBoundaryShapeProfile>();
                     cfg.AddProfile<FeatureToCommunityDistrictShapeProfile>();
@@ -104,9 +103,8 @@ namespace MicroService.Test.Fixture
                     cfg.AddProfile<FeatureToNypdPrecinctShapeProfile>();
                     cfg.AddProfile<FeatureToNypdSectorShapeProfile>();
                     cfg.AddProfile<FeatureToParkShapeProfile>();
-
+                    cfg.AddProfile<FeatureToSubwayShapeProfile>();
                     cfg.AddProfile<FeatureToScenicLandmarkShapeProfile>();
-
                     cfg.AddProfile<FeatureToZipCodeMappingsProfile>();
                 }).CreateMapper())
 

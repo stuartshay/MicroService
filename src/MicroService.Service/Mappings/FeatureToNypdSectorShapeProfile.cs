@@ -1,10 +1,10 @@
-﻿using AutoMapper;
+﻿using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToNypdSectorShapeProfile : Profile
+    public class FeatureToNypdSectorShapeProfile : ShapeProfile<NypdSectorShape>
     {
         public FeatureToNypdSectorShapeProfile()
         {

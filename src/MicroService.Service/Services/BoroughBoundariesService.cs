@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -73,12 +72,20 @@ namespace MicroService.Service.Services
 
             foreach (var feature in features)
             {
-                var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<BoroughBoundaryShape, FeatureCollectionExcludeAttribute>();
-                var featureAttributes = featureProperties
-                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
-
+                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
+
+
+
+            //foreach (var feature in features)
+            //{
+            //    var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<BoroughBoundaryShape, FeatureCollectionExcludeAttribute>();
+            //    var featureAttributes = featureProperties
+            //        .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
+
+            //    featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
+            //}
 
             return featureCollection;
         }
