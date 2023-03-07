@@ -24,32 +24,19 @@ namespace MicroService.Service.Services
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
-            attributes = ValidateFeatureKey(attributes);
             var featureCollection = new FeatureCollection();
-
-            var features = GetFeatures()
-                .Where(f => attributes.All(pair =>
-                {
-                    var value = f.Attributes[pair.Key];
-                    var expectedValue = pair.Value;
-                    var matchedValue = MatchAttributeValue(value, expectedValue);
-                    return matchedValue != null;
-                }))
-                .Select(f => Mapper.Map<IndividualLandmarkSiteShape>(f));
+            var features = GetFeatureLookup(attributes);
 
             foreach (var feature in features)
             {
-                var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<IndividualLandmarkSiteShape, FeatureCollectionExcludeAttribute>();
-                var featureAttributes = featureProperties
-                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
-
+                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
 
             return featureCollection;
         }
 
-        public virtual IndividualLandmarkSiteShape GetFeatureLookup(double x, double y)
+        public override IndividualLandmarkSiteShape GetFeatureLookup(double x, double y)
         {
             // Convert Nad83 to Wgs 
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
@@ -67,23 +54,6 @@ namespace MicroService.Service.Services
             }
 
             return Mapper.Map<IndividualLandmarkSiteShape>(feature);
-        }
-
-        public IEnumerable<IndividualLandmarkSiteShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
-        {
-            attributes = ValidateFeatureKey(attributes);
-
-            var results = GetFeatures()
-                .Where(f => attributes.All(pair =>
-                {
-                    var value = f.Attributes[pair.Key];
-                    var expectedValue = pair.Value;
-                    var matchedValue = MatchAttributeValue(value, expectedValue);
-                    return matchedValue != null;
-                }))
-                .Select(f => Mapper.Map<IndividualLandmarkSiteShape>(f));
-
-            return results;
         }
 
     }

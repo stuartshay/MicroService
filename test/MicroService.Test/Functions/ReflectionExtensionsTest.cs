@@ -7,20 +7,19 @@ namespace MicroService.Test.Functions
     {
         private class TestObject
         {
-            public string? Property1 { get; set; }
-            public int Property2 { get; set; }
             public bool? Property3 { get; set; }
         }
 
         private class TestObjectWithAttribute
         {
-            [MyCustomAttribute]
+            [MyCustom]
             public string? Property1 { get; set; }
             public int Property2 { get; set; }
-            [MyCustomAttribute]
+            [MyCustom]
             public bool? Property3 { get; set; }
         }
 
+        [AttributeUsage(AttributeTargets.All)]
         private class MyCustomAttribute : Attribute
         {
         }
@@ -31,8 +30,6 @@ namespace MicroService.Test.Functions
             // Arrange
             var obj = new TestObject
             {
-                Property1 = "value1",
-                Property2 = 2,
                 Property3 = true
             };
 
@@ -49,8 +46,6 @@ namespace MicroService.Test.Functions
             // Arrange
             var obj = new TestObject
             {
-                Property1 = "value1",
-                Property2 = 2,
                 Property3 = null
             };
 

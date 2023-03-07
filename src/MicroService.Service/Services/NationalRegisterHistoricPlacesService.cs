@@ -6,7 +6,6 @@ using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MicroService.Service.Services
 {
@@ -21,25 +20,19 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkSite));
         }
 
-        public NationalRegisterHistoricPlacesShape GetFeatureLookup(double x, double y)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<NationalRegisterHistoricPlacesShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            var featureCollection = new FeatureCollection();
+            var features = GetFeatureLookup(attributes);
+
+            foreach (var feature in features)
+            {
+                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
+            }
+
+            return featureCollection;
         }
 
-        public IEnumerable<NationalRegisterHistoricPlacesShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-            return Mapper.Map<IEnumerable<NationalRegisterHistoricPlacesShape>>(features).Take(100);
-        }
     }
 }

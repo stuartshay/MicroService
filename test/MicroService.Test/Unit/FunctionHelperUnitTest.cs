@@ -1,5 +1,4 @@
-﻿using System;
-using MicroService.Service.Constants;
+﻿using MicroService.Service.Constants;
 using MicroService.Service.Helpers;
 using Xunit;
 
@@ -48,5 +47,34 @@ namespace MicroService.Test.Unit
             Assert.Equal((decimal)y, Math.Round((decimal)y1));
         }
 
+        [Fact]
+        public void ConvertNad83ToWgs84_WhenLatitudeIsNull_ReturnsNullValues()
+        {
+            // Arrange
+            double? x = 123.456;
+            double? y = null;
+
+            // Act
+            var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
+
+            // Assert
+            Assert.Null(result.Item1);
+            Assert.Null(result.Item2);
+        }
+
+        [Fact]
+        public void ConvertWgs84ToNad83_WithNullValues_ReturnsNull()
+        {
+            // Arrange
+            double? latitude = null;
+            double? longitude = null;
+
+            // Act
+            var result = GeoTransformationHelper.ConvertWgs84ToNad83(latitude, longitude);
+
+            // Assert
+            Assert.Null(result.Item1);
+            Assert.Null(result.Item2);
+        }
     }
 }
