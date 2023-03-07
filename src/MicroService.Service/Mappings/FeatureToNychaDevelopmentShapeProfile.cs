@@ -1,10 +1,10 @@
-﻿using AutoMapper;
+﻿using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToNychaDevelopmentShapeProfile : Profile
+    public class FeatureToNychaDevelopmentShapeProfile : ShapeProfile<NychaDevelopmentShape>
     {
         public FeatureToNychaDevelopmentShapeProfile()
         {
@@ -14,6 +14,7 @@ namespace MicroService.Service.Mappings
                 .ForMember(dest => dest.Borough, opt => opt.MapFrom(src => src.Attributes["BOROUGH"] != null ? src.Attributes["BOROUGH"].ToString() : null))
                 .ForMember(dest => dest.ShapeArea, opt => opt.Ignore())
                 .ForMember(dest => dest.ShapeLength, opt => opt.Ignore())
+                .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
                 .ForMember(dest => dest.Feature, opt => opt.Ignore());
         }
     }

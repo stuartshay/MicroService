@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
-using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
-using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -40,15 +37,7 @@ namespace MicroService.Service.Services
                 return null;
             }
 
-            return new ScenicLandmarkShape
-            {
-                LPNumber = feature.Attributes["lp_number"].ToString(),
-                AreaName = feature.Attributes["scen_lm_na"].ToString(),
-                BoroName = feature.Attributes["borough"].ToString(),
-                BoroCode = (int)Enum.Parse(typeof(Borough), feature.Attributes["borough"].ToString()),
-                ShapeArea = double.Parse(feature.Attributes["shape_area"].ToString()),
-                ShapeLength = double.Parse(feature.Attributes["shape_leng"].ToString()),
-            };
+            return Mapper.Map<ScenicLandmarkShape>(feature);
         }
 
         public IEnumerable<ScenicLandmarkShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
@@ -63,32 +52,7 @@ namespace MicroService.Service.Services
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => new ScenicLandmarkShape
-                {
-                    LPNumber = f.Attributes["lp_number"].ToString(),
-                    AreaName = f.Attributes["scen_lm_na"].ToString(),
-                    BoroName = f.Attributes["borough"].ToString(),
-                    BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
-                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                    BoundingBox = !f.BoundingBox.IsNull
-                        ? new BoundingBox
-                        {
-                            Area = f.BoundingBox.Area,
-                            Centre = f.BoundingBox.Centre.IsValid
-                                    ? new CentrePoint { X = f.BoundingBox.Centre.X, Y = f.BoundingBox.Centre.Y, }
-                                    : null,
-                            Diameter = f.BoundingBox.Diameter,
-                            MaxX = f.BoundingBox.MaxX,
-                            MaxY = f.BoundingBox.MaxY,
-                            MinX = f.BoundingBox.MinX,
-                            MinY = f.BoundingBox.MinY,
-                            MinExtent = f.BoundingBox.MinExtent,
-                            MaxExtent = f.BoundingBox.MaxExtent,
-                        }
-                        : null,
-                    Geometry = f.Geometry,
-                });
+                .Select(f => Mapper.Map<ScenicLandmarkShape>(f));
 
             return results;
         }
@@ -106,16 +70,8 @@ namespace MicroService.Service.Services
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => new ScenicLandmarkShape
-                {
-                    LPNumber = f.Attributes["lp_number"].ToString(),
-                    AreaName = f.Attributes["scen_lm_na"].ToString(),
-                    BoroName = f.Attributes["borough"].ToString(),
-                    BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
-                    ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-                    Geometry = f.Geometry,
-                });
+                .Select(f => Mapper.Map<ScenicLandmarkShape>(f));
+
 
             foreach (var feature in features)
             {
@@ -132,16 +88,10 @@ namespace MicroService.Service.Services
         public IEnumerable<ScenicLandmarkShape> GetFeatureList()
         {
             var features = GetFeatures();
+            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
 
-            return features.Select(f => new ScenicLandmarkShape
-            {
-                LPNumber = f.Attributes["lp_number"].ToString(),
-                AreaName = f.Attributes["scen_lm_na"].ToString(),
-                BoroName = f.Attributes["borough"].ToString(),
-                BoroCode = (int)Enum.Parse(typeof(Borough), f.Attributes["borough"].ToString()),
-                ShapeArea = double.Parse(f.Attributes["shape_area"].ToString()),
-                ShapeLength = double.Parse(f.Attributes["shape_leng"].ToString()),
-            });
+            var results = Mapper.Map<IEnumerable<ScenicLandmarkShape>>(features);
+            return results;
         }
 
     }

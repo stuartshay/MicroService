@@ -21,7 +21,6 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Neighborhoods));
         }
 
-
         public virtual NeighborhoodShape GetFeatureLookup(double x, double y)
         {
             var point = new Point(x, y);
@@ -34,7 +33,6 @@ namespace MicroService.Service.Services
 
             return Mapper.Map<NeighborhoodShape>(feature);
         }
-
 
         public IEnumerable<NeighborhoodShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
@@ -66,17 +64,7 @@ namespace MicroService.Service.Services
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => new NeighborhoodShape
-                {
-                    BoroCode = int.Parse(f.Attributes["BoroCode"].ToString()),
-                    BoroName = f.Attributes["BoroName"].ToString(),
-                    CountyFIPS = f.Attributes["CountyFIPS"].ToString(),
-                    NTACode = f.Attributes["NTACode"].ToString(),
-                    NTAName = f.Attributes["NTAName"].ToString(),
-                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                    Geometry = f.Geometry,
-                });
+                .Select(f => Mapper.Map<NeighborhoodShape>(f));
 
             foreach (var feature in features)
             {
