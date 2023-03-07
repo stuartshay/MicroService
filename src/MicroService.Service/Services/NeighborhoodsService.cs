@@ -79,7 +79,7 @@ namespace MicroService.Service.Services
             return featureCollection;
         }
 
-        public IEnumerable<NeighborhoodShape> GetFeatureList()
+        public override IEnumerable<NeighborhoodShape> GetFeatureList()
         {
             var features = GetFeatures();
 

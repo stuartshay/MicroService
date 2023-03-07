@@ -76,7 +76,7 @@ namespace MicroService.Service.Services
             return featureCollection;
         }
 
-        public IEnumerable<CommunityDistrictShape> GetFeatureList()
+        public override IEnumerable<CommunityDistrictShape> GetFeatureList()
         {
             var features = GetFeatures();
 

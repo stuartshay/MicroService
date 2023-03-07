@@ -6,6 +6,7 @@ using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MicroService.Service.Services
 {
@@ -151,6 +152,15 @@ namespace MicroService.Service.Services
             var featureName = ReflectionExtensions.GetAttributeFromProperty<FeatureNameAttribute>(shapeClass, propertyName);
 
             return featureName?.AttributeName;
+        }
+
+        public virtual IEnumerable<T> GetFeatureList()
+        {
+            var features = GetFeatures();
+            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count());
+
+            var results = Mapper.Map<IEnumerable<T>>(features);
+            return results;
         }
 
         public IReadOnlyCollection<Feature> GetFeatures() =>

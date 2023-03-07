@@ -80,11 +80,5 @@ namespace MicroService.Service.Services
 
             return featureCollection;
         }
-
-        public IEnumerable<ZipCodeShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-            return Mapper.Map<IEnumerable<ZipCodeShape>>(features);
-        }
     }
 }

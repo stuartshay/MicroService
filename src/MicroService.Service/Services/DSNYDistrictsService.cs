@@ -84,7 +84,7 @@ namespace MicroService.Service.Services
             return featureCollection;
         }
 
-        public IEnumerable<DsnyDistrictsShape> GetFeatureList()
+        public override IEnumerable<DsnyDistrictsShape> GetFeatureList()
         {
             var features = GetFeatures();
 

@@ -96,13 +96,5 @@ namespace MicroService.Service.Services
             return featureCollection;
         }
 
-        public IEnumerable<NychaDevelopmentShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-
-            var results = Mapper.Map<IEnumerable<NychaDevelopmentShape>>(features);
-            return results;
-        }
-
     }
 }

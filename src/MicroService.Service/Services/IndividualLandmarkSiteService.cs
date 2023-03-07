@@ -49,15 +49,6 @@ namespace MicroService.Service.Services
             return featureCollection;
         }
 
-        public IEnumerable<IndividualLandmarkSiteShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
-
-            var results = Mapper.Map<IEnumerable<IndividualLandmarkSiteShape>>(features);
-            return results;
-        }
-
         public virtual IndividualLandmarkSiteShape GetFeatureLookup(double x, double y)
         {
             // Convert Nad83 to Wgs 
