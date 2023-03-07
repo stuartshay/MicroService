@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MicroService.Service.Interfaces;
+using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -10,7 +11,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class NypdPolicePrecinctService : AbstractShapeService<NypdPrecinctShape>, IShapeService<NypdPrecinctShape>
+    public class NypdPolicePrecinctService : AbstractShapeService<NypdPrecinctShape, FeatureToNypdPrecinctShapeProfile>, IShapeService<NypdPrecinctShape>
     {
         public NypdPolicePrecinctService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,

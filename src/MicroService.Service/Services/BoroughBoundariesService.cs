@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MicroService.Service.Interfaces;
+using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -10,7 +11,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class BoroughBoundariesService : AbstractShapeService<BoroughBoundaryShape>, IShapeService<BoroughBoundaryShape>
+    public class BoroughBoundariesService : AbstractShapeService<BoroughBoundaryShape, FeatureToBoroughBoundaryShapeProfile>, IShapeService<BoroughBoundaryShape>
     {
         public BoroughBoundariesService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
@@ -75,17 +76,6 @@ namespace MicroService.Service.Services
                 var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
-
-
-
-            //foreach (var feature in features)
-            //{
-            //    var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<BoroughBoundaryShape, FeatureCollectionExcludeAttribute>();
-            //    var featureAttributes = featureProperties
-            //        .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
-
-            //    featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
-            //}
 
             return featureCollection;
         }

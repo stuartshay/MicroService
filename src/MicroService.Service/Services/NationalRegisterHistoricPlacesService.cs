@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MicroService.Service.Interfaces;
+using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -9,7 +10,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class NationalRegisterHistoricPlacesService : AbstractShapeService<NationalRegisterHistoricPlacesShape>, IShapeService<NationalRegisterHistoricPlacesShape>
+    public class NationalRegisterHistoricPlacesService : AbstractShapeService<NationalRegisterHistoricPlacesShape, FeatureToNationalRegisterHistoricPlacesShapeProfile>, IShapeService<NationalRegisterHistoricPlacesShape>
     {
 
         public NationalRegisterHistoricPlacesService(ShapefileDataReaderResolver shapefileDataReaderResolver,
