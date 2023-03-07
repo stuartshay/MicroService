@@ -54,23 +54,15 @@ namespace MicroService.Service.Services
         {
             attributes = ValidateFeatureKey(attributes);
 
-            var results = from f in GetFeatures()
-                          where attributes.All(pair =>
-                          {
-                              var value = f.Attributes[pair.Key];
-                              var expectedValue = pair.Value;
-                              var matchedValue = MatchAttributeValue(value, expectedValue);
-                              return matchedValue != null;
-                          })
-                          select new SubwayShape
-                          {
-                              Line = f.Attributes["line"].ToString(),
-                              Name = f.Attributes["name"].ToString(),
-                              ObjectId = int.Parse(f.Attributes["objectid"].ToString()),
-                              //ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                              //ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                              //Coordinates = new List<Coordinate>(),
-                          };
+            var results = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => Mapper.Map<SubwayShape>(f));
 
             return results;
         }
@@ -83,13 +75,7 @@ namespace MicroService.Service.Services
         public IEnumerable<SubwayShape> GetFeatureList()
         {
             var features = GetFeatures();
-
-            return features.Select(f => new SubwayShape
-            {
-                Line = f.Attributes["line"].ToString(),
-                Name = f.Attributes["name"].ToString(),
-                ObjectId = int.Parse(f.Attributes["objectid"].ToString()),
-            });
+            return Mapper.Map<IEnumerable<SubwayShape>>(features);
         }
 
     }

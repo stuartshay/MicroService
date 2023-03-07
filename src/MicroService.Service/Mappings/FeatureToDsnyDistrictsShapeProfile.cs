@@ -1,12 +1,12 @@
-﻿using AutoMapper;
-using MicroService.Data.Enum;
+﻿using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
+using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToDsnyDistrictsShapeProfile : Profile
+    public class FeatureToDsnyDistrictsShapeProfile : ShapeProfile<DsnyDistrictsShape>
     {
         public FeatureToDsnyDistrictsShapeProfile()
         {

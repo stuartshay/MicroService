@@ -1,12 +1,12 @@
-﻿using AutoMapper;
-using MicroService.Data.Enum;
+﻿using MicroService.Data.Enum;
+using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 using System;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToScenicLandmarkShapeProfile : Profile
+    public class FeatureToScenicLandmarkShapeProfile : ShapeProfile<ScenicLandmarkShape>
     {
         public FeatureToScenicLandmarkShapeProfile()
         {

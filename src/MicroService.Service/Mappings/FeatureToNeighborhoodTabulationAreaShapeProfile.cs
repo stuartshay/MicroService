@@ -1,10 +1,10 @@
-﻿using AutoMapper;
+﻿using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToNeighborhoodTabulationAreaShapeProfile : Profile
+    public class FeatureToNeighborhoodTabulationAreaShapeProfile : ShapeProfile<NeighborhoodTabulationAreaShape>
     {
         public FeatureToNeighborhoodTabulationAreaShapeProfile()
         {

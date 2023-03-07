@@ -12,7 +12,7 @@ namespace MicroService.Test.Mappings
             // Arrange
             var mapperConfig = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile<ShapeMappings>();
+                cfg.AddMaps(typeof(FeatureToBoroughBoundaryShapeProfile).Assembly);
             });
 
             // Act and Assert
