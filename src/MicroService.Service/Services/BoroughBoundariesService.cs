@@ -80,13 +80,13 @@ namespace MicroService.Service.Services
             return featureCollection;
         }
 
-        public IEnumerable<BoroughBoundaryShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
+        //public IEnumerable<BoroughBoundaryShape> GetFeatureList()
+        //{
+        //    var features = GetFeatures();
+        //    Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
 
-            var results = Mapper.Map<IEnumerable<BoroughBoundaryShape>>(features).OrderBy(x => x.BoroCode);
-            return results;
-        }
+        //    var results = Mapper.Map<IEnumerable<BoroughBoundaryShape>>(features).OrderBy(x => x.BoroCode);
+        //    return results;
+        //}
     }
 }

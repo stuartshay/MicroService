@@ -56,12 +56,5 @@ namespace MicroService.Service.Services
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<NypdPrecinctShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-
-            var results = Mapper.Map<IEnumerable<NypdPrecinctShape>>(features);
-            return results;
-        }
     }
 }

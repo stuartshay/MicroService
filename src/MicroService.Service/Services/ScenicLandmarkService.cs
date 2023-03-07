@@ -86,14 +86,5 @@ namespace MicroService.Service.Services
             return featureCollection;
         }
 
-        public IEnumerable<ScenicLandmarkShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
-
-            var results = Mapper.Map<IEnumerable<ScenicLandmarkShape>>(features);
-            return results;
-        }
-
     }
 }

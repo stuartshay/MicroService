@@ -82,11 +82,5 @@ namespace MicroService.Service.Services
             return featureCollection;
         }
 
-        public IEnumerable<NeighborhoodTabulationAreaShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-            return Mapper.Map<IEnumerable<NeighborhoodTabulationAreaShape>>(features);
-        }
-
     }
 }

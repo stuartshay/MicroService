@@ -73,11 +73,5 @@ namespace MicroService.Service.Services
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<SubwayShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-            return Mapper.Map<IEnumerable<SubwayShape>>(features);
-        }
-
     }
 }

@@ -80,12 +80,5 @@ namespace MicroService.Service.Services
 
             return featureCollection;
         }
-
-        public IEnumerable<NypdSectorShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-
-            return Mapper.Map<IEnumerable<NypdSectorShape>>(features);
-        }
     }
 }
