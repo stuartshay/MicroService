@@ -92,7 +92,7 @@ namespace MicroService.Test.Integration
         {
             var attributes = new List<KeyValuePair<string, object>>
             {
-                 new("Name", "Junction Boulevard & Roosevelt Avenue at NE corner"),
+                 new("Name", value1),
             };
 
             var sut = _service.GetFeatureLookup(attributes);
@@ -102,6 +102,33 @@ namespace MicroService.Test.Integration
             Assert.Equal(value1, result?.Name);
             Assert.Equal(Double.Parse(expected), result?.ObjectId);
         }
+
+
+        [InlineData("Junction Boulevard & Roosevelt Avenue at NE corner", "7", "1789")]
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("Name", value1),
+                new("Line", value2)
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+
+            Assert.Equal(double.Parse(expected), result.Attributes["ObjectId"]);
+        }
+
+
+
 
         [Fact]
         public void Get_Feature_List()
