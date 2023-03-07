@@ -31,34 +31,23 @@ namespace MicroService.Service.Services
                 return null;
             }
 
-            return new NypdSectorShape
-            {
-                Pct = feature.Attributes["pct"]?.ToString(),
-                Sector = feature.Attributes["sector"]?.ToString(),
-                PatrolBoro = feature.Attributes["patrol_bor"]?.ToString(),
-                Phase = feature.Attributes["phase"]?.ToString(),
-            };
+            return Mapper.Map<NypdSectorShape>(feature);
         }
 
         public IEnumerable<NypdSectorShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 
-            var results = from f in GetFeatures()
-                          where attributes.All(pair =>
-                          {
-                              var value = f.Attributes[pair.Key];
-                              var expectedValue = pair.Value;
-                              var matchedValue = MatchAttributeValue(value, expectedValue);
-                              return matchedValue != null;
-                          })
-                          select new NypdSectorShape
-                          {
-                              Pct = f.Attributes["pct"].ToString(),
-                              Sector = f.Attributes["sector"].ToString(),
-                              PatrolBoro = f.Attributes["patrol_bor"].ToString(),
-                              Phase = f.Attributes["phase"].ToString(),
-                          };
+            var results = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => Mapper.Map<NypdSectorShape>(f));
+
 
             return results;
         }
@@ -76,14 +65,8 @@ namespace MicroService.Service.Services
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => new NypdSectorShape
-                {
-                    Pct = f.Attributes["pct"].ToString(),
-                    Sector = f.Attributes["sector"].ToString(),
-                    PatrolBoro = f.Attributes["patrol_bor"].ToString(),
-                    Phase = f.Attributes["phase"].ToString(),
-                    Geometry = f.Geometry,
-                });
+                .Select(f => Mapper.Map<NypdSectorShape>(f));
+
 
             foreach (var feature in features)
             {
@@ -101,13 +84,7 @@ namespace MicroService.Service.Services
         {
             var features = GetFeatures();
 
-            return features.Select(f => new NypdSectorShape
-            {
-                Pct = f.Attributes["pct"].ToString(),
-                Sector = f.Attributes["sector"].ToString(),
-                PatrolBoro = f.Attributes["patrol_bor"].ToString(),
-                Phase = f.Attributes["phase"].ToString(),
-            });
+            return Mapper.Map<IEnumerable<NypdSectorShape>>(features);
         }
     }
 }

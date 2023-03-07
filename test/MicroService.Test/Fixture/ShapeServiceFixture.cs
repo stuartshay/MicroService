@@ -93,6 +93,7 @@ namespace MicroService.Test.Fixture
                     cfg.AddProfile<ShapeMappings>();
                     cfg.AddProfile<GeometryProfile>();
                     cfg.AddProfile<FeatureToBoroughBoundaryShapeProfile>();
+                    cfg.AddProfile<FeatureToCommunityDistrictShapeProfile>();
                     cfg.AddProfile<FeatureToDsnyDistrictsShapeProfile>();
                     cfg.AddProfile<FeatureToHistoricDistrictShapeProfile>();
                     cfg.AddProfile<FeatureToIndividualLandmarkSiteShapeProfile>();
@@ -101,6 +102,7 @@ namespace MicroService.Test.Fixture
                     cfg.AddProfile<FeatureToNeighborhoodTabulationAreaShapeProfile>();
                     cfg.AddProfile<FeatureToNychaDevelopmentShapeProfile>();
                     cfg.AddProfile<FeatureToNypdPrecinctShapeProfile>();
+                    cfg.AddProfile<FeatureToNypdSectorShapeProfile>();
                     cfg.AddProfile<FeatureToParkShapeProfile>();
 
                     cfg.AddProfile<FeatureToScenicLandmarkShapeProfile>();
