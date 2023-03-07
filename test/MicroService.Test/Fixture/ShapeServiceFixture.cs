@@ -4,7 +4,6 @@ using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
-using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Services;
@@ -71,9 +70,7 @@ namespace MicroService.Test.Fixture
                 .AddScoped<DsnyDistrictsService>()
                 .AddScoped<HistoricDistrictService>()
                 .AddScoped<IndividualLandmarkSiteService>()
-
                 .AddScoped<NationalRegisterHistoricPlacesService>()
-
                 .AddScoped<NeighborhoodsService>()
                 .AddScoped<NeighborhoodTabulationAreasService>()
                 .AddScoped<NypdPolicePrecinctService>()
@@ -90,26 +87,10 @@ namespace MicroService.Test.Fixture
                 .AddSingleton(_ => new MapperConfiguration(cfg =>
                 {
                     cfg.Internal().AllowAdditiveTypeMapCreation = true;
-                    cfg.AddProfile<GeometryProfile>();
-                    cfg.AddProfile<FeatureToBoroughBoundaryShapeProfile>();
-                    cfg.AddProfile<FeatureToCommunityDistrictShapeProfile>();
-                    cfg.AddProfile<FeatureToDsnyDistrictsShapeProfile>();
-                    cfg.AddProfile<FeatureToHistoricDistrictShapeProfile>();
-                    cfg.AddProfile<FeatureToIndividualLandmarkSiteShapeProfile>();
-                    cfg.AddProfile<FeatureToNationalRegisterHistoricPlacesShapeProfile>();
-                    cfg.AddProfile<FeatureToNeighborhoodShapeMappingsProfile>();
-                    cfg.AddProfile<FeatureToNeighborhoodTabulationAreaShapeProfile>();
-                    cfg.AddProfile<FeatureToNychaDevelopmentShapeProfile>();
-                    cfg.AddProfile<FeatureToNypdPrecinctShapeProfile>();
-                    cfg.AddProfile<FeatureToNypdSectorShapeProfile>();
-                    cfg.AddProfile<FeatureToParkShapeProfile>();
-                    cfg.AddProfile<FeatureToSubwayShapeProfile>();
-                    cfg.AddProfile<FeatureToScenicLandmarkShapeProfile>();
-                    cfg.AddProfile<FeatureToZipCodeMappingsProfile>();
+                    cfg.AddMaps(typeof(FeatureToBoroughBoundaryShapeProfile).Assembly);
                 }).CreateMapper())
 
                 .BuildServiceProvider();
-
 
             BoroughBoundariesService = serviceProvider.GetRequiredService<BoroughBoundariesService>();
             CommunityDistrictService = serviceProvider.GetRequiredService<CommunityDistrictsService>();

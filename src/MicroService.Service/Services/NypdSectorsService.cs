@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
+using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -11,7 +12,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class NypdSectorsService : AbstractShapeService<NypdSectorShape>, IShapeService<NypdSectorShape>
+    public class NypdSectorsService : AbstractShapeService<NypdSectorShape, FeatureToNypdSectorShapeProfile>, IShapeService<NypdSectorShape>
     {
         public NypdSectorsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
@@ -78,13 +79,6 @@ namespace MicroService.Service.Services
             }
 
             return featureCollection;
-        }
-
-        public IEnumerable<NypdSectorShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-
-            return Mapper.Map<IEnumerable<NypdSectorShape>>(features);
         }
     }
 }

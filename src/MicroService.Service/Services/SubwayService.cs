@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
+using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -11,7 +12,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class SubwayService : AbstractShapeService<SubwayShape>, IShapeService<SubwayShape>, IPointService<SubwayShape>
+    public class SubwayService : AbstractShapeService<SubwayShape, FeatureToSubwayShapeProfile>, IShapeService<SubwayShape>, IPointService<SubwayShape>
     {
         public SubwayService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
@@ -70,12 +71,6 @@ namespace MicroService.Service.Services
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
             throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<SubwayShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-            return Mapper.Map<IEnumerable<SubwayShape>>(features);
         }
 
     }
