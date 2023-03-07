@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using MicroService.Data.Enum;
-using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
+using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -12,7 +11,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class CommunityDistrictsService : AbstractShapeService<CommunityDistrictShape>, IShapeService<CommunityDistrictShape>
+    public class CommunityDistrictsService : AbstractShapeService<CommunityDistrictShape, FeatureToCommunityDistrictShapeProfile>, IShapeService<CommunityDistrictShape>
     {
         public CommunityDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
@@ -33,40 +32,22 @@ namespace MicroService.Service.Services
                 return null;
             }
 
-            return new CommunityDistrictShape
-            {
-                Cd = int.Parse(feature.Attributes["BoroCD"].ToString().Substring(1, 2)),
-                BoroCd = int.Parse(feature.Attributes["BoroCD"].ToString()),
-                BoroCode = int.Parse(feature.Attributes["BoroCD"].ToString().Substring(0, 1)),
-                Borough = feature.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().ToString(),
-                BoroName = feature.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
-                ShapeArea = double.Parse(feature.Attributes["Shape_Area"].ToString()),
-                ShapeLength = double.Parse(feature.Attributes["Shape_Leng"].ToString()),
-            };
+            return Mapper.Map<CommunityDistrictShape>(feature);
         }
 
         public IEnumerable<CommunityDistrictShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 
-            var results = from f in GetFeatures()
-                          where attributes.All(pair =>
-                          {
-                              var value = f.Attributes[pair.Key];
-                              var expectedValue = pair.Value;
-                              var matchedValue = MatchAttributeValue(value, expectedValue);
-                              return matchedValue != null;
-                          })
-                          select new CommunityDistrictShape
-                          {
-                              Cd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
-                              BoroCd = int.Parse(f.Attributes["BoroCD"].ToString()),
-                              BoroCode = int.Parse(f.Attributes["BoroCD"].ToString().Substring(0, 1)),
-                              Borough = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().ToString(),
-                              BoroName = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
-                              ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                              ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                          };
+            var results = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => Mapper.Map<CommunityDistrictShape>(f));
 
             return results;
         }
@@ -84,44 +65,23 @@ namespace MicroService.Service.Services
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => new CommunityDistrictShape
-                {
-                    Cd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
-                    BoroCd = int.Parse(f.Attributes["BoroCD"].ToString()),
-                    BoroCode = int.Parse(f.Attributes["BoroCD"].ToString().Substring(0, 1)),
-                    Borough = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().ToString(),
-                    BoroName = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
-                    ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                    ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-                    Geometry = f.Geometry,
-                });
+                .Select(f => Mapper.Map<CommunityDistrictShape>(f));
 
             foreach (var feature in features)
             {
-                var featureProperties = EnumHelper.GetPropertiesWithoutExcludedAttribute<CommunityDistrictShape, FeatureCollectionExcludeAttribute>();
-                var featureAttributes = featureProperties
-                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(feature, null));
-
+                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
 
             return featureCollection;
         }
 
-        public IEnumerable<CommunityDistrictShape> GetFeatureList()
+        public override IEnumerable<CommunityDistrictShape> GetFeatureList()
         {
             var features = GetFeatures();
 
-            return features.Select(f => new CommunityDistrictShape
-            {
-                Cd = int.Parse(f.Attributes["BoroCD"].ToString().Substring(1, 2)),
-                BoroCd = int.Parse(f.Attributes["BoroCD"].ToString()),
-                BoroCode = int.Parse(f.Attributes["BoroCD"].ToString().Substring(0, 1)),
-                Borough = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().ToString(),
-                BoroName = f.Attributes["BoroCD"].ToString().Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
-                ShapeArea = double.Parse(f.Attributes["Shape_Area"].ToString()),
-                ShapeLength = double.Parse(f.Attributes["Shape_Leng"].ToString()),
-            }).OrderBy(x => x.Cd);
+            var results = Mapper.Map<IEnumerable<CommunityDistrictShape>>(features).OrderBy(x => x.Cd);
+            return results;
         }
 
     }

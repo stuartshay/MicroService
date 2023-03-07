@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
+using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -11,7 +12,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class ScenicLandmarkService : AbstractShapeService<ScenicLandmarkShape>, IShapeService<ScenicLandmarkShape>
+    public class ScenicLandmarkService : AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>, IShapeService<ScenicLandmarkShape>
     {
         public ScenicLandmarkService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
@@ -83,15 +84,6 @@ namespace MicroService.Service.Services
             }
 
             return featureCollection;
-        }
-
-        public IEnumerable<ScenicLandmarkShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
-
-            var results = Mapper.Map<IEnumerable<ScenicLandmarkShape>>(features);
-            return results;
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
+using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -11,7 +12,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class NychaDevelopmentService : AbstractShapeService<NychaDevelopmentShape>, IShapeService<NychaDevelopmentShape>
+    public class NychaDevelopmentService : AbstractShapeService<NychaDevelopmentShape, FeatureToNychaDevelopmentShapeProfile>, IShapeService<NychaDevelopmentShape>
     {
         public NychaDevelopmentService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
@@ -93,14 +94,6 @@ namespace MicroService.Service.Services
             }
 
             return featureCollection;
-        }
-
-        public IEnumerable<NychaDevelopmentShape> GetFeatureList()
-        {
-            var features = GetFeatures();
-
-            var results = Mapper.Map<IEnumerable<NychaDevelopmentShape>>(features);
-            return results;
         }
 
     }

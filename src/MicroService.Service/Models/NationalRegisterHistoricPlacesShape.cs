@@ -1,71 +1,21 @@
 ﻿using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
+using System;
 
 namespace MicroService.Service.Models
 {
     public class NationalRegisterHistoricPlacesShape : ShapeBase, ILandmark
     {
+        [FeatureName("objectid")]
+        public double ObjectId { get; set; }
 
-        /*
-
-           {
-      "name": "address",
-      "fullName": "System.String"
-    },
-        */
-
-
-        [FeatureName("bbl")]
-        public double BBL { get; set; }
-
-        /*
-        {
-      "name": "block",
-      "fullName": "System.Double"
-    },
-    {
-      "name": "borough",
-      "fullName": "System.String"
-    },
-        */
+        [FeatureName("address")]
+        public string Address { get; set; }
 
         [FeatureName("borough")]
         public string BoroName { get; set; }
 
         public int BoroCode { get; set; }
-
-
-
-        /*
-    {
-      "name": "date_des_d",
-      "fullName": "System.DateTime"
-    },
-    {
-      "name": "time_des_d",
-      "fullName": "System.String"
-    },
-    {
-      "name": "landmark_t",
-      "fullName": "System.String"
-    },
-    {
-      "name": "lot",
-      "fullName": "System.Double"
-    },
-    {
-      "name": "lpc_altern",
-      "fullName": "System.String"
-    },
-    {
-      "name": "lpc_lpnumb",
-      "fullName": "System.String"
-    },
-    {
-      "name": "lpc_name",
-      "fullName": "System.String"
-    },
-        */
 
         [FeatureName("lpc_lpnumb")]
         public string LPNumber { get; set; }
@@ -73,46 +23,34 @@ namespace MicroService.Service.Models
         [FeatureName("lpc_name")]
         public string AreaName { get; set; }
 
+        [FeatureName("lpc_altern")]
+        public string AlternativeName { get; set; }
 
+        [FeatureName("lpc_site_d")]
+        public string SiteDesignation { get; set; }
 
+        [FeatureName("landmark_t")]
+        public string LandmarkType { get; set; }
 
+        [FeatureName("lpc_site_s")]
+        public string DesignationStatus { get; set; }
 
+        [FeatureName("bbl")]
+        public double Bbl { get; set; }
 
+        [FeatureName("block")]
+        public double Block { get; set; }
 
+        [FeatureName("lot")]
+        public double Lot { get; set; }
 
-        /*
-    {
-      "name": "lpc_site_d",
-      "fullName": "System.String"
-    },
-    {
-      "name": "lpc_site_s",
-      "fullName": "System.String"
-    },
-    {
-      "name": "objectid",
-      "fullName": "System.Double"
-    },
-    {
-      "name": "shape_area",
-      "fullName": "System.Double"
-    },
-    {
-      "name": "shape_leng",
-      "fullName": "System.Double"
-    },
-    {
-      "name": "url_report",
-      "fullName": "System.String"
+        [FeatureName("url_report")]
+        public string UrlReport { get; set; }
 
+        [FeatureName("date_des_d")]
+        public DateTime DateDesignated { get; set; }
 
-        */
-
-
-
-
-
-
-
+        [FeatureName("time_des_d")]
+        public string TimeDesignated { get; set; }
     }
 }
