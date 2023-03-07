@@ -40,15 +40,15 @@ namespace MicroService.Service.Services
         {
             attributes = ValidateFeatureKey(attributes);
 
-            var results = from f in GetFeatures()
-                          where attributes.All(pair =>
-                          {
-                              var value = f.Attributes[pair.Key];
-                              var expectedValue = pair.Value;
-                              var matchedValue = MatchAttributeValue(value, expectedValue);
-                              return matchedValue != null;
-                          })
-                          select Mapper.Map<ZipCodeShape>(f);
+            var results = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => Mapper.Map<ZipCodeShape>(f));
 
             return results;
         }
@@ -58,15 +58,15 @@ namespace MicroService.Service.Services
             attributes = ValidateFeatureKey(attributes);
             var featureCollection = new FeatureCollection();
 
-            var features = from f in GetFeatures()
-                           where attributes.All(pair =>
-                           {
-                               var value = f.Attributes[pair.Key];
-                               var expectedValue = pair.Value;
-                               var matchedValue = MatchAttributeValue(value, expectedValue);
-                               return matchedValue != null;
-                           })
-                           select Mapper.Map<ZipCodeShape>(f);
+            var features = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => Mapper.Map<ZipCodeShape>(f));
 
             foreach (var feature in features)
             {
