@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
+using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
@@ -11,7 +12,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class ZipCodeService : AbstractShapeService<ZipCodeShape>, IShapeService<ZipCodeShape>
+    public class ZipCodeService : AbstractShapeService<ZipCodeShape, FeatureToZipCodeMappingsProfile>, IShapeService<ZipCodeShape>
     {
         public ZipCodeService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,

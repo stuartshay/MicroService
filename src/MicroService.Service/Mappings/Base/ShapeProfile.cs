@@ -7,7 +7,7 @@ namespace MicroService.Service.Mappings.Base
 {
     public abstract class ShapeProfile<TShape> : Profile where TShape : class
     {
-        public ShapeProfile()
+        protected ShapeProfile()
         {
             CreateMap<TShape, IDictionary<string, object>>()
                 .ConvertUsing(shape => shape.GetType().GetProperties()

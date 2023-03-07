@@ -11,7 +11,7 @@ namespace MicroService.Service.Services
 {
     public delegate IShapefileDataReaderService ShapefileDataReaderResolver(string key);
 
-    public abstract class AbstractShapeService<T> where T : class, new()
+    public abstract class AbstractShapeService<T, TProfile> where T : class, new() where TProfile : Profile, new()
     {
         protected IShapefileDataReaderService ShapeFileDataReader { get; set; }
 
