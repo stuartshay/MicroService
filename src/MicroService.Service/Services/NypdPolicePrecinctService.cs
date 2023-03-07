@@ -5,9 +5,7 @@ using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
-using NetTopologySuite.Geometries;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MicroService.Service.Services
 {
@@ -21,39 +19,18 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NypdPolicePrecincts));
         }
 
-        public virtual NypdPrecinctShape GetFeatureLookup(double x, double y)
-        {
-            var point = new Point(x, y);
-
-            var feature = GetFeatures().FirstOrDefault(f => f.Geometry.Contains(point));
-            if (feature == null)
-            {
-                return null;
-            }
-
-            return Mapper.Map<NypdPrecinctShape>(feature);
-        }
-
-        public IEnumerable<NypdPrecinctShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
-        {
-            attributes = ValidateFeatureKey(attributes);
-
-            var results = from f in GetFeatures()
-                          where attributes.All(pair =>
-                          {
-                              var value = f.Attributes[pair.Key];
-                              var expectedValue = pair.Value;
-                              var matchedValue = MatchAttributeValue(value, expectedValue);
-                              return matchedValue != null;
-                          })
-                          select Mapper.Map<NypdPrecinctShape>(f);
-
-            return results;
-        }
-
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
+            var featureCollection = new FeatureCollection();
+            var features = GetFeatureLookup(attributes);
+
+            foreach (var feature in features)
+            {
+                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
+            }
+
+            return featureCollection;
         }
 
     }

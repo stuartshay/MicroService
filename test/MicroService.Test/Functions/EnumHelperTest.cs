@@ -1,6 +1,7 @@
 ﻿using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models;
+using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using Xunit;
 
@@ -48,9 +49,10 @@ namespace MicroService.Test.Functions
             Assert.Equal(expectedProperties.Count, properties.Count);
             foreach (var expectedProperty in expectedProperties)
             {
-                Assert.True(properties!.Any(p => p.Name == expectedProperty));
+                Assert.Contains(properties, p => p.Name == expectedProperty);
             }
         }
+
 
         [Fact]
         public void GetPropertiesWithoutExcludedAttribute_ReturnsOnlyPropertiesWithoutAttribute()
@@ -90,6 +92,13 @@ namespace MicroService.Test.Functions
 
             // Assert
             Assert.Equal(expectedValues, actualValues);
+        }
+
+        [Fact]
+        public void EnumToList_InvalidEnumType_ThrowsArgumentException()
+        {
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => EnumHelper.EnumToList<ShapeBase>());
         }
     }
 }

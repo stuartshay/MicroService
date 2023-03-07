@@ -36,9 +36,7 @@ namespace MicroService.Test.Integration
             _testOutputHelper.WriteLine($"Max bounds: ({bounds.MaxX},{bounds.MaxY})");
         }
 
-
         [Fact(DisplayName = "Get Shape File Database Properties")]
-        [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
         {
             var sut = _service.GetShapeDatabaseProperties();
@@ -63,26 +61,16 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [Fact(DisplayName = "Get Feature Collection")]
-        [Trait("Category", "Integration")]
-        public void Get_Borough_Boundaries_Feature_Collection()
-        {
-            var sut = _service.GetFeatures();
-            Assert.NotNull(sut);
-            Assert.IsType<List<Feature>>(sut);
-        }
-
-
-        [InlineData(1006187, 232036, "Bronx", 0)]
-        [InlineData(1000443, 0239270, "Manhattan", 0)]
+        [InlineData(1006187, 232036, "Bronx", "BX01 Melrose-Mott Haven-Port Morris (CD 1 Approximation)")]
+        [InlineData(1000443, 0239270, "Manhattan", "MN10 Harlem (CD 10 Equivalent)")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.BoroName);
+            Assert.Equal(expected2, sut.CDTAName);
         }
 
         [InlineData("12", "MN1202", "MN12 Washington Heights-Inwood (CD 12 Equivalent)")]
@@ -101,6 +89,30 @@ namespace MicroService.Test.Integration
 
             Assert.NotNull(sut);
             Assert.Equal(expected, result?.CDTAName);
+        }
+
+
+        [InlineData("BK0103", "047", "BK01 Williamsburg-Greenpoint (CD 1 Equivalent)")]
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("NTA2020", value1),
+                new("CountyFIPS", value2),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+
+            Assert.Equal(expected, result.Attributes["CDTAName"]);
         }
 
 

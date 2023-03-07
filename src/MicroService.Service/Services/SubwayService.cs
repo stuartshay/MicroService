@@ -22,7 +22,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Subway));
         }
 
-        public virtual SubwayShape GetFeatureLookup(double x, double y)
+        public override SubwayShape GetFeatureLookup(double x, double y)
         {
             // Validate Point is in Range
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
@@ -51,27 +51,18 @@ namespace MicroService.Service.Services
             return nearest;
         }
 
-        public IEnumerable<SubwayShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
-        {
-            attributes = ValidateFeatureKey(attributes);
-
-            var results = GetFeatures()
-                .Where(f => attributes.All(pair =>
-                {
-                    var value = f.Attributes[pair.Key];
-                    var expectedValue = pair.Value;
-                    var matchedValue = MatchAttributeValue(value, expectedValue);
-                    return matchedValue != null;
-                }))
-                .Select(f => Mapper.Map<SubwayShape>(f));
-
-            return results;
-        }
-
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
-            throw new System.NotImplementedException();
-        }
+            var featureCollection = new FeatureCollection();
+            var features = GetFeatureLookup(attributes);
 
+            foreach (var feature in features)
+            {
+                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
+            }
+
+            return featureCollection;
+        }
     }
 }
