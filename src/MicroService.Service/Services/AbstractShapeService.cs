@@ -3,6 +3,7 @@ using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
+using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 using System;
 using System.Collections.Generic;
@@ -157,10 +158,42 @@ namespace MicroService.Service.Services
         public virtual IEnumerable<T> GetFeatureList()
         {
             var features = GetFeatures();
-            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count());
+            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
 
             var results = Mapper.Map<IEnumerable<T>>(features);
             return results;
+        }
+
+        public virtual IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        {
+            attributes = ValidateFeatureKey(attributes);
+
+            var results = GetFeatures()
+                .Where(f => attributes.All(pair =>
+                {
+                    var value = f.Attributes[pair.Key];
+                    var expectedValue = pair.Value;
+                    var matchedValue = MatchAttributeValue(value, expectedValue);
+                    return matchedValue != null;
+                }))
+                .Select(f => Mapper.Map<T>(f));
+
+            return results;
+        }
+
+        public virtual T GetFeatureLookup(double x, double y)
+        {
+            var point = new Point(x, y);
+
+            var features = GetFeatures();
+            var feature = features.FirstOrDefault(f => f.Geometry.Contains(point));
+
+            if (feature == null)
+            {
+                return null;
+            }
+
+            return Mapper.Map<T>(feature);
         }
 
         public IReadOnlyCollection<Feature> GetFeatures() =>
