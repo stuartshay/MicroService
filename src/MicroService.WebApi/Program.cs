@@ -12,6 +12,7 @@ using MicroService.Service.Mappings;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Services;
+using MicroService.Service.Services.Base;
 using MicroService.Service.Services.DataService;
 using MicroService.Service.Services.FlatFileService;
 using MicroService.WebApi.Extensions;

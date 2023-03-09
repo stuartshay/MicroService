@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MicroService.Service.Services
+namespace MicroService.Service.Services.Base
 {
     public delegate IShapefileDataReaderService ShapefileDataReaderResolver(string key);
 

@@ -3,6 +3,7 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using MicroService.Service.Services.Base;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using System.Collections.Generic;
