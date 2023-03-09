@@ -164,11 +164,6 @@ void AddServices()
     //    .Where(type => type.Namespace == "MicroService.Service.Services"
     //                   && !type.IsAbstract && typeof(AbstractShapeService<,>).IsAssignableFrom(type));
 
-    //foreach (var serviceType in serviceTypes)
-    //{
-    //    services.AddScoped(serviceType);
-    //}
-
     var serviceTypes = typeof(BoroughBoundariesService).Assembly.GetTypes()
         .Where(type => type.Namespace == "MicroService.Service.Services" && type.Name.EndsWith("Service"));
 
@@ -176,31 +171,6 @@ void AddServices()
     {
         services.AddScoped(serviceType);
     }
-
-
-
-
-
-
-    //// Feature Service Lookups
-    //services.AddScoped<BoroughBoundariesService>();
-    //services.AddScoped<CommunityDistrictsService>();
-    //services.AddScoped<DsnyDistrictsService>();
-    //services.AddScoped<HistoricDistrictService>();
-    //services.AddScoped<IndividualLandmarkSiteService>();
-    //services.AddScoped<IndividualLandmarkHistoricDistrictsService>();
-    //services.AddScoped<NationalRegisterHistoricPlacesService>();
-    //services.AddScoped<NeighborhoodsService>();
-    //services.AddScoped<NeighborhoodTabulationAreasService>();
-    //services.AddScoped<NypdPolicePrecinctService>();
-    //services.AddScoped<NypdSectorsService>();
-    //services.AddScoped<NychaDevelopmentService>();
-    //services.AddScoped<ParkService>();
-    //services.AddScoped<ScenicLandmarkService>();
-    //services.AddScoped<SubwayService>();
-    //services.AddScoped<ZipCodeService>();
-
-
 
     // Register Shape Service Resolver
     services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>
