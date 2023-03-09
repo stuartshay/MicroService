@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class BoroughBoundariesService : AbstractShapeService<BoroughBoundaryShape, FeatureToBoroughBoundaryShapeProfile>, IShapeService<BoroughBoundaryShape>
+    public class BoroughBoundariesService : AbstractShapeService<BoroughBoundaryShape, BoroughBoundaryShapeProfile>, IShapeService<BoroughBoundaryShape>
     {
         public BoroughBoundariesService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,

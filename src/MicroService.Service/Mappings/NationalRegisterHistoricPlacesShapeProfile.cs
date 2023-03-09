@@ -8,9 +8,9 @@ using System.Text.RegularExpressions;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToNationalRegisterHistoricPlacesShapeProfile : ShapeProfile<NationalRegisterHistoricPlacesShape>
+    public class NationalRegisterHistoricPlacesShapeProfile : ShapeProfile<NationalRegisterHistoricPlacesShape>
     {
-        public FeatureToNationalRegisterHistoricPlacesShapeProfile()
+        public NationalRegisterHistoricPlacesShapeProfile()
         {
             CreateMap<Feature, NationalRegisterHistoricPlacesShape>()
                 .ForMember(dest => dest.ObjectId, opt => opt.MapFrom(src => double.Parse(src.Attributes["objectid"].ToString())))

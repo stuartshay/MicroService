@@ -14,7 +14,9 @@ namespace MicroService.WebApi.Extensions.Swagger
         /// <returns></returns>
         public FeatureAttributeLookupRequestModel GetExamples()
         {
-            var shapeType = "IndividualLandmarkHistoricDistricts";
+            //var shapeType = "IndividualLandmarkHistoricDistricts";
+
+            var shapeType = "IndividualLandmarkSite";
 
             // BoroughBoundaries
             if (shapeType == "BoroughBoundaries")

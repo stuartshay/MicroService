@@ -4,9 +4,9 @@ using NetTopologySuite.Features;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToNeighborhoodTabulationAreaShapeProfile : ShapeProfile<NeighborhoodTabulationAreaShape>
+    public class NeighborhoodTabulationAreaShapeProfile : ShapeProfile<NeighborhoodTabulationAreaShape>
     {
-        public FeatureToNeighborhoodTabulationAreaShapeProfile()
+        public NeighborhoodTabulationAreaShapeProfile()
         {
             CreateMap<Feature, NeighborhoodTabulationAreaShape>()
                 .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => int.Parse(src.Attributes["BoroCode"].ToString())))

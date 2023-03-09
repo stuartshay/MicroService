@@ -11,7 +11,7 @@ namespace MicroService.Test.Mappings.Base
         {
             var mapperConfig = new MapperConfiguration(config =>
             {
-                config.AddMaps(typeof(FeatureToBoroughBoundaryShapeProfile).Assembly);
+                config.AddMaps(typeof(BoroughBoundaryShapeProfile).Assembly);
             });
 
             Mapper = mapperConfig.CreateMapper();

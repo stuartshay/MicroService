@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class SubwayService : AbstractShapeService<SubwayShape, FeatureToSubwayShapeProfile>,
+    public class SubwayService : AbstractShapeService<SubwayShape, SubwayShapeProfile>,
         IShapeService<SubwayShape>, IPointService<SubwayShape>
     {
         public SubwayService(ShapefileDataReaderResolver shapefileDataReaderResolver,

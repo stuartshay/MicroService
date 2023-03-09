@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace MicroService.Service.Services
 {
-    public class NychaDevelopmentService : AbstractShapeService<NychaDevelopmentShape, FeatureToNychaDevelopmentShapeProfile>, IShapeService<NychaDevelopmentShape>
+    public class NychaDevelopmentService : AbstractShapeService<NychaDevelopmentShape, NychaDevelopmentShapeProfile>, IShapeService<NychaDevelopmentShape>
     {
         public NychaDevelopmentService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,

@@ -5,9 +5,9 @@ using System;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToIndividualLandmarkHistoricDistrictsShapeProfile : ShapeProfile<IndividualLandmarkHistoricDistrictsShape>
+    public class IndividualLandmarkHistoricDistrictsShapeProfile : ShapeProfile<IndividualLandmarkHistoricDistrictsShape>
     {
-        public FeatureToIndividualLandmarkHistoricDistrictsShapeProfile()
+        public IndividualLandmarkHistoricDistrictsShapeProfile()
         {
             CreateMap<Feature, IndividualLandmarkHistoricDistrictsShape>()
                 .ForMember(dest => dest.Bin, opt => opt.MapFrom(src => src.Attributes["BIN"] != null ? Double.Parse(src.Attributes["BIN"].ToString()) : 0))

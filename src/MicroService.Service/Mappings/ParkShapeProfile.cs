@@ -4,9 +4,9 @@ using NetTopologySuite.Features;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToParkShapeProfile : ShapeProfile<ParkShape>
+    public class ParkShapeProfile : ShapeProfile<ParkShape>
     {
-        public FeatureToParkShapeProfile()
+        public ParkShapeProfile()
         {
             CreateMap<Feature, ParkShape>()
                 .ForMember(dest => dest.ParkName, opt => opt.MapFrom(src => src.Attributes["PARK_NAME"].ToString()))

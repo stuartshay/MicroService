@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace MicroService.Service.Services
 {
-    public class ZipCodeService : AbstractShapeService<ZipCodeShape, FeatureToZipCodeMappingsProfile>, IShapeService<ZipCodeShape>
+    public class ZipCodeService : AbstractShapeService<ZipCodeShape, ZipCodeMappingsProfile>, IShapeService<ZipCodeShape>
     {
         public ZipCodeService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,

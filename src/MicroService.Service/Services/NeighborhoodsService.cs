@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class NeighborhoodsService : AbstractShapeService<NeighborhoodShape, FeatureToNeighborhoodShapeMappingsProfile>, IShapeService<NeighborhoodShape>
+    public class NeighborhoodsService : AbstractShapeService<NeighborhoodShape, NeighborhoodShapeMappingsProfile>, IShapeService<NeighborhoodShape>
     {
         public NeighborhoodsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,

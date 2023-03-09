@@ -6,9 +6,9 @@ using System;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToHistoricDistrictShapeProfile : ShapeProfile<HistoricDistrictShape>
+    public class HistoricDistrictShapeProfile : ShapeProfile<HistoricDistrictShape>
     {
-        public FeatureToHistoricDistrictShapeProfile()
+        public HistoricDistrictShapeProfile()
         {
             CreateMap<Feature, HistoricDistrictShape>()
                 .ForMember(dest => dest.LPNumber, opt => opt.MapFrom(src => src.Attributes["lp_number"].ToString()))

@@ -65,7 +65,7 @@ void SetupMappings()
     services.AddSingleton(_ => new MapperConfiguration(cfg =>
     {
         cfg.Internal().AllowAdditiveTypeMapCreation = true;
-        cfg.AddMaps(typeof(FeatureToBoroughBoundaryShapeProfile).Assembly);
+        cfg.AddMaps(typeof(BoroughBoundaryShapeProfile).Assembly);
     }).CreateMapper());
 }
 
@@ -159,15 +159,48 @@ void AddServices()
         return new CachedShapefileDataReader(cache, key, shapeFileNamePath);
     });
 
-    // Register Shape Services
-    var serviceTypes = typeof(AbstractShapeService<,>).Assembly.GetTypes()
-        .Where(type => type.Namespace == "MicroService.Service.Services"
-                       && !type.IsAbstract && typeof(AbstractShapeService<,>).IsAssignableFrom(type));
+    //// Register Shape Services
+    //var serviceTypes = typeof(AbstractShapeService<,>).Assembly.GetTypes()
+    //    .Where(type => type.Namespace == "MicroService.Service.Services"
+    //                   && !type.IsAbstract && typeof(AbstractShapeService<,>).IsAssignableFrom(type));
+
+    //foreach (var serviceType in serviceTypes)
+    //{
+    //    services.AddScoped(serviceType);
+    //}
+
+    var serviceTypes = typeof(BoroughBoundariesService).Assembly.GetTypes()
+        .Where(type => type.Namespace == "MicroService.Service.Services" && type.Name.EndsWith("Service"));
 
     foreach (var serviceType in serviceTypes)
     {
         services.AddScoped(serviceType);
     }
+
+
+
+
+
+
+    //// Feature Service Lookups
+    //services.AddScoped<BoroughBoundariesService>();
+    //services.AddScoped<CommunityDistrictsService>();
+    //services.AddScoped<DsnyDistrictsService>();
+    //services.AddScoped<HistoricDistrictService>();
+    //services.AddScoped<IndividualLandmarkSiteService>();
+    //services.AddScoped<IndividualLandmarkHistoricDistrictsService>();
+    //services.AddScoped<NationalRegisterHistoricPlacesService>();
+    //services.AddScoped<NeighborhoodsService>();
+    //services.AddScoped<NeighborhoodTabulationAreasService>();
+    //services.AddScoped<NypdPolicePrecinctService>();
+    //services.AddScoped<NypdSectorsService>();
+    //services.AddScoped<NychaDevelopmentService>();
+    //services.AddScoped<ParkService>();
+    //services.AddScoped<ScenicLandmarkService>();
+    //services.AddScoped<SubwayService>();
+    //services.AddScoped<ZipCodeService>();
+
+
 
     // Register Shape Service Resolver
     services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>

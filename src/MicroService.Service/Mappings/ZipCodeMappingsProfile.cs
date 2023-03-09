@@ -4,9 +4,9 @@ using NetTopologySuite.Features;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToZipCodeMappingsProfile : ShapeProfile<ZipCodeShape>
+    public class ZipCodeMappingsProfile : ShapeProfile<ZipCodeShape>
     {
-        public FeatureToZipCodeMappingsProfile()
+        public ZipCodeMappingsProfile()
         {
             CreateMap<Feature, ZipCodeShape>()
                 .ForMember(dest => dest.ZipCode, opt => opt.MapFrom(src => src.Attributes["ZIPCODE"].ToString()))

@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class ParkService : AbstractShapeService<ParkShape, FeatureToParkShapeProfile>, IShapeService<ParkShape>
+    public class ParkService : AbstractShapeService<ParkShape, ParkShapeProfile>, IShapeService<ParkShape>
     {
         public ParkService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
