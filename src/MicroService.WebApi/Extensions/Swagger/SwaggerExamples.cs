@@ -14,9 +14,9 @@ namespace MicroService.WebApi.Extensions.Swagger
         /// <returns></returns>
         public FeatureAttributeLookupRequestModel GetExamples()
         {
-            //var shapeType = "IndividualLandmarkHistoricDistricts";
+            var shapeType = "IndividualLandmarkHistoricDistricts";
 
-            var shapeType = "IndividualLandmarkSite";
+            //var shapeType = "IndividualLandmarkSite";
 
             // BoroughBoundaries
             if (shapeType == "BoroughBoundaries")
@@ -80,6 +80,7 @@ namespace MicroService.WebApi.Extensions.Swagger
                     Attributes = new List<KeyValuePair<string, object>>
                     {
                         new("Bbl", "3079170009"),
+                        //new("HistDist", "Fraunces Tavern Block Historic District"),
                     },
                 };
             }

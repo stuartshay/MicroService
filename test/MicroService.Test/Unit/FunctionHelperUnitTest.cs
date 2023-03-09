@@ -25,26 +25,28 @@ namespace MicroService.Test.Unit
             Assert.Equal(result3, Math.Round(calculated3, DataConstants.PercentilePrecision));
         }
 
-        [Fact]
+        [InlineData(1016637, 187747, 40.681939660888951, -73.8832294373166)]
+        [Theory]
         [Trait("Category", "Unit")]
-        public void Projection_Transform_ESRI102718_to_WGS84()
+        public void Projection_Transform_ESRI102718_to_WGS84(double x, double y, double latitude, double longitude)
         {
-            double x = 1016637;
-            double y = 187747;
-
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
-            var latitude = result.Item2;
-            var longitude = result.Item1;
 
-            var result2 = GeoTransformationHelper.ConvertWgs84ToNad83(latitude, longitude);
-            var x1 = result2.Item1;
-            var y1 = result2.Item2;
+            // Assert
+            Assert.Equal(latitude, result!.Item2!.Value, 6);
+            Assert.Equal(longitude, result.Item1!.Value, 6);
+        }
 
-            Assert.NotNull(x1);
-            Assert.NotNull(y1);
+        [InlineData(40.681939660888951, -73.8832294373166, 1016637, 187747.0295)]
+        [Theory]
+        [Trait("Category", "Unit")]
+        public void Projection_Transform_WGS84_to_ESRI102718(double latitude, double longitude, double x, double y)
+        {
+            var result = GeoTransformationHelper.ConvertWgs84ToNad83(latitude, longitude);
 
-            Assert.Equal((decimal)x, Math.Round((decimal)x1));
-            Assert.Equal((decimal)y, Math.Round((decimal)y1));
+            // Assert
+            Assert.Equal(x, result!.Item2!.Value, 4);
+            Assert.Equal(y, result.Item1!.Value, 4);
         }
 
         [Fact]
