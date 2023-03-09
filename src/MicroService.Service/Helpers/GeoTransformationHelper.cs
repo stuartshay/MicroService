@@ -1,5 +1,4 @@
-﻿using GeoAPI.Geometries;
-using ProjNet.CoordinateSystems;
+﻿using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 
 namespace MicroService.Service.Helpers
@@ -26,12 +25,12 @@ namespace MicroService.Service.Helpers
             var csFact = new CoordinateSystemFactory();
             var utmNad83 = csFact.CreateFromWkt(Epsg2263EsriWkt);
 
-
             var ctFactory = new CoordinateTransformationFactory();
             var trans = ctFactory.CreateFromCoordinateSystems(utmNad83, csWgs84);
-            var result = trans.MathTransform.Transform(new Coordinate { X = (double)x, Y = (double)y});
-           
-            return (result.X, result.Y);
+
+            var result = trans.MathTransform.Transform(new double[] { x.Value, y.Value });
+
+            return (result[0], result[1]);
         }
 
 
@@ -47,15 +46,14 @@ namespace MicroService.Service.Helpers
                 return (null, null);
 
             var csWgs84 = GeographicCoordinateSystem.WGS84;
-
             var csFact = new CoordinateSystemFactory();
             var utmNad83 = csFact.CreateFromWkt(Epsg2263EsriWkt);
 
             var ctFactory = new CoordinateTransformationFactory();
             var trans = ctFactory.CreateFromCoordinateSystems(csWgs84, utmNad83);
-            var result = trans.MathTransform.Transform(new Coordinate { X = (double)longitude, Y = (double)latitude });
+            var result = trans.MathTransform.Transform(new[] { (double)longitude.Value, (double)latitude.Value });
 
-            return (result.X, result.Y);
-        } 
+            return (result[1], result[0]);
+        }
     }
 }
