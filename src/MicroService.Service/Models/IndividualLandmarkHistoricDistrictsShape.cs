@@ -1,5 +1,6 @@
 ﻿using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
+using System.Text.Json.Serialization;
 
 namespace MicroService.Service.Models
 {
@@ -115,7 +116,7 @@ namespace MicroService.Service.Models
         //[FeatureName("BBL_Int")]
         //public int BblInt { get; set; }
 
-        [System.Text.Json.Serialization.JsonIgnore]
+        [JsonIgnore]
         public string LPNumber { get; set; }
 
     }
