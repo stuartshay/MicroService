@@ -28,7 +28,7 @@ namespace MicroService.Service.Helpers
             var ctFactory = new CoordinateTransformationFactory();
             var trans = ctFactory.CreateFromCoordinateSystems(utmNad83, csWgs84);
 
-            var result = trans.MathTransform.Transform(new double[] { x.Value, y.Value });
+            var result = trans.MathTransform.Transform(new[] { x.Value, y.Value });
 
             return (result[0], result[1]);
         }
@@ -51,7 +51,7 @@ namespace MicroService.Service.Helpers
 
             var ctFactory = new CoordinateTransformationFactory();
             var trans = ctFactory.CreateFromCoordinateSystems(csWgs84, utmNad83);
-            var result = trans.MathTransform.Transform(new[] { (double)longitude.Value, (double)latitude.Value });
+            var result = trans.MathTransform.Transform(new[] { longitude.Value, latitude.Value });
 
             return (result[1], result[0]);
         }
