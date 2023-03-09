@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace MicroService.Service.Services
 {
-    public class NationalRegisterHistoricPlacesService : AbstractShapeService<NationalRegisterHistoricPlacesShape, FeatureToNationalRegisterHistoricPlacesShapeProfile>, IShapeService<NationalRegisterHistoricPlacesShape>
+    public class NationalRegisterHistoricPlacesService : AbstractShapeService<NationalRegisterHistoricPlacesShape, NationalRegisterHistoricPlacesShapeProfile>, IShapeService<NationalRegisterHistoricPlacesShape>
     {
 
         public NationalRegisterHistoricPlacesService(ShapefileDataReaderResolver shapefileDataReaderResolver,

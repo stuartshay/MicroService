@@ -7,9 +7,9 @@ using System;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToIndividualLandmarkSiteShapeProfile : ShapeProfile<IndividualLandmarkSiteShape>
+    public class IndividualLandmarkSiteShapeProfile : ShapeProfile<IndividualLandmarkSiteShape>
     {
-        public FeatureToIndividualLandmarkSiteShapeProfile()
+        public IndividualLandmarkSiteShapeProfile()
         {
             CreateMap<Feature, IndividualLandmarkSiteShape>()
                 .ForMember(dest => dest.LPNumber, opt => opt.MapFrom(src => src.Attributes["lpc_lpnumb"].ToString()))

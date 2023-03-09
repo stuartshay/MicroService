@@ -4,9 +4,9 @@ using NetTopologySuite.Features;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToSubwayShapeProfile : ShapeProfile<SubwayShape>
+    public class SubwayShapeProfile : ShapeProfile<SubwayShape>
     {
-        public FeatureToSubwayShapeProfile()
+        public SubwayShapeProfile()
         {
             CreateMap<Feature, SubwayShape>()
                 .ForMember(dest => dest.Line, opt => opt.MapFrom(src => src.Attributes["line"].ToString()))

@@ -4,9 +4,9 @@ using NetTopologySuite.Features;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToNychaDevelopmentShapeProfile : ShapeProfile<NychaDevelopmentShape>
+    public class NychaDevelopmentShapeProfile : ShapeProfile<NychaDevelopmentShape>
     {
-        public FeatureToNychaDevelopmentShapeProfile()
+        public NychaDevelopmentShapeProfile()
         {
             CreateMap<Feature, NychaDevelopmentShape>()
                 .ForMember(dest => dest.Development, opt => opt.MapFrom(src => src.Attributes["DEVELOPMEN"].ToString()))

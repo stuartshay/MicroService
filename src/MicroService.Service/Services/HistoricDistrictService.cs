@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class HistoricDistrictService : AbstractShapeService<HistoricDistrictShape, FeatureToHistoricDistrictShapeProfile>, IShapeService<HistoricDistrictShape>
+    public class HistoricDistrictService : AbstractShapeService<HistoricDistrictShape, HistoricDistrictShapeProfile>, IShapeService<HistoricDistrictShape>
     {
         public HistoricDistrictService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,

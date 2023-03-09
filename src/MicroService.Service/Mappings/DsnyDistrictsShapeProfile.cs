@@ -6,9 +6,9 @@ using NetTopologySuite.Features;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToDsnyDistrictsShapeProfile : ShapeProfile<DsnyDistrictsShape>
+    public class DsnyDistrictsShapeProfile : ShapeProfile<DsnyDistrictsShape>
     {
-        public FeatureToDsnyDistrictsShapeProfile()
+        public DsnyDistrictsShapeProfile()
         {
             CreateMap<Feature, DsnyDistrictsShape>()
                 .ForMember(dest => dest.District, opt => opt.MapFrom(src => src.Attributes["district"].ToString()))

@@ -4,9 +4,9 @@ using NetTopologySuite.Features;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToNypdSectorShapeProfile : ShapeProfile<NypdSectorShape>
+    public class NypdSectorShapeProfile : ShapeProfile<NypdSectorShape>
     {
-        public FeatureToNypdSectorShapeProfile()
+        public NypdSectorShapeProfile()
         {
             CreateMap<Feature, NypdSectorShape>()
                 .ForMember(dest => dest.Pct, opt => opt.MapFrom(src => src.Attributes["pct"].ToString()))

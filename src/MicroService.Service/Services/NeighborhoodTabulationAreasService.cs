@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace MicroService.Service.Services
 {
-    public class NeighborhoodTabulationAreasService : AbstractShapeService<NeighborhoodTabulationAreaShape, FeatureToNeighborhoodTabulationAreaShapeProfile>, IShapeService<NeighborhoodTabulationAreaShape>
+    public class NeighborhoodTabulationAreasService : AbstractShapeService<NeighborhoodTabulationAreaShape, NeighborhoodTabulationAreaShapeProfile>, IShapeService<NeighborhoodTabulationAreaShape>
     {
         public NeighborhoodTabulationAreasService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,

@@ -6,9 +6,9 @@ using NetTopologySuite.Features;
 
 namespace MicroService.Service.Mappings
 {
-    public class FeatureToCommunityDistrictShapeProfile : ShapeProfile<CommunityDistrictShape>
+    public class CommunityDistrictShapeProfile : ShapeProfile<CommunityDistrictShape>
     {
-        public FeatureToCommunityDistrictShapeProfile()
+        public CommunityDistrictShapeProfile()
         {
             CreateMap<Feature, CommunityDistrictShape>()
                 .ForMember(dest => dest.Cd, opt => opt.MapFrom(src => int.Parse(src.Attributes["BoroCD"].ToString().Substring(1, 2))))

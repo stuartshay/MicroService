@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace MicroService.Service.Services
 {
-    public class NypdPolicePrecinctService : AbstractShapeService<NypdPrecinctShape, FeatureToNypdPrecinctShapeProfile>, IShapeService<NypdPrecinctShape>
+    public class NypdPolicePrecinctService : AbstractShapeService<NypdPrecinctShape, NypdPrecinctShapeProfile>, IShapeService<NypdPrecinctShape>
     {
         public NypdPolicePrecinctService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,

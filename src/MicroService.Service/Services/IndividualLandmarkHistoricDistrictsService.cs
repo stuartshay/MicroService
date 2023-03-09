@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace MicroService.Service.Services
 {
     public class IndividualLandmarkHistoricDistrictsService : AbstractShapeService<IndividualLandmarkHistoricDistrictsShape,
-            FeatureToIndividualLandmarkHistoricDistrictsShapeProfile>, IShapeService<IndividualLandmarkHistoricDistrictsShape>
+            IndividualLandmarkHistoricDistrictsShapeProfile>, IShapeService<IndividualLandmarkHistoricDistrictsShape>
     {
         public IndividualLandmarkHistoricDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,

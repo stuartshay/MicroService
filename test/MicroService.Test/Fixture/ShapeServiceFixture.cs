@@ -91,7 +91,7 @@ namespace MicroService.Test.Fixture
                 .AddSingleton(_ => new MapperConfiguration(cfg =>
                 {
                     cfg.Internal().AllowAdditiveTypeMapCreation = true;
-                    cfg.AddMaps(typeof(FeatureToBoroughBoundaryShapeProfile).Assembly);
+                    cfg.AddMaps(typeof(BoroughBoundaryShapeProfile).Assembly);
                 }).CreateMapper())
 
                 .BuildServiceProvider();
