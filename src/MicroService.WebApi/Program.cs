@@ -29,7 +29,6 @@ using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text.Json;
 
-
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 var services = builder.Services;
@@ -161,15 +160,16 @@ void AddServices()
     });
 
     // Register Shape Services
-    var serviceTypes = typeof(BoroughBoundariesService).Assembly.GetTypes()
-        .Where(type => type.Namespace == "MicroService.Service.Services" && type.Name.EndsWith("Service"));
+    var serviceTypes = typeof(AbstractShapeService<,>).Assembly.GetTypes()
+        .Where(type => type.Namespace == "MicroService.Service.Services"
+                       && !type.IsAbstract && typeof(AbstractShapeService<,>).IsAssignableFrom(type));
 
     foreach (var serviceType in serviceTypes)
     {
         services.AddScoped(serviceType);
     }
 
-
+    // Register Shape Service Resolver
     services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>
     {
         return (key switch
