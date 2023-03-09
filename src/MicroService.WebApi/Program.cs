@@ -125,6 +125,8 @@ void AddServices()
             shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.IndividualLandmarkSite))
             shapeProperties = ShapeProperties.IndividualLandmarkSite.GetAttribute<ShapeAttribute>();
+        else if (key == nameof(ShapeProperties.IndividualLandmarkHistoricDistricts))
+            shapeProperties = ShapeProperties.IndividualLandmarkHistoricDistricts.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.NationalRegisterHistoricPlaces))
             shapeProperties = ShapeProperties.NationalRegisterHistoricPlaces.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.Neighborhoods))
@@ -163,10 +165,8 @@ void AddServices()
     services.AddScoped<DsnyDistrictsService>();
     services.AddScoped<HistoricDistrictService>();
     services.AddScoped<IndividualLandmarkSiteService>();
-
+    services.AddScoped<IndividualLandmarkHistoricDistrictsService>();
     services.AddScoped<NationalRegisterHistoricPlacesService>();
-
-
     services.AddScoped<NeighborhoodsService>();
     services.AddScoped<NeighborhoodTabulationAreasService>();
     services.AddScoped<NypdPolicePrecinctService>();
@@ -186,6 +186,7 @@ void AddServices()
             nameof(ShapeProperties.DSNYDistricts) => serviceProvider.GetService<DsnyDistrictsService>(),
             nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
             nameof(ShapeProperties.IndividualLandmarkSite) => serviceProvider.GetService<IndividualLandmarkSiteService>(),
+            nameof(ShapeProperties.IndividualLandmarkHistoricDistricts) => serviceProvider.GetService<IndividualLandmarkHistoricDistrictsService>(),
             nameof(ShapeProperties.NationalRegisterHistoricPlaces) => serviceProvider.GetService<NationalRegisterHistoricPlacesService>(),
             nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService>(),
             nameof(ShapeProperties.NeighborhoodTabulationAreas) => serviceProvider.GetService<NeighborhoodTabulationAreasService>(),

@@ -22,7 +22,6 @@ namespace MicroService.Test.Integration
         }
 
         [Fact(DisplayName = "Get Shape File Properties")]
-        [Trait("Category", "Integration")]
         public void Get_Shape_Properties()
         {
             var sut = _service.GetShapeProperties();
@@ -37,7 +36,6 @@ namespace MicroService.Test.Integration
         }
 
         [Fact(DisplayName = "Get Shape File Database Properties")]
-        [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
         {
             var sut = _service.GetShapeDatabaseProperties();
@@ -55,7 +53,6 @@ namespace MicroService.Test.Integration
         }
 
         [Fact(DisplayName = "Get Feature Collection")]
-        [Trait("Category", "Integration")]
         public void Get_Feature_Collection()
         {
             var sut = _service.GetFeatures();
@@ -65,7 +62,6 @@ namespace MicroService.Test.Integration
 
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
-        [Trait("Category", "Integration")]
         public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
@@ -87,7 +83,7 @@ namespace MicroService.Test.Integration
         [InlineData("LP-00099", "BK", "Brooklyn Heights Historic District")]
         [InlineData("LP-00224", "MN", "Charlton-King-Vandam Historic District")]
         [InlineData("LP-02403", "BX", "Grand Concourse Historic District")]
-        [Theory(DisplayName = "Get Feature Point Lookup")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
             // Arrange

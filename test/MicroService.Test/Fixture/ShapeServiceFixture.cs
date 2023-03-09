@@ -34,6 +34,8 @@ namespace MicroService.Test.Fixture
                         shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.IndividualLandmarkSite))
                         shapeProperties = ShapeProperties.IndividualLandmarkSite.GetAttribute<ShapeAttribute>();
+                    else if (key == nameof(ShapeProperties.IndividualLandmarkHistoricDistricts))
+                        shapeProperties = ShapeProperties.IndividualLandmarkHistoricDistricts.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.NationalRegisterHistoricPlaces))
                         shapeProperties = ShapeProperties.NationalRegisterHistoricPlaces.GetAttribute<ShapeAttribute>();
                     else if (key == nameof(ShapeProperties.Neighborhoods))
@@ -70,6 +72,7 @@ namespace MicroService.Test.Fixture
                 .AddScoped<DsnyDistrictsService>()
                 .AddScoped<HistoricDistrictService>()
                 .AddScoped<IndividualLandmarkSiteService>()
+                .AddScoped<IndividualLandmarkHistoricDistrictsService>()
                 .AddScoped<NationalRegisterHistoricPlacesService>()
                 .AddScoped<NeighborhoodsService>()
                 .AddScoped<NeighborhoodTabulationAreasService>()
@@ -97,6 +100,7 @@ namespace MicroService.Test.Fixture
             DSNYDistrictsService = serviceProvider.GetRequiredService<DsnyDistrictsService>();
             HistoricDistrictService = serviceProvider.GetRequiredService<HistoricDistrictService>();
             IndividualLandmarkSiteService = serviceProvider.GetRequiredService<IndividualLandmarkSiteService>();
+            IndividualLandmarkHistoricDistrictsService = serviceProvider.GetRequiredService<IndividualLandmarkHistoricDistrictsService>();
             NationalRegisterHistoricPlacesService = serviceProvider.GetRequiredService<NationalRegisterHistoricPlacesService>();
             NeighborhoodService = serviceProvider.GetRequiredService<NeighborhoodsService>();
             NeighborhoodTabulationAreasService = serviceProvider.GetRequiredService<NeighborhoodTabulationAreasService>();
@@ -106,6 +110,7 @@ namespace MicroService.Test.Fixture
             ParkService = serviceProvider.GetRequiredService<ParkService>();
             ScenicLandmarkService = serviceProvider.GetRequiredService<ScenicLandmarkService>();
             SubwayService = serviceProvider.GetRequiredService<SubwayService>();
+            SubwayPointService = serviceProvider.GetRequiredService<SubwayService>();
             ZipCodeService = serviceProvider.GetRequiredService<ZipCodeService>();
         }
 
@@ -118,6 +123,8 @@ namespace MicroService.Test.Fixture
         public IShapeService<HistoricDistrictShape> HistoricDistrictService { get; set; }
 
         public IShapeService<IndividualLandmarkSiteShape> IndividualLandmarkSiteService { get; set; }
+
+        public IShapeService<IndividualLandmarkHistoricDistrictsShape> IndividualLandmarkHistoricDistrictsService { get; set; }
 
         public IShapeService<NationalRegisterHistoricPlacesShape> NationalRegisterHistoricPlacesService { get; set; }
 
@@ -136,6 +143,8 @@ namespace MicroService.Test.Fixture
         public IShapeService<ScenicLandmarkShape> ScenicLandmarkService { get; set; }
 
         public IShapeService<SubwayShape> SubwayService { get; set; }
+
+        public IPointService<SubwayShape> SubwayPointService { get; set; }
 
         public IShapeService<ZipCodeShape> ZipCodeService { get; set; }
 
