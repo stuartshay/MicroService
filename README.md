@@ -4,6 +4,14 @@
 
 [![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-api.svg)](https://hub.docker.com/r/stuartshay/microservice-api/)
 
+## NYC Open Data GeoSpatial & Data Enrichment API
+
+## Intro
+
+This repository holds the backend API for the NYC Open Data GeoSpatial & Data Enrichment API. The API is a microservice that is used to enrich data with geospatial data and other data sources.
+
+## Technology Stack
+
 ### Purpose
 
 The New York Application Team has been tasked with designing a microservice for their Enrichment Data pipeline which will be utilized by high profile clients and internal groups in the organization for Machine Learning Research and the Geospatial Engine Product.

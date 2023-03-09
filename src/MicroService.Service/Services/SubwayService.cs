@@ -12,7 +12,8 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class SubwayService : AbstractShapeService<SubwayShape, FeatureToSubwayShapeProfile>, IShapeService<SubwayShape>, IPointService<SubwayShape>
+    public class SubwayService : AbstractShapeService<SubwayShape, FeatureToSubwayShapeProfile>,
+        IShapeService<SubwayShape>, IPointService<SubwayShape>
     {
         public SubwayService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
@@ -64,5 +65,27 @@ namespace MicroService.Service.Services
 
             return featureCollection;
         }
+
+        public List<Point> FindPointsByRadius(Point center, double radius)
+        {
+            var result = new List<Point>();
+            var features = GetFeatures();
+
+            foreach (var feature in features)
+            {
+                var point = feature.Geometry as Point;
+                if (point != null)
+                {
+                    var distance = center.Distance(point);
+                    if (distance <= radius)
+                    {
+                        result.Add(point);
+                    }
+                }
+            }
+
+            return result;
+        }
+
     }
 }
