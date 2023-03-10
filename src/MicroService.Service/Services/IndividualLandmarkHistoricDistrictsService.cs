@@ -31,7 +31,7 @@ namespace MicroService.Service.Services
             {
                 // Map attributes
                 var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
-                var transformedGeometry = GeoTransformationHelper.TransformGeometry(feature.Geometry, false);
+                var transformedGeometry = GeoTransformationHelper.TransformGeometry(feature.Geometry, Datum.Nad83, Datum.Wgs84);
 
 
                 // Add feature to collection
