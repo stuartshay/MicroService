@@ -1,5 +1,7 @@
-﻿using ProjNet.CoordinateSystems;
+﻿using NetTopologySuite.Geometries;
+using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
+using System;
 
 namespace MicroService.Service.Helpers
 {
@@ -33,6 +35,22 @@ namespace MicroService.Service.Helpers
             return (result[0], result[1]);
         }
 
+        public static double[] ConvertNad83ToWgs84(double[] xy)
+        {
+            if (xy == null || xy.Length != 2)
+                return null;
+
+            var csWgs84 = GeographicCoordinateSystem.WGS84;
+            var csFact = new CoordinateSystemFactory();
+            var utmNad83 = csFact.CreateFromWkt(Epsg2263EsriWkt);
+
+            var ctFactory = new CoordinateTransformationFactory();
+            var trans = ctFactory.CreateFromCoordinateSystems(utmNad83, csWgs84);
+
+            var result = trans.MathTransform.Transform(xy);
+
+            return new[] { result[0], result[1] };
+        }
 
         /// <summary>
         /// Convert NAD83 to WGS84
@@ -55,5 +73,70 @@ namespace MicroService.Service.Helpers
 
             return (result[1], result[0]);
         }
+
+        public static double[] ConvertWgs84ToNad83(double[] point)
+        {
+            if (point == null || point.Length != 2)
+                throw new ArgumentException("Point must be an array of two doubles", nameof(point));
+
+            var csWgs84 = GeographicCoordinateSystem.WGS84;
+            var csFact = new CoordinateSystemFactory();
+            var utmNad83 = csFact.CreateFromWkt(Epsg2263EsriWkt);
+
+            var ctFactory = new CoordinateTransformationFactory();
+            var trans = ctFactory.CreateFromCoordinateSystems(csWgs84, utmNad83);
+            var result = trans.MathTransform.Transform(point);
+
+            return new[] { result[1], result[0] };
+        }
+
+        public static Geometry TransformGeometryToWgs84(Geometry geometry)
+        {
+            if (geometry is Point point)
+            {
+                var xy = new[] { point.X, point.Y };
+                xy = GeoTransformationHelper.ConvertNad83ToWgs84(xy);
+                point.X = xy[0];
+                point.Y = xy[1];
+            }
+            else if (geometry is LineString lineString)
+            {
+                for (int i = 0; i < lineString.Coordinates.Length; i++)
+                {
+                    var xy = new[] { lineString.Coordinates[i].X, lineString.Coordinates[i].Y };
+                    xy = GeoTransformationHelper.ConvertNad83ToWgs84(xy);
+                    lineString.Coordinates[i].X = xy[0];
+                    lineString.Coordinates[i].Y = xy[1];
+                }
+            }
+            else if (geometry is Polygon polygon)
+            {
+                for (int i = 0; i < polygon.Shell.Coordinates.Length; i++)
+                {
+                    var xy = new[] { polygon.Shell.Coordinates[i].X, polygon.Shell.Coordinates[i].Y };
+                    xy = GeoTransformationHelper.ConvertNad83ToWgs84(xy);
+                    polygon.Shell.Coordinates[i].X = xy[0];
+                    polygon.Shell.Coordinates[i].Y = xy[1];
+                }
+                for (int i = 0; i < polygon.Holes.Length; i++)
+                {
+                    for (int j = 0; j < polygon.Holes[i].Coordinates.Length; j++)
+                    {
+                        var xy = new[] { polygon.Holes[i].Coordinates[j].X, polygon.Holes[i].Coordinates[j].Y };
+                        xy = GeoTransformationHelper.ConvertNad83ToWgs84(xy);
+                        polygon.Holes[i].Coordinates[j].X = xy[0];
+                        polygon.Holes[i].Coordinates[j].Y = xy[1];
+                    }
+                }
+            }
+
+            return geometry;
+        }
+
+
+
+
+
+
     }
 }

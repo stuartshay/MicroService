@@ -95,6 +95,9 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, value?.Address);
 
+            Assert.NotNull(value.Geometry);
+
+            Assert.NotNull(sut);
         }
 
         public void Get_Feature_Point_Lookup_Not_Found(double x, double y)

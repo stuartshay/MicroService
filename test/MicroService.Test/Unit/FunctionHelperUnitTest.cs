@@ -78,5 +78,33 @@ namespace MicroService.Test.Unit
             Assert.Null(result.Item1);
             Assert.Null(result.Item2);
         }
+
+
+        [InlineData(40.681939660888951, -73.8832294373166, 1016637, 187747.0295)]
+        [Theory]
+        [Trait("Category", "Unit")]
+        public void Projection_Convert_Wgs84_To_Nad83(double latitude, double longitude, double x, double y)
+        {
+            var result = GeoTransformationHelper.ConvertWgs84ToNad83(new[] { longitude, latitude });
+
+            Assert.Equal(y, result[0], 4);
+            Assert.Equal(x, result[1], 4);
+        }
+
+        [InlineData(1016637, 187747, 40.681939660888951, -73.8832294373166)]
+        [Theory]
+        [Trait("Category", "Unit")]
+        public void Projection_Convert_Nad83_To_Wgs84(double x, double y, double latitude, double longitude)
+        {
+            var result = GeoTransformationHelper.ConvertNad83ToWgs84(new[] { x, y });
+
+            Assert.Equal(latitude, result[1], 4);
+            Assert.Equal(longitude, result[0], 4);
+        }
+
+
+
+
+
     }
 }
