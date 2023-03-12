@@ -11,6 +11,11 @@ namespace MicroService.Service.Models
         [FeatureName("districtco")]
         public int DistrictCode { get; set; }
 
+        [FeatureName("fid")]
+        public string Fid { get; set; }
+
+        [FeatureName("globalid")]
+        public string GlobalId { get; set; }
 
         public string OperationZone { get; set; }
 

@@ -15,8 +15,7 @@ namespace MicroService.WebApi.Extensions.Swagger
         public FeatureAttributeLookupRequestModel GetExamples()
         {
             var shapeType = "IndividualLandmarkHistoricDistricts";
-
-            //var shapeType = "IndividualLandmarkSite";
+            // var shapeType = "IndividualLandmarkSite";
 
             // BoroughBoundaries
             if (shapeType == "BoroughBoundaries")
@@ -79,8 +78,8 @@ namespace MicroService.WebApi.Extensions.Swagger
                     Key = "IndividualLandmarkHistoricDistricts",
                     Attributes = new List<KeyValuePair<string, object>>
                     {
-                        new("Bbl", "3079170009"),
-                        //new("HistDist", "Fraunces Tavern Block Historic District"),
+                        new("Bbl", "1008510001"),
+                        // new("HistDist", "Fraunces Tavern Block Historic District"),
                     },
                 };
             }
@@ -112,7 +111,6 @@ namespace MicroService.WebApi.Extensions.Swagger
                     },
                 };
             }
-
 
             throw new ArgumentException($"Invalid Swagger Example Request");
         }

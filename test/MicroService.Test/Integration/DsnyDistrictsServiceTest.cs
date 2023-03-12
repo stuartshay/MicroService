@@ -63,20 +63,17 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-
         [InlineData(1006187, 232036, "Bronx", 201)]
         [InlineData(1000443, 0239270, "Manhattan", 110)]
         [Theory(DisplayName = "Get Feature Point Lookup")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.OperationZoneName);
-            Assert.Equal(lookupExpected, sut.DistrictCode);
+            Assert.Equal(expected2, sut.DistrictCode);
         }
-
-
 
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
@@ -89,14 +86,15 @@ namespace MicroService.Test.Integration
         }
 
 
-        [InlineData("MN01", "", "Manhattan")]
-        [InlineData("SI02", "", "Staten Island")]
+        [InlineData("MN01", "72", "Manhattan")]
+        [InlineData("SI02", "107", "Staten Island")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
             var attributes = new List<KeyValuePair<string, object>>
             {
                 new("District", value1),
+                new("Fid", value2),
             };
 
             var sut = _service.GetFeatureLookup(attributes);
@@ -106,16 +104,16 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, result?.OperationZoneName);
         }
 
-
+        [InlineData("MN01", "72", "Manhattan")]
+        [InlineData("SI02", "107", "Staten Island")]
         [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
-        [InlineData("MN01", "", "Manhattan")]
-        [InlineData("SI02", "", "Staten Island")]
         public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
         {
             // Arrange
             var attributes = new List<KeyValuePair<string, object>>
             {
                 new("District", value1),
+                new("Fid", value2),
             };
 
             // Act
@@ -129,10 +127,6 @@ namespace MicroService.Test.Integration
 
             Assert.Equal(expected, result.Attributes["OperationZoneName"]);
         }
-
-
-
-
 
         [Fact]
         public void Get_Feature_List()

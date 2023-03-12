@@ -68,15 +68,19 @@ namespace MicroService.Test.Integration
         }
 
 
-
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2 = null)
+        [InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique", "MN")]
+        [Theory(DisplayName = "Get Feature Point Lookup")]
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
-            throw new NotImplementedException();
+            var sut = _service.GetFeatureLookup(x, y);
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, sut.AreaName);
+            Assert.Equal(expected2, sut.BoroName);
         }
 
 
-
-        [InlineData("3066920018", 3368915, "803 East 17th Street")]
+        [InlineData("3066920018", "Free-standing House", "803 East 17th Street")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
@@ -84,30 +88,62 @@ namespace MicroService.Test.Integration
             var attributes = new List<KeyValuePair<string, object>>
             {
                 new("Bbl", value1),
-                new("Bin", value2),
+                new("BuildType", value2),
             };
 
             // Act
             var sut = _service.GetFeatureLookup(attributes);
-            var value = sut?.FirstOrDefault();
+            var value = sut?.Single();
 
             // Assert
             Assert.NotNull(sut);
             Assert.Equal(expected, value?.Address);
 
-            Assert.NotNull(value.Geometry);
+            Assert.NotNull(value!.Geometry);
 
             Assert.NotNull(sut);
         }
 
-        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
+
+        [InlineData("3066920018", "Free-standing House", "803 East 17th Street")]
+        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
         {
-            throw new NotImplementedException();
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("Bbl", value1),
+                new("BuildType", value2),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+
+            Assert.Equal(expected, result.Attributes["Address"]);
         }
 
+        [InlineData(1006187, 732036)]
+        [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
+        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
+        {
+            var sut = _service.GetFeatureLookup(x, y);
+
+            Assert.Null(sut);
+        }
+
+
+        [Fact(DisplayName = "Get Feature List")]
         public void Get_Feature_List()
         {
-            throw new NotImplementedException();
+            var sut = _service.GetFeatureList();
+            Assert.NotNull(sut);
         }
+
     }
 }

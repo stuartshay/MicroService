@@ -63,26 +63,18 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [Fact(DisplayName = "Get Feature Collection")]
-        [Trait("Category", "Integration")]
-        public void Get_Borough_Boundaries_Feature_Collection()
-        {
-            var sut = _service.GetFeatures();
-            Assert.NotNull(sut);
-            Assert.IsType<List<Feature>>(sut);
-        }
-
-        [InlineData(1006187, 232036, "Bronx", 0)]
-        [InlineData(1000443, 0239270, "Manhattan", 0)]
-        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", 0)]
+        [InlineData(1006187, 232036, "Bronx", "BX39")]
+        [InlineData(1000443, 0239270, "Manhattan", "MN03")]
+        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", "QN26")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, object lookupExpected)
+        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.BoroName);
+            Assert.Equal(expected2, sut.NTACode);
         }
 
         [InlineData("1", "MN40", "Upper East Side-Carnegie Hill")]
@@ -148,7 +140,6 @@ namespace MicroService.Test.Integration
 
             Assert.NotNull(sut);
         }
-
 
     }
 }

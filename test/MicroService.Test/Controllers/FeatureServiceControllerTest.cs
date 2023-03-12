@@ -113,7 +113,7 @@ namespace MicroService.Test.Controllers
 
         [InlineData("InvalidKey")]
         [Theory]
-        public async Task GetShapeProperties_ReturnsBadRequestResult(string key)
+        public void GetShapeProperties_ReturnsBadRequestResult(string key)
         {
             //Arrange
             var controller = GetFeatureServiceController(null, null);
@@ -151,6 +151,25 @@ namespace MicroService.Test.Controllers
             //var okResult = Assert.IsType<OkObjectResult>(result.Result);
             //var shapeResult = Assert.IsType<ShapeBase>(okResult.Value);
             //Assert.NotNull(shapeResult);
+        }
+
+        [Fact]
+        public async Task GetFeatureLookup_ReturnsBadRequestResult()
+        {
+            var request = new FeatureRequestModel
+            {
+                Key = "InvalidRequest",
+                X = -74.0064,
+                Y = 40.7142
+            };
+
+            var controller = GetFeatureServiceController();
+
+            // Act
+            var sut = await controller.GetFeatureLookup(request);
+
+            // Assert
+            Assert.IsType<BadRequestResult>(sut.Result);
         }
 
 
