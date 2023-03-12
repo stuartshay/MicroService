@@ -19,7 +19,7 @@ namespace MicroService.Test.Unit
         [Theory(DisplayName = "Shape OutputFeatures")]
         public void Shape_OutputFeatures(string shapeFilePath)
         {
-            string shapeDirectory = $"../../../../../Files/{shapeFilePath}";
+            string shapeDirectory = $"../../../../../files/{shapeFilePath}";
             string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
             GeometryFactory factory = new();
