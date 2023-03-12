@@ -1,4 +1,4 @@
-﻿namespace MicroService.Service.Models.Enum.Attibutes
+﻿namespace MicroService.Service.Models.Enum.Attributes
 {
     public class ShapeAttribute : System.Attribute
     {

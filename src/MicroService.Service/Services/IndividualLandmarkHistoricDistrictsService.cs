@@ -4,7 +4,7 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
-using MicroService.Service.Models.Enum.Attibutes;
+using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Service.Services.Base;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
@@ -32,8 +32,18 @@ namespace MicroService.Service.Services
             {
                 // Map attributes
                 var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
-                var transformedGeometry = GeoTransformationHelper.TransformGeometry(feature.Geometry, Datum.Nad83, Datum.Wgs84);
 
+                //var shapeStyleAttribute = feature.GetType().GetMember(nameof(IndividualLandmarkHistoricDistrictsShapeProfile.ShapeStyle))[0]
+                //    .GetCustomAttribute<ShapeStyleAttribute>();
+
+
+                //featureAttributes.Add(nameof(IndividualLandmarkHistoricDistrictsShapeProfile.ShapeStyle), shapeStyleAttribute);
+
+
+
+
+                // Transform geometry
+                var transformedGeometry = GeoTransformationHelper.TransformGeometry(feature.Geometry, Datum.Nad83, Datum.Wgs84);
 
                 // Add feature to collection
                 featureCollection.Add(new Feature(transformedGeometry, new AttributesTable(featureAttributes)));

@@ -1,9 +1,12 @@
 ﻿using MicroService.Service.Models.Base;
+using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attibutes;
+using MicroService.Service.Models.Enum.Attributes;
 using System;
 
 namespace MicroService.Service.Models
 {
+    [ShapeProperties(ShapeProperties.NationalRegisterHistoricPlaces)]
     public class NationalRegisterHistoricPlacesShape : ShapeBase, ILandmark
     {
         [FeatureName("objectid")]

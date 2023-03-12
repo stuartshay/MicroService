@@ -3,7 +3,7 @@ using MicroService.Service.Helpers;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.DataMaps;
 using MicroService.Service.Models.Enum;
-using MicroService.Service.Models.Enum.Attibutes;
+using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Service.Models.FlatFileModels;
 using System.Collections.Generic;
 using System.Globalization;

@@ -1,6 +1,6 @@
 ﻿using MicroService.Service.Constants;
 using MicroService.Service.Helpers;
-using MicroService.Service.Models.Enum.Attibutes;
+using MicroService.Service.Models.Enum.Attributes;
 using NetTopologySuite.Geometries;
 using Xunit;
 
