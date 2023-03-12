@@ -2,6 +2,7 @@
 using MicroService.Service.Extensions;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
+using MicroService.Service.Models.Enum.Attibutes;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;

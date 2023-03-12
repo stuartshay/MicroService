@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using MicroService.Service.Models.Enum.Attibutes;
+using System.ComponentModel;
 
 namespace MicroService.Service.Models.Enum
 {

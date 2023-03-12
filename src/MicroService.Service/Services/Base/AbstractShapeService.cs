@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MicroService.Service.Helpers;
-using MicroService.Service.Models.Enum;
+using MicroService.Service.Models.Enum.Attibutes;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;

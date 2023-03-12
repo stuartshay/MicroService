@@ -1,5 +1,5 @@
 ﻿using MicroService.Service.Models.Base;
-using MicroService.Service.Models.Enum;
+using MicroService.Service.Models.Enum.Attibutes;
 using System.Text.Json.Serialization;
 
 namespace MicroService.Service.Models
