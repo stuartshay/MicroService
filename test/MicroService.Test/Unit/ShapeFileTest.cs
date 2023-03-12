@@ -15,7 +15,7 @@ namespace MicroService.Test.Unit
             _testOutputHelper = testOutputHelper;
         }
 
-        [InlineData(@"NYPD_Sectors\NYPD_Sectors")]
+        [InlineData(@"NYPD_Sectors/NYPD_Sectors")]
         [Theory(DisplayName = "Shape OutputFeatures")]
         public void Shape_OutputFeatures(string shapeFilePath)
         {
