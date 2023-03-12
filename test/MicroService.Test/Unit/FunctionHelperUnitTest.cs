@@ -1,6 +1,6 @@
 ﻿using MicroService.Service.Constants;
 using MicroService.Service.Helpers;
-using MicroService.Service.Models.Enum;
+using MicroService.Service.Models.Enum.Attibutes;
 using NetTopologySuite.Geometries;
 using Xunit;
 
@@ -119,7 +119,7 @@ namespace MicroService.Test.Unit
         public void ConvertNad83ToWgs84_ReturnsEmptyArray_WhenInputIsNull()
         {
             // Arrange
-            double[] xy = null;
+            double[]? xy = null;
 
             // Act
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(xy);

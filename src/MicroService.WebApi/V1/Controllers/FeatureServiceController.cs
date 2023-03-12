@@ -1,6 +1,7 @@
 ﻿using MicroService.Service.Helpers;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
+using MicroService.Service.Models.Enum.Attibutes;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
