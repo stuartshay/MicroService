@@ -18,7 +18,7 @@ namespace MicroService.Service.Helpers
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static (double?, double?) ConvertNad83ToWgs84(double? x, double? y)
+        public static (double? Longitude, double? Latitude) ConvertNad83ToWgs84(double? x, double? y)
         {
             if (!x.HasValue || !y.HasValue)
                 return (null, null);
@@ -38,7 +38,7 @@ namespace MicroService.Service.Helpers
         public static double[] ConvertNad83ToWgs84(double[] xy)
         {
             if (xy == null || xy.Length != 2)
-                return null;
+                return Array.Empty<double>();
 
             var csWgs84 = GeographicCoordinateSystem.WGS84;
             var csFact = new CoordinateSystemFactory();
@@ -58,7 +58,7 @@ namespace MicroService.Service.Helpers
         /// <param name="latitude"></param>
         /// <param name="longitude"></param>
         /// <returns></returns> 
-        public static (double?, double?) ConvertWgs84ToNad83(double? latitude, double? longitude)
+        public static (double? X, double? Y) ConvertWgs84ToNad83(double? latitude, double? longitude)
         {
             if (!latitude.HasValue || !longitude.HasValue)
                 return (null, null);
@@ -71,7 +71,7 @@ namespace MicroService.Service.Helpers
             var trans = ctFactory.CreateFromCoordinateSystems(csWgs84, utmNad83);
             var result = trans.MathTransform.Transform(new[] { longitude.Value, latitude.Value });
 
-            return (result[1], result[0]);
+            return (result[0], result[1]);
         }
 
         public static double[] ConvertWgs84ToNad83(double[] point)
@@ -90,7 +90,7 @@ namespace MicroService.Service.Helpers
             return new[] { result[1], result[0] };
         }
 
-        public static Geometry TransformGeometry(Geometry geometry, MicroService.Service.Models.Enum.Datum fromDatum, MicroService.Service.Models.Enum.Datum toDatum)
+        public static Geometry TransformGeometry(Geometry geometry, Models.Enum.Datum fromDatum, Models.Enum.Datum toDatum)
         {
             bool wgs84ToNad83 = fromDatum == Models.Enum.Datum.Wgs84 && toDatum == Models.Enum.Datum.Nad83;
             bool nad83ToWgs84 = fromDatum == Models.Enum.Datum.Nad83 && toDatum == Models.Enum.Datum.Wgs84;
@@ -103,7 +103,7 @@ namespace MicroService.Service.Helpers
             if (geometry is Point point)
             {
                 var xy = new[] { point.X, point.Y };
-                xy = wgs84ToNad83 ? GeoTransformationHelper.ConvertWgs84ToNad83(xy) : GeoTransformationHelper.ConvertNad83ToWgs84(xy);
+                xy = wgs84ToNad83 ? ConvertWgs84ToNad83(xy) : ConvertNad83ToWgs84(xy);
                 point.X = xy[0];
                 point.Y = xy[1];
             }
@@ -112,7 +112,7 @@ namespace MicroService.Service.Helpers
                 for (int i = 0; i < lineString.Coordinates.Length; i++)
                 {
                     var xy = new[] { lineString.Coordinates[i].X, lineString.Coordinates[i].Y };
-                    xy = wgs84ToNad83 ? GeoTransformationHelper.ConvertWgs84ToNad83(xy) : GeoTransformationHelper.ConvertNad83ToWgs84(xy);
+                    xy = wgs84ToNad83 ? ConvertWgs84ToNad83(xy) : ConvertNad83ToWgs84(xy);
                     lineString.Coordinates[i].X = xy[0];
                     lineString.Coordinates[i].Y = xy[1];
                 }
@@ -122,7 +122,7 @@ namespace MicroService.Service.Helpers
                 for (int i = 0; i < polygon.Shell.Coordinates.Length; i++)
                 {
                     var xy = new[] { polygon.Shell.Coordinates[i].X, polygon.Shell.Coordinates[i].Y };
-                    xy = wgs84ToNad83 ? GeoTransformationHelper.ConvertWgs84ToNad83(xy) : GeoTransformationHelper.ConvertNad83ToWgs84(xy);
+                    xy = wgs84ToNad83 ? ConvertWgs84ToNad83(xy) : ConvertNad83ToWgs84(xy);
                     polygon.Shell.Coordinates[i].X = xy[0];
                     polygon.Shell.Coordinates[i].Y = xy[1];
                 }
@@ -131,7 +131,7 @@ namespace MicroService.Service.Helpers
                     for (int j = 0; j < polygon.Holes[i].Coordinates.Length; j++)
                     {
                         var xy = new[] { polygon.Holes[i].Coordinates[j].X, polygon.Holes[i].Coordinates[j].Y };
-                        xy = wgs84ToNad83 ? GeoTransformationHelper.ConvertWgs84ToNad83(xy) : GeoTransformationHelper.ConvertNad83ToWgs84(xy);
+                        xy = wgs84ToNad83 ? ConvertWgs84ToNad83(xy) : ConvertNad83ToWgs84(xy);
                         polygon.Holes[i].Coordinates[j].X = xy[0];
                         polygon.Holes[i].Coordinates[j].Y = xy[1];
                     }
@@ -140,7 +140,6 @@ namespace MicroService.Service.Helpers
 
             return geometry;
         }
-
 
     }
 }
