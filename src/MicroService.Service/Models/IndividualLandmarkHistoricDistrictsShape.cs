@@ -1,9 +1,12 @@
 ﻿using MicroService.Service.Models.Base;
+using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attibutes;
+using MicroService.Service.Models.Enum.Attributes;
 using System.Text.Json.Serialization;
 
 namespace MicroService.Service.Models
 {
+    [ShapeProperties(ShapeProperties.IndividualLandmarkHistoricDistricts)]
     public class IndividualLandmarkHistoricDistrictsShape : ShapeBase, ILandmark
     {
         [FeatureName("BIN")]

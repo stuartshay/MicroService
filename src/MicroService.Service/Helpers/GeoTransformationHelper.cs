@@ -2,6 +2,7 @@
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 using System;
+using Datum = MicroService.Service.Models.Enum.Attributes.Datum;
 
 namespace MicroService.Service.Helpers
 {
@@ -90,10 +91,10 @@ namespace MicroService.Service.Helpers
             return new[] { result[1], result[0] };
         }
 
-        public static Geometry TransformGeometry(Geometry geometry, Models.Enum.Attibutes.Datum fromDatum, Models.Enum.Attibutes.Datum toDatum)
+        public static Geometry TransformGeometry(Geometry geometry, Datum fromDatum, Datum toDatum)
         {
-            bool wgs84ToNad83 = fromDatum == Models.Enum.Attibutes.Datum.Wgs84 && toDatum == Models.Enum.Attibutes.Datum.Nad83;
-            bool nad83ToWgs84 = fromDatum == Models.Enum.Attibutes.Datum.Nad83 && toDatum == Models.Enum.Attibutes.Datum.Wgs84;
+            bool wgs84ToNad83 = fromDatum == Datum.Wgs84 && toDatum == Datum.Nad83;
+            bool nad83ToWgs84 = fromDatum == Datum.Nad83 && toDatum == Datum.Wgs84;
 
             if (!wgs84ToNad83 && !nad83ToWgs84)
             {

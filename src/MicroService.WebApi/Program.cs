@@ -11,7 +11,7 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
-using MicroService.Service.Models.Enum.Attibutes;
+using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Service.Services;
 using MicroService.Service.Services.Base;
 using MicroService.Service.Services.DataService;
