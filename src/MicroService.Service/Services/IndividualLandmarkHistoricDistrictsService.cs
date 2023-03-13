@@ -32,15 +32,7 @@ namespace MicroService.Service.Services
             {
                 // Map attributes
                 var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
-
-                //var shapeStyleAttribute = feature.GetType().GetMember(nameof(IndividualLandmarkHistoricDistrictsShapeProfile.ShapeStyle))[0]
-                //    .GetCustomAttribute<ShapeStyleAttribute>();
-
-
-                //featureAttributes.Add(nameof(IndividualLandmarkHistoricDistrictsShapeProfile.ShapeStyle), shapeStyleAttribute);
-
-
-
+                featureAttributes.Add("ShapeColor", Color.Blue.ToString().ToLower());
 
                 // Transform geometry
                 var transformedGeometry = GeoTransformationHelper.TransformGeometry(feature.Geometry, Datum.Nad83, Datum.Wgs84);
