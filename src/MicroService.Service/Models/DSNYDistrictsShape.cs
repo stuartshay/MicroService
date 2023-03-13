@@ -1,8 +1,10 @@
 ﻿using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
+using MicroService.Service.Models.Enum.Attributes;
 
 namespace MicroService.Service.Models
 {
+    [ShapeProperties(ShapeProperties.DSNYDistricts)]
     public class DsnyDistrictsShape : ShapeBase
     {
         [FeatureName("district")]
@@ -11,6 +13,11 @@ namespace MicroService.Service.Models
         [FeatureName("districtco")]
         public int DistrictCode { get; set; }
 
+        [FeatureName("fid")]
+        public string Fid { get; set; }
+
+        [FeatureName("globalid")]
+        public string GlobalId { get; set; }
 
         public string OperationZone { get; set; }
 

@@ -139,36 +139,6 @@ namespace MicroService.WebApi.Extensions
                           .AddHttpClientInstrumentation()
                           .AddAspNetCoreInstrumentation();
                 });
-
-
-
-
-
-
-                //    builder =>
-                //    {
-                //        _ = builder
-                //            .SetResourceBuilder(ResourceBuilder.CreateDefault()
-                //                .AddService(env.ApplicationName))
-                //            .AddSource(nameof(FeatureServiceController))
-                //            .AddAspNetCoreInstrumentation()
-                //            .AddHttpClientInstrumentation();
-
-                //        if (commonConfig!.JaegerConfiguration.Enabled && commonConfig.JaegerConfiguration.RemoteAgentEnabled)
-                //        {
-                //            builder.AddJaegerExporter(o =>
-                //            {
-                //                o.AgentHost = commonConfig!.JaegerConfiguration.AgentHost;
-                //                o.AgentPort = commonConfig!.JaegerConfiguration.AgentPort;
-                //            });
-                //        }
-
-                //        if (env.IsDevelopment())
-                //        {
-                //            builder.AddConsoleExporter(options => options.Targets = ConsoleExporterOutputTargets.Console);
-                //        }
-                //    }
-                //);
             }
         }
 
@@ -213,14 +183,17 @@ namespace MicroService.WebApi.Extensions
         {
             app.UseSwagger();
 
-            app.UseSwaggerUI(
-                options =>
-                {
-                    foreach (var description in provider.ApiVersionDescriptions)
+            app.UseSwaggerUI(options =>
+            {
+                provider.ApiVersionDescriptions
+                    .Select(description => new
                     {
-                        options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"MicroService.WebApi - {description.GroupName.ToUpperInvariant()}");
-                    }
-                });
+                        Url = $"/swagger/{description.GroupName}/swagger.json",
+                        Title = $"MicroService.WebApi - {description.GroupName.ToUpperInvariant()}"
+                    })
+                    .ToList()
+                    .ForEach(x => options.SwaggerEndpoint(x.Url, x.Title));
+            });
         }
 
         /// <summary>

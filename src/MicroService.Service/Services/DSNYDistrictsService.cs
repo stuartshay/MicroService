@@ -4,6 +4,8 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using MicroService.Service.Models.Enum.Attributes;
+using MicroService.Service.Services.Base;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
@@ -12,7 +14,7 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class DsnyDistrictsService : AbstractShapeService<DsnyDistrictsShape, FeatureToDsnyDistrictsShapeProfile>, IShapeService<DsnyDistrictsShape>
+    public class DsnyDistrictsService : AbstractShapeService<DsnyDistrictsShape, DsnyDistrictsShapeProfile>, IShapeService<DsnyDistrictsShape>
     {
         public DsnyDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
@@ -48,6 +50,7 @@ namespace MicroService.Service.Services
             foreach (var feature in features)
             {
                 var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
+                featureAttributes.Add("ShapeColor", Color.Blue.ToString().ToLower());
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
 

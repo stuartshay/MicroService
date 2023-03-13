@@ -1,6 +1,8 @@
-﻿using GeoAPI.Geometries;
+﻿using NetTopologySuite.Geometries;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
+using System;
+using Datum = MicroService.Service.Models.Enum.Attributes.Datum;
 
 namespace MicroService.Service.Helpers
 {
@@ -17,7 +19,7 @@ namespace MicroService.Service.Helpers
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static (double?, double?) ConvertNad83ToWgs84(double? x, double? y)
+        public static (double? Longitude, double? Latitude) ConvertNad83ToWgs84(double? x, double? y)
         {
             if (!x.HasValue || !y.HasValue)
                 return (null, null);
@@ -26,14 +28,30 @@ namespace MicroService.Service.Helpers
             var csFact = new CoordinateSystemFactory();
             var utmNad83 = csFact.CreateFromWkt(Epsg2263EsriWkt);
 
+            var ctFactory = new CoordinateTransformationFactory();
+            var trans = ctFactory.CreateFromCoordinateSystems(utmNad83, csWgs84);
+
+            var result = trans.MathTransform.Transform(new[] { x.Value, y.Value });
+
+            return (result[0], result[1]);
+        }
+
+        public static double[] ConvertNad83ToWgs84(double[] xy)
+        {
+            if (xy == null || xy.Length != 2)
+                return Array.Empty<double>();
+
+            var csWgs84 = GeographicCoordinateSystem.WGS84;
+            var csFact = new CoordinateSystemFactory();
+            var utmNad83 = csFact.CreateFromWkt(Epsg2263EsriWkt);
 
             var ctFactory = new CoordinateTransformationFactory();
             var trans = ctFactory.CreateFromCoordinateSystems(utmNad83, csWgs84);
-            var result = trans.MathTransform.Transform(new Coordinate { X = (double)x, Y = (double)y});
-           
-            return (result.X, result.Y);
-        }
 
+            var result = trans.MathTransform.Transform(xy);
+
+            return new[] { result[0], result[1] };
+        }
 
         /// <summary>
         /// Convert NAD83 to WGS84
@@ -41,21 +59,88 @@ namespace MicroService.Service.Helpers
         /// <param name="latitude"></param>
         /// <param name="longitude"></param>
         /// <returns></returns> 
-        public static (double?, double?) ConvertWgs84ToNad83(double? latitude, double? longitude)
+        public static (double? X, double? Y) ConvertWgs84ToNad83(double? latitude, double? longitude)
         {
             if (!latitude.HasValue || !longitude.HasValue)
                 return (null, null);
 
             var csWgs84 = GeographicCoordinateSystem.WGS84;
-
             var csFact = new CoordinateSystemFactory();
             var utmNad83 = csFact.CreateFromWkt(Epsg2263EsriWkt);
 
             var ctFactory = new CoordinateTransformationFactory();
             var trans = ctFactory.CreateFromCoordinateSystems(csWgs84, utmNad83);
-            var result = trans.MathTransform.Transform(new Coordinate { X = (double)longitude, Y = (double)latitude });
+            var result = trans.MathTransform.Transform(new[] { longitude.Value, latitude.Value });
 
-            return (result.X, result.Y);
-        } 
+            return (result[0], result[1]);
+        }
+
+        public static double[] ConvertWgs84ToNad83(double[] point)
+        {
+            if (point == null || point.Length != 2)
+                throw new ArgumentException("Point must be an array of two doubles", nameof(point));
+
+            var csWgs84 = GeographicCoordinateSystem.WGS84;
+            var csFact = new CoordinateSystemFactory();
+            var utmNad83 = csFact.CreateFromWkt(Epsg2263EsriWkt);
+
+            var ctFactory = new CoordinateTransformationFactory();
+            var trans = ctFactory.CreateFromCoordinateSystems(csWgs84, utmNad83);
+            var result = trans.MathTransform.Transform(point);
+
+            return new[] { result[1], result[0] };
+        }
+
+        public static Geometry TransformGeometry(Geometry geometry, Datum fromDatum, Datum toDatum)
+        {
+            bool wgs84ToNad83 = fromDatum == Datum.Wgs84 && toDatum == Datum.Nad83;
+            bool nad83ToWgs84 = fromDatum == Datum.Nad83 && toDatum == Datum.Wgs84;
+
+            if (!wgs84ToNad83 && !nad83ToWgs84)
+            {
+                throw new ArgumentException("Invalid datum combination.");
+            }
+
+            if (geometry is Point point)
+            {
+                var xy = new[] { point.X, point.Y };
+                xy = wgs84ToNad83 ? ConvertWgs84ToNad83(xy) : ConvertNad83ToWgs84(xy);
+                point.X = xy[0];
+                point.Y = xy[1];
+            }
+            else if (geometry is LineString lineString)
+            {
+                for (int i = 0; i < lineString.Coordinates.Length; i++)
+                {
+                    var xy = new[] { lineString.Coordinates[i].X, lineString.Coordinates[i].Y };
+                    xy = wgs84ToNad83 ? ConvertWgs84ToNad83(xy) : ConvertNad83ToWgs84(xy);
+                    lineString.Coordinates[i].X = xy[0];
+                    lineString.Coordinates[i].Y = xy[1];
+                }
+            }
+            else if (geometry is Polygon polygon)
+            {
+                for (int i = 0; i < polygon.Shell.Coordinates.Length; i++)
+                {
+                    var xy = new[] { polygon.Shell.Coordinates[i].X, polygon.Shell.Coordinates[i].Y };
+                    xy = wgs84ToNad83 ? ConvertWgs84ToNad83(xy) : ConvertNad83ToWgs84(xy);
+                    polygon.Shell.Coordinates[i].X = xy[0];
+                    polygon.Shell.Coordinates[i].Y = xy[1];
+                }
+                for (int i = 0; i < polygon.Holes.Length; i++)
+                {
+                    for (int j = 0; j < polygon.Holes[i].Coordinates.Length; j++)
+                    {
+                        var xy = new[] { polygon.Holes[i].Coordinates[j].X, polygon.Holes[i].Coordinates[j].Y };
+                        xy = wgs84ToNad83 ? ConvertWgs84ToNad83(xy) : ConvertNad83ToWgs84(xy);
+                        polygon.Holes[i].Coordinates[j].X = xy[0];
+                        polygon.Holes[i].Coordinates[j].Y = xy[1];
+                    }
+                }
+            }
+
+            return geometry;
+        }
+
     }
 }
