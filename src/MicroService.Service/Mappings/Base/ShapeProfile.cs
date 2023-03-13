@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MicroService.Service.Models.Enum.Attibutes;
+using MicroService.Service.Models.Enum.Attributes;
 using System.Collections.Generic;
 using System.Linq;
 
