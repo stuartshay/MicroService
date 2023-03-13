@@ -35,7 +35,6 @@ namespace MicroService.Test.Integration
             _testOutputHelper.WriteLine($"Max bounds: ({bounds.MaxX},{bounds.MaxY})");
         }
 
-
         [Fact(DisplayName = "Get Shape File Database Properties")]
         public void Get_Shape_Database_Properties()
         {
@@ -67,7 +66,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(features);
         }
 
-
         [InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique", "MN")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
@@ -78,7 +76,6 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, sut.AreaName);
             Assert.Equal(expected2, sut.BoroName);
         }
-
 
         [InlineData("3066920018", "Free-standing House", "803 East 17th Street")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
@@ -103,7 +100,6 @@ namespace MicroService.Test.Integration
 
             Assert.NotNull(sut);
         }
-
 
         [InlineData("3066920018", "Free-standing House", "803 East 17th Street")]
         [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
