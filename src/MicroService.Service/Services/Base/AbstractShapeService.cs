@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum.Attibutes;
+using MicroService.Service.Models.Enum.Attributes;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
@@ -8,23 +9,34 @@ using NetTopologySuite.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace MicroService.Service.Services.Base
 {
     public delegate IShapefileDataReaderService ShapefileDataReaderResolver(string key);
 
-    public abstract class AbstractShapeService<T, TProfile> where T : class, new() where TProfile : Profile, new()
+    public abstract class AbstractShapeService<TShape, TProfile>
+        where TShape : class, new()
+        where TProfile : Profile, new()
     {
         protected IShapefileDataReaderService ShapeFileDataReader { get; set; }
 
-        protected IMapper Mapper { get; }
+        protected readonly IMapper Mapper;
 
         protected readonly ILogger Logger;
 
-        protected AbstractShapeService(ILogger logger, IMapper mapper)
+        protected ShapePropertiesAttribute ShapePropertiesAttribute { get; }
+
+        protected AbstractShapeService(
+            ILogger logger,
+            IMapper mapper)
         {
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             Mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+
+            ShapePropertiesAttribute = typeof(TShape)
+                .GetTypeInfo()
+                .GetCustomAttribute<ShapePropertiesAttribute>();
         }
 
         public ShapefileHeader GetShapeProperties()
@@ -47,13 +59,13 @@ namespace MicroService.Service.Services.Base
         /// <returns></returns>
         public List<KeyValuePair<string, object>> ValidateFeatureKey(List<KeyValuePair<string, object>> attributes)
         {
-            var shapeClass = Activator.CreateInstance<T>(); // create an instance of the class
+            var shapeClass = Activator.CreateInstance<TShape>(); // create an instance of the class
 
             for (int i = 0; i < attributes.Count; i++)
             {
                 var key = attributes[i].Key;
                 var featureName = GetFeatureName(key);
-                var propertyInfo = typeof(T).GetProperty(key);
+                var propertyInfo = typeof(TShape).GetProperty(key);
 
                 if (propertyInfo != null)
                 {
@@ -149,22 +161,22 @@ namespace MicroService.Service.Services.Base
 
         public string GetFeatureName(string propertyName)
         {
-            T shapeClass = Activator.CreateInstance<T>();
+            TShape shapeClass = Activator.CreateInstance<TShape>();
             var featureName = ReflectionExtensions.GetAttributeFromProperty<FeatureNameAttribute>(shapeClass, propertyName);
 
             return featureName?.AttributeName;
         }
 
-        public virtual IEnumerable<T> GetFeatureList()
+        public virtual IEnumerable<TShape> GetFeatureList()
         {
             var features = GetFeatures();
             Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
 
-            var results = Mapper.Map<IEnumerable<T>>(features);
+            var results = Mapper.Map<IEnumerable<TShape>>(features);
             return results;
         }
 
-        public virtual IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public virtual IEnumerable<TShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
         {
             attributes = ValidateFeatureKey(attributes);
 
@@ -176,12 +188,12 @@ namespace MicroService.Service.Services.Base
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => Mapper.Map<T>(f));
+                .Select(f => Mapper.Map<TShape>(f));
 
             return results;
         }
 
-        public virtual T GetFeatureLookup(double x, double y)
+        public virtual TShape GetFeatureLookup(double x, double y)
         {
             var point = new Point(x, y);
 
@@ -193,7 +205,7 @@ namespace MicroService.Service.Services.Base
                 return null;
             }
 
-            return Mapper.Map<T>(feature);
+            return Mapper.Map<TShape>(feature);
         }
 
         public IReadOnlyCollection<Feature> GetFeatures() =>
