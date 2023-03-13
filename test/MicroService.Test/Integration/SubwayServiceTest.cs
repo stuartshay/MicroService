@@ -3,6 +3,7 @@ using MicroService.Service.Models;
 using MicroService.Test.Fixture;
 using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
+using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 using Xunit;
 using Xunit.Abstractions;
@@ -12,12 +13,14 @@ namespace MicroService.Test.Integration
     public class SubwayServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
         public IShapeService<SubwayShape> _service;
+        public IPointService<SubwayShape> _pointService;
 
         private readonly ITestOutputHelper _testOutputHelper;
 
         public SubwayServiceTest(ShapeServiceFixture fixture, ITestOutputHelper output)
         {
             _service = fixture.SubwayService;
+            _pointService = fixture.SubwayPointService;
             _testOutputHelper = output;
         }
 
@@ -76,9 +79,8 @@ namespace MicroService.Test.Integration
             //Assert.Equal(expected, sut.BoroName);
         }
 
-        [InlineData(1006187, 732036)]
-        [Theory(Skip = "TODO - Point Lookup", DisplayName = "Get Feature Point Lookup Not Found")]
-        [Trait("Category", "Integration")]
+        [InlineData(27006187, 932036)]
+        [Theory(Skip = "TODO: FIX", DisplayName = "Get Feature Point Lookup Not Found")]
         public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
@@ -127,7 +129,19 @@ namespace MicroService.Test.Integration
             Assert.Equal(double.Parse(expected), result.Attributes["ObjectId"]);
         }
 
+        [Fact(Skip = "TODO FIX")]
+        public void FindPointsByRadius_ReturnsPointsWithinRadius()
+        {
+            // Arrange
+            var centerPoint = new Point(40.7677792, -73.969123);
+            var radius = 0.05; // meters
 
+            // Act
+            var pointsWithinRadius = _pointService.FindPointsByRadius(centerPoint, radius);
+
+            // Assert
+            Assert.NotEmpty(pointsWithinRadius);
+        }
 
 
         [Fact]

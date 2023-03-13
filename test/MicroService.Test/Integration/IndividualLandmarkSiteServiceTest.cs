@@ -67,7 +67,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
         }
 
-
         [InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique", "MN")]
         [Theory(DisplayName = "Get Feature Point Lookup")]
         public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)

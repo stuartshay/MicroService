@@ -4,6 +4,8 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
+using MicroService.Service.Models.Enum.Attributes;
+using MicroService.Service.Services.Base;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
@@ -12,7 +14,8 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class IndividualLandmarkSiteService : AbstractShapeService<IndividualLandmarkSiteShape, FeatureToIndividualLandmarkSiteShapeProfile>, IShapeService<IndividualLandmarkSiteShape>
+    public class IndividualLandmarkSiteService : AbstractShapeService<IndividualLandmarkSiteShape,
+        IndividualLandmarkSiteShapeProfile>, IShapeService<IndividualLandmarkSiteShape>
     {
         public IndividualLandmarkSiteService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IMapper mapper,
@@ -30,6 +33,7 @@ namespace MicroService.Service.Services
             foreach (var feature in features)
             {
                 var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
+                featureAttributes.Add("ShapeColor", Color.Red.ToString().ToLower());
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
 

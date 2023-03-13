@@ -42,6 +42,4 @@ public class BoroughBoundaryShapeTest : BaseMapper<BoroughBoundaryShape>
         // Act & Assert
         Assert.Throws<AutoMapperMappingException>(() => Mapper.Map<BoroughBoundaryShape>(attributes));
     }
-
-
 }

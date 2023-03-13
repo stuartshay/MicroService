@@ -15,14 +15,11 @@ namespace MicroService.Test.Unit
             _testOutputHelper = testOutputHelper;
         }
 
-        [Theory(Skip = "Ignore", DisplayName = "Shape OutputFeatures Borough Boundaries")]
-        // [InlineData(@"Borough_Boundaries\nybb")]
-        //[InlineData(@"Historic_Districts\LPC_HD_OpenData_2015March")]
-        [InlineData(@"NYPD_Sectors\NYPD_Sectors")]
-        //[InlineData(@"LPC_Individual_Landmark_and_Historic_Building_Database\LPC_Individual_Landmark_and_Historic_Building_Database")]
-        public void Shape_OutputFeatures_Borough_Boundaries(string shapeFilePath)
+        [InlineData(@"NYPD_Sectors/NYPD_Sectors")]
+        [Theory(DisplayName = "Shape OutputFeatures")]
+        public void Shape_OutputFeatures(string shapeFilePath)
         {
-            string shapeDirectory = $"../../../../../Files/{shapeFilePath}";
+            string shapeDirectory = $"../../../../../files/{shapeFilePath}";
             string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
             GeometryFactory factory = new();
@@ -47,7 +44,7 @@ namespace MicroService.Test.Unit
                 _testOutputHelper.WriteLine($"   {fldDescriptor.Name} {fldDescriptor.DbaseType}");
             }
 
-            // Read through all records of the shapefile (geometry and attributes) into a feature collection 
+            // Read through all records of the shapefile (geometry and attributes) into a feature collection
             var features = new List<Feature>();
             while (shapeFileDataReader.Read())
             {
@@ -79,8 +76,8 @@ namespace MicroService.Test.Unit
                 if (z)
                 {
                     var z1 = f.Attributes["pct"];
-                    //var z2 = f.Attributes["patrol_bor"];
-                    //var z3 = f.Attributes["sector"];
+                    // var z2 = f.Attributes["patrol_bor"];
+                    // var z3 = f.Attributes["sector"];
                 }
             }
         }

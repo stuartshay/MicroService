@@ -1,5 +1,6 @@
 ﻿using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
+using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Service.Models.FlatFileModels;
 using MicroService.WebApi.Extensions.Constants;
 using Microsoft.AspNetCore.Cors;

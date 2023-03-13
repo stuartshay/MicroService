@@ -11,7 +11,9 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
+using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Service.Services;
+using MicroService.Service.Services.Base;
 using MicroService.Service.Services.DataService;
 using MicroService.Service.Services.FlatFileService;
 using MicroService.WebApi.Extensions;
@@ -27,7 +29,6 @@ using Prometheus;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text.Json;
-
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -65,7 +66,7 @@ void SetupMappings()
     services.AddSingleton(_ => new MapperConfiguration(cfg =>
     {
         cfg.Internal().AllowAdditiveTypeMapCreation = true;
-        cfg.AddMaps(typeof(FeatureToBoroughBoundaryShapeProfile).Assembly);
+        cfg.AddMaps(typeof(BoroughBoundaryShapeProfile).Assembly);
     }).CreateMapper());
 }
 
@@ -125,6 +126,8 @@ void AddServices()
             shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.IndividualLandmarkSite))
             shapeProperties = ShapeProperties.IndividualLandmarkSite.GetAttribute<ShapeAttribute>();
+        else if (key == nameof(ShapeProperties.IndividualLandmarkHistoricDistricts))
+            shapeProperties = ShapeProperties.IndividualLandmarkHistoricDistricts.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.NationalRegisterHistoricPlaces))
             shapeProperties = ShapeProperties.NationalRegisterHistoricPlaces.GetAttribute<ShapeAttribute>();
         else if (key == nameof(ShapeProperties.Neighborhoods))
@@ -157,26 +160,20 @@ void AddServices()
         return new CachedShapefileDataReader(cache, key, shapeFileNamePath);
     });
 
-    // Feature Service Lookups
-    services.AddScoped<BoroughBoundariesService>();
-    services.AddScoped<CommunityDistrictsService>();
-    services.AddScoped<DsnyDistrictsService>();
-    services.AddScoped<HistoricDistrictService>();
-    services.AddScoped<IndividualLandmarkSiteService>();
+    //// Register Shape Services
+    //var serviceTypes = typeof(AbstractShapeService<,>).Assembly.GetTypes()
+    //    .Where(type => type.Namespace == "MicroService.Service.Services"
+    //                   && !type.IsAbstract && typeof(AbstractShapeService<,>).IsAssignableFrom(type));
 
-    services.AddScoped<NationalRegisterHistoricPlacesService>();
+    var serviceTypes = typeof(BoroughBoundariesService).Assembly.GetTypes()
+        .Where(type => type.Namespace == "MicroService.Service.Services" && type.Name.EndsWith("Service"));
 
+    foreach (var serviceType in serviceTypes)
+    {
+        services.AddScoped(serviceType);
+    }
 
-    services.AddScoped<NeighborhoodsService>();
-    services.AddScoped<NeighborhoodTabulationAreasService>();
-    services.AddScoped<NypdPolicePrecinctService>();
-    services.AddScoped<NypdSectorsService>();
-    services.AddScoped<NychaDevelopmentService>();
-    services.AddScoped<ParkService>();
-    services.AddScoped<ScenicLandmarkService>();
-    services.AddScoped<SubwayService>();
-    services.AddScoped<ZipCodeService>();
-
+    // Register Shape Service Resolver
     services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>
     {
         return (key switch
@@ -186,6 +183,7 @@ void AddServices()
             nameof(ShapeProperties.DSNYDistricts) => serviceProvider.GetService<DsnyDistrictsService>(),
             nameof(ShapeProperties.HistoricDistricts) => serviceProvider.GetService<HistoricDistrictService>(),
             nameof(ShapeProperties.IndividualLandmarkSite) => serviceProvider.GetService<IndividualLandmarkSiteService>(),
+            nameof(ShapeProperties.IndividualLandmarkHistoricDistricts) => serviceProvider.GetService<IndividualLandmarkHistoricDistrictsService>(),
             nameof(ShapeProperties.NationalRegisterHistoricPlaces) => serviceProvider.GetService<NationalRegisterHistoricPlacesService>(),
             nameof(ShapeProperties.Neighborhoods) => serviceProvider.GetService<NeighborhoodsService>(),
             nameof(ShapeProperties.NeighborhoodTabulationAreas) => serviceProvider.GetService<NeighborhoodTabulationAreasService>(),
