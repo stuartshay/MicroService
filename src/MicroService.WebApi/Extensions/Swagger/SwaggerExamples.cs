@@ -78,8 +78,8 @@ namespace MicroService.WebApi.Extensions.Swagger
                     Key = "IndividualLandmarkHistoricDistricts",
                     Attributes = new List<KeyValuePair<string, object>>
                     {
-                        //new("LPNumber", "LP-00001"),
-                        new("Bbl", "1008510001"),
+                        new("LPNumber", "LP-00001"),
+                        //new("Bbl", "1008510001"),
                         // new("HistDist", "Fraunces Tavern Block Historic District"),
                     },
                 };
