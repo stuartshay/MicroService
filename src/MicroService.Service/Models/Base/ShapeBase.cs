@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Models.Enum.Attibutes;
+﻿using MicroService.Service.Models.Enum.Attributes;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using System.Text.Json.Serialization;

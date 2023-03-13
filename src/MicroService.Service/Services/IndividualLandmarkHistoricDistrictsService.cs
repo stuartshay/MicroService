@@ -15,16 +15,26 @@ namespace MicroService.Service.Services
     public class IndividualLandmarkHistoricDistrictsService : AbstractShapeService<IndividualLandmarkHistoricDistrictsShape,
             IndividualLandmarkHistoricDistrictsShapeProfile>, IShapeService<IndividualLandmarkHistoricDistrictsShape>
     {
+        private readonly IndividualLandmarkSiteService _individualLandmarkSiteService;
+
         public IndividualLandmarkHistoricDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
+            IndividualLandmarkSiteService individualLandmarkSiteService,
             IMapper mapper,
             ILogger<IndividualLandmarkSiteService> logger)
             : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkHistoricDistricts));
+            _individualLandmarkSiteService = individualLandmarkSiteService;
         }
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
+            var propertyAttributes = new List<KeyValuePair<string, object>>
+            {
+               new KeyValuePair<string, object>("LPNumber","LP-00001")
+            };
+            var properties = _individualLandmarkSiteService.GetFeatureCollection(propertyAttributes);
+
             var featureCollection = new FeatureCollection();
             var features = GetFeatureLookup(attributes);
 

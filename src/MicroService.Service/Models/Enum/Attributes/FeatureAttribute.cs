@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MicroService.Service.Models.Enum.Attibutes
+namespace MicroService.Service.Models.Enum.Attributes
 {
     public class FeatureNameAttribute : Attribute
     {
