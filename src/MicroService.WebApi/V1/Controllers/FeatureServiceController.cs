@@ -172,9 +172,14 @@ namespace MicroService.WebApi.V1.Controllers
             var service = _shapeServiceResolver!(request?.Key!);
 
             var shapeType = service.GetType().GetInterface("IShapeService`1")!.GetGenericArguments()[0];
-            var fields = shapeType.GetPropertiesWithCustomAttribute<FeatureNameAttribute>().Select(x => x.Name).ToList();
 
-            var invalidItems = keys.Where(x => !fields.Contains(x)).ToList();
+            // Validate Input
+            var fields = shapeType.GetPropertiesWithCustomAttribute<FeatureNameAttribute>().Select(x => x.Name).ToList();
+            var mappingFields = shapeType.GetPropertiesWithCustomAttribute<MappingKeyAttribute>().Select(x => x.Name).ToList();
+            var allFields = fields.Union(mappingFields).ToList();
+
+            var invalidItems = keys.Where(x => !allFields.Contains(x)).ToList();
+
             if (invalidItems.Any())
             {
                 var invalidFields = string.Join(", ", invalidItems);
@@ -208,9 +213,13 @@ namespace MicroService.WebApi.V1.Controllers
             var service = _shapeServiceResolver!(request?.Key!);
 
             var shapeType = service.GetType().GetInterface("IShapeService`1")!.GetGenericArguments()[0];
-            var fields = shapeType.GetPropertiesWithCustomAttribute<FeatureNameAttribute>().Select(x => x.Name).ToList();
 
-            var invalidItems = keys.Where(x => !fields.Contains(x)).ToList();
+            // Validate Input
+            var fields = shapeType.GetPropertiesWithCustomAttribute<FeatureNameAttribute>().Select(x => x.Name).ToList();
+            var mappingFields = shapeType.GetPropertiesWithCustomAttribute<MappingKeyAttribute>().Select(x => x.Name).ToList();
+            var allFields = fields.Union(mappingFields).ToList();
+
+            var invalidItems = keys.Where(x => !allFields.Contains(x)).ToList();
             if (invalidItems.Any())
             {
                 var invalidFields = string.Join(", ", invalidItems);

@@ -30,7 +30,7 @@ namespace MicroService.Service.Services
             foreach (var feature in features)
             {
                 var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
-                featureAttributes.Add("ShapeColor", Color.Blue.ToString().ToLower());
+                featureAttributes.Add("ShapeColor", Color.Green.ToString().ToLower());
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
 

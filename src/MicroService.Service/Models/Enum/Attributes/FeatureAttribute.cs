@@ -22,4 +22,13 @@ namespace MicroService.Service.Models.Enum.Attributes
         public string Name { get; set; }
     }
 
+    public class MappingKeyAttribute : Attribute
+    {
+        public MappingKeyAttribute(string attributeName)
+        {
+            AttributeName = attributeName;
+        }
+
+        public string AttributeName { get; set; }
+    }
 }
