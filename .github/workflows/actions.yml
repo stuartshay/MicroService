@@ -45,7 +45,7 @@ jobs:
         run: dotnet tool install --global dotnet-coverage
 
       - name: Test
-        run: dotnet-coverage collect 'dotnet test' -f xml -o 'coverage.xml'
+        run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
 
       - name: Install ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
