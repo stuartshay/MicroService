@@ -1,4 +1,5 @@
 ﻿using MicroService.Service.Helpers;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
@@ -128,16 +129,16 @@ namespace MicroService.WebApi.V1.Controllers
         }
 
         /// <summary>
-        ///  Get Feature Lookup
+        ///  Get Geospatial Feature Lookup
         /// </summary>
         /// <param name="request">Feature Request</param>
         /// <returns></returns>
-        [HttpGet("featurelookup", Name = "GetFeatureLookup")]
+        [HttpGet("geospatiallookup", Name = "GetGeospatialLookup")]
         [Produces("application/json", Type = typeof(ShapeBase))]
         [ProducesResponseType(typeof(ShapeBase), 200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<object>> GetFeatureLookup([FromQuery] FeatureRequestModel request)
+        public async Task<ActionResult<object>> GetGeospatialLookup([FromQuery] FeatureRequestModel request)
         {
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();
@@ -153,46 +154,27 @@ namespace MicroService.WebApi.V1.Controllers
             return await Task.FromResult(Ok(results));
         }
 
-
         /// <summary>
-        ///  Get Feature Attribute Lookup
+        /// Get Feature Attribute Lookup
         /// </summary>
-        /// <returns></returns>
         [HttpPost("attributelookup", Name = "GetAttributeLookup")]
-        [Produces("application/json", Type = typeof(ShapeBase))]
-        [ProducesResponseType(typeof(ShapeBase), 200)]
+        [Produces("application/json", Type = typeof(List<object>))]
+        [ProducesResponseType(typeof(List<object>), 200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<List<object>>> GetAttributeLookup([FromBody] FeatureAttributeLookupRequestModel request)
+        public async Task<ActionResult<object>> GetAttributeLookup([FromBody] FeatureAttributeLookupRequestModel request)
         {
-            if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
-                return BadRequest();
-
-            var keys = request.Attributes!.Select(kv => kv.Key).ToList();
-            var service = _shapeServiceResolver!(request?.Key!);
-
-            var shapeType = service.GetType().GetInterface("IShapeService`1")!.GetGenericArguments()[0];
-
-            // Validate Input
-            var fields = shapeType.GetPropertiesWithCustomAttribute<FeatureNameAttribute>().Select(x => x.Name).ToList();
-            var mappingFields = shapeType.GetPropertiesWithCustomAttribute<MappingKeyAttribute>().Select(x => x.Name).ToList();
-            var allFields = fields.Union(mappingFields).ToList();
-
-            var invalidItems = keys.Where(x => !allFields.Contains(x)).ToList();
-
-            if (invalidItems.Any())
+            return await FeatureAttributeValidation(request, (service, attributes) =>
             {
-                var invalidFields = string.Join(", ", invalidItems);
-                return BadRequest($"The following attributes are not valid for the selected shape type: {invalidFields}");
-            }
+                var results = service.GetFeatureLookup(attributes);
+                if (!results.Any())
+                {
+                    return new List<object>();
+                }
 
-            var results = _shapeServiceResolver(request!.Key).GetFeatureLookup(request.Attributes);
-            if (!results.Any())
-                return NotFound();
-
-            return await Task.FromResult(Ok(results));
+                return results.Cast<object>().ToList();
+            });
         }
-
 
         /// <summary>
         ///  Get Feature Attribute Lookup GeoJson
@@ -238,5 +220,51 @@ namespace MicroService.WebApi.V1.Controllers
 
             return await Task.FromResult(Ok(geometry));
         }
+
+
+        /// <summary>
+        /// Feature Attribute Validation
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="request"></param>
+        /// <param name="lookupFunction"></param>
+        /// <returns></returns>
+        public async Task<ActionResult<T>> FeatureAttributeValidation<T>(FeatureAttributeLookupRequestModel request, Func<IShapeService<ShapeBase>, List<KeyValuePair<string, object>>, IEnumerable<T>> lookupFunction)
+        {
+            if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
+            {
+                return BadRequest();
+            }
+
+            var keys = request.Attributes!.Select(kv => kv.Key).ToList();
+            var service = _shapeServiceResolver!(request?.Key!);
+
+            var shapeType = service.GetType().GetInterface("IShapeService`1")!.GetGenericArguments()[0];
+
+            // Validate Input
+            var fields = shapeType.GetPropertiesWithCustomAttribute<FeatureNameAttribute>()
+                .Select(x => x.Name)
+                .ToList();
+            var mappingFields = shapeType.GetPropertiesWithCustomAttribute<MappingKeyAttribute>()
+                .Select(x => x.Name)
+                .ToList();
+            var allFields = fields.Union(mappingFields).ToList();
+
+            var invalidItems = keys.Where(x => !allFields.Contains(x)).ToList();
+            if (invalidItems.Any())
+            {
+                var invalidFields = string.Join(", ", invalidItems);
+                return BadRequest($"The following attributes are not valid for the selected shape type: {invalidFields}");
+            }
+
+            var results = lookupFunction(service, request!.Attributes!).ToList();
+            if (!results.Any())
+            {
+                return NotFound();
+            }
+
+            return await Task.FromResult(Ok(results));
+        }
+
     }
 }

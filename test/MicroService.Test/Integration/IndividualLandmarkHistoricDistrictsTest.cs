@@ -124,7 +124,6 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, result.Attributes["Address"]);
         }
 
-        // TODO: Map Historic Districts to Landmark Preservation Commission
         [InlineData("LP-00001", "3079170009", "Pieter Claesen Wyckoff House")]
         [InlineData("LP-00010", "1005450040", "428 Lafayette Street Building (a part of La Grange Terrace)")]
         [Theory(DisplayName = "GetFeatureCollection Mapped Input returns expected feature collection")]
@@ -149,6 +148,30 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, result.Attributes["AreaName"]);
         }
 
+        // TODO: Map Historic Districts to Landmark Preservation Commission
+        [InlineData("LP-01559", "3079170009", "Gramercy Park Historic District Extension")]
+        //[InlineData("LP-00099", "3079170009", "Brooklyn Heights Historic District")]
+        [Theory(Skip = "TODO:FIX THIS", DisplayName = "GetFeatureCollection Mapped Historic District returns expected feature collection")]
+        public void GetFeatureCollection_Mapped_HistoricDistrict_ValidInput_ReturnsExpectedFeature(string value1, string expected, string expected2)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("LPNumber", value1),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+            var result = sut.Single();
+
+            // Assert
+            Assert.NotNull(sut);
+            Assert.IsType<FeatureCollection>(sut);
+            Assert.NotNull(result);
+
+            Assert.Equal(expected, result.Attributes["Bbl"]);
+            Assert.Equal(expected2, result.Attributes["AreaName"]);
+        }
 
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
