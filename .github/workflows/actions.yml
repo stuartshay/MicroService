@@ -38,6 +38,9 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
+      - name: Build
+        run: dotnet build --no-restore
+
       - name: Test
         run: dotnet test ./test/MicroService.Test/MicroService.Test.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage"
 
