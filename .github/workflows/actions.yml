@@ -47,11 +47,11 @@ jobs:
       - name: Convert coverage report to Cobertura format
         run: reportgenerator -reports:**/coverage.cobertura.xml -targetdir:coverage -reporttypes:Cobertura
 
-       - name: Upload coverage to Codecov
-         uses: codecov/codecov-action@v3
-         with:
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
           file: ./coverage/Cobertura.xml
-          fail_ci_if_error: true  # Set to 'false' if you want to allow CI to pass even if Codecov upload fails
+          fail_ci_if_error: true # Set to 'false' if you want to allow CI to pass even if Codecov upload fails
 
   build:
     runs-on: ubuntu-latest
