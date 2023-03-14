@@ -39,7 +39,7 @@ jobs:
         run: dotnet restore
 
       - name: Test
-        run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
+        run: dotnet test ./test/MicroService.Test/MicroService.Test.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage"
 
       - name: Install ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
