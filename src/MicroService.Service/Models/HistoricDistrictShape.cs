@@ -24,7 +24,7 @@ namespace MicroService.Service.Models
         [FeatureName("caldate")]
         public string CalendarDate { get; set; }
 
-        [FeatureName("current")]
+        [FeatureName("current_")]
         public string Current { get; set; }
 
         [FeatureName("desdate")]
