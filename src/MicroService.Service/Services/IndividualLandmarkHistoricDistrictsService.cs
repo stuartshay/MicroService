@@ -68,6 +68,12 @@ namespace MicroService.Service.Services
                     new KeyValuePair<string, object>("LPNumber", lpNumberValue)
                 };
                 var properties = _individualLandmarkSiteService.GetFeatureCollection(propertyAttributes);
+                if (!properties.Any())
+                {
+                    //TODO: Check for Historic Districts
+                    return null;
+                }
+
                 var bbl = properties.First().Attributes["BBL"];
 
                 attributes.Clear();
