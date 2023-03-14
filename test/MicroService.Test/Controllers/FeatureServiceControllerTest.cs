@@ -126,7 +126,7 @@ namespace MicroService.Test.Controllers
         }
 
         [Fact]
-        public async Task GetFeatureLookup_ReturnsOkResult_WhenRequestIsValid()
+        public async Task GetGeospatialLookup_ReturnsOkResult_WhenRequestIsValid()
         {
             // Arrange
             var id = "BoroughBoundaries";
@@ -145,7 +145,7 @@ namespace MicroService.Test.Controllers
             };
 
             // Act
-            var result = await controller.GetFeatureLookup(request);
+            var result = await controller.GetGeospatialLookup(request);
 
             // Assert
             //var okResult = Assert.IsType<OkObjectResult>(result.Result);
@@ -166,14 +166,11 @@ namespace MicroService.Test.Controllers
             var controller = GetFeatureServiceController();
 
             // Act
-            var sut = await controller.GetFeatureLookup(request);
+            var sut = await controller.GetGeospatialLookup(request);
 
             // Assert
             Assert.IsType<BadRequestResult>(sut.Result);
         }
-
-
-
 
         private static FeatureServiceController GetFeatureServiceController(ShapeServiceResolver? resolver = null,
             IShapeService<ShapeBase>? shapeService = null)
@@ -187,5 +184,3 @@ namespace MicroService.Test.Controllers
         }
     }
 }
-
-
