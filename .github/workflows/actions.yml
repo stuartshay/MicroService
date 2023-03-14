@@ -41,14 +41,17 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
 
+      - name: Install dotnet-coverage tool
+        run: dotnet tool install --global dotnet-coverage
+
       - name: Test
-        run: dotnet test ./test/MicroService.Test/MicroService.Test.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage"
+        run: dotnet-coverage collect 'dotnet test' -f xml -o 'coverage.xml'
 
       - name: Install ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
       - name: Convert coverage report to Cobertura format
-        run: reportgenerator -reports:**/coverage.cobertura.xml -targetdir:coverage -reporttypes:Cobertura
+        run: reportgenerator -reports:./coverage.xml -targetdir:coverage -reporttypes:Cobertura
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
