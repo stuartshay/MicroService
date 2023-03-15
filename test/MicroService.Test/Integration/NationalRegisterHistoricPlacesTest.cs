@@ -67,10 +67,16 @@ namespace MicroService.Test.Integration
             Assert.NotNull(features);
         }
 
-
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
+        [InlineData(-74.15369462028448, 40.58264640562773, "SI", "LP-00369")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup")]
+        [Trait("Category", "Integration")]
+        public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object expected2)
         {
-            throw new NotImplementedException();
+            var sut = _service.GetFeatureLookup(x, y);
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, sut.BoroName);
+            Assert.Equal(expected2, sut.LPNumber);
         }
 
         [InlineData("LP-01207", 8, "Staten Island Borough Hall")]
@@ -97,7 +103,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
         }
 
-
         [InlineData("LP-01207", "8", "Staten Island Borough Hall")]
         [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
         public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
@@ -121,9 +126,13 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, result.Attributes["AreaName"]);
         }
 
-        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
+        [InlineData(1006187, 732036)]
+        [Theory(DisplayName = "Get Geospatial Point Lookup Not Found")]
+        public void Get_Geospatial_Point_Lookup_Not_Found(double x, double y)
         {
-            throw new NotImplementedException();
+            var sut = _service.GetFeatureLookup(x, y);
+
+            Assert.Null(sut);
         }
 
         [Fact]
