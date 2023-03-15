@@ -70,4 +70,47 @@ public class ShapePropertiesTests
         Assert.Empty(invalidTypes);
     }
 
+    [Fact]
+    public void GetDatumFromHistoricDistrictShape_ShouldReturnCorrectValue()
+    {
+        // Arrange
+        var instance = new HistoricDistrictShape();
+
+        // Act
+        var datum = GetDatumFromHistoricDistrictShape(instance);
+
+        // Assert
+        Assert.Equal(Datum.Wgs84, datum);
+    }
+
+    public static Datum GetDatumFromHistoricDistrictShape(HistoricDistrictShape instance)
+    {
+        // Get the ShapePropertiesAttribute from the instance
+        var shapePropertiesAttribute = instance.GetType().GetCustomAttribute<ShapePropertiesAttribute>();
+        if (shapePropertiesAttribute == null)
+        {
+            throw new InvalidOperationException("ShapePropertiesAttribute not found.");
+        }
+
+        // Get the ShapeProperties enum value from the attribute
+        ShapeProperties shapeProperties = shapePropertiesAttribute.ShapeProperties;
+
+        // Get the ShapeAttribute from the enum field
+        var enumField = typeof(ShapeProperties).GetMember(shapeProperties.ToString()).FirstOrDefault();
+        if (enumField == null)
+        {
+            throw new InvalidOperationException("Enum field not found.");
+        }
+
+        var shapeAttribute = enumField.GetCustomAttribute<ShapeAttribute>();
+        if (shapeAttribute == null)
+        {
+            throw new InvalidOperationException("ShapeAttribute not found.");
+        }
+
+        // Return the Datum value
+        return shapeAttribute.Datum;
+    }
+
+
 }
