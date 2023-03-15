@@ -65,9 +65,9 @@ namespace MicroService.Test.Integration
         }
 
         [InlineData(999190.2011541898, 230264.8100294829, "MANHATTAN", "TAFT")]
-        [Theory(DisplayName = "Get Feature Point Lookup")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup(double x, double y, string expected, object expected2)
+        public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
@@ -95,9 +95,9 @@ namespace MicroService.Test.Integration
 
 
         [InlineData(1006187, 732036)]
-        [Theory(DisplayName = "Get Feature Point Lookup Not Found")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup Not Found")]
         [Trait("Category", "Integration")]
-        public void Get_Feature_Point_Lookup_Not_Found(double x, double y)
+        public void Get_Geospatial_Point_Lookup_Not_Found(double x, double y)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
