@@ -38,14 +38,26 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
-      - name: MicroService.Test - Unit Test
-        uses: zyborg/dotnet-tests-report@v1
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: Install dotnet-coverage tool
+        run: dotnet tool install --global dotnet-coverage
+
+      - name: Test
+        run: dotnet-coverage collect 'dotnet test' -f xml -o 'coverage.xml'
+
+      - name: Install ReportGenerator
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+      - name: Convert coverage report to Cobertura format
+        run: reportgenerator -reports:./coverage.xml -targetdir:coverage -reporttypes:Cobertura
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
         with:
-          project_path: test/MicroService.Test
-          report_name: microService_test
-          report_title: MicroService Unit Test
-          fail_build_on_failed_tests: true
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./coverage/Cobertura.xml
+          fail_ci_if_error: true # Set to 'false' if you want to allow CI to pass even if Codecov upload fails
 
   build:
     runs-on: ubuntu-latest
