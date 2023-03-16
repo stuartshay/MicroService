@@ -1,0 +1,12 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: MicroService.WebAPI/v1
+  name: MicroService.WebAPI
+  href: restapi/microservice.html
+- uid: MicroService.WebAPI/v1/ApiTestDataGet
+  name: ApiTestDataGet
+  href: restapi/microservice.html#MicroService_WebAPI_v1_ApiTestDataGet
+- uid: MicroService.WebAPI/v1/ApiTestDataPercentileGet
+  name: ApiTestDataPercentileGet
+  href: restapi/microservice.html#MicroService_WebAPI_v1_ApiTestDataPercentileGet

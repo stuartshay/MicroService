@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Kubernetes </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Kubernetes ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="kubernetes">Kubernetes</h1>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><p>Hyper-V<br>
+<a href="hyper-v.html">Hyper-V Install</a></p>
+</li>
+<li><p>Powershell  &gt; 6.2<br>
+<a href="https://github.com/PowerShell/PowerShell">https://github.com/PowerShell/PowerShell</a></p>
+</li>
+<li><p>Chocolatey<br>
+<a href="https://chocolatey.org/docs/installation">https://chocolatey.org/docs/installation</a></p>
+</li>
+<li><p>Choco Essentials</p>
+</li>
+</ul>
+<pre><code>choco install vscode
+choco install cmder
+choco install googlechrome
+choco install openssh
+</code></pre>
+<h2 id="install-docker-desktop-for-windows">Install Docker Desktop for Windows</h2>
+<pre><code>choco install docker-desktop
+choco install kubernetes-helm
+</code></pre>
+<p><img src="images/docker-desktop.png" alt=""></p>
+<h4 id="verify-instalation">Verify Instalation</h4>
+<pre><code>kubectl version
+
+kubectl config current-context
+
+kubectl cluster-info
+
+kubectl get nodes
+</code></pre>
+<h3 id="installating-the-kubernetes-dashboard">Installating the Kubernetes Dashboard</h3>
+<pre><code>kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+</code></pre>
+<h4 id="enable-dashboard--create-access-token">Enable Dashboard &amp; Create Access Token</h4>
+<pre><code>kubectl proxy
+</code></pre>
+<pre><code>$TOKEN=((kubectl -n kube-system describe secret default | Select-String &quot;token:&quot;) -split &quot; +&quot;)[1]
+
+kubectl config set-credentials docker-for-desktop --token=&quot;${TOKEN}&quot;
+</code></pre>
+<h4 id="access-dashboard">Access Dashboard</h4>
+<pre><code>http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/ 
+</code></pre>
+<pre><code>Click on Kubeconfig and select the “config” file under C:\Users&lt;Username&gt;.kube\config
+</code></pre>
+<p><img src="images/kube-dashboard.png" alt=""></p>
+<h2 id="helm">Helm</h2>
+<pre><code>helm init
+</code></pre>
+<h4 id="verify">Verify</h4>
+<pre><code>kubectl get pods -n kube-system
+</code></pre>
+<pre><code>cd /helm
+helm install --name microservice-release --namespace microservices ./microservice-stack
+
+helm status microservice-release
+
+kubectl get pods -n microservices
+</code></pre>
+<h3 id="node-ports">Node Ports</h3>
+<pre><code>kubectl get svc -n microservices
+</code></pre>
+<h3 id="update-release">Update Release</h3>
+<pre><code>helm upgrade microservice-release ./microservice-stack
+</code></pre>
+<h3 id="delete-and-purge">Delete and Purge</h3>
+<pre><code> helm delete --purge  microservice-release
+</code></pre>
+<h2 id="reset-kubernetes">Reset Kubernetes</h2>
+<p><img src="images/kube-reset.png" alt=""></p>
+<h2 id="references">References</h2>
+<pre><code>http://collabnix.com/kubernetes-dashboard-on-docker-desktop-for-windows-2-0-0-3-in-2-minutes/
+</code></pre>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/stuartshay/MicroService/blob/develop/docfx/articles/kubernetes.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
