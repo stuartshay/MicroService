@@ -287,23 +287,12 @@
       "version": ""
     },
     {
-      "type": "RestApi",
-      "source_relative_path": "restapi/microservice.swagger.json",
-      "output": {
-        ".html": {
-          "relative_path": "restapi/microservice.html",
-          "hash": "3+UU88BwB46QnCUpBoKOJYrK2MSYjNN0rMVh09d2JUI="
-        }
-      },
-      "version": ""
-    },
-    {
       "type": "Toc",
       "source_relative_path": "restapi/toc.md",
       "output": {
         ".html": {
           "relative_path": "restapi/toc.html",
-          "hash": "6iZVjz8xKwV4G5qK7fzt4mJviLjCeWhRhrdqFnQLe2Y="
+          "hash": "0vyoYmuL46t3UIfveZK+zb9cnzLu7SywaQpk+2Cu6+8="
         }
       },
       "version": ""
@@ -314,7 +303,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "ZwT1NJdmjWqkqyTYKf1TCaGH3Y0+XDfcmmcLaq8mpf0="
+          "hash": "3qPGpsainbhMLjxFEcdUvb5UWFDTdsieyutpKbT9oOU="
         }
       },
       "version": ""
