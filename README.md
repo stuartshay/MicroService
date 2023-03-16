@@ -4,6 +4,8 @@
 
 # NYC Open Data GeoSpatial & Data Enrichment API
 
+[Microservice API Endpoint](https://microservice-api-w6zlqlyoma-uk.a.run.app/)
+
 ## Overview
 
 Working with NYC Open Data can be an exciting and rewarding experience, as valuable insights can be gained from the vast resources available in New York City. However, once you begin working with various datasets, you may notice that data is not standardized, codes are used inconsistently across datasets, and can change from version to version. Spatial references can be in either NAD83 or WGS format, and formatting errors may occur in the results.
@@ -24,9 +26,12 @@ The goal of this API is to:
 
 ## Technology Stack
 
-- [Asp.Net core](https://docs.microsoft.com/en-us/aspnet/core/) - for server side
-- [Net Topology Suite](https://github.com/NetTopologySuite/NetTopologySuite) - for server side spatial mathmatics
-- [Docker](https://www.docker.com/) - for image creation and micro-server architecture
+- [Asp.Net core](https://docs.microsoft.com/en-us/aspnet/core/) - C# Web API Framework
+- [Net Topology Suite](https://github.com/NetTopologySuite/NetTopologySuite) - Geospatial data structures and algorithms for .NET
+- [AutoMapper](https://automapper.org/) - C# Object Mapper
+- [HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) - Health Checks for ASP.NET Core
+- [Serilog](https://serilog.net/) - Logging for .NET
+- [Docker](https://www.docker.com/) - Containerization Platform
 
 ## Sonar
 
