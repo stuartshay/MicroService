@@ -8,7 +8,7 @@
 
 ## Overview
 
-Working with NYC Open Data can be an exciting and rewarding experience, as valuable insights can be gained from the vast resources available in New York City. However, once you begin working with various datasets, you may notice that data is not standardized, codes are used inconsistently across datasets, and can change from version to version. Spatial references can be in either NAD83 or WGS format, and formatting errors may occur in the results.
+Working with [NYC OpenData](https://opendata.cityofnewyork.us/) can be an exciting and rewarding experience, as valuable insights can be gained from the vast resources available in New York City. However, once you begin working with various datasets, you may notice that data is not standardized, codes are used inconsistently across datasets, and can change from version to version. Spatial references can be in either NAD83 or WGS format, and formatting errors may occur in the results.
 
 The goal of this API is to:
 
