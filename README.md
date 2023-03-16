@@ -31,7 +31,12 @@ The goal of this API is to:
 - [AutoMapper](https://automapper.org/) - C# Object Mapper
 - [HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) - Health Checks for ASP.NET Core
 - [Serilog](https://serilog.net/) - Logging for .NET
+- [xUnit.net](https://xunit.net/) - Unit Testing Framework
 - [Docker](https://www.docker.com/) - Containerization Platform
+
+## References
+
+- [NYC OpenData](https://opendata.cityofnewyork.us/) - NYC Open Data
 
 ## Sonar
 
