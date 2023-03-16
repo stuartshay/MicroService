@@ -24,66 +24,9 @@ The goal of this API is to:
 
 ## Technology Stack
 
-## Swagger
-
-![](assets/swagger.png)
-
-## Hosting Environments
-
-### Development
-
-Local Docker Postgres Database
-
-```
-cd docker
-docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml pull
-docker-compose -f docker-compose-local.yml -f docker-compose-metrics.yml up
-```
-
-AWS Postgres Development Database
-
-```
-cd docker
-docker-compose -f docker-compose-development.yml pull
-docker-compose -f docker-compose-development.yml up
-```
-
-Swagger API Documentation Page
-
-```
-http://<DOCKER_HOST>:5000/swagger/
-```
-
-### MyGet/NuGet Packages
-
-| Package              | Status                                                                                                                                                       |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| MicroService.Data    | [![MyGet](https://img.shields.io/myget/microservice/v/MicroService.Data.svg)](https://www.myget.org/feed/microservice/package/nuget/MicroService.Data)       |
-| MicroService.Service | [![MyGet](https://img.shields.io/myget/microservice/v/MicroService.Service.svg)](https://www.myget.org/feed/microservice/package/nuget/MicroService.Service) |
-
-### Jenkins Build Status
-
-| Jenkins               | Status                                                                                                                                                                                          |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Docker Base Image     | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-base)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-base/)   |
-| Docker Deploy Image   | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-build)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-build/) |
-| Docker x86/Arm7 Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService/microservice-api-multi)](https://jenkins.navigatorglass.com/job/MicroService/job/microservice-api-multi/) |
-
-### Build Commands
-
-| Build Type        | Linux/Mac                    | Windows                       |
-| ----------------- | ---------------------------- | ----------------------------- |
-| CI Build          | ./build.sh --target=CI-Build | .\build.ps1 --target=CI-Build |
-| SonarQube Testing | ./build.sh --target=sonar    | .\build.ps1 --target=sonar    |
-
-**docfx**
-
-```powershell
-docfx docfx/docfx.json
-docfx docfx/docfx.json -p 9090 --serve
-
-http://localhost:9090
-```
+- [Asp.Net core](https://docs.microsoft.com/en-us/aspnet/core/) - for server side
+- [Net Topology Suite](https://github.com/NetTopologySuite/NetTopologySuite) - for server side spatial mathmatics
+- [Docker](https://www.docker.com/) - for image creation and micro-server architecture
 
 ## Sonar
 

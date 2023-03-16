@@ -4,8 +4,26 @@
       "src": [
         {
           "src": "../",
-          "files": ["src/**/**.csproj"],
-          "exclude": [ "**/bin/**","**/obj/**","_site/**"]
+          "files": [
+            "src/**/**.csproj"
+          ],
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**",
+            "_site/**"
+          ]
+        },
+        {
+          "files": [
+            "api/*.json",
+            "api/*.yml",
+            "api/*.yaml"
+          ],
+          "exclude": [
+            "_site/**",
+            "_site/*"
+          ],
+          "dest": "api"
         }
       ],
       "dest": "api",
@@ -18,11 +36,19 @@
       {
         "files": [
           "api/**.yml",
+          "api/**.yaml",
+          "api/**.json",
           "api/index.md"
         ]
       },
       {
-        "files": [ "articles/**.md", "articles/**/toc.yml", "toc.yml", "*.md", "restapi/**" ]
+        "files": [
+          "articles/**.md",
+          "articles/**/toc.yml",
+          "toc.yml",
+          "*.md",
+          "restapi/**"
+        ]
       }
     ],
     "resource": [
