@@ -1,7 +1,10 @@
 name: Deploy DocFX to GitHub Pages
 
 on:
+  workflow_dispatch:
   push:
+    paths:
+      - 'docfx/**'
     branches:
       - master
 
