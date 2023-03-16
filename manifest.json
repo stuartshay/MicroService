@@ -1,0 +1,329 @@
+{
+  "homepages": [],
+  "source_base_path": "/home/runner/work/MicroService/MicroService/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "uNLvl0WizkCwaa/73UP9buVl5r8ihF390l1r6ptSIiQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/csharp_coding_standards.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/csharp_coding_standards.html",
+          "hash": "ItYirExPwjVnJGf1REC992ImAPI/czPdaZyDnNhzL+o="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/details1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/details1.html",
+          "hash": "FE3pkmEXhQ5mLcfWyy3r2DbjGMmqhvYVjEbVzcDqcNA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/docfx.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/docfx.html",
+          "hash": "QvEe592ybpeDxM/pg1vS7NTGUCbpwL5qK6baaYdqBtM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/eks.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/eks.html",
+          "hash": "bA2O4iYWmgbFNwer7EYkyy1Pqgp56/QA+FZz/xD50zo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/howto/howto1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/howto/howto1.html",
+          "hash": "E6dvDH9GJVIH0+LPuRBV8q9aSDOZOOWfWd3ZFDfSNZs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/howto/howto2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/howto/howto2.html",
+          "hash": "rte1gjTJH3fqS3UGyEwtSsNTO/BTjVlwxkYpYeAvbDs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/howto/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/howto/overview.html",
+          "hash": "PiFj68CFtmyAU0a2DnKWHgBJI1iDa3woOlthID2+ouU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hyper-v.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hyper-v.html",
+          "hash": "k97pMpBBBQPsa8r0gH5aY1SKeYCNYUnCmLJqsVdUiG8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "articles/images/docker-desktop.png",
+      "output": {
+        "resource": {
+          "relative_path": "articles/images/docker-desktop.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "articles/images/eks-jenkins.png",
+      "output": {
+        "resource": {
+          "relative_path": "articles/images/eks-jenkins.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "articles/images/eks_terraform.png",
+      "output": {
+        "resource": {
+          "relative_path": "articles/images/eks_terraform.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "articles/images/ip-6.png",
+      "output": {
+        "resource": {
+          "relative_path": "articles/images/ip-6.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "articles/images/kube-dashboard.png",
+      "output": {
+        "resource": {
+          "relative_path": "articles/images/kube-dashboard.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "articles/images/kube-reset.png",
+      "output": {
+        "resource": {
+          "relative_path": "articles/images/kube-reset.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "articles/images/vpc-aws.png",
+      "output": {
+        "resource": {
+          "relative_path": "articles/images/vpc-aws.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "articles/images/vpc-diagram.png",
+      "output": {
+        "resource": {
+          "relative_path": "articles/images/vpc-diagram.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "articles/images/vpc-jenkins.png",
+      "output": {
+        "resource": {
+          "relative_path": "articles/images/vpc-jenkins.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "2B2gM/rIzDqF6yaK7/bXbAd6t0f9XL7du37l3QhuSz4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/kubernetes.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/kubernetes.html",
+          "hash": "RjG2yTehl1KoFAMibRsWI7FAcTjQlMKu/wpW+aY3P/M="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/myget.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/myget.html",
+          "hash": "PYyVAHixnpdN3XSELGlbMIONlyHT8WaYWUFr1wM01x4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/requirements.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/requirements.html",
+          "hash": "lbgy+4GUO5w74BXRplf6gWRByzSSHjqPAjHSA2LMG5k="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/sonarqube.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/sonarqube.html",
+          "hash": "t9XY4LaB1op7OGwVNq5oul+G1tVSXGOtEDT2KdmiUgw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/swagger.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/swagger.html",
+          "hash": "TYD+3HDLFvTAZad/bBBuicNvNyH/3RedXxJps9yXN1c="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "pAO06avyGYRoqDvrMkrynLruYQ0gLnnVHX52b52itNs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "j8Z15zc95kPayvhQPmC/kjSSEGIagMKZ8br83oV+7tE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "RestApi",
+      "source_relative_path": "restapi/microservice.swagger.json",
+      "output": {
+        ".html": {
+          "relative_path": "restapi/microservice.html",
+          "hash": "3+UU88BwB46QnCUpBoKOJYrK2MSYjNN0rMVh09d2JUI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "restapi/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "restapi/toc.html",
+          "hash": "6iZVjz8xKwV4G5qK7fzt4mJviLjCeWhRhrdqFnQLe2Y="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "ZwT1NJdmjWqkqyTYKf1TCaGH3Y0+XDfcmmcLaq8mpf0="
+        }
+      },
+      "version": ""
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
