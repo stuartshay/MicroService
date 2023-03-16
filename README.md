@@ -1,27 +1,28 @@
 # Microservice API
 
-[![Build/Test/Deploy](https://github.com/stuartshay/MicroService/actions/workflows/actions.yml/badge.svg)](https://github.com/stuartshay/MicroService/actions/workflows/actions.yml)
+[![Build/Test/Deploy](https://github.com/stuartshay/MicroService/actions/workflows/actions.yml/badge.svg)](https://github.com/stuartshay/MicroService/actions/workflows/actions.yml) [![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-api.svg)](https://hub.docker.com/r/stuartshay/microservice-api/) [![codecov](https://codecov.io/gh/stuartshay/MicroService/branch/master/graph/badge.svg?token=bMKXJXK0Q3)](https://codecov.io/gh/stuartshay/MicroService)
 
-[![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-api.svg)](https://hub.docker.com/r/stuartshay/microservice-api/)
+# NYC Open Data GeoSpatial & Data Enrichment API
 
-## NYC Open Data GeoSpatial & Data Enrichment API
+## Overview
 
-## Intro
+Working with NYC Open Data can be an exciting and rewarding experience, as valuable insights can be gained from the vast resources available in New York City. However, once you begin working with various datasets, you may notice that data is not standardized, codes are used inconsistently across datasets, and can change from version to version. Spatial references can be in either NAD83 or WGS format, and formatting errors may occur in the results.
 
-This repository holds the backend API for the NYC Open Data GeoSpatial & Data Enrichment API. The API is a microservice that is used to enrich data with geospatial data and other data sources.
+The goal of this API is to:
+
+1. **Standardize the Data Dictionary**: Establish a consistent data structure and terminology to facilitate seamless integration and analysis of NYC Open Data.
+2. **Centralize ESRI Shape Files**: Provide a single repository for ESRI Shape Files, making them easily accessible and organized.
+3. **Reduce ETL Workflow**: Streamline the Extract, Transform, Load (ETL) process by storing the data on a traditional file share, making the data accessible to other applications in the stack.
+
+## Key Features
+
+- **Data Standardization**: The API ensures consistent data structure and terminology, making it easier to work with and analyze the NYC Open Data.
+- **GeoSpatial Support**: The API provides support for both NAD83 and WGS spatial reference systems, ensuring accurate and consistent geospatial data representation.
+- **Centralized Repository**: A single, well-organized location for all ESRI Shape Files related to NYC Open Data.
+- **Simplified ETL Workflow**: By storing data on a traditional file share, the API minimizes manual interventions and streamlines the ETL process, while making the data accessible to other applications in the stack.
+- **Data Enrichment**: The API offers additional data enrichment capabilities, enhancing the quality and usefulness of the available datasets.
 
 ## Technology Stack
-
-### Purpose
-
-The New York Application Team has been tasked with designing a microservice for their Enrichment Data pipeline which will be utilized by high profile clients and internal groups in the organization for Machine Learning Research and the Geospatial Engine Product.
-
-The Application will be a complete rearchitected solution using the cloud for optimal price and performance. The API Schema has been enhanced and key performance metrics have been added. The API will implement versioning so end clients can seamlessly update to the new enhanced schema when ready.
-
-The Requirements for this project can be viewed at the following.
-
-- [Business Requirements](/docfx/articles/requirements.md)
-- [C# Coding Standards](/docfx/articles/csharp_coding_standards.md)
 
 ## Swagger
 
