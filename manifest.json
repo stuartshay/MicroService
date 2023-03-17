@@ -4,15 +4,1860 @@
   "xrefmap": "xrefmap.yml",
   "files": [
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
-      "type": "Conceptual",
-      "source_relative_path": "api/index.md",
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Common.Configuration.ApplicationOptions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/index.html",
-          "hash": "qYeb3rhEHoGo1Zc9eqtnUAQAfOkWucl285WKgg87mW8="
+          "relative_path": "api/MicroService.Common.Configuration.ApplicationOptions.html",
+          "hash": "BI/NuBKelmy3Izku2g3SliaIfxMI7hyf1jpRsZG4h/M="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Common.Configuration.GrafanaLokiConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Common.Configuration.GrafanaLokiConfiguration.html",
+          "hash": "uNPL7TKcaYYNaNiMNTwYYhoA7j6kMt43n8j3eFu5YWc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Common.Configuration.JaegerConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Common.Configuration.JaegerConfiguration.html",
+          "hash": "ZCUM02SG0WNHH/2Pu5NI9CXrq4GQ4DPPe+PVXN2byr4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Common.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Common.Configuration.html",
+          "hash": "5UGnfg9D/9hr9p+rgCnfcdxoMOYpDb0WCkfAGMU2qTI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Common.Constants.HealthCheckType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Common.Constants.HealthCheckType.html",
+          "hash": "487k2807QYz1OaWNF31eHE0mRO4i4MyStv0ZWz9sYuo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Common.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Common.Constants.html",
+          "hash": "FPc1lnlWHaD2R9ESU095C6wd4YuVeDckhQ6b9iEUJno="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Common.Health.HealthCheckServerExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Common.Health.HealthCheckServerExtensions.html",
+          "hash": "5Hg8SMKCJf4H4joNEacsDAAsgwB/FBWacqUWUtV/5FY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Common.Health.RandomHealthCheck.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Common.Health.RandomHealthCheck.html",
+          "hash": "FNin5+ZUJTFZKBjiUTCrGFmHhfQh2Qob/vxbV+Mmfpc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Common.Health.VersionHealthCheck.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Common.Health.VersionHealthCheck.html",
+          "hash": "YpUwPScHpumQBSXoUM11wXemkjdRe9Q0Hx6VdND2lW4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Common.Health.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Common.Health.html",
+          "hash": "78V58ldmmiT/+YoUcb+kRu0SCPaQflxd7vdXPcRiERc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Common.Logging.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Common.Logging.Logging.html",
+          "hash": "QFzTeMqhUFHUA9j9QuU4r1SgYVkebpf7G1EgRJHAwBk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Common.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Common.Logging.html",
+          "hash": "q5OLXwTK/IsKpcsbJkp7gInL0dQBXYzbWFsecXDBQ6g="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Data.Enum.Borough.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Data.Enum.Borough.html",
+          "hash": "h6bRleW/vtUlFRXWNFyi88bsz2o6BSE7eiGcIP8lv/8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Data.Enum.DsnyOperationZone.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Data.Enum.DsnyOperationZone.html",
+          "hash": "aRRJHQWbAX88WSqUGs+wnSy6g5FRI6L6J6NWBLosDSQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Data.Enum.NtaType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Data.Enum.NtaType.html",
+          "hash": "xU5HylaYbMnnNmilXEwGhS40ZaUCL6qc9VqqDwn+NDY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Data.Enum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Data.Enum.html",
+          "hash": "B0ppKjfSQqGVJu+eoLbZqKGLmnqfdpLXuMFN/RNMcOk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Data.Models.BaseEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Data.Models.BaseEntity.html",
+          "hash": "GoJ4wlTq+pDp2X7qZMMnlcfhBrhVTQDpfDojnTzo27o="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Data.Models.TestData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Data.Models.TestData.html",
+          "hash": "BcLmTEK4k04LZwRd6vBWHDv7HKJAyfAWYL11JFVfan0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Data.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Data.Models.html",
+          "hash": "XC4f5ofzCOD7zT3IyC5mb/Webf+VmLNJHFKcU0IsyI0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Data.Repository.IRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Data.Repository.IRepository-1.html",
+          "hash": "ksTMYkFnQTEWqHZOVCw+E2xRwbDapA3Hh5on2LihHiY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Data.Repository.ITestDataRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Data.Repository.ITestDataRepository.html",
+          "hash": "HxwjCDoom8TwCT5QB1+kT8L6hcgZBXsEHt2YHezzHak="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Data.Repository.TestDataRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Data.Repository.TestDataRepository.html",
+          "hash": "ntjJ9puFHyD07Ai779OCk5dvnKDrFr9DNI4ihshd5eg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Data.Repository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Data.Repository.html",
+          "hash": "kTzPlNjz5JtxpythgsmGrLLrWjuo1QZrY9f30l38PW4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Configuration.ApplicationOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Configuration.ApplicationOptions.html",
+          "hash": "InwkaaTFgjbXA7he3YSmReKEKfNV4Qy+XU35UuLK55w="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Configuration.ConnectionStrings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Configuration.ConnectionStrings.html",
+          "hash": "B69UvnXL1MtCFOZwbOeBmNYiywgpll5+/WzdsrRQ8ds="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Configuration.ShapeConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Configuration.ShapeConfiguration.html",
+          "hash": "hoGHmUiJkP2aOWz38Lr/9K/jHMzqClImLMRqlxhnk24="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Configuration.html",
+          "hash": "MZ8Hy9s6jhclCFFVar9opgQbiWyzA3o+nkexL+Ud8nU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Constants.DataConstants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Constants.DataConstants.html",
+          "hash": "CIG9+LeYr3hukhdIRtqNOCkgya5S2hVICDHAsvloM+4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Constants.html",
+          "hash": "WDF3vtqD2073irrsEm78cA7r/yoMFpfAU1uJQglxPt4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Extensions.ShapefileDataReaderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Extensions.ShapefileDataReaderExtensions.html",
+          "hash": "iDWD4t5k0rZoGNbmncqSCFE9rRP+28tovUj1VYh+FjM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Extensions.html",
+          "hash": "vBVxykPPkSi1MDYLZ6m903RWRjTLJfvx2dspB2sd8xo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Helpers.CachedShapefileDataReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Helpers.CachedShapefileDataReader.html",
+          "hash": "hVY319zfUeTK3fNUDQI33ykQTcYiS4k9/eIFvN2e4iM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Helpers.EnumHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Helpers.EnumHelper.html",
+          "hash": "5GIqiCtm+5ZOF11VL4Aqh4jWsh8dphCeFtFkCMFVIB0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Helpers.FileHelpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Helpers.FileHelpers.html",
+          "hash": "jlnh7UofmbMkBEFrEcJoWBVOo3/GxkdZeZunKsnyvT8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Helpers.FunctionHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Helpers.FunctionHelper.html",
+          "hash": "cvbiaQN0spUNNw3AI2gKqIOZile1R+8fBYCHU9FtPt4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Helpers.GeoTransformationHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Helpers.GeoTransformationHelper.html",
+          "hash": "GOd3J5ZWk9bDWWbarhAn2eSY39pmPzue4UmeZDBkD3s="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Helpers.IShapefileDataReaderService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Helpers.IShapefileDataReaderService.html",
+          "hash": "+nTm5VKYl1F0t0SyWIRGpN4d5MMteOI/l15rNvgFJoA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Helpers.ReflectionExtensions.PropertyCache-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Helpers.ReflectionExtensions.PropertyCache-1.html",
+          "hash": "pNC0V89hUG4DU+sLQzj4v9Cu6HlQipLHRF+sdH9kZEQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Helpers.ReflectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Helpers.ReflectionExtensions.html",
+          "hash": "/k981Tjd+gCOaxDK7qB9z/3N6ZGGxb6gaRgAkVT5UuY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Helpers.StringHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Helpers.StringHelper.html",
+          "hash": "4vCS9VmNCX0q9/NuIGcHI8WspZk0ZMWdGc330ANwjFo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Helpers.html",
+          "hash": "U1e51csq+5O3EG4d7yI7xhR2I7MMc4h8yd2rbW8tZXM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Interfaces.ICalculationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Interfaces.ICalculationService.html",
+          "hash": "qNbfJKtajCBxiU46ImIR9n8X35vh8MNwNd1YRs2BKco="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Interfaces.IPointService-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Interfaces.IPointService-1.html",
+          "hash": "7ZffUTZKVbShhEltSUlUZOktKvhn9eaSmc2d1pGBbk4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Interfaces.IShapeService-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Interfaces.IShapeService-1.html",
+          "hash": "Hy+lt3SOXaGm5ZWrGH8kysnAu2Vs1GnmgDUuqdszUBg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Interfaces.html",
+          "hash": "sVlujHRIz6O5dIUbJaKIiPZn30iqgGhM8xlsQbtGi88="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.Base.GeometryProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.Base.GeometryProfile.html",
+          "hash": "bhckqZRcMykTFOqF0PEsxVMyCpfiUFtjbNzCo1xjum0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.Base.ShapeProfile-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.Base.ShapeProfile-1.html",
+          "hash": "XOOIQL/AwTNOj7RcEFEkMlbLRl5VIK0gCCYStGxOaOc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.Base.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.Base.html",
+          "hash": "MPSCob8a/N5g0AMzGF0acfJ4dUAGaaTxG6rR/p9hz8E="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.BoroughBoundaryShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.BoroughBoundaryShapeProfile.html",
+          "hash": "1/EzvzsZD4lfmT2oUD1MS3K74pEI07wGhaUOZK8poGs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.CommunityDistrictShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.CommunityDistrictShapeProfile.html",
+          "hash": "wr1bgkh8hZ/azFpir6BpPHoEK71G7Z1RHEQ8P/YsWpA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.DsnyDistrictsShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.DsnyDistrictsShapeProfile.html",
+          "hash": "wG2q7j7Rz8I4QoIWVBC8roy4D9uORfnP+gPp3UubH2E="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile.html",
+          "hash": "NRBEHaQtPoK2LdKO9TEdncmVjxG0RUsM+VDSzDOxL3w="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.HistoricDistrictShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.HistoricDistrictShapeProfile.html",
+          "hash": "ffh+fq+6ud7lUYQpbL4lxq61hBPaibdCJFpLicIh0Oc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.IndividualLandmarkHistoricDistrictsShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.IndividualLandmarkHistoricDistrictsShapeProfile.html",
+          "hash": "bEXjbfZaYnwdsRq3kAjB9F9c/4HBVc6O1BwHZKTIGzs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.IndividualLandmarkSiteShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.IndividualLandmarkSiteShapeProfile.html",
+          "hash": "Ic0cuCgEi7QAnFLln5EcMbxfcos6HtluXvul/apvXEE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.NationalRegisterHistoricPlacesShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.NationalRegisterHistoricPlacesShapeProfile.html",
+          "hash": "ls87T82XSG1DM1+AzHNUhILMUjk8qXO4Cu3y5LwDwA4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.NeighborhoodShapeMappingsProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.NeighborhoodShapeMappingsProfile.html",
+          "hash": "rmW0CLsTNJcifTBhzPTdDSUguSUYiBg3DhfXEpVmAwY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.NeighborhoodTabulationAreaShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.NeighborhoodTabulationAreaShapeProfile.html",
+          "hash": "cb9WkQHKecUhN/J6/hsxVlbdIiVUvhW06JAw0YCPIes="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.NychaDevelopmentShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.NychaDevelopmentShapeProfile.html",
+          "hash": "rcZMdHT/PrbslTbwQgGJnFW/S4/OPAnp9nEtJOR/cPM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.NypdPrecinctShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.NypdPrecinctShapeProfile.html",
+          "hash": "9wkBYzmDlecOSyvY1mTRF4jLkczIai7DWmMdsyAActQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.NypdSectorShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.NypdSectorShapeProfile.html",
+          "hash": "b4/6CXtVnnjXPSRkpMlVKyU4lyb84bsKwkauR7vGN4s="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.ParkShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.ParkShapeProfile.html",
+          "hash": "xUxUU1GLQfGh1kcwIcz+pdN9LsUZU1MAcIqume+q3/U="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.SubwayShapeProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.SubwayShapeProfile.html",
+          "hash": "ZDVqB3KuDkaR+fYolrKSoHj/vzxW8gCkaCDnXopLZY4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.ZipCodeMappingsProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.ZipCodeMappingsProfile.html",
+          "hash": "Abp9hqj/yFlNQKIxuT8sBMLUJk/W+RMyDDZ0PJ9fszo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Mappings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Mappings.html",
+          "hash": "mwv8ZvkPNHuajT0bv5VsMPgF38+DzCWrCb2zKjgIG9A="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Base.BoundingBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Base.BoundingBox.html",
+          "hash": "L+vQmB90uDRv/4if3iLsB6yHoObYr6fWPsUgujFB9E8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Base.CentrePoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Base.CentrePoint.html",
+          "hash": "jqal1ZxMuYjPVU7t3TeKs6w5xkFS2HSkigBR/NBPPtA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Base.FlatFileBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Base.FlatFileBase.html",
+          "hash": "ZmXsWUFfBdA6Xbv4LbXXQ1LGGm72YjAJfHbO7Pvoiqo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Base.ShapeBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Base.ShapeBase.html",
+          "hash": "WzE5YHEHqTYuApAvusExgfhuUsmTpCaXbFmcggbAFpE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Base.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Base.html",
+          "hash": "HmlVKajWwJf4HP0EVxnpmPWIlnt+JhG+TqS5UVcWXqk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.BoroughBoundaryShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.BoroughBoundaryShape.html",
+          "hash": "kyqarOvcqrcuzYj5MT5oQ8fnhyKUlXWhuiJ+pi0Z/3Q="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.CommunityDistrictShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.CommunityDistrictShape.html",
+          "hash": "Q7IfHC7GbLu2UGASzxRNQ3PmtVdtXQfSLj9hTITAkZM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.DataMaps.StationComplexDataMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.DataMaps.StationComplexDataMap.html",
+          "hash": "QHBEVtFl3FNNd8iDR2KvtIRpJWdqCmqZfwOEOWJf5cg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.DataMaps.StationDataMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.DataMaps.StationDataMap.html",
+          "hash": "vTNlvAhXTRvOl7l+2UjN25Y017tnYvPEpAAxa4rQjCs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.DataMaps.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.DataMaps.html",
+          "hash": "yb0Lu+VJkGhpLC+PPTF43OByPheZ7dJQPJCMoXXHdNw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.DsnyDistrictsShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.DsnyDistrictsShape.html",
+          "hash": "fTE1I7lzn6m5WL8Z82M9KStIcX7kkax2x6bDS5lcM3A="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.Color.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.Color.html",
+          "hash": "+uDBK1e0VXyHMkqLgL8MXnhcMGuJKapwlD4k7++35Mg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.Datum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.Datum.html",
+          "hash": "eeJqdFE5J1vVFpJfDm2o+487GWRWieiPwPNwcEPU8hg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureCollectionAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureCollectionAttribute.html",
+          "hash": "oZC0+cx5q+e9f8fPCc/+Pm9x5BCwMAMg5tagvGiMULg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureCollectionExcludeAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureCollectionExcludeAttribute.html",
+          "hash": "h2ZMbmaRpseWUrcdj88RkkdRfOuZZSbHodpAHWZ+b/U="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.html",
+          "hash": "/3Kseu0d5U8gVPuU8Bw9B+vz29Sx6d4ylvMji9gkrSE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.FileTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FileTypes.html",
+          "hash": "KHwAlBYZXEWI55Pmvw25XFJrvBYEK3R2bKWA58Hl1tI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.FlatFileAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FlatFileAttribute.html",
+          "hash": "8oDEwStiwwIBhTRql90Wf1TAmqS+nHBm964ErvEBKNw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.MappingKeyAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.MappingKeyAttribute.html",
+          "hash": "wSPfihSgKPUd3ecKmZd/iwpc/LO7cS97VyqURd8BO/g="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapeAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapeAttribute.html",
+          "hash": "/ZVsIAvtOa8Dg/0J4ry1P/1R1VCs12CK3JihBDKdqUs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute.html",
+          "hash": "+51bC8rskAGrf1wv53D5fX2lNc/RoAExm2d/yXL9B/8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.html",
+          "hash": "nmnue8dpA4wuAHj66HgxtycuMZIptg+etimo3CSvDPY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.html",
+          "hash": "XHnq8aKU/+d06xsclYYVmRACv7OVVX46vHqJqAtWNEU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.FlatFileProperties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.FlatFileProperties.html",
+          "hash": "M0fS8zwx9V2afQY/zHbmkv7AjHs23IRLil91iWDRiSU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.ShapeProperties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.ShapeProperties.html",
+          "hash": "X5Y8jT4qrDgF3OwCEHux9IXktPdr/a68ZrAYsNGcZBc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.Enum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.Enum.html",
+          "hash": "OdE3v6OirWuO5d/BMwfMD4SL59TCKTsY+YpIj41y76o="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.html",
+          "hash": "KHIzZMT24ryZfs6RIuH5krHIkgBrL3JdNglsnZ/VpAI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.FlatFileModels.StationFlatFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.FlatFileModels.StationFlatFile.html",
+          "hash": "3dIR/tQuT4/3UEcL/IcUjOkpHXVaShNehmQMmwM4le4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.FlatFileModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.FlatFileModels.html",
+          "hash": "weH6cmPDPCMsBeu0Gv4tIj+hj4je0c+QkEa1z1Q1UgM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.HistoricDistrictShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.HistoricDistrictShape.html",
+          "hash": "0NJBYXsmz+i24mdgEVs6Sn6EBj/6saypeMEZ5x7Z0+k="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.html",
+          "hash": "wKJHdsFnY98/qXLs3Ts1NHMyYSZvzlNgMRZCrVnCSzk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.IndividualLandmarkSiteShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.IndividualLandmarkSiteShape.html",
+          "hash": "IoY96X9dJ7tC40RzmKOErRWJcZnzcQSp893nheHjqos="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.NationalRegisterHistoricPlacesShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.NationalRegisterHistoricPlacesShape.html",
+          "hash": "LqWpump4tYYVb/78zTBidoF/yg9/UAe7e5TfboKi1T4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.NeighborhoodShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.NeighborhoodShape.html",
+          "hash": "4qtjqaTZg0amKTWAmAGg1Jz/gs1MdbasJs+0uZz1Zu0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.NeighborhoodTabulationAreaShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.NeighborhoodTabulationAreaShape.html",
+          "hash": "rGZb4SeRzQPdCsI5fx4aMECLrXuERclLrYMSl/yHccA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.NychaDevelopmentShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.NychaDevelopmentShape.html",
+          "hash": "Q2Bn5e3r+gELRgmTJQU9e8du7bBI1ymQc+oxQfAUt7Q="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.NypdPrecinctShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.NypdPrecinctShape.html",
+          "hash": "calyY/MehQaERlGl+gw9zKfHm0foJaJaR1e5S8JASyw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.NypdSectorShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.NypdSectorShape.html",
+          "hash": "jp9Du6HNoSCULpns596Rjax27P+XrW8zKH7biH0Esxc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.ParkShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.ParkShape.html",
+          "hash": "ScKXwBxJOVshc7hyXra1waRjQkKyeHR+XwOBlpgpki8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.ScenicLandmarkShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.ScenicLandmarkShape.html",
+          "hash": "kqpyA6dvKJHy4TIQ0MiIa9avH5Teyr+Vd5WWUoSe/fU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.SubwayShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.SubwayShape.html",
+          "hash": "DkL4BktU8NwSG9/GowMglCiVG53IqAbW7m+kGllMwo0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.ZipCodeShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.ZipCodeShape.html",
+          "hash": "WUVgWKzqw/laNhCprRwFY7BPP0SnX0agsoQS9oy2/YY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Models.html",
+          "hash": "WqTDuQxHKTdm+mAMGs0smwzNefz66xW8A58PoUP5CLA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.Base.AbstractShapeService-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.Base.AbstractShapeService-2.html",
+          "hash": "V5rR2pCQEINpdsu48gilg1HXcknBH/69HaFv9TmoKVk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.Base.ShapefileDataReaderResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.Base.ShapefileDataReaderResolver.html",
+          "hash": "RpBXFruQJPZXxFUJfNhym1EKe57Wj7o4wiUPslOUmVo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.Base.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.Base.html",
+          "hash": "Fd6URRcXabH9Fx/HQA6Cok/wlfgCPJkuUjdL5vnjrDY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.BoroughBoundariesService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.BoroughBoundariesService.html",
+          "hash": "pjQvZCopiRW51s5SLP/igIOPyhSvEuJ2cLCD5RhdjJs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.CommunityDistrictsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.CommunityDistrictsService.html",
+          "hash": "mPdgmpnw+SBYeekdgv/Msxl9ia6u6l3v9lnhV5dT08o="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.DataService.CalculationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.DataService.CalculationService.html",
+          "hash": "uWiOIZN6A7fKoY/t8rn+S3+f4b5zc5YaJaFx6GqErU8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.DataService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.DataService.html",
+          "hash": "7zuPOWG2yQ3dpRNm/1jSuPUmyznTRulTSVlufTGaQMM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.DsnyDistrictsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.DsnyDistrictsService.html",
+          "hash": "ZYFN36Txb8rtDeO1TIuuJ0milrOe4AIFMBjkc0yp/WM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.FlatFileService.IFlatFileService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.FlatFileService.IFlatFileService.html",
+          "hash": "xV4LcbaFfvujGBgHaK52XkiW8AKA1H2akM2HIuwwG28="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.FlatFileService.StationComplexFlatFileService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.FlatFileService.StationComplexFlatFileService.html",
+          "hash": "Udsq5ncJaKffVNkeNR+lEzybQWgLqVAz780YYo5JHJs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.FlatFileService.StationFlatFileService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.FlatFileService.StationFlatFileService.html",
+          "hash": "SWZRrEiWf/OZTzd+72HnO/LARK3JnYiW/CizJhBmITg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.FlatFileService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.FlatFileService.html",
+          "hash": "SFxiFTUXMsil1uosJ1Xp/3ud+lTBZJMn+KgFFl+bk/w="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.HistoricDistrictService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.HistoricDistrictService.html",
+          "hash": "CmX953fGOjAY65EaD56NkU81ctx/o7a//DEsv07yfNI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService.html",
+          "hash": "UdUSl929/4ldgY4d8LSszkQ+MTc4W4TkuuMPP96MA7g="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.IndividualLandmarkSiteService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.IndividualLandmarkSiteService.html",
+          "hash": "awTFk6CzEHbE/N6Iznk1gYaAmrxCfw0Kj4JmkbTa4Cw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.NationalRegisterHistoricPlacesService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.NationalRegisterHistoricPlacesService.html",
+          "hash": "D4UuSHyX0qXr8NpgqPWlarxPkcDDVjVxVV2MDdjYSIM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.NeighborhoodTabulationAreasService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html",
+          "hash": "//eYJ+a6NMIqBO2u5m3bMpiYt/rQCGFoyp/dn0DqUHw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.NeighborhoodsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.NeighborhoodsService.html",
+          "hash": "S3t47S5QvbeeNujkB00uHKCIyiVy4Q3zqc9lGb91jfs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.NychaDevelopmentService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.NychaDevelopmentService.html",
+          "hash": "LBFuAj91WBjvkVlFWqG18L3N0ufL9sVVQZWq1EVXpag="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.NypdPolicePrecinctService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.NypdPolicePrecinctService.html",
+          "hash": "z+yFsC1CmLUFZn4GD2rlG49HGfGH1bBR8uJZGAp/qb0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.NypdSectorsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.NypdSectorsService.html",
+          "hash": "8i9uho+B0bx2BuwJ1lw4FcGxwxMpfXToBejj2DB3qEg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.ParkService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.ParkService.html",
+          "hash": "SJ8Fb+hHF3Wbzm6tmgh+63XEv1oggRbO77gqVlKgR5I="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.ScenicLandmarkService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.ScenicLandmarkService.html",
+          "hash": "ffe0N0iuvBt7KkLVV9MANIBhM44sD4R2JZV7icFuKpQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.SubwayService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.SubwayService.html",
+          "hash": "2ytU7FbuiRqUNRjRri5KlxdUfZNpoFSyrMoN9O5+AEE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.ZipCodeService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.ZipCodeService.html",
+          "hash": "T6X0Xrh96ah/TK24YcdOpClhmCg9FzU58JKcaOge5wc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.Service.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.Service.Services.html",
+          "hash": "5+lsqM+z9QXcr7N5LTz8jP60ghUWoMu+I1Y15/rs06U="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Extensions.Constants.ApiConstants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Extensions.Constants.ApiConstants.html",
+          "hash": "Aa9RIv/nwQBdAmRkoh4qSCJ5/3VSK6QlhVzySTw468M="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Extensions.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Extensions.Constants.html",
+          "hash": "p0N2pi1UrF2fiYHvqZWaDXxwj/nXz1cuTKcbIQM9I08="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Extensions.FolderHealthCheck.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Extensions.FolderHealthCheck.html",
+          "hash": "vyf2IGaAdtMFzjltWYoJD72deJFyr6Rom/YcXbnyRmA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Extensions.ServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Extensions.ServiceCollectionExtensions.html",
+          "hash": "P33uD5e0pTz7gzvVvfLDhiahbp1k5UU2sM6NZGTCcHk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Extensions.Swagger.ConfigureSwaggerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Extensions.Swagger.ConfigureSwaggerOptions.html",
+          "hash": "t/rC9sPb+6x23q6mrUBldWMUEtqSyij3F5gplfUY2DU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Extensions.Swagger.SwaggerDocumentFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Extensions.Swagger.SwaggerDocumentFilter.html",
+          "hash": "WAjWL5TrVVqaVyX1zYOftms9vydVd+E24GhiN6POWYk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Extensions.Swagger.SwaggerFeatureRequestExamples.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Extensions.Swagger.SwaggerFeatureRequestExamples.html",
+          "hash": "hfuvKKxEFFC4Vcug91ZF/Jw7ov1H8StzicyvVGOYs+4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Extensions.Swagger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Extensions.Swagger.html",
+          "hash": "XUTaPtZVH0XIqgc+9lfZJb5ziph9Z9kQ+zXeBUoL8Nc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Extensions.SystemHealthCheckBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Extensions.SystemHealthCheckBuilderExtensions.html",
+          "hash": "v1FYNvGUNjyzPbmiEggQTxNLOsV3r51JHqvLSZJv+OE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Extensions.html",
+          "hash": "cIhSpqwOlRdbQV6BfqdMiT5CpzJBYtauwd05nTG9+AU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Models.FeatureAttributeLookupRequestModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Models.FeatureAttributeLookupRequestModel.html",
+          "hash": "G0JjZzc6xvYy+obJNn168zD0Bnss8BtDE4cZX6n6klA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Models.FeatureAttributeRequestModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Models.FeatureAttributeRequestModel.html",
+          "hash": "OoQ7dNbXdTKRNScLPCqapva+f2S7yx9UIxP9r11jvvM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Models.FeatureRequestModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Models.FeatureRequestModel.html",
+          "hash": "DBzWC+MCSRR67DXtP0OzvSwt7nYyocahcJ22BsKwA7Y="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Models.html",
+          "hash": "805UYSVpRG86mdLyv7ECTtuKFN8UEpiv6pDcO5/aQP0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Services.Cron.CronJobService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Services.Cron.CronJobService.html",
+          "hash": "nrqEfcVE9sKwbmxURCuphUjnZqMb6MsLAsZgWPJZJyQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Services.Cron.IScheduleConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Services.Cron.IScheduleConfig.html",
+          "hash": "q4/UX+BUL1o19v5D8+TGWFgo5ZbrMc7beMS+cRIN84w="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Services.Cron.ScheduleConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Services.Cron.ScheduleConfig.html",
+          "hash": "t/gQ4mVRy/T/PyB49FzFb5jQmJ5sMDUGZfi8XjboDGI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.Services.Cron.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.Services.Cron.html",
+          "hash": "qazv2/AzBitoWQonNb0vsTbmH7rc7JyMYkaOEG1g+9U="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V1.Controllers.FeatureServiceController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V1.Controllers.FeatureServiceController.html",
+          "hash": "xc2IxpHxX4di1L+4nZV87DI2i2XeD/Lmyr9dYLy4o+Y="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V1.Controllers.FlatFileServiceController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V1.Controllers.FlatFileServiceController.html",
+          "hash": "v6Bi3db1j/JHjhLLkm0J+DBK973sgfenavRevHj3k6E="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V1.Controllers.TestDataController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V1.Controllers.TestDataController.html",
+          "hash": "GkKWFW9ZX/tPSYJfk47z+yu4/bEnie8nZaIB3hw8wK0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V1.Controllers.TransformationServiceController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V1.Controllers.TransformationServiceController.html",
+          "hash": "psAgnnzeSR7xN4zOwaPKZ16BSQqSoK4T3bgZIUKUzcs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V1.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V1.Controllers.html",
+          "hash": "JHBWT+A0Sb2zn3XPkKZwu9giaem7IhQTWz+1WmC3n9w="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V2.Models.Order.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V2.Models.Order.html",
+          "hash": "c4M6Sua48VE6zDGXcZ7xVdMgYubU1HIK3lW5sh6bvmE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V2.Models.Person.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V2.Models.Person.html",
+          "hash": "zlJgIjJLT/p5ZCjLl9pVRTot09kysZGdmf/zGirYFJ0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V2.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V2.Models.html",
+          "hash": "TCEhIG1IWGuZHDn7OPduZuubb2Ooxs3dtpK0JDyWJrU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V3.Controllers.OrdersController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V3.Controllers.OrdersController.html",
+          "hash": "9z6JNEGV4bk9zLsZFH6/Qm0oGPd0nFU6Ft+pz9Ks3xg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V3.Controllers.PeopleController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V3.Controllers.PeopleController.html",
+          "hash": "p36R/cAQsFM4V550VFAGSoijGbXOYRx5yGL35XWBigg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V3.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V3.Controllers.html",
+          "hash": "eJay+KwiU6+k03+y7UKYbFMajVXbJWughAk+9YTnoQI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V3.Models.Order.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V3.Models.Order.html",
+          "hash": "t57JznVOGzyx9Ycjnglnvqd0Vln90KZ60mexfvBJvxk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V3.Models.Person.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V3.Models.Person.html",
+          "hash": "9oRw0DGtjbTCa8fb/ZjjmbVvxl7Mxj7P07C/fNBT78U="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MicroService.WebApi.V3.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MicroService.WebApi.V3.Models.html",
+          "hash": "qpwUlk63o1Hi8fbMj8jgdtWyWL/YwxBHj2HhzZ95/L4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Examples.V2.Controllers.OrdersController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Examples.V2.Controllers.OrdersController.html",
+          "hash": "C98EawHd/LbxQUeJPnBI7ZoCMF3w4sFzuFdywAokp3I="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Examples.V2.Controllers.PeopleController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Examples.V2.Controllers.PeopleController.html",
+          "hash": "T2RRdksBE9LWovYNMxdbDXlVhE1uBg/4/h4+smDx/uE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Examples.V2.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Examples.V2.Controllers.html",
+          "hash": "MjsgA9W5ddHcRcCO1AbxWuaQAHpXJRaUasO9ZUFA8aE="
         }
       },
       "version": ""
@@ -21,12 +1866,23 @@
       "log_codes": [
         "InvalidFileLink"
       ],
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "pep3p4vDEnRexHhOuOTltipprzw5LYBzLFc6sKSdmNE="
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "api/toc.yml",
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "wJ286zIVzneBZcbB7ENLd5QJXc42lvdt1iGF9xg+CGY="
+          "hash": "neXt5TOZLbHgGsERd+l8dCArHLcIBDeZnQEWjcqbc3k="
         }
       },
       "version": ""
@@ -37,7 +1893,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/csharp_coding_standards.html",
-          "hash": "ItYirExPwjVnJGf1REC992ImAPI/czPdaZyDnNhzL+o="
+          "hash": "cEq5xyW57HJNL1oxqX9x+0VoEaIuPYb60UUUXaHcfTk="
         }
       },
       "version": ""
@@ -48,7 +1904,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/details1.html",
-          "hash": "FE3pkmEXhQ5mLcfWyy3r2DbjGMmqhvYVjEbVzcDqcNA="
+          "hash": "3G/EgJ5XQO4HLLMLE69j+KInJSWbqDmtoBSaloA7+EQ="
         }
       },
       "version": ""
@@ -62,7 +1918,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/docfx.html",
-          "hash": "sdtEAXrAJbTa4laAGm2NlsRNtOTGvzyx06MJz9SCdpA="
+          "hash": "W9B7oM2KBi6prqg2QwP7waWn3qEsTMG05GnPrnCNInY="
         }
       },
       "version": ""
@@ -73,7 +1929,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/eks.html",
-          "hash": "bA2O4iYWmgbFNwer7EYkyy1Pqgp56/QA+FZz/xD50zo="
+          "hash": "BQBJcXIk+pn2TiWYZymx0I9NDCuhRuqdW9aghngnqWY="
         }
       },
       "version": ""
@@ -84,7 +1940,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/howto/howto1.html",
-          "hash": "E6dvDH9GJVIH0+LPuRBV8q9aSDOZOOWfWd3ZFDfSNZs="
+          "hash": "2ai1D2kJNQi0tnnipL1gARHL79K2hlMA1c5EiG4yUwY="
         }
       },
       "version": ""
@@ -95,7 +1951,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/howto/howto2.html",
-          "hash": "rte1gjTJH3fqS3UGyEwtSsNTO/BTjVlwxkYpYeAvbDs="
+          "hash": "lA1MBFKcHWJoYW3GwGOVuDbqtvZRIRDC8CcR94nRDxI="
         }
       },
       "version": ""
@@ -106,7 +1962,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/howto/overview.html",
-          "hash": "PiFj68CFtmyAU0a2DnKWHgBJI1iDa3woOlthID2+ouU="
+          "hash": "Q/YqDcE6hoSCat7S76oWZ1MlxJyw9NIuQzMGlPOdt0Q="
         }
       },
       "version": ""
@@ -117,7 +1973,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/hyper-v.html",
-          "hash": "k97pMpBBBQPsa8r0gH5aY1SKeYCNYUnCmLJqsVdUiG8="
+          "hash": "vUd2LyybEyDzY25xoGSBBctQUwdh8yBbSgSL2qRFOAI="
         }
       },
       "version": ""
@@ -218,7 +2074,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "2B2gM/rIzDqF6yaK7/bXbAd6t0f9XL7du37l3QhuSz4="
+          "hash": "0vrJpEXiO6oSFiLgo3msFKI0LdsTRX11Me+yPdKUbYo="
         }
       },
       "version": ""
@@ -229,7 +2085,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/kubernetes.html",
-          "hash": "RjG2yTehl1KoFAMibRsWI7FAcTjQlMKu/wpW+aY3P/M="
+          "hash": "WR4oZfpbdbVoLO0gByHOV6DYmoC323qpjEHIhExNZn0="
         }
       },
       "version": ""
@@ -240,7 +2096,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/myget.html",
-          "hash": "PYyVAHixnpdN3XSELGlbMIONlyHT8WaYWUFr1wM01x4="
+          "hash": "vl0Te9r1aBCE43ZmXZZjvSLmbNEexAWhbg2cREf9ljo="
         }
       },
       "version": ""
@@ -251,7 +2107,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/requirements.html",
-          "hash": "lbgy+4GUO5w74BXRplf6gWRByzSSHjqPAjHSA2LMG5k="
+          "hash": "QdvWPJjlj7jdJsVwFcXDDIfcirTEcsUcMciUK/uR9Xw="
         }
       },
       "version": ""
@@ -262,7 +2118,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/sonarqube.html",
-          "hash": "t9XY4LaB1op7OGwVNq5oul+G1tVSXGOtEDT2KdmiUgw="
+          "hash": "ZVm5HqqmwcHqCH6oje+cmQyXJbAvO3nblM81Xt/jl5s="
         }
       },
       "version": ""
@@ -276,7 +2132,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/swagger.html",
-          "hash": "TYD+3HDLFvTAZad/bBBuicNvNyH/3RedXxJps9yXN1c="
+          "hash": "ncy82VR9iEMyxWeosrT9OhhEZ3CRXji2c03/p05wyD8="
         }
       },
       "version": ""
@@ -298,18 +2154,51 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "j8Z15zc95kPayvhQPmC/kjSSEGIagMKZ8br83oV+7tE="
+          "hash": "lOjzH1DI7mEWucWdjB9VwIuKB+vlhqAlfl9RRXtChuE="
         }
       },
       "version": ""
     },
     {
-      "type": "Toc",
-      "source_relative_path": "restapi/toc.md",
+      "type": "Resource",
+      "source_relative_path": "restapi/index.html",
+      "output": {
+        "resource": {
+          "relative_path": "restapi/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "restapi/redoc.md",
       "output": {
         ".html": {
-          "relative_path": "restapi/toc.html",
-          "hash": "0vyoYmuL46t3UIfveZK+zb9cnzLu7SywaQpk+2Cu6+8="
+          "relative_path": "restapi/redoc.html",
+          "hash": "6WtqyVAvI7PfTE82YxJjjdudda0a8oh36i/I8ji3BOM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "restapi/redoc.standalone.js",
+      "output": {
+        "resource": {
+          "relative_path": "restapi/redoc.standalone.js"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "restapi/swagger.json",
+      "output": {
+        "resource": {
+          "relative_path": "restapi/swagger.json"
         }
       },
       "version": ""
@@ -320,7 +2209,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "XeP2+1uwXxanauPA15twku0fjy+eVM4jVbhGb9uuCSY="
+          "hash": "6qMGQKo02KxLi/AdnBNmbtlVl2iDt7Mq59UKXNogD+g="
         }
       },
       "version": ""
