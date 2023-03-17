@@ -3,27 +3,18 @@
     {
       "src": [
         {
-          "src": "../",
+          "cwd": "../",
           "files": [
-            "src/**/**.csproj"
+            "src/MicroService.Common/MicroService.Common.csproj",
+            "src/MicroService.Data/MicroService.Data.csproj",
+            "src/MicroService.Service/MicroService.Service.csproj",
+            "src/MicroService.WebApi/MicroService.WebApi.csproj"
           ],
           "exclude": [
             "**/bin/**",
             "**/obj/**",
             "_site/**"
           ]
-        },
-        {
-          "files": [
-            "api/*.json",
-            "api/*.yml",
-            "api/*.yaml"
-          ],
-          "exclude": [
-            "_site/**",
-            "_site/*"
-          ],
-          "dest": "api"
         }
       ],
       "dest": "api",

@@ -1,0 +1,11 @@
+- name: C# API Documentation
+  href: index.md
+  items:
+    - name: MicroService.Common
+      href: MicroService.Common/MicroService.Common.yml
+    - name: MicroService.Data
+      href: MicroService.Data/MicroService.Data.yml
+    - name: MicroService.Service
+      href: MicroService.Service/MicroService.Service.yml
+    - name: MicroService.WebApi
+      href: MicroService.WebApi/MicroService.WebApi.yml
