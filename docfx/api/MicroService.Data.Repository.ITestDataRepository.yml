@@ -1,0 +1,421 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Data.Repository.ITestDataRepository
+  commentId: T:MicroService.Data.Repository.ITestDataRepository
+  id: ITestDataRepository
+  parent: MicroService.Data.Repository
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: ITestDataRepository
+  nameWithType: ITestDataRepository
+  fullName: MicroService.Data.Repository.ITestDataRepository
+  type: Interface
+  source:
+    remote:
+      path: src/MicroService.Data/Repository/ITestDataRepository.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ITestDataRepository
+    path: ../src/MicroService.Data/Repository/ITestDataRepository.cs
+    startLine: 4
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Repository
+  syntax:
+    content: 'public interface ITestDataRepository : IRepository<TestData>'
+    content.vb: Public Interface ITestDataRepository Inherits IRepository(Of TestData)
+  inheritedMembers:
+  - MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Add(MicroService.Data.Models.TestData)
+  - MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Remove(System.Int32)
+  - MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Update(MicroService.Data.Models.TestData)
+  - MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.FindById(System.Int32)
+  - MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.FindAll
+  extensionMethods:
+  - MicroService.Data.Repository.ITestDataRepository.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+references:
+- uid: MicroService.Data.Repository
+  commentId: N:MicroService.Data.Repository
+  name: MicroService.Data.Repository
+  nameWithType: MicroService.Data.Repository
+  fullName: MicroService.Data.Repository
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Repository
+    name: Repository
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Repository
+    name: Repository
+- uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Add(MicroService.Data.Models.TestData)
+  commentId: M:MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Add(MicroService.Data.Models.TestData)
+  parent: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}
+  definition: MicroService.Data.Repository.IRepository`1.Add(`0)
+  name: Add(TestData)
+  nameWithType: IRepository<TestData>.Add(TestData)
+  fullName: MicroService.Data.Repository.IRepository<MicroService.Data.Models.TestData>.Add(MicroService.Data.Models.TestData)
+  nameWithType.vb: IRepository(Of TestData).Add(TestData)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of MicroService.Data.Models.TestData).Add(MicroService.Data.Models.TestData)
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Add(MicroService.Data.Models.TestData)
+    name: Add
+  - name: (
+  - uid: MicroService.Data.Models.TestData
+    name: TestData
+  - name: )
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Add(MicroService.Data.Models.TestData)
+    name: Add
+  - name: (
+  - uid: MicroService.Data.Models.TestData
+    name: TestData
+  - name: )
+- uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Remove(System.Int32)
+  commentId: M:MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Remove(System.Int32)
+  parent: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}
+  definition: MicroService.Data.Repository.IRepository`1.Remove(System.Int32)
+  name: Remove(int)
+  nameWithType: IRepository<TestData>.Remove(int)
+  fullName: MicroService.Data.Repository.IRepository<MicroService.Data.Models.TestData>.Remove(int)
+  nameWithType.vb: IRepository(Of TestData).Remove(Integer)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of MicroService.Data.Models.TestData).Remove(Integer)
+  name.vb: Remove(Integer)
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Remove(System.Int32)
+    name: Remove
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Remove(System.Int32)
+    name: Remove
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Update(MicroService.Data.Models.TestData)
+  commentId: M:MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Update(MicroService.Data.Models.TestData)
+  parent: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}
+  definition: MicroService.Data.Repository.IRepository`1.Update(`0)
+  name: Update(TestData)
+  nameWithType: IRepository<TestData>.Update(TestData)
+  fullName: MicroService.Data.Repository.IRepository<MicroService.Data.Models.TestData>.Update(MicroService.Data.Models.TestData)
+  nameWithType.vb: IRepository(Of TestData).Update(TestData)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of MicroService.Data.Models.TestData).Update(MicroService.Data.Models.TestData)
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Update(MicroService.Data.Models.TestData)
+    name: Update
+  - name: (
+  - uid: MicroService.Data.Models.TestData
+    name: TestData
+  - name: )
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.Update(MicroService.Data.Models.TestData)
+    name: Update
+  - name: (
+  - uid: MicroService.Data.Models.TestData
+    name: TestData
+  - name: )
+- uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.FindById(System.Int32)
+  commentId: M:MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.FindById(System.Int32)
+  parent: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}
+  definition: MicroService.Data.Repository.IRepository`1.FindById(System.Int32)
+  name: FindById(int)
+  nameWithType: IRepository<TestData>.FindById(int)
+  fullName: MicroService.Data.Repository.IRepository<MicroService.Data.Models.TestData>.FindById(int)
+  nameWithType.vb: IRepository(Of TestData).FindById(Integer)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of MicroService.Data.Models.TestData).FindById(Integer)
+  name.vb: FindById(Integer)
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.FindById(System.Int32)
+    name: FindById
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.FindById(System.Int32)
+    name: FindById
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.FindAll
+  commentId: M:MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.FindAll
+  parent: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}
+  definition: MicroService.Data.Repository.IRepository`1.FindAll
+  name: FindAll()
+  nameWithType: IRepository<TestData>.FindAll()
+  fullName: MicroService.Data.Repository.IRepository<MicroService.Data.Models.TestData>.FindAll()
+  nameWithType.vb: IRepository(Of TestData).FindAll()
+  fullName.vb: MicroService.Data.Repository.IRepository(Of MicroService.Data.Models.TestData).FindAll()
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.FindAll
+    name: FindAll
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}.FindAll
+    name: FindAll
+  - name: (
+  - name: )
+- uid: MicroService.Data.Repository.ITestDataRepository.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<ITestDataRepository>(ITestDataRepository)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<ITestDataRepository>(ITestDataRepository)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Data.Repository.ITestDataRepository>(MicroService.Data.Repository.ITestDataRepository)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of ITestDataRepository)(ITestDataRepository)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Data.Repository.ITestDataRepository)(MicroService.Data.Repository.ITestDataRepository)
+  name.vb: ArePropertiesNotNull(Of ITestDataRepository)(ITestDataRepository)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Data.Repository.ITestDataRepository)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Data.Repository.ITestDataRepository
+    name: ITestDataRepository
+  - name: '>'
+  - name: (
+  - uid: MicroService.Data.Repository.ITestDataRepository
+    name: ITestDataRepository
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Data.Repository.ITestDataRepository)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Data.Repository.ITestDataRepository
+    name: ITestDataRepository
+  - name: )
+  - name: (
+  - uid: MicroService.Data.Repository.ITestDataRepository
+    name: ITestDataRepository
+  - name: )
+- uid: MicroService.Data.Repository.IRepository`1.Add(`0)
+  commentId: M:MicroService.Data.Repository.IRepository`1.Add(`0)
+  name: Add(T)
+  nameWithType: IRepository<T>.Add(T)
+  fullName: MicroService.Data.Repository.IRepository<T>.Add(T)
+  nameWithType.vb: IRepository(Of T).Add(T)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).Add(T)
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository`1.Add(`0)
+    name: Add
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository`1.Add(`0)
+    name: Add
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}
+  commentId: T:MicroService.Data.Repository.IRepository{MicroService.Data.Models.TestData}
+  parent: MicroService.Data.Repository
+  definition: MicroService.Data.Repository.IRepository`1
+  name: IRepository<TestData>
+  nameWithType: IRepository<TestData>
+  fullName: MicroService.Data.Repository.IRepository<MicroService.Data.Models.TestData>
+  nameWithType.vb: IRepository(Of TestData)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of MicroService.Data.Models.TestData)
+  name.vb: IRepository(Of TestData)
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository`1
+    name: IRepository
+  - name: <
+  - uid: MicroService.Data.Models.TestData
+    name: TestData
+  - name: '>'
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository`1
+    name: IRepository
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Data.Models.TestData
+    name: TestData
+  - name: )
+- uid: MicroService.Data.Repository.IRepository`1.Remove(System.Int32)
+  commentId: M:MicroService.Data.Repository.IRepository`1.Remove(System.Int32)
+  isExternal: true
+  name: Remove(int)
+  nameWithType: IRepository<T>.Remove(int)
+  fullName: MicroService.Data.Repository.IRepository<T>.Remove(int)
+  nameWithType.vb: IRepository(Of T).Remove(Integer)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).Remove(Integer)
+  name.vb: Remove(Integer)
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository`1.Remove(System.Int32)
+    name: Remove
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository`1.Remove(System.Int32)
+    name: Remove
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: MicroService.Data.Repository.IRepository`1.Update(`0)
+  commentId: M:MicroService.Data.Repository.IRepository`1.Update(`0)
+  name: Update(T)
+  nameWithType: IRepository<T>.Update(T)
+  fullName: MicroService.Data.Repository.IRepository<T>.Update(T)
+  nameWithType.vb: IRepository(Of T).Update(T)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).Update(T)
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository`1.Update(`0)
+    name: Update
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository`1.Update(`0)
+    name: Update
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Data.Repository.IRepository`1.FindById(System.Int32)
+  commentId: M:MicroService.Data.Repository.IRepository`1.FindById(System.Int32)
+  isExternal: true
+  name: FindById(int)
+  nameWithType: IRepository<T>.FindById(int)
+  fullName: MicroService.Data.Repository.IRepository<T>.FindById(int)
+  nameWithType.vb: IRepository(Of T).FindById(Integer)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).FindById(Integer)
+  name.vb: FindById(Integer)
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository`1.FindById(System.Int32)
+    name: FindById
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository`1.FindById(System.Int32)
+    name: FindById
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: MicroService.Data.Repository.IRepository`1.FindAll
+  commentId: M:MicroService.Data.Repository.IRepository`1.FindAll
+  name: FindAll()
+  nameWithType: IRepository<T>.FindAll()
+  fullName: MicroService.Data.Repository.IRepository<T>.FindAll()
+  nameWithType.vb: IRepository(Of T).FindAll()
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).FindAll()
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository`1.FindAll
+    name: FindAll
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository`1.FindAll
+    name: FindAll
+  - name: (
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Data.Repository.IRepository`1
+  commentId: T:MicroService.Data.Repository.IRepository`1
+  name: IRepository<T>
+  nameWithType: IRepository<T>
+  fullName: MicroService.Data.Repository.IRepository<T>
+  nameWithType.vb: IRepository(Of T)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T)
+  name.vb: IRepository(Of T)
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository`1
+    name: IRepository
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository`1
+    name: IRepository
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers

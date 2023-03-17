@@ -1,0 +1,865 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.WebApi.Services.Cron.CronJobService
+  commentId: T:MicroService.WebApi.Services.Cron.CronJobService
+  id: CronJobService
+  parent: MicroService.WebApi.Services.Cron
+  children:
+  - MicroService.WebApi.Services.Cron.CronJobService.#ctor(System.String,System.TimeZoneInfo)
+  - MicroService.WebApi.Services.Cron.CronJobService.Dispose
+  - MicroService.WebApi.Services.Cron.CronJobService.Dispose(System.Boolean)
+  - MicroService.WebApi.Services.Cron.CronJobService.DoWork(System.Threading.CancellationToken)
+  - MicroService.WebApi.Services.Cron.CronJobService.ScheduleJob(System.Threading.CancellationToken)
+  - MicroService.WebApi.Services.Cron.CronJobService.StartAsync(System.Threading.CancellationToken)
+  - MicroService.WebApi.Services.Cron.CronJobService.StopAsync(System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: CronJobService
+  nameWithType: CronJobService
+  fullName: MicroService.WebApi.Services.Cron.CronJobService
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.WebApi/Services/Cron/CronJobService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: CronJobService
+    path: ../src/MicroService.WebApi/Services/Cron/CronJobService.cs
+    startLine: 7
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Services.Cron
+  summary: "\nCron Job Service\n"
+  example: []
+  syntax:
+    content: 'public abstract class CronJobService : IHostedService, IDisposable'
+    content.vb: Public MustInherit Class CronJobService Implements IHostedService, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - Microsoft.Extensions.Hosting.IHostedService
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MicroService.WebApi.Services.Cron.CronJobService.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+- uid: MicroService.WebApi.Services.Cron.CronJobService.#ctor(System.String,System.TimeZoneInfo)
+  commentId: M:MicroService.WebApi.Services.Cron.CronJobService.#ctor(System.String,System.TimeZoneInfo)
+  id: '#ctor(System.String,System.TimeZoneInfo)'
+  parent: MicroService.WebApi.Services.Cron.CronJobService
+  langs:
+  - csharp
+  - vb
+  name: CronJobService(string, TimeZoneInfo)
+  nameWithType: CronJobService.CronJobService(string, TimeZoneInfo)
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.CronJobService(string, System.TimeZoneInfo)
+  type: Constructor
+  source:
+    remote:
+      path: src/MicroService.WebApi/Services/Cron/CronJobService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: .ctor
+    path: ../src/MicroService.WebApi/Services/Cron/CronJobService.cs
+    startLine: 19
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Services.Cron
+  summary: "\nInitializes a new instance of the <xref href=\"MicroService.WebApi.Services.Cron.CronJobService\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: protected CronJobService(string cronExpression, TimeZoneInfo timeZoneInfo)
+    parameters:
+    - id: cronExpression
+      type: System.String
+      description: ''
+    - id: timeZoneInfo
+      type: System.TimeZoneInfo
+      description: ''
+    content.vb: Protected Sub New(cronExpression As String, timeZoneInfo As TimeZoneInfo)
+  overload: MicroService.WebApi.Services.Cron.CronJobService.#ctor*
+  nameWithType.vb: CronJobService.New(String, TimeZoneInfo)
+  fullName.vb: MicroService.WebApi.Services.Cron.CronJobService.New(String, System.TimeZoneInfo)
+  name.vb: New(String, TimeZoneInfo)
+- uid: MicroService.WebApi.Services.Cron.CronJobService.StartAsync(System.Threading.CancellationToken)
+  commentId: M:MicroService.WebApi.Services.Cron.CronJobService.StartAsync(System.Threading.CancellationToken)
+  id: StartAsync(System.Threading.CancellationToken)
+  parent: MicroService.WebApi.Services.Cron.CronJobService
+  langs:
+  - csharp
+  - vb
+  name: StartAsync(CancellationToken)
+  nameWithType: CronJobService.StartAsync(CancellationToken)
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.StartAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.WebApi/Services/Cron/CronJobService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: StartAsync
+    path: ../src/MicroService.WebApi/Services/Cron/CronJobService.cs
+    startLine: 26
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Services.Cron
+  example: []
+  syntax:
+    content: public virtual Task StartAsync(CancellationToken cancellationToken)
+    parameters:
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Overridable Function StartAsync(cancellationToken As CancellationToken) As Task
+  overload: MicroService.WebApi.Services.Cron.CronJobService.StartAsync*
+  implements:
+  - Microsoft.Extensions.Hosting.IHostedService.StartAsync(System.Threading.CancellationToken)
+- uid: MicroService.WebApi.Services.Cron.CronJobService.DoWork(System.Threading.CancellationToken)
+  commentId: M:MicroService.WebApi.Services.Cron.CronJobService.DoWork(System.Threading.CancellationToken)
+  id: DoWork(System.Threading.CancellationToken)
+  parent: MicroService.WebApi.Services.Cron.CronJobService
+  langs:
+  - csharp
+  - vb
+  name: DoWork(CancellationToken)
+  nameWithType: CronJobService.DoWork(CancellationToken)
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.DoWork(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.WebApi/Services/Cron/CronJobService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: DoWork
+    path: ../src/MicroService.WebApi/Services/Cron/CronJobService.cs
+    startLine: 33
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Services.Cron
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: public virtual Task DoWork(CancellationToken cancellationToken)
+    parameters:
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Public Overridable Function DoWork(cancellationToken As CancellationToken) As Task
+  overload: MicroService.WebApi.Services.Cron.CronJobService.DoWork*
+- uid: MicroService.WebApi.Services.Cron.CronJobService.StopAsync(System.Threading.CancellationToken)
+  commentId: M:MicroService.WebApi.Services.Cron.CronJobService.StopAsync(System.Threading.CancellationToken)
+  id: StopAsync(System.Threading.CancellationToken)
+  parent: MicroService.WebApi.Services.Cron.CronJobService
+  langs:
+  - csharp
+  - vb
+  name: StopAsync(CancellationToken)
+  nameWithType: CronJobService.StopAsync(CancellationToken)
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.StopAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.WebApi/Services/Cron/CronJobService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: StopAsync
+    path: ../src/MicroService.WebApi/Services/Cron/CronJobService.cs
+    startLine: 40
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Services.Cron
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: public virtual Task StopAsync(CancellationToken cancellationToken)
+    parameters:
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Public Overridable Function StopAsync(cancellationToken As CancellationToken) As Task
+  overload: MicroService.WebApi.Services.Cron.CronJobService.StopAsync*
+  implements:
+  - Microsoft.Extensions.Hosting.IHostedService.StopAsync(System.Threading.CancellationToken)
+- uid: MicroService.WebApi.Services.Cron.CronJobService.Dispose
+  commentId: M:MicroService.WebApi.Services.Cron.CronJobService.Dispose
+  id: Dispose
+  parent: MicroService.WebApi.Services.Cron.CronJobService
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: CronJobService.Dispose()
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.WebApi/Services/Cron/CronJobService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Dispose
+    path: ../src/MicroService.WebApi/Services/Cron/CronJobService.cs
+    startLine: 49
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Services.Cron
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: public virtual void Dispose()
+    content.vb: Public Overridable Sub Dispose()
+  overload: MicroService.WebApi.Services.Cron.CronJobService.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: MicroService.WebApi.Services.Cron.CronJobService.Dispose(System.Boolean)
+  commentId: M:MicroService.WebApi.Services.Cron.CronJobService.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: MicroService.WebApi.Services.Cron.CronJobService
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: CronJobService.Dispose(bool)
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.WebApi/Services/Cron/CronJobService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Dispose
+    path: ../src/MicroService.WebApi/Services/Cron/CronJobService.cs
+    startLine: 59
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Services.Cron
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: protected virtual void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: ''
+    content.vb: Protected Overridable Sub Dispose(disposing As Boolean)
+  overload: MicroService.WebApi.Services.Cron.CronJobService.Dispose*
+  nameWithType.vb: CronJobService.Dispose(Boolean)
+  fullName.vb: MicroService.WebApi.Services.Cron.CronJobService.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+- uid: MicroService.WebApi.Services.Cron.CronJobService.ScheduleJob(System.Threading.CancellationToken)
+  commentId: M:MicroService.WebApi.Services.Cron.CronJobService.ScheduleJob(System.Threading.CancellationToken)
+  id: ScheduleJob(System.Threading.CancellationToken)
+  parent: MicroService.WebApi.Services.Cron.CronJobService
+  langs:
+  - csharp
+  - vb
+  name: ScheduleJob(CancellationToken)
+  nameWithType: CronJobService.ScheduleJob(CancellationToken)
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.ScheduleJob(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.WebApi/Services/Cron/CronJobService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ScheduleJob
+    path: ../src/MicroService.WebApi/Services/Cron/CronJobService.cs
+    startLine: 79
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Services.Cron
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: protected virtual Task ScheduleJob(CancellationToken cancellationToken)
+    parameters:
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Protected Overridable Function ScheduleJob(cancellationToken As CancellationToken) As Task
+  overload: MicroService.WebApi.Services.Cron.CronJobService.ScheduleJob*
+references:
+- uid: MicroService.WebApi.Services.Cron
+  commentId: N:MicroService.WebApi.Services.Cron
+  name: MicroService.WebApi.Services.Cron
+  nameWithType: MicroService.WebApi.Services.Cron
+  fullName: MicroService.WebApi.Services.Cron
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.WebApi
+    name: WebApi
+  - name: .
+  - uid: MicroService.WebApi.Services
+    name: Services
+  - name: .
+  - uid: MicroService.WebApi.Services.Cron
+    name: Cron
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.WebApi
+    name: WebApi
+  - name: .
+  - uid: MicroService.WebApi.Services
+    name: Services
+  - name: .
+  - uid: MicroService.WebApi.Services.Cron
+    name: Cron
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Microsoft.Extensions.Hosting.IHostedService
+  commentId: T:Microsoft.Extensions.Hosting.IHostedService
+  parent: Microsoft.Extensions.Hosting
+  isExternal: true
+  name: IHostedService
+  nameWithType: IHostedService
+  fullName: Microsoft.Extensions.Hosting.IHostedService
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: MicroService.WebApi.Services.Cron.CronJobService.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<CronJobService>(CronJobService)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<CronJobService>(CronJobService)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.WebApi.Services.Cron.CronJobService>(MicroService.WebApi.Services.Cron.CronJobService)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of CronJobService)(CronJobService)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.WebApi.Services.Cron.CronJobService)(MicroService.WebApi.Services.Cron.CronJobService)
+  name.vb: ArePropertiesNotNull(Of CronJobService)(CronJobService)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.WebApi.Services.Cron.CronJobService)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.WebApi.Services.Cron.CronJobService
+    name: CronJobService
+  - name: '>'
+  - name: (
+  - uid: MicroService.WebApi.Services.Cron.CronJobService
+    name: CronJobService
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.WebApi.Services.Cron.CronJobService)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.WebApi.Services.Cron.CronJobService
+    name: CronJobService
+  - name: )
+  - name: (
+  - uid: MicroService.WebApi.Services.Cron.CronJobService
+    name: CronJobService
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.Extensions.Hosting
+  commentId: N:Microsoft.Extensions.Hosting
+  isExternal: true
+  name: Microsoft.Extensions.Hosting
+  nameWithType: Microsoft.Extensions.Hosting
+  fullName: Microsoft.Extensions.Hosting
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions.Hosting
+    name: Hosting
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions.Hosting
+    name: Hosting
+    isExternal: true
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.WebApi.Services.Cron.CronJobService
+  commentId: T:MicroService.WebApi.Services.Cron.CronJobService
+  name: CronJobService
+  nameWithType: CronJobService
+  fullName: MicroService.WebApi.Services.Cron.CronJobService
+- uid: MicroService.WebApi.Services.Cron.CronJobService.#ctor*
+  commentId: Overload:MicroService.WebApi.Services.Cron.CronJobService.#ctor
+  name: CronJobService
+  nameWithType: CronJobService.CronJobService
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.CronJobService
+  nameWithType.vb: CronJobService.New
+  fullName.vb: MicroService.WebApi.Services.Cron.CronJobService.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.TimeZoneInfo
+  commentId: T:System.TimeZoneInfo
+  parent: System
+  isExternal: true
+  name: TimeZoneInfo
+  nameWithType: TimeZoneInfo
+  fullName: System.TimeZoneInfo
+- uid: MicroService.WebApi.Services.Cron.CronJobService.StartAsync*
+  commentId: Overload:MicroService.WebApi.Services.Cron.CronJobService.StartAsync
+  name: StartAsync
+  nameWithType: CronJobService.StartAsync
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.StartAsync
+- uid: Microsoft.Extensions.Hosting.IHostedService.StartAsync(System.Threading.CancellationToken)
+  commentId: M:Microsoft.Extensions.Hosting.IHostedService.StartAsync(System.Threading.CancellationToken)
+  parent: Microsoft.Extensions.Hosting.IHostedService
+  isExternal: true
+  name: StartAsync(CancellationToken)
+  nameWithType: IHostedService.StartAsync(CancellationToken)
+  fullName: Microsoft.Extensions.Hosting.IHostedService.StartAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Hosting.IHostedService.StartAsync(System.Threading.CancellationToken)
+    name: StartAsync
+    isExternal: true
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Extensions.Hosting.IHostedService.StartAsync(System.Threading.CancellationToken)
+    name: StartAsync
+    isExternal: true
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: MicroService.WebApi.Services.Cron.CronJobService.DoWork*
+  commentId: Overload:MicroService.WebApi.Services.Cron.CronJobService.DoWork
+  name: DoWork
+  nameWithType: CronJobService.DoWork
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.DoWork
+- uid: MicroService.WebApi.Services.Cron.CronJobService.StopAsync*
+  commentId: Overload:MicroService.WebApi.Services.Cron.CronJobService.StopAsync
+  name: StopAsync
+  nameWithType: CronJobService.StopAsync
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.StopAsync
+- uid: Microsoft.Extensions.Hosting.IHostedService.StopAsync(System.Threading.CancellationToken)
+  commentId: M:Microsoft.Extensions.Hosting.IHostedService.StopAsync(System.Threading.CancellationToken)
+  parent: Microsoft.Extensions.Hosting.IHostedService
+  isExternal: true
+  name: StopAsync(CancellationToken)
+  nameWithType: IHostedService.StopAsync(CancellationToken)
+  fullName: Microsoft.Extensions.Hosting.IHostedService.StopAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Hosting.IHostedService.StopAsync(System.Threading.CancellationToken)
+    name: StopAsync
+    isExternal: true
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Extensions.Hosting.IHostedService.StopAsync(System.Threading.CancellationToken)
+    name: StopAsync
+    isExternal: true
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+- uid: MicroService.WebApi.Services.Cron.CronJobService.Dispose*
+  commentId: Overload:MicroService.WebApi.Services.Cron.CronJobService.Dispose
+  name: Dispose
+  nameWithType: CronJobService.Dispose
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MicroService.WebApi.Services.Cron.CronJobService.ScheduleJob*
+  commentId: Overload:MicroService.WebApi.Services.Cron.CronJobService.ScheduleJob
+  name: ScheduleJob
+  nameWithType: CronJobService.ScheduleJob
+  fullName: MicroService.WebApi.Services.Cron.CronJobService.ScheduleJob

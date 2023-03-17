@@ -1,0 +1,491 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+  commentId: T:MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+  id: StationComplexFlatFile
+  parent: MicroService.Service.Models.FlatFileModels
+  children:
+  - MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexId
+  - MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexName
+  langs:
+  - csharp
+  - vb
+  name: StationComplexFlatFile
+  nameWithType: StationComplexFlatFile
+  fullName: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationComplexFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: StationComplexFlatFile
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationComplexFlatFile.cs
+    startLine: 4
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: 'public class StationComplexFlatFile : FlatFileBase'
+    content.vb: Public Class StationComplexFlatFile Inherits FlatFileBase
+  inheritance:
+  - System.Object
+  - MicroService.Service.Models.Base.FlatFileBase
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+- uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexId
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexId
+  id: ComplexId
+  parent: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+  langs:
+  - csharp
+  - vb
+  name: ComplexId
+  nameWithType: StationComplexFlatFile.ComplexId
+  fullName: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexId
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationComplexFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ComplexId
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationComplexFlatFile.cs
+    startLine: 6
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public int ComplexId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ComplexId As Integer
+  overload: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexId*
+- uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexName
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexName
+  id: ComplexName
+  parent: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+  langs:
+  - csharp
+  - vb
+  name: ComplexName
+  nameWithType: StationComplexFlatFile.ComplexName
+  fullName: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationComplexFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ComplexName
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationComplexFlatFile.cs
+    startLine: 8
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public string ComplexName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ComplexName As String
+  overload: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexName*
+references:
+- uid: MicroService.Service.Models.FlatFileModels
+  commentId: N:MicroService.Service.Models.FlatFileModels
+  name: MicroService.Service.Models.FlatFileModels
+  nameWithType: MicroService.Service.Models.FlatFileModels
+  fullName: MicroService.Service.Models.FlatFileModels
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.FlatFileModels
+    name: FlatFileModels
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.FlatFileModels
+    name: FlatFileModels
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MicroService.Service.Models.Base.FlatFileBase
+  commentId: T:MicroService.Service.Models.Base.FlatFileBase
+  parent: MicroService.Service.Models.Base
+  name: FlatFileBase
+  nameWithType: FlatFileBase
+  fullName: MicroService.Service.Models.Base.FlatFileBase
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<StationComplexFlatFile>(StationComplexFlatFile)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<StationComplexFlatFile>(StationComplexFlatFile)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Models.FlatFileModels.StationComplexFlatFile>(MicroService.Service.Models.FlatFileModels.StationComplexFlatFile)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of StationComplexFlatFile)(StationComplexFlatFile)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Models.FlatFileModels.StationComplexFlatFile)(MicroService.Service.Models.FlatFileModels.StationComplexFlatFile)
+  name.vb: ArePropertiesNotNull(Of StationComplexFlatFile)(StationComplexFlatFile)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.FlatFileModels.StationComplexFlatFile)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+    name: StationComplexFlatFile
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+    name: StationComplexFlatFile
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.FlatFileModels.StationComplexFlatFile)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+    name: StationComplexFlatFile
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+    name: StationComplexFlatFile
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.Service.Models.Base
+  commentId: N:MicroService.Service.Models.Base
+  name: MicroService.Service.Models.Base
+  nameWithType: MicroService.Service.Models.Base
+  fullName: MicroService.Service.Models.Base
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexId*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexId
+  name: ComplexId
+  nameWithType: StationComplexFlatFile.ComplexId
+  fullName: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexName*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexName
+  name: ComplexName
+  nameWithType: StationComplexFlatFile.ComplexName
+  fullName: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.ComplexName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

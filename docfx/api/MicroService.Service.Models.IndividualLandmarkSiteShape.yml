@@ -1,0 +1,1165 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape
+  commentId: T:MicroService.Service.Models.IndividualLandmarkSiteShape
+  id: IndividualLandmarkSiteShape
+  parent: MicroService.Service.Models
+  children:
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.Address
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.AlternativeName
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.AreaName
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.BBL
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.Block
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.BoroCode
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.BoroName
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationDate
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationStatus
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.LandmarkType
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.Lot
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.ObjectId
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.SiteDesignation
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.UrlReport
+  langs:
+  - csharp
+  - vb
+  name: IndividualLandmarkSiteShape
+  nameWithType: IndividualLandmarkSiteShape
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: IndividualLandmarkSiteShape
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 6
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [ShapeProperties(ShapeProperties.IndividualLandmarkSite)]
+
+      public class IndividualLandmarkSiteShape : ShapeBase
+    content.vb: >-
+      <ShapeProperties(ShapeProperties.IndividualLandmarkSite)>
+
+      Public Class IndividualLandmarkSiteShape Inherits ShapeBase
+  inheritance:
+  - System.Object
+  - MicroService.Service.Models.Base.ShapeBase
+  inheritedMembers:
+  - MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  - MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  - MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  - MicroService.Service.Models.Base.ShapeBase.Geometry
+  - MicroService.Service.Models.Base.ShapeBase.Feature
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MicroService.Service.Models.IndividualLandmarkSiteShape.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute.#ctor(MicroService.Service.Models.Enum.ShapeProperties)
+    arguments:
+    - type: MicroService.Service.Models.Enum.ShapeProperties
+      value: 4
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.BoroCode
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.BoroCode
+  id: BoroCode
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: BoroCode
+  nameWithType: IndividualLandmarkSiteShape.BoroCode
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.BoroCode
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BoroCode
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 9
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: public int BoroCode { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property BoroCode As Integer
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.BoroCode*
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.ObjectId
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.ObjectId
+  id: ObjectId
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: ObjectId
+  nameWithType: IndividualLandmarkSiteShape.ObjectId
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.ObjectId
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ObjectId
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 11
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("objectid")]
+
+      public double ObjectId { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <FeatureName("objectid")>
+
+      Public Property ObjectId As Double
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.ObjectId*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: objectid
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
+  id: LPNumber
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: LPNumber
+  nameWithType: IndividualLandmarkSiteShape.LPNumber
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: LPNumber
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 14
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lpc_lpnumb")]
+
+      public string LPNumber { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("lpc_lpnumb")>
+
+      Public Property LPNumber As String
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lpc_lpnumb
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.AreaName
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.AreaName
+  id: AreaName
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: AreaName
+  nameWithType: IndividualLandmarkSiteShape.AreaName
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.AreaName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: AreaName
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 17
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lpc_name")]
+
+      public string AreaName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("lpc_name")>
+
+      Public Property AreaName As String
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.AreaName*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lpc_name
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.AlternativeName
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.AlternativeName
+  id: AlternativeName
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: AlternativeName
+  nameWithType: IndividualLandmarkSiteShape.AlternativeName
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.AlternativeName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: AlternativeName
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 20
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lpc_altern")]
+
+      public string AlternativeName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("lpc_altern")>
+
+      Public Property AlternativeName As String
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.AlternativeName*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lpc_altern
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.BBL
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.BBL
+  id: BBL
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: BBL
+  nameWithType: IndividualLandmarkSiteShape.BBL
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.BBL
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BBL
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 23
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("bbl")]
+
+      public double BBL { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <FeatureName("bbl")>
+
+      Public Property BBL As Double
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.BBL*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: bbl
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.BoroName
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.BoroName
+  id: BoroName
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: BoroName
+  nameWithType: IndividualLandmarkSiteShape.BoroName
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.BoroName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BoroName
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 26
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("borough")]
+
+      public string BoroName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("borough")>
+
+      Public Property BoroName As String
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.BoroName*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: borough
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.Address
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.Address
+  id: Address
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: Address
+  nameWithType: IndividualLandmarkSiteShape.Address
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.Address
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Address
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 29
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("address")]
+
+      public string Address { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("address")>
+
+      Public Property Address As String
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.Address*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: address
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.Block
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.Block
+  id: Block
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: Block
+  nameWithType: IndividualLandmarkSiteShape.Block
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.Block
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Block
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 32
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("block")]
+
+      public double Block { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <FeatureName("block")>
+
+      Public Property Block As Double
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.Block*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: block
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.Lot
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.Lot
+  id: Lot
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: Lot
+  nameWithType: IndividualLandmarkSiteShape.Lot
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.Lot
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Lot
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 35
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lot")]
+
+      public double Lot { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <FeatureName("lot")>
+
+      Public Property Lot As Double
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.Lot*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lot
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationDate
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationDate
+  id: DesignationDate
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: DesignationDate
+  nameWithType: IndividualLandmarkSiteShape.DesignationDate
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationDate
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: DesignationDate
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 38
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("date_des_d")]
+
+      public string DesignationDate { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("date_des_d")>
+
+      Public Property DesignationDate As String
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationDate*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: date_des_d
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.UrlReport
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.UrlReport
+  id: UrlReport
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: UrlReport
+  nameWithType: IndividualLandmarkSiteShape.UrlReport
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.UrlReport
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: UrlReport
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 41
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("url_report")]
+
+      public string UrlReport { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("url_report")>
+
+      Public Property UrlReport As String
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.UrlReport*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: url_report
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.SiteDesignation
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.SiteDesignation
+  id: SiteDesignation
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: SiteDesignation
+  nameWithType: IndividualLandmarkSiteShape.SiteDesignation
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.SiteDesignation
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: SiteDesignation
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 44
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lpc_site_d")]
+
+      public string SiteDesignation { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("lpc_site_d")>
+
+      Public Property SiteDesignation As String
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.SiteDesignation*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lpc_site_d
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationStatus
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationStatus
+  id: DesignationStatus
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: DesignationStatus
+  nameWithType: IndividualLandmarkSiteShape.DesignationStatus
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationStatus
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: DesignationStatus
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 47
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lpc_site_s")]
+
+      public string DesignationStatus { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("lpc_site_s")>
+
+      Public Property DesignationStatus As String
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationStatus*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lpc_site_s
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.LandmarkType
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.LandmarkType
+  id: LandmarkType
+  parent: MicroService.Service.Models.IndividualLandmarkSiteShape
+  langs:
+  - csharp
+  - vb
+  name: LandmarkType
+  nameWithType: IndividualLandmarkSiteShape.LandmarkType
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.LandmarkType
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: LandmarkType
+    path: ../src/MicroService.Service/Models/IndividualLandmarkSiteShape.cs
+    startLine: 50
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("landmark_t")]
+
+      public string LandmarkType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("landmark_t")>
+
+      Public Property LandmarkType As String
+  overload: MicroService.Service.Models.IndividualLandmarkSiteShape.LandmarkType*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: landmark_t
+references:
+- uid: MicroService.Service.Models
+  commentId: N:MicroService.Service.Models
+  name: MicroService.Service.Models
+  nameWithType: MicroService.Service.Models
+  fullName: MicroService.Service.Models
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MicroService.Service.Models.Base.ShapeBase
+  commentId: T:MicroService.Service.Models.Base.ShapeBase
+  parent: MicroService.Service.Models.Base
+  name: ShapeBase
+  nameWithType: ShapeBase
+  fullName: MicroService.Service.Models.Base.ShapeBase
+- uid: MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: ShapeArea
+  nameWithType: ShapeBase.ShapeArea
+  fullName: MicroService.Service.Models.Base.ShapeBase.ShapeArea
+- uid: MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: ShapeLength
+  nameWithType: ShapeBase.ShapeLength
+  fullName: MicroService.Service.Models.Base.ShapeBase.ShapeLength
+- uid: MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: BoundingBox
+  nameWithType: ShapeBase.BoundingBox
+  fullName: MicroService.Service.Models.Base.ShapeBase.BoundingBox
+- uid: MicroService.Service.Models.Base.ShapeBase.Geometry
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.Geometry
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: Geometry
+  nameWithType: ShapeBase.Geometry
+  fullName: MicroService.Service.Models.Base.ShapeBase.Geometry
+- uid: MicroService.Service.Models.Base.ShapeBase.Feature
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.Feature
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: Feature
+  nameWithType: ShapeBase.Feature
+  fullName: MicroService.Service.Models.Base.ShapeBase.Feature
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<IndividualLandmarkSiteShape>(IndividualLandmarkSiteShape)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<IndividualLandmarkSiteShape>(IndividualLandmarkSiteShape)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Models.IndividualLandmarkSiteShape>(MicroService.Service.Models.IndividualLandmarkSiteShape)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of IndividualLandmarkSiteShape)(IndividualLandmarkSiteShape)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Models.IndividualLandmarkSiteShape)(MicroService.Service.Models.IndividualLandmarkSiteShape)
+  name.vb: ArePropertiesNotNull(Of IndividualLandmarkSiteShape)(IndividualLandmarkSiteShape)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.IndividualLandmarkSiteShape)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Models.IndividualLandmarkSiteShape
+    name: IndividualLandmarkSiteShape
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Models.IndividualLandmarkSiteShape
+    name: IndividualLandmarkSiteShape
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.IndividualLandmarkSiteShape)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.IndividualLandmarkSiteShape
+    name: IndividualLandmarkSiteShape
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Models.IndividualLandmarkSiteShape
+    name: IndividualLandmarkSiteShape
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.Service.Models.Base
+  commentId: N:MicroService.Service.Models.Base
+  name: MicroService.Service.Models.Base
+  nameWithType: MicroService.Service.Models.Base
+  fullName: MicroService.Service.Models.Base
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.BoroCode*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.BoroCode
+  name: BoroCode
+  nameWithType: IndividualLandmarkSiteShape.BoroCode
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.BoroCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.ObjectId*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.ObjectId
+  name: ObjectId
+  nameWithType: IndividualLandmarkSiteShape.ObjectId
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.ObjectId
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
+  name: LPNumber
+  nameWithType: IndividualLandmarkSiteShape.LPNumber
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.AreaName*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.AreaName
+  name: AreaName
+  nameWithType: IndividualLandmarkSiteShape.AreaName
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.AreaName
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.AlternativeName*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.AlternativeName
+  name: AlternativeName
+  nameWithType: IndividualLandmarkSiteShape.AlternativeName
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.AlternativeName
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.BBL*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.BBL
+  name: BBL
+  nameWithType: IndividualLandmarkSiteShape.BBL
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.BBL
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.BoroName*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.BoroName
+  name: BoroName
+  nameWithType: IndividualLandmarkSiteShape.BoroName
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.BoroName
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.Address*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.Address
+  name: Address
+  nameWithType: IndividualLandmarkSiteShape.Address
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.Address
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.Block*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.Block
+  name: Block
+  nameWithType: IndividualLandmarkSiteShape.Block
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.Block
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.Lot*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.Lot
+  name: Lot
+  nameWithType: IndividualLandmarkSiteShape.Lot
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.Lot
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationDate*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationDate
+  name: DesignationDate
+  nameWithType: IndividualLandmarkSiteShape.DesignationDate
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationDate
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.UrlReport*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.UrlReport
+  name: UrlReport
+  nameWithType: IndividualLandmarkSiteShape.UrlReport
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.UrlReport
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.SiteDesignation*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.SiteDesignation
+  name: SiteDesignation
+  nameWithType: IndividualLandmarkSiteShape.SiteDesignation
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.SiteDesignation
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationStatus*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationStatus
+  name: DesignationStatus
+  nameWithType: IndividualLandmarkSiteShape.DesignationStatus
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationStatus
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.LandmarkType*
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.LandmarkType
+  name: LandmarkType
+  nameWithType: IndividualLandmarkSiteShape.LandmarkType
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.LandmarkType

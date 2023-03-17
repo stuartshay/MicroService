@@ -1,0 +1,743 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Interfaces.IShapeService`1
+  commentId: T:MicroService.Service.Interfaces.IShapeService`1
+  id: IShapeService`1
+  parent: MicroService.Service.Interfaces
+  children:
+  - MicroService.Service.Interfaces.IShapeService`1.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  - MicroService.Service.Interfaces.IShapeService`1.GetFeatureList
+  - MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  - MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup(System.Double,System.Double)
+  - MicroService.Service.Interfaces.IShapeService`1.GetFeatures
+  - MicroService.Service.Interfaces.IShapeService`1.GetShapeDatabaseProperties
+  - MicroService.Service.Interfaces.IShapeService`1.GetShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: IShapeService<T>
+  nameWithType: IShapeService<T>
+  fullName: MicroService.Service.Interfaces.IShapeService<T>
+  type: Interface
+  source:
+    remote:
+      path: src/MicroService.Service/Interfaces/IShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: IShapeService
+    path: ../src/MicroService.Service/Interfaces/IShapeService.cs
+    startLine: 7
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Interfaces
+  syntax:
+    content: 'public interface IShapeService<out T> where T : ShapeBase'
+    typeParameters:
+    - id: T
+    content.vb: Public Interface IShapeService(Of Out T As ShapeBase)
+  extensionMethods:
+  - MicroService.Service.Interfaces.IShapeService`1.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  nameWithType.vb: IShapeService(Of T)
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T)
+  name.vb: IShapeService(Of T)
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatures
+  commentId: M:MicroService.Service.Interfaces.IShapeService`1.GetFeatures
+  id: GetFeatures
+  parent: MicroService.Service.Interfaces.IShapeService`1
+  langs:
+  - csharp
+  - vb
+  name: GetFeatures()
+  nameWithType: IShapeService<T>.GetFeatures()
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetFeatures()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Interfaces/IShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatures
+    path: ../src/MicroService.Service/Interfaces/IShapeService.cs
+    startLine: 9
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Interfaces
+  syntax:
+    content: IReadOnlyCollection<Feature> GetFeatures()
+    return:
+      type: System.Collections.Generic.IReadOnlyCollection{NetTopologySuite.Features.Feature}
+    content.vb: Function GetFeatures() As IReadOnlyCollection(Of Feature)
+  overload: MicroService.Service.Interfaces.IShapeService`1.GetFeatures*
+  nameWithType.vb: IShapeService(Of T).GetFeatures()
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetFeatures()
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup(System.Double,System.Double)
+  commentId: M:MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup(System.Double,System.Double)
+  id: GetFeatureLookup(System.Double,System.Double)
+  parent: MicroService.Service.Interfaces.IShapeService`1
+  langs:
+  - csharp
+  - vb
+  name: GetFeatureLookup(double, double)
+  nameWithType: IShapeService<T>.GetFeatureLookup(double, double)
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetFeatureLookup(double, double)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Interfaces/IShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatureLookup
+    path: ../src/MicroService.Service/Interfaces/IShapeService.cs
+    startLine: 11
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Interfaces
+  syntax:
+    content: T GetFeatureLookup(double x, double y)
+    parameters:
+    - id: x
+      type: System.Double
+    - id: y
+      type: System.Double
+    return:
+      type: '{T}'
+    content.vb: Function GetFeatureLookup(x As Double, y As Double) As T
+  overload: MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup*
+  nameWithType.vb: IShapeService(Of T).GetFeatureLookup(Double, Double)
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetFeatureLookup(Double, Double)
+  name.vb: GetFeatureLookup(Double, Double)
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  commentId: M:MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  id: GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  parent: MicroService.Service.Interfaces.IShapeService`1
+  langs:
+  - csharp
+  - vb
+  name: GetFeatureLookup(List<KeyValuePair<string, object>>)
+  nameWithType: IShapeService<T>.GetFeatureLookup(List<KeyValuePair<string, object>>)
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetFeatureLookup(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Interfaces/IShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatureLookup
+    path: ../src/MicroService.Service/Interfaces/IShapeService.cs
+    startLine: 13
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Interfaces
+  syntax:
+    content: IEnumerable<out T> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+    parameters:
+    - id: attributes
+      type: System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+    return:
+      type: System.Collections.Generic.IEnumerable{{T}}
+    content.vb: Function GetFeatureLookup(attributes As List(Of KeyValuePair(Of String, Object))) As IEnumerable(Of Out T)
+  overload: MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup*
+  nameWithType.vb: IShapeService(Of T).GetFeatureLookup(List(Of KeyValuePair(Of String, Object)))
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetFeatureLookup(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: GetFeatureLookup(List(Of KeyValuePair(Of String, Object)))
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  commentId: M:MicroService.Service.Interfaces.IShapeService`1.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  id: GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  parent: MicroService.Service.Interfaces.IShapeService`1
+  langs:
+  - csharp
+  - vb
+  name: GetFeatureCollection(List<KeyValuePair<string, object>>)
+  nameWithType: IShapeService<T>.GetFeatureCollection(List<KeyValuePair<string, object>>)
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetFeatureCollection(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Interfaces/IShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatureCollection
+    path: ../src/MicroService.Service/Interfaces/IShapeService.cs
+    startLine: 15
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Interfaces
+  syntax:
+    content: FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
+    parameters:
+    - id: attributes
+      type: System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+    return:
+      type: NetTopologySuite.Features.FeatureCollection
+    content.vb: Function GetFeatureCollection(attributes As List(Of KeyValuePair(Of String, Object))) As FeatureCollection
+  overload: MicroService.Service.Interfaces.IShapeService`1.GetFeatureCollection*
+  nameWithType.vb: IShapeService(Of T).GetFeatureCollection(List(Of KeyValuePair(Of String, Object)))
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetFeatureCollection(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: GetFeatureCollection(List(Of KeyValuePair(Of String, Object)))
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureList
+  commentId: M:MicroService.Service.Interfaces.IShapeService`1.GetFeatureList
+  id: GetFeatureList
+  parent: MicroService.Service.Interfaces.IShapeService`1
+  langs:
+  - csharp
+  - vb
+  name: GetFeatureList()
+  nameWithType: IShapeService<T>.GetFeatureList()
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetFeatureList()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Interfaces/IShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatureList
+    path: ../src/MicroService.Service/Interfaces/IShapeService.cs
+    startLine: 17
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Interfaces
+  syntax:
+    content: IEnumerable<out T> GetFeatureList()
+    return:
+      type: System.Collections.Generic.IEnumerable{{T}}
+    content.vb: Function GetFeatureList() As IEnumerable(Of Out T)
+  overload: MicroService.Service.Interfaces.IShapeService`1.GetFeatureList*
+  nameWithType.vb: IShapeService(Of T).GetFeatureList()
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetFeatureList()
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetShapeProperties
+  commentId: M:MicroService.Service.Interfaces.IShapeService`1.GetShapeProperties
+  id: GetShapeProperties
+  parent: MicroService.Service.Interfaces.IShapeService`1
+  langs:
+  - csharp
+  - vb
+  name: GetShapeProperties()
+  nameWithType: IShapeService<T>.GetShapeProperties()
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetShapeProperties()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Interfaces/IShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetShapeProperties
+    path: ../src/MicroService.Service/Interfaces/IShapeService.cs
+    startLine: 19
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Interfaces
+  syntax:
+    content: ShapefileHeader GetShapeProperties()
+    return:
+      type: NetTopologySuite.IO.ShapefileHeader
+    content.vb: Function GetShapeProperties() As ShapefileHeader
+  overload: MicroService.Service.Interfaces.IShapeService`1.GetShapeProperties*
+  nameWithType.vb: IShapeService(Of T).GetShapeProperties()
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetShapeProperties()
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetShapeDatabaseProperties
+  commentId: M:MicroService.Service.Interfaces.IShapeService`1.GetShapeDatabaseProperties
+  id: GetShapeDatabaseProperties
+  parent: MicroService.Service.Interfaces.IShapeService`1
+  langs:
+  - csharp
+  - vb
+  name: GetShapeDatabaseProperties()
+  nameWithType: IShapeService<T>.GetShapeDatabaseProperties()
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetShapeDatabaseProperties()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Interfaces/IShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetShapeDatabaseProperties
+    path: ../src/MicroService.Service/Interfaces/IShapeService.cs
+    startLine: 21
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Interfaces
+  syntax:
+    content: DbaseFileHeader GetShapeDatabaseProperties()
+    return:
+      type: NetTopologySuite.IO.DbaseFileHeader
+    content.vb: Function GetShapeDatabaseProperties() As DbaseFileHeader
+  overload: MicroService.Service.Interfaces.IShapeService`1.GetShapeDatabaseProperties*
+  nameWithType.vb: IShapeService(Of T).GetShapeDatabaseProperties()
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetShapeDatabaseProperties()
+references:
+- uid: MicroService.Service.Interfaces
+  commentId: N:MicroService.Service.Interfaces
+  name: MicroService.Service.Interfaces
+  nameWithType: MicroService.Service.Interfaces
+  fullName: MicroService.Service.Interfaces
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Interfaces
+    name: Interfaces
+- uid: MicroService.Service.Interfaces.IShapeService`1.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<IShapeService<T>>(IShapeService<T>)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<IShapeService<T>>(IShapeService<T>)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Interfaces.IShapeService<T>>(MicroService.Service.Interfaces.IShapeService<T>)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of IShapeService(Of T))(IShapeService(Of T))
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Interfaces.IShapeService(Of T))(MicroService.Service.Interfaces.IShapeService(Of T))
+  name.vb: ArePropertiesNotNull(Of IShapeService(Of T))(IShapeService(Of T))
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Interfaces.IShapeService{`0})
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Interfaces.IShapeService`1
+    name: IShapeService
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Interfaces.IShapeService`1
+    name: IShapeService
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Interfaces.IShapeService{`0})
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Interfaces.IShapeService`1
+    name: IShapeService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Interfaces.IShapeService`1
+    name: IShapeService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatures*
+  commentId: Overload:MicroService.Service.Interfaces.IShapeService`1.GetFeatures
+  name: GetFeatures
+  nameWithType: IShapeService<T>.GetFeatures
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetFeatures
+  nameWithType.vb: IShapeService(Of T).GetFeatures
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetFeatures
+- uid: System.Collections.Generic.IReadOnlyCollection{NetTopologySuite.Features.Feature}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{NetTopologySuite.Features.Feature}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  name: IReadOnlyCollection<Feature>
+  nameWithType: IReadOnlyCollection<Feature>
+  fullName: System.Collections.Generic.IReadOnlyCollection<NetTopologySuite.Features.Feature>
+  nameWithType.vb: IReadOnlyCollection(Of Feature)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of NetTopologySuite.Features.Feature)
+  name.vb: IReadOnlyCollection(Of Feature)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: <
+  - uid: NetTopologySuite.Features.Feature
+    name: Feature
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NetTopologySuite.Features.Feature
+    name: Feature
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup*
+  commentId: Overload:MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup
+  name: GetFeatureLookup
+  nameWithType: IShapeService<T>.GetFeatureLookup
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetFeatureLookup
+  nameWithType.vb: IShapeService(Of T).GetFeatureLookup
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetFeatureLookup
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  commentId: T:System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<KeyValuePair<string, object>>
+  nameWithType: List<KeyValuePair<string, object>>
+  fullName: System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>
+  nameWithType.vb: List(Of KeyValuePair(Of String, Object))
+  fullName.vb: System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object))
+  name.vb: List(Of KeyValuePair(Of String, Object))
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{{T}}
+  commentId: T:System.Collections.Generic.IEnumerable{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureCollection*
+  commentId: Overload:MicroService.Service.Interfaces.IShapeService`1.GetFeatureCollection
+  name: GetFeatureCollection
+  nameWithType: IShapeService<T>.GetFeatureCollection
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetFeatureCollection
+  nameWithType.vb: IShapeService(Of T).GetFeatureCollection
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetFeatureCollection
+- uid: NetTopologySuite.Features.FeatureCollection
+  commentId: T:NetTopologySuite.Features.FeatureCollection
+  parent: NetTopologySuite.Features
+  isExternal: true
+  name: FeatureCollection
+  nameWithType: FeatureCollection
+  fullName: NetTopologySuite.Features.FeatureCollection
+- uid: NetTopologySuite.Features
+  commentId: N:NetTopologySuite.Features
+  isExternal: true
+  name: NetTopologySuite.Features
+  nameWithType: NetTopologySuite.Features
+  fullName: NetTopologySuite.Features
+  spec.csharp:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.Features
+    name: Features
+    isExternal: true
+  spec.vb:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.Features
+    name: Features
+    isExternal: true
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureList*
+  commentId: Overload:MicroService.Service.Interfaces.IShapeService`1.GetFeatureList
+  name: GetFeatureList
+  nameWithType: IShapeService<T>.GetFeatureList
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetFeatureList
+  nameWithType.vb: IShapeService(Of T).GetFeatureList
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetFeatureList
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetShapeProperties*
+  commentId: Overload:MicroService.Service.Interfaces.IShapeService`1.GetShapeProperties
+  name: GetShapeProperties
+  nameWithType: IShapeService<T>.GetShapeProperties
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetShapeProperties
+  nameWithType.vb: IShapeService(Of T).GetShapeProperties
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetShapeProperties
+- uid: NetTopologySuite.IO.ShapefileHeader
+  commentId: T:NetTopologySuite.IO.ShapefileHeader
+  parent: NetTopologySuite.IO
+  isExternal: true
+  name: ShapefileHeader
+  nameWithType: ShapefileHeader
+  fullName: NetTopologySuite.IO.ShapefileHeader
+- uid: NetTopologySuite.IO
+  commentId: N:NetTopologySuite.IO
+  isExternal: true
+  name: NetTopologySuite.IO
+  nameWithType: NetTopologySuite.IO
+  fullName: NetTopologySuite.IO
+  spec.csharp:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.IO
+    name: IO
+    isExternal: true
+  spec.vb:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.IO
+    name: IO
+    isExternal: true
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetShapeDatabaseProperties*
+  commentId: Overload:MicroService.Service.Interfaces.IShapeService`1.GetShapeDatabaseProperties
+  name: GetShapeDatabaseProperties
+  nameWithType: IShapeService<T>.GetShapeDatabaseProperties
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetShapeDatabaseProperties
+  nameWithType.vb: IShapeService(Of T).GetShapeDatabaseProperties
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetShapeDatabaseProperties
+- uid: NetTopologySuite.IO.DbaseFileHeader
+  commentId: T:NetTopologySuite.IO.DbaseFileHeader
+  parent: NetTopologySuite.IO
+  isExternal: true
+  name: DbaseFileHeader
+  nameWithType: DbaseFileHeader
+  fullName: NetTopologySuite.IO.DbaseFileHeader

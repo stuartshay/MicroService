@@ -1,0 +1,337 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.Enum.Attributes.Datum
+  commentId: T:MicroService.Service.Models.Enum.Attributes.Datum
+  id: Datum
+  parent: MicroService.Service.Models.Enum.Attributes
+  children:
+  - MicroService.Service.Models.Enum.Attributes.Datum.Nad83
+  - MicroService.Service.Models.Enum.Attributes.Datum.Wgs84
+  langs:
+  - csharp
+  - vb
+  name: Datum
+  nameWithType: Datum
+  fullName: MicroService.Service.Models.Enum.Attributes.Datum
+  type: Enum
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/Attributes/ShapeAttribute.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Datum
+    path: ../src/MicroService.Service/Models/Enum/Attributes/ShapeAttribute.cs
+    startLine: 19
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum.Attributes
+  syntax:
+    content: public enum Datum
+    content.vb: Public Enum Datum
+  extensionMethods:
+  - MicroService.Service.Models.Enum.Attributes.Datum.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+- uid: MicroService.Service.Models.Enum.Attributes.Datum.Wgs84
+  commentId: F:MicroService.Service.Models.Enum.Attributes.Datum.Wgs84
+  id: Wgs84
+  parent: MicroService.Service.Models.Enum.Attributes.Datum
+  langs:
+  - csharp
+  - vb
+  name: Wgs84
+  nameWithType: Datum.Wgs84
+  fullName: MicroService.Service.Models.Enum.Attributes.Datum.Wgs84
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/Attributes/ShapeAttribute.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Wgs84
+    path: ../src/MicroService.Service/Models/Enum/Attributes/ShapeAttribute.cs
+    startLine: 21
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum.Attributes
+  syntax:
+    content: Wgs84 = 0
+    return:
+      type: MicroService.Service.Models.Enum.Attributes.Datum
+- uid: MicroService.Service.Models.Enum.Attributes.Datum.Nad83
+  commentId: F:MicroService.Service.Models.Enum.Attributes.Datum.Nad83
+  id: Nad83
+  parent: MicroService.Service.Models.Enum.Attributes.Datum
+  langs:
+  - csharp
+  - vb
+  name: Nad83
+  nameWithType: Datum.Nad83
+  fullName: MicroService.Service.Models.Enum.Attributes.Datum.Nad83
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/Attributes/ShapeAttribute.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Nad83
+    path: ../src/MicroService.Service/Models/Enum/Attributes/ShapeAttribute.cs
+    startLine: 22
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum.Attributes
+  syntax:
+    content: Nad83 = 1
+    return:
+      type: MicroService.Service.Models.Enum.Attributes.Datum
+references:
+- uid: MicroService.Service.Models.Enum.Attributes
+  commentId: N:MicroService.Service.Models.Enum.Attributes
+  name: MicroService.Service.Models.Enum.Attributes
+  nameWithType: MicroService.Service.Models.Enum.Attributes
+  fullName: MicroService.Service.Models.Enum.Attributes
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+  - name: .
+  - uid: MicroService.Service.Models.Enum.Attributes
+    name: Attributes
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+  - name: .
+  - uid: MicroService.Service.Models.Enum.Attributes
+    name: Attributes
+- uid: MicroService.Service.Models.Enum.Attributes.Datum.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<Datum>(Datum)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<Datum>(Datum)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Models.Enum.Attributes.Datum>(MicroService.Service.Models.Enum.Attributes.Datum)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of Datum)(Datum)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Models.Enum.Attributes.Datum)(MicroService.Service.Models.Enum.Attributes.Datum)
+  name.vb: ArePropertiesNotNull(Of Datum)(Datum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.Enum.Attributes.Datum)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Models.Enum.Attributes.Datum
+    name: Datum
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Models.Enum.Attributes.Datum
+    name: Datum
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.Enum.Attributes.Datum)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.Enum.Attributes.Datum
+    name: Datum
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Models.Enum.Attributes.Datum
+    name: Datum
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  isExternal: true
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.EnumHelper
+  commentId: T:MicroService.Service.Helpers.EnumHelper
+  parent: MicroService.Service.Helpers
+  name: EnumHelper
+  nameWithType: EnumHelper
+  fullName: MicroService.Service.Helpers.EnumHelper
+- uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  isExternal: true
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Models.Enum.Attributes.Datum
+  commentId: T:MicroService.Service.Models.Enum.Attributes.Datum
+  parent: MicroService.Service.Models.Enum.Attributes
+  name: Datum
+  nameWithType: Datum
+  fullName: MicroService.Service.Models.Enum.Attributes.Datum

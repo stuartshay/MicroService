@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.WebApi.V3.Controllers
+  commentId: N:MicroService.WebApi.V3.Controllers
+  id: MicroService.WebApi.V3.Controllers
+  children:
+  - MicroService.WebApi.V3.Controllers.OrdersController
+  - MicroService.WebApi.V3.Controllers.PeopleController
+  langs:
+  - csharp
+  - vb
+  name: MicroService.WebApi.V3.Controllers
+  nameWithType: MicroService.WebApi.V3.Controllers
+  fullName: MicroService.WebApi.V3.Controllers
+  type: Namespace
+  assemblies:
+  - MicroService.WebApi
+references:
+- uid: MicroService.WebApi.V3.Controllers.OrdersController
+  commentId: T:MicroService.WebApi.V3.Controllers.OrdersController
+  name: OrdersController
+  nameWithType: OrdersController
+  fullName: MicroService.WebApi.V3.Controllers.OrdersController
+- uid: MicroService.WebApi.V3.Controllers.PeopleController
+  commentId: T:MicroService.WebApi.V3.Controllers.PeopleController
+  name: PeopleController
+  nameWithType: PeopleController
+  fullName: MicroService.WebApi.V3.Controllers.PeopleController

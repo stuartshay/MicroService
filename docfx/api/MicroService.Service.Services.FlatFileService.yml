@@ -1,0 +1,64 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Services.FlatFileService
+  commentId: N:MicroService.Service.Services.FlatFileService
+  id: MicroService.Service.Services.FlatFileService
+  children:
+  - MicroService.Service.Services.FlatFileService.IFlatFileService
+  - MicroService.Service.Services.FlatFileService.StationComplexFlatFileService
+  - MicroService.Service.Services.FlatFileService.StationFlatFileService
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Services.FlatFileService
+  nameWithType: MicroService.Service.Services.FlatFileService
+  fullName: MicroService.Service.Services.FlatFileService
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Services.FlatFileService.IFlatFileService
+  commentId: T:MicroService.Service.Services.FlatFileService.IFlatFileService
+  parent: MicroService.Service.Services.FlatFileService
+  name: IFlatFileService
+  nameWithType: IFlatFileService
+  fullName: MicroService.Service.Services.FlatFileService.IFlatFileService
+- uid: MicroService.Service.Services.FlatFileService.StationComplexFlatFileService
+  commentId: T:MicroService.Service.Services.FlatFileService.StationComplexFlatFileService
+  name: StationComplexFlatFileService
+  nameWithType: StationComplexFlatFileService
+  fullName: MicroService.Service.Services.FlatFileService.StationComplexFlatFileService
+- uid: MicroService.Service.Services.FlatFileService.StationFlatFileService
+  commentId: T:MicroService.Service.Services.FlatFileService.StationFlatFileService
+  name: StationFlatFileService
+  nameWithType: StationFlatFileService
+  fullName: MicroService.Service.Services.FlatFileService.StationFlatFileService
+- uid: MicroService.Service.Services.FlatFileService
+  commentId: N:MicroService.Service.Services.FlatFileService
+  name: MicroService.Service.Services.FlatFileService
+  nameWithType: MicroService.Service.Services.FlatFileService
+  fullName: MicroService.Service.Services.FlatFileService
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  - name: .
+  - uid: MicroService.Service.Services.FlatFileService
+    name: FlatFileService
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  - name: .
+  - uid: MicroService.Service.Services.FlatFileService
+    name: FlatFileService

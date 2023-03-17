@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.FlatFileModels
+  commentId: N:MicroService.Service.Models.FlatFileModels
+  id: MicroService.Service.Models.FlatFileModels
+  children:
+  - MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Models.FlatFileModels
+  nameWithType: MicroService.Service.Models.FlatFileModels
+  fullName: MicroService.Service.Models.FlatFileModels
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+  commentId: T:MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+  name: StationComplexFlatFile
+  nameWithType: StationComplexFlatFile
+  fullName: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  commentId: T:MicroService.Service.Models.FlatFileModels.StationFlatFile
+  name: StationFlatFile
+  nameWithType: StationFlatFile
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile

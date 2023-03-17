@@ -1,0 +1,404 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.WebApi.Extensions.Constants.ApiConstants
+  commentId: T:MicroService.WebApi.Extensions.Constants.ApiConstants
+  id: ApiConstants
+  parent: MicroService.WebApi.Extensions.Constants
+  children:
+  - MicroService.WebApi.Extensions.Constants.ApiConstants.ApplicationDescription
+  - MicroService.WebApi.Extensions.Constants.ApiConstants.ApplicationName
+  - MicroService.WebApi.Extensions.Constants.ApiConstants.CorsPolicy
+  - MicroService.WebApi.Extensions.Constants.ApiConstants.OpenApiContactName
+  langs:
+  - csharp
+  - vb
+  name: ApiConstants
+  nameWithType: ApiConstants
+  fullName: MicroService.WebApi.Extensions.Constants.ApiConstants
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.WebApi/Extensions/Constants/ApiConstants.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ApiConstants
+    path: ../src/MicroService.WebApi/Extensions/Constants/ApiConstants.cs
+    startLine: 5
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Extensions.Constants
+  summary: "\nApi Constants\n"
+  example: []
+  syntax:
+    content: public static class ApiConstants
+    content.vb: Public Module ApiConstants
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MicroService.WebApi.Extensions.Constants.ApiConstants.ApplicationName
+  commentId: F:MicroService.WebApi.Extensions.Constants.ApiConstants.ApplicationName
+  id: ApplicationName
+  parent: MicroService.WebApi.Extensions.Constants.ApiConstants
+  langs:
+  - csharp
+  - vb
+  name: ApplicationName
+  nameWithType: ApiConstants.ApplicationName
+  fullName: MicroService.WebApi.Extensions.Constants.ApiConstants.ApplicationName
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.WebApi/Extensions/Constants/ApiConstants.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ApplicationName
+    path: ../src/MicroService.WebApi/Extensions/Constants/ApiConstants.cs
+    startLine: 10
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Extensions.Constants
+  summary: "\nApplication Name\n"
+  example: []
+  syntax:
+    content: public const string ApplicationName = "MicroService.WebApi"
+    return:
+      type: System.String
+    content.vb: Public Const ApplicationName As String = "MicroService.WebApi"
+- uid: MicroService.WebApi.Extensions.Constants.ApiConstants.ApplicationDescription
+  commentId: F:MicroService.WebApi.Extensions.Constants.ApiConstants.ApplicationDescription
+  id: ApplicationDescription
+  parent: MicroService.WebApi.Extensions.Constants.ApiConstants
+  langs:
+  - csharp
+  - vb
+  name: ApplicationDescription
+  nameWithType: ApiConstants.ApplicationDescription
+  fullName: MicroService.WebApi.Extensions.Constants.ApiConstants.ApplicationDescription
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.WebApi/Extensions/Constants/ApiConstants.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ApplicationDescription
+    path: ../src/MicroService.WebApi/Extensions/Constants/ApiConstants.cs
+    startLine: 15
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Extensions.Constants
+  summary: "\nApplication Description\n"
+  example: []
+  syntax:
+    content: public const string ApplicationDescription = "MicroService.WebApi"
+    return:
+      type: System.String
+    content.vb: Public Const ApplicationDescription As String = "MicroService.WebApi"
+- uid: MicroService.WebApi.Extensions.Constants.ApiConstants.OpenApiContactName
+  commentId: F:MicroService.WebApi.Extensions.Constants.ApiConstants.OpenApiContactName
+  id: OpenApiContactName
+  parent: MicroService.WebApi.Extensions.Constants.ApiConstants
+  langs:
+  - csharp
+  - vb
+  name: OpenApiContactName
+  nameWithType: ApiConstants.OpenApiContactName
+  fullName: MicroService.WebApi.Extensions.Constants.ApiConstants.OpenApiContactName
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.WebApi/Extensions/Constants/ApiConstants.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: OpenApiContactName
+    path: ../src/MicroService.WebApi/Extensions/Constants/ApiConstants.cs
+    startLine: 20
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Extensions.Constants
+  summary: "\nOpen Api Contact Name\n"
+  example: []
+  syntax:
+    content: public const string OpenApiContactName = "Stuart Shay"
+    return:
+      type: System.String
+    content.vb: Public Const OpenApiContactName As String = "Stuart Shay"
+- uid: MicroService.WebApi.Extensions.Constants.ApiConstants.CorsPolicy
+  commentId: F:MicroService.WebApi.Extensions.Constants.ApiConstants.CorsPolicy
+  id: CorsPolicy
+  parent: MicroService.WebApi.Extensions.Constants.ApiConstants
+  langs:
+  - csharp
+  - vb
+  name: CorsPolicy
+  nameWithType: ApiConstants.CorsPolicy
+  fullName: MicroService.WebApi.Extensions.Constants.ApiConstants.CorsPolicy
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.WebApi/Extensions/Constants/ApiConstants.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: CorsPolicy
+    path: ../src/MicroService.WebApi/Extensions/Constants/ApiConstants.cs
+    startLine: 25
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Extensions.Constants
+  summary: "\nCorsPolicy\n"
+  example: []
+  syntax:
+    content: public const string CorsPolicy = "Policy"
+    return:
+      type: System.String
+    content.vb: Public Const CorsPolicy As String = "Policy"
+references:
+- uid: MicroService.WebApi.Extensions.Constants
+  commentId: N:MicroService.WebApi.Extensions.Constants
+  name: MicroService.WebApi.Extensions.Constants
+  nameWithType: MicroService.WebApi.Extensions.Constants
+  fullName: MicroService.WebApi.Extensions.Constants
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.WebApi
+    name: WebApi
+  - name: .
+  - uid: MicroService.WebApi.Extensions
+    name: Extensions
+  - name: .
+  - uid: MicroService.WebApi.Extensions.Constants
+    name: Constants
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.WebApi
+    name: WebApi
+  - name: .
+  - uid: MicroService.WebApi.Extensions
+    name: Extensions
+  - name: .
+  - uid: MicroService.WebApi.Extensions.Constants
+    name: Constants
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

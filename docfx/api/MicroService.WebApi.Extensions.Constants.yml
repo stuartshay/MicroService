@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.WebApi.Extensions.Constants
+  commentId: N:MicroService.WebApi.Extensions.Constants
+  id: MicroService.WebApi.Extensions.Constants
+  children:
+  - MicroService.WebApi.Extensions.Constants.ApiConstants
+  langs:
+  - csharp
+  - vb
+  name: MicroService.WebApi.Extensions.Constants
+  nameWithType: MicroService.WebApi.Extensions.Constants
+  fullName: MicroService.WebApi.Extensions.Constants
+  type: Namespace
+  assemblies:
+  - MicroService.WebApi
+references:
+- uid: MicroService.WebApi.Extensions.Constants.ApiConstants
+  commentId: T:MicroService.WebApi.Extensions.Constants.ApiConstants
+  name: ApiConstants
+  nameWithType: ApiConstants
+  fullName: MicroService.WebApi.Extensions.Constants.ApiConstants

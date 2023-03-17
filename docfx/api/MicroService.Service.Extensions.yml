@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Extensions
+  commentId: N:MicroService.Service.Extensions
+  id: MicroService.Service.Extensions
+  children:
+  - MicroService.Service.Extensions.ShapefileDataReaderExtensions
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Extensions
+  nameWithType: MicroService.Service.Extensions
+  fullName: MicroService.Service.Extensions
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Extensions.ShapefileDataReaderExtensions
+  commentId: T:MicroService.Service.Extensions.ShapefileDataReaderExtensions
+  parent: MicroService.Service.Extensions
+  name: ShapefileDataReaderExtensions
+  nameWithType: ShapefileDataReaderExtensions
+  fullName: MicroService.Service.Extensions.ShapefileDataReaderExtensions
+- uid: MicroService.Service.Extensions
+  commentId: N:MicroService.Service.Extensions
+  name: MicroService.Service.Extensions
+  nameWithType: MicroService.Service.Extensions
+  fullName: MicroService.Service.Extensions
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Extensions
+    name: Extensions
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Extensions
+    name: Extensions

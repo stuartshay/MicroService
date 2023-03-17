@@ -1,0 +1,379 @@
+### YamlMime:TableOfContent
+- uid: MicroService.Common.Configuration
+  name: MicroService.Common.Configuration
+  items:
+  - uid: MicroService.Common.Configuration.ApplicationOptions
+    name: ApplicationOptions
+  - uid: MicroService.Common.Configuration.GrafanaLokiConfiguration
+    name: GrafanaLokiConfiguration
+  - uid: MicroService.Common.Configuration.JaegerConfiguration
+    name: JaegerConfiguration
+- uid: MicroService.Common.Constants
+  name: MicroService.Common.Constants
+  items:
+  - uid: MicroService.Common.Constants.HealthCheckType
+    name: HealthCheckType
+- uid: MicroService.Common.Health
+  name: MicroService.Common.Health
+  items:
+  - uid: MicroService.Common.Health.HealthCheckServerExtensions
+    name: HealthCheckServerExtensions
+  - uid: MicroService.Common.Health.RandomHealthCheck
+    name: RandomHealthCheck
+  - uid: MicroService.Common.Health.VersionHealthCheck
+    name: VersionHealthCheck
+- uid: MicroService.Common.Logging
+  name: MicroService.Common.Logging
+  items:
+  - uid: MicroService.Common.Logging.Logging
+    name: Logging
+- uid: MicroService.Data.Enum
+  name: MicroService.Data.Enum
+  items:
+  - uid: MicroService.Data.Enum.Borough
+    name: Borough
+  - uid: MicroService.Data.Enum.DsnyOperationZone
+    name: DsnyOperationZone
+  - uid: MicroService.Data.Enum.NtaType
+    name: NtaType
+- uid: MicroService.Data.Models
+  name: MicroService.Data.Models
+  items:
+  - uid: MicroService.Data.Models.BaseEntity
+    name: BaseEntity
+  - uid: MicroService.Data.Models.TestData
+    name: TestData
+- uid: MicroService.Data.Repository
+  name: MicroService.Data.Repository
+  items:
+  - uid: MicroService.Data.Repository.IRepository`1
+    name: IRepository<T>
+    name.vb: IRepository(Of T)
+  - uid: MicroService.Data.Repository.ITestDataRepository
+    name: ITestDataRepository
+  - uid: MicroService.Data.Repository.TestDataRepository
+    name: TestDataRepository
+- uid: MicroService.Service.Configuration
+  name: MicroService.Service.Configuration
+  items:
+  - uid: MicroService.Service.Configuration.ApplicationOptions
+    name: ApplicationOptions
+  - uid: MicroService.Service.Configuration.ConnectionStrings
+    name: ConnectionStrings
+  - uid: MicroService.Service.Configuration.ShapeConfiguration
+    name: ShapeConfiguration
+- uid: MicroService.Service.Constants
+  name: MicroService.Service.Constants
+  items:
+  - uid: MicroService.Service.Constants.DataConstants
+    name: DataConstants
+- uid: MicroService.Service.Extensions
+  name: MicroService.Service.Extensions
+  items:
+  - uid: MicroService.Service.Extensions.ShapefileDataReaderExtensions
+    name: ShapefileDataReaderExtensions
+- uid: MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  items:
+  - uid: MicroService.Service.Helpers.CachedShapefileDataReader
+    name: CachedShapefileDataReader
+  - uid: MicroService.Service.Helpers.EnumHelper
+    name: EnumHelper
+  - uid: MicroService.Service.Helpers.FileHelpers
+    name: FileHelpers
+  - uid: MicroService.Service.Helpers.FunctionHelper
+    name: FunctionHelper
+  - uid: MicroService.Service.Helpers.GeoTransformationHelper
+    name: GeoTransformationHelper
+  - uid: MicroService.Service.Helpers.IShapefileDataReaderService
+    name: IShapefileDataReaderService
+  - uid: MicroService.Service.Helpers.ReflectionExtensions
+    name: ReflectionExtensions
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.PropertyCache`1
+    name: ReflectionExtensions.PropertyCache<T>
+    name.vb: ReflectionExtensions.PropertyCache(Of T)
+  - uid: MicroService.Service.Helpers.StringHelper
+    name: StringHelper
+- uid: MicroService.Service.Interfaces
+  name: MicroService.Service.Interfaces
+  items:
+  - uid: MicroService.Service.Interfaces.ICalculationService
+    name: ICalculationService
+  - uid: MicroService.Service.Interfaces.IPointService`1
+    name: IPointService<T>
+    name.vb: IPointService(Of T)
+  - uid: MicroService.Service.Interfaces.IShapeService`1
+    name: IShapeService<T>
+    name.vb: IShapeService(Of T)
+- uid: MicroService.Service.Mappings
+  name: MicroService.Service.Mappings
+  items:
+  - uid: MicroService.Service.Mappings.BoroughBoundaryShapeProfile
+    name: BoroughBoundaryShapeProfile
+  - uid: MicroService.Service.Mappings.CommunityDistrictShapeProfile
+    name: CommunityDistrictShapeProfile
+  - uid: MicroService.Service.Mappings.DsnyDistrictsShapeProfile
+    name: DsnyDistrictsShapeProfile
+  - uid: MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile
+    name: FeatureToScenicLandmarkShapeProfile
+  - uid: MicroService.Service.Mappings.HistoricDistrictShapeProfile
+    name: HistoricDistrictShapeProfile
+  - uid: MicroService.Service.Mappings.IndividualLandmarkHistoricDistrictsShapeProfile
+    name: IndividualLandmarkHistoricDistrictsShapeProfile
+  - uid: MicroService.Service.Mappings.IndividualLandmarkSiteShapeProfile
+    name: IndividualLandmarkSiteShapeProfile
+  - uid: MicroService.Service.Mappings.NationalRegisterHistoricPlacesShapeProfile
+    name: NationalRegisterHistoricPlacesShapeProfile
+  - uid: MicroService.Service.Mappings.NeighborhoodShapeMappingsProfile
+    name: NeighborhoodShapeMappingsProfile
+  - uid: MicroService.Service.Mappings.NeighborhoodTabulationAreaShapeProfile
+    name: NeighborhoodTabulationAreaShapeProfile
+  - uid: MicroService.Service.Mappings.NychaDevelopmentShapeProfile
+    name: NychaDevelopmentShapeProfile
+  - uid: MicroService.Service.Mappings.NypdPrecinctShapeProfile
+    name: NypdPrecinctShapeProfile
+  - uid: MicroService.Service.Mappings.NypdSectorShapeProfile
+    name: NypdSectorShapeProfile
+  - uid: MicroService.Service.Mappings.ParkShapeProfile
+    name: ParkShapeProfile
+  - uid: MicroService.Service.Mappings.SubwayShapeProfile
+    name: SubwayShapeProfile
+  - uid: MicroService.Service.Mappings.ZipCodeMappingsProfile
+    name: ZipCodeMappingsProfile
+- uid: MicroService.Service.Mappings.Base
+  name: MicroService.Service.Mappings.Base
+  items:
+  - uid: MicroService.Service.Mappings.Base.GeometryProfile
+    name: GeometryProfile
+  - uid: MicroService.Service.Mappings.Base.ShapeProfile`1
+    name: ShapeProfile<TShape>
+    name.vb: ShapeProfile(Of TShape)
+- uid: MicroService.Service.Models
+  name: MicroService.Service.Models
+  items:
+  - uid: MicroService.Service.Models.BoroughBoundaryShape
+    name: BoroughBoundaryShape
+  - uid: MicroService.Service.Models.CommunityDistrictShape
+    name: CommunityDistrictShape
+  - uid: MicroService.Service.Models.DsnyDistrictsShape
+    name: DsnyDistrictsShape
+  - uid: MicroService.Service.Models.HistoricDistrictShape
+    name: HistoricDistrictShape
+  - uid: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape
+    name: IndividualLandmarkHistoricDistrictsShape
+  - uid: MicroService.Service.Models.IndividualLandmarkSiteShape
+    name: IndividualLandmarkSiteShape
+  - uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+    name: NationalRegisterHistoricPlacesShape
+  - uid: MicroService.Service.Models.NeighborhoodShape
+    name: NeighborhoodShape
+  - uid: MicroService.Service.Models.NeighborhoodTabulationAreaShape
+    name: NeighborhoodTabulationAreaShape
+  - uid: MicroService.Service.Models.NychaDevelopmentShape
+    name: NychaDevelopmentShape
+  - uid: MicroService.Service.Models.NypdPrecinctShape
+    name: NypdPrecinctShape
+  - uid: MicroService.Service.Models.NypdSectorShape
+    name: NypdSectorShape
+  - uid: MicroService.Service.Models.ParkShape
+    name: ParkShape
+  - uid: MicroService.Service.Models.ScenicLandmarkShape
+    name: ScenicLandmarkShape
+  - uid: MicroService.Service.Models.SubwayShape
+    name: SubwayShape
+  - uid: MicroService.Service.Models.ZipCodeShape
+    name: ZipCodeShape
+- uid: MicroService.Service.Models.Base
+  name: MicroService.Service.Models.Base
+  items:
+  - uid: MicroService.Service.Models.Base.BoundingBox
+    name: BoundingBox
+  - uid: MicroService.Service.Models.Base.CentrePoint
+    name: CentrePoint
+  - uid: MicroService.Service.Models.Base.FlatFileBase
+    name: FlatFileBase
+  - uid: MicroService.Service.Models.Base.ShapeBase
+    name: ShapeBase
+- uid: MicroService.Service.Models.DataMaps
+  name: MicroService.Service.Models.DataMaps
+  items:
+  - uid: MicroService.Service.Models.DataMaps.StationComplexDataMap
+    name: StationComplexDataMap
+  - uid: MicroService.Service.Models.DataMaps.StationDataMap
+    name: StationDataMap
+- uid: MicroService.Service.Models.Enum
+  name: MicroService.Service.Models.Enum
+  items:
+  - uid: MicroService.Service.Models.Enum.FlatFileProperties
+    name: FlatFileProperties
+  - uid: MicroService.Service.Models.Enum.ShapeProperties
+    name: ShapeProperties
+- uid: MicroService.Service.Models.Enum.Attributes
+  name: MicroService.Service.Models.Enum.Attributes
+  items:
+  - uid: MicroService.Service.Models.Enum.Attributes.Color
+    name: Color
+  - uid: MicroService.Service.Models.Enum.Attributes.Datum
+    name: Datum
+  - uid: MicroService.Service.Models.Enum.Attributes.FeatureCollectionAttribute
+    name: FeatureCollectionAttribute
+  - uid: MicroService.Service.Models.Enum.Attributes.FeatureCollectionExcludeAttribute
+    name: FeatureCollectionExcludeAttribute
+  - uid: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    name: FeatureNameAttribute
+  - uid: MicroService.Service.Models.Enum.Attributes.FileTypes
+    name: FileTypes
+  - uid: MicroService.Service.Models.Enum.Attributes.FlatFileAttribute
+    name: FlatFileAttribute
+  - uid: MicroService.Service.Models.Enum.Attributes.MappingKeyAttribute
+    name: MappingKeyAttribute
+  - uid: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    name: ShapeAttribute
+  - uid: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+    name: ShapePropertiesAttribute
+  - uid: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    name: ShapeStyleAttribute
+- uid: MicroService.Service.Models.FlatFileModels
+  name: MicroService.Service.Models.FlatFileModels
+  items:
+  - uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+    name: StationComplexFlatFile
+  - uid: MicroService.Service.Models.FlatFileModels.StationFlatFile
+    name: StationFlatFile
+- uid: MicroService.Service.Services
+  name: MicroService.Service.Services
+  items:
+  - uid: MicroService.Service.Services.BoroughBoundariesService
+    name: BoroughBoundariesService
+  - uid: MicroService.Service.Services.CommunityDistrictsService
+    name: CommunityDistrictsService
+  - uid: MicroService.Service.Services.DsnyDistrictsService
+    name: DsnyDistrictsService
+  - uid: MicroService.Service.Services.HistoricDistrictService
+    name: HistoricDistrictService
+  - uid: MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService
+    name: IndividualLandmarkHistoricDistrictsService
+  - uid: MicroService.Service.Services.IndividualLandmarkSiteService
+    name: IndividualLandmarkSiteService
+  - uid: MicroService.Service.Services.NationalRegisterHistoricPlacesService
+    name: NationalRegisterHistoricPlacesService
+  - uid: MicroService.Service.Services.NeighborhoodsService
+    name: NeighborhoodsService
+  - uid: MicroService.Service.Services.NeighborhoodTabulationAreasService
+    name: NeighborhoodTabulationAreasService
+  - uid: MicroService.Service.Services.NychaDevelopmentService
+    name: NychaDevelopmentService
+  - uid: MicroService.Service.Services.NypdPolicePrecinctService
+    name: NypdPolicePrecinctService
+  - uid: MicroService.Service.Services.NypdSectorsService
+    name: NypdSectorsService
+  - uid: MicroService.Service.Services.ParkService
+    name: ParkService
+  - uid: MicroService.Service.Services.ScenicLandmarkService
+    name: ScenicLandmarkService
+  - uid: MicroService.Service.Services.SubwayService
+    name: SubwayService
+  - uid: MicroService.Service.Services.ZipCodeService
+    name: ZipCodeService
+- uid: MicroService.Service.Services.Base
+  name: MicroService.Service.Services.Base
+  items:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2
+    name: AbstractShapeService<TShape, TProfile>
+    name.vb: AbstractShapeService(Of TShape, TProfile)
+  - uid: MicroService.Service.Services.Base.ShapefileDataReaderResolver
+    name: ShapefileDataReaderResolver
+- uid: MicroService.Service.Services.DataService
+  name: MicroService.Service.Services.DataService
+  items:
+  - uid: MicroService.Service.Services.DataService.CalculationService
+    name: CalculationService
+- uid: MicroService.Service.Services.FlatFileService
+  name: MicroService.Service.Services.FlatFileService
+  items:
+  - uid: MicroService.Service.Services.FlatFileService.IFlatFileService
+    name: IFlatFileService
+  - uid: MicroService.Service.Services.FlatFileService.StationComplexFlatFileService
+    name: StationComplexFlatFileService
+  - uid: MicroService.Service.Services.FlatFileService.StationFlatFileService
+    name: StationFlatFileService
+- uid: MicroService.WebApi.Extensions
+  name: MicroService.WebApi.Extensions
+  items:
+  - uid: MicroService.WebApi.Extensions.FolderHealthCheck
+    name: FolderHealthCheck
+  - uid: MicroService.WebApi.Extensions.ServiceCollectionExtensions
+    name: ServiceCollectionExtensions
+  - uid: MicroService.WebApi.Extensions.SystemHealthCheckBuilderExtensions
+    name: SystemHealthCheckBuilderExtensions
+- uid: MicroService.WebApi.Extensions.Constants
+  name: MicroService.WebApi.Extensions.Constants
+  items:
+  - uid: MicroService.WebApi.Extensions.Constants.ApiConstants
+    name: ApiConstants
+- uid: MicroService.WebApi.Extensions.Swagger
+  name: MicroService.WebApi.Extensions.Swagger
+  items:
+  - uid: MicroService.WebApi.Extensions.Swagger.ConfigureSwaggerOptions
+    name: ConfigureSwaggerOptions
+  - uid: MicroService.WebApi.Extensions.Swagger.SwaggerDocumentFilter
+    name: SwaggerDocumentFilter
+  - uid: MicroService.WebApi.Extensions.Swagger.SwaggerFeatureRequestExamples
+    name: SwaggerFeatureRequestExamples
+- uid: MicroService.WebApi.Models
+  name: MicroService.WebApi.Models
+  items:
+  - uid: MicroService.WebApi.Models.FeatureAttributeLookupRequestModel
+    name: FeatureAttributeLookupRequestModel
+  - uid: MicroService.WebApi.Models.FeatureAttributeRequestModel
+    name: FeatureAttributeRequestModel
+  - uid: MicroService.WebApi.Models.FeatureRequestModel
+    name: FeatureRequestModel
+- uid: MicroService.WebApi.Services.Cron
+  name: MicroService.WebApi.Services.Cron
+  items:
+  - uid: MicroService.WebApi.Services.Cron.CronJobService
+    name: CronJobService
+  - uid: MicroService.WebApi.Services.Cron.IScheduleConfig
+    name: IScheduleConfig
+  - uid: MicroService.WebApi.Services.Cron.ScheduleConfig
+    name: ScheduleConfig
+- uid: MicroService.WebApi.V1.Controllers
+  name: MicroService.WebApi.V1.Controllers
+  items:
+  - uid: MicroService.WebApi.V1.Controllers.FeatureServiceController
+    name: FeatureServiceController
+  - uid: MicroService.WebApi.V1.Controllers.FlatFileServiceController
+    name: FlatFileServiceController
+  - uid: MicroService.WebApi.V1.Controllers.TestDataController
+    name: TestDataController
+  - uid: MicroService.WebApi.V1.Controllers.TransformationServiceController
+    name: TransformationServiceController
+- uid: MicroService.WebApi.V2.Models
+  name: MicroService.WebApi.V2.Models
+  items:
+  - uid: MicroService.WebApi.V2.Models.Order
+    name: Order
+  - uid: MicroService.WebApi.V2.Models.Person
+    name: Person
+- uid: MicroService.WebApi.V3.Controllers
+  name: MicroService.WebApi.V3.Controllers
+  items:
+  - uid: MicroService.WebApi.V3.Controllers.OrdersController
+    name: OrdersController
+  - uid: MicroService.WebApi.V3.Controllers.PeopleController
+    name: PeopleController
+- uid: MicroService.WebApi.V3.Models
+  name: MicroService.WebApi.V3.Models
+  items:
+  - uid: MicroService.WebApi.V3.Models.Order
+    name: Order
+  - uid: MicroService.WebApi.V3.Models.Person
+    name: Person
+- uid: Microsoft.Examples.V2.Controllers
+  name: Microsoft.Examples.V2.Controllers
+  items:
+  - uid: Microsoft.Examples.V2.Controllers.OrdersController
+    name: OrdersController
+  - uid: Microsoft.Examples.V2.Controllers.PeopleController
+    name: PeopleController

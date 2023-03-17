@@ -1,0 +1,59 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Configuration
+  commentId: N:MicroService.Service.Configuration
+  id: MicroService.Service.Configuration
+  children:
+  - MicroService.Service.Configuration.ApplicationOptions
+  - MicroService.Service.Configuration.ConnectionStrings
+  - MicroService.Service.Configuration.ShapeConfiguration
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Configuration
+  nameWithType: MicroService.Service.Configuration
+  fullName: MicroService.Service.Configuration
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Configuration.ApplicationOptions
+  commentId: T:MicroService.Service.Configuration.ApplicationOptions
+  name: ApplicationOptions
+  nameWithType: ApplicationOptions
+  fullName: MicroService.Service.Configuration.ApplicationOptions
+- uid: MicroService.Service.Configuration.ConnectionStrings
+  commentId: T:MicroService.Service.Configuration.ConnectionStrings
+  parent: MicroService.Service.Configuration
+  name: ConnectionStrings
+  nameWithType: ConnectionStrings
+  fullName: MicroService.Service.Configuration.ConnectionStrings
+- uid: MicroService.Service.Configuration.ShapeConfiguration
+  commentId: T:MicroService.Service.Configuration.ShapeConfiguration
+  parent: MicroService.Service.Configuration
+  name: ShapeConfiguration
+  nameWithType: ShapeConfiguration
+  fullName: MicroService.Service.Configuration.ShapeConfiguration
+- uid: MicroService.Service.Configuration
+  commentId: N:MicroService.Service.Configuration
+  name: MicroService.Service.Configuration
+  nameWithType: MicroService.Service.Configuration
+  fullName: MicroService.Service.Configuration
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Configuration
+    name: Configuration
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Configuration
+    name: Configuration

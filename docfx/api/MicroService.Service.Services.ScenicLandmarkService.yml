@@ -1,0 +1,1775 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Services.ScenicLandmarkService
+  commentId: T:MicroService.Service.Services.ScenicLandmarkService
+  id: ScenicLandmarkService
+  parent: MicroService.Service.Services
+  children:
+  - MicroService.Service.Services.ScenicLandmarkService.#ctor(MicroService.Service.Services.Base.ShapefileDataReaderResolver,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{MicroService.Service.Services.ScenicLandmarkService})
+  - MicroService.Service.Services.ScenicLandmarkService.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  - MicroService.Service.Services.ScenicLandmarkService.GetFeatureLookup(System.Double,System.Double)
+  langs:
+  - csharp
+  - vb
+  name: ScenicLandmarkService
+  nameWithType: ScenicLandmarkService
+  fullName: MicroService.Service.Services.ScenicLandmarkService
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.Service/Services/ScenicLandmarkService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ScenicLandmarkService
+    path: ../src/MicroService.Service/Services/ScenicLandmarkService.cs
+    startLine: 16
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services
+  syntax:
+    content: 'public class ScenicLandmarkService : AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>, IShapeService<ScenicLandmarkShape>'
+    content.vb: Public Class ScenicLandmarkService Inherits AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile) Implements IShapeService(Of ScenicLandmarkShape)
+  inheritance:
+  - System.Object
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  implements:
+  - MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}
+  inheritedMembers:
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.ShapeFileDataReader
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.Mapper
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.Logger
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.ShapePropertiesAttribute
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetShapeProperties
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetShapeDatabaseProperties
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.MatchAttributeValue(System.Object,System.Object)
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureName(System.String)
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureList
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureLookup(System.Double,System.Double)
+  - MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatures
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MicroService.Service.Services.ScenicLandmarkService.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+- uid: MicroService.Service.Services.ScenicLandmarkService.#ctor(MicroService.Service.Services.Base.ShapefileDataReaderResolver,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{MicroService.Service.Services.ScenicLandmarkService})
+  commentId: M:MicroService.Service.Services.ScenicLandmarkService.#ctor(MicroService.Service.Services.Base.ShapefileDataReaderResolver,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{MicroService.Service.Services.ScenicLandmarkService})
+  id: '#ctor(MicroService.Service.Services.Base.ShapefileDataReaderResolver,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{MicroService.Service.Services.ScenicLandmarkService})'
+  parent: MicroService.Service.Services.ScenicLandmarkService
+  langs:
+  - csharp
+  - vb
+  name: ScenicLandmarkService(ShapefileDataReaderResolver, IMapper, ILogger<ScenicLandmarkService>)
+  nameWithType: ScenicLandmarkService.ScenicLandmarkService(ShapefileDataReaderResolver, IMapper, ILogger<ScenicLandmarkService>)
+  fullName: MicroService.Service.Services.ScenicLandmarkService.ScenicLandmarkService(MicroService.Service.Services.Base.ShapefileDataReaderResolver, AutoMapper.IMapper, Microsoft.Extensions.Logging.ILogger<MicroService.Service.Services.ScenicLandmarkService>)
+  type: Constructor
+  source:
+    remote:
+      path: src/MicroService.Service/Services/ScenicLandmarkService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: .ctor
+    path: ../src/MicroService.Service/Services/ScenicLandmarkService.cs
+    startLine: 18
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services
+  syntax:
+    content: public ScenicLandmarkService(ShapefileDataReaderResolver shapefileDataReaderResolver, IMapper mapper, ILogger<ScenicLandmarkService> logger)
+    parameters:
+    - id: shapefileDataReaderResolver
+      type: MicroService.Service.Services.Base.ShapefileDataReaderResolver
+    - id: mapper
+      type: AutoMapper.IMapper
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{MicroService.Service.Services.ScenicLandmarkService}
+    content.vb: Public Sub New(shapefileDataReaderResolver As ShapefileDataReaderResolver, mapper As IMapper, logger As ILogger(Of ScenicLandmarkService))
+  overload: MicroService.Service.Services.ScenicLandmarkService.#ctor*
+  nameWithType.vb: ScenicLandmarkService.New(ShapefileDataReaderResolver, IMapper, ILogger(Of ScenicLandmarkService))
+  fullName.vb: MicroService.Service.Services.ScenicLandmarkService.New(MicroService.Service.Services.Base.ShapefileDataReaderResolver, AutoMapper.IMapper, Microsoft.Extensions.Logging.ILogger(Of MicroService.Service.Services.ScenicLandmarkService))
+  name.vb: New(ShapefileDataReaderResolver, IMapper, ILogger(Of ScenicLandmarkService))
+- uid: MicroService.Service.Services.ScenicLandmarkService.GetFeatureLookup(System.Double,System.Double)
+  commentId: M:MicroService.Service.Services.ScenicLandmarkService.GetFeatureLookup(System.Double,System.Double)
+  id: GetFeatureLookup(System.Double,System.Double)
+  parent: MicroService.Service.Services.ScenicLandmarkService
+  langs:
+  - csharp
+  - vb
+  name: GetFeatureLookup(double, double)
+  nameWithType: ScenicLandmarkService.GetFeatureLookup(double, double)
+  fullName: MicroService.Service.Services.ScenicLandmarkService.GetFeatureLookup(double, double)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Services/ScenicLandmarkService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatureLookup
+    path: ../src/MicroService.Service/Services/ScenicLandmarkService.cs
+    startLine: 26
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services
+  syntax:
+    content: public override ScenicLandmarkShape GetFeatureLookup(double x, double y)
+    parameters:
+    - id: x
+      type: System.Double
+    - id: y
+      type: System.Double
+    return:
+      type: MicroService.Service.Models.ScenicLandmarkShape
+    content.vb: Public Overrides Function GetFeatureLookup(x As Double, y As Double) As ScenicLandmarkShape
+  overridden: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureLookup(System.Double,System.Double)
+  overload: MicroService.Service.Services.ScenicLandmarkService.GetFeatureLookup*
+  implements:
+  - MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}.GetFeatureLookup(System.Double,System.Double)
+  nameWithType.vb: ScenicLandmarkService.GetFeatureLookup(Double, Double)
+  fullName.vb: MicroService.Service.Services.ScenicLandmarkService.GetFeatureLookup(Double, Double)
+  name.vb: GetFeatureLookup(Double, Double)
+- uid: MicroService.Service.Services.ScenicLandmarkService.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  commentId: M:MicroService.Service.Services.ScenicLandmarkService.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  id: GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  parent: MicroService.Service.Services.ScenicLandmarkService
+  langs:
+  - csharp
+  - vb
+  name: GetFeatureCollection(List<KeyValuePair<string, object>>)
+  nameWithType: ScenicLandmarkService.GetFeatureCollection(List<KeyValuePair<string, object>>)
+  fullName: MicroService.Service.Services.ScenicLandmarkService.GetFeatureCollection(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Services/ScenicLandmarkService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatureCollection
+    path: ../src/MicroService.Service/Services/ScenicLandmarkService.cs
+    startLine: 45
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services
+  syntax:
+    content: public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
+    parameters:
+    - id: attributes
+      type: System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+    return:
+      type: NetTopologySuite.Features.FeatureCollection
+    content.vb: Public Function GetFeatureCollection(attributes As List(Of KeyValuePair(Of String, Object))) As FeatureCollection
+  overload: MicroService.Service.Services.ScenicLandmarkService.GetFeatureCollection*
+  implements:
+  - MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  nameWithType.vb: ScenicLandmarkService.GetFeatureCollection(List(Of KeyValuePair(Of String, Object)))
+  fullName.vb: MicroService.Service.Services.ScenicLandmarkService.GetFeatureCollection(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: GetFeatureCollection(List(Of KeyValuePair(Of String, Object)))
+references:
+- uid: MicroService.Service.Services
+  commentId: N:MicroService.Service.Services
+  name: MicroService.Service.Services
+  nameWithType: MicroService.Service.Services
+  fullName: MicroService.Service.Services
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  commentId: T:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  parent: MicroService.Service.Services.Base
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2
+  name: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile)
+  name.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile)
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2
+    name: AbstractShapeService
+  - name: <
+  - uid: MicroService.Service.Models.ScenicLandmarkShape
+    name: ScenicLandmarkShape
+  - name: ','
+  - name: " "
+  - uid: MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile
+    name: FeatureToScenicLandmarkShapeProfile
+  - name: '>'
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2
+    name: AbstractShapeService
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.ScenicLandmarkShape
+    name: ScenicLandmarkShape
+  - name: ','
+  - name: " "
+  - uid: MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile
+    name: FeatureToScenicLandmarkShapeProfile
+  - name: )
+- uid: MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}
+  commentId: T:MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}
+  parent: MicroService.Service.Interfaces
+  definition: MicroService.Service.Interfaces.IShapeService`1
+  name: IShapeService<ScenicLandmarkShape>
+  nameWithType: IShapeService<ScenicLandmarkShape>
+  fullName: MicroService.Service.Interfaces.IShapeService<MicroService.Service.Models.ScenicLandmarkShape>
+  nameWithType.vb: IShapeService(Of ScenicLandmarkShape)
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of MicroService.Service.Models.ScenicLandmarkShape)
+  name.vb: IShapeService(Of ScenicLandmarkShape)
+  spec.csharp:
+  - uid: MicroService.Service.Interfaces.IShapeService`1
+    name: IShapeService
+  - name: <
+  - uid: MicroService.Service.Models.ScenicLandmarkShape
+    name: ScenicLandmarkShape
+  - name: '>'
+  spec.vb:
+  - uid: MicroService.Service.Interfaces.IShapeService`1
+    name: IShapeService
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.ScenicLandmarkShape
+    name: ScenicLandmarkShape
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.ShapeFileDataReader
+  commentId: P:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.ShapeFileDataReader
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.ShapeFileDataReader
+  name: ShapeFileDataReader
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.ShapeFileDataReader
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.ShapeFileDataReader
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).ShapeFileDataReader
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).ShapeFileDataReader
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.Mapper
+  commentId: F:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.Mapper
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.Mapper
+  name: Mapper
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.Mapper
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.Mapper
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).Mapper
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).Mapper
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.Logger
+  commentId: F:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.Logger
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.Logger
+  name: Logger
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.Logger
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.Logger
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).Logger
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).Logger
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.ShapePropertiesAttribute
+  commentId: P:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.ShapePropertiesAttribute
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.ShapePropertiesAttribute
+  name: ShapePropertiesAttribute
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.ShapePropertiesAttribute
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.ShapePropertiesAttribute
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).ShapePropertiesAttribute
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).ShapePropertiesAttribute
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetShapeProperties
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetShapeProperties
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties
+  name: GetShapeProperties()
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.GetShapeProperties()
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.GetShapeProperties()
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).GetShapeProperties()
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).GetShapeProperties()
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetShapeProperties
+    name: GetShapeProperties
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetShapeProperties
+    name: GetShapeProperties
+  - name: (
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetShapeDatabaseProperties
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetShapeDatabaseProperties
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties
+  name: GetShapeDatabaseProperties()
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.GetShapeDatabaseProperties()
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.GetShapeDatabaseProperties()
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).GetShapeDatabaseProperties()
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).GetShapeDatabaseProperties()
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetShapeDatabaseProperties
+    name: GetShapeDatabaseProperties
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetShapeDatabaseProperties
+    name: GetShapeDatabaseProperties
+  - name: (
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  name: ValidateFeatureKey(List<KeyValuePair<string, object>>)
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.ValidateFeatureKey(List<KeyValuePair<string, object>>)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.ValidateFeatureKey(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).ValidateFeatureKey(List(Of KeyValuePair(Of String, Object)))
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).ValidateFeatureKey(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: ValidateFeatureKey(List(Of KeyValuePair(Of String, Object)))
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: ValidateFeatureKey
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: ValidateFeatureKey
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.MatchAttributeValue(System.Object,System.Object)
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.MatchAttributeValue(System.Object,System.Object)
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue(System.Object,System.Object)
+  name: MatchAttributeValue(object, object)
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.MatchAttributeValue(object, object)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.MatchAttributeValue(object, object)
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).MatchAttributeValue(Object, Object)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).MatchAttributeValue(Object, Object)
+  name.vb: MatchAttributeValue(Object, Object)
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.MatchAttributeValue(System.Object,System.Object)
+    name: MatchAttributeValue
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.MatchAttributeValue(System.Object,System.Object)
+    name: MatchAttributeValue
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureName(System.String)
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureName(System.String)
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName(System.String)
+  name: GetFeatureName(string)
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.GetFeatureName(string)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.GetFeatureName(string)
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).GetFeatureName(String)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).GetFeatureName(String)
+  name.vb: GetFeatureName(String)
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureName(System.String)
+    name: GetFeatureName
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureName(System.String)
+    name: GetFeatureName
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureList
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureList
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList
+  name: GetFeatureList()
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.GetFeatureList()
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.GetFeatureList()
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).GetFeatureList()
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).GetFeatureList()
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureList
+    name: GetFeatureList
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureList
+    name: GetFeatureList
+  - name: (
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  name: GetFeatureLookup(List<KeyValuePair<string, object>>)
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.GetFeatureLookup(List<KeyValuePair<string, object>>)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.GetFeatureLookup(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).GetFeatureLookup(List(Of KeyValuePair(Of String, Object)))
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).GetFeatureLookup(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: GetFeatureLookup(List(Of KeyValuePair(Of String, Object)))
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: GetFeatureLookup
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: GetFeatureLookup
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureLookup(System.Double,System.Double)
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureLookup(System.Double,System.Double)
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Double,System.Double)
+  name: GetFeatureLookup(double, double)
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.GetFeatureLookup(double, double)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.GetFeatureLookup(double, double)
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).GetFeatureLookup(Double, Double)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).GetFeatureLookup(Double, Double)
+  name.vb: GetFeatureLookup(Double, Double)
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureLookup(System.Double,System.Double)
+    name: GetFeatureLookup
+  - name: (
+  - uid: System.Double
+    name: double
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatureLookup(System.Double,System.Double)
+    name: GetFeatureLookup
+  - name: (
+  - uid: System.Double
+    name: Double
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatures
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatures
+  parent: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}
+  definition: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures
+  name: GetFeatures()
+  nameWithType: AbstractShapeService<ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile>.GetFeatures()
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile>.GetFeatures()
+  nameWithType.vb: AbstractShapeService(Of ScenicLandmarkShape, FeatureToScenicLandmarkShapeProfile).GetFeatures()
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of MicroService.Service.Models.ScenicLandmarkShape, MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile).GetFeatures()
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatures
+    name: GetFeatures
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService{MicroService.Service.Models.ScenicLandmarkShape,MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile}.GetFeatures
+    name: GetFeatures
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: MicroService.Service.Services.ScenicLandmarkService.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<ScenicLandmarkService>(ScenicLandmarkService)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<ScenicLandmarkService>(ScenicLandmarkService)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Services.ScenicLandmarkService>(MicroService.Service.Services.ScenicLandmarkService)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of ScenicLandmarkService)(ScenicLandmarkService)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Services.ScenicLandmarkService)(MicroService.Service.Services.ScenicLandmarkService)
+  name.vb: ArePropertiesNotNull(Of ScenicLandmarkService)(ScenicLandmarkService)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Services.ScenicLandmarkService)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Services.ScenicLandmarkService
+    name: ScenicLandmarkService
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Services.ScenicLandmarkService
+    name: ScenicLandmarkService
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Services.ScenicLandmarkService)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Services.ScenicLandmarkService
+    name: ScenicLandmarkService
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Services.ScenicLandmarkService
+    name: ScenicLandmarkService
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2
+  commentId: T:MicroService.Service.Services.Base.AbstractShapeService`2
+  name: AbstractShapeService<TShape, TProfile>
+  nameWithType: AbstractShapeService<TShape, TProfile>
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile)
+  name.vb: AbstractShapeService(Of TShape, TProfile)
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2
+    name: AbstractShapeService
+  - name: <
+  - name: TShape
+  - name: ','
+  - name: " "
+  - name: TProfile
+  - name: '>'
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2
+    name: AbstractShapeService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TShape
+  - name: ','
+  - name: " "
+  - name: TProfile
+  - name: )
+- uid: MicroService.Service.Services.Base
+  commentId: N:MicroService.Service.Services.Base
+  name: MicroService.Service.Services.Base
+  nameWithType: MicroService.Service.Services.Base
+  fullName: MicroService.Service.Services.Base
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  - name: .
+  - uid: MicroService.Service.Services.Base
+    name: Base
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  - name: .
+  - uid: MicroService.Service.Services.Base
+    name: Base
+- uid: MicroService.Service.Interfaces.IShapeService`1
+  commentId: T:MicroService.Service.Interfaces.IShapeService`1
+  name: IShapeService<T>
+  nameWithType: IShapeService<T>
+  fullName: MicroService.Service.Interfaces.IShapeService<T>
+  nameWithType.vb: IShapeService(Of T)
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T)
+  name.vb: IShapeService(Of T)
+  spec.csharp:
+  - uid: MicroService.Service.Interfaces.IShapeService`1
+    name: IShapeService
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MicroService.Service.Interfaces.IShapeService`1
+    name: IShapeService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MicroService.Service.Interfaces
+  commentId: N:MicroService.Service.Interfaces
+  name: MicroService.Service.Interfaces
+  nameWithType: MicroService.Service.Interfaces
+  fullName: MicroService.Service.Interfaces
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Interfaces
+    name: Interfaces
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.ShapeFileDataReader
+  commentId: P:MicroService.Service.Services.Base.AbstractShapeService`2.ShapeFileDataReader
+  name: ShapeFileDataReader
+  nameWithType: AbstractShapeService<TShape, TProfile>.ShapeFileDataReader
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.ShapeFileDataReader
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).ShapeFileDataReader
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).ShapeFileDataReader
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.Mapper
+  commentId: F:MicroService.Service.Services.Base.AbstractShapeService`2.Mapper
+  name: Mapper
+  nameWithType: AbstractShapeService<TShape, TProfile>.Mapper
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.Mapper
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).Mapper
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).Mapper
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.Logger
+  commentId: F:MicroService.Service.Services.Base.AbstractShapeService`2.Logger
+  name: Logger
+  nameWithType: AbstractShapeService<TShape, TProfile>.Logger
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.Logger
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).Logger
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).Logger
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.ShapePropertiesAttribute
+  commentId: P:MicroService.Service.Services.Base.AbstractShapeService`2.ShapePropertiesAttribute
+  name: ShapePropertiesAttribute
+  nameWithType: AbstractShapeService<TShape, TProfile>.ShapePropertiesAttribute
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.ShapePropertiesAttribute
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).ShapePropertiesAttribute
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).ShapePropertiesAttribute
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties
+  name: GetShapeProperties()
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetShapeProperties()
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetShapeProperties()
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetShapeProperties()
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetShapeProperties()
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties
+    name: GetShapeProperties
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties
+    name: GetShapeProperties
+  - name: (
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties
+  name: GetShapeDatabaseProperties()
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetShapeDatabaseProperties()
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetShapeDatabaseProperties()
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetShapeDatabaseProperties()
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetShapeDatabaseProperties()
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties
+    name: GetShapeDatabaseProperties
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties
+    name: GetShapeDatabaseProperties
+  - name: (
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  isExternal: true
+  name: ValidateFeatureKey(List<KeyValuePair<string, object>>)
+  nameWithType: AbstractShapeService<TShape, TProfile>.ValidateFeatureKey(List<KeyValuePair<string, object>>)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.ValidateFeatureKey(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).ValidateFeatureKey(List(Of KeyValuePair(Of String, Object)))
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).ValidateFeatureKey(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: ValidateFeatureKey(List(Of KeyValuePair(Of String, Object)))
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: ValidateFeatureKey
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: ValidateFeatureKey
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue(System.Object,System.Object)
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue(System.Object,System.Object)
+  isExternal: true
+  name: MatchAttributeValue(object, object)
+  nameWithType: AbstractShapeService<TShape, TProfile>.MatchAttributeValue(object, object)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.MatchAttributeValue(object, object)
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).MatchAttributeValue(Object, Object)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).MatchAttributeValue(Object, Object)
+  name.vb: MatchAttributeValue(Object, Object)
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue(System.Object,System.Object)
+    name: MatchAttributeValue
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue(System.Object,System.Object)
+    name: MatchAttributeValue
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName(System.String)
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName(System.String)
+  isExternal: true
+  name: GetFeatureName(string)
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatureName(string)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatureName(string)
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatureName(String)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatureName(String)
+  name.vb: GetFeatureName(String)
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName(System.String)
+    name: GetFeatureName
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName(System.String)
+    name: GetFeatureName
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList
+  name: GetFeatureList()
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatureList()
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatureList()
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatureList()
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatureList()
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList
+    name: GetFeatureList
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList
+    name: GetFeatureList
+  - name: (
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  isExternal: true
+  name: GetFeatureLookup(List<KeyValuePair<string, object>>)
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatureLookup(List<KeyValuePair<string, object>>)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatureLookup(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatureLookup(List(Of KeyValuePair(Of String, Object)))
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatureLookup(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: GetFeatureLookup(List(Of KeyValuePair(Of String, Object)))
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: GetFeatureLookup
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: GetFeatureLookup
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Double,System.Double)
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Double,System.Double)
+  isExternal: true
+  name: GetFeatureLookup(double, double)
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatureLookup(double, double)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatureLookup(double, double)
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatureLookup(Double, Double)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatureLookup(Double, Double)
+  name.vb: GetFeatureLookup(Double, Double)
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Double,System.Double)
+    name: GetFeatureLookup
+  - name: (
+  - uid: System.Double
+    name: double
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Double,System.Double)
+    name: GetFeatureLookup
+  - name: (
+  - uid: System.Double
+    name: Double
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures
+  name: GetFeatures()
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatures()
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatures()
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatures()
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatures()
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures
+    name: GetFeatures
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures
+    name: GetFeatures
+  - name: (
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Services.ScenicLandmarkService.#ctor*
+  commentId: Overload:MicroService.Service.Services.ScenicLandmarkService.#ctor
+  name: ScenicLandmarkService
+  nameWithType: ScenicLandmarkService.ScenicLandmarkService
+  fullName: MicroService.Service.Services.ScenicLandmarkService.ScenicLandmarkService
+  nameWithType.vb: ScenicLandmarkService.New
+  fullName.vb: MicroService.Service.Services.ScenicLandmarkService.New
+  name.vb: New
+- uid: MicroService.Service.Services.Base.ShapefileDataReaderResolver
+  commentId: T:MicroService.Service.Services.Base.ShapefileDataReaderResolver
+  parent: MicroService.Service.Services.Base
+  name: ShapefileDataReaderResolver
+  nameWithType: ShapefileDataReaderResolver
+  fullName: MicroService.Service.Services.Base.ShapefileDataReaderResolver
+- uid: AutoMapper.IMapper
+  commentId: T:AutoMapper.IMapper
+  parent: AutoMapper
+  isExternal: true
+  name: IMapper
+  nameWithType: IMapper
+  fullName: AutoMapper.IMapper
+- uid: Microsoft.Extensions.Logging.ILogger{MicroService.Service.Services.ScenicLandmarkService}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{MicroService.Service.Services.ScenicLandmarkService}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  name: ILogger<ScenicLandmarkService>
+  nameWithType: ILogger<ScenicLandmarkService>
+  fullName: Microsoft.Extensions.Logging.ILogger<MicroService.Service.Services.ScenicLandmarkService>
+  nameWithType.vb: ILogger(Of ScenicLandmarkService)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of MicroService.Service.Services.ScenicLandmarkService)
+  name.vb: ILogger(Of ScenicLandmarkService)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+  - name: <
+  - uid: MicroService.Service.Services.ScenicLandmarkService
+    name: ScenicLandmarkService
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Services.ScenicLandmarkService
+    name: ScenicLandmarkService
+  - name: )
+- uid: AutoMapper
+  commentId: N:AutoMapper
+  isExternal: true
+  name: AutoMapper
+  nameWithType: AutoMapper
+  fullName: AutoMapper
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+- uid: MicroService.Service.Services.ScenicLandmarkService.GetFeatureLookup*
+  commentId: Overload:MicroService.Service.Services.ScenicLandmarkService.GetFeatureLookup
+  name: GetFeatureLookup
+  nameWithType: ScenicLandmarkService.GetFeatureLookup
+  fullName: MicroService.Service.Services.ScenicLandmarkService.GetFeatureLookup
+- uid: MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}.GetFeatureLookup(System.Double,System.Double)
+  commentId: M:MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}.GetFeatureLookup(System.Double,System.Double)
+  parent: MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}
+  definition: MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup(System.Double,System.Double)
+  name: GetFeatureLookup(double, double)
+  nameWithType: IShapeService<ScenicLandmarkShape>.GetFeatureLookup(double, double)
+  fullName: MicroService.Service.Interfaces.IShapeService<MicroService.Service.Models.ScenicLandmarkShape>.GetFeatureLookup(double, double)
+  nameWithType.vb: IShapeService(Of ScenicLandmarkShape).GetFeatureLookup(Double, Double)
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of MicroService.Service.Models.ScenicLandmarkShape).GetFeatureLookup(Double, Double)
+  name.vb: GetFeatureLookup(Double, Double)
+  spec.csharp:
+  - uid: MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}.GetFeatureLookup(System.Double,System.Double)
+    name: GetFeatureLookup
+  - name: (
+  - uid: System.Double
+    name: double
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}.GetFeatureLookup(System.Double,System.Double)
+    name: GetFeatureLookup
+  - name: (
+  - uid: System.Double
+    name: Double
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+  - name: )
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MicroService.Service.Models.ScenicLandmarkShape
+  commentId: T:MicroService.Service.Models.ScenicLandmarkShape
+  parent: MicroService.Service.Models
+  name: ScenicLandmarkShape
+  nameWithType: ScenicLandmarkShape
+  fullName: MicroService.Service.Models.ScenicLandmarkShape
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup(System.Double,System.Double)
+  commentId: M:MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup(System.Double,System.Double)
+  isExternal: true
+  name: GetFeatureLookup(double, double)
+  nameWithType: IShapeService<T>.GetFeatureLookup(double, double)
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetFeatureLookup(double, double)
+  nameWithType.vb: IShapeService(Of T).GetFeatureLookup(Double, Double)
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetFeatureLookup(Double, Double)
+  name.vb: GetFeatureLookup(Double, Double)
+  spec.csharp:
+  - uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup(System.Double,System.Double)
+    name: GetFeatureLookup
+  - name: (
+  - uid: System.Double
+    name: double
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureLookup(System.Double,System.Double)
+    name: GetFeatureLookup
+  - name: (
+  - uid: System.Double
+    name: Double
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Models
+  commentId: N:MicroService.Service.Models
+  name: MicroService.Service.Models
+  nameWithType: MicroService.Service.Models
+  fullName: MicroService.Service.Models
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+- uid: MicroService.Service.Services.ScenicLandmarkService.GetFeatureCollection*
+  commentId: Overload:MicroService.Service.Services.ScenicLandmarkService.GetFeatureCollection
+  name: GetFeatureCollection
+  nameWithType: ScenicLandmarkService.GetFeatureCollection
+  fullName: MicroService.Service.Services.ScenicLandmarkService.GetFeatureCollection
+- uid: MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  commentId: M:MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  parent: MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}
+  definition: MicroService.Service.Interfaces.IShapeService`1.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  name: GetFeatureCollection(List<KeyValuePair<string, object>>)
+  nameWithType: IShapeService<ScenicLandmarkShape>.GetFeatureCollection(List<KeyValuePair<string, object>>)
+  fullName: MicroService.Service.Interfaces.IShapeService<MicroService.Service.Models.ScenicLandmarkShape>.GetFeatureCollection(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
+  nameWithType.vb: IShapeService(Of ScenicLandmarkShape).GetFeatureCollection(List(Of KeyValuePair(Of String, Object)))
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of MicroService.Service.Models.ScenicLandmarkShape).GetFeatureCollection(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: GetFeatureCollection(List(Of KeyValuePair(Of String, Object)))
+  spec.csharp:
+  - uid: MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: GetFeatureCollection
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.ScenicLandmarkShape}.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: GetFeatureCollection
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  commentId: T:System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<KeyValuePair<string, object>>
+  nameWithType: List<KeyValuePair<string, object>>
+  fullName: System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>
+  nameWithType.vb: List(Of KeyValuePair(Of String, Object))
+  fullName.vb: System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object))
+  name.vb: List(Of KeyValuePair(Of String, Object))
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+- uid: NetTopologySuite.Features.FeatureCollection
+  commentId: T:NetTopologySuite.Features.FeatureCollection
+  parent: NetTopologySuite.Features
+  isExternal: true
+  name: FeatureCollection
+  nameWithType: FeatureCollection
+  fullName: NetTopologySuite.Features.FeatureCollection
+- uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  commentId: M:MicroService.Service.Interfaces.IShapeService`1.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  isExternal: true
+  name: GetFeatureCollection(List<KeyValuePair<string, object>>)
+  nameWithType: IShapeService<T>.GetFeatureCollection(List<KeyValuePair<string, object>>)
+  fullName: MicroService.Service.Interfaces.IShapeService<T>.GetFeatureCollection(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
+  nameWithType.vb: IShapeService(Of T).GetFeatureCollection(List(Of KeyValuePair(Of String, Object)))
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T).GetFeatureCollection(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: GetFeatureCollection(List(Of KeyValuePair(Of String, Object)))
+  spec.csharp:
+  - uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: GetFeatureCollection
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Interfaces.IShapeService`1.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: GetFeatureCollection
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+- uid: NetTopologySuite.Features
+  commentId: N:NetTopologySuite.Features
+  isExternal: true
+  name: NetTopologySuite.Features
+  nameWithType: NetTopologySuite.Features
+  fullName: NetTopologySuite.Features
+  spec.csharp:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.Features
+    name: Features
+    isExternal: true
+  spec.vb:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.Features
+    name: Features
+    isExternal: true
