@@ -19,7 +19,8 @@ The goal of this API is to:
 ## Key Features
 
 - **Data Standardization**: The API ensures consistent data structure and terminology, making it easier to work with and analyze the NYC Open Data.
-- **GeoSpatial Support**: The API provides support for both NAD83 and WGS spatial reference systems, ensuring accurate and consistent geospatial data representation.
+- **GeoSpatial Support**: The API provides support for both NAD83 and WGS spatial reference systems, ensuring accurate and consistent geospatial data representation. Data is returned in GeoJSON format, making it easy to integrate with other applications.
+
 - **Centralized Repository**: A single, well-organized location for all ESRI Shape Files related to NYC Open Data.
 - **Simplified ETL Workflow**: By storing data on a traditional file share, the API minimizes manual interventions and streamlines the ETL process, while making the data accessible to other applications in the stack.
 - **Data Enrichment**: The API offers additional data enrichment capabilities, enhancing the quality and usefulness of the available datasets.
@@ -43,6 +44,8 @@ The primary focus of the datasets used in this project revolves around NYC Monum
 ## References
 
 - [NYC OpenData](https://opendata.cityofnewyork.us/) - NYC Open Data
+- [LPC Designation Reports](https://www.nyc.gov/site/lpc/designations/designation-reports.page) - NYC Landmarks Preservation Commission Designation Reports
+- [Stuart Shay's Flickr](https://www.flickr.com/photos/stuartshay) - Stuart Shay's Flickr Collection of NYC Monuments, Landmarks, and Points of Interest
 
 ## Sonar
 
