@@ -4,12 +4,29 @@
   "xrefmap": "xrefmap.yml",
   "files": [
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "api/index.md",
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "NBZTabgp0zGEQI+Spfmr7qSp3GsvTErllFQl9td9ghw="
+          "hash": "qYeb3rhEHoGo1Zc9eqtnUAQAfOkWucl285WKgg87mW8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "wJ286zIVzneBZcbB7ENLd5QJXc42lvdt1iGF9xg+CGY="
         }
       },
       "version": ""
@@ -20,7 +37,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/csharp_coding_standards.html",
-          "hash": "OW5tJ1242MF6OyDViTeCmzDVvOXUmaYAYBtfXGZCHuw="
+          "hash": "ItYirExPwjVnJGf1REC992ImAPI/czPdaZyDnNhzL+o="
         }
       },
       "version": ""
@@ -31,7 +48,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/details1.html",
-          "hash": "afI2rwaWCTdyYmQzbHupmupJd4IHrqYSC9o6D7ZTdDc="
+          "hash": "FE3pkmEXhQ5mLcfWyy3r2DbjGMmqhvYVjEbVzcDqcNA="
         }
       },
       "version": ""
@@ -45,7 +62,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/docfx.html",
-          "hash": "AjY5lH/Kb0yUcRreVQfSoCdjQaWpmAkJKCFWB85ldUg="
+          "hash": "sdtEAXrAJbTa4laAGm2NlsRNtOTGvzyx06MJz9SCdpA="
         }
       },
       "version": ""
@@ -56,7 +73,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/eks.html",
-          "hash": "ruIMfggJVqunNS0AM7D3BFMEPjUy8/g/JPYcDTgkKtQ="
+          "hash": "bA2O4iYWmgbFNwer7EYkyy1Pqgp56/QA+FZz/xD50zo="
         }
       },
       "version": ""
@@ -67,7 +84,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/howto/howto1.html",
-          "hash": "WSkJBbxHZ2nK6jKRD+HBFy1BIKw3ij1UMLSs/rFvwQs="
+          "hash": "E6dvDH9GJVIH0+LPuRBV8q9aSDOZOOWfWd3ZFDfSNZs="
         }
       },
       "version": ""
@@ -78,7 +95,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/howto/howto2.html",
-          "hash": "aVIvR3/x0yFcJGsL9JuEncY7pRO+/EABFDxqsajGKe4="
+          "hash": "rte1gjTJH3fqS3UGyEwtSsNTO/BTjVlwxkYpYeAvbDs="
         }
       },
       "version": ""
@@ -89,7 +106,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/howto/overview.html",
-          "hash": "HYrLRJ5BOdK8l6UUZoZ+4VSUMTh6QVHCurxGz2QRDzk="
+          "hash": "PiFj68CFtmyAU0a2DnKWHgBJI1iDa3woOlthID2+ouU="
         }
       },
       "version": ""
@@ -100,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/hyper-v.html",
-          "hash": "T8LsbmGcFWYdouXgByC3Vrsve6vI0tvsV38OZqPEI18="
+          "hash": "k97pMpBBBQPsa8r0gH5aY1SKeYCNYUnCmLJqsVdUiG8="
         }
       },
       "version": ""
@@ -201,7 +218,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "OmWM4ZCWa2P1tNAyRqMnin7BjqQ7awauzyT7isDj/nY="
+          "hash": "2B2gM/rIzDqF6yaK7/bXbAd6t0f9XL7du37l3QhuSz4="
         }
       },
       "version": ""
@@ -212,7 +229,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/kubernetes.html",
-          "hash": "gzI5qpWr7suvZaWMkxbNzh3L4L0iONcLtK89kMTIaEw="
+          "hash": "RjG2yTehl1KoFAMibRsWI7FAcTjQlMKu/wpW+aY3P/M="
         }
       },
       "version": ""
@@ -223,7 +240,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/myget.html",
-          "hash": "JskgRm6Ish/hvz65AivKT0/P4VdC8w9UvwTC1K8Ii3Q="
+          "hash": "PYyVAHixnpdN3XSELGlbMIONlyHT8WaYWUFr1wM01x4="
         }
       },
       "version": ""
@@ -234,7 +251,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/requirements.html",
-          "hash": "wLJS+3iMf68v0WSK3iQ/bcsdvt1r2ideKuUnX2Vv26o="
+          "hash": "lbgy+4GUO5w74BXRplf6gWRByzSSHjqPAjHSA2LMG5k="
         }
       },
       "version": ""
@@ -245,7 +262,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/sonarqube.html",
-          "hash": "N9bFcCW2HZrjTPLABOrGKSkRgCz0FDDjNd0CVQDO3zg="
+          "hash": "t9XY4LaB1op7OGwVNq5oul+G1tVSXGOtEDT2KdmiUgw="
         }
       },
       "version": ""
@@ -259,7 +276,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/swagger.html",
-          "hash": "z54edjJMYPE5hEzAIKjK0sx+CXBSEl++RsJx+YBJ+TQ="
+          "hash": "TYD+3HDLFvTAZad/bBBuicNvNyH/3RedXxJps9yXN1c="
         }
       },
       "version": ""
@@ -281,7 +298,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "u31YQH3VXxjeIsIUyuwfBCv+H4L89GsKPBbl94wK3Ew="
+          "hash": "j8Z15zc95kPayvhQPmC/kjSSEGIagMKZ8br83oV+7tE="
         }
       },
       "version": ""
@@ -303,7 +320,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "3qPGpsainbhMLjxFEcdUvb5UWFDTdsieyutpKbT9oOU="
+          "hash": "XeP2+1uwXxanauPA15twku0fjy+eVM4jVbhGb9uuCSY="
         }
       },
       "version": ""
