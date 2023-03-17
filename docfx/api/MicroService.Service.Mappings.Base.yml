@@ -1,0 +1,45 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Mappings.Base
+  commentId: N:MicroService.Service.Mappings.Base
+  id: MicroService.Service.Mappings.Base
+  children:
+  - MicroService.Service.Mappings.Base.GeometryProfile
+  - MicroService.Service.Mappings.Base.ShapeProfile`1
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Mappings.Base
+  nameWithType: MicroService.Service.Mappings.Base
+  fullName: MicroService.Service.Mappings.Base
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Mappings.Base.GeometryProfile
+  commentId: T:MicroService.Service.Mappings.Base.GeometryProfile
+  name: GeometryProfile
+  nameWithType: GeometryProfile
+  fullName: MicroService.Service.Mappings.Base.GeometryProfile
+- uid: MicroService.Service.Mappings.Base.ShapeProfile`1
+  commentId: T:MicroService.Service.Mappings.Base.ShapeProfile`1
+  name: ShapeProfile<TShape>
+  nameWithType: ShapeProfile<TShape>
+  fullName: MicroService.Service.Mappings.Base.ShapeProfile<TShape>
+  nameWithType.vb: ShapeProfile(Of TShape)
+  fullName.vb: MicroService.Service.Mappings.Base.ShapeProfile(Of TShape)
+  name.vb: ShapeProfile(Of TShape)
+  spec.csharp:
+  - uid: MicroService.Service.Mappings.Base.ShapeProfile`1
+    name: ShapeProfile
+  - name: <
+  - name: TShape
+  - name: '>'
+  spec.vb:
+  - uid: MicroService.Service.Mappings.Base.ShapeProfile`1
+    name: ShapeProfile
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TShape
+  - name: )

@@ -1,0 +1,126 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.Enum.Attributes
+  commentId: N:MicroService.Service.Models.Enum.Attributes
+  id: MicroService.Service.Models.Enum.Attributes
+  children:
+  - MicroService.Service.Models.Enum.Attributes.Color
+  - MicroService.Service.Models.Enum.Attributes.Datum
+  - MicroService.Service.Models.Enum.Attributes.FeatureCollectionAttribute
+  - MicroService.Service.Models.Enum.Attributes.FeatureCollectionExcludeAttribute
+  - MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+  - MicroService.Service.Models.Enum.Attributes.FileTypes
+  - MicroService.Service.Models.Enum.Attributes.FlatFileAttribute
+  - MicroService.Service.Models.Enum.Attributes.MappingKeyAttribute
+  - MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+  - MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+  - MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Models.Enum.Attributes
+  nameWithType: MicroService.Service.Models.Enum.Attributes
+  fullName: MicroService.Service.Models.Enum.Attributes
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+  commentId: T:MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+  parent: MicroService.Service.Models.Enum.Attributes
+  name: FeatureNameAttribute
+  nameWithType: FeatureNameAttribute
+  fullName: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+- uid: MicroService.Service.Models.Enum.Attributes.FeatureCollectionAttribute
+  commentId: T:MicroService.Service.Models.Enum.Attributes.FeatureCollectionAttribute
+  name: FeatureCollectionAttribute
+  nameWithType: FeatureCollectionAttribute
+  fullName: MicroService.Service.Models.Enum.Attributes.FeatureCollectionAttribute
+- uid: MicroService.Service.Models.Enum.Attributes.FeatureCollectionExcludeAttribute
+  commentId: T:MicroService.Service.Models.Enum.Attributes.FeatureCollectionExcludeAttribute
+  name: FeatureCollectionExcludeAttribute
+  nameWithType: FeatureCollectionExcludeAttribute
+  fullName: MicroService.Service.Models.Enum.Attributes.FeatureCollectionExcludeAttribute
+- uid: MicroService.Service.Models.Enum.Attributes.MappingKeyAttribute
+  commentId: T:MicroService.Service.Models.Enum.Attributes.MappingKeyAttribute
+  parent: MicroService.Service.Models.Enum.Attributes
+  name: MappingKeyAttribute
+  nameWithType: MappingKeyAttribute
+  fullName: MicroService.Service.Models.Enum.Attributes.MappingKeyAttribute
+- uid: MicroService.Service.Models.Enum.Attributes.FlatFileAttribute
+  commentId: T:MicroService.Service.Models.Enum.Attributes.FlatFileAttribute
+  parent: MicroService.Service.Models.Enum.Attributes
+  name: FlatFileAttribute
+  nameWithType: FlatFileAttribute
+  fullName: MicroService.Service.Models.Enum.Attributes.FlatFileAttribute
+- uid: MicroService.Service.Models.Enum.Attributes.FileTypes
+  commentId: T:MicroService.Service.Models.Enum.Attributes.FileTypes
+  parent: MicroService.Service.Models.Enum.Attributes
+  name: FileTypes
+  nameWithType: FileTypes
+  fullName: MicroService.Service.Models.Enum.Attributes.FileTypes
+- uid: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+  commentId: T:MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+  parent: MicroService.Service.Models.Enum.Attributes
+  name: ShapeAttribute
+  nameWithType: ShapeAttribute
+  fullName: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+- uid: MicroService.Service.Models.Enum.Attributes.Datum
+  commentId: T:MicroService.Service.Models.Enum.Attributes.Datum
+  parent: MicroService.Service.Models.Enum.Attributes
+  name: Datum
+  nameWithType: Datum
+  fullName: MicroService.Service.Models.Enum.Attributes.Datum
+- uid: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+  commentId: T:MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+  parent: MicroService.Service.Models.Enum.Attributes
+  name: ShapePropertiesAttribute
+  nameWithType: ShapePropertiesAttribute
+  fullName: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+- uid: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+  commentId: T:MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+  parent: MicroService.Service.Models.Enum.Attributes
+  name: ShapeStyleAttribute
+  nameWithType: ShapeStyleAttribute
+  fullName: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+- uid: MicroService.Service.Models.Enum.Attributes.Color
+  commentId: T:MicroService.Service.Models.Enum.Attributes.Color
+  parent: MicroService.Service.Models.Enum.Attributes
+  name: Color
+  nameWithType: Color
+  fullName: MicroService.Service.Models.Enum.Attributes.Color
+- uid: MicroService.Service.Models.Enum.Attributes
+  commentId: N:MicroService.Service.Models.Enum.Attributes
+  name: MicroService.Service.Models.Enum.Attributes
+  nameWithType: MicroService.Service.Models.Enum.Attributes
+  fullName: MicroService.Service.Models.Enum.Attributes
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+  - name: .
+  - uid: MicroService.Service.Models.Enum.Attributes
+    name: Attributes
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+  - name: .
+  - uid: MicroService.Service.Models.Enum.Attributes
+    name: Attributes

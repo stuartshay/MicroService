@@ -1,0 +1,92 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Interfaces
+  commentId: N:MicroService.Service.Interfaces
+  id: MicroService.Service.Interfaces
+  children:
+  - MicroService.Service.Interfaces.ICalculationService
+  - MicroService.Service.Interfaces.IPointService`1
+  - MicroService.Service.Interfaces.IShapeService`1
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Interfaces
+  nameWithType: MicroService.Service.Interfaces
+  fullName: MicroService.Service.Interfaces
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Interfaces.ICalculationService
+  commentId: T:MicroService.Service.Interfaces.ICalculationService
+  parent: MicroService.Service.Interfaces
+  name: ICalculationService
+  nameWithType: ICalculationService
+  fullName: MicroService.Service.Interfaces.ICalculationService
+- uid: MicroService.Service.Interfaces.IPointService`1
+  commentId: T:MicroService.Service.Interfaces.IPointService`1
+  name: IPointService<T>
+  nameWithType: IPointService<T>
+  fullName: MicroService.Service.Interfaces.IPointService<T>
+  nameWithType.vb: IPointService(Of T)
+  fullName.vb: MicroService.Service.Interfaces.IPointService(Of T)
+  name.vb: IPointService(Of T)
+  spec.csharp:
+  - uid: MicroService.Service.Interfaces.IPointService`1
+    name: IPointService
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MicroService.Service.Interfaces.IPointService`1
+    name: IPointService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MicroService.Service.Interfaces.IShapeService`1
+  commentId: T:MicroService.Service.Interfaces.IShapeService`1
+  name: IShapeService<T>
+  nameWithType: IShapeService<T>
+  fullName: MicroService.Service.Interfaces.IShapeService<T>
+  nameWithType.vb: IShapeService(Of T)
+  fullName.vb: MicroService.Service.Interfaces.IShapeService(Of T)
+  name.vb: IShapeService(Of T)
+  spec.csharp:
+  - uid: MicroService.Service.Interfaces.IShapeService`1
+    name: IShapeService
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MicroService.Service.Interfaces.IShapeService`1
+    name: IShapeService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MicroService.Service.Interfaces
+  commentId: N:MicroService.Service.Interfaces
+  name: MicroService.Service.Interfaces
+  nameWithType: MicroService.Service.Interfaces
+  fullName: MicroService.Service.Interfaces
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Interfaces
+    name: Interfaces

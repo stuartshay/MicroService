@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Common.Logging
+  commentId: N:MicroService.Common.Logging
+  id: MicroService.Common.Logging
+  children:
+  - MicroService.Common.Logging.Logging
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Common.Logging
+  nameWithType: MicroService.Common.Logging
+  fullName: MicroService.Common.Logging
+  type: Namespace
+  assemblies:
+  - MicroService.Common
+references:
+- uid: MicroService.Common.Logging.Logging
+  commentId: T:MicroService.Common.Logging.Logging
+  name: Logging
+  nameWithType: Logging
+  fullName: MicroService.Common.Logging.Logging

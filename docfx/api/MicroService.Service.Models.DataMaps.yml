@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.DataMaps
+  commentId: N:MicroService.Service.Models.DataMaps
+  id: MicroService.Service.Models.DataMaps
+  children:
+  - MicroService.Service.Models.DataMaps.StationComplexDataMap
+  - MicroService.Service.Models.DataMaps.StationDataMap
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Models.DataMaps
+  nameWithType: MicroService.Service.Models.DataMaps
+  fullName: MicroService.Service.Models.DataMaps
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Models.DataMaps.StationComplexDataMap
+  commentId: T:MicroService.Service.Models.DataMaps.StationComplexDataMap
+  name: StationComplexDataMap
+  nameWithType: StationComplexDataMap
+  fullName: MicroService.Service.Models.DataMaps.StationComplexDataMap
+- uid: MicroService.Service.Models.DataMaps.StationDataMap
+  commentId: T:MicroService.Service.Models.DataMaps.StationDataMap
+  name: StationDataMap
+  nameWithType: StationDataMap
+  fullName: MicroService.Service.Models.DataMaps.StationDataMap

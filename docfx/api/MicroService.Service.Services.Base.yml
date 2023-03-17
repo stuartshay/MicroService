@@ -1,0 +1,81 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Services.Base
+  commentId: N:MicroService.Service.Services.Base
+  id: MicroService.Service.Services.Base
+  children:
+  - MicroService.Service.Services.Base.AbstractShapeService`2
+  - MicroService.Service.Services.Base.ShapefileDataReaderResolver
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Services.Base
+  nameWithType: MicroService.Service.Services.Base
+  fullName: MicroService.Service.Services.Base
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Services.Base.ShapefileDataReaderResolver
+  commentId: T:MicroService.Service.Services.Base.ShapefileDataReaderResolver
+  parent: MicroService.Service.Services.Base
+  name: ShapefileDataReaderResolver
+  nameWithType: ShapefileDataReaderResolver
+  fullName: MicroService.Service.Services.Base.ShapefileDataReaderResolver
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2
+  commentId: T:MicroService.Service.Services.Base.AbstractShapeService`2
+  name: AbstractShapeService<TShape, TProfile>
+  nameWithType: AbstractShapeService<TShape, TProfile>
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile)
+  name.vb: AbstractShapeService(Of TShape, TProfile)
+  spec.csharp:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2
+    name: AbstractShapeService
+  - name: <
+  - name: TShape
+  - name: ','
+  - name: " "
+  - name: TProfile
+  - name: '>'
+  spec.vb:
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2
+    name: AbstractShapeService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TShape
+  - name: ','
+  - name: " "
+  - name: TProfile
+  - name: )
+- uid: MicroService.Service.Services.Base
+  commentId: N:MicroService.Service.Services.Base
+  name: MicroService.Service.Services.Base
+  nameWithType: MicroService.Service.Services.Base
+  fullName: MicroService.Service.Services.Base
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  - name: .
+  - uid: MicroService.Service.Services.Base
+    name: Base
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  - name: .
+  - uid: MicroService.Service.Services.Base
+    name: Base

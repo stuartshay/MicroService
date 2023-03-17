@@ -1,0 +1,59 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.Enum
+  commentId: N:MicroService.Service.Models.Enum
+  id: MicroService.Service.Models.Enum
+  children:
+  - MicroService.Service.Models.Enum.FlatFileProperties
+  - MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Models.Enum
+  nameWithType: MicroService.Service.Models.Enum
+  fullName: MicroService.Service.Models.Enum
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Models.Enum.FlatFileProperties
+  commentId: T:MicroService.Service.Models.Enum.FlatFileProperties
+  parent: MicroService.Service.Models.Enum
+  name: FlatFileProperties
+  nameWithType: FlatFileProperties
+  fullName: MicroService.Service.Models.Enum.FlatFileProperties
+- uid: MicroService.Service.Models.Enum.ShapeProperties
+  commentId: T:MicroService.Service.Models.Enum.ShapeProperties
+  parent: MicroService.Service.Models.Enum
+  name: ShapeProperties
+  nameWithType: ShapeProperties
+  fullName: MicroService.Service.Models.Enum.ShapeProperties
+- uid: MicroService.Service.Models.Enum
+  commentId: N:MicroService.Service.Models.Enum
+  name: MicroService.Service.Models.Enum
+  nameWithType: MicroService.Service.Models.Enum
+  fullName: MicroService.Service.Models.Enum
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum

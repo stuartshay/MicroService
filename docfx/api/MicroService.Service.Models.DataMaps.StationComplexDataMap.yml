@@ -1,0 +1,1343 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.DataMaps.StationComplexDataMap
+  commentId: T:MicroService.Service.Models.DataMaps.StationComplexDataMap
+  id: StationComplexDataMap
+  parent: MicroService.Service.Models.DataMaps
+  children:
+  - MicroService.Service.Models.DataMaps.StationComplexDataMap.#ctor
+  langs:
+  - csharp
+  - vb
+  name: StationComplexDataMap
+  nameWithType: StationComplexDataMap
+  fullName: MicroService.Service.Models.DataMaps.StationComplexDataMap
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.Service/Models/DataMaps/StationComplexDataMap.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: StationComplexDataMap
+    path: ../src/MicroService.Service/Models/DataMaps/StationComplexDataMap.cs
+    startLine: 5
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.DataMaps
+  syntax:
+    content: 'public sealed class StationComplexDataMap : ClassMap<StationComplexFlatFile>'
+    content.vb: Public NotInheritable Class StationComplexDataMap Inherits ClassMap(Of StationComplexFlatFile)
+  inheritance:
+  - System.Object
+  - CsvHelper.Configuration.ClassMap
+  - CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}
+  inheritedMembers:
+  - CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.Map``1(System.Linq.Expressions.Expression{System.Func{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile,{TMember}}},System.Boolean)
+  - CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.Map``1(System.Linq.Expressions.Expression{System.Func{{T},System.Object}},System.Boolean)
+  - CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.References``1(System.Linq.Expressions.Expression{System.Func{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile,System.Object}},System.Object[])
+  - CsvHelper.Configuration.ClassMap.Map(System.Type,System.Reflection.MemberInfo,System.Boolean)
+  - CsvHelper.Configuration.ClassMap.Map
+  - CsvHelper.Configuration.ClassMap.References(System.Type,System.Reflection.MemberInfo,System.Object[])
+  - CsvHelper.Configuration.ClassMap.Parameter(System.String)
+  - CsvHelper.Configuration.ClassMap.Parameter(System.Func{System.Reflection.ConstructorInfo},System.String)
+  - CsvHelper.Configuration.ClassMap.Parameter(System.Reflection.ConstructorInfo,System.Reflection.ParameterInfo)
+  - CsvHelper.Configuration.ClassMap.AutoMap(System.Globalization.CultureInfo)
+  - CsvHelper.Configuration.ClassMap.AutoMap(CsvHelper.Configuration.CsvConfiguration)
+  - CsvHelper.Configuration.ClassMap.AutoMap(CsvHelper.CsvContext)
+  - CsvHelper.Configuration.ClassMap.GetMaxIndex(System.Boolean)
+  - CsvHelper.Configuration.ClassMap.ReIndex(System.Int32)
+  - CsvHelper.Configuration.ClassMap.ClassType
+  - CsvHelper.Configuration.ClassMap.ParameterMaps
+  - CsvHelper.Configuration.ClassMap.MemberMaps
+  - CsvHelper.Configuration.ClassMap.ReferenceMaps
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MicroService.Service.Models.DataMaps.StationComplexDataMap.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+- uid: MicroService.Service.Models.DataMaps.StationComplexDataMap.#ctor
+  commentId: M:MicroService.Service.Models.DataMaps.StationComplexDataMap.#ctor
+  id: '#ctor'
+  parent: MicroService.Service.Models.DataMaps.StationComplexDataMap
+  langs:
+  - csharp
+  - vb
+  name: StationComplexDataMap()
+  nameWithType: StationComplexDataMap.StationComplexDataMap()
+  fullName: MicroService.Service.Models.DataMaps.StationComplexDataMap.StationComplexDataMap()
+  type: Constructor
+  source:
+    remote:
+      path: src/MicroService.Service/Models/DataMaps/StationComplexDataMap.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: .ctor
+    path: ../src/MicroService.Service/Models/DataMaps/StationComplexDataMap.cs
+    startLine: 7
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.DataMaps
+  syntax:
+    content: public StationComplexDataMap()
+    content.vb: Public Sub New()
+  overload: MicroService.Service.Models.DataMaps.StationComplexDataMap.#ctor*
+  nameWithType.vb: StationComplexDataMap.New()
+  fullName.vb: MicroService.Service.Models.DataMaps.StationComplexDataMap.New()
+  name.vb: New()
+references:
+- uid: MicroService.Service.Models.DataMaps
+  commentId: N:MicroService.Service.Models.DataMaps
+  name: MicroService.Service.Models.DataMaps
+  nameWithType: MicroService.Service.Models.DataMaps
+  fullName: MicroService.Service.Models.DataMaps
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.DataMaps
+    name: DataMaps
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.DataMaps
+    name: DataMaps
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CsvHelper.Configuration.ClassMap
+  commentId: T:CsvHelper.Configuration.ClassMap
+  parent: CsvHelper.Configuration
+  isExternal: true
+  name: ClassMap
+  nameWithType: ClassMap
+  fullName: CsvHelper.Configuration.ClassMap
+- uid: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}
+  commentId: T:CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}
+  parent: CsvHelper.Configuration
+  definition: CsvHelper.Configuration.ClassMap`1
+  name: ClassMap<StationComplexFlatFile>
+  nameWithType: ClassMap<StationComplexFlatFile>
+  fullName: CsvHelper.Configuration.ClassMap<MicroService.Service.Models.FlatFileModels.StationComplexFlatFile>
+  nameWithType.vb: ClassMap(Of StationComplexFlatFile)
+  fullName.vb: CsvHelper.Configuration.ClassMap(Of MicroService.Service.Models.FlatFileModels.StationComplexFlatFile)
+  name.vb: ClassMap(Of StationComplexFlatFile)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap`1
+    name: ClassMap
+    isExternal: true
+  - name: <
+  - uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+    name: StationComplexFlatFile
+  - name: '>'
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap`1
+    name: ClassMap
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+    name: StationComplexFlatFile
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.Map``1(System.Linq.Expressions.Expression{System.Func{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile,{TMember}}},System.Boolean)
+  commentId: M:CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.Map``1(System.Linq.Expressions.Expression{System.Func{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile,``0}},System.Boolean)
+  parent: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}
+  definition: CsvHelper.Configuration.ClassMap`1.Map``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)
+  name: Map<TMember>(Expression<Func<StationComplexFlatFile, TMember>>, bool)
+  nameWithType: ClassMap<StationComplexFlatFile>.Map<TMember>(Expression<Func<StationComplexFlatFile, TMember>>, bool)
+  fullName: CsvHelper.Configuration.ClassMap<MicroService.Service.Models.FlatFileModels.StationComplexFlatFile>.Map<TMember>(System.Linq.Expressions.Expression<System.Func<MicroService.Service.Models.FlatFileModels.StationComplexFlatFile, TMember>>, bool)
+  nameWithType.vb: ClassMap(Of StationComplexFlatFile).Map(Of TMember)(Expression(Of Func(Of StationComplexFlatFile, TMember)), Boolean)
+  fullName.vb: CsvHelper.Configuration.ClassMap(Of MicroService.Service.Models.FlatFileModels.StationComplexFlatFile).Map(Of TMember)(System.Linq.Expressions.Expression(Of System.Func(Of MicroService.Service.Models.FlatFileModels.StationComplexFlatFile, TMember)), Boolean)
+  name.vb: Map(Of TMember)(Expression(Of Func(Of StationComplexFlatFile, TMember)), Boolean)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.Map``1(System.Linq.Expressions.Expression{System.Func{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile,``0}},System.Boolean)
+    name: Map
+    isExternal: true
+  - name: <
+  - name: TMember
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+    name: StationComplexFlatFile
+  - name: ','
+  - name: " "
+  - name: TMember
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.Map``1(System.Linq.Expressions.Expression{System.Func{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile,``0}},System.Boolean)
+    name: Map
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+    name: StationComplexFlatFile
+  - name: ','
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.Map``1(System.Linq.Expressions.Expression{System.Func{{T},System.Object}},System.Boolean)
+  commentId: M:CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.Map``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)
+  parent: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}
+  definition: CsvHelper.Configuration.ClassMap`1.Map``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)
+  name: Map<T>(Expression<Func<T, object>>, bool)
+  nameWithType: ClassMap<StationComplexFlatFile>.Map<T>(Expression<Func<T, object>>, bool)
+  fullName: CsvHelper.Configuration.ClassMap<MicroService.Service.Models.FlatFileModels.StationComplexFlatFile>.Map<T>(System.Linq.Expressions.Expression<System.Func<T, object>>, bool)
+  nameWithType.vb: ClassMap(Of StationComplexFlatFile).Map(Of T)(Expression(Of Func(Of T, Object)), Boolean)
+  fullName.vb: CsvHelper.Configuration.ClassMap(Of MicroService.Service.Models.FlatFileModels.StationComplexFlatFile).Map(Of T)(System.Linq.Expressions.Expression(Of System.Func(Of T, Object)), Boolean)
+  name.vb: Map(Of T)(Expression(Of Func(Of T, Object)), Boolean)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.Map``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)
+    name: Map
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.Map``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)
+    name: Map
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.References``1(System.Linq.Expressions.Expression{System.Func{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile,System.Object}},System.Object[])
+  commentId: M:CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.References``1(System.Linq.Expressions.Expression{System.Func{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile,System.Object}},System.Object[])
+  parent: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}
+  definition: CsvHelper.Configuration.ClassMap`1.References``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Object[])
+  name: References<TClassMap>(Expression<Func<StationComplexFlatFile, object>>, params object[])
+  nameWithType: ClassMap<StationComplexFlatFile>.References<TClassMap>(Expression<Func<StationComplexFlatFile, object>>, params object[])
+  fullName: CsvHelper.Configuration.ClassMap<MicroService.Service.Models.FlatFileModels.StationComplexFlatFile>.References<TClassMap>(System.Linq.Expressions.Expression<System.Func<MicroService.Service.Models.FlatFileModels.StationComplexFlatFile, object>>, params object[])
+  nameWithType.vb: ClassMap(Of StationComplexFlatFile).References(Of TClassMap)(Expression(Of Func(Of StationComplexFlatFile, Object)), ParamArray Object())
+  fullName.vb: CsvHelper.Configuration.ClassMap(Of MicroService.Service.Models.FlatFileModels.StationComplexFlatFile).References(Of TClassMap)(System.Linq.Expressions.Expression(Of System.Func(Of MicroService.Service.Models.FlatFileModels.StationComplexFlatFile, Object)), ParamArray Object())
+  name.vb: References(Of TClassMap)(Expression(Of Func(Of StationComplexFlatFile, Object)), ParamArray Object())
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.References``1(System.Linq.Expressions.Expression{System.Func{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile,System.Object}},System.Object[])
+    name: References
+    isExternal: true
+  - name: <
+  - name: TClassMap
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+    name: StationComplexFlatFile
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile}.References``1(System.Linq.Expressions.Expression{System.Func{MicroService.Service.Models.FlatFileModels.StationComplexFlatFile,System.Object}},System.Object[])
+    name: References
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TClassMap
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.FlatFileModels.StationComplexFlatFile
+    name: StationComplexFlatFile
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap.Map(System.Type,System.Reflection.MemberInfo,System.Boolean)
+  commentId: M:CsvHelper.Configuration.ClassMap.Map(System.Type,System.Reflection.MemberInfo,System.Boolean)
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: Map(Type, MemberInfo, bool)
+  nameWithType: ClassMap.Map(Type, MemberInfo, bool)
+  fullName: CsvHelper.Configuration.ClassMap.Map(System.Type, System.Reflection.MemberInfo, bool)
+  nameWithType.vb: ClassMap.Map(Type, MemberInfo, Boolean)
+  fullName.vb: CsvHelper.Configuration.ClassMap.Map(System.Type, System.Reflection.MemberInfo, Boolean)
+  name.vb: Map(Type, MemberInfo, Boolean)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap.Map(System.Type,System.Reflection.MemberInfo,System.Boolean)
+    name: Map
+    isExternal: true
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.MemberInfo
+    name: MemberInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap.Map(System.Type,System.Reflection.MemberInfo,System.Boolean)
+    name: Map
+    isExternal: true
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.MemberInfo
+    name: MemberInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap.Map
+  commentId: M:CsvHelper.Configuration.ClassMap.Map
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: Map()
+  nameWithType: ClassMap.Map()
+  fullName: CsvHelper.Configuration.ClassMap.Map()
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap.Map
+    name: Map
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap.Map
+    name: Map
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap.References(System.Type,System.Reflection.MemberInfo,System.Object[])
+  commentId: M:CsvHelper.Configuration.ClassMap.References(System.Type,System.Reflection.MemberInfo,System.Object[])
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: References(Type, MemberInfo, params object[])
+  nameWithType: ClassMap.References(Type, MemberInfo, params object[])
+  fullName: CsvHelper.Configuration.ClassMap.References(System.Type, System.Reflection.MemberInfo, params object[])
+  nameWithType.vb: ClassMap.References(Type, MemberInfo, ParamArray Object())
+  fullName.vb: CsvHelper.Configuration.ClassMap.References(System.Type, System.Reflection.MemberInfo, ParamArray Object())
+  name.vb: References(Type, MemberInfo, ParamArray Object())
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap.References(System.Type,System.Reflection.MemberInfo,System.Object[])
+    name: References
+    isExternal: true
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.MemberInfo
+    name: MemberInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap.References(System.Type,System.Reflection.MemberInfo,System.Object[])
+    name: References
+    isExternal: true
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.MemberInfo
+    name: MemberInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap.Parameter(System.String)
+  commentId: M:CsvHelper.Configuration.ClassMap.Parameter(System.String)
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: Parameter(string)
+  nameWithType: ClassMap.Parameter(string)
+  fullName: CsvHelper.Configuration.ClassMap.Parameter(string)
+  nameWithType.vb: ClassMap.Parameter(String)
+  fullName.vb: CsvHelper.Configuration.ClassMap.Parameter(String)
+  name.vb: Parameter(String)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap.Parameter(System.String)
+    name: Parameter
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap.Parameter(System.String)
+    name: Parameter
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap.Parameter(System.Func{System.Reflection.ConstructorInfo},System.String)
+  commentId: M:CsvHelper.Configuration.ClassMap.Parameter(System.Func{System.Reflection.ConstructorInfo},System.String)
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: Parameter(Func<ConstructorInfo>, string)
+  nameWithType: ClassMap.Parameter(Func<ConstructorInfo>, string)
+  fullName: CsvHelper.Configuration.ClassMap.Parameter(System.Func<System.Reflection.ConstructorInfo>, string)
+  nameWithType.vb: ClassMap.Parameter(Func(Of ConstructorInfo), String)
+  fullName.vb: CsvHelper.Configuration.ClassMap.Parameter(System.Func(Of System.Reflection.ConstructorInfo), String)
+  name.vb: Parameter(Func(Of ConstructorInfo), String)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap.Parameter(System.Func{System.Reflection.ConstructorInfo},System.String)
+    name: Parameter
+    isExternal: true
+  - name: (
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: System.Reflection.ConstructorInfo
+    name: ConstructorInfo
+    isExternal: true
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap.Parameter(System.Func{System.Reflection.ConstructorInfo},System.String)
+    name: Parameter
+    isExternal: true
+  - name: (
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Reflection.ConstructorInfo
+    name: ConstructorInfo
+    isExternal: true
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap.Parameter(System.Reflection.ConstructorInfo,System.Reflection.ParameterInfo)
+  commentId: M:CsvHelper.Configuration.ClassMap.Parameter(System.Reflection.ConstructorInfo,System.Reflection.ParameterInfo)
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: Parameter(ConstructorInfo, ParameterInfo)
+  nameWithType: ClassMap.Parameter(ConstructorInfo, ParameterInfo)
+  fullName: CsvHelper.Configuration.ClassMap.Parameter(System.Reflection.ConstructorInfo, System.Reflection.ParameterInfo)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap.Parameter(System.Reflection.ConstructorInfo,System.Reflection.ParameterInfo)
+    name: Parameter
+    isExternal: true
+  - name: (
+  - uid: System.Reflection.ConstructorInfo
+    name: ConstructorInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.ParameterInfo
+    name: ParameterInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap.Parameter(System.Reflection.ConstructorInfo,System.Reflection.ParameterInfo)
+    name: Parameter
+    isExternal: true
+  - name: (
+  - uid: System.Reflection.ConstructorInfo
+    name: ConstructorInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.ParameterInfo
+    name: ParameterInfo
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap.AutoMap(System.Globalization.CultureInfo)
+  commentId: M:CsvHelper.Configuration.ClassMap.AutoMap(System.Globalization.CultureInfo)
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: AutoMap(CultureInfo)
+  nameWithType: ClassMap.AutoMap(CultureInfo)
+  fullName: CsvHelper.Configuration.ClassMap.AutoMap(System.Globalization.CultureInfo)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap.AutoMap(System.Globalization.CultureInfo)
+    name: AutoMap
+    isExternal: true
+  - name: (
+  - uid: System.Globalization.CultureInfo
+    name: CultureInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap.AutoMap(System.Globalization.CultureInfo)
+    name: AutoMap
+    isExternal: true
+  - name: (
+  - uid: System.Globalization.CultureInfo
+    name: CultureInfo
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap.AutoMap(CsvHelper.Configuration.CsvConfiguration)
+  commentId: M:CsvHelper.Configuration.ClassMap.AutoMap(CsvHelper.Configuration.CsvConfiguration)
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: AutoMap(CsvConfiguration)
+  nameWithType: ClassMap.AutoMap(CsvConfiguration)
+  fullName: CsvHelper.Configuration.ClassMap.AutoMap(CsvHelper.Configuration.CsvConfiguration)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap.AutoMap(CsvHelper.Configuration.CsvConfiguration)
+    name: AutoMap
+    isExternal: true
+  - name: (
+  - uid: CsvHelper.Configuration.CsvConfiguration
+    name: CsvConfiguration
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap.AutoMap(CsvHelper.Configuration.CsvConfiguration)
+    name: AutoMap
+    isExternal: true
+  - name: (
+  - uid: CsvHelper.Configuration.CsvConfiguration
+    name: CsvConfiguration
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap.AutoMap(CsvHelper.CsvContext)
+  commentId: M:CsvHelper.Configuration.ClassMap.AutoMap(CsvHelper.CsvContext)
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: AutoMap(CsvContext)
+  nameWithType: ClassMap.AutoMap(CsvContext)
+  fullName: CsvHelper.Configuration.ClassMap.AutoMap(CsvHelper.CsvContext)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap.AutoMap(CsvHelper.CsvContext)
+    name: AutoMap
+    isExternal: true
+  - name: (
+  - uid: CsvHelper.CsvContext
+    name: CsvContext
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap.AutoMap(CsvHelper.CsvContext)
+    name: AutoMap
+    isExternal: true
+  - name: (
+  - uid: CsvHelper.CsvContext
+    name: CsvContext
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap.GetMaxIndex(System.Boolean)
+  commentId: M:CsvHelper.Configuration.ClassMap.GetMaxIndex(System.Boolean)
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: GetMaxIndex(bool)
+  nameWithType: ClassMap.GetMaxIndex(bool)
+  fullName: CsvHelper.Configuration.ClassMap.GetMaxIndex(bool)
+  nameWithType.vb: ClassMap.GetMaxIndex(Boolean)
+  fullName.vb: CsvHelper.Configuration.ClassMap.GetMaxIndex(Boolean)
+  name.vb: GetMaxIndex(Boolean)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap.GetMaxIndex(System.Boolean)
+    name: GetMaxIndex
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap.GetMaxIndex(System.Boolean)
+    name: GetMaxIndex
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap.ReIndex(System.Int32)
+  commentId: M:CsvHelper.Configuration.ClassMap.ReIndex(System.Int32)
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: ReIndex(int)
+  nameWithType: ClassMap.ReIndex(int)
+  fullName: CsvHelper.Configuration.ClassMap.ReIndex(int)
+  nameWithType.vb: ClassMap.ReIndex(Integer)
+  fullName.vb: CsvHelper.Configuration.ClassMap.ReIndex(Integer)
+  name.vb: ReIndex(Integer)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap.ReIndex(System.Int32)
+    name: ReIndex
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap.ReIndex(System.Int32)
+    name: ReIndex
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap.ClassType
+  commentId: P:CsvHelper.Configuration.ClassMap.ClassType
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: ClassType
+  nameWithType: ClassMap.ClassType
+  fullName: CsvHelper.Configuration.ClassMap.ClassType
+- uid: CsvHelper.Configuration.ClassMap.ParameterMaps
+  commentId: P:CsvHelper.Configuration.ClassMap.ParameterMaps
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: ParameterMaps
+  nameWithType: ClassMap.ParameterMaps
+  fullName: CsvHelper.Configuration.ClassMap.ParameterMaps
+- uid: CsvHelper.Configuration.ClassMap.MemberMaps
+  commentId: P:CsvHelper.Configuration.ClassMap.MemberMaps
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: MemberMaps
+  nameWithType: ClassMap.MemberMaps
+  fullName: CsvHelper.Configuration.ClassMap.MemberMaps
+- uid: CsvHelper.Configuration.ClassMap.ReferenceMaps
+  commentId: P:CsvHelper.Configuration.ClassMap.ReferenceMaps
+  parent: CsvHelper.Configuration.ClassMap
+  isExternal: true
+  name: ReferenceMaps
+  nameWithType: ClassMap.ReferenceMaps
+  fullName: CsvHelper.Configuration.ClassMap.ReferenceMaps
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: MicroService.Service.Models.DataMaps.StationComplexDataMap.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<StationComplexDataMap>(StationComplexDataMap)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<StationComplexDataMap>(StationComplexDataMap)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Models.DataMaps.StationComplexDataMap>(MicroService.Service.Models.DataMaps.StationComplexDataMap)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of StationComplexDataMap)(StationComplexDataMap)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Models.DataMaps.StationComplexDataMap)(MicroService.Service.Models.DataMaps.StationComplexDataMap)
+  name.vb: ArePropertiesNotNull(Of StationComplexDataMap)(StationComplexDataMap)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.DataMaps.StationComplexDataMap)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Models.DataMaps.StationComplexDataMap
+    name: StationComplexDataMap
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Models.DataMaps.StationComplexDataMap
+    name: StationComplexDataMap
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.DataMaps.StationComplexDataMap)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.DataMaps.StationComplexDataMap
+    name: StationComplexDataMap
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Models.DataMaps.StationComplexDataMap
+    name: StationComplexDataMap
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CsvHelper.Configuration
+  commentId: N:CsvHelper.Configuration
+  isExternal: true
+  name: CsvHelper.Configuration
+  nameWithType: CsvHelper.Configuration
+  fullName: CsvHelper.Configuration
+  spec.csharp:
+  - uid: CsvHelper
+    name: CsvHelper
+    isExternal: true
+  - name: .
+  - uid: CsvHelper.Configuration
+    name: Configuration
+    isExternal: true
+  spec.vb:
+  - uid: CsvHelper
+    name: CsvHelper
+    isExternal: true
+  - name: .
+  - uid: CsvHelper.Configuration
+    name: Configuration
+    isExternal: true
+- uid: CsvHelper.Configuration.ClassMap`1
+  commentId: T:CsvHelper.Configuration.ClassMap`1
+  isExternal: true
+  name: ClassMap<TClass>
+  nameWithType: ClassMap<TClass>
+  fullName: CsvHelper.Configuration.ClassMap<TClass>
+  nameWithType.vb: ClassMap(Of TClass)
+  fullName.vb: CsvHelper.Configuration.ClassMap(Of TClass)
+  name.vb: ClassMap(Of TClass)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap`1
+    name: ClassMap
+    isExternal: true
+  - name: <
+  - name: TClass
+  - name: '>'
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap`1
+    name: ClassMap
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TClass
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap`1.Map``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)
+  commentId: M:CsvHelper.Configuration.ClassMap`1.Map``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)
+  isExternal: true
+  name: Map<TMember>(Expression<Func<TClass, TMember>>, bool)
+  nameWithType: ClassMap<TClass>.Map<TMember>(Expression<Func<TClass, TMember>>, bool)
+  fullName: CsvHelper.Configuration.ClassMap<TClass>.Map<TMember>(System.Linq.Expressions.Expression<System.Func<TClass, TMember>>, bool)
+  nameWithType.vb: ClassMap(Of TClass).Map(Of TMember)(Expression(Of Func(Of TClass, TMember)), Boolean)
+  fullName.vb: CsvHelper.Configuration.ClassMap(Of TClass).Map(Of TMember)(System.Linq.Expressions.Expression(Of System.Func(Of TClass, TMember)), Boolean)
+  name.vb: Map(Of TMember)(Expression(Of Func(Of TClass, TMember)), Boolean)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap`1.Map``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)
+    name: Map
+    isExternal: true
+  - name: <
+  - name: TMember
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TMember
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap`1.Map``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)
+    name: Map
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap`1.Map``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)
+  commentId: M:CsvHelper.Configuration.ClassMap`1.Map``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)
+  isExternal: true
+  name: Map<T>(Expression<Func<T, object>>, bool)
+  nameWithType: ClassMap<TClass>.Map<T>(Expression<Func<T, object>>, bool)
+  fullName: CsvHelper.Configuration.ClassMap<TClass>.Map<T>(System.Linq.Expressions.Expression<System.Func<T, object>>, bool)
+  nameWithType.vb: ClassMap(Of TClass).Map(Of T)(Expression(Of Func(Of T, Object)), Boolean)
+  fullName.vb: CsvHelper.Configuration.ClassMap(Of TClass).Map(Of T)(System.Linq.Expressions.Expression(Of System.Func(Of T, Object)), Boolean)
+  name.vb: Map(Of T)(Expression(Of Func(Of T, Object)), Boolean)
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap`1.Map``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)
+    name: Map
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap`1.Map``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)
+    name: Map
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: CsvHelper.Configuration.ClassMap`1.References``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Object[])
+  commentId: M:CsvHelper.Configuration.ClassMap`1.References``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Object[])
+  isExternal: true
+  name: References<TClassMap>(Expression<Func<TClass, object>>, params object[])
+  nameWithType: ClassMap<TClass>.References<TClassMap>(Expression<Func<TClass, object>>, params object[])
+  fullName: CsvHelper.Configuration.ClassMap<TClass>.References<TClassMap>(System.Linq.Expressions.Expression<System.Func<TClass, object>>, params object[])
+  nameWithType.vb: ClassMap(Of TClass).References(Of TClassMap)(Expression(Of Func(Of TClass, Object)), ParamArray Object())
+  fullName.vb: CsvHelper.Configuration.ClassMap(Of TClass).References(Of TClassMap)(System.Linq.Expressions.Expression(Of System.Func(Of TClass, Object)), ParamArray Object())
+  name.vb: References(Of TClassMap)(Expression(Of Func(Of TClass, Object)), ParamArray Object())
+  spec.csharp:
+  - uid: CsvHelper.Configuration.ClassMap`1.References``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Object[])
+    name: References
+    isExternal: true
+  - name: <
+  - name: TClassMap
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - name: TClass
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: CsvHelper.Configuration.ClassMap`1.References``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Object[])
+    name: References
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TClassMap
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TClass
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Models.DataMaps.StationComplexDataMap.#ctor*
+  commentId: Overload:MicroService.Service.Models.DataMaps.StationComplexDataMap.#ctor
+  name: StationComplexDataMap
+  nameWithType: StationComplexDataMap.StationComplexDataMap
+  fullName: MicroService.Service.Models.DataMaps.StationComplexDataMap.StationComplexDataMap
+  nameWithType.vb: StationComplexDataMap.New
+  fullName.vb: MicroService.Service.Models.DataMaps.StationComplexDataMap.New
+  name.vb: New

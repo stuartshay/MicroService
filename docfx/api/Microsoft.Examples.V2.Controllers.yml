@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.Examples.V2.Controllers
+  commentId: N:Microsoft.Examples.V2.Controllers
+  id: Microsoft.Examples.V2.Controllers
+  children:
+  - Microsoft.Examples.V2.Controllers.OrdersController
+  - Microsoft.Examples.V2.Controllers.PeopleController
+  langs:
+  - csharp
+  - vb
+  name: Microsoft.Examples.V2.Controllers
+  nameWithType: Microsoft.Examples.V2.Controllers
+  fullName: Microsoft.Examples.V2.Controllers
+  type: Namespace
+  assemblies:
+  - MicroService.WebApi
+references:
+- uid: Microsoft.Examples.V2.Controllers.OrdersController
+  commentId: T:Microsoft.Examples.V2.Controllers.OrdersController
+  name: OrdersController
+  nameWithType: OrdersController
+  fullName: Microsoft.Examples.V2.Controllers.OrdersController
+- uid: Microsoft.Examples.V2.Controllers.PeopleController
+  commentId: T:Microsoft.Examples.V2.Controllers.PeopleController
+  name: PeopleController
+  nameWithType: PeopleController
+  fullName: Microsoft.Examples.V2.Controllers.PeopleController

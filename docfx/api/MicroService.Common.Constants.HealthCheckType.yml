@@ -1,0 +1,340 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Common.Constants.HealthCheckType
+  commentId: T:MicroService.Common.Constants.HealthCheckType
+  id: HealthCheckType
+  parent: MicroService.Common.Constants
+  children:
+  - MicroService.Common.Constants.HealthCheckType.Database
+  - MicroService.Common.Constants.HealthCheckType.Infrastructure
+  - MicroService.Common.Constants.HealthCheckType.Logging
+  - MicroService.Common.Constants.HealthCheckType.Metrics
+  - MicroService.Common.Constants.HealthCheckType.Monitoring
+  - MicroService.Common.Constants.HealthCheckType.ReadinessCheck
+  - MicroService.Common.Constants.HealthCheckType.System
+  langs:
+  - csharp
+  - vb
+  name: HealthCheckType
+  nameWithType: HealthCheckType
+  fullName: MicroService.Common.Constants.HealthCheckType
+  type: Enum
+  source:
+    remote:
+      path: src/MicroService.Common/Constants/HealthCheckType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: HealthCheckType
+    path: ../src/MicroService.Common/Constants/HealthCheckType.cs
+    startLine: 2
+  assemblies:
+  - MicroService.Common
+  namespace: MicroService.Common.Constants
+  syntax:
+    content: public enum HealthCheckType
+    content.vb: Public Enum HealthCheckType
+  extensionMethods:
+  - MicroService.Common.Constants.HealthCheckType.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+- uid: MicroService.Common.Constants.HealthCheckType.Infrastructure
+  commentId: F:MicroService.Common.Constants.HealthCheckType.Infrastructure
+  id: Infrastructure
+  parent: MicroService.Common.Constants.HealthCheckType
+  langs:
+  - csharp
+  - vb
+  name: Infrastructure
+  nameWithType: HealthCheckType.Infrastructure
+  fullName: MicroService.Common.Constants.HealthCheckType.Infrastructure
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Common/Constants/HealthCheckType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Infrastructure
+    path: ../src/MicroService.Common/Constants/HealthCheckType.cs
+    startLine: 4
+  assemblies:
+  - MicroService.Common
+  namespace: MicroService.Common.Constants
+  syntax:
+    content: Infrastructure = 0
+    return:
+      type: MicroService.Common.Constants.HealthCheckType
+- uid: MicroService.Common.Constants.HealthCheckType.Database
+  commentId: F:MicroService.Common.Constants.HealthCheckType.Database
+  id: Database
+  parent: MicroService.Common.Constants.HealthCheckType
+  langs:
+  - csharp
+  - vb
+  name: Database
+  nameWithType: HealthCheckType.Database
+  fullName: MicroService.Common.Constants.HealthCheckType.Database
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Common/Constants/HealthCheckType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Database
+    path: ../src/MicroService.Common/Constants/HealthCheckType.cs
+    startLine: 6
+  assemblies:
+  - MicroService.Common
+  namespace: MicroService.Common.Constants
+  syntax:
+    content: Database = 1
+    return:
+      type: MicroService.Common.Constants.HealthCheckType
+- uid: MicroService.Common.Constants.HealthCheckType.Logging
+  commentId: F:MicroService.Common.Constants.HealthCheckType.Logging
+  id: Logging
+  parent: MicroService.Common.Constants.HealthCheckType
+  langs:
+  - csharp
+  - vb
+  name: Logging
+  nameWithType: HealthCheckType.Logging
+  fullName: MicroService.Common.Constants.HealthCheckType.Logging
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Common/Constants/HealthCheckType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Logging
+    path: ../src/MicroService.Common/Constants/HealthCheckType.cs
+    startLine: 8
+  assemblies:
+  - MicroService.Common
+  namespace: MicroService.Common.Constants
+  syntax:
+    content: Logging = 2
+    return:
+      type: MicroService.Common.Constants.HealthCheckType
+- uid: MicroService.Common.Constants.HealthCheckType.Monitoring
+  commentId: F:MicroService.Common.Constants.HealthCheckType.Monitoring
+  id: Monitoring
+  parent: MicroService.Common.Constants.HealthCheckType
+  langs:
+  - csharp
+  - vb
+  name: Monitoring
+  nameWithType: HealthCheckType.Monitoring
+  fullName: MicroService.Common.Constants.HealthCheckType.Monitoring
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Common/Constants/HealthCheckType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Monitoring
+    path: ../src/MicroService.Common/Constants/HealthCheckType.cs
+    startLine: 10
+  assemblies:
+  - MicroService.Common
+  namespace: MicroService.Common.Constants
+  syntax:
+    content: Monitoring = 3
+    return:
+      type: MicroService.Common.Constants.HealthCheckType
+- uid: MicroService.Common.Constants.HealthCheckType.Metrics
+  commentId: F:MicroService.Common.Constants.HealthCheckType.Metrics
+  id: Metrics
+  parent: MicroService.Common.Constants.HealthCheckType
+  langs:
+  - csharp
+  - vb
+  name: Metrics
+  nameWithType: HealthCheckType.Metrics
+  fullName: MicroService.Common.Constants.HealthCheckType.Metrics
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Common/Constants/HealthCheckType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Metrics
+    path: ../src/MicroService.Common/Constants/HealthCheckType.cs
+    startLine: 12
+  assemblies:
+  - MicroService.Common
+  namespace: MicroService.Common.Constants
+  syntax:
+    content: Metrics = 4
+    return:
+      type: MicroService.Common.Constants.HealthCheckType
+- uid: MicroService.Common.Constants.HealthCheckType.System
+  commentId: F:MicroService.Common.Constants.HealthCheckType.System
+  id: System
+  parent: MicroService.Common.Constants.HealthCheckType
+  langs:
+  - csharp
+  - vb
+  name: System
+  nameWithType: HealthCheckType.System
+  fullName: MicroService.Common.Constants.HealthCheckType.System
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Common/Constants/HealthCheckType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: System
+    path: ../src/MicroService.Common/Constants/HealthCheckType.cs
+    startLine: 14
+  assemblies:
+  - MicroService.Common
+  namespace: MicroService.Common.Constants
+  syntax:
+    content: System = 5
+    return:
+      type: MicroService.Common.Constants.HealthCheckType
+- uid: MicroService.Common.Constants.HealthCheckType.ReadinessCheck
+  commentId: F:MicroService.Common.Constants.HealthCheckType.ReadinessCheck
+  id: ReadinessCheck
+  parent: MicroService.Common.Constants.HealthCheckType
+  langs:
+  - csharp
+  - vb
+  name: ReadinessCheck
+  nameWithType: HealthCheckType.ReadinessCheck
+  fullName: MicroService.Common.Constants.HealthCheckType.ReadinessCheck
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Common/Constants/HealthCheckType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ReadinessCheck
+    path: ../src/MicroService.Common/Constants/HealthCheckType.cs
+    startLine: 16
+  assemblies:
+  - MicroService.Common
+  namespace: MicroService.Common.Constants
+  syntax:
+    content: ReadinessCheck = 6
+    return:
+      type: MicroService.Common.Constants.HealthCheckType
+references:
+- uid: MicroService.Common.Constants
+  commentId: N:MicroService.Common.Constants
+  name: MicroService.Common.Constants
+  nameWithType: MicroService.Common.Constants
+  fullName: MicroService.Common.Constants
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Common
+    name: Common
+  - name: .
+  - uid: MicroService.Common.Constants
+    name: Constants
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Common
+    name: Common
+  - name: .
+  - uid: MicroService.Common.Constants
+    name: Constants
+- uid: MicroService.Common.Constants.HealthCheckType.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<HealthCheckType>(HealthCheckType)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<HealthCheckType>(HealthCheckType)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Common.Constants.HealthCheckType>(MicroService.Common.Constants.HealthCheckType)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of HealthCheckType)(HealthCheckType)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Common.Constants.HealthCheckType)(MicroService.Common.Constants.HealthCheckType)
+  name.vb: ArePropertiesNotNull(Of HealthCheckType)(HealthCheckType)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Common.Constants.HealthCheckType)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Common.Constants.HealthCheckType
+    name: HealthCheckType
+  - name: '>'
+  - name: (
+  - uid: MicroService.Common.Constants.HealthCheckType
+    name: HealthCheckType
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Common.Constants.HealthCheckType)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Common.Constants.HealthCheckType
+    name: HealthCheckType
+  - name: )
+  - name: (
+  - uid: MicroService.Common.Constants.HealthCheckType
+    name: HealthCheckType
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Common.Constants.HealthCheckType
+  commentId: T:MicroService.Common.Constants.HealthCheckType
+  parent: MicroService.Common.Constants
+  name: HealthCheckType
+  nameWithType: HealthCheckType
+  fullName: MicroService.Common.Constants.HealthCheckType

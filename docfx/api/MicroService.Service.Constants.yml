@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Constants
+  commentId: N:MicroService.Service.Constants
+  id: MicroService.Service.Constants
+  children:
+  - MicroService.Service.Constants.DataConstants
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Constants
+  nameWithType: MicroService.Service.Constants
+  fullName: MicroService.Service.Constants
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Constants.DataConstants
+  commentId: T:MicroService.Service.Constants.DataConstants
+  name: DataConstants
+  nameWithType: DataConstants
+  fullName: MicroService.Service.Constants.DataConstants

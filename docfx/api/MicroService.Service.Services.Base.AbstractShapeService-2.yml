@@ -1,0 +1,1337 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2
+  commentId: T:MicroService.Service.Services.Base.AbstractShapeService`2
+  id: AbstractShapeService`2
+  parent: MicroService.Service.Services.Base
+  children:
+  - MicroService.Service.Services.Base.AbstractShapeService`2.#ctor(Microsoft.Extensions.Logging.ILogger,AutoMapper.IMapper)
+  - MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList
+  - MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  - MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Double,System.Double)
+  - MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName(System.String)
+  - MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures
+  - MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties
+  - MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties
+  - MicroService.Service.Services.Base.AbstractShapeService`2.Logger
+  - MicroService.Service.Services.Base.AbstractShapeService`2.Mapper
+  - MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue(System.Object,System.Object)
+  - MicroService.Service.Services.Base.AbstractShapeService`2.ShapeFileDataReader
+  - MicroService.Service.Services.Base.AbstractShapeService`2.ShapePropertiesAttribute
+  - MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  langs:
+  - csharp
+  - vb
+  name: AbstractShapeService<TShape, TProfile>
+  nameWithType: AbstractShapeService<TShape, TProfile>
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: AbstractShapeService
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 16
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: 'public abstract class AbstractShapeService<TShape, TProfile> where TShape : class, new() where TProfile : Profile, new()'
+    typeParameters:
+    - id: TShape
+    - id: TProfile
+    content.vb: Public MustInherit Class AbstractShapeService(Of TShape As {Class, New}, TProfile As {Profile, New})
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - MicroService.Service.Services.BoroughBoundariesService
+  - MicroService.Service.Services.CommunityDistrictsService
+  - MicroService.Service.Services.DsnyDistrictsService
+  - MicroService.Service.Services.HistoricDistrictService
+  - MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService
+  - MicroService.Service.Services.IndividualLandmarkSiteService
+  - MicroService.Service.Services.NationalRegisterHistoricPlacesService
+  - MicroService.Service.Services.NeighborhoodsService
+  - MicroService.Service.Services.NeighborhoodTabulationAreasService
+  - MicroService.Service.Services.NychaDevelopmentService
+  - MicroService.Service.Services.NypdPolicePrecinctService
+  - MicroService.Service.Services.NypdSectorsService
+  - MicroService.Service.Services.ParkService
+  - MicroService.Service.Services.ScenicLandmarkService
+  - MicroService.Service.Services.SubwayService
+  - MicroService.Service.Services.ZipCodeService
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MicroService.Service.Services.Base.AbstractShapeService`2.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile)
+  name.vb: AbstractShapeService(Of TShape, TProfile)
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.ShapeFileDataReader
+  commentId: P:MicroService.Service.Services.Base.AbstractShapeService`2.ShapeFileDataReader
+  id: ShapeFileDataReader
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: ShapeFileDataReader
+  nameWithType: AbstractShapeService<TShape, TProfile>.ShapeFileDataReader
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.ShapeFileDataReader
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ShapeFileDataReader
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 20
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: protected IShapefileDataReaderService ShapeFileDataReader { get; set; }
+    parameters: []
+    return:
+      type: MicroService.Service.Helpers.IShapefileDataReaderService
+    content.vb: Protected Property ShapeFileDataReader As IShapefileDataReaderService
+  overload: MicroService.Service.Services.Base.AbstractShapeService`2.ShapeFileDataReader*
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).ShapeFileDataReader
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).ShapeFileDataReader
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.Mapper
+  commentId: F:MicroService.Service.Services.Base.AbstractShapeService`2.Mapper
+  id: Mapper
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: Mapper
+  nameWithType: AbstractShapeService<TShape, TProfile>.Mapper
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.Mapper
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Mapper
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 22
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: protected readonly IMapper Mapper
+    return:
+      type: AutoMapper.IMapper
+    content.vb: Protected ReadOnly Mapper As IMapper
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).Mapper
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).Mapper
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.Logger
+  commentId: F:MicroService.Service.Services.Base.AbstractShapeService`2.Logger
+  id: Logger
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: Logger
+  nameWithType: AbstractShapeService<TShape, TProfile>.Logger
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.Logger
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Logger
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 24
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: protected readonly ILogger Logger
+    return:
+      type: Microsoft.Extensions.Logging.ILogger
+    content.vb: Protected ReadOnly Logger As ILogger
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).Logger
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).Logger
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.ShapePropertiesAttribute
+  commentId: P:MicroService.Service.Services.Base.AbstractShapeService`2.ShapePropertiesAttribute
+  id: ShapePropertiesAttribute
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: ShapePropertiesAttribute
+  nameWithType: AbstractShapeService<TShape, TProfile>.ShapePropertiesAttribute
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.ShapePropertiesAttribute
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ShapePropertiesAttribute
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 26
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: protected ShapePropertiesAttribute ShapePropertiesAttribute { get; }
+    parameters: []
+    return:
+      type: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+    content.vb: Protected ReadOnly Property ShapePropertiesAttribute As ShapePropertiesAttribute
+  overload: MicroService.Service.Services.Base.AbstractShapeService`2.ShapePropertiesAttribute*
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).ShapePropertiesAttribute
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).ShapePropertiesAttribute
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.#ctor(Microsoft.Extensions.Logging.ILogger,AutoMapper.IMapper)
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.#ctor(Microsoft.Extensions.Logging.ILogger,AutoMapper.IMapper)
+  id: '#ctor(Microsoft.Extensions.Logging.ILogger,AutoMapper.IMapper)'
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: AbstractShapeService(ILogger, IMapper)
+  nameWithType: AbstractShapeService<TShape, TProfile>.AbstractShapeService(ILogger, IMapper)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.AbstractShapeService(Microsoft.Extensions.Logging.ILogger, AutoMapper.IMapper)
+  type: Constructor
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: .ctor
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 28
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: protected AbstractShapeService(ILogger logger, IMapper mapper)
+    parameters:
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger
+    - id: mapper
+      type: AutoMapper.IMapper
+    content.vb: Protected Sub New(logger As ILogger, mapper As IMapper)
+  overload: MicroService.Service.Services.Base.AbstractShapeService`2.#ctor*
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).New(ILogger, IMapper)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).New(Microsoft.Extensions.Logging.ILogger, AutoMapper.IMapper)
+  name.vb: New(ILogger, IMapper)
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties
+  id: GetShapeProperties
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: GetShapeProperties()
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetShapeProperties()
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetShapeProperties()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetShapeProperties
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 40
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: public ShapefileHeader GetShapeProperties()
+    return:
+      type: NetTopologySuite.IO.ShapefileHeader
+    content.vb: Public Function GetShapeProperties() As ShapefileHeader
+  overload: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties*
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetShapeProperties()
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetShapeProperties()
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties
+  id: GetShapeDatabaseProperties
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: GetShapeDatabaseProperties()
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetShapeDatabaseProperties()
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetShapeDatabaseProperties()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetShapeDatabaseProperties
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 46
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: public DbaseFileHeader GetShapeDatabaseProperties()
+    return:
+      type: NetTopologySuite.IO.DbaseFileHeader
+    content.vb: Public Function GetShapeDatabaseProperties() As DbaseFileHeader
+  overload: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties*
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetShapeDatabaseProperties()
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetShapeDatabaseProperties()
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  id: ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: ValidateFeatureKey(List<KeyValuePair<string, object>>)
+  nameWithType: AbstractShapeService<TShape, TProfile>.ValidateFeatureKey(List<KeyValuePair<string, object>>)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.ValidateFeatureKey(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ValidateFeatureKey
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 58
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  summary: "\nValidate/Map Shape Feature Properties\n"
+  example: []
+  syntax:
+    content: public List<KeyValuePair<string, object>> ValidateFeatureKey(List<KeyValuePair<string, object>> attributes)
+    parameters:
+    - id: attributes
+      type: System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+      description: ''
+    return:
+      type: System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+      description: ''
+    content.vb: Public Function ValidateFeatureKey(attributes As List(Of KeyValuePair(Of String, Object))) As List(Of KeyValuePair(Of String, Object))
+  overload: MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey*
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).ValidateFeatureKey(List(Of KeyValuePair(Of String, Object)))
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).ValidateFeatureKey(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: ValidateFeatureKey(List(Of KeyValuePair(Of String, Object)))
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue(System.Object,System.Object)
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue(System.Object,System.Object)
+  id: MatchAttributeValue(System.Object,System.Object)
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: MatchAttributeValue(object, object)
+  nameWithType: AbstractShapeService<TShape, TProfile>.MatchAttributeValue(object, object)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.MatchAttributeValue(object, object)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: MatchAttributeValue
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 124
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: protected object MatchAttributeValue(object value, object expectedValue)
+    parameters:
+    - id: value
+      type: System.Object
+    - id: expectedValue
+      type: System.Object
+    return:
+      type: System.Object
+    content.vb: Protected Function MatchAttributeValue(value As Object, expectedValue As Object) As Object
+  overload: MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue*
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).MatchAttributeValue(Object, Object)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).MatchAttributeValue(Object, Object)
+  name.vb: MatchAttributeValue(Object, Object)
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName(System.String)
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName(System.String)
+  id: GetFeatureName(System.String)
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: GetFeatureName(string)
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatureName(string)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatureName(string)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatureName
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 160
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: public string GetFeatureName(string propertyName)
+    parameters:
+    - id: propertyName
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function GetFeatureName(propertyName As String) As String
+  overload: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName*
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatureName(String)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatureName(String)
+  name.vb: GetFeatureName(String)
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList
+  id: GetFeatureList
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: GetFeatureList()
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatureList()
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatureList()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatureList
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 168
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: public virtual IEnumerable<TShape> GetFeatureList()
+    return:
+      type: System.Collections.Generic.IEnumerable{{TShape}}
+    content.vb: Public Overridable Function GetFeatureList() As IEnumerable(Of TShape)
+  overload: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList*
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatureList()
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatureList()
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  id: GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: GetFeatureLookup(List<KeyValuePair<string, object>>)
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatureLookup(List<KeyValuePair<string, object>>)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatureLookup(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatureLookup
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 177
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: public virtual IEnumerable<TShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+    parameters:
+    - id: attributes
+      type: System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+    return:
+      type: System.Collections.Generic.IEnumerable{{TShape}}
+    content.vb: Public Overridable Function GetFeatureLookup(attributes As List(Of KeyValuePair(Of String, Object))) As IEnumerable(Of TShape)
+  overload: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup*
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatureLookup(List(Of KeyValuePair(Of String, Object)))
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatureLookup(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: GetFeatureLookup(List(Of KeyValuePair(Of String, Object)))
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Double,System.Double)
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Double,System.Double)
+  id: GetFeatureLookup(System.Double,System.Double)
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: GetFeatureLookup(double, double)
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatureLookup(double, double)
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatureLookup(double, double)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatureLookup
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 194
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: public virtual TShape GetFeatureLookup(double x, double y)
+    parameters:
+    - id: x
+      type: System.Double
+    - id: y
+      type: System.Double
+    return:
+      type: '{TShape}'
+    content.vb: Public Overridable Function GetFeatureLookup(x As Double, y As Double) As TShape
+  overload: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup*
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatureLookup(Double, Double)
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatureLookup(Double, Double)
+  name.vb: GetFeatureLookup(Double, Double)
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures
+  commentId: M:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures
+  id: GetFeatures
+  parent: MicroService.Service.Services.Base.AbstractShapeService`2
+  langs:
+  - csharp
+  - vb
+  name: GetFeatures()
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatures()
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatures()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatures
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 209
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: public IReadOnlyCollection<Feature> GetFeatures()
+    return:
+      type: System.Collections.Generic.IReadOnlyCollection{NetTopologySuite.Features.Feature}
+    content.vb: Public Function GetFeatures() As IReadOnlyCollection(Of Feature)
+  overload: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures*
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatures()
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatures()
+references:
+- uid: MicroService.Service.Services.Base
+  commentId: N:MicroService.Service.Services.Base
+  name: MicroService.Service.Services.Base
+  nameWithType: MicroService.Service.Services.Base
+  fullName: MicroService.Service.Services.Base
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  - name: .
+  - uid: MicroService.Service.Services.Base
+    name: Base
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  - name: .
+  - uid: MicroService.Service.Services.Base
+    name: Base
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<AbstractShapeService<TShape, TProfile>>(AbstractShapeService<TShape, TProfile>)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<AbstractShapeService<TShape, TProfile>>(AbstractShapeService<TShape, TProfile>)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>>(MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of AbstractShapeService(Of TShape, TProfile))(AbstractShapeService(Of TShape, TProfile))
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile))(MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile))
+  name.vb: ArePropertiesNotNull(Of AbstractShapeService(Of TShape, TProfile))(AbstractShapeService(Of TShape, TProfile))
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Services.Base.AbstractShapeService{`0,`1})
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2
+    name: AbstractShapeService
+  - name: <
+  - name: TShape
+  - name: ','
+  - name: " "
+  - name: TProfile
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2
+    name: AbstractShapeService
+  - name: <
+  - name: TShape
+  - name: ','
+  - name: " "
+  - name: TProfile
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Services.Base.AbstractShapeService{`0,`1})
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2
+    name: AbstractShapeService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TShape
+  - name: ','
+  - name: " "
+  - name: TProfile
+  - name: )
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Services.Base.AbstractShapeService`2
+    name: AbstractShapeService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TShape
+  - name: ','
+  - name: " "
+  - name: TProfile
+  - name: )
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.ShapeFileDataReader*
+  commentId: Overload:MicroService.Service.Services.Base.AbstractShapeService`2.ShapeFileDataReader
+  name: ShapeFileDataReader
+  nameWithType: AbstractShapeService<TShape, TProfile>.ShapeFileDataReader
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.ShapeFileDataReader
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).ShapeFileDataReader
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).ShapeFileDataReader
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService
+  commentId: T:MicroService.Service.Helpers.IShapefileDataReaderService
+  parent: MicroService.Service.Helpers
+  name: IShapefileDataReaderService
+  nameWithType: IShapefileDataReaderService
+  fullName: MicroService.Service.Helpers.IShapefileDataReaderService
+- uid: AutoMapper.IMapper
+  commentId: T:AutoMapper.IMapper
+  parent: AutoMapper
+  isExternal: true
+  name: IMapper
+  nameWithType: IMapper
+  fullName: AutoMapper.IMapper
+- uid: AutoMapper
+  commentId: N:AutoMapper
+  isExternal: true
+  name: AutoMapper
+  nameWithType: AutoMapper
+  fullName: AutoMapper
+- uid: Microsoft.Extensions.Logging.ILogger
+  commentId: T:Microsoft.Extensions.Logging.ILogger
+  parent: Microsoft.Extensions.Logging
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Microsoft.Extensions.Logging.ILogger
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.ShapePropertiesAttribute*
+  commentId: Overload:MicroService.Service.Services.Base.AbstractShapeService`2.ShapePropertiesAttribute
+  name: ShapePropertiesAttribute
+  nameWithType: AbstractShapeService<TShape, TProfile>.ShapePropertiesAttribute
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.ShapePropertiesAttribute
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).ShapePropertiesAttribute
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).ShapePropertiesAttribute
+- uid: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+  commentId: T:MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+  parent: MicroService.Service.Models.Enum.Attributes
+  name: ShapePropertiesAttribute
+  nameWithType: ShapePropertiesAttribute
+  fullName: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+- uid: MicroService.Service.Models.Enum.Attributes
+  commentId: N:MicroService.Service.Models.Enum.Attributes
+  name: MicroService.Service.Models.Enum.Attributes
+  nameWithType: MicroService.Service.Models.Enum.Attributes
+  fullName: MicroService.Service.Models.Enum.Attributes
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+  - name: .
+  - uid: MicroService.Service.Models.Enum.Attributes
+    name: Attributes
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+  - name: .
+  - uid: MicroService.Service.Models.Enum.Attributes
+    name: Attributes
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.#ctor*
+  commentId: Overload:MicroService.Service.Services.Base.AbstractShapeService`2.#ctor
+  name: AbstractShapeService
+  nameWithType: AbstractShapeService<TShape, TProfile>.AbstractShapeService
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.AbstractShapeService
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).New
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).New
+  name.vb: New
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties*
+  commentId: Overload:MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties
+  name: GetShapeProperties
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetShapeProperties
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetShapeProperties
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetShapeProperties
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetShapeProperties
+- uid: NetTopologySuite.IO.ShapefileHeader
+  commentId: T:NetTopologySuite.IO.ShapefileHeader
+  parent: NetTopologySuite.IO
+  isExternal: true
+  name: ShapefileHeader
+  nameWithType: ShapefileHeader
+  fullName: NetTopologySuite.IO.ShapefileHeader
+- uid: NetTopologySuite.IO
+  commentId: N:NetTopologySuite.IO
+  isExternal: true
+  name: NetTopologySuite.IO
+  nameWithType: NetTopologySuite.IO
+  fullName: NetTopologySuite.IO
+  spec.csharp:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.IO
+    name: IO
+    isExternal: true
+  spec.vb:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.IO
+    name: IO
+    isExternal: true
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties*
+  commentId: Overload:MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties
+  name: GetShapeDatabaseProperties
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetShapeDatabaseProperties
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetShapeDatabaseProperties
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetShapeDatabaseProperties
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetShapeDatabaseProperties
+- uid: NetTopologySuite.IO.DbaseFileHeader
+  commentId: T:NetTopologySuite.IO.DbaseFileHeader
+  parent: NetTopologySuite.IO
+  isExternal: true
+  name: DbaseFileHeader
+  nameWithType: DbaseFileHeader
+  fullName: NetTopologySuite.IO.DbaseFileHeader
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey*
+  commentId: Overload:MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey
+  name: ValidateFeatureKey
+  nameWithType: AbstractShapeService<TShape, TProfile>.ValidateFeatureKey
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.ValidateFeatureKey
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).ValidateFeatureKey
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).ValidateFeatureKey
+- uid: System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  commentId: T:System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<KeyValuePair<string, object>>
+  nameWithType: List<KeyValuePair<string, object>>
+  fullName: System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>
+  nameWithType.vb: List(Of KeyValuePair(Of String, Object))
+  fullName.vb: System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object))
+  name.vb: List(Of KeyValuePair(Of String, Object))
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue*
+  commentId: Overload:MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue
+  name: MatchAttributeValue
+  nameWithType: AbstractShapeService<TShape, TProfile>.MatchAttributeValue
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.MatchAttributeValue
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).MatchAttributeValue
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).MatchAttributeValue
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName*
+  commentId: Overload:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName
+  name: GetFeatureName
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatureName
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatureName
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatureName
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatureName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList*
+  commentId: Overload:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList
+  name: GetFeatureList
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatureList
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatureList
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatureList
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatureList
+- uid: System.Collections.Generic.IEnumerable{{TShape}}
+  commentId: T:System.Collections.Generic.IEnumerable{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<TShape>
+  nameWithType: IEnumerable<TShape>
+  fullName: System.Collections.Generic.IEnumerable<TShape>
+  nameWithType.vb: IEnumerable(Of TShape)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TShape)
+  name.vb: IEnumerable(Of TShape)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: TShape
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TShape
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup*
+  commentId: Overload:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup
+  name: GetFeatureLookup
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatureLookup
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatureLookup
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatureLookup
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatureLookup
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: '{TShape}'
+  commentId: '!:TShape'
+  definition: TShape
+  name: TShape
+  nameWithType: TShape
+  fullName: TShape
+- uid: TShape
+  commentId: '!:TShape'
+  name: TShape
+  nameWithType: TShape
+  fullName: TShape
+- uid: MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures*
+  commentId: Overload:MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures
+  name: GetFeatures
+  nameWithType: AbstractShapeService<TShape, TProfile>.GetFeatures
+  fullName: MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>.GetFeatures
+  nameWithType.vb: AbstractShapeService(Of TShape, TProfile).GetFeatures
+  fullName.vb: MicroService.Service.Services.Base.AbstractShapeService(Of TShape, TProfile).GetFeatures
+- uid: System.Collections.Generic.IReadOnlyCollection{NetTopologySuite.Features.Feature}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{NetTopologySuite.Features.Feature}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  name: IReadOnlyCollection<Feature>
+  nameWithType: IReadOnlyCollection<Feature>
+  fullName: System.Collections.Generic.IReadOnlyCollection<NetTopologySuite.Features.Feature>
+  nameWithType.vb: IReadOnlyCollection(Of Feature)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of NetTopologySuite.Features.Feature)
+  name.vb: IReadOnlyCollection(Of Feature)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: <
+  - uid: NetTopologySuite.Features.Feature
+    name: Feature
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NetTopologySuite.Features.Feature
+    name: Feature
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

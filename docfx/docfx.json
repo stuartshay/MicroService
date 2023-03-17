@@ -38,7 +38,7 @@
           "articles/**/toc.yml",
           "toc.yml",
           "*.md",
-          "restapi/**"
+          "restapi/**.md"
         ]
       }
     ],
@@ -46,7 +46,13 @@
       {
         "files": [
           "images/**",
-          "articles/images/**.png"
+          "articles/images/**.png",
+          "restapi/**.html",
+          "restapi/**.js",
+          "restapi/**.json"
+        ],
+        "exclude": [
+          "restapi/toc.yml"
         ]
       }
     ],

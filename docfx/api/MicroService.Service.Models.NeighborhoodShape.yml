@@ -1,0 +1,697 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.NeighborhoodShape
+  commentId: T:MicroService.Service.Models.NeighborhoodShape
+  id: NeighborhoodShape
+  parent: MicroService.Service.Models
+  children:
+  - MicroService.Service.Models.NeighborhoodShape.BoroCode
+  - MicroService.Service.Models.NeighborhoodShape.BoroName
+  - MicroService.Service.Models.NeighborhoodShape.CountyFIPS
+  - MicroService.Service.Models.NeighborhoodShape.NTACode
+  - MicroService.Service.Models.NeighborhoodShape.NTAName
+  langs:
+  - csharp
+  - vb
+  name: NeighborhoodShape
+  nameWithType: NeighborhoodShape
+  fullName: MicroService.Service.Models.NeighborhoodShape
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NeighborhoodShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: NeighborhoodShape
+    path: ../src/MicroService.Service/Models/NeighborhoodShape.cs
+    startLine: 6
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [ShapeProperties(ShapeProperties.Neighborhoods)]
+
+      public class NeighborhoodShape : ShapeBase
+    content.vb: >-
+      <ShapeProperties(ShapeProperties.Neighborhoods)>
+
+      Public Class NeighborhoodShape Inherits ShapeBase
+  inheritance:
+  - System.Object
+  - MicroService.Service.Models.Base.ShapeBase
+  inheritedMembers:
+  - MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  - MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  - MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  - MicroService.Service.Models.Base.ShapeBase.Geometry
+  - MicroService.Service.Models.Base.ShapeBase.Feature
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MicroService.Service.Models.NeighborhoodShape.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute.#ctor(MicroService.Service.Models.Enum.ShapeProperties)
+    arguments:
+    - type: MicroService.Service.Models.Enum.ShapeProperties
+      value: 7
+- uid: MicroService.Service.Models.NeighborhoodShape.BoroCode
+  commentId: P:MicroService.Service.Models.NeighborhoodShape.BoroCode
+  id: BoroCode
+  parent: MicroService.Service.Models.NeighborhoodShape
+  langs:
+  - csharp
+  - vb
+  name: BoroCode
+  nameWithType: NeighborhoodShape.BoroCode
+  fullName: MicroService.Service.Models.NeighborhoodShape.BoroCode
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NeighborhoodShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BoroCode
+    path: ../src/MicroService.Service/Models/NeighborhoodShape.cs
+    startLine: 9
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("BoroCode")]
+
+      public int BoroCode { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <FeatureName("BoroCode")>
+
+      Public Property BoroCode As Integer
+  overload: MicroService.Service.Models.NeighborhoodShape.BoroCode*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: BoroCode
+- uid: MicroService.Service.Models.NeighborhoodShape.BoroName
+  commentId: P:MicroService.Service.Models.NeighborhoodShape.BoroName
+  id: BoroName
+  parent: MicroService.Service.Models.NeighborhoodShape
+  langs:
+  - csharp
+  - vb
+  name: BoroName
+  nameWithType: NeighborhoodShape.BoroName
+  fullName: MicroService.Service.Models.NeighborhoodShape.BoroName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NeighborhoodShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BoroName
+    path: ../src/MicroService.Service/Models/NeighborhoodShape.cs
+    startLine: 12
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("BoroName")]
+
+      public string BoroName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("BoroName")>
+
+      Public Property BoroName As String
+  overload: MicroService.Service.Models.NeighborhoodShape.BoroName*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: BoroName
+- uid: MicroService.Service.Models.NeighborhoodShape.CountyFIPS
+  commentId: P:MicroService.Service.Models.NeighborhoodShape.CountyFIPS
+  id: CountyFIPS
+  parent: MicroService.Service.Models.NeighborhoodShape
+  langs:
+  - csharp
+  - vb
+  name: CountyFIPS
+  nameWithType: NeighborhoodShape.CountyFIPS
+  fullName: MicroService.Service.Models.NeighborhoodShape.CountyFIPS
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NeighborhoodShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: CountyFIPS
+    path: ../src/MicroService.Service/Models/NeighborhoodShape.cs
+    startLine: 15
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("CountyFIPS")]
+
+      public string CountyFIPS { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("CountyFIPS")>
+
+      Public Property CountyFIPS As String
+  overload: MicroService.Service.Models.NeighborhoodShape.CountyFIPS*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: CountyFIPS
+- uid: MicroService.Service.Models.NeighborhoodShape.NTACode
+  commentId: P:MicroService.Service.Models.NeighborhoodShape.NTACode
+  id: NTACode
+  parent: MicroService.Service.Models.NeighborhoodShape
+  langs:
+  - csharp
+  - vb
+  name: NTACode
+  nameWithType: NeighborhoodShape.NTACode
+  fullName: MicroService.Service.Models.NeighborhoodShape.NTACode
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NeighborhoodShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: NTACode
+    path: ../src/MicroService.Service/Models/NeighborhoodShape.cs
+    startLine: 18
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("NTACode")]
+
+      public string NTACode { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("NTACode")>
+
+      Public Property NTACode As String
+  overload: MicroService.Service.Models.NeighborhoodShape.NTACode*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: NTACode
+- uid: MicroService.Service.Models.NeighborhoodShape.NTAName
+  commentId: P:MicroService.Service.Models.NeighborhoodShape.NTAName
+  id: NTAName
+  parent: MicroService.Service.Models.NeighborhoodShape
+  langs:
+  - csharp
+  - vb
+  name: NTAName
+  nameWithType: NeighborhoodShape.NTAName
+  fullName: MicroService.Service.Models.NeighborhoodShape.NTAName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NeighborhoodShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: NTAName
+    path: ../src/MicroService.Service/Models/NeighborhoodShape.cs
+    startLine: 21
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("NTAName")]
+
+      public string NTAName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("NTAName")>
+
+      Public Property NTAName As String
+  overload: MicroService.Service.Models.NeighborhoodShape.NTAName*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: NTAName
+references:
+- uid: MicroService.Service.Models
+  commentId: N:MicroService.Service.Models
+  name: MicroService.Service.Models
+  nameWithType: MicroService.Service.Models
+  fullName: MicroService.Service.Models
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MicroService.Service.Models.Base.ShapeBase
+  commentId: T:MicroService.Service.Models.Base.ShapeBase
+  parent: MicroService.Service.Models.Base
+  name: ShapeBase
+  nameWithType: ShapeBase
+  fullName: MicroService.Service.Models.Base.ShapeBase
+- uid: MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: ShapeArea
+  nameWithType: ShapeBase.ShapeArea
+  fullName: MicroService.Service.Models.Base.ShapeBase.ShapeArea
+- uid: MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: ShapeLength
+  nameWithType: ShapeBase.ShapeLength
+  fullName: MicroService.Service.Models.Base.ShapeBase.ShapeLength
+- uid: MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: BoundingBox
+  nameWithType: ShapeBase.BoundingBox
+  fullName: MicroService.Service.Models.Base.ShapeBase.BoundingBox
+- uid: MicroService.Service.Models.Base.ShapeBase.Geometry
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.Geometry
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: Geometry
+  nameWithType: ShapeBase.Geometry
+  fullName: MicroService.Service.Models.Base.ShapeBase.Geometry
+- uid: MicroService.Service.Models.Base.ShapeBase.Feature
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.Feature
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: Feature
+  nameWithType: ShapeBase.Feature
+  fullName: MicroService.Service.Models.Base.ShapeBase.Feature
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: MicroService.Service.Models.NeighborhoodShape.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<NeighborhoodShape>(NeighborhoodShape)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<NeighborhoodShape>(NeighborhoodShape)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Models.NeighborhoodShape>(MicroService.Service.Models.NeighborhoodShape)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of NeighborhoodShape)(NeighborhoodShape)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Models.NeighborhoodShape)(MicroService.Service.Models.NeighborhoodShape)
+  name.vb: ArePropertiesNotNull(Of NeighborhoodShape)(NeighborhoodShape)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.NeighborhoodShape)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Models.NeighborhoodShape
+    name: NeighborhoodShape
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Models.NeighborhoodShape
+    name: NeighborhoodShape
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.NeighborhoodShape)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.NeighborhoodShape
+    name: NeighborhoodShape
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Models.NeighborhoodShape
+    name: NeighborhoodShape
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.Service.Models.Base
+  commentId: N:MicroService.Service.Models.Base
+  name: MicroService.Service.Models.Base
+  nameWithType: MicroService.Service.Models.Base
+  fullName: MicroService.Service.Models.Base
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Models.NeighborhoodShape.BoroCode*
+  commentId: Overload:MicroService.Service.Models.NeighborhoodShape.BoroCode
+  name: BoroCode
+  nameWithType: NeighborhoodShape.BoroCode
+  fullName: MicroService.Service.Models.NeighborhoodShape.BoroCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MicroService.Service.Models.NeighborhoodShape.BoroName*
+  commentId: Overload:MicroService.Service.Models.NeighborhoodShape.BoroName
+  name: BoroName
+  nameWithType: NeighborhoodShape.BoroName
+  fullName: MicroService.Service.Models.NeighborhoodShape.BoroName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MicroService.Service.Models.NeighborhoodShape.CountyFIPS*
+  commentId: Overload:MicroService.Service.Models.NeighborhoodShape.CountyFIPS
+  name: CountyFIPS
+  nameWithType: NeighborhoodShape.CountyFIPS
+  fullName: MicroService.Service.Models.NeighborhoodShape.CountyFIPS
+- uid: MicroService.Service.Models.NeighborhoodShape.NTACode*
+  commentId: Overload:MicroService.Service.Models.NeighborhoodShape.NTACode
+  name: NTACode
+  nameWithType: NeighborhoodShape.NTACode
+  fullName: MicroService.Service.Models.NeighborhoodShape.NTACode
+- uid: MicroService.Service.Models.NeighborhoodShape.NTAName*
+  commentId: Overload:MicroService.Service.Models.NeighborhoodShape.NTAName
+  name: NTAName
+  nameWithType: NeighborhoodShape.NTAName
+  fullName: MicroService.Service.Models.NeighborhoodShape.NTAName

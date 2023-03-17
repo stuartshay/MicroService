@@ -1,0 +1,140 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models
+  commentId: N:MicroService.Service.Models
+  id: MicroService.Service.Models
+  children:
+  - MicroService.Service.Models.BoroughBoundaryShape
+  - MicroService.Service.Models.CommunityDistrictShape
+  - MicroService.Service.Models.DsnyDistrictsShape
+  - MicroService.Service.Models.HistoricDistrictShape
+  - MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape
+  - MicroService.Service.Models.IndividualLandmarkSiteShape
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  - MicroService.Service.Models.NeighborhoodShape
+  - MicroService.Service.Models.NeighborhoodTabulationAreaShape
+  - MicroService.Service.Models.NychaDevelopmentShape
+  - MicroService.Service.Models.NypdPrecinctShape
+  - MicroService.Service.Models.NypdSectorShape
+  - MicroService.Service.Models.ParkShape
+  - MicroService.Service.Models.ScenicLandmarkShape
+  - MicroService.Service.Models.SubwayShape
+  - MicroService.Service.Models.ZipCodeShape
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Models
+  nameWithType: MicroService.Service.Models
+  fullName: MicroService.Service.Models
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Models.BoroughBoundaryShape
+  commentId: T:MicroService.Service.Models.BoroughBoundaryShape
+  name: BoroughBoundaryShape
+  nameWithType: BoroughBoundaryShape
+  fullName: MicroService.Service.Models.BoroughBoundaryShape
+- uid: MicroService.Service.Models.CommunityDistrictShape
+  commentId: T:MicroService.Service.Models.CommunityDistrictShape
+  name: CommunityDistrictShape
+  nameWithType: CommunityDistrictShape
+  fullName: MicroService.Service.Models.CommunityDistrictShape
+- uid: MicroService.Service.Models.DsnyDistrictsShape
+  commentId: T:MicroService.Service.Models.DsnyDistrictsShape
+  parent: MicroService.Service.Models
+  name: DsnyDistrictsShape
+  nameWithType: DsnyDistrictsShape
+  fullName: MicroService.Service.Models.DsnyDistrictsShape
+- uid: MicroService.Service.Models.HistoricDistrictShape
+  commentId: T:MicroService.Service.Models.HistoricDistrictShape
+  parent: MicroService.Service.Models
+  name: HistoricDistrictShape
+  nameWithType: HistoricDistrictShape
+  fullName: MicroService.Service.Models.HistoricDistrictShape
+- uid: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape
+  commentId: T:MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape
+  name: IndividualLandmarkHistoricDistrictsShape
+  nameWithType: IndividualLandmarkHistoricDistrictsShape
+  fullName: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape
+  commentId: T:MicroService.Service.Models.IndividualLandmarkSiteShape
+  parent: MicroService.Service.Models
+  name: IndividualLandmarkSiteShape
+  nameWithType: IndividualLandmarkSiteShape
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  commentId: T:MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  name: NationalRegisterHistoricPlacesShape
+  nameWithType: NationalRegisterHistoricPlacesShape
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+- uid: MicroService.Service.Models.NeighborhoodShape
+  commentId: T:MicroService.Service.Models.NeighborhoodShape
+  name: NeighborhoodShape
+  nameWithType: NeighborhoodShape
+  fullName: MicroService.Service.Models.NeighborhoodShape
+- uid: MicroService.Service.Models.NeighborhoodTabulationAreaShape
+  commentId: T:MicroService.Service.Models.NeighborhoodTabulationAreaShape
+  name: NeighborhoodTabulationAreaShape
+  nameWithType: NeighborhoodTabulationAreaShape
+  fullName: MicroService.Service.Models.NeighborhoodTabulationAreaShape
+- uid: MicroService.Service.Models.NychaDevelopmentShape
+  commentId: T:MicroService.Service.Models.NychaDevelopmentShape
+  name: NychaDevelopmentShape
+  nameWithType: NychaDevelopmentShape
+  fullName: MicroService.Service.Models.NychaDevelopmentShape
+- uid: MicroService.Service.Models.NypdPrecinctShape
+  commentId: T:MicroService.Service.Models.NypdPrecinctShape
+  name: NypdPrecinctShape
+  nameWithType: NypdPrecinctShape
+  fullName: MicroService.Service.Models.NypdPrecinctShape
+- uid: MicroService.Service.Models.NypdSectorShape
+  commentId: T:MicroService.Service.Models.NypdSectorShape
+  name: NypdSectorShape
+  nameWithType: NypdSectorShape
+  fullName: MicroService.Service.Models.NypdSectorShape
+- uid: MicroService.Service.Models.ParkShape
+  commentId: T:MicroService.Service.Models.ParkShape
+  name: ParkShape
+  nameWithType: ParkShape
+  fullName: MicroService.Service.Models.ParkShape
+- uid: MicroService.Service.Models.ScenicLandmarkShape
+  commentId: T:MicroService.Service.Models.ScenicLandmarkShape
+  parent: MicroService.Service.Models
+  name: ScenicLandmarkShape
+  nameWithType: ScenicLandmarkShape
+  fullName: MicroService.Service.Models.ScenicLandmarkShape
+- uid: MicroService.Service.Models.SubwayShape
+  commentId: T:MicroService.Service.Models.SubwayShape
+  parent: MicroService.Service.Models
+  name: SubwayShape
+  nameWithType: SubwayShape
+  fullName: MicroService.Service.Models.SubwayShape
+- uid: MicroService.Service.Models.ZipCodeShape
+  commentId: T:MicroService.Service.Models.ZipCodeShape
+  name: ZipCodeShape
+  nameWithType: ZipCodeShape
+  fullName: MicroService.Service.Models.ZipCodeShape
+- uid: MicroService.Service.Models
+  commentId: N:MicroService.Service.Models
+  name: MicroService.Service.Models
+  nameWithType: MicroService.Service.Models
+  fullName: MicroService.Service.Models
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models

@@ -1,0 +1,60 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Data.Enum
+  commentId: N:MicroService.Data.Enum
+  id: MicroService.Data.Enum
+  children:
+  - MicroService.Data.Enum.Borough
+  - MicroService.Data.Enum.DsnyOperationZone
+  - MicroService.Data.Enum.NtaType
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Data.Enum
+  nameWithType: MicroService.Data.Enum
+  fullName: MicroService.Data.Enum
+  type: Namespace
+  assemblies:
+  - MicroService.Data
+references:
+- uid: MicroService.Data.Enum.Borough
+  commentId: T:MicroService.Data.Enum.Borough
+  parent: MicroService.Data.Enum
+  name: Borough
+  nameWithType: Borough
+  fullName: MicroService.Data.Enum.Borough
+- uid: MicroService.Data.Enum.DsnyOperationZone
+  commentId: T:MicroService.Data.Enum.DsnyOperationZone
+  parent: MicroService.Data.Enum
+  name: DsnyOperationZone
+  nameWithType: DsnyOperationZone
+  fullName: MicroService.Data.Enum.DsnyOperationZone
+- uid: MicroService.Data.Enum.NtaType
+  commentId: T:MicroService.Data.Enum.NtaType
+  parent: MicroService.Data.Enum
+  name: NtaType
+  nameWithType: NtaType
+  fullName: MicroService.Data.Enum.NtaType
+- uid: MicroService.Data.Enum
+  commentId: N:MicroService.Data.Enum
+  name: MicroService.Data.Enum
+  nameWithType: MicroService.Data.Enum
+  fullName: MicroService.Data.Enum
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Enum
+    name: Enum
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Enum
+    name: Enum

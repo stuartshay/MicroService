@@ -1,0 +1,460 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Data.Enum.DsnyOperationZone
+  commentId: T:MicroService.Data.Enum.DsnyOperationZone
+  id: DsnyOperationZone
+  parent: MicroService.Data.Enum
+  children:
+  - MicroService.Data.Enum.DsnyOperationZone.BKN
+  - MicroService.Data.Enum.DsnyOperationZone.BKS
+  - MicroService.Data.Enum.DsnyOperationZone.BX
+  - MicroService.Data.Enum.DsnyOperationZone.MN
+  - MicroService.Data.Enum.DsnyOperationZone.QE
+  - MicroService.Data.Enum.DsnyOperationZone.QW
+  - MicroService.Data.Enum.DsnyOperationZone.SI
+  langs:
+  - csharp
+  - vb
+  name: DsnyOperationZone
+  nameWithType: DsnyOperationZone
+  fullName: MicroService.Data.Enum.DsnyOperationZone
+  type: Enum
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/DsnyOperationZone.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: DsnyOperationZone
+    path: ../src/MicroService.Data/Enum/DsnyOperationZone.cs
+    startLine: 4
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: public enum DsnyOperationZone
+    content.vb: Public Enum DsnyOperationZone
+  extensionMethods:
+  - MicroService.Data.Enum.DsnyOperationZone.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+- uid: MicroService.Data.Enum.DsnyOperationZone.MN
+  commentId: F:MicroService.Data.Enum.DsnyOperationZone.MN
+  id: MN
+  parent: MicroService.Data.Enum.DsnyOperationZone
+  langs:
+  - csharp
+  - vb
+  name: MN
+  nameWithType: DsnyOperationZone.MN
+  fullName: MicroService.Data.Enum.DsnyOperationZone.MN
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/DsnyOperationZone.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: MN
+    path: ../src/MicroService.Data/Enum/DsnyOperationZone.cs
+    startLine: 6
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: MN = 1
+    return:
+      type: MicroService.Data.Enum.DsnyOperationZone
+- uid: MicroService.Data.Enum.DsnyOperationZone.BX
+  commentId: F:MicroService.Data.Enum.DsnyOperationZone.BX
+  id: BX
+  parent: MicroService.Data.Enum.DsnyOperationZone
+  langs:
+  - csharp
+  - vb
+  name: BX
+  nameWithType: DsnyOperationZone.BX
+  fullName: MicroService.Data.Enum.DsnyOperationZone.BX
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/DsnyOperationZone.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BX
+    path: ../src/MicroService.Data/Enum/DsnyOperationZone.cs
+    startLine: 9
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: BX = 2
+    return:
+      type: MicroService.Data.Enum.DsnyOperationZone
+- uid: MicroService.Data.Enum.DsnyOperationZone.BKN
+  commentId: F:MicroService.Data.Enum.DsnyOperationZone.BKN
+  id: BKN
+  parent: MicroService.Data.Enum.DsnyOperationZone
+  langs:
+  - csharp
+  - vb
+  name: BKN
+  nameWithType: DsnyOperationZone.BKN
+  fullName: MicroService.Data.Enum.DsnyOperationZone.BKN
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/DsnyOperationZone.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BKN
+    path: ../src/MicroService.Data/Enum/DsnyOperationZone.cs
+    startLine: 12
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: BKN = 3
+    return:
+      type: MicroService.Data.Enum.DsnyOperationZone
+- uid: MicroService.Data.Enum.DsnyOperationZone.BKS
+  commentId: F:MicroService.Data.Enum.DsnyOperationZone.BKS
+  id: BKS
+  parent: MicroService.Data.Enum.DsnyOperationZone
+  langs:
+  - csharp
+  - vb
+  name: BKS
+  nameWithType: DsnyOperationZone.BKS
+  fullName: MicroService.Data.Enum.DsnyOperationZone.BKS
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/DsnyOperationZone.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BKS
+    path: ../src/MicroService.Data/Enum/DsnyOperationZone.cs
+    startLine: 15
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: BKS = 4
+    return:
+      type: MicroService.Data.Enum.DsnyOperationZone
+- uid: MicroService.Data.Enum.DsnyOperationZone.QW
+  commentId: F:MicroService.Data.Enum.DsnyOperationZone.QW
+  id: QW
+  parent: MicroService.Data.Enum.DsnyOperationZone
+  langs:
+  - csharp
+  - vb
+  name: QW
+  nameWithType: DsnyOperationZone.QW
+  fullName: MicroService.Data.Enum.DsnyOperationZone.QW
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/DsnyOperationZone.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: QW
+    path: ../src/MicroService.Data/Enum/DsnyOperationZone.cs
+    startLine: 18
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: QW = 5
+    return:
+      type: MicroService.Data.Enum.DsnyOperationZone
+- uid: MicroService.Data.Enum.DsnyOperationZone.QE
+  commentId: F:MicroService.Data.Enum.DsnyOperationZone.QE
+  id: QE
+  parent: MicroService.Data.Enum.DsnyOperationZone
+  langs:
+  - csharp
+  - vb
+  name: QE
+  nameWithType: DsnyOperationZone.QE
+  fullName: MicroService.Data.Enum.DsnyOperationZone.QE
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/DsnyOperationZone.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: QE
+    path: ../src/MicroService.Data/Enum/DsnyOperationZone.cs
+    startLine: 21
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: QE = 6
+    return:
+      type: MicroService.Data.Enum.DsnyOperationZone
+- uid: MicroService.Data.Enum.DsnyOperationZone.SI
+  commentId: F:MicroService.Data.Enum.DsnyOperationZone.SI
+  id: SI
+  parent: MicroService.Data.Enum.DsnyOperationZone
+  langs:
+  - csharp
+  - vb
+  name: SI
+  nameWithType: DsnyOperationZone.SI
+  fullName: MicroService.Data.Enum.DsnyOperationZone.SI
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/DsnyOperationZone.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: SI
+    path: ../src/MicroService.Data/Enum/DsnyOperationZone.cs
+    startLine: 24
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: SI = 7
+    return:
+      type: MicroService.Data.Enum.DsnyOperationZone
+references:
+- uid: MicroService.Data.Enum
+  commentId: N:MicroService.Data.Enum
+  name: MicroService.Data.Enum
+  nameWithType: MicroService.Data.Enum
+  fullName: MicroService.Data.Enum
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Enum
+    name: Enum
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Enum
+    name: Enum
+- uid: MicroService.Data.Enum.DsnyOperationZone.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<DsnyOperationZone>(DsnyOperationZone)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<DsnyOperationZone>(DsnyOperationZone)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Data.Enum.DsnyOperationZone>(MicroService.Data.Enum.DsnyOperationZone)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of DsnyOperationZone)(DsnyOperationZone)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Data.Enum.DsnyOperationZone)(MicroService.Data.Enum.DsnyOperationZone)
+  name.vb: ArePropertiesNotNull(Of DsnyOperationZone)(DsnyOperationZone)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Data.Enum.DsnyOperationZone)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Data.Enum.DsnyOperationZone
+    name: DsnyOperationZone
+  - name: '>'
+  - name: (
+  - uid: MicroService.Data.Enum.DsnyOperationZone
+    name: DsnyOperationZone
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Data.Enum.DsnyOperationZone)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Data.Enum.DsnyOperationZone
+    name: DsnyOperationZone
+  - name: )
+  - name: (
+  - uid: MicroService.Data.Enum.DsnyOperationZone
+    name: DsnyOperationZone
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  isExternal: true
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.EnumHelper
+  commentId: T:MicroService.Service.Helpers.EnumHelper
+  parent: MicroService.Service.Helpers
+  name: EnumHelper
+  nameWithType: EnumHelper
+  fullName: MicroService.Service.Helpers.EnumHelper
+- uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  isExternal: true
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Data.Enum.DsnyOperationZone
+  commentId: T:MicroService.Data.Enum.DsnyOperationZone
+  parent: MicroService.Data.Enum
+  name: DsnyOperationZone
+  nameWithType: DsnyOperationZone
+  fullName: MicroService.Data.Enum.DsnyOperationZone
