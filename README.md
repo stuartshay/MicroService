@@ -46,3 +46,7 @@ This project primarily focuses on datasets related to NYC Monuments, Landmarks, 
 - [NYC OpenData](https://opendata.cityofnewyork.us/) - NYC Open Data
 - [LPC Designation Reports](https://www.nyc.gov/site/lpc/designations/designation-reports.page) - NYC Landmarks Preservation Commission Designation Reports
 - [Stuart Shay's Flickr](https://www.flickr.com/photos/stuartshay) - Stuart Shay's Flickr Collection of NYC Monuments, Landmarks, and Points of Interest
+
+## Developer Documentation
+
+- [DocFX](https://stuartshay.github.io/MicroService/)
