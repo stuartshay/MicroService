@@ -8,7 +8,7 @@
 
 ## Overview
 
-Working with [NYC OpenData](https://opendata.cityofnewyork.us/) can be an exciting and rewarding experience, as valuable insights can be gained from the vast resources available in New York City. However, once you begin working with various datasets, you may notice that data is not standardized, codes are used inconsistently across datasets, and can change from version to version. Spatial references can be in either NAD83 or WGS format, and formatting errors may occur in the results.
+Working with [NYC OpenData](https://opendata.cityofnewyork.us/) can be an exciting and rewarding experience, as valuable insights can be gained from the vast resources available in New York City. However, once you begin working with various datasets, you may notice that data is not standardized, codes are used inconsistently across datasets, and can change from version to version. Spatial references can be in either NAD83 or WGS84 format, and formatting errors may occur in the results.
 
 The goal of this API is to:
 
@@ -33,6 +33,12 @@ The goal of this API is to:
 - [Serilog](https://serilog.net/) - Logging for .NET
 - [xUnit.net](https://xunit.net/) - Unit Testing Framework
 - [Docker](https://www.docker.com/) - Containerization Platform
+
+## Datasets
+
+The Core focus of the Datasets used in this project are focused around NYC Monuments, Landmarks and Points of Interest. The Datasets are relatively small in size and versioned with the source code in this project.
+
+- [Shape Files](/files) - NYC Open Data Datasets Shape Files
 
 ## References
 
