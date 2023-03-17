@@ -1,0 +1,1728 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Helpers.CachedShapefileDataReader
+  commentId: T:MicroService.Service.Helpers.CachedShapefileDataReader
+  id: CachedShapefileDataReader
+  parent: MicroService.Service.Helpers
+  children:
+  - MicroService.Service.Helpers.CachedShapefileDataReader.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache,System.String,System.String)
+  - MicroService.Service.Helpers.CachedShapefileDataReader.GetFeatures
+  langs:
+  - csharp
+  - vb
+  name: CachedShapefileDataReader
+  nameWithType: CachedShapefileDataReader
+  fullName: MicroService.Service.Helpers.CachedShapefileDataReader
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: CachedShapefileDataReader
+    path: ../src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+    startLine: 19
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: 'public sealed class CachedShapefileDataReader : ShapefileDataReader, IEnumerable, IDataReader, IDisposable, IDataRecord, IShapefileDataReaderService'
+    content.vb: Public NotInheritable Class CachedShapefileDataReader Inherits ShapefileDataReader Implements IEnumerable, IDataReader, IDisposable, IDataRecord, IShapefileDataReaderService
+  inheritance:
+  - System.Object
+  - NetTopologySuite.IO.ShapefileDataReader
+  implements:
+  - System.Collections.IEnumerable
+  - System.Data.IDataReader
+  - System.IDisposable
+  - System.Data.IDataRecord
+  - MicroService.Service.Helpers.IShapefileDataReaderService
+  inheritedMembers:
+  - NetTopologySuite.IO.ShapefileDataReader.Reset
+  - NetTopologySuite.IO.ShapefileDataReader.Dispose
+  - NetTopologySuite.IO.ShapefileDataReader.Close
+  - NetTopologySuite.IO.ShapefileDataReader.NextResult
+  - NetTopologySuite.IO.ShapefileDataReader.Read
+  - NetTopologySuite.IO.ShapefileDataReader.GetSchemaTable
+  - NetTopologySuite.IO.ShapefileDataReader.GetInt32(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetValue(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.IsDBNull(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetByte(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetFieldType(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetDecimal(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetValues(System.Object[])
+  - NetTopologySuite.IO.ShapefileDataReader.GetName(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetInt64(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetDouble(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetBoolean(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetGuid(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetDateTime(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetOrdinal(System.String)
+  - NetTopologySuite.IO.ShapefileDataReader.GetDataTypeName(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetFloat(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetData(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetString(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetChar(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetInt16(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.GetEnumerator
+  - NetTopologySuite.IO.ShapefileDataReader.IsClosed
+  - NetTopologySuite.IO.ShapefileDataReader.Geometry
+  - NetTopologySuite.IO.ShapefileDataReader.RecordsAffected
+  - NetTopologySuite.IO.ShapefileDataReader.Depth
+  - NetTopologySuite.IO.ShapefileDataReader.RecordCount
+  - NetTopologySuite.IO.ShapefileDataReader.Item(System.String)
+  - NetTopologySuite.IO.ShapefileDataReader.Item(System.Int32)
+  - NetTopologySuite.IO.ShapefileDataReader.FieldCount
+  - NetTopologySuite.IO.ShapefileDataReader.ShapeHeader
+  - NetTopologySuite.IO.ShapefileDataReader.DbaseHeader
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MicroService.Service.Helpers.CachedShapefileDataReader.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  - NetTopologySuite.IO.ShapefileDataReader.MicroService.Service.Extensions.ShapefileDataReaderExtensions.ReadFeatures
+- uid: MicroService.Service.Helpers.CachedShapefileDataReader.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache,System.String,System.String)
+  commentId: M:MicroService.Service.Helpers.CachedShapefileDataReader.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache,System.String,System.String)
+  id: '#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache,System.String,System.String)'
+  parent: MicroService.Service.Helpers.CachedShapefileDataReader
+  langs:
+  - csharp
+  - vb
+  name: CachedShapefileDataReader(IMemoryCache, string, string)
+  nameWithType: CachedShapefileDataReader.CachedShapefileDataReader(IMemoryCache, string, string)
+  fullName: MicroService.Service.Helpers.CachedShapefileDataReader.CachedShapefileDataReader(Microsoft.Extensions.Caching.Memory.IMemoryCache, string, string)
+  type: Constructor
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: .ctor
+    path: ../src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+    startLine: 24
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: public CachedShapefileDataReader(IMemoryCache memoryCache, string shapeProperties, string fileName)
+    parameters:
+    - id: memoryCache
+      type: Microsoft.Extensions.Caching.Memory.IMemoryCache
+    - id: shapeProperties
+      type: System.String
+    - id: fileName
+      type: System.String
+    content.vb: Public Sub New(memoryCache As IMemoryCache, shapeProperties As String, fileName As String)
+  overload: MicroService.Service.Helpers.CachedShapefileDataReader.#ctor*
+  nameWithType.vb: CachedShapefileDataReader.New(IMemoryCache, String, String)
+  fullName.vb: MicroService.Service.Helpers.CachedShapefileDataReader.New(Microsoft.Extensions.Caching.Memory.IMemoryCache, String, String)
+  name.vb: New(IMemoryCache, String, String)
+- uid: MicroService.Service.Helpers.CachedShapefileDataReader.GetFeatures
+  commentId: M:MicroService.Service.Helpers.CachedShapefileDataReader.GetFeatures
+  id: GetFeatures
+  parent: MicroService.Service.Helpers.CachedShapefileDataReader
+  langs:
+  - csharp
+  - vb
+  name: GetFeatures()
+  nameWithType: CachedShapefileDataReader.GetFeatures()
+  fullName: MicroService.Service.Helpers.CachedShapefileDataReader.GetFeatures()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatures
+    path: ../src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+    startLine: 30
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: public IReadOnlyCollection<Feature> GetFeatures()
+    return:
+      type: System.Collections.Generic.IReadOnlyCollection{NetTopologySuite.Features.Feature}
+    content.vb: Public Function GetFeatures() As IReadOnlyCollection(Of Feature)
+  overload: MicroService.Service.Helpers.CachedShapefileDataReader.GetFeatures*
+  implements:
+  - MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures
+references:
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: NetTopologySuite.IO.ShapefileDataReader
+  commentId: T:NetTopologySuite.IO.ShapefileDataReader
+  parent: NetTopologySuite.IO
+  isExternal: true
+  name: ShapefileDataReader
+  nameWithType: ShapefileDataReader
+  fullName: NetTopologySuite.IO.ShapefileDataReader
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Data.IDataReader
+  commentId: T:System.Data.IDataReader
+  parent: System.Data
+  isExternal: true
+  name: IDataReader
+  nameWithType: IDataReader
+  fullName: System.Data.IDataReader
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Data.IDataRecord
+  commentId: T:System.Data.IDataRecord
+  parent: System.Data
+  isExternal: true
+  name: IDataRecord
+  nameWithType: IDataRecord
+  fullName: System.Data.IDataRecord
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService
+  commentId: T:MicroService.Service.Helpers.IShapefileDataReaderService
+  parent: MicroService.Service.Helpers
+  name: IShapefileDataReaderService
+  nameWithType: IShapefileDataReaderService
+  fullName: MicroService.Service.Helpers.IShapefileDataReaderService
+- uid: NetTopologySuite.IO.ShapefileDataReader.Reset
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.Reset
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: Reset()
+  nameWithType: ShapefileDataReader.Reset()
+  fullName: NetTopologySuite.IO.ShapefileDataReader.Reset()
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.Reset
+    name: Reset
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.Reset
+    name: Reset
+    isExternal: true
+  - name: (
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.Dispose
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.Dispose
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: Dispose()
+  nameWithType: ShapefileDataReader.Dispose()
+  fullName: NetTopologySuite.IO.ShapefileDataReader.Dispose()
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.Close
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.Close
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: Close()
+  nameWithType: ShapefileDataReader.Close()
+  fullName: NetTopologySuite.IO.ShapefileDataReader.Close()
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.Close
+    name: Close
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.Close
+    name: Close
+    isExternal: true
+  - name: (
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.NextResult
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.NextResult
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: NextResult()
+  nameWithType: ShapefileDataReader.NextResult()
+  fullName: NetTopologySuite.IO.ShapefileDataReader.NextResult()
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.NextResult
+    name: NextResult
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.NextResult
+    name: NextResult
+    isExternal: true
+  - name: (
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.Read
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.Read
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: Read()
+  nameWithType: ShapefileDataReader.Read()
+  fullName: NetTopologySuite.IO.ShapefileDataReader.Read()
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.Read
+    name: Read
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.Read
+    name: Read
+    isExternal: true
+  - name: (
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetSchemaTable
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetSchemaTable
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetSchemaTable()
+  nameWithType: ShapefileDataReader.GetSchemaTable()
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetSchemaTable()
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetSchemaTable
+    name: GetSchemaTable
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetSchemaTable
+    name: GetSchemaTable
+    isExternal: true
+  - name: (
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetInt32(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetInt32(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetInt32(int)
+  nameWithType: ShapefileDataReader.GetInt32(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetInt32(int)
+  nameWithType.vb: ShapefileDataReader.GetInt32(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetInt32(Integer)
+  name.vb: GetInt32(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetInt32(System.Int32)
+    name: GetInt32
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetInt32(System.Int32)
+    name: GetInt32
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetValue(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetValue(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetValue(int)
+  nameWithType: ShapefileDataReader.GetValue(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetValue(int)
+  nameWithType.vb: ShapefileDataReader.GetValue(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetValue(Integer)
+  name.vb: GetValue(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetValue(System.Int32)
+    name: GetValue
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetValue(System.Int32)
+    name: GetValue
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.IsDBNull(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.IsDBNull(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: IsDBNull(int)
+  nameWithType: ShapefileDataReader.IsDBNull(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.IsDBNull(int)
+  nameWithType.vb: ShapefileDataReader.IsDBNull(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.IsDBNull(Integer)
+  name.vb: IsDBNull(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.IsDBNull(System.Int32)
+    name: IsDBNull
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.IsDBNull(System.Int32)
+    name: IsDBNull
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetBytes(int, long, byte[], int, int)
+  nameWithType: ShapefileDataReader.GetBytes(int, long, byte[], int, int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetBytes(int, long, byte[], int, int)
+  nameWithType.vb: ShapefileDataReader.GetBytes(Integer, Long, Byte(), Integer, Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetBytes(Integer, Long, Byte(), Integer, Integer)
+  name.vb: GetBytes(Integer, Long, Byte(), Integer, Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)
+    name: GetBytes
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: long
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)
+    name: GetBytes
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetByte(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetByte(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetByte(int)
+  nameWithType: ShapefileDataReader.GetByte(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetByte(int)
+  nameWithType.vb: ShapefileDataReader.GetByte(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetByte(Integer)
+  name.vb: GetByte(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetByte(System.Int32)
+    name: GetByte
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetByte(System.Int32)
+    name: GetByte
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetFieldType(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetFieldType(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetFieldType(int)
+  nameWithType: ShapefileDataReader.GetFieldType(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetFieldType(int)
+  nameWithType.vb: ShapefileDataReader.GetFieldType(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetFieldType(Integer)
+  name.vb: GetFieldType(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetFieldType(System.Int32)
+    name: GetFieldType
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetFieldType(System.Int32)
+    name: GetFieldType
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetDecimal(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetDecimal(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetDecimal(int)
+  nameWithType: ShapefileDataReader.GetDecimal(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetDecimal(int)
+  nameWithType.vb: ShapefileDataReader.GetDecimal(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetDecimal(Integer)
+  name.vb: GetDecimal(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetDecimal(System.Int32)
+    name: GetDecimal
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetDecimal(System.Int32)
+    name: GetDecimal
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetValues(System.Object[])
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetValues(System.Object[])
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetValues(object[])
+  nameWithType: ShapefileDataReader.GetValues(object[])
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetValues(object[])
+  nameWithType.vb: ShapefileDataReader.GetValues(Object())
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetValues(Object())
+  name.vb: GetValues(Object())
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetValues(System.Object[])
+    name: GetValues
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetValues(System.Object[])
+    name: GetValues
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetName(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetName(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetName(int)
+  nameWithType: ShapefileDataReader.GetName(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetName(int)
+  nameWithType.vb: ShapefileDataReader.GetName(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetName(Integer)
+  name.vb: GetName(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetName(System.Int32)
+    name: GetName
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetName(System.Int32)
+    name: GetName
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetInt64(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetInt64(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetInt64(int)
+  nameWithType: ShapefileDataReader.GetInt64(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetInt64(int)
+  nameWithType.vb: ShapefileDataReader.GetInt64(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetInt64(Integer)
+  name.vb: GetInt64(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetInt64(System.Int32)
+    name: GetInt64
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetInt64(System.Int32)
+    name: GetInt64
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetDouble(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetDouble(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetDouble(int)
+  nameWithType: ShapefileDataReader.GetDouble(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetDouble(int)
+  nameWithType.vb: ShapefileDataReader.GetDouble(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetDouble(Integer)
+  name.vb: GetDouble(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetDouble(System.Int32)
+    name: GetDouble
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetDouble(System.Int32)
+    name: GetDouble
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetBoolean(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetBoolean(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetBoolean(int)
+  nameWithType: ShapefileDataReader.GetBoolean(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetBoolean(int)
+  nameWithType.vb: ShapefileDataReader.GetBoolean(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetBoolean(Integer)
+  name.vb: GetBoolean(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetBoolean(System.Int32)
+    name: GetBoolean
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetBoolean(System.Int32)
+    name: GetBoolean
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetGuid(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetGuid(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetGuid(int)
+  nameWithType: ShapefileDataReader.GetGuid(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetGuid(int)
+  nameWithType.vb: ShapefileDataReader.GetGuid(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetGuid(Integer)
+  name.vb: GetGuid(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetGuid(System.Int32)
+    name: GetGuid
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetGuid(System.Int32)
+    name: GetGuid
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetDateTime(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetDateTime(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetDateTime(int)
+  nameWithType: ShapefileDataReader.GetDateTime(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetDateTime(int)
+  nameWithType.vb: ShapefileDataReader.GetDateTime(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetDateTime(Integer)
+  name.vb: GetDateTime(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetDateTime(System.Int32)
+    name: GetDateTime
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetDateTime(System.Int32)
+    name: GetDateTime
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetOrdinal(System.String)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetOrdinal(System.String)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetOrdinal(string)
+  nameWithType: ShapefileDataReader.GetOrdinal(string)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetOrdinal(string)
+  nameWithType.vb: ShapefileDataReader.GetOrdinal(String)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetOrdinal(String)
+  name.vb: GetOrdinal(String)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetOrdinal(System.String)
+    name: GetOrdinal
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetOrdinal(System.String)
+    name: GetOrdinal
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetDataTypeName(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetDataTypeName(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetDataTypeName(int)
+  nameWithType: ShapefileDataReader.GetDataTypeName(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetDataTypeName(int)
+  nameWithType.vb: ShapefileDataReader.GetDataTypeName(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetDataTypeName(Integer)
+  name.vb: GetDataTypeName(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetDataTypeName(System.Int32)
+    name: GetDataTypeName
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetDataTypeName(System.Int32)
+    name: GetDataTypeName
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetFloat(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetFloat(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetFloat(int)
+  nameWithType: ShapefileDataReader.GetFloat(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetFloat(int)
+  nameWithType.vb: ShapefileDataReader.GetFloat(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetFloat(Integer)
+  name.vb: GetFloat(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetFloat(System.Int32)
+    name: GetFloat
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetFloat(System.Int32)
+    name: GetFloat
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetData(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetData(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetData(int)
+  nameWithType: ShapefileDataReader.GetData(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetData(int)
+  nameWithType.vb: ShapefileDataReader.GetData(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetData(Integer)
+  name.vb: GetData(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetData(System.Int32)
+    name: GetData
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetData(System.Int32)
+    name: GetData
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetChars(int, long, char[], int, int)
+  nameWithType: ShapefileDataReader.GetChars(int, long, char[], int, int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetChars(int, long, char[], int, int)
+  nameWithType.vb: ShapefileDataReader.GetChars(Integer, Long, Char(), Integer, Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetChars(Integer, Long, Char(), Integer, Integer)
+  name.vb: GetChars(Integer, Long, Char(), Integer, Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)
+    name: GetChars
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: long
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Char
+    name: char
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)
+    name: GetChars
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Char
+    name: Char
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetString(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetString(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetString(int)
+  nameWithType: ShapefileDataReader.GetString(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetString(int)
+  nameWithType.vb: ShapefileDataReader.GetString(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetString(Integer)
+  name.vb: GetString(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetString(System.Int32)
+    name: GetString
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetString(System.Int32)
+    name: GetString
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetChar(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetChar(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetChar(int)
+  nameWithType: ShapefileDataReader.GetChar(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetChar(int)
+  nameWithType.vb: ShapefileDataReader.GetChar(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetChar(Integer)
+  name.vb: GetChar(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetChar(System.Int32)
+    name: GetChar
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetChar(System.Int32)
+    name: GetChar
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetInt16(System.Int32)
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetInt16(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetInt16(int)
+  nameWithType: ShapefileDataReader.GetInt16(int)
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetInt16(int)
+  nameWithType.vb: ShapefileDataReader.GetInt16(Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.GetInt16(Integer)
+  name.vb: GetInt16(Integer)
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetInt16(System.Int32)
+    name: GetInt16
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetInt16(System.Int32)
+    name: GetInt16
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.GetEnumerator
+  commentId: M:NetTopologySuite.IO.ShapefileDataReader.GetEnumerator
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: GetEnumerator()
+  nameWithType: ShapefileDataReader.GetEnumerator()
+  fullName: NetTopologySuite.IO.ShapefileDataReader.GetEnumerator()
+  spec.csharp:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+  - name: (
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.IsClosed
+  commentId: P:NetTopologySuite.IO.ShapefileDataReader.IsClosed
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: IsClosed
+  nameWithType: ShapefileDataReader.IsClosed
+  fullName: NetTopologySuite.IO.ShapefileDataReader.IsClosed
+- uid: NetTopologySuite.IO.ShapefileDataReader.Geometry
+  commentId: P:NetTopologySuite.IO.ShapefileDataReader.Geometry
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: Geometry
+  nameWithType: ShapefileDataReader.Geometry
+  fullName: NetTopologySuite.IO.ShapefileDataReader.Geometry
+- uid: NetTopologySuite.IO.ShapefileDataReader.RecordsAffected
+  commentId: P:NetTopologySuite.IO.ShapefileDataReader.RecordsAffected
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: RecordsAffected
+  nameWithType: ShapefileDataReader.RecordsAffected
+  fullName: NetTopologySuite.IO.ShapefileDataReader.RecordsAffected
+- uid: NetTopologySuite.IO.ShapefileDataReader.Depth
+  commentId: P:NetTopologySuite.IO.ShapefileDataReader.Depth
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: Depth
+  nameWithType: ShapefileDataReader.Depth
+  fullName: NetTopologySuite.IO.ShapefileDataReader.Depth
+- uid: NetTopologySuite.IO.ShapefileDataReader.RecordCount
+  commentId: P:NetTopologySuite.IO.ShapefileDataReader.RecordCount
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: RecordCount
+  nameWithType: ShapefileDataReader.RecordCount
+  fullName: NetTopologySuite.IO.ShapefileDataReader.RecordCount
+- uid: NetTopologySuite.IO.ShapefileDataReader.Item(System.String)
+  commentId: P:NetTopologySuite.IO.ShapefileDataReader.Item(System.String)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: this[string]
+  nameWithType: ShapefileDataReader.this[string]
+  fullName: NetTopologySuite.IO.ShapefileDataReader.this[string]
+  nameWithType.vb: ShapefileDataReader.this[](String)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.this[](String)
+  name.vb: this[](String)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ']'
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.Item(System.String)
+    name: this[]
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.Item(System.Int32)
+  commentId: P:NetTopologySuite.IO.ShapefileDataReader.Item(System.Int32)
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: this[int]
+  nameWithType: ShapefileDataReader.this[int]
+  fullName: NetTopologySuite.IO.ShapefileDataReader.this[int]
+  nameWithType.vb: ShapefileDataReader.this[](Integer)
+  fullName.vb: NetTopologySuite.IO.ShapefileDataReader.this[](Integer)
+  name.vb: this[](Integer)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ']'
+  spec.vb:
+  - uid: NetTopologySuite.IO.ShapefileDataReader.Item(System.Int32)
+    name: this[]
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.FieldCount
+  commentId: P:NetTopologySuite.IO.ShapefileDataReader.FieldCount
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: FieldCount
+  nameWithType: ShapefileDataReader.FieldCount
+  fullName: NetTopologySuite.IO.ShapefileDataReader.FieldCount
+- uid: NetTopologySuite.IO.ShapefileDataReader.ShapeHeader
+  commentId: P:NetTopologySuite.IO.ShapefileDataReader.ShapeHeader
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: ShapeHeader
+  nameWithType: ShapefileDataReader.ShapeHeader
+  fullName: NetTopologySuite.IO.ShapefileDataReader.ShapeHeader
+- uid: NetTopologySuite.IO.ShapefileDataReader.DbaseHeader
+  commentId: P:NetTopologySuite.IO.ShapefileDataReader.DbaseHeader
+  parent: NetTopologySuite.IO.ShapefileDataReader
+  isExternal: true
+  name: DbaseHeader
+  nameWithType: ShapefileDataReader.DbaseHeader
+  fullName: NetTopologySuite.IO.ShapefileDataReader.DbaseHeader
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: MicroService.Service.Helpers.CachedShapefileDataReader.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<CachedShapefileDataReader>(CachedShapefileDataReader)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<CachedShapefileDataReader>(CachedShapefileDataReader)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Helpers.CachedShapefileDataReader>(MicroService.Service.Helpers.CachedShapefileDataReader)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of CachedShapefileDataReader)(CachedShapefileDataReader)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Helpers.CachedShapefileDataReader)(MicroService.Service.Helpers.CachedShapefileDataReader)
+  name.vb: ArePropertiesNotNull(Of CachedShapefileDataReader)(CachedShapefileDataReader)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Helpers.CachedShapefileDataReader)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Helpers.CachedShapefileDataReader
+    name: CachedShapefileDataReader
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Helpers.CachedShapefileDataReader
+    name: CachedShapefileDataReader
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Helpers.CachedShapefileDataReader)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Helpers.CachedShapefileDataReader
+    name: CachedShapefileDataReader
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Helpers.CachedShapefileDataReader
+    name: CachedShapefileDataReader
+  - name: )
+- uid: NetTopologySuite.IO.ShapefileDataReader.MicroService.Service.Extensions.ShapefileDataReaderExtensions.ReadFeatures
+  commentId: M:MicroService.Service.Extensions.ShapefileDataReaderExtensions.ReadFeatures(NetTopologySuite.IO.ShapefileDataReader)
+  parent: MicroService.Service.Extensions.ShapefileDataReaderExtensions
+  definition: MicroService.Service.Extensions.ShapefileDataReaderExtensions.ReadFeatures(NetTopologySuite.IO.ShapefileDataReader)
+  name: ReadFeatures(ShapefileDataReader)
+  nameWithType: ShapefileDataReaderExtensions.ReadFeatures(ShapefileDataReader)
+  fullName: MicroService.Service.Extensions.ShapefileDataReaderExtensions.ReadFeatures(NetTopologySuite.IO.ShapefileDataReader)
+  spec.csharp:
+  - uid: MicroService.Service.Extensions.ShapefileDataReaderExtensions.ReadFeatures(NetTopologySuite.IO.ShapefileDataReader)
+    name: ReadFeatures
+  - name: (
+  - uid: NetTopologySuite.IO.ShapefileDataReader
+    name: ShapefileDataReader
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Extensions.ShapefileDataReaderExtensions.ReadFeatures(NetTopologySuite.IO.ShapefileDataReader)
+    name: ReadFeatures
+  - name: (
+  - uid: NetTopologySuite.IO.ShapefileDataReader
+    name: ShapefileDataReader
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NetTopologySuite.IO
+  commentId: N:NetTopologySuite.IO
+  isExternal: true
+  name: NetTopologySuite.IO
+  nameWithType: NetTopologySuite.IO
+  fullName: NetTopologySuite.IO
+  spec.csharp:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.IO
+    name: IO
+    isExternal: true
+  spec.vb:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.IO
+    name: IO
+    isExternal: true
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+- uid: System.Data
+  commentId: N:System.Data
+  isExternal: true
+  name: System.Data
+  nameWithType: System.Data
+  fullName: System.Data
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Data
+    name: Data
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Data
+    name: Data
+    isExternal: true
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Extensions.ShapefileDataReaderExtensions.ReadFeatures(NetTopologySuite.IO.ShapefileDataReader)
+  commentId: M:MicroService.Service.Extensions.ShapefileDataReaderExtensions.ReadFeatures(NetTopologySuite.IO.ShapefileDataReader)
+  isExternal: true
+  name: ReadFeatures(ShapefileDataReader)
+  nameWithType: ShapefileDataReaderExtensions.ReadFeatures(ShapefileDataReader)
+  fullName: MicroService.Service.Extensions.ShapefileDataReaderExtensions.ReadFeatures(NetTopologySuite.IO.ShapefileDataReader)
+  spec.csharp:
+  - uid: MicroService.Service.Extensions.ShapefileDataReaderExtensions.ReadFeatures(NetTopologySuite.IO.ShapefileDataReader)
+    name: ReadFeatures
+  - name: (
+  - uid: NetTopologySuite.IO.ShapefileDataReader
+    name: ShapefileDataReader
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Extensions.ShapefileDataReaderExtensions.ReadFeatures(NetTopologySuite.IO.ShapefileDataReader)
+    name: ReadFeatures
+  - name: (
+  - uid: NetTopologySuite.IO.ShapefileDataReader
+    name: ShapefileDataReader
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Extensions.ShapefileDataReaderExtensions
+  commentId: T:MicroService.Service.Extensions.ShapefileDataReaderExtensions
+  parent: MicroService.Service.Extensions
+  name: ShapefileDataReaderExtensions
+  nameWithType: ShapefileDataReaderExtensions
+  fullName: MicroService.Service.Extensions.ShapefileDataReaderExtensions
+- uid: MicroService.Service.Extensions
+  commentId: N:MicroService.Service.Extensions
+  name: MicroService.Service.Extensions
+  nameWithType: MicroService.Service.Extensions
+  fullName: MicroService.Service.Extensions
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Extensions
+    name: Extensions
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Extensions
+    name: Extensions
+- uid: MicroService.Service.Helpers.CachedShapefileDataReader.#ctor*
+  commentId: Overload:MicroService.Service.Helpers.CachedShapefileDataReader.#ctor
+  name: CachedShapefileDataReader
+  nameWithType: CachedShapefileDataReader.CachedShapefileDataReader
+  fullName: MicroService.Service.Helpers.CachedShapefileDataReader.CachedShapefileDataReader
+  nameWithType.vb: CachedShapefileDataReader.New
+  fullName.vb: MicroService.Service.Helpers.CachedShapefileDataReader.New
+  name.vb: New
+- uid: Microsoft.Extensions.Caching.Memory.IMemoryCache
+  commentId: T:Microsoft.Extensions.Caching.Memory.IMemoryCache
+  parent: Microsoft.Extensions.Caching.Memory
+  isExternal: true
+  name: IMemoryCache
+  nameWithType: IMemoryCache
+  fullName: Microsoft.Extensions.Caching.Memory.IMemoryCache
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Microsoft.Extensions.Caching.Memory
+  commentId: N:Microsoft.Extensions.Caching.Memory
+  isExternal: true
+  name: Microsoft.Extensions.Caching.Memory
+  nameWithType: Microsoft.Extensions.Caching.Memory
+  fullName: Microsoft.Extensions.Caching.Memory
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions.Caching
+    name: Caching
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions.Caching.Memory
+    name: Memory
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions.Caching
+    name: Caching
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Extensions.Caching.Memory
+    name: Memory
+    isExternal: true
+- uid: MicroService.Service.Helpers.CachedShapefileDataReader.GetFeatures*
+  commentId: Overload:MicroService.Service.Helpers.CachedShapefileDataReader.GetFeatures
+  name: GetFeatures
+  nameWithType: CachedShapefileDataReader.GetFeatures
+  fullName: MicroService.Service.Helpers.CachedShapefileDataReader.GetFeatures
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures
+  commentId: M:MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures
+  parent: MicroService.Service.Helpers.IShapefileDataReaderService
+  name: GetFeatures()
+  nameWithType: IShapefileDataReaderService.GetFeatures()
+  fullName: MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures()
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures
+    name: GetFeatures
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures
+    name: GetFeatures
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyCollection{NetTopologySuite.Features.Feature}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{NetTopologySuite.Features.Feature}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  name: IReadOnlyCollection<Feature>
+  nameWithType: IReadOnlyCollection<Feature>
+  fullName: System.Collections.Generic.IReadOnlyCollection<NetTopologySuite.Features.Feature>
+  nameWithType.vb: IReadOnlyCollection(Of Feature)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of NetTopologySuite.Features.Feature)
+  name.vb: IReadOnlyCollection(Of Feature)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: <
+  - uid: NetTopologySuite.Features.Feature
+    name: Feature
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NetTopologySuite.Features.Feature
+    name: Feature
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true

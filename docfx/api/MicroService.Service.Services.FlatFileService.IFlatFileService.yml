@@ -1,0 +1,268 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Services.FlatFileService.IFlatFileService
+  commentId: T:MicroService.Service.Services.FlatFileService.IFlatFileService
+  id: IFlatFileService
+  parent: MicroService.Service.Services.FlatFileService
+  children:
+  - MicroService.Service.Services.FlatFileService.IFlatFileService.GetAll
+  langs:
+  - csharp
+  - vb
+  name: IFlatFileService
+  nameWithType: IFlatFileService
+  fullName: MicroService.Service.Services.FlatFileService.IFlatFileService
+  type: Interface
+  source:
+    remote:
+      path: src/MicroService.Service/Services/FlatFileService/IFlatFileService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: IFlatFileService
+    path: ../src/MicroService.Service/Services/FlatFileService/IFlatFileService.cs
+    startLine: 5
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.FlatFileService
+  syntax:
+    content: public interface IFlatFileService
+    content.vb: Public Interface IFlatFileService
+  extensionMethods:
+  - MicroService.Service.Services.FlatFileService.IFlatFileService.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+- uid: MicroService.Service.Services.FlatFileService.IFlatFileService.GetAll
+  commentId: M:MicroService.Service.Services.FlatFileService.IFlatFileService.GetAll
+  id: GetAll
+  parent: MicroService.Service.Services.FlatFileService.IFlatFileService
+  langs:
+  - csharp
+  - vb
+  name: GetAll()
+  nameWithType: IFlatFileService.GetAll()
+  fullName: MicroService.Service.Services.FlatFileService.IFlatFileService.GetAll()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Services/FlatFileService/IFlatFileService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetAll
+    path: ../src/MicroService.Service/Services/FlatFileService/IFlatFileService.cs
+    startLine: 7
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.FlatFileService
+  syntax:
+    content: IEnumerable<FlatFileBase> GetAll()
+    return:
+      type: System.Collections.Generic.IEnumerable{MicroService.Service.Models.Base.FlatFileBase}
+    content.vb: Function GetAll() As IEnumerable(Of FlatFileBase)
+  overload: MicroService.Service.Services.FlatFileService.IFlatFileService.GetAll*
+references:
+- uid: MicroService.Service.Services.FlatFileService
+  commentId: N:MicroService.Service.Services.FlatFileService
+  name: MicroService.Service.Services.FlatFileService
+  nameWithType: MicroService.Service.Services.FlatFileService
+  fullName: MicroService.Service.Services.FlatFileService
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  - name: .
+  - uid: MicroService.Service.Services.FlatFileService
+    name: FlatFileService
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  - name: .
+  - uid: MicroService.Service.Services.FlatFileService
+    name: FlatFileService
+- uid: MicroService.Service.Services.FlatFileService.IFlatFileService.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<IFlatFileService>(IFlatFileService)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<IFlatFileService>(IFlatFileService)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Services.FlatFileService.IFlatFileService>(MicroService.Service.Services.FlatFileService.IFlatFileService)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of IFlatFileService)(IFlatFileService)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Services.FlatFileService.IFlatFileService)(MicroService.Service.Services.FlatFileService.IFlatFileService)
+  name.vb: ArePropertiesNotNull(Of IFlatFileService)(IFlatFileService)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Services.FlatFileService.IFlatFileService)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Services.FlatFileService.IFlatFileService
+    name: IFlatFileService
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Services.FlatFileService.IFlatFileService
+    name: IFlatFileService
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Services.FlatFileService.IFlatFileService)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Services.FlatFileService.IFlatFileService
+    name: IFlatFileService
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Services.FlatFileService.IFlatFileService
+    name: IFlatFileService
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Services.FlatFileService.IFlatFileService.GetAll*
+  commentId: Overload:MicroService.Service.Services.FlatFileService.IFlatFileService.GetAll
+  name: GetAll
+  nameWithType: IFlatFileService.GetAll
+  fullName: MicroService.Service.Services.FlatFileService.IFlatFileService.GetAll
+- uid: System.Collections.Generic.IEnumerable{MicroService.Service.Models.Base.FlatFileBase}
+  commentId: T:System.Collections.Generic.IEnumerable{MicroService.Service.Models.Base.FlatFileBase}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<FlatFileBase>
+  nameWithType: IEnumerable<FlatFileBase>
+  fullName: System.Collections.Generic.IEnumerable<MicroService.Service.Models.Base.FlatFileBase>
+  nameWithType.vb: IEnumerable(Of FlatFileBase)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of MicroService.Service.Models.Base.FlatFileBase)
+  name.vb: IEnumerable(Of FlatFileBase)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: MicroService.Service.Models.Base.FlatFileBase
+    name: FlatFileBase
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.Base.FlatFileBase
+    name: FlatFileBase
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true

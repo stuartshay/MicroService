@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.WebApi.Extensions.Swagger
+  commentId: N:MicroService.WebApi.Extensions.Swagger
+  id: MicroService.WebApi.Extensions.Swagger
+  children:
+  - MicroService.WebApi.Extensions.Swagger.ConfigureSwaggerOptions
+  - MicroService.WebApi.Extensions.Swagger.SwaggerDocumentFilter
+  - MicroService.WebApi.Extensions.Swagger.SwaggerFeatureRequestExamples
+  langs:
+  - csharp
+  - vb
+  name: MicroService.WebApi.Extensions.Swagger
+  nameWithType: MicroService.WebApi.Extensions.Swagger
+  fullName: MicroService.WebApi.Extensions.Swagger
+  type: Namespace
+  assemblies:
+  - MicroService.WebApi
+references:
+- uid: MicroService.WebApi.Extensions.Swagger.ConfigureSwaggerOptions
+  commentId: T:MicroService.WebApi.Extensions.Swagger.ConfigureSwaggerOptions
+  name: ConfigureSwaggerOptions
+  nameWithType: ConfigureSwaggerOptions
+  fullName: MicroService.WebApi.Extensions.Swagger.ConfigureSwaggerOptions
+- uid: MicroService.WebApi.Extensions.Swagger.SwaggerDocumentFilter
+  commentId: T:MicroService.WebApi.Extensions.Swagger.SwaggerDocumentFilter
+  name: SwaggerDocumentFilter
+  nameWithType: SwaggerDocumentFilter
+  fullName: MicroService.WebApi.Extensions.Swagger.SwaggerDocumentFilter
+- uid: MicroService.WebApi.Extensions.Swagger.SwaggerFeatureRequestExamples
+  commentId: T:MicroService.WebApi.Extensions.Swagger.SwaggerFeatureRequestExamples
+  name: SwaggerFeatureRequestExamples
+  nameWithType: SwaggerFeatureRequestExamples
+  fullName: MicroService.WebApi.Extensions.Swagger.SwaggerFeatureRequestExamples

@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.WebApi.Extensions
+  commentId: N:MicroService.WebApi.Extensions
+  id: MicroService.WebApi.Extensions
+  children:
+  - MicroService.WebApi.Extensions.FolderHealthCheck
+  - MicroService.WebApi.Extensions.ServiceCollectionExtensions
+  - MicroService.WebApi.Extensions.SystemHealthCheckBuilderExtensions
+  langs:
+  - csharp
+  - vb
+  name: MicroService.WebApi.Extensions
+  nameWithType: MicroService.WebApi.Extensions
+  fullName: MicroService.WebApi.Extensions
+  type: Namespace
+  assemblies:
+  - MicroService.WebApi
+references:
+- uid: MicroService.WebApi.Extensions.ServiceCollectionExtensions
+  commentId: T:MicroService.WebApi.Extensions.ServiceCollectionExtensions
+  name: ServiceCollectionExtensions
+  nameWithType: ServiceCollectionExtensions
+  fullName: MicroService.WebApi.Extensions.ServiceCollectionExtensions
+- uid: MicroService.WebApi.Extensions.SystemHealthCheckBuilderExtensions
+  commentId: T:MicroService.WebApi.Extensions.SystemHealthCheckBuilderExtensions
+  name: SystemHealthCheckBuilderExtensions
+  nameWithType: SystemHealthCheckBuilderExtensions
+  fullName: MicroService.WebApi.Extensions.SystemHealthCheckBuilderExtensions
+- uid: MicroService.WebApi.Extensions.FolderHealthCheck
+  commentId: T:MicroService.WebApi.Extensions.FolderHealthCheck
+  name: FolderHealthCheck
+  nameWithType: FolderHealthCheck
+  fullName: MicroService.WebApi.Extensions.FolderHealthCheck

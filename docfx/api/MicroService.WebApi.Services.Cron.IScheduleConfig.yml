@@ -1,0 +1,250 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.WebApi.Services.Cron.IScheduleConfig
+  commentId: T:MicroService.WebApi.Services.Cron.IScheduleConfig
+  id: IScheduleConfig
+  parent: MicroService.WebApi.Services.Cron
+  children:
+  - MicroService.WebApi.Services.Cron.IScheduleConfig.CronExpression
+  - MicroService.WebApi.Services.Cron.IScheduleConfig.TimeZoneInfo
+  langs:
+  - csharp
+  - vb
+  name: IScheduleConfig
+  nameWithType: IScheduleConfig
+  fullName: MicroService.WebApi.Services.Cron.IScheduleConfig
+  type: Interface
+  source:
+    remote:
+      path: src/MicroService.WebApi/Services/Cron/ScheduleConfig.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: IScheduleConfig
+    path: ../src/MicroService.WebApi/Services/Cron/ScheduleConfig.cs
+    startLine: 5
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Services.Cron
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: public interface IScheduleConfig
+    content.vb: Public Interface IScheduleConfig
+  extensionMethods:
+  - MicroService.WebApi.Services.Cron.IScheduleConfig.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+- uid: MicroService.WebApi.Services.Cron.IScheduleConfig.CronExpression
+  commentId: P:MicroService.WebApi.Services.Cron.IScheduleConfig.CronExpression
+  id: CronExpression
+  parent: MicroService.WebApi.Services.Cron.IScheduleConfig
+  langs:
+  - csharp
+  - vb
+  name: CronExpression
+  nameWithType: IScheduleConfig.CronExpression
+  fullName: MicroService.WebApi.Services.Cron.IScheduleConfig.CronExpression
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.WebApi/Services/Cron/ScheduleConfig.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: CronExpression
+    path: ../src/MicroService.WebApi/Services/Cron/ScheduleConfig.cs
+    startLine: 10
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Services.Cron
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: string? CronExpression { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property CronExpression As String
+  overload: MicroService.WebApi.Services.Cron.IScheduleConfig.CronExpression*
+- uid: MicroService.WebApi.Services.Cron.IScheduleConfig.TimeZoneInfo
+  commentId: P:MicroService.WebApi.Services.Cron.IScheduleConfig.TimeZoneInfo
+  id: TimeZoneInfo
+  parent: MicroService.WebApi.Services.Cron.IScheduleConfig
+  langs:
+  - csharp
+  - vb
+  name: TimeZoneInfo
+  nameWithType: IScheduleConfig.TimeZoneInfo
+  fullName: MicroService.WebApi.Services.Cron.IScheduleConfig.TimeZoneInfo
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.WebApi/Services/Cron/ScheduleConfig.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: TimeZoneInfo
+    path: ../src/MicroService.WebApi/Services/Cron/ScheduleConfig.cs
+    startLine: 15
+  assemblies:
+  - MicroService.WebApi
+  namespace: MicroService.WebApi.Services.Cron
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: TimeZoneInfo? TimeZoneInfo { get; set; }
+    parameters: []
+    return:
+      type: System.TimeZoneInfo
+    content.vb: Property TimeZoneInfo As TimeZoneInfo
+  overload: MicroService.WebApi.Services.Cron.IScheduleConfig.TimeZoneInfo*
+references:
+- uid: MicroService.WebApi.Services.Cron
+  commentId: N:MicroService.WebApi.Services.Cron
+  name: MicroService.WebApi.Services.Cron
+  nameWithType: MicroService.WebApi.Services.Cron
+  fullName: MicroService.WebApi.Services.Cron
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.WebApi
+    name: WebApi
+  - name: .
+  - uid: MicroService.WebApi.Services
+    name: Services
+  - name: .
+  - uid: MicroService.WebApi.Services.Cron
+    name: Cron
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.WebApi
+    name: WebApi
+  - name: .
+  - uid: MicroService.WebApi.Services
+    name: Services
+  - name: .
+  - uid: MicroService.WebApi.Services.Cron
+    name: Cron
+- uid: MicroService.WebApi.Services.Cron.IScheduleConfig.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<IScheduleConfig>(IScheduleConfig)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<IScheduleConfig>(IScheduleConfig)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.WebApi.Services.Cron.IScheduleConfig>(MicroService.WebApi.Services.Cron.IScheduleConfig)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of IScheduleConfig)(IScheduleConfig)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.WebApi.Services.Cron.IScheduleConfig)(MicroService.WebApi.Services.Cron.IScheduleConfig)
+  name.vb: ArePropertiesNotNull(Of IScheduleConfig)(IScheduleConfig)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.WebApi.Services.Cron.IScheduleConfig)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.WebApi.Services.Cron.IScheduleConfig
+    name: IScheduleConfig
+  - name: '>'
+  - name: (
+  - uid: MicroService.WebApi.Services.Cron.IScheduleConfig
+    name: IScheduleConfig
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.WebApi.Services.Cron.IScheduleConfig)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.WebApi.Services.Cron.IScheduleConfig
+    name: IScheduleConfig
+  - name: )
+  - name: (
+  - uid: MicroService.WebApi.Services.Cron.IScheduleConfig
+    name: IScheduleConfig
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.WebApi.Services.Cron.IScheduleConfig.CronExpression*
+  commentId: Overload:MicroService.WebApi.Services.Cron.IScheduleConfig.CronExpression
+  name: CronExpression
+  nameWithType: IScheduleConfig.CronExpression
+  fullName: MicroService.WebApi.Services.Cron.IScheduleConfig.CronExpression
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.WebApi.Services.Cron.IScheduleConfig.TimeZoneInfo*
+  commentId: Overload:MicroService.WebApi.Services.Cron.IScheduleConfig.TimeZoneInfo
+  name: TimeZoneInfo
+  nameWithType: IScheduleConfig.TimeZoneInfo
+  fullName: MicroService.WebApi.Services.Cron.IScheduleConfig.TimeZoneInfo
+- uid: System.TimeZoneInfo
+  commentId: T:System.TimeZoneInfo
+  parent: System
+  isExternal: true
+  name: TimeZoneInfo
+  nameWithType: TimeZoneInfo
+  fullName: System.TimeZoneInfo

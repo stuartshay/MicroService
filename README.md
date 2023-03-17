@@ -18,8 +18,9 @@ This API aims to:
 
 ### Key Features
 
+- **RESTful API**: This API follows the REST architecture, providing a standardized, easy-to-use interface to interact with and manipulate the data.
 - **Data Standardization**: The API ensures a consistent data structure and terminology, simplifying the analysis and usage of NYC Open Data.
-- **GeoSpatial Support**: With support for both NAD83 and WGS84 spatial reference systems, the API provides accurate and consistent geospatial data representation. Data is returned in GeoJSON format for easy integration with other applications.
+- **GeoSpatial Support**: With support for both NAD83 and WGS spatial reference systems, the API provides accurate and consistent geospatial data representation. Data is returned in GeoJSON format for easy integration with other applications.
 - **Centralized Repository**: A well-organized, centralized location for all ESRI Shape Files related to NYC Open Data.
 - **Simplified ETL Workflow**: The API minimizes manual interventions and streamlines the ETL process by storing data on a traditional file share, making it accessible to other applications in the stack.
 - **Data Enrichment**: Offering additional data enrichment capabilities, the API enhances the quality and usefulness of the available datasets.
@@ -46,11 +47,6 @@ This project primarily focuses on datasets related to NYC Monuments, Landmarks, 
 - [LPC Designation Reports](https://www.nyc.gov/site/lpc/designations/designation-reports.page) - NYC Landmarks Preservation Commission Designation Reports
 - [Stuart Shay's Flickr](https://www.flickr.com/photos/stuartshay) - Stuart Shay's Flickr Collection of NYC Monuments, Landmarks, and Points of Interest
 
-## Sonar
+## Developer Documentation
 
-```
-dotnet sonarscanner begin /k:"MicroService.Api" /d:sonar.host.url="http://192.168.1.172:9100" /d:sonar.exclusions=Program.cs,**/Extensions/**/*.cs  /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.login="sqp_b0b06eef83dbde81db33f8db66c89554c41f9831"
-dotnet build --no-incremental
-dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml'
-dotnet sonarscanner end /d:sonar.login="sqp_b0b06eef83dbde81db33f8db66c89554c41f9831"
-```
+- [DocFX](https://stuartshay.github.io/MicroService/)

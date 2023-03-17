@@ -1,0 +1,522 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Data.Repository.IRepository`1
+  commentId: T:MicroService.Data.Repository.IRepository`1
+  id: IRepository`1
+  parent: MicroService.Data.Repository
+  children:
+  - MicroService.Data.Repository.IRepository`1.Add(`0)
+  - MicroService.Data.Repository.IRepository`1.FindAll
+  - MicroService.Data.Repository.IRepository`1.FindById(System.Int32)
+  - MicroService.Data.Repository.IRepository`1.Remove(System.Int32)
+  - MicroService.Data.Repository.IRepository`1.Update(`0)
+  langs:
+  - csharp
+  - vb
+  name: IRepository<T>
+  nameWithType: IRepository<T>
+  fullName: MicroService.Data.Repository.IRepository<T>
+  type: Interface
+  source:
+    remote:
+      path: src/MicroService.Data/Repository/IRepository.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: IRepository
+    path: ../src/MicroService.Data/Repository/IRepository.cs
+    startLine: 6
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Repository
+  syntax:
+    content: 'public interface IRepository<T> where T : BaseEntity'
+    typeParameters:
+    - id: T
+    content.vb: Public Interface IRepository(Of T As BaseEntity)
+  extensionMethods:
+  - MicroService.Data.Repository.IRepository`1.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  nameWithType.vb: IRepository(Of T)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T)
+  name.vb: IRepository(Of T)
+- uid: MicroService.Data.Repository.IRepository`1.Add(`0)
+  commentId: M:MicroService.Data.Repository.IRepository`1.Add(`0)
+  id: Add(`0)
+  parent: MicroService.Data.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: Add(T)
+  nameWithType: IRepository<T>.Add(T)
+  fullName: MicroService.Data.Repository.IRepository<T>.Add(T)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Data/Repository/IRepository.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Add
+    path: ../src/MicroService.Data/Repository/IRepository.cs
+    startLine: 8
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Repository
+  syntax:
+    content: Task Add(T item)
+    parameters:
+    - id: item
+      type: '{T}'
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function Add(item As T) As Task
+  overload: MicroService.Data.Repository.IRepository`1.Add*
+  nameWithType.vb: IRepository(Of T).Add(T)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).Add(T)
+- uid: MicroService.Data.Repository.IRepository`1.Remove(System.Int32)
+  commentId: M:MicroService.Data.Repository.IRepository`1.Remove(System.Int32)
+  id: Remove(System.Int32)
+  parent: MicroService.Data.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: Remove(int)
+  nameWithType: IRepository<T>.Remove(int)
+  fullName: MicroService.Data.Repository.IRepository<T>.Remove(int)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Data/Repository/IRepository.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Remove
+    path: ../src/MicroService.Data/Repository/IRepository.cs
+    startLine: 10
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Repository
+  syntax:
+    content: Task Remove(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function Remove(id As Integer) As Task
+  overload: MicroService.Data.Repository.IRepository`1.Remove*
+  nameWithType.vb: IRepository(Of T).Remove(Integer)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).Remove(Integer)
+  name.vb: Remove(Integer)
+- uid: MicroService.Data.Repository.IRepository`1.Update(`0)
+  commentId: M:MicroService.Data.Repository.IRepository`1.Update(`0)
+  id: Update(`0)
+  parent: MicroService.Data.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: Update(T)
+  nameWithType: IRepository<T>.Update(T)
+  fullName: MicroService.Data.Repository.IRepository<T>.Update(T)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Data/Repository/IRepository.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Update
+    path: ../src/MicroService.Data/Repository/IRepository.cs
+    startLine: 12
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Repository
+  syntax:
+    content: Task Update(T item)
+    parameters:
+    - id: item
+      type: '{T}'
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function Update(item As T) As Task
+  overload: MicroService.Data.Repository.IRepository`1.Update*
+  nameWithType.vb: IRepository(Of T).Update(T)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).Update(T)
+- uid: MicroService.Data.Repository.IRepository`1.FindById(System.Int32)
+  commentId: M:MicroService.Data.Repository.IRepository`1.FindById(System.Int32)
+  id: FindById(System.Int32)
+  parent: MicroService.Data.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: FindById(int)
+  nameWithType: IRepository<T>.FindById(int)
+  fullName: MicroService.Data.Repository.IRepository<T>.FindById(int)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Data/Repository/IRepository.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: FindById
+    path: ../src/MicroService.Data/Repository/IRepository.cs
+    startLine: 14
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Repository
+  syntax:
+    content: Task<T> FindById(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+    content.vb: Function FindById(id As Integer) As Task(Of T)
+  overload: MicroService.Data.Repository.IRepository`1.FindById*
+  nameWithType.vb: IRepository(Of T).FindById(Integer)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).FindById(Integer)
+  name.vb: FindById(Integer)
+- uid: MicroService.Data.Repository.IRepository`1.FindAll
+  commentId: M:MicroService.Data.Repository.IRepository`1.FindAll
+  id: FindAll
+  parent: MicroService.Data.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: FindAll()
+  nameWithType: IRepository<T>.FindAll()
+  fullName: MicroService.Data.Repository.IRepository<T>.FindAll()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Data/Repository/IRepository.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: FindAll
+    path: ../src/MicroService.Data/Repository/IRepository.cs
+    startLine: 16
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Repository
+  syntax:
+    content: Task<IEnumerable<T>> FindAll()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{{T}}}
+    content.vb: Function FindAll() As Task(Of IEnumerable(Of T))
+  overload: MicroService.Data.Repository.IRepository`1.FindAll*
+  nameWithType.vb: IRepository(Of T).FindAll()
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).FindAll()
+references:
+- uid: MicroService.Data.Repository
+  commentId: N:MicroService.Data.Repository
+  name: MicroService.Data.Repository
+  nameWithType: MicroService.Data.Repository
+  fullName: MicroService.Data.Repository
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Repository
+    name: Repository
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Repository
+    name: Repository
+- uid: MicroService.Data.Repository.IRepository`1.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<IRepository<T>>(IRepository<T>)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<IRepository<T>>(IRepository<T>)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Data.Repository.IRepository<T>>(MicroService.Data.Repository.IRepository<T>)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of IRepository(Of T))(IRepository(Of T))
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Data.Repository.IRepository(Of T))(MicroService.Data.Repository.IRepository(Of T))
+  name.vb: ArePropertiesNotNull(Of IRepository(Of T))(IRepository(Of T))
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Data.Repository.IRepository{`0})
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Data.Repository.IRepository`1
+    name: IRepository
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: MicroService.Data.Repository.IRepository`1
+    name: IRepository
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Data.Repository.IRepository{`0})
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Data.Repository.IRepository`1
+    name: IRepository
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: MicroService.Data.Repository.IRepository`1
+    name: IRepository
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Data.Repository.IRepository`1.Add*
+  commentId: Overload:MicroService.Data.Repository.IRepository`1.Add
+  name: Add
+  nameWithType: IRepository<T>.Add
+  fullName: MicroService.Data.Repository.IRepository<T>.Add
+  nameWithType.vb: IRepository(Of T).Add
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).Add
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: MicroService.Data.Repository.IRepository`1.Remove*
+  commentId: Overload:MicroService.Data.Repository.IRepository`1.Remove
+  name: Remove
+  nameWithType: IRepository<T>.Remove
+  fullName: MicroService.Data.Repository.IRepository<T>.Remove
+  nameWithType.vb: IRepository(Of T).Remove
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).Remove
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.Data.Repository.IRepository`1.Update*
+  commentId: Overload:MicroService.Data.Repository.IRepository`1.Update
+  name: Update
+  nameWithType: IRepository<T>.Update
+  fullName: MicroService.Data.Repository.IRepository<T>.Update
+  nameWithType.vb: IRepository(Of T).Update
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).Update
+- uid: MicroService.Data.Repository.IRepository`1.FindById*
+  commentId: Overload:MicroService.Data.Repository.IRepository`1.FindById
+  name: FindById
+  nameWithType: IRepository<T>.FindById
+  fullName: MicroService.Data.Repository.IRepository<T>.FindById
+  nameWithType.vb: IRepository(Of T).FindById
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).FindById
+- uid: System.Threading.Tasks.Task{{T}}
+  commentId: T:System.Threading.Tasks.Task{`0}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<T>
+  nameWithType: Task<T>
+  fullName: System.Threading.Tasks.Task<T>
+  nameWithType.vb: Task(Of T)
+  fullName.vb: System.Threading.Tasks.Task(Of T)
+  name.vb: Task(Of T)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: MicroService.Data.Repository.IRepository`1.FindAll*
+  commentId: Overload:MicroService.Data.Repository.IRepository`1.FindAll
+  name: FindAll
+  nameWithType: IRepository<T>.FindAll
+  fullName: MicroService.Data.Repository.IRepository<T>.FindAll
+  nameWithType.vb: IRepository(Of T).FindAll
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T).FindAll
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{{T}}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{`0}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<IEnumerable<T>>
+  nameWithType: Task<IEnumerable<T>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<T>>
+  nameWithType.vb: Task(Of IEnumerable(Of T))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Task(Of IEnumerable(Of T))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )

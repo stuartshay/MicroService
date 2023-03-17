@@ -1,0 +1,60 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.WebApi.Models
+  commentId: N:MicroService.WebApi.Models
+  id: MicroService.WebApi.Models
+  children:
+  - MicroService.WebApi.Models.FeatureAttributeLookupRequestModel
+  - MicroService.WebApi.Models.FeatureAttributeRequestModel
+  - MicroService.WebApi.Models.FeatureRequestModel
+  langs:
+  - csharp
+  - vb
+  name: MicroService.WebApi.Models
+  nameWithType: MicroService.WebApi.Models
+  fullName: MicroService.WebApi.Models
+  type: Namespace
+  assemblies:
+  - MicroService.WebApi
+references:
+- uid: MicroService.WebApi.Models.FeatureAttributeLookupRequestModel
+  commentId: T:MicroService.WebApi.Models.FeatureAttributeLookupRequestModel
+  parent: MicroService.WebApi.Models
+  name: FeatureAttributeLookupRequestModel
+  nameWithType: FeatureAttributeLookupRequestModel
+  fullName: MicroService.WebApi.Models.FeatureAttributeLookupRequestModel
+- uid: MicroService.WebApi.Models.FeatureAttributeRequestModel
+  commentId: T:MicroService.WebApi.Models.FeatureAttributeRequestModel
+  parent: MicroService.WebApi.Models
+  name: FeatureAttributeRequestModel
+  nameWithType: FeatureAttributeRequestModel
+  fullName: MicroService.WebApi.Models.FeatureAttributeRequestModel
+- uid: MicroService.WebApi.Models.FeatureRequestModel
+  commentId: T:MicroService.WebApi.Models.FeatureRequestModel
+  parent: MicroService.WebApi.Models
+  name: FeatureRequestModel
+  nameWithType: FeatureRequestModel
+  fullName: MicroService.WebApi.Models.FeatureRequestModel
+- uid: MicroService.WebApi.Models
+  commentId: N:MicroService.WebApi.Models
+  name: MicroService.WebApi.Models
+  nameWithType: MicroService.WebApi.Models
+  fullName: MicroService.WebApi.Models
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.WebApi
+    name: WebApi
+  - name: .
+  - uid: MicroService.WebApi.Models
+    name: Models
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.WebApi
+    name: WebApi
+  - name: .
+  - uid: MicroService.WebApi.Models
+    name: Models

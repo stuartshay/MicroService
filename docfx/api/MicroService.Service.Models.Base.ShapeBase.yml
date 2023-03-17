@@ -1,0 +1,651 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.Base.ShapeBase
+  commentId: T:MicroService.Service.Models.Base.ShapeBase
+  id: ShapeBase
+  parent: MicroService.Service.Models.Base
+  children:
+  - MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  - MicroService.Service.Models.Base.ShapeBase.Feature
+  - MicroService.Service.Models.Base.ShapeBase.Geometry
+  - MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  - MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  langs:
+  - csharp
+  - vb
+  name: ShapeBase
+  nameWithType: ShapeBase
+  fullName: MicroService.Service.Models.Base.ShapeBase
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Base/ShapeBase.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ShapeBase
+    path: ../src/MicroService.Service/Models/Base/ShapeBase.cs
+    startLine: 7
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Base
+  syntax:
+    content: public class ShapeBase
+    content.vb: Public Class ShapeBase
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - MicroService.Service.Models.BoroughBoundaryShape
+  - MicroService.Service.Models.CommunityDistrictShape
+  - MicroService.Service.Models.DsnyDistrictsShape
+  - MicroService.Service.Models.HistoricDistrictShape
+  - MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape
+  - MicroService.Service.Models.IndividualLandmarkSiteShape
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  - MicroService.Service.Models.NeighborhoodShape
+  - MicroService.Service.Models.NeighborhoodTabulationAreaShape
+  - MicroService.Service.Models.NychaDevelopmentShape
+  - MicroService.Service.Models.NypdPrecinctShape
+  - MicroService.Service.Models.NypdSectorShape
+  - MicroService.Service.Models.ParkShape
+  - MicroService.Service.Models.ScenicLandmarkShape
+  - MicroService.Service.Models.SubwayShape
+  - MicroService.Service.Models.ZipCodeShape
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MicroService.Service.Models.Base.ShapeBase.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+- uid: MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  id: ShapeArea
+  parent: MicroService.Service.Models.Base.ShapeBase
+  langs:
+  - csharp
+  - vb
+  name: ShapeArea
+  nameWithType: ShapeBase.ShapeArea
+  fullName: MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Base/ShapeBase.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ShapeArea
+    path: ../src/MicroService.Service/Models/Base/ShapeBase.cs
+    startLine: 9
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Base
+  syntax:
+    content: public double ShapeArea { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property ShapeArea As Double
+  overload: MicroService.Service.Models.Base.ShapeBase.ShapeArea*
+- uid: MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  id: ShapeLength
+  parent: MicroService.Service.Models.Base.ShapeBase
+  langs:
+  - csharp
+  - vb
+  name: ShapeLength
+  nameWithType: ShapeBase.ShapeLength
+  fullName: MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Base/ShapeBase.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ShapeLength
+    path: ../src/MicroService.Service/Models/Base/ShapeBase.cs
+    startLine: 11
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Base
+  syntax:
+    content: public double ShapeLength { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property ShapeLength As Double
+  overload: MicroService.Service.Models.Base.ShapeBase.ShapeLength*
+- uid: MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  id: BoundingBox
+  parent: MicroService.Service.Models.Base.ShapeBase
+  langs:
+  - csharp
+  - vb
+  name: BoundingBox
+  nameWithType: ShapeBase.BoundingBox
+  fullName: MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Base/ShapeBase.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BoundingBox
+    path: ../src/MicroService.Service/Models/Base/ShapeBase.cs
+    startLine: 13
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Base
+  syntax:
+    content: public BoundingBox BoundingBox { get; set; }
+    parameters: []
+    return:
+      type: MicroService.Service.Models.Base.BoundingBox
+    content.vb: Public Property BoundingBox As BoundingBox
+  overload: MicroService.Service.Models.Base.ShapeBase.BoundingBox*
+- uid: MicroService.Service.Models.Base.ShapeBase.Geometry
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.Geometry
+  id: Geometry
+  parent: MicroService.Service.Models.Base.ShapeBase
+  langs:
+  - csharp
+  - vb
+  name: Geometry
+  nameWithType: ShapeBase.Geometry
+  fullName: MicroService.Service.Models.Base.ShapeBase.Geometry
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Base/ShapeBase.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Geometry
+    path: ../src/MicroService.Service/Models/Base/ShapeBase.cs
+    startLine: 16
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Base
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Geometry Geometry { get; set; }
+    parameters: []
+    return:
+      type: NetTopologySuite.Geometries.Geometry
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property Geometry As Geometry
+  overload: MicroService.Service.Models.Base.ShapeBase.Geometry*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: MicroService.Service.Models.Base.ShapeBase.Feature
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.Feature
+  id: Feature
+  parent: MicroService.Service.Models.Base.ShapeBase
+  langs:
+  - csharp
+  - vb
+  name: Feature
+  nameWithType: ShapeBase.Feature
+  fullName: MicroService.Service.Models.Base.ShapeBase.Feature
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Base/ShapeBase.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Feature
+    path: ../src/MicroService.Service/Models/Base/ShapeBase.cs
+    startLine: 20
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Base
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public FeatureCollection Feature { get; set; }
+    parameters: []
+    return:
+      type: NetTopologySuite.Features.FeatureCollection
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property Feature As FeatureCollection
+  overload: MicroService.Service.Models.Base.ShapeBase.Feature*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+references:
+- uid: MicroService.Service.Models.Base
+  commentId: N:MicroService.Service.Models.Base
+  name: MicroService.Service.Models.Base
+  nameWithType: MicroService.Service.Models.Base
+  fullName: MicroService.Service.Models.Base
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: MicroService.Service.Models.Base.ShapeBase.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<ShapeBase>(ShapeBase)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<ShapeBase>(ShapeBase)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Models.Base.ShapeBase>(MicroService.Service.Models.Base.ShapeBase)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of ShapeBase)(ShapeBase)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Models.Base.ShapeBase)(MicroService.Service.Models.Base.ShapeBase)
+  name.vb: ArePropertiesNotNull(Of ShapeBase)(ShapeBase)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.Base.ShapeBase)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Models.Base.ShapeBase
+    name: ShapeBase
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Models.Base.ShapeBase
+    name: ShapeBase
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.Base.ShapeBase)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.Base.ShapeBase
+    name: ShapeBase
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Models.Base.ShapeBase
+    name: ShapeBase
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Models.Base.ShapeBase.ShapeArea*
+  commentId: Overload:MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  name: ShapeArea
+  nameWithType: ShapeBase.ShapeArea
+  fullName: MicroService.Service.Models.Base.ShapeBase.ShapeArea
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MicroService.Service.Models.Base.ShapeBase.ShapeLength*
+  commentId: Overload:MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  name: ShapeLength
+  nameWithType: ShapeBase.ShapeLength
+  fullName: MicroService.Service.Models.Base.ShapeBase.ShapeLength
+- uid: MicroService.Service.Models.Base.ShapeBase.BoundingBox*
+  commentId: Overload:MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  name: BoundingBox
+  nameWithType: ShapeBase.BoundingBox
+  fullName: MicroService.Service.Models.Base.ShapeBase.BoundingBox
+- uid: MicroService.Service.Models.Base.BoundingBox
+  commentId: T:MicroService.Service.Models.Base.BoundingBox
+  parent: MicroService.Service.Models.Base
+  name: BoundingBox
+  nameWithType: BoundingBox
+  fullName: MicroService.Service.Models.Base.BoundingBox
+- uid: MicroService.Service.Models.Base.ShapeBase.Geometry*
+  commentId: Overload:MicroService.Service.Models.Base.ShapeBase.Geometry
+  name: Geometry
+  nameWithType: ShapeBase.Geometry
+  fullName: MicroService.Service.Models.Base.ShapeBase.Geometry
+- uid: NetTopologySuite.Geometries.Geometry
+  commentId: T:NetTopologySuite.Geometries.Geometry
+  parent: NetTopologySuite.Geometries
+  isExternal: true
+  name: Geometry
+  nameWithType: Geometry
+  fullName: NetTopologySuite.Geometries.Geometry
+- uid: NetTopologySuite.Geometries
+  commentId: N:NetTopologySuite.Geometries
+  isExternal: true
+  name: NetTopologySuite.Geometries
+  nameWithType: NetTopologySuite.Geometries
+  fullName: NetTopologySuite.Geometries
+  spec.csharp:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.Geometries
+    name: Geometries
+    isExternal: true
+  spec.vb:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.Geometries
+    name: Geometries
+    isExternal: true
+- uid: MicroService.Service.Models.Base.ShapeBase.Feature*
+  commentId: Overload:MicroService.Service.Models.Base.ShapeBase.Feature
+  name: Feature
+  nameWithType: ShapeBase.Feature
+  fullName: MicroService.Service.Models.Base.ShapeBase.Feature
+- uid: NetTopologySuite.Features.FeatureCollection
+  commentId: T:NetTopologySuite.Features.FeatureCollection
+  parent: NetTopologySuite.Features
+  isExternal: true
+  name: FeatureCollection
+  nameWithType: FeatureCollection
+  fullName: NetTopologySuite.Features.FeatureCollection
+- uid: NetTopologySuite.Features
+  commentId: N:NetTopologySuite.Features
+  isExternal: true
+  name: NetTopologySuite.Features
+  nameWithType: NetTopologySuite.Features
+  fullName: NetTopologySuite.Features
+  spec.csharp:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.Features
+    name: Features
+    isExternal: true
+  spec.vb:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.Features
+    name: Features
+    isExternal: true

@@ -1,0 +1,40 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.WebApi.V1.Controllers
+  commentId: N:MicroService.WebApi.V1.Controllers
+  id: MicroService.WebApi.V1.Controllers
+  children:
+  - MicroService.WebApi.V1.Controllers.FeatureServiceController
+  - MicroService.WebApi.V1.Controllers.FlatFileServiceController
+  - MicroService.WebApi.V1.Controllers.TestDataController
+  - MicroService.WebApi.V1.Controllers.TransformationServiceController
+  langs:
+  - csharp
+  - vb
+  name: MicroService.WebApi.V1.Controllers
+  nameWithType: MicroService.WebApi.V1.Controllers
+  fullName: MicroService.WebApi.V1.Controllers
+  type: Namespace
+  assemblies:
+  - MicroService.WebApi
+references:
+- uid: MicroService.WebApi.V1.Controllers.FeatureServiceController
+  commentId: T:MicroService.WebApi.V1.Controllers.FeatureServiceController
+  name: FeatureServiceController
+  nameWithType: FeatureServiceController
+  fullName: MicroService.WebApi.V1.Controllers.FeatureServiceController
+- uid: MicroService.WebApi.V1.Controllers.FlatFileServiceController
+  commentId: T:MicroService.WebApi.V1.Controllers.FlatFileServiceController
+  name: FlatFileServiceController
+  nameWithType: FlatFileServiceController
+  fullName: MicroService.WebApi.V1.Controllers.FlatFileServiceController
+- uid: MicroService.WebApi.V1.Controllers.TestDataController
+  commentId: T:MicroService.WebApi.V1.Controllers.TestDataController
+  name: TestDataController
+  nameWithType: TestDataController
+  fullName: MicroService.WebApi.V1.Controllers.TestDataController
+- uid: MicroService.WebApi.V1.Controllers.TransformationServiceController
+  commentId: T:MicroService.WebApi.V1.Controllers.TransformationServiceController
+  name: TransformationServiceController
+  nameWithType: TransformationServiceController
+  fullName: MicroService.WebApi.V1.Controllers.TransformationServiceController

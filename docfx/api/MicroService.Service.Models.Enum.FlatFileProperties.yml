@@ -1,0 +1,369 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.Enum.FlatFileProperties
+  commentId: T:MicroService.Service.Models.Enum.FlatFileProperties
+  id: FlatFileProperties
+  parent: MicroService.Service.Models.Enum
+  children:
+  - MicroService.Service.Models.Enum.FlatFileProperties.SubwayStationComplex
+  - MicroService.Service.Models.Enum.FlatFileProperties.SubwayStationLocations
+  langs:
+  - csharp
+  - vb
+  name: FlatFileProperties
+  nameWithType: FlatFileProperties
+  fullName: MicroService.Service.Models.Enum.FlatFileProperties
+  type: Enum
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/FlatFileProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: FlatFileProperties
+    path: ../src/MicroService.Service/Models/Enum/FlatFileProperties.cs
+    startLine: 5
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: public enum FlatFileProperties
+    content.vb: Public Enum FlatFileProperties
+  extensionMethods:
+  - MicroService.Service.Models.Enum.FlatFileProperties.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+- uid: MicroService.Service.Models.Enum.FlatFileProperties.SubwayStationLocations
+  commentId: F:MicroService.Service.Models.Enum.FlatFileProperties.SubwayStationLocations
+  id: SubwayStationLocations
+  parent: MicroService.Service.Models.Enum.FlatFileProperties
+  langs:
+  - csharp
+  - vb
+  name: SubwayStationLocations
+  nameWithType: FlatFileProperties.SubwayStationLocations
+  fullName: MicroService.Service.Models.Enum.FlatFileProperties.SubwayStationLocations
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/FlatFileProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: SubwayStationLocations
+    path: ../src/MicroService.Service/Models/Enum/FlatFileProperties.cs
+    startLine: 7
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [FlatFile("Subway_Station_Locations", "Stations.csv", "StationFlatFile", FileTypes.Csv)]
+
+      SubwayStationLocations = 0
+    return:
+      type: MicroService.Service.Models.Enum.FlatFileProperties
+    content.vb: >-
+      <FlatFile("Subway_Station_Locations", "Stations.csv", "StationFlatFile", FileTypes.Csv)>
+
+      SubwayStationLocations = 0
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FlatFileAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FlatFileAttribute.#ctor(System.String,System.String,System.String,MicroService.Service.Models.Enum.Attributes.FileTypes)
+    arguments:
+    - type: System.String
+      value: Subway_Station_Locations
+    - type: System.String
+      value: Stations.csv
+    - type: System.String
+      value: StationFlatFile
+    - type: MicroService.Service.Models.Enum.Attributes.FileTypes
+      value: 0
+- uid: MicroService.Service.Models.Enum.FlatFileProperties.SubwayStationComplex
+  commentId: F:MicroService.Service.Models.Enum.FlatFileProperties.SubwayStationComplex
+  id: SubwayStationComplex
+  parent: MicroService.Service.Models.Enum.FlatFileProperties
+  langs:
+  - csharp
+  - vb
+  name: SubwayStationComplex
+  nameWithType: FlatFileProperties.SubwayStationComplex
+  fullName: MicroService.Service.Models.Enum.FlatFileProperties.SubwayStationComplex
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/FlatFileProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: SubwayStationComplex
+    path: ../src/MicroService.Service/Models/Enum/FlatFileProperties.cs
+    startLine: 11
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [FlatFile("Subway_Complex", "StationComplexes.csv", "StationComplexFlatFile", FileTypes.Csv)]
+
+      SubwayStationComplex = 1
+    return:
+      type: MicroService.Service.Models.Enum.FlatFileProperties
+    content.vb: >-
+      <FlatFile("Subway_Complex", "StationComplexes.csv", "StationComplexFlatFile", FileTypes.Csv)>
+
+      SubwayStationComplex = 1
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FlatFileAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FlatFileAttribute.#ctor(System.String,System.String,System.String,MicroService.Service.Models.Enum.Attributes.FileTypes)
+    arguments:
+    - type: System.String
+      value: Subway_Complex
+    - type: System.String
+      value: StationComplexes.csv
+    - type: System.String
+      value: StationComplexFlatFile
+    - type: MicroService.Service.Models.Enum.Attributes.FileTypes
+      value: 0
+references:
+- uid: MicroService.Service.Models.Enum
+  commentId: N:MicroService.Service.Models.Enum
+  name: MicroService.Service.Models.Enum
+  nameWithType: MicroService.Service.Models.Enum
+  fullName: MicroService.Service.Models.Enum
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+- uid: MicroService.Service.Models.Enum.FlatFileProperties.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<FlatFileProperties>(FlatFileProperties)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<FlatFileProperties>(FlatFileProperties)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Models.Enum.FlatFileProperties>(MicroService.Service.Models.Enum.FlatFileProperties)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of FlatFileProperties)(FlatFileProperties)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Models.Enum.FlatFileProperties)(MicroService.Service.Models.Enum.FlatFileProperties)
+  name.vb: ArePropertiesNotNull(Of FlatFileProperties)(FlatFileProperties)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.Enum.FlatFileProperties)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Models.Enum.FlatFileProperties
+    name: FlatFileProperties
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Models.Enum.FlatFileProperties
+    name: FlatFileProperties
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.Enum.FlatFileProperties)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.Enum.FlatFileProperties
+    name: FlatFileProperties
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Models.Enum.FlatFileProperties
+    name: FlatFileProperties
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  isExternal: true
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.EnumHelper
+  commentId: T:MicroService.Service.Helpers.EnumHelper
+  parent: MicroService.Service.Helpers
+  name: EnumHelper
+  nameWithType: EnumHelper
+  fullName: MicroService.Service.Helpers.EnumHelper
+- uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  isExternal: true
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Models.Enum.FlatFileProperties
+  commentId: T:MicroService.Service.Models.Enum.FlatFileProperties
+  parent: MicroService.Service.Models.Enum
+  name: FlatFileProperties
+  nameWithType: FlatFileProperties
+  fullName: MicroService.Service.Models.Enum.FlatFileProperties

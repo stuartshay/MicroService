@@ -1,0 +1,286 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Interfaces.ICalculationService
+  commentId: T:MicroService.Service.Interfaces.ICalculationService
+  id: ICalculationService
+  parent: MicroService.Service.Interfaces
+  children:
+  - MicroService.Service.Interfaces.ICalculationService.CalculatePercentile(System.Double)
+  langs:
+  - csharp
+  - vb
+  name: ICalculationService
+  nameWithType: ICalculationService
+  fullName: MicroService.Service.Interfaces.ICalculationService
+  type: Interface
+  source:
+    remote:
+      path: src/MicroService.Service/Interfaces/ICalculationService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ICalculationService
+    path: ../src/MicroService.Service/Interfaces/ICalculationService.cs
+    startLine: 4
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Interfaces
+  syntax:
+    content: public interface ICalculationService
+    content.vb: Public Interface ICalculationService
+  extensionMethods:
+  - MicroService.Service.Interfaces.ICalculationService.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+- uid: MicroService.Service.Interfaces.ICalculationService.CalculatePercentile(System.Double)
+  commentId: M:MicroService.Service.Interfaces.ICalculationService.CalculatePercentile(System.Double)
+  id: CalculatePercentile(System.Double)
+  parent: MicroService.Service.Interfaces.ICalculationService
+  langs:
+  - csharp
+  - vb
+  name: CalculatePercentile(double)
+  nameWithType: ICalculationService.CalculatePercentile(double)
+  fullName: MicroService.Service.Interfaces.ICalculationService.CalculatePercentile(double)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Interfaces/ICalculationService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: CalculatePercentile
+    path: ../src/MicroService.Service/Interfaces/ICalculationService.cs
+    startLine: 6
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Interfaces
+  syntax:
+    content: Task<double> CalculatePercentile(double excelPercentile)
+    parameters:
+    - id: excelPercentile
+      type: System.Double
+    return:
+      type: System.Threading.Tasks.Task{System.Double}
+    content.vb: Function CalculatePercentile(excelPercentile As Double) As Task(Of Double)
+  overload: MicroService.Service.Interfaces.ICalculationService.CalculatePercentile*
+  nameWithType.vb: ICalculationService.CalculatePercentile(Double)
+  fullName.vb: MicroService.Service.Interfaces.ICalculationService.CalculatePercentile(Double)
+  name.vb: CalculatePercentile(Double)
+references:
+- uid: MicroService.Service.Interfaces
+  commentId: N:MicroService.Service.Interfaces
+  name: MicroService.Service.Interfaces
+  nameWithType: MicroService.Service.Interfaces
+  fullName: MicroService.Service.Interfaces
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Interfaces
+    name: Interfaces
+- uid: MicroService.Service.Interfaces.ICalculationService.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<ICalculationService>(ICalculationService)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<ICalculationService>(ICalculationService)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Interfaces.ICalculationService>(MicroService.Service.Interfaces.ICalculationService)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of ICalculationService)(ICalculationService)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Interfaces.ICalculationService)(MicroService.Service.Interfaces.ICalculationService)
+  name.vb: ArePropertiesNotNull(Of ICalculationService)(ICalculationService)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Interfaces.ICalculationService)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Interfaces.ICalculationService
+    name: ICalculationService
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Interfaces.ICalculationService
+    name: ICalculationService
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Interfaces.ICalculationService)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Interfaces.ICalculationService
+    name: ICalculationService
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Interfaces.ICalculationService
+    name: ICalculationService
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Interfaces.ICalculationService.CalculatePercentile*
+  commentId: Overload:MicroService.Service.Interfaces.ICalculationService.CalculatePercentile
+  name: CalculatePercentile
+  nameWithType: ICalculationService.CalculatePercentile
+  fullName: MicroService.Service.Interfaces.ICalculationService.CalculatePercentile
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Threading.Tasks.Task{System.Double}
+  commentId: T:System.Threading.Tasks.Task{System.Double}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<double>
+  nameWithType: Task<double>
+  fullName: System.Threading.Tasks.Task<double>
+  nameWithType.vb: Task(Of Double)
+  fullName.vb: System.Threading.Tasks.Task(Of Double)
+  name.vb: Task(Of Double)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: System.Double
+    name: double
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true

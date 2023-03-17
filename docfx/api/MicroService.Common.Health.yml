@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Common.Health
+  commentId: N:MicroService.Common.Health
+  id: MicroService.Common.Health
+  children:
+  - MicroService.Common.Health.HealthCheckServerExtensions
+  - MicroService.Common.Health.RandomHealthCheck
+  - MicroService.Common.Health.VersionHealthCheck
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Common.Health
+  nameWithType: MicroService.Common.Health
+  fullName: MicroService.Common.Health
+  type: Namespace
+  assemblies:
+  - MicroService.Common
+references:
+- uid: MicroService.Common.Health.HealthCheckServerExtensions
+  commentId: T:MicroService.Common.Health.HealthCheckServerExtensions
+  name: HealthCheckServerExtensions
+  nameWithType: HealthCheckServerExtensions
+  fullName: MicroService.Common.Health.HealthCheckServerExtensions
+- uid: MicroService.Common.Health.RandomHealthCheck
+  commentId: T:MicroService.Common.Health.RandomHealthCheck
+  name: RandomHealthCheck
+  nameWithType: RandomHealthCheck
+  fullName: MicroService.Common.Health.RandomHealthCheck
+- uid: MicroService.Common.Health.VersionHealthCheck
+  commentId: T:MicroService.Common.Health.VersionHealthCheck
+  name: VersionHealthCheck
+  nameWithType: VersionHealthCheck
+  fullName: MicroService.Common.Health.VersionHealthCheck

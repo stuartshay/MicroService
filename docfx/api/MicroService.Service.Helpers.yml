@@ -1,0 +1,119 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  id: MicroService.Service.Helpers
+  children:
+  - MicroService.Service.Helpers.CachedShapefileDataReader
+  - MicroService.Service.Helpers.EnumHelper
+  - MicroService.Service.Helpers.FileHelpers
+  - MicroService.Service.Helpers.FunctionHelper
+  - MicroService.Service.Helpers.GeoTransformationHelper
+  - MicroService.Service.Helpers.IShapefileDataReaderService
+  - MicroService.Service.Helpers.ReflectionExtensions
+  - MicroService.Service.Helpers.ReflectionExtensions.PropertyCache`1
+  - MicroService.Service.Helpers.StringHelper
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService
+  commentId: T:MicroService.Service.Helpers.IShapefileDataReaderService
+  parent: MicroService.Service.Helpers
+  name: IShapefileDataReaderService
+  nameWithType: IShapefileDataReaderService
+  fullName: MicroService.Service.Helpers.IShapefileDataReaderService
+- uid: MicroService.Service.Helpers.CachedShapefileDataReader
+  commentId: T:MicroService.Service.Helpers.CachedShapefileDataReader
+  name: CachedShapefileDataReader
+  nameWithType: CachedShapefileDataReader
+  fullName: MicroService.Service.Helpers.CachedShapefileDataReader
+- uid: MicroService.Service.Helpers.EnumHelper
+  commentId: T:MicroService.Service.Helpers.EnumHelper
+  parent: MicroService.Service.Helpers
+  name: EnumHelper
+  nameWithType: EnumHelper
+  fullName: MicroService.Service.Helpers.EnumHelper
+- uid: MicroService.Service.Helpers.FileHelpers
+  commentId: T:MicroService.Service.Helpers.FileHelpers
+  name: FileHelpers
+  nameWithType: FileHelpers
+  fullName: MicroService.Service.Helpers.FileHelpers
+- uid: MicroService.Service.Helpers.FunctionHelper
+  commentId: T:MicroService.Service.Helpers.FunctionHelper
+  name: FunctionHelper
+  nameWithType: FunctionHelper
+  fullName: MicroService.Service.Helpers.FunctionHelper
+- uid: MicroService.Service.Helpers.GeoTransformationHelper
+  commentId: T:MicroService.Service.Helpers.GeoTransformationHelper
+  name: GeoTransformationHelper
+  nameWithType: GeoTransformationHelper
+  fullName: MicroService.Service.Helpers.GeoTransformationHelper
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers.ReflectionExtensions.PropertyCache`1
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions.PropertyCache`1
+  name: ReflectionExtensions.PropertyCache<T>
+  nameWithType: ReflectionExtensions.PropertyCache<T>
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.PropertyCache<T>
+  nameWithType.vb: ReflectionExtensions.PropertyCache(Of T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.PropertyCache(Of T)
+  name.vb: ReflectionExtensions.PropertyCache(Of T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions
+    name: ReflectionExtensions
+  - name: .
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.PropertyCache`1
+    name: PropertyCache
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions
+    name: ReflectionExtensions
+  - name: .
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.PropertyCache`1
+    name: PropertyCache
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.StringHelper
+  commentId: T:MicroService.Service.Helpers.StringHelper
+  name: StringHelper
+  nameWithType: StringHelper
+  fullName: MicroService.Service.Helpers.StringHelper
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers

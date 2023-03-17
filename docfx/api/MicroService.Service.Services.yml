@@ -1,0 +1,136 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Services
+  commentId: N:MicroService.Service.Services
+  id: MicroService.Service.Services
+  children:
+  - MicroService.Service.Services.BoroughBoundariesService
+  - MicroService.Service.Services.CommunityDistrictsService
+  - MicroService.Service.Services.DsnyDistrictsService
+  - MicroService.Service.Services.HistoricDistrictService
+  - MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService
+  - MicroService.Service.Services.IndividualLandmarkSiteService
+  - MicroService.Service.Services.NationalRegisterHistoricPlacesService
+  - MicroService.Service.Services.NeighborhoodsService
+  - MicroService.Service.Services.NeighborhoodTabulationAreasService
+  - MicroService.Service.Services.NychaDevelopmentService
+  - MicroService.Service.Services.NypdPolicePrecinctService
+  - MicroService.Service.Services.NypdSectorsService
+  - MicroService.Service.Services.ParkService
+  - MicroService.Service.Services.ScenicLandmarkService
+  - MicroService.Service.Services.SubwayService
+  - MicroService.Service.Services.ZipCodeService
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Services
+  nameWithType: MicroService.Service.Services
+  fullName: MicroService.Service.Services
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Services.BoroughBoundariesService
+  commentId: T:MicroService.Service.Services.BoroughBoundariesService
+  name: BoroughBoundariesService
+  nameWithType: BoroughBoundariesService
+  fullName: MicroService.Service.Services.BoroughBoundariesService
+- uid: MicroService.Service.Services.CommunityDistrictsService
+  commentId: T:MicroService.Service.Services.CommunityDistrictsService
+  name: CommunityDistrictsService
+  nameWithType: CommunityDistrictsService
+  fullName: MicroService.Service.Services.CommunityDistrictsService
+- uid: MicroService.Service.Services.DsnyDistrictsService
+  commentId: T:MicroService.Service.Services.DsnyDistrictsService
+  name: DsnyDistrictsService
+  nameWithType: DsnyDistrictsService
+  fullName: MicroService.Service.Services.DsnyDistrictsService
+- uid: MicroService.Service.Services.HistoricDistrictService
+  commentId: T:MicroService.Service.Services.HistoricDistrictService
+  name: HistoricDistrictService
+  nameWithType: HistoricDistrictService
+  fullName: MicroService.Service.Services.HistoricDistrictService
+- uid: MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService
+  commentId: T:MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService
+  name: IndividualLandmarkHistoricDistrictsService
+  nameWithType: IndividualLandmarkHistoricDistrictsService
+  fullName: MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService
+- uid: MicroService.Service.Services.IndividualLandmarkSiteService
+  commentId: T:MicroService.Service.Services.IndividualLandmarkSiteService
+  parent: MicroService.Service.Services
+  name: IndividualLandmarkSiteService
+  nameWithType: IndividualLandmarkSiteService
+  fullName: MicroService.Service.Services.IndividualLandmarkSiteService
+- uid: MicroService.Service.Services.NationalRegisterHistoricPlacesService
+  commentId: T:MicroService.Service.Services.NationalRegisterHistoricPlacesService
+  name: NationalRegisterHistoricPlacesService
+  nameWithType: NationalRegisterHistoricPlacesService
+  fullName: MicroService.Service.Services.NationalRegisterHistoricPlacesService
+- uid: MicroService.Service.Services.NeighborhoodsService
+  commentId: T:MicroService.Service.Services.NeighborhoodsService
+  name: NeighborhoodsService
+  nameWithType: NeighborhoodsService
+  fullName: MicroService.Service.Services.NeighborhoodsService
+- uid: MicroService.Service.Services.NeighborhoodTabulationAreasService
+  commentId: T:MicroService.Service.Services.NeighborhoodTabulationAreasService
+  name: NeighborhoodTabulationAreasService
+  nameWithType: NeighborhoodTabulationAreasService
+  fullName: MicroService.Service.Services.NeighborhoodTabulationAreasService
+- uid: MicroService.Service.Services.NychaDevelopmentService
+  commentId: T:MicroService.Service.Services.NychaDevelopmentService
+  name: NychaDevelopmentService
+  nameWithType: NychaDevelopmentService
+  fullName: MicroService.Service.Services.NychaDevelopmentService
+- uid: MicroService.Service.Services.NypdPolicePrecinctService
+  commentId: T:MicroService.Service.Services.NypdPolicePrecinctService
+  name: NypdPolicePrecinctService
+  nameWithType: NypdPolicePrecinctService
+  fullName: MicroService.Service.Services.NypdPolicePrecinctService
+- uid: MicroService.Service.Services.NypdSectorsService
+  commentId: T:MicroService.Service.Services.NypdSectorsService
+  name: NypdSectorsService
+  nameWithType: NypdSectorsService
+  fullName: MicroService.Service.Services.NypdSectorsService
+- uid: MicroService.Service.Services.ParkService
+  commentId: T:MicroService.Service.Services.ParkService
+  name: ParkService
+  nameWithType: ParkService
+  fullName: MicroService.Service.Services.ParkService
+- uid: MicroService.Service.Services.ScenicLandmarkService
+  commentId: T:MicroService.Service.Services.ScenicLandmarkService
+  name: ScenicLandmarkService
+  nameWithType: ScenicLandmarkService
+  fullName: MicroService.Service.Services.ScenicLandmarkService
+- uid: MicroService.Service.Services.SubwayService
+  commentId: T:MicroService.Service.Services.SubwayService
+  name: SubwayService
+  nameWithType: SubwayService
+  fullName: MicroService.Service.Services.SubwayService
+- uid: MicroService.Service.Services.ZipCodeService
+  commentId: T:MicroService.Service.Services.ZipCodeService
+  name: ZipCodeService
+  nameWithType: ZipCodeService
+  fullName: MicroService.Service.Services.ZipCodeService
+- uid: MicroService.Service.Services
+  commentId: N:MicroService.Service.Services
+  name: MicroService.Service.Services
+  nameWithType: MicroService.Service.Services
+  fullName: MicroService.Service.Services
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services

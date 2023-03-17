@@ -1,0 +1,445 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.Enum.Attributes.Color
+  commentId: T:MicroService.Service.Models.Enum.Attributes.Color
+  id: Color
+  parent: MicroService.Service.Models.Enum.Attributes
+  children:
+  - MicroService.Service.Models.Enum.Attributes.Color.Black
+  - MicroService.Service.Models.Enum.Attributes.Color.Blue
+  - MicroService.Service.Models.Enum.Attributes.Color.Green
+  - MicroService.Service.Models.Enum.Attributes.Color.Grey
+  - MicroService.Service.Models.Enum.Attributes.Color.Red
+  - MicroService.Service.Models.Enum.Attributes.Color.Yellow
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: Color
+  fullName: MicroService.Service.Models.Enum.Attributes.Color
+  type: Enum
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Color
+    path: ../src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+    startLine: 12
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum.Attributes
+  syntax:
+    content: public enum Color
+    content.vb: Public Enum Color
+  extensionMethods:
+  - MicroService.Service.Models.Enum.Attributes.Color.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+- uid: MicroService.Service.Models.Enum.Attributes.Color.Red
+  commentId: F:MicroService.Service.Models.Enum.Attributes.Color.Red
+  id: Red
+  parent: MicroService.Service.Models.Enum.Attributes.Color
+  langs:
+  - csharp
+  - vb
+  name: Red
+  nameWithType: Color.Red
+  fullName: MicroService.Service.Models.Enum.Attributes.Color.Red
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Red
+    path: ../src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+    startLine: 14
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum.Attributes
+  syntax:
+    content: Red = 0
+    return:
+      type: MicroService.Service.Models.Enum.Attributes.Color
+- uid: MicroService.Service.Models.Enum.Attributes.Color.Blue
+  commentId: F:MicroService.Service.Models.Enum.Attributes.Color.Blue
+  id: Blue
+  parent: MicroService.Service.Models.Enum.Attributes.Color
+  langs:
+  - csharp
+  - vb
+  name: Blue
+  nameWithType: Color.Blue
+  fullName: MicroService.Service.Models.Enum.Attributes.Color.Blue
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Blue
+    path: ../src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+    startLine: 15
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum.Attributes
+  syntax:
+    content: Blue = 1
+    return:
+      type: MicroService.Service.Models.Enum.Attributes.Color
+- uid: MicroService.Service.Models.Enum.Attributes.Color.Green
+  commentId: F:MicroService.Service.Models.Enum.Attributes.Color.Green
+  id: Green
+  parent: MicroService.Service.Models.Enum.Attributes.Color
+  langs:
+  - csharp
+  - vb
+  name: Green
+  nameWithType: Color.Green
+  fullName: MicroService.Service.Models.Enum.Attributes.Color.Green
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Green
+    path: ../src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+    startLine: 16
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum.Attributes
+  syntax:
+    content: Green = 2
+    return:
+      type: MicroService.Service.Models.Enum.Attributes.Color
+- uid: MicroService.Service.Models.Enum.Attributes.Color.Yellow
+  commentId: F:MicroService.Service.Models.Enum.Attributes.Color.Yellow
+  id: Yellow
+  parent: MicroService.Service.Models.Enum.Attributes.Color
+  langs:
+  - csharp
+  - vb
+  name: Yellow
+  nameWithType: Color.Yellow
+  fullName: MicroService.Service.Models.Enum.Attributes.Color.Yellow
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Yellow
+    path: ../src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+    startLine: 17
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum.Attributes
+  syntax:
+    content: Yellow = 3
+    return:
+      type: MicroService.Service.Models.Enum.Attributes.Color
+- uid: MicroService.Service.Models.Enum.Attributes.Color.Black
+  commentId: F:MicroService.Service.Models.Enum.Attributes.Color.Black
+  id: Black
+  parent: MicroService.Service.Models.Enum.Attributes.Color
+  langs:
+  - csharp
+  - vb
+  name: Black
+  nameWithType: Color.Black
+  fullName: MicroService.Service.Models.Enum.Attributes.Color.Black
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Black
+    path: ../src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+    startLine: 18
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum.Attributes
+  syntax:
+    content: Black = 4
+    return:
+      type: MicroService.Service.Models.Enum.Attributes.Color
+- uid: MicroService.Service.Models.Enum.Attributes.Color.Grey
+  commentId: F:MicroService.Service.Models.Enum.Attributes.Color.Grey
+  id: Grey
+  parent: MicroService.Service.Models.Enum.Attributes.Color
+  langs:
+  - csharp
+  - vb
+  name: Grey
+  nameWithType: Color.Grey
+  fullName: MicroService.Service.Models.Enum.Attributes.Color.Grey
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Grey
+    path: ../src/MicroService.Service/Models/Enum/Attributes/ShapeStyle.cs
+    startLine: 19
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum.Attributes
+  syntax:
+    content: Grey = 5
+    return:
+      type: MicroService.Service.Models.Enum.Attributes.Color
+references:
+- uid: MicroService.Service.Models.Enum.Attributes
+  commentId: N:MicroService.Service.Models.Enum.Attributes
+  name: MicroService.Service.Models.Enum.Attributes
+  nameWithType: MicroService.Service.Models.Enum.Attributes
+  fullName: MicroService.Service.Models.Enum.Attributes
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+  - name: .
+  - uid: MicroService.Service.Models.Enum.Attributes
+    name: Attributes
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+  - name: .
+  - uid: MicroService.Service.Models.Enum.Attributes
+    name: Attributes
+- uid: MicroService.Service.Models.Enum.Attributes.Color.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<Color>(Color)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<Color>(Color)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Models.Enum.Attributes.Color>(MicroService.Service.Models.Enum.Attributes.Color)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of Color)(Color)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Models.Enum.Attributes.Color)(MicroService.Service.Models.Enum.Attributes.Color)
+  name.vb: ArePropertiesNotNull(Of Color)(Color)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.Enum.Attributes.Color)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Models.Enum.Attributes.Color
+    name: Color
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Models.Enum.Attributes.Color
+    name: Color
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.Enum.Attributes.Color)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.Enum.Attributes.Color
+    name: Color
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Models.Enum.Attributes.Color
+    name: Color
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  isExternal: true
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.EnumHelper
+  commentId: T:MicroService.Service.Helpers.EnumHelper
+  parent: MicroService.Service.Helpers
+  name: EnumHelper
+  nameWithType: EnumHelper
+  fullName: MicroService.Service.Helpers.EnumHelper
+- uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  isExternal: true
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Models.Enum.Attributes.Color
+  commentId: T:MicroService.Service.Models.Enum.Attributes.Color
+  parent: MicroService.Service.Models.Enum.Attributes
+  name: Color
+  nameWithType: Color
+  fullName: MicroService.Service.Models.Enum.Attributes.Color

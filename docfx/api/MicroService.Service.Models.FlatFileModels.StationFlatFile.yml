@@ -1,0 +1,966 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  commentId: T:MicroService.Service.Models.FlatFileModels.StationFlatFile
+  id: StationFlatFile
+  parent: MicroService.Service.Models.FlatFileModels
+  children:
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.ADA
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.ADANotes
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.Borough
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.ComplexId
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.DaytimeRoutes
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.Division
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLatitude
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLongitude
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.GtfsStopId
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.Line
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.NorthDirectionLabel
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.SouthDirectionLabel
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.StationId
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.StopName
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.Structure
+  langs:
+  - csharp
+  - vb
+  name: StationFlatFile
+  nameWithType: StationFlatFile
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: StationFlatFile
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 4
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: 'public class StationFlatFile : FlatFileBase'
+    content.vb: Public Class StationFlatFile Inherits FlatFileBase
+  inheritance:
+  - System.Object
+  - MicroService.Service.Models.Base.FlatFileBase
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MicroService.Service.Models.FlatFileModels.StationFlatFile.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.StationId
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.StationId
+  id: StationId
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: StationId
+  nameWithType: StationFlatFile.StationId
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.StationId
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: StationId
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 6
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public int StationId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property StationId As Integer
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.StationId*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.ComplexId
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.ComplexId
+  id: ComplexId
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: ComplexId
+  nameWithType: StationFlatFile.ComplexId
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.ComplexId
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ComplexId
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 8
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public int ComplexId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ComplexId As Integer
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.ComplexId*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.GtfsStopId
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.GtfsStopId
+  id: GtfsStopId
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: GtfsStopId
+  nameWithType: StationFlatFile.GtfsStopId
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.GtfsStopId
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GtfsStopId
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 10
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public string GtfsStopId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property GtfsStopId As String
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.GtfsStopId*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.Division
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.Division
+  id: Division
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: Division
+  nameWithType: StationFlatFile.Division
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.Division
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Division
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 12
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public string Division { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Division As String
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.Division*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.Line
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.Line
+  id: Line
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: Line
+  nameWithType: StationFlatFile.Line
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.Line
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Line
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 14
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public string Line { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Line As String
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.Line*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.StopName
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.StopName
+  id: StopName
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: StopName
+  nameWithType: StationFlatFile.StopName
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.StopName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: StopName
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 16
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public string StopName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property StopName As String
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.StopName*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.Borough
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.Borough
+  id: Borough
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: Borough
+  nameWithType: StationFlatFile.Borough
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.Borough
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Borough
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 18
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public string Borough { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Borough As String
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.Borough*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.DaytimeRoutes
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.DaytimeRoutes
+  id: DaytimeRoutes
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: DaytimeRoutes
+  nameWithType: StationFlatFile.DaytimeRoutes
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.DaytimeRoutes
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: DaytimeRoutes
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 20
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public string DaytimeRoutes { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DaytimeRoutes As String
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.DaytimeRoutes*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.Structure
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.Structure
+  id: Structure
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: Structure
+  nameWithType: StationFlatFile.Structure
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.Structure
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Structure
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 22
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public string Structure { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property [Structure] As String
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.Structure*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLatitude
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLatitude
+  id: GTFSLatitude
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: GTFSLatitude
+  nameWithType: StationFlatFile.GTFSLatitude
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLatitude
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GTFSLatitude
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 24
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public double GTFSLatitude { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property GTFSLatitude As Double
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLatitude*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLongitude
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLongitude
+  id: GTFSLongitude
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: GTFSLongitude
+  nameWithType: StationFlatFile.GTFSLongitude
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLongitude
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GTFSLongitude
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 26
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public double GTFSLongitude { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property GTFSLongitude As Double
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLongitude*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.NorthDirectionLabel
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.NorthDirectionLabel
+  id: NorthDirectionLabel
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: NorthDirectionLabel
+  nameWithType: StationFlatFile.NorthDirectionLabel
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.NorthDirectionLabel
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: NorthDirectionLabel
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 28
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public string NorthDirectionLabel { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property NorthDirectionLabel As String
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.NorthDirectionLabel*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.SouthDirectionLabel
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.SouthDirectionLabel
+  id: SouthDirectionLabel
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: SouthDirectionLabel
+  nameWithType: StationFlatFile.SouthDirectionLabel
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.SouthDirectionLabel
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: SouthDirectionLabel
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 30
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public string SouthDirectionLabel { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SouthDirectionLabel As String
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.SouthDirectionLabel*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.ADA
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.ADA
+  id: ADA
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: ADA
+  nameWithType: StationFlatFile.ADA
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.ADA
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ADA
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 32
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public bool ADA { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ADA As Boolean
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.ADA*
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.ADANotes
+  commentId: P:MicroService.Service.Models.FlatFileModels.StationFlatFile.ADANotes
+  id: ADANotes
+  parent: MicroService.Service.Models.FlatFileModels.StationFlatFile
+  langs:
+  - csharp
+  - vb
+  name: ADANotes
+  nameWithType: StationFlatFile.ADANotes
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.ADANotes
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ADANotes
+    path: ../src/MicroService.Service/Models/FlatFileModels/StationFlatFile.cs
+    startLine: 34
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.FlatFileModels
+  syntax:
+    content: public string ADANotes { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ADANotes As String
+  overload: MicroService.Service.Models.FlatFileModels.StationFlatFile.ADANotes*
+references:
+- uid: MicroService.Service.Models.FlatFileModels
+  commentId: N:MicroService.Service.Models.FlatFileModels
+  name: MicroService.Service.Models.FlatFileModels
+  nameWithType: MicroService.Service.Models.FlatFileModels
+  fullName: MicroService.Service.Models.FlatFileModels
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.FlatFileModels
+    name: FlatFileModels
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.FlatFileModels
+    name: FlatFileModels
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MicroService.Service.Models.Base.FlatFileBase
+  commentId: T:MicroService.Service.Models.Base.FlatFileBase
+  parent: MicroService.Service.Models.Base
+  name: FlatFileBase
+  nameWithType: FlatFileBase
+  fullName: MicroService.Service.Models.Base.FlatFileBase
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<StationFlatFile>(StationFlatFile)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<StationFlatFile>(StationFlatFile)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Models.FlatFileModels.StationFlatFile>(MicroService.Service.Models.FlatFileModels.StationFlatFile)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of StationFlatFile)(StationFlatFile)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Models.FlatFileModels.StationFlatFile)(MicroService.Service.Models.FlatFileModels.StationFlatFile)
+  name.vb: ArePropertiesNotNull(Of StationFlatFile)(StationFlatFile)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.FlatFileModels.StationFlatFile)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Models.FlatFileModels.StationFlatFile
+    name: StationFlatFile
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Models.FlatFileModels.StationFlatFile
+    name: StationFlatFile
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.FlatFileModels.StationFlatFile)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.FlatFileModels.StationFlatFile
+    name: StationFlatFile
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Models.FlatFileModels.StationFlatFile
+    name: StationFlatFile
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.Service.Models.Base
+  commentId: N:MicroService.Service.Models.Base
+  name: MicroService.Service.Models.Base
+  nameWithType: MicroService.Service.Models.Base
+  fullName: MicroService.Service.Models.Base
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.StationId*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.StationId
+  name: StationId
+  nameWithType: StationFlatFile.StationId
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.StationId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.ComplexId*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.ComplexId
+  name: ComplexId
+  nameWithType: StationFlatFile.ComplexId
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.ComplexId
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.GtfsStopId*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.GtfsStopId
+  name: GtfsStopId
+  nameWithType: StationFlatFile.GtfsStopId
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.GtfsStopId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.Division*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.Division
+  name: Division
+  nameWithType: StationFlatFile.Division
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.Division
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.Line*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.Line
+  name: Line
+  nameWithType: StationFlatFile.Line
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.Line
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.StopName*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.StopName
+  name: StopName
+  nameWithType: StationFlatFile.StopName
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.StopName
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.Borough*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.Borough
+  name: Borough
+  nameWithType: StationFlatFile.Borough
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.Borough
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.DaytimeRoutes*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.DaytimeRoutes
+  name: DaytimeRoutes
+  nameWithType: StationFlatFile.DaytimeRoutes
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.DaytimeRoutes
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.Structure*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.Structure
+  name: Structure
+  nameWithType: StationFlatFile.Structure
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.Structure
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLatitude*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLatitude
+  name: GTFSLatitude
+  nameWithType: StationFlatFile.GTFSLatitude
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLatitude
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLongitude*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLongitude
+  name: GTFSLongitude
+  nameWithType: StationFlatFile.GTFSLongitude
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.GTFSLongitude
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.NorthDirectionLabel*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.NorthDirectionLabel
+  name: NorthDirectionLabel
+  nameWithType: StationFlatFile.NorthDirectionLabel
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.NorthDirectionLabel
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.SouthDirectionLabel*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.SouthDirectionLabel
+  name: SouthDirectionLabel
+  nameWithType: StationFlatFile.SouthDirectionLabel
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.SouthDirectionLabel
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.ADA*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.ADA
+  name: ADA
+  nameWithType: StationFlatFile.ADA
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.ADA
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MicroService.Service.Models.FlatFileModels.StationFlatFile.ADANotes*
+  commentId: Overload:MicroService.Service.Models.FlatFileModels.StationFlatFile.ADANotes
+  name: ADANotes
+  nameWithType: StationFlatFile.ADANotes
+  fullName: MicroService.Service.Models.FlatFileModels.StationFlatFile.ADANotes

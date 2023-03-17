@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Services.DataService
+  commentId: N:MicroService.Service.Services.DataService
+  id: MicroService.Service.Services.DataService
+  children:
+  - MicroService.Service.Services.DataService.CalculationService
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Services.DataService
+  nameWithType: MicroService.Service.Services.DataService
+  fullName: MicroService.Service.Services.DataService
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Services.DataService.CalculationService
+  commentId: T:MicroService.Service.Services.DataService.CalculationService
+  name: CalculationService
+  nameWithType: CalculationService
+  fullName: MicroService.Service.Services.DataService.CalculationService

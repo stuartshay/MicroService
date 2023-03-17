@@ -1,0 +1,347 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService
+  commentId: T:MicroService.Service.Helpers.IShapefileDataReaderService
+  id: IShapefileDataReaderService
+  parent: MicroService.Service.Helpers
+  children:
+  - MicroService.Service.Helpers.IShapefileDataReaderService.DbaseHeader
+  - MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures
+  - MicroService.Service.Helpers.IShapefileDataReaderService.ShapeHeader
+  langs:
+  - csharp
+  - vb
+  name: IShapefileDataReaderService
+  nameWithType: IShapefileDataReaderService
+  fullName: MicroService.Service.Helpers.IShapefileDataReaderService
+  type: Interface
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: IShapefileDataReaderService
+    path: ../src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+    startLine: 10
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: public interface IShapefileDataReaderService
+    content.vb: Public Interface IShapefileDataReaderService
+  extensionMethods:
+  - MicroService.Service.Helpers.IShapefileDataReaderService.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService.ShapeHeader
+  commentId: P:MicroService.Service.Helpers.IShapefileDataReaderService.ShapeHeader
+  id: ShapeHeader
+  parent: MicroService.Service.Helpers.IShapefileDataReaderService
+  langs:
+  - csharp
+  - vb
+  name: ShapeHeader
+  nameWithType: IShapefileDataReaderService.ShapeHeader
+  fullName: MicroService.Service.Helpers.IShapefileDataReaderService.ShapeHeader
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ShapeHeader
+    path: ../src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+    startLine: 12
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: ShapefileHeader ShapeHeader { get; }
+    parameters: []
+    return:
+      type: NetTopologySuite.IO.ShapefileHeader
+    content.vb: ReadOnly Property ShapeHeader As ShapefileHeader
+  overload: MicroService.Service.Helpers.IShapefileDataReaderService.ShapeHeader*
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService.DbaseHeader
+  commentId: P:MicroService.Service.Helpers.IShapefileDataReaderService.DbaseHeader
+  id: DbaseHeader
+  parent: MicroService.Service.Helpers.IShapefileDataReaderService
+  langs:
+  - csharp
+  - vb
+  name: DbaseHeader
+  nameWithType: IShapefileDataReaderService.DbaseHeader
+  fullName: MicroService.Service.Helpers.IShapefileDataReaderService.DbaseHeader
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: DbaseHeader
+    path: ../src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+    startLine: 14
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: DbaseFileHeader DbaseHeader { get; }
+    parameters: []
+    return:
+      type: NetTopologySuite.IO.DbaseFileHeader
+    content.vb: ReadOnly Property DbaseHeader As DbaseFileHeader
+  overload: MicroService.Service.Helpers.IShapefileDataReaderService.DbaseHeader*
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures
+  commentId: M:MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures
+  id: GetFeatures
+  parent: MicroService.Service.Helpers.IShapefileDataReaderService
+  langs:
+  - csharp
+  - vb
+  name: GetFeatures()
+  nameWithType: IShapefileDataReaderService.GetFeatures()
+  fullName: MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetFeatures
+    path: ../src/MicroService.Service/Helpers/CachedShapefileDataReader.cs
+    startLine: 16
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: IReadOnlyCollection<Feature> GetFeatures()
+    return:
+      type: System.Collections.Generic.IReadOnlyCollection{NetTopologySuite.Features.Feature}
+    content.vb: Function GetFeatures() As IReadOnlyCollection(Of Feature)
+  overload: MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures*
+references:
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<IShapefileDataReaderService>(IShapefileDataReaderService)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<IShapefileDataReaderService>(IShapefileDataReaderService)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Helpers.IShapefileDataReaderService>(MicroService.Service.Helpers.IShapefileDataReaderService)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of IShapefileDataReaderService)(IShapefileDataReaderService)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Helpers.IShapefileDataReaderService)(MicroService.Service.Helpers.IShapefileDataReaderService)
+  name.vb: ArePropertiesNotNull(Of IShapefileDataReaderService)(IShapefileDataReaderService)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Helpers.IShapefileDataReaderService)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Helpers.IShapefileDataReaderService
+    name: IShapefileDataReaderService
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Helpers.IShapefileDataReaderService
+    name: IShapefileDataReaderService
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Helpers.IShapefileDataReaderService)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Helpers.IShapefileDataReaderService
+    name: IShapefileDataReaderService
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Helpers.IShapefileDataReaderService
+    name: IShapefileDataReaderService
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService.ShapeHeader*
+  commentId: Overload:MicroService.Service.Helpers.IShapefileDataReaderService.ShapeHeader
+  name: ShapeHeader
+  nameWithType: IShapefileDataReaderService.ShapeHeader
+  fullName: MicroService.Service.Helpers.IShapefileDataReaderService.ShapeHeader
+- uid: NetTopologySuite.IO.ShapefileHeader
+  commentId: T:NetTopologySuite.IO.ShapefileHeader
+  parent: NetTopologySuite.IO
+  isExternal: true
+  name: ShapefileHeader
+  nameWithType: ShapefileHeader
+  fullName: NetTopologySuite.IO.ShapefileHeader
+- uid: NetTopologySuite.IO
+  commentId: N:NetTopologySuite.IO
+  isExternal: true
+  name: NetTopologySuite.IO
+  nameWithType: NetTopologySuite.IO
+  fullName: NetTopologySuite.IO
+  spec.csharp:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.IO
+    name: IO
+    isExternal: true
+  spec.vb:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.IO
+    name: IO
+    isExternal: true
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService.DbaseHeader*
+  commentId: Overload:MicroService.Service.Helpers.IShapefileDataReaderService.DbaseHeader
+  name: DbaseHeader
+  nameWithType: IShapefileDataReaderService.DbaseHeader
+  fullName: MicroService.Service.Helpers.IShapefileDataReaderService.DbaseHeader
+- uid: NetTopologySuite.IO.DbaseFileHeader
+  commentId: T:NetTopologySuite.IO.DbaseFileHeader
+  parent: NetTopologySuite.IO
+  isExternal: true
+  name: DbaseFileHeader
+  nameWithType: DbaseFileHeader
+  fullName: NetTopologySuite.IO.DbaseFileHeader
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures*
+  commentId: Overload:MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures
+  name: GetFeatures
+  nameWithType: IShapefileDataReaderService.GetFeatures
+  fullName: MicroService.Service.Helpers.IShapefileDataReaderService.GetFeatures
+- uid: System.Collections.Generic.IReadOnlyCollection{NetTopologySuite.Features.Feature}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{NetTopologySuite.Features.Feature}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  name: IReadOnlyCollection<Feature>
+  nameWithType: IReadOnlyCollection<Feature>
+  fullName: System.Collections.Generic.IReadOnlyCollection<NetTopologySuite.Features.Feature>
+  nameWithType.vb: IReadOnlyCollection(Of Feature)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of NetTopologySuite.Features.Feature)
+  name.vb: IReadOnlyCollection(Of Feature)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: <
+  - uid: NetTopologySuite.Features.Feature
+    name: Feature
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NetTopologySuite.Features.Feature
+    name: Feature
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true

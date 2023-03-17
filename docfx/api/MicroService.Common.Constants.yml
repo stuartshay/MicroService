@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Common.Constants
+  commentId: N:MicroService.Common.Constants
+  id: MicroService.Common.Constants
+  children:
+  - MicroService.Common.Constants.HealthCheckType
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Common.Constants
+  nameWithType: MicroService.Common.Constants
+  fullName: MicroService.Common.Constants
+  type: Namespace
+  assemblies:
+  - MicroService.Common
+references:
+- uid: MicroService.Common.Constants.HealthCheckType
+  commentId: T:MicroService.Common.Constants.HealthCheckType
+  parent: MicroService.Common.Constants
+  name: HealthCheckType
+  nameWithType: HealthCheckType
+  fullName: MicroService.Common.Constants.HealthCheckType
+- uid: MicroService.Common.Constants
+  commentId: N:MicroService.Common.Constants
+  name: MicroService.Common.Constants
+  nameWithType: MicroService.Common.Constants
+  fullName: MicroService.Common.Constants
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Common
+    name: Common
+  - name: .
+  - uid: MicroService.Common.Constants
+    name: Constants
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Common
+    name: Common
+  - name: .
+  - uid: MicroService.Common.Constants
+    name: Constants

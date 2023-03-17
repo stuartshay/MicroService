@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Data.Models
+  commentId: N:MicroService.Data.Models
+  id: MicroService.Data.Models
+  children:
+  - MicroService.Data.Models.BaseEntity
+  - MicroService.Data.Models.TestData
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Data.Models
+  nameWithType: MicroService.Data.Models
+  fullName: MicroService.Data.Models
+  type: Namespace
+  assemblies:
+  - MicroService.Data
+references:
+- uid: MicroService.Data.Models.BaseEntity
+  commentId: T:MicroService.Data.Models.BaseEntity
+  parent: MicroService.Data.Models
+  name: BaseEntity
+  nameWithType: BaseEntity
+  fullName: MicroService.Data.Models.BaseEntity
+- uid: MicroService.Data.Models.TestData
+  commentId: T:MicroService.Data.Models.TestData
+  parent: MicroService.Data.Models
+  name: TestData
+  nameWithType: TestData
+  fullName: MicroService.Data.Models.TestData
+- uid: MicroService.Data.Models
+  commentId: N:MicroService.Data.Models
+  name: MicroService.Data.Models
+  nameWithType: MicroService.Data.Models
+  fullName: MicroService.Data.Models
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Models
+    name: Models
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Models
+    name: Models
