@@ -1,0 +1,75 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Data.Repository
+  commentId: N:MicroService.Data.Repository
+  id: MicroService.Data.Repository
+  children:
+  - MicroService.Data.Repository.IRepository`1
+  - MicroService.Data.Repository.ITestDataRepository
+  - MicroService.Data.Repository.TestDataRepository
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Data.Repository
+  nameWithType: MicroService.Data.Repository
+  fullName: MicroService.Data.Repository
+  type: Namespace
+  assemblies:
+  - MicroService.Data
+references:
+- uid: MicroService.Data.Repository.IRepository`1
+  commentId: T:MicroService.Data.Repository.IRepository`1
+  name: IRepository<T>
+  nameWithType: IRepository<T>
+  fullName: MicroService.Data.Repository.IRepository<T>
+  nameWithType.vb: IRepository(Of T)
+  fullName.vb: MicroService.Data.Repository.IRepository(Of T)
+  name.vb: IRepository(Of T)
+  spec.csharp:
+  - uid: MicroService.Data.Repository.IRepository`1
+    name: IRepository
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MicroService.Data.Repository.IRepository`1
+    name: IRepository
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MicroService.Data.Repository.ITestDataRepository
+  commentId: T:MicroService.Data.Repository.ITestDataRepository
+  parent: MicroService.Data.Repository
+  name: ITestDataRepository
+  nameWithType: ITestDataRepository
+  fullName: MicroService.Data.Repository.ITestDataRepository
+- uid: MicroService.Data.Repository.TestDataRepository
+  commentId: T:MicroService.Data.Repository.TestDataRepository
+  name: TestDataRepository
+  nameWithType: TestDataRepository
+  fullName: MicroService.Data.Repository.TestDataRepository
+- uid: MicroService.Data.Repository
+  commentId: N:MicroService.Data.Repository
+  name: MicroService.Data.Repository
+  nameWithType: MicroService.Data.Repository
+  fullName: MicroService.Data.Repository
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Repository
+    name: Repository
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Repository
+    name: Repository

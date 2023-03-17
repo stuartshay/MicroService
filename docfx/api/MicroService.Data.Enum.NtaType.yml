@@ -1,0 +1,433 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Data.Enum.NtaType
+  commentId: T:MicroService.Data.Enum.NtaType
+  id: NtaType
+  parent: MicroService.Data.Enum
+  children:
+  - MicroService.Data.Enum.NtaType.Airport
+  - MicroService.Data.Enum.NtaType.Cemetery
+  - MicroService.Data.Enum.NtaType.Other
+  - MicroService.Data.Enum.NtaType.Park
+  - MicroService.Data.Enum.NtaType.Residential
+  - MicroService.Data.Enum.NtaType.Rikers
+  langs:
+  - csharp
+  - vb
+  name: NtaType
+  nameWithType: NtaType
+  fullName: MicroService.Data.Enum.NtaType
+  type: Enum
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/NtaType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: NtaType
+    path: ../src/MicroService.Data/Enum/NtaType.cs
+    startLine: 4
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: public enum NtaType
+    content.vb: Public Enum NtaType
+  extensionMethods:
+  - MicroService.Data.Enum.NtaType.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+- uid: MicroService.Data.Enum.NtaType.Residential
+  commentId: F:MicroService.Data.Enum.NtaType.Residential
+  id: Residential
+  parent: MicroService.Data.Enum.NtaType
+  langs:
+  - csharp
+  - vb
+  name: Residential
+  nameWithType: NtaType.Residential
+  fullName: MicroService.Data.Enum.NtaType.Residential
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/NtaType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Residential
+    path: ../src/MicroService.Data/Enum/NtaType.cs
+    startLine: 6
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: Residential = 0
+    return:
+      type: MicroService.Data.Enum.NtaType
+- uid: MicroService.Data.Enum.NtaType.Park
+  commentId: F:MicroService.Data.Enum.NtaType.Park
+  id: Park
+  parent: MicroService.Data.Enum.NtaType
+  langs:
+  - csharp
+  - vb
+  name: Park
+  nameWithType: NtaType.Park
+  fullName: MicroService.Data.Enum.NtaType.Park
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/NtaType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Park
+    path: ../src/MicroService.Data/Enum/NtaType.cs
+    startLine: 9
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: Park = 9
+    return:
+      type: MicroService.Data.Enum.NtaType
+- uid: MicroService.Data.Enum.NtaType.Airport
+  commentId: F:MicroService.Data.Enum.NtaType.Airport
+  id: Airport
+  parent: MicroService.Data.Enum.NtaType
+  langs:
+  - csharp
+  - vb
+  name: Airport
+  nameWithType: NtaType.Airport
+  fullName: MicroService.Data.Enum.NtaType.Airport
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/NtaType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Airport
+    path: ../src/MicroService.Data/Enum/NtaType.cs
+    startLine: 12
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: Airport = 8
+    return:
+      type: MicroService.Data.Enum.NtaType
+- uid: MicroService.Data.Enum.NtaType.Cemetery
+  commentId: F:MicroService.Data.Enum.NtaType.Cemetery
+  id: Cemetery
+  parent: MicroService.Data.Enum.NtaType
+  langs:
+  - csharp
+  - vb
+  name: Cemetery
+  nameWithType: NtaType.Cemetery
+  fullName: MicroService.Data.Enum.NtaType.Cemetery
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/NtaType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Cemetery
+    path: ../src/MicroService.Data/Enum/NtaType.cs
+    startLine: 15
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: Cemetery = 7
+    return:
+      type: MicroService.Data.Enum.NtaType
+- uid: MicroService.Data.Enum.NtaType.Other
+  commentId: F:MicroService.Data.Enum.NtaType.Other
+  id: Other
+  parent: MicroService.Data.Enum.NtaType
+  langs:
+  - csharp
+  - vb
+  name: Other
+  nameWithType: NtaType.Other
+  fullName: MicroService.Data.Enum.NtaType.Other
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/NtaType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Other
+    path: ../src/MicroService.Data/Enum/NtaType.cs
+    startLine: 18
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: Other = 6
+    return:
+      type: MicroService.Data.Enum.NtaType
+- uid: MicroService.Data.Enum.NtaType.Rikers
+  commentId: F:MicroService.Data.Enum.NtaType.Rikers
+  id: Rikers
+  parent: MicroService.Data.Enum.NtaType
+  langs:
+  - csharp
+  - vb
+  name: Rikers
+  nameWithType: NtaType.Rikers
+  fullName: MicroService.Data.Enum.NtaType.Rikers
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/NtaType.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Rikers
+    path: ../src/MicroService.Data/Enum/NtaType.cs
+    startLine: 21
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: Rikers = 5
+    return:
+      type: MicroService.Data.Enum.NtaType
+references:
+- uid: MicroService.Data.Enum
+  commentId: N:MicroService.Data.Enum
+  name: MicroService.Data.Enum
+  nameWithType: MicroService.Data.Enum
+  fullName: MicroService.Data.Enum
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Enum
+    name: Enum
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Enum
+    name: Enum
+- uid: MicroService.Data.Enum.NtaType.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<NtaType>(NtaType)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<NtaType>(NtaType)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Data.Enum.NtaType>(MicroService.Data.Enum.NtaType)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of NtaType)(NtaType)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Data.Enum.NtaType)(MicroService.Data.Enum.NtaType)
+  name.vb: ArePropertiesNotNull(Of NtaType)(NtaType)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Data.Enum.NtaType)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Data.Enum.NtaType
+    name: NtaType
+  - name: '>'
+  - name: (
+  - uid: MicroService.Data.Enum.NtaType
+    name: NtaType
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Data.Enum.NtaType)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Data.Enum.NtaType
+    name: NtaType
+  - name: )
+  - name: (
+  - uid: MicroService.Data.Enum.NtaType
+    name: NtaType
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  isExternal: true
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.EnumHelper
+  commentId: T:MicroService.Service.Helpers.EnumHelper
+  parent: MicroService.Service.Helpers
+  name: EnumHelper
+  nameWithType: EnumHelper
+  fullName: MicroService.Service.Helpers.EnumHelper
+- uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  isExternal: true
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Data.Enum.NtaType
+  commentId: T:MicroService.Data.Enum.NtaType
+  parent: MicroService.Data.Enum
+  name: NtaType
+  nameWithType: NtaType
+  fullName: MicroService.Data.Enum.NtaType

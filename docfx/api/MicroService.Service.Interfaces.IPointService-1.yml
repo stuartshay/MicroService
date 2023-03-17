@@ -1,0 +1,340 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Interfaces.IPointService`1
+  commentId: T:MicroService.Service.Interfaces.IPointService`1
+  id: IPointService`1
+  parent: MicroService.Service.Interfaces
+  children:
+  - MicroService.Service.Interfaces.IPointService`1.FindPointsByRadius(NetTopologySuite.Geometries.Point,System.Double)
+  langs:
+  - csharp
+  - vb
+  name: IPointService<T>
+  nameWithType: IPointService<T>
+  fullName: MicroService.Service.Interfaces.IPointService<T>
+  type: Interface
+  source:
+    remote:
+      path: src/MicroService.Service/Interfaces/IPointService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: IPointService
+    path: ../src/MicroService.Service/Interfaces/IPointService.cs
+    startLine: 6
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Interfaces
+  syntax:
+    content: 'public interface IPointService<out T> where T : ShapeBase'
+    typeParameters:
+    - id: T
+    content.vb: Public Interface IPointService(Of Out T As ShapeBase)
+  extensionMethods:
+  - MicroService.Service.Interfaces.IPointService`1.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  nameWithType.vb: IPointService(Of T)
+  fullName.vb: MicroService.Service.Interfaces.IPointService(Of T)
+  name.vb: IPointService(Of T)
+- uid: MicroService.Service.Interfaces.IPointService`1.FindPointsByRadius(NetTopologySuite.Geometries.Point,System.Double)
+  commentId: M:MicroService.Service.Interfaces.IPointService`1.FindPointsByRadius(NetTopologySuite.Geometries.Point,System.Double)
+  id: FindPointsByRadius(NetTopologySuite.Geometries.Point,System.Double)
+  parent: MicroService.Service.Interfaces.IPointService`1
+  langs:
+  - csharp
+  - vb
+  name: FindPointsByRadius(Point, double)
+  nameWithType: IPointService<T>.FindPointsByRadius(Point, double)
+  fullName: MicroService.Service.Interfaces.IPointService<T>.FindPointsByRadius(NetTopologySuite.Geometries.Point, double)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Interfaces/IPointService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: FindPointsByRadius
+    path: ../src/MicroService.Service/Interfaces/IPointService.cs
+    startLine: 8
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Interfaces
+  syntax:
+    content: List<Point> FindPointsByRadius(Point center, double radius)
+    parameters:
+    - id: center
+      type: NetTopologySuite.Geometries.Point
+    - id: radius
+      type: System.Double
+    return:
+      type: System.Collections.Generic.List{NetTopologySuite.Geometries.Point}
+    content.vb: Function FindPointsByRadius(center As Point, radius As Double) As List(Of Point)
+  overload: MicroService.Service.Interfaces.IPointService`1.FindPointsByRadius*
+  nameWithType.vb: IPointService(Of T).FindPointsByRadius(Point, Double)
+  fullName.vb: MicroService.Service.Interfaces.IPointService(Of T).FindPointsByRadius(NetTopologySuite.Geometries.Point, Double)
+  name.vb: FindPointsByRadius(Point, Double)
+references:
+- uid: MicroService.Service.Interfaces
+  commentId: N:MicroService.Service.Interfaces
+  name: MicroService.Service.Interfaces
+  nameWithType: MicroService.Service.Interfaces
+  fullName: MicroService.Service.Interfaces
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Interfaces
+    name: Interfaces
+- uid: MicroService.Service.Interfaces.IPointService`1.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<IPointService<T>>(IPointService<T>)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<IPointService<T>>(IPointService<T>)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Interfaces.IPointService<T>>(MicroService.Service.Interfaces.IPointService<T>)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of IPointService(Of T))(IPointService(Of T))
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Interfaces.IPointService(Of T))(MicroService.Service.Interfaces.IPointService(Of T))
+  name.vb: ArePropertiesNotNull(Of IPointService(Of T))(IPointService(Of T))
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Interfaces.IPointService{`0})
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Interfaces.IPointService`1
+    name: IPointService
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Interfaces.IPointService`1
+    name: IPointService
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Interfaces.IPointService{`0})
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Interfaces.IPointService`1
+    name: IPointService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Interfaces.IPointService`1
+    name: IPointService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Interfaces.IPointService`1.FindPointsByRadius*
+  commentId: Overload:MicroService.Service.Interfaces.IPointService`1.FindPointsByRadius
+  name: FindPointsByRadius
+  nameWithType: IPointService<T>.FindPointsByRadius
+  fullName: MicroService.Service.Interfaces.IPointService<T>.FindPointsByRadius
+  nameWithType.vb: IPointService(Of T).FindPointsByRadius
+  fullName.vb: MicroService.Service.Interfaces.IPointService(Of T).FindPointsByRadius
+- uid: NetTopologySuite.Geometries.Point
+  commentId: T:NetTopologySuite.Geometries.Point
+  parent: NetTopologySuite.Geometries
+  isExternal: true
+  name: Point
+  nameWithType: Point
+  fullName: NetTopologySuite.Geometries.Point
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Collections.Generic.List{NetTopologySuite.Geometries.Point}
+  commentId: T:System.Collections.Generic.List{NetTopologySuite.Geometries.Point}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<Point>
+  nameWithType: List<Point>
+  fullName: System.Collections.Generic.List<NetTopologySuite.Geometries.Point>
+  nameWithType.vb: List(Of Point)
+  fullName.vb: System.Collections.Generic.List(Of NetTopologySuite.Geometries.Point)
+  name.vb: List(Of Point)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: NetTopologySuite.Geometries.Point
+    name: Point
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NetTopologySuite.Geometries.Point
+    name: Point
+    isExternal: true
+  - name: )
+- uid: NetTopologySuite.Geometries
+  commentId: N:NetTopologySuite.Geometries
+  isExternal: true
+  name: NetTopologySuite.Geometries
+  nameWithType: NetTopologySuite.Geometries
+  fullName: NetTopologySuite.Geometries
+  spec.csharp:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.Geometries
+    name: Geometries
+    isExternal: true
+  spec.vb:
+  - uid: NetTopologySuite
+    name: NetTopologySuite
+    isExternal: true
+  - name: .
+  - uid: NetTopologySuite.Geometries
+    name: Geometries
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true

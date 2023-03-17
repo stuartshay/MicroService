@@ -1,0 +1,59 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.WebApi.V2.Models
+  commentId: N:MicroService.WebApi.V2.Models
+  id: MicroService.WebApi.V2.Models
+  children:
+  - MicroService.WebApi.V2.Models.Order
+  - MicroService.WebApi.V2.Models.Person
+  langs:
+  - csharp
+  - vb
+  name: MicroService.WebApi.V2.Models
+  nameWithType: MicroService.WebApi.V2.Models
+  fullName: MicroService.WebApi.V2.Models
+  type: Namespace
+  assemblies:
+  - MicroService.WebApi
+references:
+- uid: MicroService.WebApi.V2.Models.Order
+  commentId: T:MicroService.WebApi.V2.Models.Order
+  parent: MicroService.WebApi.V2.Models
+  name: Order
+  nameWithType: Order
+  fullName: MicroService.WebApi.V2.Models.Order
+- uid: MicroService.WebApi.V2.Models.Person
+  commentId: T:MicroService.WebApi.V2.Models.Person
+  parent: MicroService.WebApi.V2.Models
+  name: Person
+  nameWithType: Person
+  fullName: MicroService.WebApi.V2.Models.Person
+- uid: MicroService.WebApi.V2.Models
+  commentId: N:MicroService.WebApi.V2.Models
+  name: MicroService.WebApi.V2.Models
+  nameWithType: MicroService.WebApi.V2.Models
+  fullName: MicroService.WebApi.V2.Models
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.WebApi
+    name: WebApi
+  - name: .
+  - uid: MicroService.WebApi.V2
+    name: V2
+  - name: .
+  - uid: MicroService.WebApi.V2.Models
+    name: Models
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.WebApi
+    name: WebApi
+  - name: .
+  - uid: MicroService.WebApi.V2
+    name: V2
+  - name: .
+  - uid: MicroService.WebApi.V2.Models
+    name: Models

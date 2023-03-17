@@ -1,0 +1,1222 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  commentId: T:MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  id: NationalRegisterHistoricPlacesShape
+  parent: MicroService.Service.Models
+  children:
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Address
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AlternativeName
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AreaName
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Bbl
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Block
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroCode
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroName
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DateDesignated
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DesignationStatus
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LandmarkType
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Lot
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.ObjectId
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.SiteDesignation
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.TimeDesignated
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.UrlReport
+  langs:
+  - csharp
+  - vb
+  name: NationalRegisterHistoricPlacesShape
+  nameWithType: NationalRegisterHistoricPlacesShape
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: NationalRegisterHistoricPlacesShape
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 7
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [ShapeProperties(ShapeProperties.NationalRegisterHistoricPlaces)]
+
+      public class NationalRegisterHistoricPlacesShape : ShapeBase
+    content.vb: >-
+      <ShapeProperties(ShapeProperties.NationalRegisterHistoricPlaces)>
+
+      Public Class NationalRegisterHistoricPlacesShape Inherits ShapeBase
+  inheritance:
+  - System.Object
+  - MicroService.Service.Models.Base.ShapeBase
+  inheritedMembers:
+  - MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  - MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  - MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  - MicroService.Service.Models.Base.ShapeBase.Geometry
+  - MicroService.Service.Models.Base.ShapeBase.Feature
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MicroService.Service.Models.NationalRegisterHistoricPlacesShape.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute.#ctor(MicroService.Service.Models.Enum.ShapeProperties)
+    arguments:
+    - type: MicroService.Service.Models.Enum.ShapeProperties
+      value: 6
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.ObjectId
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.ObjectId
+  id: ObjectId
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: ObjectId
+  nameWithType: NationalRegisterHistoricPlacesShape.ObjectId
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.ObjectId
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ObjectId
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 10
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("objectid")]
+
+      public double ObjectId { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <FeatureName("objectid")>
+
+      Public Property ObjectId As Double
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.ObjectId*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: objectid
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Address
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Address
+  id: Address
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: Address
+  nameWithType: NationalRegisterHistoricPlacesShape.Address
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Address
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Address
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 13
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("address")]
+
+      public string Address { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("address")>
+
+      Public Property Address As String
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Address*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: address
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroName
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroName
+  id: BoroName
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: BoroName
+  nameWithType: NationalRegisterHistoricPlacesShape.BoroName
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BoroName
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 16
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("borough")]
+
+      public string BoroName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("borough")>
+
+      Public Property BoroName As String
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroName*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: borough
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroCode
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroCode
+  id: BoroCode
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: BoroCode
+  nameWithType: NationalRegisterHistoricPlacesShape.BoroCode
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroCode
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BoroCode
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 19
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: public int BoroCode { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property BoroCode As Integer
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroCode*
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
+  id: LPNumber
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: LPNumber
+  nameWithType: NationalRegisterHistoricPlacesShape.LPNumber
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: LPNumber
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 21
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lpc_lpnumb")]
+
+      public string LPNumber { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("lpc_lpnumb")>
+
+      Public Property LPNumber As String
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lpc_lpnumb
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AreaName
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AreaName
+  id: AreaName
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: AreaName
+  nameWithType: NationalRegisterHistoricPlacesShape.AreaName
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AreaName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: AreaName
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 24
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lpc_name")]
+
+      public string AreaName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("lpc_name")>
+
+      Public Property AreaName As String
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AreaName*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lpc_name
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AlternativeName
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AlternativeName
+  id: AlternativeName
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: AlternativeName
+  nameWithType: NationalRegisterHistoricPlacesShape.AlternativeName
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AlternativeName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: AlternativeName
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 27
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lpc_altern")]
+
+      public string AlternativeName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("lpc_altern")>
+
+      Public Property AlternativeName As String
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AlternativeName*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lpc_altern
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.SiteDesignation
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.SiteDesignation
+  id: SiteDesignation
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: SiteDesignation
+  nameWithType: NationalRegisterHistoricPlacesShape.SiteDesignation
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.SiteDesignation
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: SiteDesignation
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 30
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lpc_site_d")]
+
+      public string SiteDesignation { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("lpc_site_d")>
+
+      Public Property SiteDesignation As String
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.SiteDesignation*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lpc_site_d
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LandmarkType
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LandmarkType
+  id: LandmarkType
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: LandmarkType
+  nameWithType: NationalRegisterHistoricPlacesShape.LandmarkType
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LandmarkType
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: LandmarkType
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 33
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("landmark_t")]
+
+      public string LandmarkType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("landmark_t")>
+
+      Public Property LandmarkType As String
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LandmarkType*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: landmark_t
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DesignationStatus
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DesignationStatus
+  id: DesignationStatus
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: DesignationStatus
+  nameWithType: NationalRegisterHistoricPlacesShape.DesignationStatus
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DesignationStatus
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: DesignationStatus
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 36
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lpc_site_s")]
+
+      public string DesignationStatus { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("lpc_site_s")>
+
+      Public Property DesignationStatus As String
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DesignationStatus*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lpc_site_s
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Bbl
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Bbl
+  id: Bbl
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: Bbl
+  nameWithType: NationalRegisterHistoricPlacesShape.Bbl
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Bbl
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Bbl
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 39
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("bbl")]
+
+      public double Bbl { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <FeatureName("bbl")>
+
+      Public Property Bbl As Double
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Bbl*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: bbl
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Block
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Block
+  id: Block
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: Block
+  nameWithType: NationalRegisterHistoricPlacesShape.Block
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Block
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Block
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 42
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("block")]
+
+      public double Block { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <FeatureName("block")>
+
+      Public Property Block As Double
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Block*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: block
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Lot
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Lot
+  id: Lot
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: Lot
+  nameWithType: NationalRegisterHistoricPlacesShape.Lot
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Lot
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Lot
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 45
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lot")]
+
+      public double Lot { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <FeatureName("lot")>
+
+      Public Property Lot As Double
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Lot*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lot
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.UrlReport
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.UrlReport
+  id: UrlReport
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: UrlReport
+  nameWithType: NationalRegisterHistoricPlacesShape.UrlReport
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.UrlReport
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: UrlReport
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 48
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("url_report")]
+
+      public string UrlReport { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("url_report")>
+
+      Public Property UrlReport As String
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.UrlReport*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: url_report
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DateDesignated
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DateDesignated
+  id: DateDesignated
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: DateDesignated
+  nameWithType: NationalRegisterHistoricPlacesShape.DateDesignated
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DateDesignated
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: DateDesignated
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 51
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("date_des_d")]
+
+      public DateTime DateDesignated { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: >-
+      <FeatureName("date_des_d")>
+
+      Public Property DateDesignated As Date
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DateDesignated*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: date_des_d
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.TimeDesignated
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.TimeDesignated
+  id: TimeDesignated
+  parent: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+  langs:
+  - csharp
+  - vb
+  name: TimeDesignated
+  nameWithType: NationalRegisterHistoricPlacesShape.TimeDesignated
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.TimeDesignated
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: TimeDesignated
+    path: ../src/MicroService.Service/Models/NationalRegisterHistoricPlacesShape.cs
+    startLine: 54
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("time_des_d")]
+
+      public string TimeDesignated { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("time_des_d")>
+
+      Public Property TimeDesignated As String
+  overload: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.TimeDesignated*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: time_des_d
+references:
+- uid: MicroService.Service.Models
+  commentId: N:MicroService.Service.Models
+  name: MicroService.Service.Models
+  nameWithType: MicroService.Service.Models
+  fullName: MicroService.Service.Models
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MicroService.Service.Models.Base.ShapeBase
+  commentId: T:MicroService.Service.Models.Base.ShapeBase
+  parent: MicroService.Service.Models.Base
+  name: ShapeBase
+  nameWithType: ShapeBase
+  fullName: MicroService.Service.Models.Base.ShapeBase
+- uid: MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: ShapeArea
+  nameWithType: ShapeBase.ShapeArea
+  fullName: MicroService.Service.Models.Base.ShapeBase.ShapeArea
+- uid: MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: ShapeLength
+  nameWithType: ShapeBase.ShapeLength
+  fullName: MicroService.Service.Models.Base.ShapeBase.ShapeLength
+- uid: MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: BoundingBox
+  nameWithType: ShapeBase.BoundingBox
+  fullName: MicroService.Service.Models.Base.ShapeBase.BoundingBox
+- uid: MicroService.Service.Models.Base.ShapeBase.Geometry
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.Geometry
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: Geometry
+  nameWithType: ShapeBase.Geometry
+  fullName: MicroService.Service.Models.Base.ShapeBase.Geometry
+- uid: MicroService.Service.Models.Base.ShapeBase.Feature
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.Feature
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: Feature
+  nameWithType: ShapeBase.Feature
+  fullName: MicroService.Service.Models.Base.ShapeBase.Feature
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<NationalRegisterHistoricPlacesShape>(NationalRegisterHistoricPlacesShape)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<NationalRegisterHistoricPlacesShape>(NationalRegisterHistoricPlacesShape)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Models.NationalRegisterHistoricPlacesShape>(MicroService.Service.Models.NationalRegisterHistoricPlacesShape)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of NationalRegisterHistoricPlacesShape)(NationalRegisterHistoricPlacesShape)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Models.NationalRegisterHistoricPlacesShape)(MicroService.Service.Models.NationalRegisterHistoricPlacesShape)
+  name.vb: ArePropertiesNotNull(Of NationalRegisterHistoricPlacesShape)(NationalRegisterHistoricPlacesShape)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.NationalRegisterHistoricPlacesShape)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+    name: NationalRegisterHistoricPlacesShape
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+    name: NationalRegisterHistoricPlacesShape
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.NationalRegisterHistoricPlacesShape)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+    name: NationalRegisterHistoricPlacesShape
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape
+    name: NationalRegisterHistoricPlacesShape
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.Service.Models.Base
+  commentId: N:MicroService.Service.Models.Base
+  name: MicroService.Service.Models.Base
+  nameWithType: MicroService.Service.Models.Base
+  fullName: MicroService.Service.Models.Base
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.ObjectId*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.ObjectId
+  name: ObjectId
+  nameWithType: NationalRegisterHistoricPlacesShape.ObjectId
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.ObjectId
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Address*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Address
+  name: Address
+  nameWithType: NationalRegisterHistoricPlacesShape.Address
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Address
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroName*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroName
+  name: BoroName
+  nameWithType: NationalRegisterHistoricPlacesShape.BoroName
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroName
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroCode*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroCode
+  name: BoroCode
+  nameWithType: NationalRegisterHistoricPlacesShape.BoroCode
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.BoroCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
+  name: LPNumber
+  nameWithType: NationalRegisterHistoricPlacesShape.LPNumber
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AreaName*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AreaName
+  name: AreaName
+  nameWithType: NationalRegisterHistoricPlacesShape.AreaName
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AreaName
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AlternativeName*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AlternativeName
+  name: AlternativeName
+  nameWithType: NationalRegisterHistoricPlacesShape.AlternativeName
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.AlternativeName
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.SiteDesignation*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.SiteDesignation
+  name: SiteDesignation
+  nameWithType: NationalRegisterHistoricPlacesShape.SiteDesignation
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.SiteDesignation
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LandmarkType*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LandmarkType
+  name: LandmarkType
+  nameWithType: NationalRegisterHistoricPlacesShape.LandmarkType
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LandmarkType
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DesignationStatus*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DesignationStatus
+  name: DesignationStatus
+  nameWithType: NationalRegisterHistoricPlacesShape.DesignationStatus
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DesignationStatus
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Bbl*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Bbl
+  name: Bbl
+  nameWithType: NationalRegisterHistoricPlacesShape.Bbl
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Bbl
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Block*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Block
+  name: Block
+  nameWithType: NationalRegisterHistoricPlacesShape.Block
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Block
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Lot*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Lot
+  name: Lot
+  nameWithType: NationalRegisterHistoricPlacesShape.Lot
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Lot
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.UrlReport*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.UrlReport
+  name: UrlReport
+  nameWithType: NationalRegisterHistoricPlacesShape.UrlReport
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.UrlReport
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DateDesignated*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DateDesignated
+  name: DateDesignated
+  nameWithType: NationalRegisterHistoricPlacesShape.DateDesignated
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DateDesignated
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.TimeDesignated*
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.TimeDesignated
+  name: TimeDesignated
+  nameWithType: NationalRegisterHistoricPlacesShape.TimeDesignated
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.TimeDesignated

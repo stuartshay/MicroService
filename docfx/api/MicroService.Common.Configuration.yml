@@ -1,0 +1,59 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Common.Configuration
+  commentId: N:MicroService.Common.Configuration
+  id: MicroService.Common.Configuration
+  children:
+  - MicroService.Common.Configuration.ApplicationOptions
+  - MicroService.Common.Configuration.GrafanaLokiConfiguration
+  - MicroService.Common.Configuration.JaegerConfiguration
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Common.Configuration
+  nameWithType: MicroService.Common.Configuration
+  fullName: MicroService.Common.Configuration
+  type: Namespace
+  assemblies:
+  - MicroService.Common
+references:
+- uid: MicroService.Common.Configuration.ApplicationOptions
+  commentId: T:MicroService.Common.Configuration.ApplicationOptions
+  name: ApplicationOptions
+  nameWithType: ApplicationOptions
+  fullName: MicroService.Common.Configuration.ApplicationOptions
+- uid: MicroService.Common.Configuration.GrafanaLokiConfiguration
+  commentId: T:MicroService.Common.Configuration.GrafanaLokiConfiguration
+  parent: MicroService.Common.Configuration
+  name: GrafanaLokiConfiguration
+  nameWithType: GrafanaLokiConfiguration
+  fullName: MicroService.Common.Configuration.GrafanaLokiConfiguration
+- uid: MicroService.Common.Configuration.JaegerConfiguration
+  commentId: T:MicroService.Common.Configuration.JaegerConfiguration
+  parent: MicroService.Common.Configuration
+  name: JaegerConfiguration
+  nameWithType: JaegerConfiguration
+  fullName: MicroService.Common.Configuration.JaegerConfiguration
+- uid: MicroService.Common.Configuration
+  commentId: N:MicroService.Common.Configuration
+  name: MicroService.Common.Configuration
+  nameWithType: MicroService.Common.Configuration
+  fullName: MicroService.Common.Configuration
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Common
+    name: Common
+  - name: .
+  - uid: MicroService.Common.Configuration
+    name: Configuration
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Common
+    name: Common
+  - name: .
+  - uid: MicroService.Common.Configuration
+    name: Configuration

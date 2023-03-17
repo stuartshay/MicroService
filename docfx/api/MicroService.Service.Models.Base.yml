@@ -1,0 +1,73 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.Base
+  commentId: N:MicroService.Service.Models.Base
+  id: MicroService.Service.Models.Base
+  children:
+  - MicroService.Service.Models.Base.BoundingBox
+  - MicroService.Service.Models.Base.CentrePoint
+  - MicroService.Service.Models.Base.FlatFileBase
+  - MicroService.Service.Models.Base.ShapeBase
+  langs:
+  - csharp
+  - vb
+  name: MicroService.Service.Models.Base
+  nameWithType: MicroService.Service.Models.Base
+  fullName: MicroService.Service.Models.Base
+  type: Namespace
+  assemblies:
+  - MicroService.Service
+references:
+- uid: MicroService.Service.Models.Base.FlatFileBase
+  commentId: T:MicroService.Service.Models.Base.FlatFileBase
+  parent: MicroService.Service.Models.Base
+  name: FlatFileBase
+  nameWithType: FlatFileBase
+  fullName: MicroService.Service.Models.Base.FlatFileBase
+- uid: MicroService.Service.Models.Base.ShapeBase
+  commentId: T:MicroService.Service.Models.Base.ShapeBase
+  parent: MicroService.Service.Models.Base
+  name: ShapeBase
+  nameWithType: ShapeBase
+  fullName: MicroService.Service.Models.Base.ShapeBase
+- uid: MicroService.Service.Models.Base.BoundingBox
+  commentId: T:MicroService.Service.Models.Base.BoundingBox
+  parent: MicroService.Service.Models.Base
+  name: BoundingBox
+  nameWithType: BoundingBox
+  fullName: MicroService.Service.Models.Base.BoundingBox
+- uid: MicroService.Service.Models.Base.CentrePoint
+  commentId: T:MicroService.Service.Models.Base.CentrePoint
+  parent: MicroService.Service.Models.Base
+  name: CentrePoint
+  nameWithType: CentrePoint
+  fullName: MicroService.Service.Models.Base.CentrePoint
+- uid: MicroService.Service.Models.Base
+  commentId: N:MicroService.Service.Models.Base
+  name: MicroService.Service.Models.Base
+  nameWithType: MicroService.Service.Models.Base
+  fullName: MicroService.Service.Models.Base
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base

@@ -1,0 +1,785 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Helpers.EnumHelper
+  commentId: T:MicroService.Service.Helpers.EnumHelper
+  id: EnumHelper
+  parent: MicroService.Service.Helpers
+  children:
+  - MicroService.Service.Helpers.EnumHelper.EnumToList``1
+  - MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  - MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  - MicroService.Service.Helpers.EnumHelper.GetPropertiesWithAttribute``1(System.Type)
+  - MicroService.Service.Helpers.EnumHelper.GetPropertiesWithoutExcludedAttribute``2
+  - MicroService.Service.Helpers.EnumHelper.GetValueFromDescription``1(System.String)
+  - MicroService.Service.Helpers.EnumHelper.IsEnumValid``1(System.String)
+  - MicroService.Service.Helpers.EnumHelper.ParseEnum``1(System.String)
+  langs:
+  - csharp
+  - vb
+  name: EnumHelper
+  nameWithType: EnumHelper
+  fullName: MicroService.Service.Helpers.EnumHelper
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/EnumHelper.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: EnumHelper
+    path: ../src/MicroService.Service/Helpers/EnumHelper.cs
+    startLine: 8
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: public static class EnumHelper
+    content.vb: Public Module EnumHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MicroService.Service.Helpers.EnumHelper.ParseEnum``1(System.String)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.ParseEnum``1(System.String)
+  id: ParseEnum``1(System.String)
+  isExtensionMethod: true
+  parent: MicroService.Service.Helpers.EnumHelper
+  langs:
+  - csharp
+  - vb
+  name: ParseEnum<T>(string)
+  nameWithType: EnumHelper.ParseEnum<T>(string)
+  fullName: MicroService.Service.Helpers.EnumHelper.ParseEnum<T>(string)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/EnumHelper.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ParseEnum
+    path: ../src/MicroService.Service/Helpers/EnumHelper.cs
+    startLine: 10
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: public static T ParseEnum<T>(this string value)
+    parameters:
+    - id: value
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function ParseEnum(Of T)(value As String) As T
+  overload: MicroService.Service.Helpers.EnumHelper.ParseEnum*
+  nameWithType.vb: EnumHelper.ParseEnum(Of T)(String)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.ParseEnum(Of T)(String)
+  name.vb: ParseEnum(Of T)(String)
+- uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  id: GetAttribute``1(System.Enum)
+  isExtensionMethod: true
+  parent: MicroService.Service.Helpers.EnumHelper
+  langs:
+  - csharp
+  - vb
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/EnumHelper.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetAttribute
+    path: ../src/MicroService.Service/Helpers/EnumHelper.cs
+    startLine: 15
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: 'public static TAttribute GetAttribute<TAttribute>(this Enum value) where TAttribute : Attribute'
+    parameters:
+    - id: value
+      type: System.Enum
+    typeParameters:
+    - id: TAttribute
+    return:
+      type: '{TAttribute}'
+    content.vb: Public Shared Function GetAttribute(Of TAttribute As Attribute)(value As [Enum]) As TAttribute
+  overload: MicroService.Service.Helpers.EnumHelper.GetAttribute*
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+- uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  id: GetEnumDescription(System.Enum)
+  isExtensionMethod: true
+  parent: MicroService.Service.Helpers.EnumHelper
+  langs:
+  - csharp
+  - vb
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/EnumHelper.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetEnumDescription
+    path: ../src/MicroService.Service/Helpers/EnumHelper.cs
+    startLine: 23
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: public static string GetEnumDescription(this Enum value)
+    parameters:
+    - id: value
+      type: System.Enum
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetEnumDescription(value As [Enum]) As String
+  overload: MicroService.Service.Helpers.EnumHelper.GetEnumDescription*
+- uid: MicroService.Service.Helpers.EnumHelper.GetValueFromDescription``1(System.String)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetValueFromDescription``1(System.String)
+  id: GetValueFromDescription``1(System.String)
+  parent: MicroService.Service.Helpers.EnumHelper
+  langs:
+  - csharp
+  - vb
+  name: GetValueFromDescription<T>(string)
+  nameWithType: EnumHelper.GetValueFromDescription<T>(string)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetValueFromDescription<T>(string)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/EnumHelper.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetValueFromDescription
+    path: ../src/MicroService.Service/Helpers/EnumHelper.cs
+    startLine: 33
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: public static T GetValueFromDescription<T>(string description)
+    parameters:
+    - id: description
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function GetValueFromDescription(Of T)(description As String) As T
+  overload: MicroService.Service.Helpers.EnumHelper.GetValueFromDescription*
+  nameWithType.vb: EnumHelper.GetValueFromDescription(Of T)(String)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetValueFromDescription(Of T)(String)
+  name.vb: GetValueFromDescription(Of T)(String)
+- uid: MicroService.Service.Helpers.EnumHelper.EnumToList``1
+  commentId: M:MicroService.Service.Helpers.EnumHelper.EnumToList``1
+  id: EnumToList``1
+  parent: MicroService.Service.Helpers.EnumHelper
+  langs:
+  - csharp
+  - vb
+  name: EnumToList<T>()
+  nameWithType: EnumHelper.EnumToList<T>()
+  fullName: MicroService.Service.Helpers.EnumHelper.EnumToList<T>()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/EnumHelper.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: EnumToList
+    path: ../src/MicroService.Service/Helpers/EnumHelper.cs
+    startLine: 54
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: public static IEnumerable<T> EnumToList<T>()
+    typeParameters:
+    - id: T
+    return:
+      type: System.Collections.Generic.IEnumerable{{T}}
+    content.vb: Public Shared Function EnumToList(Of T)() As IEnumerable(Of T)
+  overload: MicroService.Service.Helpers.EnumHelper.EnumToList*
+  nameWithType.vb: EnumHelper.EnumToList(Of T)()
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.EnumToList(Of T)()
+  name.vb: EnumToList(Of T)()
+- uid: MicroService.Service.Helpers.EnumHelper.IsEnumValid``1(System.String)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.IsEnumValid``1(System.String)
+  id: IsEnumValid``1(System.String)
+  parent: MicroService.Service.Helpers.EnumHelper
+  langs:
+  - csharp
+  - vb
+  name: IsEnumValid<T>(string)
+  nameWithType: EnumHelper.IsEnumValid<T>(string)
+  fullName: MicroService.Service.Helpers.EnumHelper.IsEnumValid<T>(string)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/EnumHelper.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: IsEnumValid
+    path: ../src/MicroService.Service/Helpers/EnumHelper.cs
+    startLine: 74
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: 'public static bool IsEnumValid<T>(string value) where T : struct, Enum'
+    parameters:
+    - id: value
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsEnumValid(Of T As {Structure, [Enum]})(value As String) As Boolean
+  overload: MicroService.Service.Helpers.EnumHelper.IsEnumValid*
+  nameWithType.vb: EnumHelper.IsEnumValid(Of T)(String)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.IsEnumValid(Of T)(String)
+  name.vb: IsEnumValid(Of T)(String)
+- uid: MicroService.Service.Helpers.EnumHelper.GetPropertiesWithAttribute``1(System.Type)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetPropertiesWithAttribute``1(System.Type)
+  id: GetPropertiesWithAttribute``1(System.Type)
+  parent: MicroService.Service.Helpers.EnumHelper
+  langs:
+  - csharp
+  - vb
+  name: GetPropertiesWithAttribute<TAttr>(Type)
+  nameWithType: EnumHelper.GetPropertiesWithAttribute<TAttr>(Type)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetPropertiesWithAttribute<TAttr>(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/EnumHelper.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetPropertiesWithAttribute
+    path: ../src/MicroService.Service/Helpers/EnumHelper.cs
+    startLine: 79
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: 'public static List<PropertyInfo> GetPropertiesWithAttribute<TAttr>(Type type) where TAttr : Attribute'
+    parameters:
+    - id: type
+      type: System.Type
+    typeParameters:
+    - id: TAttr
+    return:
+      type: System.Collections.Generic.List{System.Reflection.PropertyInfo}
+    content.vb: Public Shared Function GetPropertiesWithAttribute(Of TAttr As Attribute)(type As Type) As List(Of PropertyInfo)
+  overload: MicroService.Service.Helpers.EnumHelper.GetPropertiesWithAttribute*
+  nameWithType.vb: EnumHelper.GetPropertiesWithAttribute(Of TAttr)(Type)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetPropertiesWithAttribute(Of TAttr)(System.Type)
+  name.vb: GetPropertiesWithAttribute(Of TAttr)(Type)
+- uid: MicroService.Service.Helpers.EnumHelper.GetPropertiesWithoutExcludedAttribute``2
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetPropertiesWithoutExcludedAttribute``2
+  id: GetPropertiesWithoutExcludedAttribute``2
+  parent: MicroService.Service.Helpers.EnumHelper
+  langs:
+  - csharp
+  - vb
+  name: GetPropertiesWithoutExcludedAttribute<T, TAttr>()
+  nameWithType: EnumHelper.GetPropertiesWithoutExcludedAttribute<T, TAttr>()
+  fullName: MicroService.Service.Helpers.EnumHelper.GetPropertiesWithoutExcludedAttribute<T, TAttr>()
+  type: Method
+  source:
+    remote:
+      path: src/MicroService.Service/Helpers/EnumHelper.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: GetPropertiesWithoutExcludedAttribute
+    path: ../src/MicroService.Service/Helpers/EnumHelper.cs
+    startLine: 86
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Helpers
+  syntax:
+    content: 'public static List<PropertyInfo> GetPropertiesWithoutExcludedAttribute<T, TAttr>() where TAttr : Attribute'
+    typeParameters:
+    - id: T
+    - id: TAttr
+    return:
+      type: System.Collections.Generic.List{System.Reflection.PropertyInfo}
+    content.vb: Public Shared Function GetPropertiesWithoutExcludedAttribute(Of T, TAttr As Attribute)() As List(Of PropertyInfo)
+  overload: MicroService.Service.Helpers.EnumHelper.GetPropertiesWithoutExcludedAttribute*
+  nameWithType.vb: EnumHelper.GetPropertiesWithoutExcludedAttribute(Of T, TAttr)()
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetPropertiesWithoutExcludedAttribute(Of T, TAttr)()
+  name.vb: GetPropertiesWithoutExcludedAttribute(Of T, TAttr)()
+references:
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.Service.Helpers.EnumHelper.ParseEnum*
+  commentId: Overload:MicroService.Service.Helpers.EnumHelper.ParseEnum
+  name: ParseEnum
+  nameWithType: EnumHelper.ParseEnum
+  fullName: MicroService.Service.Helpers.EnumHelper.ParseEnum
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: MicroService.Service.Helpers.EnumHelper.GetAttribute*
+  commentId: Overload:MicroService.Service.Helpers.EnumHelper.GetAttribute
+  name: GetAttribute
+  nameWithType: EnumHelper.GetAttribute
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute
+- uid: System.Enum
+  commentId: T:System.Enum
+  parent: System
+  isExternal: true
+  name: Enum
+  nameWithType: Enum
+  fullName: System.Enum
+- uid: '{TAttribute}'
+  commentId: '!:TAttribute'
+  definition: TAttribute
+  name: TAttribute
+  nameWithType: TAttribute
+  fullName: TAttribute
+- uid: TAttribute
+  name: TAttribute
+  nameWithType: TAttribute
+  fullName: TAttribute
+- uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription*
+  commentId: Overload:MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+  name: GetEnumDescription
+  nameWithType: EnumHelper.GetEnumDescription
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+- uid: MicroService.Service.Helpers.EnumHelper.GetValueFromDescription*
+  commentId: Overload:MicroService.Service.Helpers.EnumHelper.GetValueFromDescription
+  name: GetValueFromDescription
+  nameWithType: EnumHelper.GetValueFromDescription
+  fullName: MicroService.Service.Helpers.EnumHelper.GetValueFromDescription
+- uid: MicroService.Service.Helpers.EnumHelper.EnumToList*
+  commentId: Overload:MicroService.Service.Helpers.EnumHelper.EnumToList
+  name: EnumToList
+  nameWithType: EnumHelper.EnumToList
+  fullName: MicroService.Service.Helpers.EnumHelper.EnumToList
+- uid: System.Collections.Generic.IEnumerable{{T}}
+  commentId: T:System.Collections.Generic.IEnumerable{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+- uid: MicroService.Service.Helpers.EnumHelper.IsEnumValid*
+  commentId: Overload:MicroService.Service.Helpers.EnumHelper.IsEnumValid
+  name: IsEnumValid
+  nameWithType: EnumHelper.IsEnumValid
+  fullName: MicroService.Service.Helpers.EnumHelper.IsEnumValid
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MicroService.Service.Helpers.EnumHelper.GetPropertiesWithAttribute*
+  commentId: Overload:MicroService.Service.Helpers.EnumHelper.GetPropertiesWithAttribute
+  name: GetPropertiesWithAttribute
+  nameWithType: EnumHelper.GetPropertiesWithAttribute
+  fullName: MicroService.Service.Helpers.EnumHelper.GetPropertiesWithAttribute
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Collections.Generic.List{System.Reflection.PropertyInfo}
+  commentId: T:System.Collections.Generic.List{System.Reflection.PropertyInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<PropertyInfo>
+  nameWithType: List<PropertyInfo>
+  fullName: System.Collections.Generic.List<System.Reflection.PropertyInfo>
+  nameWithType.vb: List(Of PropertyInfo)
+  fullName.vb: System.Collections.Generic.List(Of System.Reflection.PropertyInfo)
+  name.vb: List(Of PropertyInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.EnumHelper.GetPropertiesWithoutExcludedAttribute*
+  commentId: Overload:MicroService.Service.Helpers.EnumHelper.GetPropertiesWithoutExcludedAttribute
+  name: GetPropertiesWithoutExcludedAttribute
+  nameWithType: EnumHelper.GetPropertiesWithoutExcludedAttribute
+  fullName: MicroService.Service.Helpers.EnumHelper.GetPropertiesWithoutExcludedAttribute

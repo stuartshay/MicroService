@@ -1,0 +1,406 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Data.Enum.Borough
+  commentId: T:MicroService.Data.Enum.Borough
+  id: Borough
+  parent: MicroService.Data.Enum
+  children:
+  - MicroService.Data.Enum.Borough.BK
+  - MicroService.Data.Enum.Borough.BX
+  - MicroService.Data.Enum.Borough.MN
+  - MicroService.Data.Enum.Borough.QN
+  - MicroService.Data.Enum.Borough.SI
+  langs:
+  - csharp
+  - vb
+  name: Borough
+  nameWithType: Borough
+  fullName: MicroService.Data.Enum.Borough
+  type: Enum
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/Borough.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Borough
+    path: ../src/MicroService.Data/Enum/Borough.cs
+    startLine: 4
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: public enum Borough
+    content.vb: Public Enum Borough
+  extensionMethods:
+  - MicroService.Data.Enum.Borough.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+- uid: MicroService.Data.Enum.Borough.MN
+  commentId: F:MicroService.Data.Enum.Borough.MN
+  id: MN
+  parent: MicroService.Data.Enum.Borough
+  langs:
+  - csharp
+  - vb
+  name: MN
+  nameWithType: Borough.MN
+  fullName: MicroService.Data.Enum.Borough.MN
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/Borough.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: MN
+    path: ../src/MicroService.Data/Enum/Borough.cs
+    startLine: 6
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: MN = 1
+    return:
+      type: MicroService.Data.Enum.Borough
+- uid: MicroService.Data.Enum.Borough.BX
+  commentId: F:MicroService.Data.Enum.Borough.BX
+  id: BX
+  parent: MicroService.Data.Enum.Borough
+  langs:
+  - csharp
+  - vb
+  name: BX
+  nameWithType: Borough.BX
+  fullName: MicroService.Data.Enum.Borough.BX
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/Borough.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BX
+    path: ../src/MicroService.Data/Enum/Borough.cs
+    startLine: 9
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: BX = 2
+    return:
+      type: MicroService.Data.Enum.Borough
+- uid: MicroService.Data.Enum.Borough.BK
+  commentId: F:MicroService.Data.Enum.Borough.BK
+  id: BK
+  parent: MicroService.Data.Enum.Borough
+  langs:
+  - csharp
+  - vb
+  name: BK
+  nameWithType: Borough.BK
+  fullName: MicroService.Data.Enum.Borough.BK
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/Borough.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BK
+    path: ../src/MicroService.Data/Enum/Borough.cs
+    startLine: 12
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: BK = 3
+    return:
+      type: MicroService.Data.Enum.Borough
+- uid: MicroService.Data.Enum.Borough.QN
+  commentId: F:MicroService.Data.Enum.Borough.QN
+  id: QN
+  parent: MicroService.Data.Enum.Borough
+  langs:
+  - csharp
+  - vb
+  name: QN
+  nameWithType: Borough.QN
+  fullName: MicroService.Data.Enum.Borough.QN
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/Borough.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: QN
+    path: ../src/MicroService.Data/Enum/Borough.cs
+    startLine: 15
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: QN = 4
+    return:
+      type: MicroService.Data.Enum.Borough
+- uid: MicroService.Data.Enum.Borough.SI
+  commentId: F:MicroService.Data.Enum.Borough.SI
+  id: SI
+  parent: MicroService.Data.Enum.Borough
+  langs:
+  - csharp
+  - vb
+  name: SI
+  nameWithType: Borough.SI
+  fullName: MicroService.Data.Enum.Borough.SI
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Data/Enum/Borough.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: SI
+    path: ../src/MicroService.Data/Enum/Borough.cs
+    startLine: 18
+  assemblies:
+  - MicroService.Data
+  namespace: MicroService.Data.Enum
+  syntax:
+    content: SI = 5
+    return:
+      type: MicroService.Data.Enum.Borough
+references:
+- uid: MicroService.Data.Enum
+  commentId: N:MicroService.Data.Enum
+  name: MicroService.Data.Enum
+  nameWithType: MicroService.Data.Enum
+  fullName: MicroService.Data.Enum
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Enum
+    name: Enum
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Data
+    name: Data
+  - name: .
+  - uid: MicroService.Data.Enum
+    name: Enum
+- uid: MicroService.Data.Enum.Borough.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<Borough>(Borough)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<Borough>(Borough)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Data.Enum.Borough>(MicroService.Data.Enum.Borough)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of Borough)(Borough)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Data.Enum.Borough)(MicroService.Data.Enum.Borough)
+  name.vb: ArePropertiesNotNull(Of Borough)(Borough)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Data.Enum.Borough)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Data.Enum.Borough
+    name: Borough
+  - name: '>'
+  - name: (
+  - uid: MicroService.Data.Enum.Borough
+    name: Borough
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Data.Enum.Borough)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Data.Enum.Borough
+    name: Borough
+  - name: )
+  - name: (
+  - uid: MicroService.Data.Enum.Borough
+    name: Borough
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  isExternal: true
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.EnumHelper
+  commentId: T:MicroService.Service.Helpers.EnumHelper
+  parent: MicroService.Service.Helpers
+  name: EnumHelper
+  nameWithType: EnumHelper
+  fullName: MicroService.Service.Helpers.EnumHelper
+- uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  isExternal: true
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Data.Enum.Borough
+  commentId: T:MicroService.Data.Enum.Borough
+  parent: MicroService.Data.Enum
+  name: Borough
+  nameWithType: Borough
+  fullName: MicroService.Data.Enum.Borough

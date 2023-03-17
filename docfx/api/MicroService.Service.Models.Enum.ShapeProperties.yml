@@ -1,0 +1,1125 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.Enum.ShapeProperties
+  commentId: T:MicroService.Service.Models.Enum.ShapeProperties
+  id: ShapeProperties
+  parent: MicroService.Service.Models.Enum
+  children:
+  - MicroService.Service.Models.Enum.ShapeProperties.BoroughBoundaries
+  - MicroService.Service.Models.Enum.ShapeProperties.CommunityDistricts
+  - MicroService.Service.Models.Enum.ShapeProperties.DSNYDistricts
+  - MicroService.Service.Models.Enum.ShapeProperties.HistoricDistricts
+  - MicroService.Service.Models.Enum.ShapeProperties.IndividualLandmarkHistoricDistricts
+  - MicroService.Service.Models.Enum.ShapeProperties.IndividualLandmarkSite
+  - MicroService.Service.Models.Enum.ShapeProperties.NationalRegisterHistoricPlaces
+  - MicroService.Service.Models.Enum.ShapeProperties.Neighborhoods
+  - MicroService.Service.Models.Enum.ShapeProperties.NeighborhoodTabulationAreas
+  - MicroService.Service.Models.Enum.ShapeProperties.NychaDevelopments
+  - MicroService.Service.Models.Enum.ShapeProperties.NypdPolicePrecincts
+  - MicroService.Service.Models.Enum.ShapeProperties.NypdSectors
+  - MicroService.Service.Models.Enum.ShapeProperties.Parks
+  - MicroService.Service.Models.Enum.ShapeProperties.ScenicLandmarks
+  - MicroService.Service.Models.Enum.ShapeProperties.Subway
+  - MicroService.Service.Models.Enum.ShapeProperties.ZipCodes
+  langs:
+  - csharp
+  - vb
+  name: ShapeProperties
+  nameWithType: ShapeProperties
+  fullName: MicroService.Service.Models.Enum.ShapeProperties
+  type: Enum
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ShapeProperties
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 5
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: public enum ShapeProperties
+    content.vb: Public Enum ShapeProperties
+  extensionMethods:
+  - MicroService.Service.Models.Enum.ShapeProperties.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  - System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+- uid: MicroService.Service.Models.Enum.ShapeProperties.BoroughBoundaries
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.BoroughBoundaries
+  id: BoroughBoundaries
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: BoroughBoundaries
+  nameWithType: ShapeProperties.BoroughBoundaries
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.BoroughBoundaries
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BoroughBoundaries
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 7
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("Borough_Boundaries/NAD83", "nybb", Datum.Nad83)]
+
+      [ShapeStyle(Color.Blue)]
+
+      BoroughBoundaries = 0
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("Borough_Boundaries/NAD83", "nybb", Datum.Nad83)>
+
+      <ShapeStyle(Color.Blue)>
+
+      BoroughBoundaries = 0
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: Borough_Boundaries/NAD83
+    - type: System.String
+      value: nybb
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 1
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.CommunityDistricts
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.CommunityDistricts
+  id: CommunityDistricts
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: CommunityDistricts
+  nameWithType: ShapeProperties.CommunityDistricts
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.CommunityDistricts
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: CommunityDistricts
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 12
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("Community_Districts", "nycd", Datum.Nad83)]
+
+      [ShapeStyle(Color.Blue)]
+
+      CommunityDistricts = 1
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("Community_Districts", "nycd", Datum.Nad83)>
+
+      <ShapeStyle(Color.Blue)>
+
+      CommunityDistricts = 1
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: Community_Districts
+    - type: System.String
+      value: nycd
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 1
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.DSNYDistricts
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.DSNYDistricts
+  id: DSNYDistricts
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: DSNYDistricts
+  nameWithType: ShapeProperties.DSNYDistricts
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.DSNYDistricts
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: DSNYDistricts
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 17
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("DSNY_Districts/WGS84", "dsny", Datum.Wgs84)]
+
+      [ShapeStyle(Color.Blue)]
+
+      DSNYDistricts = 2
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("DSNY_Districts/WGS84", "dsny", Datum.Wgs84)>
+
+      <ShapeStyle(Color.Blue)>
+
+      DSNYDistricts = 2
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: DSNY_Districts/WGS84
+    - type: System.String
+      value: dsny
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 0
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.HistoricDistricts
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.HistoricDistricts
+  id: HistoricDistricts
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: HistoricDistricts
+  nameWithType: ShapeProperties.HistoricDistricts
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.HistoricDistricts
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: HistoricDistricts
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 22
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("Historic_Districts/WGS84", "Historic_Districts", Datum.Wgs84)]
+
+      [ShapeStyle(Color.Red)]
+
+      HistoricDistricts = 3
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("Historic_Districts/WGS84", "Historic_Districts", Datum.Wgs84)>
+
+      <ShapeStyle(Color.Red)>
+
+      HistoricDistricts = 3
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: Historic_Districts/WGS84
+    - type: System.String
+      value: Historic_Districts
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 0
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 0
+- uid: MicroService.Service.Models.Enum.ShapeProperties.IndividualLandmarkSite
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.IndividualLandmarkSite
+  id: IndividualLandmarkSite
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: IndividualLandmarkSite
+  nameWithType: ShapeProperties.IndividualLandmarkSite
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.IndividualLandmarkSite
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: IndividualLandmarkSite
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 27
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("Individual_Landmark_Sites", "Individual_Landmark_Sites", Datum.Wgs84)]
+
+      [ShapeStyle(Color.Blue)]
+
+      IndividualLandmarkSite = 4
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("Individual_Landmark_Sites", "Individual_Landmark_Sites", Datum.Wgs84)>
+
+      <ShapeStyle(Color.Blue)>
+
+      IndividualLandmarkSite = 4
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: Individual_Landmark_Sites
+    - type: System.String
+      value: Individual_Landmark_Sites
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 0
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.IndividualLandmarkHistoricDistricts
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.IndividualLandmarkHistoricDistricts
+  id: IndividualLandmarkHistoricDistricts
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: IndividualLandmarkHistoricDistricts
+  nameWithType: ShapeProperties.IndividualLandmarkHistoricDistricts
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.IndividualLandmarkHistoricDistricts
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: IndividualLandmarkHistoricDistricts
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 32
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("LPC_Individual_Landmark_and_Historic_Building_Database", "LPC_Individual_Landmark_and_Historic_District_Building_Database_202302", Datum.Nad83)]
+
+      [ShapeStyle(Color.Blue)]
+
+      IndividualLandmarkHistoricDistricts = 5
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("LPC_Individual_Landmark_and_Historic_Building_Database", "LPC_Individual_Landmark_and_Historic_District_Building_Database_202302", Datum.Nad83)>
+
+      <ShapeStyle(Color.Blue)>
+
+      IndividualLandmarkHistoricDistricts = 5
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: LPC_Individual_Landmark_and_Historic_Building_Database
+    - type: System.String
+      value: LPC_Individual_Landmark_and_Historic_District_Building_Database_202302
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 1
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.NationalRegisterHistoricPlaces
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.NationalRegisterHistoricPlaces
+  id: NationalRegisterHistoricPlaces
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: NationalRegisterHistoricPlaces
+  nameWithType: ShapeProperties.NationalRegisterHistoricPlaces
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.NationalRegisterHistoricPlaces
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: NationalRegisterHistoricPlaces
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 38
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("National_Register_ Historic_Places/WGS84", "HRHP", Datum.Wgs84)]
+
+      [ShapeStyle(Color.Blue)]
+
+      NationalRegisterHistoricPlaces = 6
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("National_Register_ Historic_Places/WGS84", "HRHP", Datum.Wgs84)>
+
+      <ShapeStyle(Color.Blue)>
+
+      NationalRegisterHistoricPlaces = 6
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: National_Register_ Historic_Places/WGS84
+    - type: System.String
+      value: HRHP
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 0
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.Neighborhoods
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.Neighborhoods
+  id: Neighborhoods
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: Neighborhoods
+  nameWithType: ShapeProperties.Neighborhoods
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.Neighborhoods
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Neighborhoods
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 43
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("Neighborhoods", "nynta", Datum.Nad83)]
+
+      [ShapeStyle(Color.Blue)]
+
+      Neighborhoods = 7
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("Neighborhoods", "nynta", Datum.Nad83)>
+
+      <ShapeStyle(Color.Blue)>
+
+      Neighborhoods = 7
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: Neighborhoods
+    - type: System.String
+      value: nynta
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 1
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.NeighborhoodTabulationAreas
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.NeighborhoodTabulationAreas
+  id: NeighborhoodTabulationAreas
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: NeighborhoodTabulationAreas
+  nameWithType: ShapeProperties.NeighborhoodTabulationAreas
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.NeighborhoodTabulationAreas
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: NeighborhoodTabulationAreas
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 48
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("Neighborhood_Tabulation_Areas", "nynta2020", Datum.Nad83)]
+
+      [ShapeStyle(Color.Blue)]
+
+      NeighborhoodTabulationAreas = 8
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("Neighborhood_Tabulation_Areas", "nynta2020", Datum.Nad83)>
+
+      <ShapeStyle(Color.Blue)>
+
+      NeighborhoodTabulationAreas = 8
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: Neighborhood_Tabulation_Areas
+    - type: System.String
+      value: nynta2020
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 1
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.NypdPolicePrecincts
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.NypdPolicePrecincts
+  id: NypdPolicePrecincts
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: NypdPolicePrecincts
+  nameWithType: ShapeProperties.NypdPolicePrecincts
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.NypdPolicePrecincts
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: NypdPolicePrecincts
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 53
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("NYPD_Police_Precincts", "nypp", Datum.Nad83)]
+
+      [ShapeStyle(Color.Blue)]
+
+      NypdPolicePrecincts = 9
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("NYPD_Police_Precincts", "nypp", Datum.Nad83)>
+
+      <ShapeStyle(Color.Blue)>
+
+      NypdPolicePrecincts = 9
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: NYPD_Police_Precincts
+    - type: System.String
+      value: nypp
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 1
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.NypdSectors
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.NypdSectors
+  id: NypdSectors
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: NypdSectors
+  nameWithType: ShapeProperties.NypdSectors
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.NypdSectors
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: NypdSectors
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 58
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("NYPD_Sectors", "NYPD_Sectors", Datum.Nad83)]
+
+      [ShapeStyle(Color.Blue)]
+
+      NypdSectors = 10
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("NYPD_Sectors", "NYPD_Sectors", Datum.Nad83)>
+
+      <ShapeStyle(Color.Blue)>
+
+      NypdSectors = 10
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: NYPD_Sectors
+    - type: System.String
+      value: NYPD_Sectors
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 1
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.NychaDevelopments
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.NychaDevelopments
+  id: NychaDevelopments
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: NychaDevelopments
+  nameWithType: ShapeProperties.NychaDevelopments
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.NychaDevelopments
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: NychaDevelopments
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 63
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("NYCHA_Developments", "NYCHA_Developments", Datum.Nad83)]
+
+      [ShapeStyle(Color.Blue)]
+
+      NychaDevelopments = 11
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("NYCHA_Developments", "NYCHA_Developments", Datum.Nad83)>
+
+      <ShapeStyle(Color.Blue)>
+
+      NychaDevelopments = 11
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: NYCHA_Developments
+    - type: System.String
+      value: NYCHA_Developments
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 1
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.Parks
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.Parks
+  id: Parks
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: Parks
+  nameWithType: ShapeProperties.Parks
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.Parks
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Parks
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 68
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("Park", "PARK", Datum.Nad83)]
+
+      [ShapeStyle(Color.Blue)]
+
+      Parks = 12
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("Park", "PARK", Datum.Nad83)>
+
+      <ShapeStyle(Color.Blue)>
+
+      Parks = 12
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: Park
+    - type: System.String
+      value: PARK
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 1
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.ScenicLandmarks
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.ScenicLandmarks
+  id: ScenicLandmarks
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: ScenicLandmarks
+  nameWithType: ShapeProperties.ScenicLandmarks
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.ScenicLandmarks
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ScenicLandmarks
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 73
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("Scenic_Landmarks/WGS84", "Scenic_Landmarks", Datum.Wgs84)]
+
+      [ShapeStyle(Color.Blue)]
+
+      ScenicLandmarks = 13
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("Scenic_Landmarks/WGS84", "Scenic_Landmarks", Datum.Wgs84)>
+
+      <ShapeStyle(Color.Blue)>
+
+      ScenicLandmarks = 13
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: Scenic_Landmarks/WGS84
+    - type: System.String
+      value: Scenic_Landmarks
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 0
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.Subway
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.Subway
+  id: Subway
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: Subway
+  nameWithType: ShapeProperties.Subway
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.Subway
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Subway
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 78
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("Subway_Entrances", "Subway_Entrances", Datum.Nad83)]
+
+      [ShapeStyle(Color.Blue)]
+
+      Subway = 14
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("Subway_Entrances", "Subway_Entrances", Datum.Nad83)>
+
+      <ShapeStyle(Color.Blue)>
+
+      Subway = 14
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: Subway_Entrances
+    - type: System.String
+      value: Subway_Entrances
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 1
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+- uid: MicroService.Service.Models.Enum.ShapeProperties.ZipCodes
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.ZipCodes
+  id: ZipCodes
+  parent: MicroService.Service.Models.Enum.ShapeProperties
+  langs:
+  - csharp
+  - vb
+  name: ZipCodes
+  nameWithType: ShapeProperties.ZipCodes
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.ZipCodes
+  type: Field
+  source:
+    remote:
+      path: src/MicroService.Service/Models/Enum/ShapeProperties.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ZipCodes
+    path: ../src/MicroService.Service/Models/Enum/ShapeProperties.cs
+    startLine: 83
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models.Enum
+  syntax:
+    content: >-
+      [Shape("Zip_Codes", "ZIP_CODE_040114", Datum.Nad83)]
+
+      [ShapeStyle(Color.Blue)]
+
+      ZipCodes = 15
+    return:
+      type: MicroService.Service.Models.Enum.ShapeProperties
+    content.vb: >-
+      <Shape("Zip_Codes", "ZIP_CODE_040114", Datum.Nad83)>
+
+      <ShapeStyle(Color.Blue)>
+
+      ZipCodes = 15
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeAttribute.#ctor(System.String,System.String,MicroService.Service.Models.Enum.Attributes.Datum)
+    arguments:
+    - type: System.String
+      value: Zip_Codes
+    - type: System.String
+      value: ZIP_CODE_040114
+    - type: MicroService.Service.Models.Enum.Attributes.Datum
+      value: 1
+  - type: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.#ctor(MicroService.Service.Models.Enum.Attributes.Color)
+    arguments:
+    - type: MicroService.Service.Models.Enum.Attributes.Color
+      value: 1
+references:
+- uid: MicroService.Service.Models.Enum
+  commentId: N:MicroService.Service.Models.Enum
+  name: MicroService.Service.Models.Enum
+  nameWithType: MicroService.Service.Models.Enum
+  fullName: MicroService.Service.Models.Enum
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Enum
+    name: Enum
+- uid: MicroService.Service.Models.Enum.ShapeProperties.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<ShapeProperties>(ShapeProperties)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<ShapeProperties>(ShapeProperties)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Models.Enum.ShapeProperties>(MicroService.Service.Models.Enum.ShapeProperties)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of ShapeProperties)(ShapeProperties)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Models.Enum.ShapeProperties)(MicroService.Service.Models.Enum.ShapeProperties)
+  name.vb: ArePropertiesNotNull(Of ShapeProperties)(ShapeProperties)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.Enum.ShapeProperties)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Models.Enum.ShapeProperties
+    name: ShapeProperties
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Models.Enum.ShapeProperties
+    name: ShapeProperties
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.Enum.ShapeProperties)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.Enum.ShapeProperties
+    name: ShapeProperties
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Models.Enum.ShapeProperties
+    name: ShapeProperties
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetAttribute``1
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: System.Enum.MicroService.Service.Helpers.EnumHelper.GetEnumDescription
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  parent: MicroService.Service.Helpers.EnumHelper
+  definition: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+  isExternal: true
+  name: GetAttribute<TAttribute>(Enum)
+  nameWithType: EnumHelper.GetAttribute<TAttribute>(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetAttribute<TAttribute>(System.Enum)
+  nameWithType.vb: EnumHelper.GetAttribute(Of TAttribute)(Enum)
+  fullName.vb: MicroService.Service.Helpers.EnumHelper.GetAttribute(Of TAttribute)(System.Enum)
+  name.vb: GetAttribute(Of TAttribute)(Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: <
+  - name: TAttribute
+  - name: '>'
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetAttribute``1(System.Enum)
+    name: GetAttribute
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAttribute
+  - name: )
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers.EnumHelper
+  commentId: T:MicroService.Service.Helpers.EnumHelper
+  parent: MicroService.Service.Helpers
+  name: EnumHelper
+  nameWithType: EnumHelper
+  fullName: MicroService.Service.Helpers.EnumHelper
+- uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  commentId: M:MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  isExternal: true
+  name: GetEnumDescription(Enum)
+  nameWithType: EnumHelper.GetEnumDescription(Enum)
+  fullName: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.EnumHelper.GetEnumDescription(System.Enum)
+    name: GetEnumDescription
+  - name: (
+  - uid: System.Enum
+    name: Enum
+    isExternal: true
+  - name: )
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Models.Enum.ShapeProperties
+  commentId: T:MicroService.Service.Models.Enum.ShapeProperties
+  parent: MicroService.Service.Models.Enum
+  name: ShapeProperties
+  nameWithType: ShapeProperties
+  fullName: MicroService.Service.Models.Enum.ShapeProperties

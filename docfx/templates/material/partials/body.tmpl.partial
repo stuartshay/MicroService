@@ -1,0 +1,9 @@
+{{! This file is a template partial for Redoc to inject into the main template. }}
+{{! For more information on Redoc, visit https://github.com/Redocly/redoc }}
+
+<div id="redoc-container"></div>
+
+<script src="redoc.standalone.js"></script>
+<script>
+    Redoc.init('{{_rel}}{{_path}}swagger.json', {}, document.getElementById('redoc-container'));
+</script>

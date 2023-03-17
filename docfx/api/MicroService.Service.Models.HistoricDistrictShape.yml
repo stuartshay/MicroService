@@ -1,0 +1,1061 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Models.HistoricDistrictShape
+  commentId: T:MicroService.Service.Models.HistoricDistrictShape
+  id: HistoricDistrictShape
+  parent: MicroService.Service.Models
+  children:
+  - MicroService.Service.Models.HistoricDistrictShape.AreaName
+  - MicroService.Service.Models.HistoricDistrictShape.BoroCode
+  - MicroService.Service.Models.HistoricDistrictShape.BoroName
+  - MicroService.Service.Models.HistoricDistrictShape.BoundaryName
+  - MicroService.Service.Models.HistoricDistrictShape.CalendarDate
+  - MicroService.Service.Models.HistoricDistrictShape.Current
+  - MicroService.Service.Models.HistoricDistrictShape.DesignationDate
+  - MicroService.Service.Models.HistoricDistrictShape.Extension
+  - MicroService.Service.Models.HistoricDistrictShape.LastAction
+  - MicroService.Service.Models.HistoricDistrictShape.LPNumber
+  - MicroService.Service.Models.HistoricDistrictShape.OtherHearing
+  - MicroService.Service.Models.HistoricDistrictShape.PublicHearing
+  - MicroService.Service.Models.HistoricDistrictShape.Status
+  langs:
+  - csharp
+  - vb
+  name: HistoricDistrictShape
+  nameWithType: HistoricDistrictShape
+  fullName: MicroService.Service.Models.HistoricDistrictShape
+  type: Class
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: HistoricDistrictShape
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 6
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [ShapeProperties(ShapeProperties.HistoricDistricts)]
+
+      public class HistoricDistrictShape : ShapeBase
+    content.vb: >-
+      <ShapeProperties(ShapeProperties.HistoricDistricts)>
+
+      Public Class HistoricDistrictShape Inherits ShapeBase
+  inheritance:
+  - System.Object
+  - MicroService.Service.Models.Base.ShapeBase
+  inheritedMembers:
+  - MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  - MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  - MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  - MicroService.Service.Models.Base.ShapeBase.Geometry
+  - MicroService.Service.Models.Base.ShapeBase.Feature
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MicroService.Service.Models.HistoricDistrictShape.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute.#ctor(MicroService.Service.Models.Enum.ShapeProperties)
+    arguments:
+    - type: MicroService.Service.Models.Enum.ShapeProperties
+      value: 3
+- uid: MicroService.Service.Models.HistoricDistrictShape.LPNumber
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.LPNumber
+  id: LPNumber
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: LPNumber
+  nameWithType: HistoricDistrictShape.LPNumber
+  fullName: MicroService.Service.Models.HistoricDistrictShape.LPNumber
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: LPNumber
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 9
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("lp_number")]
+
+      public string LPNumber { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("lp_number")>
+
+      Public Property LPNumber As String
+  overload: MicroService.Service.Models.HistoricDistrictShape.LPNumber*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lp_number
+- uid: MicroService.Service.Models.HistoricDistrictShape.AreaName
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.AreaName
+  id: AreaName
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: AreaName
+  nameWithType: HistoricDistrictShape.AreaName
+  fullName: MicroService.Service.Models.HistoricDistrictShape.AreaName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: AreaName
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 12
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("area_name")]
+
+      public string AreaName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("area_name")>
+
+      Public Property AreaName As String
+  overload: MicroService.Service.Models.HistoricDistrictShape.AreaName*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: area_name
+- uid: MicroService.Service.Models.HistoricDistrictShape.BoroName
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.BoroName
+  id: BoroName
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: BoroName
+  nameWithType: HistoricDistrictShape.BoroName
+  fullName: MicroService.Service.Models.HistoricDistrictShape.BoroName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BoroName
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 15
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("borough")]
+
+      public string BoroName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("borough")>
+
+      Public Property BoroName As String
+  overload: MicroService.Service.Models.HistoricDistrictShape.BoroName*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: borough
+- uid: MicroService.Service.Models.HistoricDistrictShape.BoroCode
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.BoroCode
+  id: BoroCode
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: BoroCode
+  nameWithType: HistoricDistrictShape.BoroCode
+  fullName: MicroService.Service.Models.HistoricDistrictShape.BoroCode
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BoroCode
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 18
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: public int BoroCode { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property BoroCode As Integer
+  overload: MicroService.Service.Models.HistoricDistrictShape.BoroCode*
+- uid: MicroService.Service.Models.HistoricDistrictShape.BoundaryName
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.BoundaryName
+  id: BoundaryName
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: BoundaryName
+  nameWithType: HistoricDistrictShape.BoundaryName
+  fullName: MicroService.Service.Models.HistoricDistrictShape.BoundaryName
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: BoundaryName
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 20
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("boundary_n")]
+
+      public string BoundaryName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("boundary_n")>
+
+      Public Property BoundaryName As String
+  overload: MicroService.Service.Models.HistoricDistrictShape.BoundaryName*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: boundary_n
+- uid: MicroService.Service.Models.HistoricDistrictShape.CalendarDate
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.CalendarDate
+  id: CalendarDate
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: CalendarDate
+  nameWithType: HistoricDistrictShape.CalendarDate
+  fullName: MicroService.Service.Models.HistoricDistrictShape.CalendarDate
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: CalendarDate
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 23
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("caldate")]
+
+      public string CalendarDate { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("caldate")>
+
+      Public Property CalendarDate As String
+  overload: MicroService.Service.Models.HistoricDistrictShape.CalendarDate*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: caldate
+- uid: MicroService.Service.Models.HistoricDistrictShape.Current
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.Current
+  id: Current
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: Current
+  nameWithType: HistoricDistrictShape.Current
+  fullName: MicroService.Service.Models.HistoricDistrictShape.Current
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Current
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 26
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("current_")]
+
+      public string Current { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("current_")>
+
+      Public Property Current As String
+  overload: MicroService.Service.Models.HistoricDistrictShape.Current*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: current_
+- uid: MicroService.Service.Models.HistoricDistrictShape.DesignationDate
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.DesignationDate
+  id: DesignationDate
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: DesignationDate
+  nameWithType: HistoricDistrictShape.DesignationDate
+  fullName: MicroService.Service.Models.HistoricDistrictShape.DesignationDate
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: DesignationDate
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 29
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("desdate")]
+
+      public string DesignationDate { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("desdate")>
+
+      Public Property DesignationDate As String
+  overload: MicroService.Service.Models.HistoricDistrictShape.DesignationDate*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: desdate
+- uid: MicroService.Service.Models.HistoricDistrictShape.Extension
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.Extension
+  id: Extension
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: Extension
+  nameWithType: HistoricDistrictShape.Extension
+  fullName: MicroService.Service.Models.HistoricDistrictShape.Extension
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Extension
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 32
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("extension")]
+
+      public string Extension { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("extension")>
+
+      Public Property Extension As String
+  overload: MicroService.Service.Models.HistoricDistrictShape.Extension*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: extension
+- uid: MicroService.Service.Models.HistoricDistrictShape.LastAction
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.LastAction
+  id: LastAction
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: LastAction
+  nameWithType: HistoricDistrictShape.LastAction
+  fullName: MicroService.Service.Models.HistoricDistrictShape.LastAction
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: LastAction
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 35
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("last_actio")]
+
+      public string LastAction { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("last_actio")>
+
+      Public Property LastAction As String
+  overload: MicroService.Service.Models.HistoricDistrictShape.LastAction*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: last_actio
+- uid: MicroService.Service.Models.HistoricDistrictShape.OtherHearing
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.OtherHearing
+  id: OtherHearing
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: OtherHearing
+  nameWithType: HistoricDistrictShape.OtherHearing
+  fullName: MicroService.Service.Models.HistoricDistrictShape.OtherHearing
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: OtherHearing
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 38
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("other_hear")]
+
+      public string OtherHearing { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("other_hear")>
+
+      Public Property OtherHearing As String
+  overload: MicroService.Service.Models.HistoricDistrictShape.OtherHearing*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: other_hear
+- uid: MicroService.Service.Models.HistoricDistrictShape.PublicHearing
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.PublicHearing
+  id: PublicHearing
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: PublicHearing
+  nameWithType: HistoricDistrictShape.PublicHearing
+  fullName: MicroService.Service.Models.HistoricDistrictShape.PublicHearing
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: PublicHearing
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 41
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("public_hea")]
+
+      public string PublicHearing { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("public_hea")>
+
+      Public Property PublicHearing As String
+  overload: MicroService.Service.Models.HistoricDistrictShape.PublicHearing*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: public_hea
+- uid: MicroService.Service.Models.HistoricDistrictShape.Status
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.Status
+  id: Status
+  parent: MicroService.Service.Models.HistoricDistrictShape
+  langs:
+  - csharp
+  - vb
+  name: Status
+  nameWithType: HistoricDistrictShape.Status
+  fullName: MicroService.Service.Models.HistoricDistrictShape.Status
+  type: Property
+  source:
+    remote:
+      path: src/MicroService.Service/Models/HistoricDistrictShape.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: Status
+    path: ../src/MicroService.Service/Models/HistoricDistrictShape.cs
+    startLine: 44
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Models
+  syntax:
+    content: >-
+      [FeatureName("status_of_")]
+
+      public string Status { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <FeatureName("status_of_")>
+
+      Public Property Status As String
+  overload: MicroService.Service.Models.HistoricDistrictShape.Status*
+  attributes:
+  - type: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute
+    ctor: MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: status_of_
+references:
+- uid: MicroService.Service.Models
+  commentId: N:MicroService.Service.Models
+  name: MicroService.Service.Models
+  nameWithType: MicroService.Service.Models
+  fullName: MicroService.Service.Models
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MicroService.Service.Models.Base.ShapeBase
+  commentId: T:MicroService.Service.Models.Base.ShapeBase
+  parent: MicroService.Service.Models.Base
+  name: ShapeBase
+  nameWithType: ShapeBase
+  fullName: MicroService.Service.Models.Base.ShapeBase
+- uid: MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.ShapeArea
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: ShapeArea
+  nameWithType: ShapeBase.ShapeArea
+  fullName: MicroService.Service.Models.Base.ShapeBase.ShapeArea
+- uid: MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.ShapeLength
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: ShapeLength
+  nameWithType: ShapeBase.ShapeLength
+  fullName: MicroService.Service.Models.Base.ShapeBase.ShapeLength
+- uid: MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.BoundingBox
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: BoundingBox
+  nameWithType: ShapeBase.BoundingBox
+  fullName: MicroService.Service.Models.Base.ShapeBase.BoundingBox
+- uid: MicroService.Service.Models.Base.ShapeBase.Geometry
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.Geometry
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: Geometry
+  nameWithType: ShapeBase.Geometry
+  fullName: MicroService.Service.Models.Base.ShapeBase.Geometry
+- uid: MicroService.Service.Models.Base.ShapeBase.Feature
+  commentId: P:MicroService.Service.Models.Base.ShapeBase.Feature
+  parent: MicroService.Service.Models.Base.ShapeBase
+  name: Feature
+  nameWithType: ShapeBase.Feature
+  fullName: MicroService.Service.Models.Base.ShapeBase.Feature
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: MicroService.Service.Models.HistoricDistrictShape.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<HistoricDistrictShape>(HistoricDistrictShape)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<HistoricDistrictShape>(HistoricDistrictShape)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Models.HistoricDistrictShape>(MicroService.Service.Models.HistoricDistrictShape)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of HistoricDistrictShape)(HistoricDistrictShape)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Models.HistoricDistrictShape)(MicroService.Service.Models.HistoricDistrictShape)
+  name.vb: ArePropertiesNotNull(Of HistoricDistrictShape)(HistoricDistrictShape)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.HistoricDistrictShape)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Models.HistoricDistrictShape
+    name: HistoricDistrictShape
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Models.HistoricDistrictShape
+    name: HistoricDistrictShape
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Models.HistoricDistrictShape)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Models.HistoricDistrictShape
+    name: HistoricDistrictShape
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Models.HistoricDistrictShape
+    name: HistoricDistrictShape
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.Service.Models.Base
+  commentId: N:MicroService.Service.Models.Base
+  name: MicroService.Service.Models.Base
+  nameWithType: MicroService.Service.Models.Base
+  fullName: MicroService.Service.Models.Base
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Models
+    name: Models
+  - name: .
+  - uid: MicroService.Service.Models.Base
+    name: Base
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+- uid: MicroService.Service.Models.HistoricDistrictShape.LPNumber*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.LPNumber
+  name: LPNumber
+  nameWithType: HistoricDistrictShape.LPNumber
+  fullName: MicroService.Service.Models.HistoricDistrictShape.LPNumber
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MicroService.Service.Models.HistoricDistrictShape.AreaName*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.AreaName
+  name: AreaName
+  nameWithType: HistoricDistrictShape.AreaName
+  fullName: MicroService.Service.Models.HistoricDistrictShape.AreaName
+- uid: MicroService.Service.Models.HistoricDistrictShape.BoroName*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.BoroName
+  name: BoroName
+  nameWithType: HistoricDistrictShape.BoroName
+  fullName: MicroService.Service.Models.HistoricDistrictShape.BoroName
+- uid: MicroService.Service.Models.HistoricDistrictShape.BoroCode*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.BoroCode
+  name: BoroCode
+  nameWithType: HistoricDistrictShape.BoroCode
+  fullName: MicroService.Service.Models.HistoricDistrictShape.BoroCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MicroService.Service.Models.HistoricDistrictShape.BoundaryName*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.BoundaryName
+  name: BoundaryName
+  nameWithType: HistoricDistrictShape.BoundaryName
+  fullName: MicroService.Service.Models.HistoricDistrictShape.BoundaryName
+- uid: MicroService.Service.Models.HistoricDistrictShape.CalendarDate*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.CalendarDate
+  name: CalendarDate
+  nameWithType: HistoricDistrictShape.CalendarDate
+  fullName: MicroService.Service.Models.HistoricDistrictShape.CalendarDate
+- uid: MicroService.Service.Models.HistoricDistrictShape.Current*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.Current
+  name: Current
+  nameWithType: HistoricDistrictShape.Current
+  fullName: MicroService.Service.Models.HistoricDistrictShape.Current
+- uid: MicroService.Service.Models.HistoricDistrictShape.DesignationDate*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.DesignationDate
+  name: DesignationDate
+  nameWithType: HistoricDistrictShape.DesignationDate
+  fullName: MicroService.Service.Models.HistoricDistrictShape.DesignationDate
+- uid: MicroService.Service.Models.HistoricDistrictShape.Extension*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.Extension
+  name: Extension
+  nameWithType: HistoricDistrictShape.Extension
+  fullName: MicroService.Service.Models.HistoricDistrictShape.Extension
+- uid: MicroService.Service.Models.HistoricDistrictShape.LastAction*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.LastAction
+  name: LastAction
+  nameWithType: HistoricDistrictShape.LastAction
+  fullName: MicroService.Service.Models.HistoricDistrictShape.LastAction
+- uid: MicroService.Service.Models.HistoricDistrictShape.OtherHearing*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.OtherHearing
+  name: OtherHearing
+  nameWithType: HistoricDistrictShape.OtherHearing
+  fullName: MicroService.Service.Models.HistoricDistrictShape.OtherHearing
+- uid: MicroService.Service.Models.HistoricDistrictShape.PublicHearing*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.PublicHearing
+  name: PublicHearing
+  nameWithType: HistoricDistrictShape.PublicHearing
+  fullName: MicroService.Service.Models.HistoricDistrictShape.PublicHearing
+- uid: MicroService.Service.Models.HistoricDistrictShape.Status*
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.Status
+  name: Status
+  nameWithType: HistoricDistrictShape.Status
+  fullName: MicroService.Service.Models.HistoricDistrictShape.Status

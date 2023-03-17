@@ -1,0 +1,178 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.Service.Services.Base.ShapefileDataReaderResolver
+  commentId: T:MicroService.Service.Services.Base.ShapefileDataReaderResolver
+  id: ShapefileDataReaderResolver
+  parent: MicroService.Service.Services.Base
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: ShapefileDataReaderResolver
+  nameWithType: ShapefileDataReaderResolver
+  fullName: MicroService.Service.Services.Base.ShapefileDataReaderResolver
+  type: Delegate
+  source:
+    remote:
+      path: src/MicroService.Service/Services/Base/AbstractShapeService.cs
+      branch: develop
+      repo: https://github.com/stuartshay/MicroService.git
+    id: ShapefileDataReaderResolver
+    path: ../src/MicroService.Service/Services/Base/AbstractShapeService.cs
+    startLine: 14
+  assemblies:
+  - MicroService.Service
+  namespace: MicroService.Service.Services.Base
+  syntax:
+    content: public delegate IShapefileDataReaderService ShapefileDataReaderResolver(string key)
+    parameters:
+    - id: key
+      type: System.String
+    return:
+      type: MicroService.Service.Helpers.IShapefileDataReaderService
+    content.vb: Public Delegate Function ShapefileDataReaderResolver(key As String) As IShapefileDataReaderService
+  extensionMethods:
+  - MicroService.Service.Services.Base.ShapefileDataReaderResolver.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+references:
+- uid: MicroService.Service.Services.Base
+  commentId: N:MicroService.Service.Services.Base
+  name: MicroService.Service.Services.Base
+  nameWithType: MicroService.Service.Services.Base
+  fullName: MicroService.Service.Services.Base
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  - name: .
+  - uid: MicroService.Service.Services.Base
+    name: Base
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Services
+    name: Services
+  - name: .
+  - uid: MicroService.Service.Services.Base
+    name: Base
+- uid: MicroService.Service.Services.Base.ShapefileDataReaderResolver.MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  parent: MicroService.Service.Helpers.ReflectionExtensions
+  definition: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<ShapefileDataReaderResolver>(ShapefileDataReaderResolver)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<ShapefileDataReaderResolver>(ShapefileDataReaderResolver)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<MicroService.Service.Services.Base.ShapefileDataReaderResolver>(MicroService.Service.Services.Base.ShapefileDataReaderResolver)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of ShapefileDataReaderResolver)(ShapefileDataReaderResolver)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of MicroService.Service.Services.Base.ShapefileDataReaderResolver)(MicroService.Service.Services.Base.ShapefileDataReaderResolver)
+  name.vb: ArePropertiesNotNull(Of ShapefileDataReaderResolver)(ShapefileDataReaderResolver)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Services.Base.ShapefileDataReaderResolver)
+    name: ArePropertiesNotNull
+  - name: <
+  - uid: MicroService.Service.Services.Base.ShapefileDataReaderResolver
+    name: ShapefileDataReaderResolver
+  - name: '>'
+  - name: (
+  - uid: MicroService.Service.Services.Base.ShapefileDataReaderResolver
+    name: ShapefileDataReaderResolver
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(MicroService.Service.Services.Base.ShapefileDataReaderResolver)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MicroService.Service.Services.Base.ShapefileDataReaderResolver
+    name: ShapefileDataReaderResolver
+  - name: )
+  - name: (
+  - uid: MicroService.Service.Services.Base.ShapefileDataReaderResolver
+    name: ShapefileDataReaderResolver
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MicroService.Service.Helpers.IShapefileDataReaderService
+  commentId: T:MicroService.Service.Helpers.IShapefileDataReaderService
+  parent: MicroService.Service.Helpers
+  name: IShapefileDataReaderService
+  nameWithType: IShapefileDataReaderService
+  fullName: MicroService.Service.Helpers.IShapefileDataReaderService
+- uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  commentId: M:MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+  name: ArePropertiesNotNull<T>(T)
+  nameWithType: ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  fullName: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull<T>(T)
+  nameWithType.vb: ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  fullName.vb: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull(Of T)(T)
+  name.vb: ArePropertiesNotNull(Of T)(T)
+  spec.csharp:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MicroService.Service.Helpers.ReflectionExtensions.ArePropertiesNotNull``1(``0)
+    name: ArePropertiesNotNull
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: MicroService.Service.Helpers.ReflectionExtensions
+  commentId: T:MicroService.Service.Helpers.ReflectionExtensions
+  parent: MicroService.Service.Helpers
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: MicroService.Service.Helpers.ReflectionExtensions
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MicroService.Service.Helpers
+  commentId: N:MicroService.Service.Helpers
+  name: MicroService.Service.Helpers
+  nameWithType: MicroService.Service.Helpers
+  fullName: MicroService.Service.Helpers
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.Service
+    name: Service
+  - name: .
+  - uid: MicroService.Service.Helpers
+    name: Helpers

@@ -1,0 +1,64 @@
+### YamlMime:ManagedReference
+items:
+- uid: MicroService.WebApi.Services.Cron
+  commentId: N:MicroService.WebApi.Services.Cron
+  id: MicroService.WebApi.Services.Cron
+  children:
+  - MicroService.WebApi.Services.Cron.CronJobService
+  - MicroService.WebApi.Services.Cron.IScheduleConfig
+  - MicroService.WebApi.Services.Cron.ScheduleConfig
+  langs:
+  - csharp
+  - vb
+  name: MicroService.WebApi.Services.Cron
+  nameWithType: MicroService.WebApi.Services.Cron
+  fullName: MicroService.WebApi.Services.Cron
+  type: Namespace
+  assemblies:
+  - MicroService.WebApi
+references:
+- uid: MicroService.WebApi.Services.Cron.CronJobService
+  commentId: T:MicroService.WebApi.Services.Cron.CronJobService
+  name: CronJobService
+  nameWithType: CronJobService
+  fullName: MicroService.WebApi.Services.Cron.CronJobService
+- uid: MicroService.WebApi.Services.Cron.IScheduleConfig
+  commentId: T:MicroService.WebApi.Services.Cron.IScheduleConfig
+  parent: MicroService.WebApi.Services.Cron
+  name: IScheduleConfig
+  nameWithType: IScheduleConfig
+  fullName: MicroService.WebApi.Services.Cron.IScheduleConfig
+- uid: MicroService.WebApi.Services.Cron.ScheduleConfig
+  commentId: T:MicroService.WebApi.Services.Cron.ScheduleConfig
+  name: ScheduleConfig
+  nameWithType: ScheduleConfig
+  fullName: MicroService.WebApi.Services.Cron.ScheduleConfig
+- uid: MicroService.WebApi.Services.Cron
+  commentId: N:MicroService.WebApi.Services.Cron
+  name: MicroService.WebApi.Services.Cron
+  nameWithType: MicroService.WebApi.Services.Cron
+  fullName: MicroService.WebApi.Services.Cron
+  spec.csharp:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.WebApi
+    name: WebApi
+  - name: .
+  - uid: MicroService.WebApi.Services
+    name: Services
+  - name: .
+  - uid: MicroService.WebApi.Services.Cron
+    name: Cron
+  spec.vb:
+  - uid: MicroService
+    name: MicroService
+  - name: .
+  - uid: MicroService.WebApi
+    name: WebApi
+  - name: .
+  - uid: MicroService.WebApi.Services
+    name: Services
+  - name: .
+  - uid: MicroService.WebApi.Services.Cron
+    name: Cron
