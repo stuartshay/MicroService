@@ -36,7 +36,7 @@ The goal of this API is to:
 
 ## Datasets
 
-The Core focus of the Datasets used in this project are focused around NYC Monuments, Landmarks and Points of Interest. The Datasets are relatively small in size and versioned with the source code in this project.
+The primary focus of the datasets used in this project revolves around NYC Monuments, Landmarks, and Points of Interest. These datasets are relatively small in size and are versioned together with the source code in this project
 
 - [Shape Files](/files) - NYC Open Data Datasets Shape Files
 
