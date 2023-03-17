@@ -1,0 +1,724 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class AbstractShapeService&lt;TShape, TProfile&gt;
+ </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class AbstractShapeService&lt;TShape, TProfile&gt;
+ ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+    <script src="https://rebilly.github.io/ReDoc/releases/latest/redoc.min.js"> </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2">
+
+
+  <h1 id="MicroService_Service_Services_Base_AbstractShapeService_2" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2" class="text-break">Class AbstractShapeService&lt;TShape, TProfile&gt;
+</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">AbstractShapeService&lt;TShape, TProfile&gt;</span></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.BoroughBoundariesService.html">BoroughBoundariesService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.CommunityDistrictsService.html">CommunityDistrictsService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.DsnyDistrictsService.html">DsnyDistrictsService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.HistoricDistrictService.html">HistoricDistrictService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService.html">IndividualLandmarkHistoricDistrictsService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.IndividualLandmarkSiteService.html">IndividualLandmarkSiteService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.NationalRegisterHistoricPlacesService.html">NationalRegisterHistoricPlacesService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.NeighborhoodsService.html">NeighborhoodsService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.NeighborhoodTabulationAreasService.html">NeighborhoodTabulationAreasService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.NychaDevelopmentService.html">NychaDevelopmentService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.NypdPolicePrecinctService.html">NypdPolicePrecinctService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.NypdSectorsService.html">NypdSectorsService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.ParkService.html">ParkService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.ScenicLandmarkService.html">ScenicLandmarkService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.SubwayService.html">SubwayService</a></div>
+      <div class="level2"><a class="xref" href="MicroService.Service.Services.ZipCodeService.html">ZipCodeService</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">object.Equals(object)</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">object.ReferenceEquals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <span class="xref">MicroService</span>.<span class="xref">Service</span>.<a class="xref" href="MicroService.Service.Services.html">Services</a>.<a class="xref" href="MicroService.Service.Services.Base.html">Base</a></h6>
+  <h6><strong>Assembly</strong>: MicroService.Service.dll</h6>
+  <h5 id="MicroService_Service_Services_Base_AbstractShapeService_2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class AbstractShapeService&lt;TShape, TProfile&gt; where TShape : class, new() where TProfile : Profile, new()</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TShape</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TProfile</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2__ctor_Microsoft_Extensions_Logging_ILogger_AutoMapper_IMapper_.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.%23ctor(Microsoft.Extensions.Logging.ILogger%2CAutoMapper.IMapper)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L29">View Source</a>
+  </span>
+  <a id="MicroService_Service_Services_Base_AbstractShapeService_2__ctor_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.#ctor*"></a>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2__ctor_Microsoft_Extensions_Logging_ILogger_AutoMapper_IMapper_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.#ctor(Microsoft.Extensions.Logging.ILogger,AutoMapper.IMapper)">AbstractShapeService(ILogger, IMapper)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected AbstractShapeService(ILogger logger, IMapper mapper)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">AutoMapper.IMapper</span></td>
+        <td><span class="parametername">mapper</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_Logger.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.Logger%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L25">View Source</a>
+  </span>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_Logger" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.Logger">Logger</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly ILogger Logger</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_Mapper.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.Mapper%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L23">View Source</a>
+  </span>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_Mapper" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.Mapper">Mapper</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly IMapper Mapper</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AutoMapper.IMapper</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_ShapeFileDataReader.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.ShapeFileDataReader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L21">View Source</a>
+  </span>
+  <a id="MicroService_Service_Services_Base_AbstractShapeService_2_ShapeFileDataReader_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.ShapeFileDataReader*"></a>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_ShapeFileDataReader" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.ShapeFileDataReader">ShapeFileDataReader</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected IShapefileDataReaderService ShapeFileDataReader { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MicroService.Service.Helpers.IShapefileDataReaderService.html">IShapefileDataReaderService</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_ShapePropertiesAttribute.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.ShapePropertiesAttribute%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L27">View Source</a>
+  </span>
+  <a id="MicroService_Service_Services_Base_AbstractShapeService_2_ShapePropertiesAttribute_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.ShapePropertiesAttribute*"></a>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_ShapePropertiesAttribute" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.ShapePropertiesAttribute">ShapePropertiesAttribute</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ShapePropertiesAttribute ShapePropertiesAttribute { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute.html">ShapePropertiesAttribute</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatureList.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.GetFeatureList%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L169">View Source</a>
+  </span>
+  <a id="MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatureList_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList*"></a>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatureList" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureList">GetFeatureList()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IEnumerable&lt;TShape&gt; GetFeatureList()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>&lt;TShape&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatureLookup_System_Collections_Generic_List_System_Collections_Generic_KeyValuePair_System_String_System_Object___.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.GetFeatureLookup(System.Collections.Generic.List%7BSystem.Collections.Generic.KeyValuePair%7BSystem.String%2CSystem.Object%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L178">View Source</a>
+  </span>
+  <a id="MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatureLookup_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup*"></a>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatureLookup_System_Collections_Generic_List_System_Collections_Generic_KeyValuePair_System_String_System_Object___" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">GetFeatureLookup(List&lt;KeyValuePair&lt;string, object&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IEnumerable&lt;TShape&gt; GetFeatureLookup(List&lt;KeyValuePair&lt;string, object&gt;&gt; attributes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List&lt;T&gt;</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
+        <td><span class="parametername">attributes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>&lt;TShape&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatureLookup_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.GetFeatureLookup(System.Double%2CSystem.Double)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L195">View Source</a>
+  </span>
+  <a id="MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatureLookup_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup*"></a>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatureLookup_System_Double_System_Double_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureLookup(System.Double,System.Double)">GetFeatureLookup(double, double)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual TShape GetFeatureLookup(double x, double y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TShape</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatureName_System_String_.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.GetFeatureName(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L161">View Source</a>
+  </span>
+  <a id="MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatureName_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName*"></a>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatureName_System_String_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatureName(System.String)">GetFeatureName(string)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetFeatureName(string propertyName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">propertyName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatures.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.GetFeatures%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L210">View Source</a>
+  </span>
+  <a id="MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatures_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures*"></a>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_GetFeatures" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetFeatures">GetFeatures()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;Feature&gt; GetFeatures()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection&lt;T&gt;</span>&lt;<span class="xref">Feature</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_GetShapeDatabaseProperties.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.GetShapeDatabaseProperties%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L47">View Source</a>
+  </span>
+  <a id="MicroService_Service_Services_Base_AbstractShapeService_2_GetShapeDatabaseProperties_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties*"></a>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_GetShapeDatabaseProperties" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeDatabaseProperties">GetShapeDatabaseProperties()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbaseFileHeader GetShapeDatabaseProperties()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">NetTopologySuite.IO.DbaseFileHeader</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_GetShapeProperties.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.GetShapeProperties%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L41">View Source</a>
+  </span>
+  <a id="MicroService_Service_Services_Base_AbstractShapeService_2_GetShapeProperties_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties*"></a>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_GetShapeProperties" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.GetShapeProperties">GetShapeProperties()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ShapefileHeader GetShapeProperties()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">NetTopologySuite.IO.ShapefileHeader</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_MatchAttributeValue_System_Object_System_Object_.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.MatchAttributeValue(System.Object%2CSystem.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L125">View Source</a>
+  </span>
+  <a id="MicroService_Service_Services_Base_AbstractShapeService_2_MatchAttributeValue_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue*"></a>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_MatchAttributeValue_System_Object_System_Object_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.MatchAttributeValue(System.Object,System.Object)">MatchAttributeValue(object, object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected object MatchAttributeValue(object value, object expectedValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">object</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">object</span></td>
+        <td><span class="parametername">expectedValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2_ValidateFeatureKey_System_Collections_Generic_List_System_Collections_Generic_KeyValuePair_System_String_System_Object___.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602.ValidateFeatureKey(System.Collections.Generic.List%7BSystem.Collections.Generic.KeyValuePair%7BSystem.String%2CSystem.Object%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L59">View Source</a>
+  </span>
+  <a id="MicroService_Service_Services_Base_AbstractShapeService_2_ValidateFeatureKey_" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey*"></a>
+  <h4 id="MicroService_Service_Services_Base_AbstractShapeService_2_ValidateFeatureKey_System_Collections_Generic_List_System_Collections_Generic_KeyValuePair_System_String_System_Object___" data-uid="MicroService.Service.Services.Base.AbstractShapeService`2.ValidateFeatureKey(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">ValidateFeatureKey(List&lt;KeyValuePair&lt;string, object&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Validate/Map Shape Feature Properties</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;KeyValuePair&lt;string, object&gt;&gt; ValidateFeatureKey(List&lt;KeyValuePair&lt;string, object&gt;&gt; attributes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List&lt;T&gt;</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
+        <td><span class="parametername">attributes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List&lt;T&gt;</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="MicroService.Service.Helpers.ReflectionExtensions.html#MicroService_Service_Helpers_ReflectionExtensions_ArePropertiesNotNull__1___0_">ReflectionExtensions.ArePropertiesNotNull&lt;T&gt;(T)</a>
+  </div>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_Service_Services_Base_AbstractShapeService_2.md&amp;value=---%0Auid%3A%20MicroService.Service.Services.Base.AbstractShapeService%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.Service/Services/Base/AbstractShapeService.cs/#L17" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

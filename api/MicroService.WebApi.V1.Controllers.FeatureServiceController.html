@@ -1,0 +1,1104 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class FeatureServiceController
+ </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class FeatureServiceController
+ ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+    <script src="https://rebilly.github.io/ReDoc/releases/latest/redoc.min.js"> </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController">
+
+
+  <h1 id="MicroService_WebApi_V1_Controllers_FeatureServiceController" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController" class="text-break">Class FeatureServiceController
+</h1>
+  <div class="markdown level0 summary"><p>Feature Service Controller</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span></div>
+    <div class="level2"><span class="xref">FeatureServiceController</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.StatusCode(int)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.StatusCode(int, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Content(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Content(string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Content(string, string, System.Text.Encoding)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Content(string, Microsoft.Net.Http.Headers.MediaTypeHeaderValue)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.NoContent()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Ok()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Ok(object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Redirect(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectPermanent(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectPreserveMethod(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectPermanentPreserveMethod(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.LocalRedirect(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.LocalRedirectPermanent(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.LocalRedirectPreserveMethod(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.LocalRedirectPermanentPreserveMethod(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToAction()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToAction(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToAction(string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToAction(string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToAction(string, string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToAction(string, string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToAction(string, string, object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToActionPreserveMethod(string, string, object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToActionPermanent(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToActionPermanent(string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToActionPermanent(string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToActionPermanent(string, string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToActionPermanent(string, string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToActionPermanent(string, string, object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToActionPermanentPreserveMethod(string, string, object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToRoute(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToRoute(object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToRoute(string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToRoute(string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToRoute(string, object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToRoutePreserveMethod(string, object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToRoutePermanent(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToRoutePermanent(object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToRoutePermanent(string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToRoutePermanent(string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToRoutePermanent(string, object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToRoutePermanentPreserveMethod(string, object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPage(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPage(string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPage(string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPage(string, string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPage(string, string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPage(string, string, object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPagePermanent(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPagePermanent(string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPagePermanent(string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPagePermanent(string, string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPagePermanent(string, string, object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPagePreserveMethod(string, string, object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToPagePermanentPreserveMethod(string, string, object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(byte[], string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(byte[], string, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(byte[], string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(byte[], string, string, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(byte[], string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(byte[], string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(byte[], string, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(byte[], string, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(System.IO.Stream, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(System.IO.Stream, string, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(System.IO.Stream, string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(System.IO.Stream, string, string, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(System.IO.Stream, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(System.IO.Stream, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(System.IO.Stream, string, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(System.IO.Stream, string, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(string, string, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(string, string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(string, string, string, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(string, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(string, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(string, string, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.File(string, string, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.PhysicalFile(string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.PhysicalFile(string, string, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.PhysicalFile(string, string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.PhysicalFile(string, string, string, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.PhysicalFile(string, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.PhysicalFile(string, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.PhysicalFile(string, string, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.PhysicalFile(string, string, string, System.DateTimeOffset?, Microsoft.Net.Http.Headers.EntityTagHeaderValue, bool)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Unauthorized()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Unauthorized(object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.NotFound()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.NotFound(object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest(object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.UnprocessableEntity()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.UnprocessableEntity(object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.UnprocessableEntity(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Conflict()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Conflict(object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Conflict(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Problem(string, string, int?, string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem(Microsoft.AspNetCore.Mvc.ValidationProblemDetails)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem(string, string, int?, string, string, Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Created(string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Created(System.Uri, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction(string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction(string, object, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction(string, string, object, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtRoute(string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtRoute(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtRoute(string, object, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Accepted()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Accepted(object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Accepted(System.Uri)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Accepted(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Accepted(string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Accepted(System.Uri, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.AcceptedAtAction(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.AcceptedAtAction(string, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.AcceptedAtAction(string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.AcceptedAtAction(string, string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.AcceptedAtAction(string, object, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.AcceptedAtAction(string, string, object, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.AcceptedAtRoute(object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.AcceptedAtRoute(string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.AcceptedAtRoute(string, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.AcceptedAtRoute(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.AcceptedAtRoute(string, object, object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Challenge()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Challenge(params string[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Challenge(Microsoft.AspNetCore.Authentication.AuthenticationProperties)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Challenge(Microsoft.AspNetCore.Authentication.AuthenticationProperties, params string[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Forbid()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Forbid(params string[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Forbid(Microsoft.AspNetCore.Authentication.AuthenticationProperties)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Forbid(Microsoft.AspNetCore.Authentication.AuthenticationProperties, params string[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.SignIn(System.Security.Claims.ClaimsPrincipal)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.SignIn(System.Security.Claims.ClaimsPrincipal, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.SignIn(System.Security.Claims.ClaimsPrincipal, Microsoft.AspNetCore.Authentication.AuthenticationProperties)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.SignIn(System.Security.Claims.ClaimsPrincipal, Microsoft.AspNetCore.Authentication.AuthenticationProperties, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.SignOut()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.SignOut(Microsoft.AspNetCore.Authentication.AuthenticationProperties)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.SignOut(params string[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.SignOut(Microsoft.AspNetCore.Authentication.AuthenticationProperties, params string[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel, string, Microsoft.AspNetCore.Mvc.ModelBinding.IValueProvider)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel, string, params System.Linq.Expressions.Expression&lt;System.Func&lt;TModel, object&gt;&gt;[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel, string, System.Func&lt;Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata, bool&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel, string, Microsoft.AspNetCore.Mvc.ModelBinding.IValueProvider, params System.Linq.Expressions.Expression&lt;System.Func&lt;TModel, object&gt;&gt;[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel, string, Microsoft.AspNetCore.Mvc.ModelBinding.IValueProvider, System.Func&lt;Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata, bool&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync(object, System.Type, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync(object, System.Type, string, Microsoft.AspNetCore.Mvc.ModelBinding.IValueProvider, System.Func&lt;Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata, bool&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.TryValidateModel(object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.TryValidateModel(object, string)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.HttpContext</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Request</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Response</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.RouteData</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.ModelState</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.ControllerContext</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.MetadataProvider</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.ModelBinderFactory</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Url</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.ObjectValidator</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.ProblemDetailsFactory</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.User</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Empty</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object)</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">object.ReferenceEquals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <span class="xref">MicroService</span>.<span class="xref">WebApi</span>.<span class="xref">V1</span>.<a class="xref" href="MicroService.WebApi.V1.Controllers.html">Controllers</a></h6>
+  <h6><strong>Assembly</strong>: MicroService.WebApi.dll</h6>
+  <h5 id="MicroService_WebApi_V1_Controllers_FeatureServiceController_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ApiController]
+[ApiVersion(&quot;1.0&quot;)]
+[ApiVersion(&quot;2.0&quot;)]
+[ApiVersion(&quot;3.0&quot;)]
+[Route(&quot;api/v{version:apiVersion}/[controller]&quot;)]
+[EnableCors(&quot;Policy&quot;)]
+public class FeatureServiceController : ControllerBase</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_WebApi_V1_Controllers_FeatureServiceController__ctor_ShapeServiceResolver_Microsoft_Extensions_Logging_ILogger_MicroService_WebApi_V1_Controllers_FeatureServiceController__.md&amp;value=---%0Auid%3A%20MicroService.WebApi.V1.Controllers.FeatureServiceController.%23ctor(ShapeServiceResolver%2CMicrosoft.Extensions.Logging.ILogger%7BMicroService.WebApi.V1.Controllers.FeatureServiceController%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.WebApi/V1/Controllers/FeatureServiceController.cs/#L37">View Source</a>
+  </span>
+  <a id="MicroService_WebApi_V1_Controllers_FeatureServiceController__ctor_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.#ctor*"></a>
+  <h4 id="MicroService_WebApi_V1_Controllers_FeatureServiceController__ctor_ShapeServiceResolver_Microsoft_Extensions_Logging_ILogger_MicroService_WebApi_V1_Controllers_FeatureServiceController__" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.#ctor(ShapeServiceResolver,Microsoft.Extensions.Logging.ILogger{MicroService.WebApi.V1.Controllers.FeatureServiceController})">FeatureServiceController(ShapeServiceResolver?, ILogger&lt;FeatureServiceController&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MicroService.WebApi.V1.Controllers.FeatureServiceController.html">FeatureServiceController</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FeatureServiceController(ShapeServiceResolver? shapeServiceResolver, ILogger&lt;FeatureServiceController&gt; logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ShapeServiceResolver</span></td>
+        <td><span class="parametername">shapeServiceResolver</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger&lt;TCategoryName&gt;</span>&lt;<a class="xref" href="MicroService.WebApi.V1.Controllers.FeatureServiceController.html">FeatureServiceController</a>&gt;</td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_WebApi_V1_Controllers_FeatureServiceController_FeatureAttributeValidation__1_MicroService_WebApi_Models_FeatureAttributeLookupRequestModel_System_Func_MicroService_Service_Interfaces_IShapeService_MicroService_Service_Models_Base_ShapeBase__System_Collections_Generic_List_System_Collections_Generic_KeyValuePair_System_String_System_Object___System_Collections_Generic_IEnumerable___0___.md&amp;value=---%0Auid%3A%20MicroService.WebApi.V1.Controllers.FeatureServiceController.FeatureAttributeValidation%60%601(MicroService.WebApi.Models.FeatureAttributeLookupRequestModel%2CSystem.Func%7BMicroService.Service.Interfaces.IShapeService%7BMicroService.Service.Models.Base.ShapeBase%7D%2CSystem.Collections.Generic.List%7BSystem.Collections.Generic.KeyValuePair%7BSystem.String%2CSystem.Object%7D%7D%2CSystem.Collections.Generic.IEnumerable%7B%60%600%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.WebApi/V1/Controllers/FeatureServiceController.cs/#L232">View Source</a>
+  </span>
+  <a id="MicroService_WebApi_V1_Controllers_FeatureServiceController_FeatureAttributeValidation_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.FeatureAttributeValidation*"></a>
+  <h4 id="MicroService_WebApi_V1_Controllers_FeatureServiceController_FeatureAttributeValidation__1_MicroService_WebApi_Models_FeatureAttributeLookupRequestModel_System_Func_MicroService_Service_Interfaces_IShapeService_MicroService_Service_Models_Base_ShapeBase__System_Collections_Generic_List_System_Collections_Generic_KeyValuePair_System_String_System_Object___System_Collections_Generic_IEnumerable___0___" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.FeatureAttributeValidation``1(MicroService.WebApi.Models.FeatureAttributeLookupRequestModel,System.Func{MicroService.Service.Interfaces.IShapeService{MicroService.Service.Models.Base.ShapeBase},System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}},System.Collections.Generic.IEnumerable{``0}})">FeatureAttributeValidation&lt;T&gt;(FeatureAttributeLookupRequestModel, Func&lt;IShapeService&lt;ShapeBase&gt;, List&lt;KeyValuePair&lt;string, object&gt;&gt;, IEnumerable&lt;T&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Feature Attribute Validation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ActionResult&lt;T&gt;&gt; FeatureAttributeValidation&lt;T&gt;(FeatureAttributeLookupRequestModel request, Func&lt;IShapeService&lt;ShapeBase&gt;, List&lt;KeyValuePair&lt;string, object&gt;&gt;, IEnumerable&lt;T&gt;&gt; lookupFunction)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MicroService.WebApi.Models.FeatureAttributeLookupRequestModel.html">FeatureAttributeLookupRequestModel</a></td>
+        <td><span class="parametername">request</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func&lt;T1, T2, TResult&gt;</span>&lt;<a class="xref" href="MicroService.Service.Interfaces.IShapeService-1.html">IShapeService</a>&lt;<a class="xref" href="MicroService.Service.Models.Base.ShapeBase.html">ShapeBase</a>&gt;, <span class="xref">System.Collections.Generic.List&lt;T&gt;</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;, <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>&lt;T&gt;&gt;</td>
+        <td><span class="parametername">lookupFunction</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<span class="xref">Microsoft.AspNetCore.Mvc.ActionResult&lt;TValue&gt;</span>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_WebApi_V1_Controllers_FeatureServiceController_Get.md&amp;value=---%0Auid%3A%20MicroService.WebApi.V1.Controllers.FeatureServiceController.Get%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.WebApi/V1/Controllers/FeatureServiceController.cs/#L47">View Source</a>
+  </span>
+  <a id="MicroService_WebApi_V1_Controllers_FeatureServiceController_Get_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.Get*"></a>
+  <h4 id="MicroService_WebApi_V1_Controllers_FeatureServiceController_Get" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.Get">Get()</h4>
+  <div class="markdown level1 summary"><p>Get Available Shapes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Produces(&quot;application/json&quot;, new string[] { }, Type = typeof(IEnumerable&lt;string&gt;))]
+[ProducesResponseType(typeof(IEnumerable&lt;string&gt;), 200)]
+public ActionResult&lt;object&gt; Get()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.AspNetCore.Mvc.ActionResult&lt;TValue&gt;</span>&lt;<span class="xref">object</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_WebApi_V1_Controllers_FeatureServiceController_GetAttributeLookup_MicroService_WebApi_Models_FeatureAttributeLookupRequestModel_.md&amp;value=---%0Auid%3A%20MicroService.WebApi.V1.Controllers.FeatureServiceController.GetAttributeLookup(MicroService.WebApi.Models.FeatureAttributeLookupRequestModel)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.WebApi/V1/Controllers/FeatureServiceController.cs/#L160">View Source</a>
+  </span>
+  <a id="MicroService_WebApi_V1_Controllers_FeatureServiceController_GetAttributeLookup_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.GetAttributeLookup*"></a>
+  <h4 id="MicroService_WebApi_V1_Controllers_FeatureServiceController_GetAttributeLookup_MicroService_WebApi_Models_FeatureAttributeLookupRequestModel_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.GetAttributeLookup(MicroService.WebApi.Models.FeatureAttributeLookupRequestModel)">GetAttributeLookup(FeatureAttributeLookupRequestModel)</h4>
+  <div class="markdown level1 summary"><p>Get Feature Attribute Lookup</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost(&quot;attributelookup&quot;, Name = &quot;GetAttributeLookup&quot;)]
+[Produces(&quot;application/json&quot;, new string[] { }, Type = typeof(List&lt;object&gt;))]
+[ProducesResponseType(typeof(List&lt;object&gt;), 200)]
+[ProducesResponseType(400)]
+[ProducesResponseType(404)]
+public Task&lt;ActionResult&lt;object&gt;&gt; GetAttributeLookup(FeatureAttributeLookupRequestModel request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MicroService.WebApi.Models.FeatureAttributeLookupRequestModel.html">FeatureAttributeLookupRequestModel</a></td>
+        <td><span class="parametername">request</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<span class="xref">Microsoft.AspNetCore.Mvc.ActionResult&lt;TValue&gt;</span>&lt;<span class="xref">object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_WebApi_V1_Controllers_FeatureServiceController_GetFeatureList_MicroService_WebApi_Models_FeatureAttributeRequestModel_.md&amp;value=---%0Auid%3A%20MicroService.WebApi.V1.Controllers.FeatureServiceController.GetFeatureList(MicroService.WebApi.Models.FeatureAttributeRequestModel)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.WebApi/V1/Controllers/FeatureServiceController.cs/#L117">View Source</a>
+  </span>
+  <a id="MicroService_WebApi_V1_Controllers_FeatureServiceController_GetFeatureList_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.GetFeatureList*"></a>
+  <h4 id="MicroService_WebApi_V1_Controllers_FeatureServiceController_GetFeatureList_MicroService_WebApi_Models_FeatureAttributeRequestModel_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.GetFeatureList(MicroService.WebApi.Models.FeatureAttributeRequestModel)">GetFeatureList(FeatureAttributeRequestModel)</h4>
+  <div class="markdown level1 summary"><p>Get Feature Collection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet(&quot;featureList&quot;, Name = &quot;GetFeatureList&quot;)]
+[Produces(&quot;application/json&quot;, new string[] { }, Type = typeof(ShapeBase))]
+[ProducesResponseType(typeof(IEnumerable&lt;ShapeBase&gt;), 200)]
+[ProducesResponseType(400)]
+[ProducesResponseType(404)]
+public Task&lt;ActionResult&lt;object&gt;&gt; GetFeatureList(FeatureAttributeRequestModel request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MicroService.WebApi.Models.FeatureAttributeRequestModel.html">FeatureAttributeRequestModel</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Feature Attribute Request</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<span class="xref">Microsoft.AspNetCore.Mvc.ActionResult&lt;TValue&gt;</span>&lt;<span class="xref">object</span>&gt;&gt;</td>
+        <td><p>List of features with attributes</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="MicroService_WebApi_V1_Controllers_FeatureServiceController_GetFeatureList_MicroService_WebApi_Models_FeatureAttributeRequestModel__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>List of features with attributes</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_WebApi_V1_Controllers_FeatureServiceController_GetGeospatialLookup_MicroService_WebApi_Models_FeatureRequestModel_.md&amp;value=---%0Auid%3A%20MicroService.WebApi.V1.Controllers.FeatureServiceController.GetGeospatialLookup(MicroService.WebApi.Models.FeatureRequestModel)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.WebApi/V1/Controllers/FeatureServiceController.cs/#L136">View Source</a>
+  </span>
+  <a id="MicroService_WebApi_V1_Controllers_FeatureServiceController_GetGeospatialLookup_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.GetGeospatialLookup*"></a>
+  <h4 id="MicroService_WebApi_V1_Controllers_FeatureServiceController_GetGeospatialLookup_MicroService_WebApi_Models_FeatureRequestModel_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.GetGeospatialLookup(MicroService.WebApi.Models.FeatureRequestModel)">GetGeospatialLookup(FeatureRequestModel)</h4>
+  <div class="markdown level1 summary"><p>Get Geospatial Feature Lookup</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet(&quot;geospatiallookup&quot;, Name = &quot;GetGeospatialLookup&quot;)]
+[Produces(&quot;application/json&quot;, new string[] { }, Type = typeof(ShapeBase))]
+[ProducesResponseType(typeof(ShapeBase), 200)]
+[ProducesResponseType(400)]
+[ProducesResponseType(404)]
+public Task&lt;ActionResult&lt;object&gt;&gt; GetGeospatialLookup(FeatureRequestModel request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MicroService.WebApi.Models.FeatureRequestModel.html">FeatureRequestModel</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Feature Request</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<span class="xref">Microsoft.AspNetCore.Mvc.ActionResult&lt;TValue&gt;</span>&lt;<span class="xref">object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_WebApi_V1_Controllers_FeatureServiceController_GetLookupFeatureGeoJson_MicroService_WebApi_Models_FeatureAttributeLookupRequestModel_.md&amp;value=---%0Auid%3A%20MicroService.WebApi.V1.Controllers.FeatureServiceController.GetLookupFeatureGeoJson(MicroService.WebApi.Models.FeatureAttributeLookupRequestModel)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.WebApi/V1/Controllers/FeatureServiceController.cs/#L183">View Source</a>
+  </span>
+  <a id="MicroService_WebApi_V1_Controllers_FeatureServiceController_GetLookupFeatureGeoJson_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.GetLookupFeatureGeoJson*"></a>
+  <h4 id="MicroService_WebApi_V1_Controllers_FeatureServiceController_GetLookupFeatureGeoJson_MicroService_WebApi_Models_FeatureAttributeLookupRequestModel_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.GetLookupFeatureGeoJson(MicroService.WebApi.Models.FeatureAttributeLookupRequestModel)">GetLookupFeatureGeoJson(FeatureAttributeLookupRequestModel)</h4>
+  <div class="markdown level1 summary"><p>Get Feature Attribute Lookup GeoJson</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost(&quot;attributelookupgeojson&quot;, Name = &quot;GetLookupFeatureGeoJson&quot;)]
+[Produces(&quot;application/geo+json&quot;, new string[] { })]
+[SwaggerResponse(200, &quot;Returns a list of features&quot;, typeof(FeatureCollection))]
+[ProducesResponseType(200)]
+[ProducesResponseType(400)]
+[ProducesResponseType(404)]
+public Task&lt;ActionResult&lt;FeatureCollection&gt;&gt; GetLookupFeatureGeoJson(FeatureAttributeLookupRequestModel request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MicroService.WebApi.Models.FeatureAttributeLookupRequestModel.html">FeatureAttributeLookupRequestModel</a></td>
+        <td><span class="parametername">request</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<span class="xref">Microsoft.AspNetCore.Mvc.ActionResult&lt;TValue&gt;</span>&lt;<span class="xref">NetTopologySuite.Features.FeatureCollection</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_WebApi_V1_Controllers_FeatureServiceController_GetShapeProperties_System_String_.md&amp;value=---%0Auid%3A%20MicroService.WebApi.V1.Controllers.FeatureServiceController.GetShapeProperties(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.WebApi/V1/Controllers/FeatureServiceController.cs/#L74">View Source</a>
+  </span>
+  <a id="MicroService_WebApi_V1_Controllers_FeatureServiceController_GetShapeProperties_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.GetShapeProperties*"></a>
+  <h4 id="MicroService_WebApi_V1_Controllers_FeatureServiceController_GetShapeProperties_System_String_" data-uid="MicroService.WebApi.V1.Controllers.FeatureServiceController.GetShapeProperties(System.String)">GetShapeProperties(string)</h4>
+  <div class="markdown level1 summary"><p>Get Shape Attributes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet(&quot;{id}&quot;, Name = &quot;GetShapeProperties&quot;)]
+[Produces(&quot;application/json&quot;, new string[] { })]
+[ProducesResponseType(200)]
+[ProducesResponseType(404)]
+public ActionResult&lt;object&gt; GetShapeProperties(string id = &quot;NationalRegisterHistoricPlaces&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Shape Id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.AspNetCore.Mvc.ActionResult&lt;TValue&gt;</span>&lt;<span class="xref">object</span>&gt;</td>
+        <td><p>Attribute List of Shape</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="MicroService_WebApi_V1_Controllers_FeatureServiceController_GetShapeProperties_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Attribute List of Shape</p>
+</div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="MicroService.Service.Helpers.ReflectionExtensions.html#MicroService_Service_Helpers_ReflectionExtensions_ArePropertiesNotNull__1___0_">ReflectionExtensions.ArePropertiesNotNull&lt;T&gt;(T)</a>
+  </div>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/stuartshay/MicroService/new/develop/apiSpec/new?filename=MicroService_WebApi_V1_Controllers_FeatureServiceController.md&amp;value=---%0Auid%3A%20MicroService.WebApi.V1.Controllers.FeatureServiceController%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/stuartshay/MicroService/blob/develop/src/MicroService.WebApi/V1/Controllers/FeatureServiceController.cs/#L20" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

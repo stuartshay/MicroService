@@ -14,12 +14,13 @@
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
   
   
   
+    <script src="https://rebilly.github.io/ReDoc/releases/latest/redoc.min.js"> </script>
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
@@ -72,6 +73,12 @@
 <p>DocFX generates Documentation directly from source code (.NET, RESTful API, JavaScript, Java, etc...) and Markdown files.</p>
 <pre><code>https://dotnet.github.io/docfx/
 </code></pre>
+<h1 id="on-windows">On Windows</h1>
+<p>rmdir F:\Build3\MicroService\docfx_site
+docfx build docFX/docfx.json</p>
+<h1 id="on-linuxmac">On Linux/Mac</h1>
+<p>rm -rf _site
+docfx build docFX/docfx.json</p>
 <p><img src="assets/docfx.png" alt=""></p>
 <h4 id="prerequisites">Prerequisites:</h4>
 <pre><code class="lang-powershell">choco install docfx
