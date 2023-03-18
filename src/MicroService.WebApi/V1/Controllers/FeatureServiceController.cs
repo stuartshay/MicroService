@@ -4,6 +4,7 @@ using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
 using MicroService.WebApi.Extensions.Constants;
+using MicroService.WebApi.Extensions.Swagger.Examples;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Annotations;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace MicroService.WebApi.V1.Controllers
 {
@@ -41,12 +43,13 @@ namespace MicroService.WebApi.V1.Controllers
         }
 
         /// <summary>
-        ///  Get Available Shapes
+        ///  Get List of Available Shapes
         /// </summary>
-        /// <returns></returns>
+        /// <returns>An enumerable list of available shape datasets</returns>
         [HttpGet]
         [Produces("application/json", Type = typeof(IEnumerable<string>))]
-        [ProducesResponseType(typeof(IEnumerable<string>), 200)]
+        [ProducesResponseType(typeof(IEnumerable<object>), 200)]
+        [SwaggerResponseExample(200, typeof(GetShapeTypesExample))]
         public ActionResult<object> Get()
         {
             var result = EnumHelper.EnumToList<ShapeProperties>().Select(j => new
@@ -72,9 +75,10 @@ namespace MicroService.WebApi.V1.Controllers
         /// <param name="id">Shape Id</param>
         /// <returns>Attribute List of Shape </returns>
         [HttpGet("{id}", Name = "GetShapeProperties")]
-        [Produces("application/json")]
+        [Produces("application/json", Type = typeof(object))]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
+        [SwaggerResponseExample(200, typeof(GetShapePropertiesExample))]
         public ActionResult<object> GetShapeProperties(string id = "NationalRegisterHistoricPlaces")
         {
             if (id == null || !Enum.IsDefined(typeof(ShapeProperties), id))
