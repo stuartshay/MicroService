@@ -30,7 +30,7 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Generate OpenAPI JSON
-        run: dotnet swagger tofile --output docfx/restapi/swagger.json MicroService/src/MicroService.WebApi/MicroService.WebApi.csproj v1
+        run: ~/.dotnet/tools/dotnet-swagger tofile --output docfx/restapi/swagger.json MicroService/src/MicroService.WebApi/MicroService.WebApi.csproj v1
 
       - name: Build DocFX
         run: ~/.dotnet/tools/docfx build docfx/docfx.json
