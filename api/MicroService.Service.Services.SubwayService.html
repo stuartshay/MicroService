@@ -174,7 +174,7 @@
     <pre><code class="lang-csharp hljs">public SubwayService(ShapefileDataReaderResolver shapefileDataReaderResolver, IMapper mapper, ILogger&lt;SubwayService&gt; logger)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -189,12 +189,12 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">AutoMapper.IMapper</span></td>
+        <td><span class="xref">IMapper</span></td>
         <td><span class="parametername">mapper</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.ILogger&lt;TCategoryName&gt;</span>&lt;<a class="xref" href="MicroService.Service.Services.SubwayService.html">SubwayService</a>&gt;</td>
+        <td><span class="xref">ILogger</span>&lt;<a class="xref" href="MicroService.Service.Services.SubwayService.html">SubwayService</a>&gt;</td>
         <td><span class="parametername">logger</span></td>
         <td></td>
       </tr>
@@ -218,7 +218,7 @@
     <pre><code class="lang-csharp hljs">public List&lt;Point&gt; FindPointsByRadius(Point center, double radius)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -228,7 +228,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NetTopologySuite.Geometries.Point</span></td>
+        <td><span class="xref">Point</span></td>
         <td><span class="parametername">center</span></td>
         <td></td>
       </tr>
@@ -240,7 +240,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -249,7 +249,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List&lt;T&gt;</span>&lt;<span class="xref">NetTopologySuite.Geometries.Point</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">Point</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -270,7 +270,7 @@
     <pre><code class="lang-csharp hljs">public FeatureCollection GetFeatureCollection(List&lt;KeyValuePair&lt;string, object&gt;&gt; attributes)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -280,14 +280,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List&lt;T&gt;</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
         <td><span class="parametername">attributes</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -296,7 +296,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NetTopologySuite.Features.FeatureCollection</span></td>
+        <td><span class="xref">FeatureCollection</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -317,7 +317,7 @@
     <pre><code class="lang-csharp hljs">public override SubwayShape GetFeatureLookup(double x, double y)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -339,7 +339,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -404,7 +404,7 @@
       </footer>
     </div>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

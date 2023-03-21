@@ -128,7 +128,7 @@
     <pre><code class="lang-csharp hljs">public abstract class AbstractShapeService&lt;TShape, TProfile&gt; where TShape : class, new() where TProfile : Profile, new()</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Name</th>
@@ -164,7 +164,7 @@
     <pre><code class="lang-csharp hljs">protected AbstractShapeService(ILogger logger, IMapper mapper)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -174,12 +174,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td><span class="xref">ILogger</span></td>
         <td><span class="parametername">logger</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">AutoMapper.IMapper</span></td>
+        <td><span class="xref">IMapper</span></td>
         <td><span class="parametername">mapper</span></td>
         <td></td>
       </tr>
@@ -202,7 +202,7 @@
     <pre><code class="lang-csharp hljs">protected readonly ILogger Logger</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -211,7 +211,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td><span class="xref">ILogger</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -231,7 +231,7 @@
     <pre><code class="lang-csharp hljs">protected readonly IMapper Mapper</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -240,7 +240,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">AutoMapper.IMapper</span></td>
+        <td><span class="xref">IMapper</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -263,7 +263,7 @@
     <pre><code class="lang-csharp hljs">protected IShapefileDataReaderService ShapeFileDataReader { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -293,7 +293,7 @@
     <pre><code class="lang-csharp hljs">protected ShapePropertiesAttribute ShapePropertiesAttribute { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -325,7 +325,7 @@
     <pre><code class="lang-csharp hljs">public virtual IEnumerable&lt;TShape&gt; GetFeatureList()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -334,7 +334,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>&lt;TShape&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;TShape&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -355,7 +355,7 @@
     <pre><code class="lang-csharp hljs">public virtual IEnumerable&lt;TShape&gt; GetFeatureLookup(List&lt;KeyValuePair&lt;string, object&gt;&gt; attributes)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -365,14 +365,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List&lt;T&gt;</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
         <td><span class="parametername">attributes</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -381,7 +381,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>&lt;TShape&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;TShape&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -402,7 +402,7 @@
     <pre><code class="lang-csharp hljs">public virtual TShape GetFeatureLookup(double x, double y)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -424,7 +424,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -454,7 +454,7 @@
     <pre><code class="lang-csharp hljs">public string GetFeatureName(string propertyName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -471,7 +471,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -501,7 +501,7 @@
     <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;Feature&gt; GetFeatures()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -510,7 +510,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection&lt;T&gt;</span>&lt;<span class="xref">Feature</span>&gt;</td>
+        <td><span class="xref">IReadOnlyCollection</span>&lt;<span class="xref">Feature</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -531,7 +531,7 @@
     <pre><code class="lang-csharp hljs">public DbaseFileHeader GetShapeDatabaseProperties()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -540,7 +540,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NetTopologySuite.IO.DbaseFileHeader</span></td>
+        <td><span class="xref">DbaseFileHeader</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -561,7 +561,7 @@
     <pre><code class="lang-csharp hljs">public ShapefileHeader GetShapeProperties()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -570,7 +570,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NetTopologySuite.IO.ShapefileHeader</span></td>
+        <td><span class="xref">ShapefileHeader</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -591,7 +591,7 @@
     <pre><code class="lang-csharp hljs">protected object MatchAttributeValue(object value, object expectedValue)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -613,7 +613,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -644,7 +644,7 @@
     <pre><code class="lang-csharp hljs">public List&lt;KeyValuePair&lt;string, object&gt;&gt; ValidateFeatureKey(List&lt;KeyValuePair&lt;string, object&gt;&gt; attributes)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -654,14 +654,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List&lt;T&gt;</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
         <td><span class="parametername">attributes</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -670,7 +670,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List&lt;T&gt;</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -717,7 +717,7 @@
       </footer>
     </div>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

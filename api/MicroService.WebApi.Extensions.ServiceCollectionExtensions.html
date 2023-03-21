@@ -131,7 +131,7 @@
     <pre><code class="lang-csharp hljs">public static void AddCorsConfiguration(this IServiceCollection services)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -141,7 +141,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
+        <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">services</span></td>
         <td></td>
       </tr>
@@ -163,7 +163,7 @@
     <pre><code class="lang-csharp hljs">public static IServiceCollection AddCronJob&lt;T&gt;(this IServiceCollection services, Action&lt;IScheduleConfig&gt; options) where T : CronJobService</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -173,19 +173,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
+        <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">services</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Action&lt;T&gt;</span>&lt;<a class="xref" href="MicroService.WebApi.Services.Cron.IScheduleConfig.html">IScheduleConfig</a>&gt;</td>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="MicroService.WebApi.Services.Cron.IScheduleConfig.html">IScheduleConfig</a>&gt;</td>
         <td><span class="parametername">options</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -194,13 +194,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
+        <td><span class="xref">IServiceCollection</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Name</th>
@@ -216,7 +216,7 @@
     </tbody>
   </table>
   <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -247,7 +247,7 @@
     <pre><code class="lang-csharp hljs">public static void AddCustomApiVersioning(this IServiceCollection services)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -257,7 +257,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
+        <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">services</span></td>
         <td></td>
       </tr>
@@ -280,7 +280,7 @@
     <pre><code class="lang-csharp hljs">public static IServiceCollection AddCustomControllers(this IServiceCollection services, IConfiguration configuration)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -290,19 +290,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
+        <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">services</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Configuration.IConfiguration</span></td>
+        <td><span class="xref">IConfiguration</span></td>
         <td><span class="parametername">configuration</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -311,7 +311,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
+        <td><span class="xref">IServiceCollection</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -333,7 +333,7 @@
     <pre><code class="lang-csharp hljs">public static void AddOpenTelemetryTracingCustom(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -343,17 +343,17 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
+        <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">services</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Configuration.IConfiguration</span></td>
+        <td><span class="xref">IConfiguration</span></td>
         <td><span class="parametername">configuration</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Hosting.IHostEnvironment</span></td>
+        <td><span class="xref">IHostEnvironment</span></td>
         <td><span class="parametername">env</span></td>
         <td></td>
       </tr>
@@ -376,7 +376,7 @@
     <pre><code class="lang-csharp hljs">public static void AddSwaggerConfiguration(this IServiceCollection services)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -386,7 +386,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
+        <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">services</span></td>
         <td></td>
       </tr>
@@ -409,7 +409,7 @@
     <pre><code class="lang-csharp hljs">public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -419,12 +419,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
+        <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">services</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Configuration.IConfiguration</span></td>
+        <td><span class="xref">IConfiguration</span></td>
         <td><span class="parametername">configuration</span></td>
         <td></td>
       </tr>
@@ -447,7 +447,7 @@
     <pre><code class="lang-csharp hljs">public static void UseSwaggerCustom(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -457,12 +457,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.AspNetCore.Builder.IApplicationBuilder</span></td>
+        <td><span class="xref">IApplicationBuilder</span></td>
         <td><span class="parametername">app</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider</span></td>
+        <td><span class="xref">IApiVersionDescriptionProvider</span></td>
         <td><span class="parametername">provider</span></td>
         <td></td>
       </tr>
@@ -506,7 +506,7 @@
       </footer>
     </div>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

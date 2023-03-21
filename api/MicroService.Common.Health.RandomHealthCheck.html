@@ -84,7 +84,7 @@
   </div>
   <div class="implements">
     <h5>Implements</h5>
-    <div><span class="xref">Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheck</span></div>
+    <div><span class="xref">IHealthCheck</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -134,7 +134,7 @@
     <pre><code class="lang-csharp hljs">public Task&lt;HealthCheckResult&gt; CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -144,19 +144,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckContext</span></td>
+        <td><span class="xref">HealthCheckContext</span></td>
         <td><span class="parametername">context</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -165,7 +165,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<span class="xref">HealthCheckResult</span>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<span class="xref">HealthCheckResult</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -216,7 +216,7 @@
       </footer>
     </div>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>
