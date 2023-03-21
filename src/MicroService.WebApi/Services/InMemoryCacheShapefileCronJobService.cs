@@ -26,7 +26,7 @@ namespace MicroService.WebApi.Services
             CronJobServiceHealthCheck cronJobServiceHealthCheck,
             IOptions<ApplicationOptions> applicationOptions,
             ILogger<InMemoryCacheShapefileCronJobService> logger)
-            : base(scheduleConfig.CronExpression!, scheduleConfig.TimeZoneInfo)
+            : base(scheduleConfig.CronExpression!, scheduleConfig.TimeZoneInfo!)
         {
             _cache = memoryCache;
             _cronJobServiceHealthCheck = cronJobServiceHealthCheck;

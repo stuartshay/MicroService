@@ -2,8 +2,15 @@
 
 namespace MicroService.WebApi.Extensions.Swagger.Examples;
 
+/// <summary>
+/// Shape Properties Swagger Example
+/// </summary>
 public class GetShapePropertiesExample : IExamplesProvider<object>
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public object GetExamples()
     {
         return new
