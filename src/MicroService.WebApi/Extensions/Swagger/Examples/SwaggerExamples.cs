@@ -1,7 +1,7 @@
 ﻿using MicroService.WebApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 
-namespace MicroService.WebApi.Extensions.Swagger
+namespace MicroService.WebApi.Extensions.Swagger.Examples
 {
     /// <summary>
     /// Swagger Display Examples
