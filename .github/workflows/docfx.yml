@@ -23,6 +23,15 @@ jobs:
       - name: Install DocFX
         run: dotnet tool install --global docfx
 
+      - name: Install Swashbuckle CLI
+        run: dotnet tool install --global Swashbuckle.AspNetCore.Cli
+
+      - name: Build project
+        run: dotnet build --configuration Release
+
+      #- name: Generate OpenAPI JSON
+      #  run: swagger tofile --output docfx/restapi/swagger.json MicroService/src/MicroService.WebApi/MicroService.WebApi.csproj v1
+
       - name: Build DocFX
         run: ~/.dotnet/tools/docfx build docfx/docfx.json
 
