@@ -83,7 +83,7 @@
     <pre><code class="lang-csharp hljs">public interface IShapeService&lt;out T&gt; where T : ShapeBase</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Name</th>
@@ -115,7 +115,7 @@
     <pre><code class="lang-csharp hljs">FeatureCollection GetFeatureCollection(List&lt;KeyValuePair&lt;string, object&gt;&gt; attributes)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -125,14 +125,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List&lt;T&gt;</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
         <td><span class="parametername">attributes</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -141,7 +141,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NetTopologySuite.Features.FeatureCollection</span></td>
+        <td><span class="xref">FeatureCollection</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -162,7 +162,7 @@
     <pre><code class="lang-csharp hljs">IEnumerable&lt;out T&gt; GetFeatureList()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -171,7 +171,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>&lt;T&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -192,7 +192,7 @@
     <pre><code class="lang-csharp hljs">IEnumerable&lt;out T&gt; GetFeatureLookup(List&lt;KeyValuePair&lt;string, object&gt;&gt; attributes)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -202,14 +202,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List&lt;T&gt;</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">KeyValuePair</span>&lt;<span class="xref">string</span>, <span class="xref">object</span>&gt;&gt;</td>
         <td><span class="parametername">attributes</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -218,7 +218,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>&lt;T&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -239,7 +239,7 @@
     <pre><code class="lang-csharp hljs">T GetFeatureLookup(double x, double y)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -261,7 +261,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -291,7 +291,7 @@
     <pre><code class="lang-csharp hljs">IReadOnlyCollection&lt;Feature&gt; GetFeatures()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -300,7 +300,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection&lt;T&gt;</span>&lt;<span class="xref">Feature</span>&gt;</td>
+        <td><span class="xref">IReadOnlyCollection</span>&lt;<span class="xref">Feature</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -321,7 +321,7 @@
     <pre><code class="lang-csharp hljs">DbaseFileHeader GetShapeDatabaseProperties()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -330,7 +330,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NetTopologySuite.IO.DbaseFileHeader</span></td>
+        <td><span class="xref">DbaseFileHeader</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -351,7 +351,7 @@
     <pre><code class="lang-csharp hljs">ShapefileHeader GetShapeProperties()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -360,7 +360,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NetTopologySuite.IO.ShapefileHeader</span></td>
+        <td><span class="xref">ShapefileHeader</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -407,7 +407,7 @@
       </footer>
     </div>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>
