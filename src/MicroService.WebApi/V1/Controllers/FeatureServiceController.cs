@@ -13,6 +13,7 @@ using NetTopologySuite.IO;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
+using System.ComponentModel.DataAnnotations;
 
 namespace MicroService.WebApi.V1.Controllers
 {
@@ -79,12 +80,13 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [SwaggerResponseExample(200, typeof(GetShapePropertiesExample))]
-        public ActionResult<object> GetShapeProperties(string id = "NationalRegisterHistoricPlaces")
+        public ActionResult<object> GetShapeProperties(
+            [FromRoute][EnumDataType(typeof(ShapeProperties))] ShapeProperties id)
         {
-            if (id == null || !Enum.IsDefined(typeof(ShapeProperties), id))
+            if (!Enum.IsDefined(typeof(ShapeProperties), id))
                 return BadRequest();
 
-            var service = _shapeServiceResolver!(id);
+            var service = _shapeServiceResolver!(id.ToString());
 
             var databaseProperties = service.GetShapeDatabaseProperties();
             var shapeProperties = service.GetShapeProperties();
@@ -125,10 +127,10 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult<object>> GetFeatureList([FromQuery] FeatureAttributeRequestModel request)
         {
-            if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
+            if (string.IsNullOrEmpty(request?.Key.ToString()) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();
 
-            IEnumerable<ShapeBase> results = _shapeServiceResolver!(request.Key).GetFeatureList();
+            IEnumerable<ShapeBase> results = _shapeServiceResolver!(request.Key.ToString()).GetFeatureList();
             return await Task.FromResult(Ok(results));
         }
 

@@ -1,8 +1,10 @@
 ﻿using MicroService.Service.Configuration;
+using MicroService.Service.Models.Enum;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
@@ -106,6 +108,15 @@ namespace MicroService.WebApi.Extensions
                         Array.Empty<string>()
                     }
                 });
+                c.MapType<ShapeProperties>(() => new OpenApiSchema
+                {
+                    Type = "string",
+                    Enum = Enum.GetNames(typeof(ShapeProperties))
+                        .Select(name => new OpenApiString(name))
+                        .Cast<IOpenApiAny>()
+                        .ToList(),
+                });
+
                 var xmlFilePath = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
 
                 c.EnableAnnotations();
