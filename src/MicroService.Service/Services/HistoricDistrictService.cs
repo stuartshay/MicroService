@@ -24,7 +24,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.HistoricDistricts));
         }
 
-        public override HistoricDistrictShape GetFeatureLookup(double x, double y)
+        public override HistoricDistrictShape GetFeatureLookup(double x, double y, Datum datum)
         {
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
             var wgs84Point = new { X = result.Item1, Y = result.Item2 };

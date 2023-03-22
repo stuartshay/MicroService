@@ -40,7 +40,7 @@ namespace MicroService.Service.Services
             return featureCollection;
         }
 
-        public override IndividualLandmarkSiteShape GetFeatureLookup(double x, double y)
+        public override IndividualLandmarkSiteShape GetFeatureLookup(double x, double y, Datum datum)
         {
             // Convert Nad83 to Wgs 
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
