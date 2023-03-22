@@ -1,9 +1,13 @@
-﻿namespace MicroService.WebApi.Models
+﻿using MicroService.Service.Models.Enum;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace MicroService.WebApi.Models
 {
     /// <summary>
     /// Feature Request Model
     /// </summary>
-    public class FeatureRequestModel
+    public class FeatureGeoRequestModel
     {
         /// <summary>
         ///  X Point.
@@ -18,7 +22,9 @@
         /// <summary>
         /// Lookup Service Key
         /// </summary>
-        public string? Key { get; set; }
+        [EnumDataType(typeof(ShapeProperties))]
+        [DefaultValue(ShapeProperties.BoroughBoundaries)]
+        public ShapeProperties Type { get; set; }
     }
 
 }
