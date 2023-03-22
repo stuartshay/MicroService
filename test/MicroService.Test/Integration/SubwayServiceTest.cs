@@ -67,16 +67,17 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-        [InlineData(1006187, 232036, "Bronx", 0)]
-        [InlineData(1000443, 0239270, "Manhattan", 0)]
-        [InlineData(1021192.9426658918, 212550.01741990919, "Queens", 0)]
+        [InlineData(1006187, 232036, "Brook Ave & 138th St at SE corner", "6")]
+        [InlineData(1000443, 0239270, "Saint Nicholas Ave & 147th St at NE corner", "A-B-C-D")]
+        [InlineData(1021192.9426658918, 212550.01741990919, "Junction Blvd & Roosevelt Ave at SE corner", "7")]
         [Theory(DisplayName = "Get Geospatial Point Lookup")]
-        public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object lookupExpectedl)
+        public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y);
 
             Assert.NotNull(sut);
-            //Assert.Equal(expected, sut.BoroName);
+            Assert.Equal(expected, sut.Name);
+            Assert.Equal(expected2, sut.Line);
         }
 
         [InlineData(27006187, 932036)]
