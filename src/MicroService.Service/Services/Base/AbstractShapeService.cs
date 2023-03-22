@@ -192,7 +192,7 @@ namespace MicroService.Service.Services.Base
             return results;
         }
 
-        public virtual TShape GetFeatureLookup(double x, double y)
+        public virtual TShape GetFeatureLookup(double x, double y, Datum datum)
         {
             var point = new Point(x, y);
 

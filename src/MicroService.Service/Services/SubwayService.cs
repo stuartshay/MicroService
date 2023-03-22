@@ -25,7 +25,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Subway));
         }
 
-        public override SubwayShape GetFeatureLookup(double x, double y)
+        public override SubwayShape GetFeatureLookup(double x, double y, Datum datum)
         {
             // Validate Point is in Range
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);

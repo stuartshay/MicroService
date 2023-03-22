@@ -24,7 +24,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.DSNYDistricts));
         }
 
-        public override DsnyDistrictsShape GetFeatureLookup(double x, double y)
+        public override DsnyDistrictsShape GetFeatureLookup(double x, double y, Datum datum)
         {
             // Convert Nad83 to Wgs 
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
