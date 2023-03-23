@@ -262,7 +262,7 @@ void SetupApp()
     app.UseHttpMetrics();
     app.MapMetrics();
 
-    app.MapHealthChecks(config!.HealthCheckConfiguration.HealthCheckJson, new HealthCheckOptions
+    app.MapHealthChecks(config!.HealthCheckConfiguration!.HealthCheckJson!, new HealthCheckOptions
     {
         Predicate = _ => true,
         ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse

@@ -2,6 +2,6 @@
 {
     public class HealthCheckConfiguration
     {
-        public string HealthCheckJson { get; set; }
+        public string? HealthCheckJson { get; set; }
     }
 }
