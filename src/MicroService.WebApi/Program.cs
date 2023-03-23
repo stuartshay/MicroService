@@ -29,6 +29,7 @@ using Prometheus;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -82,6 +83,7 @@ void SetupServices()
         options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
         options.JsonSerializerOptions.WriteIndented = true;
         options.JsonSerializerOptions.Converters.Add(new GeoJsonConverterFactory());
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 
     services.AddEndpointsApiExplorer();
@@ -242,6 +244,8 @@ void AddHealthCheckServices()
 
 void SetupApp()
 {
+    var config = configuration.Get<MicroService.Common.Configuration.ApplicationOptions>();
+
     app.UseHttpsRedirection();
     app.UseStaticFiles();
     app.UseRouting();
@@ -258,7 +262,7 @@ void SetupApp()
     app.UseHttpMetrics();
     app.MapMetrics();
 
-    app.MapHealthChecks("/healthz", new HealthCheckOptions
+    app.MapHealthChecks(config!.HealthCheckConfiguration.HealthCheckJson, new HealthCheckOptions
     {
         Predicate = _ => true,
         ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse

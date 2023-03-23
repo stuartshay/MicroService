@@ -22,8 +22,6 @@ namespace MicroService.WebApi.V1.Controllers
     /// </summary>
     [ApiController]
     [ApiVersion("1.0")]
-    [ApiVersion("2.0")]
-    [ApiVersion("3.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [EnableCors(ApiConstants.CorsPolicy)]
     public class FeatureServiceController : ControllerBase
@@ -71,7 +69,7 @@ namespace MicroService.WebApi.V1.Controllers
         ///  Get Shape Attributes
         /// </summary>
         /// <remarks>
-        ///   Attribute List of Shape
+        ///   Attribute List of Shape Properties on the ERSI Shape File
         /// </remarks>
         /// <param name="id">Shape Id</param>
         /// <returns>Attribute List of Shape </returns>
@@ -144,16 +142,16 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(typeof(ShapeBase), 200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<object>> GetGeospatialLookup([FromQuery] FeatureRequestModel request)
+        public async Task<ActionResult<object>> GetGeospatialLookup([FromQuery] FeatureGeoRequestModel request)
         {
-            if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
+            if (string.IsNullOrEmpty(request?.Type.ToString()) || !Enum.IsDefined(typeof(ShapeProperties), request.Type))
                 return BadRequest();
 
-            var validate = _shapeServiceResolver!(ShapeProperties.BoroughBoundaries.ToString()).GetFeatureLookup(request.X, request.Y);
+            var validate = _shapeServiceResolver!(ShapeProperties.BoroughBoundaries.ToString()).GetFeatureLookup(request.X, request.Y, request.Datum);
             if (validate == null)
                 return NoContent();
 
-            var results = _shapeServiceResolver!(request.Key).GetFeatureLookup(request.X, request.Y);
+            var results = _shapeServiceResolver!(request.Type.ToString()).GetFeatureLookup(request.X, request.Y, request.Datum);
             if (results == null)
                 return NotFound();
 

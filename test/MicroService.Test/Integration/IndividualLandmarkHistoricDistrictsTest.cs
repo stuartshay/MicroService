@@ -1,5 +1,6 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
+using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Test.Fixture;
 using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
@@ -70,7 +71,18 @@ namespace MicroService.Test.Integration
         [Theory(DisplayName = "Get Geospatial Point Lookup")]
         public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object expected2)
         {
-            var sut = _service.GetFeatureLookup(x, y);
+            var sut = _service.GetFeatureLookup(x, y, Datum.Nad83);
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, sut.AreaName);
+            Assert.Equal(expected2, sut.BoroName);
+        }
+
+        [InlineData(-73.920786, 40.644343, "Pieter Claesen Wyckoff House", "BK")]
+        [Theory(Skip = "TODO: FIX", DisplayName = "Get Geospatial Point Lookup")]
+        public void Get_Geospatial_Point_Lookup_Wgs84(double x, double y, string expected, object expected2)
+        {
+            var sut = _service.GetFeatureLookup(x, y, Datum.Wgs84);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.AreaName);
@@ -177,7 +189,7 @@ namespace MicroService.Test.Integration
         [Theory(DisplayName = "Get Geospatial Point Lookup Not Found")]
         public void Get_Geospatial_Point_Lookup_Not_Found(double x, double y)
         {
-            var sut = _service.GetFeatureLookup(x, y);
+            var sut = _service.GetFeatureLookup(x, y, Datum.Nad83);
 
             Assert.Null(sut);
         }

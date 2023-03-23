@@ -1,5 +1,6 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
+using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Test.Fixture;
 using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
@@ -61,6 +62,17 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
+        [InlineData(-73.965624, 40.78268, "022", "22D")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup - WGS84")]
+        public void Get_Geospatial_Point_Lookup_Wgs84(double x, double y, string expected, object expected2)
+        {
+            var sut = _service.GetFeatureLookup(x, y, Datum.Wgs84);
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, sut.Pct);
+            Assert.Equal(expected2, sut.Sector);
+        }
+
         [InlineData("102", "102C", "PBQS")]
         [InlineData(102, "102C", "PBQS")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
@@ -86,7 +98,7 @@ namespace MicroService.Test.Integration
         [Trait("Category", "Integration")]
         public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object expected2)
         {
-            var sut = _service.GetFeatureLookup(x, y);
+            var sut = _service.GetFeatureLookup(x, y, Datum.Nad83);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.Sector);
@@ -98,7 +110,7 @@ namespace MicroService.Test.Integration
         [Theory(DisplayName = "Get Geospatial Point Lookup Not Found")]
         public void Get_Geospatial_Point_Lookup_Not_Found(double x, double y)
         {
-            var sut = _service.GetFeatureLookup(x, y);
+            var sut = _service.GetFeatureLookup(x, y, Datum.Nad83);
 
             Assert.Null(sut);
         }

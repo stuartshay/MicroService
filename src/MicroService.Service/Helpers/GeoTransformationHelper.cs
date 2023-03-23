@@ -59,9 +59,9 @@ namespace MicroService.Service.Helpers
         /// <param name="latitude"></param>
         /// <param name="longitude"></param>
         /// <returns></returns> 
-        public static (double? X, double? Y) ConvertWgs84ToNad83(double? latitude, double? longitude)
+        public static (double? X, double? Y) ConvertWgs84ToNad83(double? x, double? y)
         {
-            if (!latitude.HasValue || !longitude.HasValue)
+            if (!x.HasValue || !y.HasValue)
                 return (null, null);
 
             var csWgs84 = GeographicCoordinateSystem.WGS84;
@@ -70,7 +70,7 @@ namespace MicroService.Service.Helpers
 
             var ctFactory = new CoordinateTransformationFactory();
             var trans = ctFactory.CreateFromCoordinateSystems(csWgs84, utmNad83);
-            var result = trans.MathTransform.Transform(new[] { longitude.Value, latitude.Value });
+            var result = trans.MathTransform.Transform(new[] { x.Value, y.Value });
 
             return (result[0], result[1]);
         }

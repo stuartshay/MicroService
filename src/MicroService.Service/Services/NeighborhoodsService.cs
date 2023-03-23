@@ -22,7 +22,6 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Neighborhoods));
         }
 
-
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
             var featureCollection = new FeatureCollection();
