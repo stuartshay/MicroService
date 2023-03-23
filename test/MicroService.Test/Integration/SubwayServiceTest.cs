@@ -81,6 +81,11 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, sut.Line);
         }
 
+        public void Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
+        {
+            throw new NotImplementedException();
+        }
+
         [InlineData(27006187, 932036)]
         [Theory(Skip = "TODO: FIX", DisplayName = "Get Geospatial Point Lookup Not Found")]
         public void Get_Geospatial_Point_Lookup_Not_Found(double x, double y)

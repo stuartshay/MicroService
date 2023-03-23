@@ -78,6 +78,11 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, sut.NTACode);
         }
 
+        public void Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
+        {
+            throw new NotImplementedException();
+        }
+
         [InlineData("1", "MN40", "Upper East Side-Carnegie Hill")]
         [InlineData(1, "MN40", "Upper East Side-Carnegie Hill")]
         [InlineData("1", "MN15", "Clinton")]

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MicroService.Service.Helpers;
+using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
@@ -8,7 +9,6 @@ using NetTopologySuite.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace MicroService.Service.Services.Base
 {
@@ -24,18 +24,12 @@ namespace MicroService.Service.Services.Base
 
         protected readonly ILogger Logger;
 
-        protected ShapePropertiesAttribute ShapePropertiesAttribute { get; }
-
         protected AbstractShapeService(
             ILogger logger,
             IMapper mapper)
         {
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             Mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-
-            ShapePropertiesAttribute = typeof(TShape)
-                .GetTypeInfo()
-                .GetCustomAttribute<ShapePropertiesAttribute>();
         }
 
         public ShapefileHeader GetShapeProperties()
@@ -49,7 +43,6 @@ namespace MicroService.Service.Services.Base
             DbaseFileHeader header = ShapeFileDataReader.DbaseHeader;
             return header;
         }
-
 
         /// <summary>
         /// Validate/Map Shape Feature Properties
@@ -194,6 +187,16 @@ namespace MicroService.Service.Services.Base
 
         public virtual TShape GetFeatureLookup(double x, double y, Datum datum)
         {
+            ShapePropertiesAttribute shapePropertiesAttribute = typeof(TShape)
+                .GetCustomAttributes(typeof(ShapePropertiesAttribute), false)
+                .OfType<ShapePropertiesAttribute>()
+                .SingleOrDefault();
+
+            ShapeProperties shapeProperties = shapePropertiesAttribute!.ShapeProperties;
+            Datum sourceDatum = shapeProperties.GetAttribute<ShapeAttribute>().Datum;
+
+            (x, y) = TransformCoordinates(x, y, datum, sourceDatum);
+
             var point = new Point(x, y);
 
             var features = GetFeatures();
@@ -209,5 +212,24 @@ namespace MicroService.Service.Services.Base
 
         public IReadOnlyCollection<Feature> GetFeatures() =>
                 ShapeFileDataReader.GetFeatures();
+
+        private (double, double) TransformCoordinates(double x, double y, Datum fromDatum, Datum toDatum)
+        {
+            if (fromDatum != toDatum)
+            {
+                if (fromDatum == Datum.Nad83 && toDatum == Datum.Wgs84)
+                {
+                    var (x1, y1) = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
+                    return (x1.Value, y1.Value);
+                }
+                else if (fromDatum == Datum.Wgs84 && toDatum == Datum.Nad83)
+                {
+                    var (x1, y1) = GeoTransformationHelper.ConvertWgs84ToNad83(x, y);
+                    return (x1.Value, y1.Value);
+                }
+            }
+
+            return (x, y);
+        }
     }
 }

@@ -17,6 +17,9 @@ namespace MicroService.Test.Integration.Interfaces
         void Get_Geospatial_Point_Lookup(double x, double y, string expected, object expected2);
 
         [Trait("Category", "Integration")]
+        void Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2);
+
+        [Trait("Category", "Integration")]
         void Get_Feature_Attribute_Lookup(object value1, object value2, string expected);
 
         [Trait("Category", "Integration")]

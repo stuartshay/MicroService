@@ -74,6 +74,15 @@ namespace MicroService.Test.Integration
             Assert.Equal(int.Parse(expected), sut.Precinct);
         }
 
+        [InlineData(-73.965624, 40.78268, "22", "22")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup - WGS84")]
+        public void Get_Geospatial_Point_Lookup_Wgs84(double x, double y, string expected, object expected2)
+        {
+            var sut = _service.GetFeatureLookup(x, y, Datum.Wgs84);
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, sut.Precinct.ToString());
+        }
 
         [InlineData("14", "", "14")]
         [Theory(Skip = "TODO FIX - Not Filtering", DisplayName = "Get Feature Attribute Lookup")]

@@ -74,6 +74,19 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, (int)sut.BoroCode);
         }
 
+        [InlineData(-73.898840, 40.860570, "Bronx", 2)]
+        [InlineData(-73.982600, 40.746340, "Manhattan", 1)]
+        [InlineData(-73.946450, 40.7469908, "Queens", 4)]
+        [Theory(DisplayName = "Get Geospatial Point Lookup - WGS84")]
+        public void Get_Geospatial_Point_Lookup_Wgs84(double x, double y, string expected, object expected2)
+        {
+            var sut = _service.GetFeatureLookup(x, y, Datum.Wgs84);
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, sut.BoroName);
+            Assert.Equal(expected2, (int)sut.BoroCode);
+        }
+
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Geospatial Point Lookup Not Found")]
         public void Get_Geospatial_Point_Lookup_Not_Found(double x, double y)

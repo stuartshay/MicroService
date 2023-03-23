@@ -77,6 +77,11 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, sut.Development);
         }
 
+        public void Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
+        {
+            throw new NotImplementedException();
+        }
+
         [InlineData("FULTON", "136", "FULTON")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)

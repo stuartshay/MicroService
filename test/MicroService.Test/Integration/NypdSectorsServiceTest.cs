@@ -62,6 +62,17 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
+        [InlineData(-73.965624, 40.78268, "022", "22D")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup - WGS84")]
+        public void Get_Geospatial_Point_Lookup_Wgs84(double x, double y, string expected, object expected2)
+        {
+            var sut = _service.GetFeatureLookup(x, y, Datum.Wgs84);
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, sut.Pct);
+            Assert.Equal(expected2, sut.Sector);
+        }
+
         [InlineData("102", "102C", "PBQS")]
         [InlineData(102, "102C", "PBQS")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
