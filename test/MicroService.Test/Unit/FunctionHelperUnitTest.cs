@@ -41,19 +41,18 @@ namespace MicroService.Test.Unit
             Assert.Equal(longitude, resultWgs.Longitude!.Value, 6);
 
             // Transform Wgs84 to Nad83
-            var resultNad = GeoTransformationHelper.ConvertWgs84ToNad83(latitude: resultWgs.Latitude, longitude: longitude);
+            var resultNad = GeoTransformationHelper.ConvertWgs84ToNad83(x: longitude, y: resultWgs.Latitude);
 
             Assert.Equal(resultNad.X!.Value, x, 0);
             Assert.Equal(resultNad.Y!.Value, y, 0);
         }
-
 
         [InlineData(40.681939660888951, -73.8832294373166, 1016636.9999607186, 187747.02946839959)]
         [Theory]
         [Trait("Category", "Unit")]
         public void Projection_Transform_WGS84_to_ESRI102718(double latitude, double longitude, double x, double y)
         {
-            var result = GeoTransformationHelper.ConvertWgs84ToNad83(latitude, longitude);
+            var result = GeoTransformationHelper.ConvertWgs84ToNad83(longitude, latitude);
 
             // Assert
             Assert.Equal(x, result.X!.Value, 10);

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
@@ -8,9 +7,7 @@ using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Service.Services.Base;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
-using NetTopologySuite.Geometries;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MicroService.Service.Services
 {
@@ -22,25 +19,6 @@ namespace MicroService.Service.Services
             : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.ScenicLandmarks));
-        }
-
-        public override ScenicLandmarkShape GetFeatureLookup(double x, double y)
-        {
-            // Convert Nad83 to Wgs 
-            var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
-            var wgs84Point = new { X = result.Item2, Y = result.Item1 };
-
-            var point = new Point(wgs84Point.Y.Value, wgs84Point.X.Value);
-
-            var features = GetFeatures();
-            var feature = features.FirstOrDefault(f => f.Geometry.Contains(point));
-
-            if (feature == null)
-            {
-                return null;
-            }
-
-            return Mapper.Map<ScenicLandmarkShape>(feature);
         }
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)

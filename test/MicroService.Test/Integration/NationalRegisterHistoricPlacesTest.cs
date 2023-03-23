@@ -1,5 +1,6 @@
 ﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
+using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Test.Fixture;
 using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
@@ -14,7 +15,6 @@ namespace MicroService.Test.Integration
         public IShapeService<NationalRegisterHistoricPlacesShape> _service;
 
         private readonly ITestOutputHelper _testOutputHelper;
-
 
         public NationalRegisterHistoricPlacesTest(ShapeServiceFixture fixture, ITestOutputHelper output)
         {
@@ -67,12 +67,24 @@ namespace MicroService.Test.Integration
             Assert.NotNull(features);
         }
 
-        [InlineData(-74.15369462028448, 40.58264640562773, "SI", "LP-00369")]
-        [Theory(DisplayName = "Get Geospatial Point Lookup")]
+        [InlineData(941558.433957287, 151587.69409039995, "SI", "LP-00369")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup - NAD83")]
         [Trait("Category", "Integration")]
         public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object expected2)
         {
-            var sut = _service.GetFeatureLookup(x, y);
+            var sut = _service.GetFeatureLookup(x, y, Datum.Nad83);
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, sut.BoroName);
+            Assert.Equal(expected2, sut.LPNumber);
+        }
+
+        [InlineData(-74.15369462028448, 40.58264640562773, "SI", "LP-00369")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup - WGS84")]
+        [Trait("Category", "Integration")]
+        public void Get_Geospatial_Point_Lookup_Wgs84(double longitude, double latitude, string expected, object expected2)
+        {
+            var sut = _service.GetFeatureLookup(longitude, latitude, Datum.Wgs84);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.BoroName);
@@ -130,7 +142,7 @@ namespace MicroService.Test.Integration
         [Theory(DisplayName = "Get Geospatial Point Lookup Not Found")]
         public void Get_Geospatial_Point_Lookup_Not_Found(double x, double y)
         {
-            var sut = _service.GetFeatureLookup(x, y);
+            var sut = _service.GetFeatureLookup(x, y, Datum.Nad83);
 
             Assert.Null(sut);
         }
