@@ -22,8 +22,6 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.BoroughBoundaries));
             Mapper.ConfigurationProvider.AssertConfigurationIsValid();
         }
-
-
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
         {
             var featureCollection = new FeatureCollection();

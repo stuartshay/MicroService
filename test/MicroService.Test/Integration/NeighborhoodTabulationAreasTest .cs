@@ -74,6 +74,11 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, sut.CDTAName);
         }
 
+        public void Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
+        {
+            throw new NotImplementedException();
+        }
+
         [InlineData("12", "MN1202", "MN12 Washington Heights-Inwood (CD 12 Equivalent)")]
         [InlineData(12, "MN1202", "MN12 Washington Heights-Inwood (CD 12 Equivalent)")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]

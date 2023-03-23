@@ -72,10 +72,21 @@ namespace MicroService.Test.Integration
         [InlineData(1006187, 232036, "Bronx", "10454")]
         [InlineData(1000443, 0239270, "New York", "10039")]
         [InlineData(1021192.9426658918, 212550.01741990919, "Queens", "11368")]
-        [Theory(DisplayName = "Get Geospatial Point Lookup")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup - NAD83")]
         public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y, Datum.Nad83);
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, sut.County);
+            Assert.Equal(expected2, sut.ZipCode);
+        }
+
+        [InlineData(-73.9878531, 40.748440580969934, "New York", "10001")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup - WGS84")]
+        public void Get_Geospatial_Point_Lookup_Wgs84(double x, double y, string expected, object expected2)
+        {
+            var sut = _service.GetFeatureLookup(x, y, Datum.Wgs84);
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.County);

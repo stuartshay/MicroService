@@ -81,6 +81,17 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, sut.LPNumber);
         }
 
+        [InlineData(40.692489, -73.994019, "Brooklyn Heights Historic District", "LP-00099")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup")]
+        public void Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
+        {
+            var sut = _service.GetFeatureLookup(longitude, latitude, Datum.Wgs84);
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, sut.AreaName);
+            Assert.Equal(expected2, sut.LPNumber);
+        }
+
         [InlineData("LP-00099", "BK", "Brooklyn Heights Historic District")]
         [InlineData("LP-00224", "MN", "Charlton-King-Vandam Historic District")]
         [InlineData("LP-02403", "BX", "Grand Concourse Historic District")]
