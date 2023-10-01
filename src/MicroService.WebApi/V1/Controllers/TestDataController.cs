@@ -16,6 +16,7 @@ namespace MicroService.WebApi.V1.Controllers
     [ApiVersion("2.0")]
     [ApiVersion("3.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiExplorerSettings(IgnoreApi = true)]
     [EnableCors(ApiConstants.CorsPolicy)]
     public class TestDataController : ControllerBase
     {
