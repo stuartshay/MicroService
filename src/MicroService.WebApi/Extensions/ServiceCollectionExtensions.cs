@@ -28,11 +28,11 @@ namespace MicroService.WebApi.Extensions
         public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             var config = configuration.Get<ApplicationOptions>();
-            var shapeCronExpressionDescription = CronExpressionDescriptor.ExpressionDescriptor.GetDescription(config!.ShapeConfiguration.CronExpression);
+            var shapeCronExpressionDescription = CronExpressionDescriptor.ExpressionDescriptor.GetDescription(config!.ShapeConfiguration?.CronExpression);
 
-            Console.WriteLine($"PostgreSql: {config.ConnectionStrings.PostgreSql}");
-            Console.WriteLine($"ShapeRootDirectory Config: {config.ShapeConfiguration.ShapeRootDirectory}");
-            Console.WriteLine($"ShapeRootDirectory: {Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), config.ShapeConfiguration.ShapeRootDirectory))}");
+            Console.WriteLine($"PostgreSql: {config?.ConnectionStrings?.PostgreSql}");
+            Console.WriteLine($"ShapeRootDirectory Config: {config?.ShapeConfiguration?.ShapeRootDirectory}");
+            Console.WriteLine($"ShapeRootDirectory: {Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), config?.ShapeConfiguration?.ShapeRootDirectory))}");
             Console.WriteLine($"Shape CronExpression: {config.ShapeConfiguration.CronExpression}");
             Console.WriteLine($"Shape Cron Description: {shapeCronExpressionDescription}");
         }

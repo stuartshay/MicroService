@@ -236,7 +236,6 @@ void AddHealthCheckServices()
         .AddVersionHealthCheck()
         .AddFolderHealthCheck(shapePath, "Shape Root Directory")
         .AddCheck<CronJobServiceHealthCheck>("Cron Job Health Check", tags: new[] { HealthCheckType.ReadinessCheck.ToString() })
-        .AddNpgSql(config.ConnectionStrings.PostgreSql)
         .ForwardToPrometheus()
         .Services
         .AddControllers();
@@ -262,7 +261,7 @@ void SetupApp()
     app.UseHttpMetrics();
     app.MapMetrics();
 
-    app.MapHealthChecks(config!.HealthCheckConfiguration.HealthCheckJson, new HealthCheckOptions
+    app.MapHealthChecks(config!.HealthCheckConfiguration!.HealthCheckJson!, new HealthCheckOptions
     {
         Predicate = _ => true,
         ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse

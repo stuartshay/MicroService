@@ -1,9 +1,5 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
-using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MicroService.Common.Health
 {
@@ -17,9 +13,9 @@ namespace MicroService.Common.Health
 
         public VersionHealthCheck()
         {
-            _applicationVersionNumber = Assembly.GetEntryAssembly()?.GetName().Version?.ToString();
+            _applicationVersionNumber = Assembly.GetEntryAssembly()?.GetName().Version?.ToString()!;
             _applicationBuildDate = GetAssemblyLastModifiedDate();
-            _environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            _environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")!;
         }
 
         /// <summary>
@@ -45,7 +41,7 @@ namespace MicroService.Common.Health
 
         private static DateTime GetAssemblyLastModifiedDate()
         {
-            Assembly assembly = Assembly.GetEntryAssembly();
+            Assembly assembly = Assembly.GetEntryAssembly()!;
             System.IO.FileInfo fileInfo = new(assembly?.Location ?? string.Empty);
             DateTime lastModified = fileInfo.LastWriteTime;
 
