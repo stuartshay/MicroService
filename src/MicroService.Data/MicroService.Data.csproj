@@ -3,7 +3,9 @@
 	<Import Project="..\..\common.props" />
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 		<NoWarn>$(NoWarn),1701;1702;1705,NU1803</NoWarn>
 	</PropertyGroup>
 

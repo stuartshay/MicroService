@@ -4,7 +4,6 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Exceptions;
 using Serilog.Sinks.Grafana.Loki;
-using System;
 using System.Reflection;
 
 namespace MicroService.Common.Logging
