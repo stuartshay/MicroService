@@ -236,7 +236,6 @@ void AddHealthCheckServices()
         .AddVersionHealthCheck()
         .AddFolderHealthCheck(shapePath, "Shape Root Directory")
         .AddCheck<CronJobServiceHealthCheck>("Cron Job Health Check", tags: new[] { HealthCheckType.ReadinessCheck.ToString() })
-        .AddNpgSql(config.ConnectionStrings.PostgreSql)
         .ForwardToPrometheus()
         .Services
         .AddControllers();

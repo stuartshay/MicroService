@@ -2,6 +2,6 @@
 {
     public class ConnectionStrings
     {
-        public string PostgreSql { get; set; }
+        public string? PostgreSql { get; set; }
     }
 }
