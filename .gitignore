@@ -30,7 +30,7 @@ healthchecksdb
 # Project Specific Files
 docker/postgres/data/
 
-# Coverage Test Files 
+# Coverage Test Files
 *coverage*
 
 # Visual Studio 2015 cache/options directory
@@ -226,3 +226,5 @@ ModelManifest.xml
 # MacOS file
 .DS_Store
 .vscode/
+files/NYC_Street_Centerline/NYC_Street_Centerline.dbf
+
