@@ -10,6 +10,7 @@ from qgis.core import (
 )
 from PyQt5.QtGui import QFont, QColor
 
+
 def apply_labels(layer, attribute_name):
     """Apply labels to a given layer based on an attribute."""
     labeling = QgsPalLayerSettings()
@@ -68,14 +69,26 @@ if response.status_code == 200:
         # Create a list to store category-symbol pairs
         categories = []
         for color, type_name in color_to_type.items():
+
             # Define the SVG path for the marker based on the color
-            svg_marker_path = os.path.join(project_directory, 'markers', f"{color}.svg")
-            svg_symbol = QgsSvgMarkerSymbolLayer(svg_marker_path)
-            svg_symbol.setSize(10)  # Adjust the size as needed
+            # svg_marker_path = os.path.join(project_directory, 'markers', f"{color}.svg")
+            # svg_symbol = QgsSvgMarkerSymbolLayer(svg_marker_path)
+            # svg_symbol.setSize(10)  # Adjust the size as needed
 
             # Create a new symbol with the SVG symbol layer
+            # symbol = QgsMarkerSymbol.createSimple({})
+            # symbol.changeSymbolLayer(0, svg_symbol)
+
+            png_marker_path = os.path.join(
+                project_directory, 'markers', color, f"marker_{color}.png")
+
+            print(png_marker_path)
+
+            png_symbol_layer = QgsRasterMarkerSymbolLayer(png_marker_path)
+            png_symbol_layer.setSize(6)
+
             symbol = QgsMarkerSymbol.createSimple({})
-            symbol.changeSymbolLayer(0, svg_symbol)
+            symbol.changeSymbolLayer(0, png_symbol_layer)
 
             # Define a category for this color
             category = QgsRendererCategory(color, symbol, type_name)
