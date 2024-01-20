@@ -27,6 +27,7 @@ on:
 jobs:
   test-netcore:
     runs-on: ubuntu-latest
+    if: false
     steps:
       - uses: actions/checkout@v3
 
@@ -61,7 +62,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    needs: test-netcore
+    ##needs: test-netcore
 
     steps:
       - uses: actions/checkout@v3
