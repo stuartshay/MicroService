@@ -2,17 +2,17 @@ ARG APPLICATION_NAME='MicroService.WebApi'
 ARG BUILD_DATE='1/1/2023'
 ARG BUILD_NUMBER=0
 
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
 LABEL org.label-schema.application=${APPLICATION_NAME}
 LABEL org.label-schema.build-date=${BUILD_DATE}
-LABEL org.label-schema.version=7.0.1.${BUILD_NUMBER}
+LABEL org.label-schema.version=8.0.1.${BUILD_NUMBER}
 
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 RUN wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
@@ -38,7 +38,7 @@ RUN dotnet build "MicroService.WebApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
 ARG BUILD_NUMBER
-RUN setversion 7.0.1.${BUILD_NUMBER}
+RUN setversion 8.0.1.${BUILD_NUMBER}
 RUN dotnet publish "MicroService.WebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
