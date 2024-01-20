@@ -14,14 +14,14 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
-RUN wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-RUN dpkg -i packages-microsoft-prod.deb
-RUN rm packages-microsoft-prod.deb
+#RUN wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+#RUN dpkg -i packages-microsoft-prod.deb
+#RUN rm packages-microsoft-prod.deb
 
-RUN apt-get update && apt-get install -y dotnet-sdk-6.0
+#RUN apt-get update && apt-get install -y dotnet-sdk-6.0
 
 ENV PATH="/root/.dotnet/tools:${PATH}"
-RUN dotnet tool install --global dotnet-setversion --version 2.5.0
+RUN dotnet tool install --global dotnet-setversion --version 3.0.0
 RUN dotnet tool list -g
 
 
@@ -38,7 +38,7 @@ RUN dotnet build "MicroService.WebApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
 ARG BUILD_NUMBER
-RUN setversion 8.0.1.${BUILD_NUMBER}
+#RUN setversion 8.0.1.${BUILD_NUMBER}
 RUN dotnet publish "MicroService.WebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
