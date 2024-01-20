@@ -22,7 +22,7 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Parks));
         }
 
-        public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
+        public FeatureCollection? GetFeatureCollection(List<KeyValuePair<string, object>>? attributes)
         {
             var featureCollection = new FeatureCollection();
             var features = GetFeatureLookup(attributes);

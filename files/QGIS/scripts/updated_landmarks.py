@@ -29,7 +29,8 @@ def apply_labels(layer, attribute_name):
 project_directory = os.path.dirname(QgsProject.instance().fileName())
 
 # Base URL
-base_url = 'https://navigator-maps-api-w6zlqlyoma-uk.a.run.app/api/Maps/6510befbf43b01079b01ea65'
+map_id = '55ef958ef58614cf075b75b3'
+base_url = f'https://navigator-maps-api-w6zlqlyoma-uk.a.run.app/api/Maps/{map_id}'
 
 # Query parameters
 params = {
@@ -70,15 +71,6 @@ if response.status_code == 200:
         categories = []
         for color, type_name in color_to_type.items():
 
-            # Define the SVG path for the marker based on the color
-            # svg_marker_path = os.path.join(project_directory, 'markers', f"{color}.svg")
-            # svg_symbol = QgsSvgMarkerSymbolLayer(svg_marker_path)
-            # svg_symbol.setSize(10)  # Adjust the size as needed
-
-            # Create a new symbol with the SVG symbol layer
-            # symbol = QgsMarkerSymbol.createSimple({})
-            # symbol.changeSymbolLayer(0, svg_symbol)
-
             png_marker_path = os.path.join(
                 project_directory, 'markers', color, f"marker_{color}.png")
 
@@ -104,7 +96,7 @@ if response.status_code == 200:
         # Define the HTML content for the map tip
         html_content = """
         <b>[%"Name"%]</b><br>
-        [%"Description"%]
+        [%"Type"%]
         """
         # Set the map tip for the layer
         layer.setMapTipTemplate(html_content)

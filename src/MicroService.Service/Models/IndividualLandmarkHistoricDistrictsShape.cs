@@ -7,108 +7,108 @@ namespace MicroService.Service.Models
     [ShapeProperties(ShapeProperties.IndividualLandmarkHistoricDistricts)]
     public class IndividualLandmarkHistoricDistrictsShape : ShapeBase, ILandmark
     {
-        [FeatureName("BIN")]
+        [FeatureName("bin")]
         public double Bin { get; set; }
 
-        [FeatureName("BBL")]
+        [FeatureName("bbl")]
         public string Bbl { get; set; }
 
-        [FeatureName("Borough")]
+        [FeatureName("borough")]
         public string BoroName { get; set; }
 
         public int BoroCode { get; set; }
 
-        [FeatureName("Block")]
+        [FeatureName("block")]
         public double Block { get; set; }
 
-        [FeatureName("Lot")]
+        [FeatureName("lot")]
         public double Lot { get; set; }
 
-        [FeatureName("Des_Addres")]
+        [FeatureName("des_addres")]
         public string Address { get; set; }
 
-        [FeatureName("Circa")]
+        [FeatureName("circa")]
         public int Circa { get; set; }
 
-        [FeatureName("Date_Low")]
+        [FeatureName("date_low")]
         public int DateLow { get; set; }
 
-        [FeatureName("Date_High")]
+        [FeatureName("date_high")]
         public int DateHigh { get; set; }
 
-        [FeatureName("Date_Combo")]
+        [FeatureName("date_combo")]
         public string DateCombo { get; set; }
 
-        [FeatureName("Alt_Date_1")]
+        [FeatureName("alt_date_1")]
         public string AltDate1 { get; set; }
 
-        [FeatureName("Alt_Date_2")]
+        [FeatureName("alt_date_2")]
         public string AltDate2 { get; set; }
 
-        [FeatureName("Arch_Build")]
+        [FeatureName("arch_build")]
         public string ArchBuild { get; set; }
 
-        [FeatureName("Own_Devel")]
+        [FeatureName("own_devel")]
         public string OwnDevel { get; set; }
 
-        [FeatureName("Alt_Arch_1")]
+        [FeatureName("alt_arch_1")]
         public string AltArch1 { get; set; }
 
-        [FeatureName("Alt_Arch_2")]
+        [FeatureName("alt_arch_2")]
         public string AltArch2 { get; set; }
 
-        [FeatureName("Altered")]
+        [FeatureName("altered")]
         public int Altered { get; set; }
 
-        [FeatureName("Style_Prim")]
+        [FeatureName("style_prim")]
         public string StylePrim { get; set; }
 
-        [FeatureName("Style_Sec")]
+        [FeatureName("style_sec")]
         public string StyleSec { get; set; }
 
-        [FeatureName("Style_Oth")]
+        [FeatureName("style_oth")]
         public string StyleOth { get; set; }
 
-        [FeatureName("Mat_Prim")]
+        [FeatureName("mat_prim")]
         public string MatPrim { get; set; }
 
-        [FeatureName("Mat_Sec")]
+        [FeatureName("mat_sec")]
         public string MatSec { get; set; }
 
-        [FeatureName("Mat_Third")]
+        [FeatureName("mat_third")]
         public string MatThird { get; set; }
 
-        [FeatureName("Mat_Four")]
+        [FeatureName("mat_four")]
         public string MatFour { get; set; }
 
-        [FeatureName("Mat_Other")]
+        [FeatureName("mat_other")]
         public string MatOther { get; set; }
 
-        [FeatureName("Use_Orig")]
+        [FeatureName("use_orig")]
         public string UseOrig { get; set; }
 
-        [FeatureName("Use_Other")]
+        [FeatureName("use_other")]
         public string UseOther { get; set; }
 
-        [FeatureName("Build_Type")]
+        [FeatureName("build_type")]
         public string BuildType { get; set; }
 
-        [FeatureName("Build_Oth")]
+        [FeatureName("build_oth")]
         public string BuildOth { get; set; }
 
-        [FeatureName("Build_Nme")]
+        [FeatureName("build_nme")]
         public string BuildNme { get; set; }
 
-        [FeatureName("Notes")]
+        [FeatureName("notes")]
         public string Notes { get; set; }
 
-        [FeatureName("Hist_Dist")]
+        [FeatureName("hist_dist")]
         public string HistDist { get; set; }
 
-        [FeatureName("LM_New")]
+        [FeatureName("lm_new")]
         public string LmNew { get; set; }
 
-        [FeatureName("LM_Orig")]
+        [FeatureName("lm_orig")]
         public string AreaName { get; set; }
 
         //[FeatureName("SC_Flag")]
@@ -116,7 +116,6 @@ namespace MicroService.Service.Models
 
         //[FeatureName("BBL_Int")]
         //public int BblInt { get; set; }
-
 
         [MappingKeyAttribute("LPNumber")]
         public string LPNumber { get; set; }
