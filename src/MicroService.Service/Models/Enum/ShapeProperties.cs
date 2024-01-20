@@ -31,7 +31,7 @@ namespace MicroService.Service.Models.Enum
         IndividualLandmarkSite,
 
         [Description("Individual Landmark & Historic Districts")]
-        [Shape("LPC_Individual_Landmark_and_Historic_Building_Database", "LPC_Individual_Landmark_and_Historic_District_Building_Database_202302", Datum.Nad83)]
+        [Shape("LPC_Individual_Landmark_and_Historic_Building_Database", "LPC_Individual_Landmark_and_Historic_District_Building_Database_202312", Datum.Nad83)]
         [ShapeStyle(Color.Blue)]
         IndividualLandmarkHistoricDistricts,
 

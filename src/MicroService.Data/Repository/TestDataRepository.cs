@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using Dapper;
+﻿using Dapper;
 using MicroService.Data.Models;
 using Npgsql;
+using System.Data;
 
 namespace MicroService.Data.Repository
 {
@@ -36,12 +32,10 @@ namespace MicroService.Data.Repository
 
         public async Task<TestData> FindById(int id)
         {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                var result = await dbConnection.QueryAsync<TestData>("SELECT id, data FROM test_data WHERE id = @Id", new { Id = id });
-                return result.FirstOrDefault();
-            }
+            using IDbConnection dbConnection = Connection;
+            dbConnection.Open();
+            var result = await dbConnection.QueryAsync<TestData>("SELECT id, data FROM test_data WHERE id = @Id", new { Id = id });
+            return result.FirstOrDefault();
         }
 
         public Task Remove(int id)

@@ -8,9 +8,6 @@ using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Service.Services.Base;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MicroService.Service.Services
 {
@@ -29,15 +26,19 @@ namespace MicroService.Service.Services
             _individualLandmarkSiteService = individualLandmarkSiteService;
         }
 
-        public override IEnumerable<IndividualLandmarkHistoricDistrictsShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public override IEnumerable<IndividualLandmarkHistoricDistrictsShape> GetFeatureLookup(List<KeyValuePair<string, object>>? attributes)
         {
             attributes = MapLandmarkAttributes(attributes);
             return base.GetFeatureLookup(attributes);
         }
 
-        public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
+        public FeatureCollection? GetFeatureCollection(List<KeyValuePair<string, object>>? attributes)
         {
             attributes = MapLandmarkAttributes(attributes);
+            if (attributes == null)
+            {
+                return null;
+            }
 
             var featureCollection = new FeatureCollection();
             var features = GetFeatureLookup(attributes);
@@ -58,7 +59,7 @@ namespace MicroService.Service.Services
             return featureCollection;
         }
 
-        private List<KeyValuePair<string, object>> MapLandmarkAttributes(List<KeyValuePair<string, object>> attributes)
+        private List<KeyValuePair<string, object>>? MapLandmarkAttributes(List<KeyValuePair<string, object>>? attributes)
         {
             if (attributes.Any(a => a.Key.Equals("LPNumber", StringComparison.InvariantCultureIgnoreCase)))
             {

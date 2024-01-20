@@ -12,9 +12,9 @@ namespace MicroService.Service.Interfaces
 
         T GetFeatureLookup(double x, double y, Datum datum);
 
-        IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, object>> attributes);
+        IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, object>>? attributes);
 
-        FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes);
+        FeatureCollection? GetFeatureCollection(List<KeyValuePair<string, object>>? attributes);
 
         IEnumerable<T> GetFeatureList();
 
