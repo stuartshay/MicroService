@@ -33,14 +33,16 @@ RUN dotnet build "./MicroService.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-#RUN setversion 8.0.1.${BUILD_NUMBER}
+ARG BUILD_NUMBER
+RUN setversion 8.0.1.${BUILD_NUMBER}
 RUN dotnet publish "./MicroService.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-
 
 FROM base AS final
 
 # Shape Files
 COPY files  /files
+RUN ls /files
+
 
 WORKDIR /app
 COPY --from=publish /app/publish .

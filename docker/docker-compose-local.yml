@@ -5,11 +5,10 @@ services:
   api-microservice:
     container_name: 'api-microservice'
     hostname: api-microservice
-    image: "stuartshay/microservice-api:latest"
+    image: "microservice:local"
     environment:
      - ASPNETCORE_ENVIRONMENT=Docker
      - ASPNETCORE_URLS=http://*:5002;
-     #- ConnectionStrings:PostgreSql=User ID=postgres;Password=password;Server=database;Port=5432;Database=postgres;Integrated Security=true;Pooling=true;
     ports:
      - "5002:5002"
     networks:
