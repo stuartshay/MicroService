@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<NoWarn>$(NoWarn),1701;1702;1705,NU1803</NoWarn>
@@ -12,22 +12,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="7.0.0" />
-		<PackageReference Include="AspNetCore.HealthChecks.System" Version="7.0.0" />
-		<PackageReference Include="AspNetCore.HealthChecks.Uris" Version="7.0.0" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="7.0.2" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="7.0.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="8.0.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.System" Version="8.0.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.Uris" Version="8.0.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="8.0.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="8.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
 		<PackageReference Include="Flurl" Version="4.0.0" />
-		<PackageReference Include="prometheus-net.AspNetCore" Version="8.0.1" />
-		<PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="8.0.1" />
-		<PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
-		<PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
+		<PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
+		<PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="8.2.1" />
+		<PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
+		<PackageReference Include="Serilog.Enrichers.Environment" Version="2.3.0" />
 		<PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
-		<PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
 		<PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
-		<PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="8.1.0" />
+		<PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="8.2.0" />
 	</ItemGroup>
 
 </Project>
