@@ -171,7 +171,7 @@ namespace MicroService.WebApi.V1.Controllers
             return await FeatureAttributeValidation(request, (service, attributes) =>
             {
                 var results = service.GetFeatureLookup(attributes);
-                if (!results.Any())
+                if (results == null)
                 {
                     return new List<object>();
                 }
@@ -213,6 +213,9 @@ namespace MicroService.WebApi.V1.Controllers
             }
 
             var featureCollection = _shapeServiceResolver(request!.Key).GetFeatureCollection(request.Attributes);
+            if (featureCollection == null)
+                return NotFound();
+
             var writer = new GeoJsonWriter();
             var geoJsonString = writer.Write(featureCollection);
 
