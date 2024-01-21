@@ -6,9 +6,6 @@ using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MicroService.Service.Services.Base
 {
@@ -49,9 +46,14 @@ namespace MicroService.Service.Services.Base
         /// </summary>
         /// <param name="attributes"></param>
         /// <returns></returns>
-        public List<KeyValuePair<string, object>> ValidateFeatureKey(List<KeyValuePair<string, object>> attributes)
+        public List<KeyValuePair<string, object>>? ValidateFeatureKey(List<KeyValuePair<string, object>>? attributes)
         {
             var shapeClass = Activator.CreateInstance<TShape>(); // create an instance of the class
+
+            if (attributes == null)
+            {
+                return null;
+            }
 
             for (int i = 0; i < attributes.Count; i++)
             {
@@ -168,12 +170,17 @@ namespace MicroService.Service.Services.Base
             return results;
         }
 
-        public virtual IEnumerable<TShape> GetFeatureLookup(List<KeyValuePair<string, object>> attributes)
+        public virtual IEnumerable<TShape>? GetFeatureLookup(List<KeyValuePair<string, object>>? attributes)
         {
+            if (attributes == null)
+            {
+                return null;
+            }
+
             attributes = ValidateFeatureKey(attributes);
 
             var results = GetFeatures()
-                .Where(f => attributes.All(pair =>
+                .Where(f => attributes!.All(pair =>
                 {
                     var value = f.Attributes[pair.Key];
                     var expectedValue = pair.Value;
