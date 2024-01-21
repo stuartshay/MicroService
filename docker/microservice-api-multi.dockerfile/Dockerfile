@@ -1,5 +1,5 @@
 # Build Stage
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 
 ARG BUILD_NUMBER=0
 ENV BUILD_NUMBER ${BUILD_NUMBER}
@@ -7,17 +7,8 @@ ENV BUILD_NUMBER ${BUILD_NUMBER}
 ARG BUILD_ENV=Docker
 ENV BUILD_ENV ${BUILD_ENV}
 
-RUN wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-RUN dpkg -i packages-microsoft-prod.deb
-RUN rm packages-microsoft-prod.deb
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    dotnet-sdk-6.0 \
-    tree \
-    && rm -rf /var/lib/apt/lists/*
-
 ENV PATH="/root/.dotnet/tools:${PATH}"
-RUN dotnet tool install --global dotnet-setversion --version 2.5.0
+RUN dotnet tool install --global dotnet-setversion --version 3.0.0
 RUN dotnet tool list -g
 
 COPY .  /app
@@ -29,14 +20,11 @@ WORKDIR /app/src/MicroService.WebApi
 
 # Publish ${BUILD_NUMBER}
 RUN echo $BUILD_NUMBER
-#RUN setversion 7.0.1.${BUILD_NUMBER}
-RUN dotnet publish MicroService.WebApi.csproj -o /publish -c Release -f net7.0
-
-
-
+#RUN setversion 8.0.1.${BUILD_NUMBER}
+RUN dotnet publish MicroService.WebApi.csproj -o /publish -c Release -f net8.0
 
 # Release Stage
-FROM mcr.microsoft.com/dotnet/aspnet:7.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
 # Shape Files
 COPY files  /files
