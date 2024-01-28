@@ -3,13 +3,13 @@ version: '2.0'
 services:
 
   microservice-api:
-    container_name: 'microservice-api'
-    image: "stuartshay/microservice-api:5.0.1-build.114"
+    container_name: 'microservice-multi-api'
+    image: "stuartshay/microservice-api:latest"
     environment:
-     - ASPNETCORE_ENVIRONMENT=Development
-     - ConnectionStrings__PostgreSql=User ID=nyclandmarks;Password=nyclandmarks;Server=myrdsinstance.ckm3eyorqjco.us-east-1.rds.amazonaws.com;Port=5432;Database=nyclandmarks;Integrated Security=true;Pooling=true;
+     - ASPNETCORE_ENVIRONMENT=Docker
+     - ASPNETCORE_URLS=http://*:5003;
     ports:
-     - "5000:5000"
+      - "5003:5003"
     networks:
       - aspnetcoreapp-network
 
