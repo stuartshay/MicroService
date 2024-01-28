@@ -10,18 +10,6 @@ LABEL org.label-schema.version=8.0.1.${BUILD_NUMBER}
 
 USER root
 
-ARG APPLICATION_NAME='MicroService.WebApi'
-ARG BUILD_DATE='1/1/2023'
-ARG BUILD_NUMBER=0
-
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-
-LABEL org.label-schema.application=${APPLICATION_NAME}
-LABEL org.label-schema.build-date=${BUILD_DATE}
-LABEL org.label-schema.version=8.0.1.${BUILD_NUMBER}
-
-USER root
-
 # Install gcsfuse - following the official Google Cloud instructions
 RUN apt-get update -y \
     && apt-get install -y lsb-release gnupg2 curl \
