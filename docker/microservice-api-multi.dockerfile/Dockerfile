@@ -13,7 +13,7 @@ USER root
 # Install gcsfuse - following the official Google Cloud instructions
 RUN apt update && \
     DEBIAN_FRONTEND=noninteractive \
-    apt install -y curl lsb-core
+    apt install -y lsb-release gnupg2 curl
 
 RUN echo "deb https://packages.cloud.google.com/apt gcsfuse-$(lsb_release -c -s) main" | tee /etc/apt/sources.list.d/gcsfuse.list
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
