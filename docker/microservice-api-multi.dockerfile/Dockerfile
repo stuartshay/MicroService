@@ -10,12 +10,16 @@ LABEL org.label-schema.version=8.0.1.${BUILD_NUMBER}
 
 USER root
 
+# Install dependencies for gcsfuse
+RUN apt-get update -y \
+    && apt-get install -y wget gnupg2 curl lsb-release
+
+# Add the gcsfuse distribution URL as a package source and import its public key
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt gcsfuse-$(lsb_release -c -s) main" | tee /etc/apt/sources.list.d/gcsfuse.list \
+    && wget -O- https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor > /usr/share/keyrings/cloud.google.gpg
+
 # Install gcsfuse
 RUN apt-get update -y \
-    && apt-get install -y lsb-release gnupg2 curl \
-    && echo "deb http://packages.cloud.google.com/apt gcsfuse-$(lsb_release -c -s) main" | tee /etc/apt/sources.list.d/gcsfuse.list \
-    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
-    && apt-get update -y \
     && apt-get install -y gcsfuse
 
 # Create a directory to mount your GCS bucket
