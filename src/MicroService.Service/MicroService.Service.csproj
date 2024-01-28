@@ -13,7 +13,11 @@
 		<PackageReference Include="AutoMapper" Version="12.0.1" />
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
 		<PackageReference Include="CsvHelper" Version="30.0.1" />
+<<<<<<< HEAD
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
+=======
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
+>>>>>>> 8628921ef718b07bbdfd8ff53e2f1072428f534e
 		<PackageReference Include="Microsoft.Extensions.Options" Version="8.0.1" />
 		<PackageReference Include="NetTopologySuite" Version="2.5.0" />
 		<PackageReference Include="NetTopologySuite.Features" Version="2.1.0" />

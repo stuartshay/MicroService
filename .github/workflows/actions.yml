@@ -26,6 +26,7 @@ on:
 
 jobs:
   test-netcore:
+    if: false
     runs-on: ubuntu-latest
     if: false
     steps:
@@ -34,7 +35,7 @@ jobs:
       - name: Setup dotnet 8.0.x
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 9.0.x
 
       - name: Install dependencies
         run: dotnet restore
@@ -62,7 +63,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    ##needs: test-netcore
+    #needs: test-netcore
 
     steps:
       - uses: actions/checkout@v3
