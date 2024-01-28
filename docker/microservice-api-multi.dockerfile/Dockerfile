@@ -1,42 +1,62 @@
-# Build Stage
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
-
+ARG APPLICATION_NAME='MicroService.WebApi'
+ARG BUILD_DATE='1/1/2023'
 ARG BUILD_NUMBER=0
-ENV BUILD_NUMBER ${BUILD_NUMBER}
 
-ARG BUILD_ENV=Docker
-ENV BUILD_ENV ${BUILD_ENV}
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+
+LABEL org.label-schema.application=${APPLICATION_NAME}
+LABEL org.label-schema.build-date=${BUILD_DATE}
+LABEL org.label-schema.version=8.0.1.${BUILD_NUMBER}
+
+USER root
+
+# Install gcsfuse
+RUN apt-get update -y \
+    && apt-get install -y wget gnupg2 lsb-release \
+    && echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt gcsfuse-$(lsb_release -c -s) main" | tee /etc/apt/sources.list.d/gcsfuse.list \
+    && wget -O- https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor > /usr/share/keyrings/cloud.google.gpg \
+    && apt-get update -y \
+    && apt-get install -y gcsfuse
+
+# Create a directory to mount your GCS bucket
+RUN mkdir /mnt/gcs-bucket
+
+USER app
+WORKDIR /app
+EXPOSE 8080
+EXPOSE 8081
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
 
 ENV PATH="/root/.dotnet/tools:${PATH}"
 RUN dotnet tool install --global dotnet-setversion --version 3.0.0
 RUN dotnet tool list -g
 
-COPY .  /app
-WORKDIR /app
+WORKDIR /src
+COPY ["NuGet.config", "."]
+COPY ["src/MicroService.WebApi/MicroService.WebApi.csproj", "src/MicroService.WebApi/"]
+COPY ["src/MicroService.Common/MicroService.Common.csproj", "src/MicroService.Common/"]
+COPY ["src/MicroService.Service/MicroService.Service.csproj", "src/MicroService.Service/"]
+COPY ["src/MicroService.Data/MicroService.Data.csproj", "src/MicroService.Data/"]
+RUN dotnet restore "./src/MicroService.WebApi/./MicroService.WebApi.csproj"
+COPY . .
+WORKDIR "/src/src/MicroService.WebApi"
+RUN dotnet build "./MicroService.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
-RUN dotnet restore /p:RestoreUseSkipNonexistentTargets="false"
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+ARG BUILD_NUMBER
+RUN setversion 8.0.1.${BUILD_NUMBER}
+RUN dotnet publish "./MicroService.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-WORKDIR /app/src/MicroService.WebApi
-
-# Publish ${BUILD_NUMBER}
-RUN echo $BUILD_NUMBER
-#RUN setversion 8.0.1.${BUILD_NUMBER}
-RUN dotnet publish MicroService.WebApi.csproj -o /publish -c Release -f net8.0
-
-# Release Stage
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM base AS final
 
 # Shape Files
 COPY files  /files
+RUN ls /files
 
-WORKDIR /publish
-COPY --from=build-env /publish .
 
-# Set environment variables
-ENV ASPNETCORE_URLS http://*:5000
-ENV ASPNETCORE_ENVIRONMENT Docker
-
-# Open up port
-EXPOSE 5000
-
+WORKDIR /app
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "MicroService.WebApi.dll"]
