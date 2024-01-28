@@ -18,7 +18,7 @@ namespace MicroService.Test.Functions
             _output = output;
         }
 
-        [Fact(Skip = "Deprecated", DisplayName = "Calculate_Percentile - Integration")]
+        [Fact(Skip = "TO DO REMOVE", DisplayName = "Calculate_Percentile - Integration")]
         [Trait("Category", "Integration")]
         public async Task Can_Calculate_Percentile()
         {
