@@ -26,8 +26,8 @@ USER root
 RUN apt-get update -y \
     && apt-get install -y lsb-release gnupg2 curl \
     && export GCSFUSE_REPO=gcsfuse-$(lsb_release -c -s) \
-    && echo "deb [signed-by=/usr/share/keyrings/cloud.google.asc] https://packages.cloud.google.com/apt $GCSFUSE_REPO main" | tee /etc/apt/sources.list.d/gcsfuse.list \
-    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
+    && echo "deb https://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list \
+    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.asc \
     && apt-get update -y \
     && apt-get install -y gcsfuse
 
