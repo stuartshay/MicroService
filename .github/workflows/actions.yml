@@ -4,7 +4,7 @@ env:
   DOCKER_REPOSITORY_IMAGE: stuartshay/microservice-api
   DOCKER_IMAGE_TAG: 8.0.${{ github.run_number }}
   BUILD_NUMBER: ${{ github.run_number }}
-  DOCKER_FILE: src/MicroService.WebApi/Dockerfile
+  DOCKER_FILE: docker/microservice-api-multi.dockerfile/Dockerfile
   BRANCH_NAME: '${{ github.ref_name }}'
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/microservice-api/microservice-api
   ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
@@ -28,7 +28,6 @@ jobs:
   test-netcore:
     if: false
     runs-on: ubuntu-latest
-    if: false
     steps:
       - uses: actions/checkout@v3
 
