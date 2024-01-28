@@ -13,11 +13,10 @@ USER root
 # Install gcsfuse - following the official Google Cloud instructions
 RUN apt-get update -y \
     && apt-get install -y lsb-release gnupg2 curl \
-    && export GCSFUSE_REPO=gcsfuse-$(lsb_release -c -s) \
-    && echo "deb https://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list \
-    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.asc \
-    && apt-get update -y \
-    && apt-get install -y gcsfuse
+    && apt-get update -y
+
+
+
 
 
 # Create a directory to mount your GCS bucket
