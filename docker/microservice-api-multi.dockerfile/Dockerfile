@@ -8,18 +8,18 @@ LABEL org.label-schema.application=${APPLICATION_NAME}
 LABEL org.label-schema.build-date=${BUILD_DATE}
 LABEL org.label-schema.version=8.0.1.${BUILD_NUMBER}
 
-#USER root
+USER root
 
 # Install gcsfuse
-#RUN apt-get update -y \
-#    && apt-get install -y wget gnupg2 lsb-release \
-#    && echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt gcsfuse-$(lsb_release -c -s) main" | tee /etc/apt/sources.list.d/gcsfuse.list \
-#    && wget -O- https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor > /usr/share/keyrings/cloud.google.gpg \
-#    && apt-get update -y \
-#    && apt-get install -y gcsfuse
+RUN apt-get update -y \
+    && apt-get install -y lsb-release gnupg2 curl \
+    && echo "deb http://packages.cloud.google.com/apt gcsfuse-$(lsb_release -c -s) main" | tee /etc/apt/sources.list.d/gcsfuse.list \
+    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
+    && apt-get update -y \
+    && apt-get install -y gcsfuse
 
 # Create a directory to mount your GCS bucket
-#RUN mkdir /mnt/gcs-bucket
+RUN mkdir /mnt/gcs-bucket
 
 USER app
 WORKDIR /app
