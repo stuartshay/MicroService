@@ -15,6 +15,8 @@ RUN apt-get update -y \
     && apt-get install -y lsb-release gnupg2 curl \
     && apt-get update -y
 
+RUN export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s` \
+    echo "deb https://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
 
 
 
