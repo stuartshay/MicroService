@@ -115,6 +115,9 @@ jobs:
             -t "${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}" \
             -f "${{ env.DOCKER_FILE }}" .
         continue-on-error: ${{ env.DOCKER_CONTINUE_ON_ERROR }}
+        outputs:
+          type: docker
+          dest: image.tar
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
