@@ -100,6 +100,8 @@ jobs:
             ${{ env.DOCKER_REPOSITORY_IMAGE}}:latest
             ${{ env.DOCKER_REPOSITORY_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
             ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
+          labels: |
+            org.label-schema.version=8.0.1.${{ env.BUILD_NUMBER }}
           outputs: type=docker,dest=image.tar
           cache-from: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache
           cache-to: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache,mode=max
