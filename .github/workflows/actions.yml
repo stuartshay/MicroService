@@ -93,9 +93,8 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           build-args: |
-            APPLICATION_NAME=${{ env.SERVICE }}
+            APPLICATION_NAME=HARDCODED
             BUILD_NUMBER=${{ env.BUILD_NUMBER }}
-          file: ${{ env.DOCKER_FILE }}
           tags: |
             ${{ env.DOCKER_REPOSITORY_IMAGE}}:latest
             ${{ env.DOCKER_REPOSITORY_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
