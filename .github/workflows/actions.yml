@@ -67,6 +67,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Set current_datetime
+        id: set_datetime
+        run: echo "::set-output name=current_datetime::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
@@ -101,7 +105,7 @@ jobs:
             ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
           labels: |
             org.label-schema.version=8.0.1.${{ env.BUILD_NUMBER }}
-            org.label-schema.build-date=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+            org.label-schema.build-date=${{ steps.set_datetime.outputs.current_datetime }}
           outputs: type=docker,dest=image.tar
           cache-from: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache
           cache-to: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache,mode=max
