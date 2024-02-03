@@ -1,19 +1,16 @@
-ARG APPLICATION_NAME='MicroService.WebApi'
-ARG BUILD_DATE='1/1/2023'
-ARG BUILD_NUMBER=0
+ARG APPLICATION_NAME
+ARG BUILD_DATE
+ARG BUILD_NUMBER
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
 ENV APPLICATION_NAME=${APPLICATION_NAME:-MicroService.WebApi}
+ENV BUILD_DATE=${BUILD_DATE:-'1/1/2023'}
+ENV BUILD_NUMBE=${BUILD_NUMBER:-0}
 
 LABEL org.label-schema.application=${APPLICATION_NAME}
 LABEL org.label-schema.build-date=${BUILD_DATE}
 LABEL org.label-schema.version=8.0.1.${BUILD_NUMBER}
-
-
-
-
-
 
 USER root
 
