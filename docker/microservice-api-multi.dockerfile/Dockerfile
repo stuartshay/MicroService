@@ -1,6 +1,6 @@
 ARG APPLICATION_NAME
 ARG BUILD_DATE
-ARG BUILD_NUMBER
+ARG BUILD_NUMBER=0
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
@@ -10,7 +10,7 @@ ENV BUILD_NUM=${BUILD_NUMBER}
 
 LABEL org.label-schema.application=${APPLICATION_NAME}
 LABEL org.label-schema.build-date=${BUILD_DATE}
-LABEL org.label-schema.version=8.0.1.${BUILD_NUM}
+LABEL org.label-schema.version=8.0.1.${BUILD_NUMBER}
 
 USER root
 
