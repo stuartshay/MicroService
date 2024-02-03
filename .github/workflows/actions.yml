@@ -88,24 +88,33 @@ jobs:
       - name: Google Cloud Artifacts/Authorize Docker push
         run: gcloud auth configure-docker ${{ env.ARTIFACT_REGISTRY_HOST }}
 
+    #  - name: Build image
+    #    id: docker_build
+    #    uses: docker/build-push-action@v4
+    #    with:
+    #      build-args: |
+    #        APPLICATION_NAME=HARDCODE_APPLICATION_NAME
+    #        BUILD_NUMBER=${{ env.BUILD_NUMBER }}
+    #      file: ${{ env.DOCKER_FILE }}
+    #      tags: |
+    #        ${{ env.DOCKER_REPOSITORY_IMAGE}}:latest
+    #        ${{ env.DOCKER_REPOSITORY_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
+    #        ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
+    #      outputs: type=docker,dest=image.tar
+    #      cache-from: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache
+    #      cache-to: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache,mode=max
+
       - name: Build image
         id: docker_build
-        uses: docker/build-push-action@v4
-        with:
-          build-args: |
-            APPLICATION_NAME=HARDCODE_APPLICATION_NAME
-            BUILD_NUMBER=${{ env.BUILD_NUMBER }}
-          env: |
-            APPLICATION_NAME=HARDCODE_APPLICATION_NAME_ENV
-            BUILD_NUMBER=${{ env.BUILD_NUMBER }}
-          file: ${{ env.DOCKER_FILE }}
-          tags: |
-            ${{ env.DOCKER_REPOSITORY_IMAGE}}:latest
-            ${{ env.DOCKER_REPOSITORY_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
-            ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
-          outputs: type=docker,dest=image.tar
-          cache-from: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache
-          cache-to: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache,mode=max
+        run: |
+          docker build \
+            --build-arg APPLICATION_NAME=HARDCODED_APPLICATION_NAME \
+            --build-arg BUILD_NUMBER=${{ env.BUILD_NUMBER }} \
+            -t "${{ env.DOCKER_REPOSITORY_IMAGE }}:latest" \
+            -t "${{ env.DOCKER_REPOSITORY_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}" \
+            -t "${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}" \
+            -f "${{ env.DOCKER_FILE }}" .
+        continue-on-error: ${{ env.DOCKER_CONTINUE_ON_ERROR }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
