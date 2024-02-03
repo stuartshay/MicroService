@@ -10,7 +10,7 @@ LABEL org.label-schema.version=8.0.1.${BUILD_NUMBER}
 
 USER root
 
-# Install gcsfuse - following the official Google Cloud instructions
+# Install gcsfuse
 RUN apt update && \
     DEBIAN_FRONTEND=noninteractive \
     apt install -y lsb-release gnupg2 curl
@@ -19,8 +19,6 @@ RUN echo "deb https://packages.cloud.google.com/apt gcsfuse-$(lsb_release -c -s)
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN apt-get update
 RUN yes | apt-get install fuse gcsfuse
-
-
 
 
 # Create a directory to mount your GCS bucket
@@ -61,7 +59,9 @@ FROM base AS final
 COPY files  /files
 RUN ls /files
 
-
 WORKDIR /app
+COPY scripts/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "MicroService.WebApi.dll"]
