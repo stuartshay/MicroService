@@ -119,7 +119,7 @@ jobs:
       - name: Save Image
         id: docker_save
         run: |
-          docker save -o image.tar "${DOCKER_REPOSITORY_IMAGE}:${DOCKER_IMAGE_TAG}"
+          docker save -o image.tar
 
 
       - name: Upload artifact
