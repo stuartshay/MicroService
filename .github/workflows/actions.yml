@@ -95,6 +95,9 @@ jobs:
           build-args: |
             APPLICATION_NAME=HARDCODE_APPLICATION_NAME
             BUILD_NUMBER=${{ env.BUILD_NUMBER }}
+          env: |
+            APPLICATION_NAME=HARDCODE_APPLICATION_NAME_ENV
+            BUILD_NUMBER=${{ env.BUILD_NUMBER }}
           file: ${{ env.DOCKER_FILE }}
           tags: |
             ${{ env.DOCKER_REPOSITORY_IMAGE}}:latest
