@@ -1,15 +1,9 @@
-ARG APPLICATION_NAME
-ARG BUILD_DATE
-ARG BUILD_NUMBER
-
+ARG BUILD_NUMBER=0
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
 ENV APPLICATION_NAME=${APPLICATION_NAME:-MicroService.WebApi}
-ENV BUILD_DATE=${BUILD_DATE:-'1/1/2023'}
 
 LABEL org.label-schema.application=${APPLICATION_NAME}
-LABEL org.label-schema.build-date=${BUILD_DATE}
-
 USER root
 
 # Install gcsfuse

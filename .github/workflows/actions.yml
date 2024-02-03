@@ -93,7 +93,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           build-args: |
-            APPLICATION_NAME=HARDCODE_APPLICATION_NAME
             BUILD_NUMBER=${{ env.BUILD_NUMBER }}
           file: ${{ env.DOCKER_FILE }}
           tags: |
@@ -102,6 +101,7 @@ jobs:
             ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
           labels: |
             org.label-schema.version=8.0.1.${{ env.BUILD_NUMBER }}
+            org.label-schema.build-date=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
           outputs: type=docker,dest=image.tar
           cache-from: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache
           cache-to: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache,mode=max
