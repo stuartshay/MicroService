@@ -6,7 +6,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
 ENV APPLICATION_NAME=${APPLICATION_NAME:-MicroService.WebApi}
 ENV BUILD_DATE=${BUILD_DATE:-'1/1/2023'}
-ENV BUILD_NUM=${BUILD_NUMBER:-0}
+ENV BUILD_NUM=${BUILD_NUMBER}
 
 LABEL org.label-schema.application=${APPLICATION_NAME}
 LABEL org.label-schema.build-date=${BUILD_DATE}
@@ -16,6 +16,7 @@ USER root
 
 # Install gcsfuse
 RUN apt update && \
+    RUN apt update && \
     DEBIAN_FRONTEND=noninteractive \
     apt install -y lsb-release gnupg2 curl
 
