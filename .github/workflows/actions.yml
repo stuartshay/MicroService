@@ -115,9 +115,12 @@ jobs:
             -t "${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}" \
             -f "${{ env.DOCKER_FILE }}" .
         continue-on-error: ${{ env.DOCKER_CONTINUE_ON_ERROR }}
-        outputs:
-          type: docker
-          dest: image.tar
+
+      - name: Save Image
+        id: docker_save
+        run: |
+          docker save -o image.tar "${DOCKER_REPOSITORY_IMAGE}:${DOCKER_IMAGE_TAG}"
+
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
