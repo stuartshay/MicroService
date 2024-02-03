@@ -61,7 +61,7 @@ RUN ls /files
 
 WORKDIR /app
 COPY scripts/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+#RUN chmod +x /entrypoint.sh
 
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "MicroService.WebApi.dll"]
