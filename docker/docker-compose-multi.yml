@@ -7,7 +7,6 @@ services:
     image: "stuartshay/microservice-api:5.0.1-build.114"
     environment:
      - ASPNETCORE_ENVIRONMENT=Development
-     - ConnectionStrings__PostgreSql=User ID=nyclandmarks;Password=nyclandmarks;Server=myrdsinstance.ckm3eyorqjco.us-east-1.rds.amazonaws.com;Port=5432;Database=nyclandmarks;Integrated Security=true;Pooling=true;
     ports:
      - "5000:5000"
     networks:

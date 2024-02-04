@@ -3,6 +3,8 @@
 # Example of custom startup logic
 echo "Starting MicroService.WebApi..."
 
+export GOOGLE_APPLICATION_CREDENTIALS="/etc/gcsfuse/key/service-account-key.json"
+
 # Check if MOUNT_GCS_BUCKET is set to "true" and the GCS_BUCKET_NAME is not empty
 if [[ "${MOUNT_GCS_BUCKET}" == "true" && -n "${GCS_BUCKET_NAME}" ]]; then
     echo "Mounting GCS Bucket: ${GCS_BUCKET_NAME}"
