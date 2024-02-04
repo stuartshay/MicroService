@@ -193,8 +193,9 @@ jobs:
             --image=${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}} \
             --region=${{ env.REGION }} \
             --set-env-vars=ASPNETCORE_ENVIRONMENT=${{ env.ASPNETCORE_ENVIRONMENT }},ASPNETCORE_URLS=${{ env.ASPNETCORE_URLS }} \
-            --memory=1Gi --port=5000 --allow-unauthenticated \
-            --update-volumes=my-volume=projects/${{ env.GCP_PROJECT_ID }}/locations/${{ env.REGION }}/buckets/${{ env.GCS_BUCKET_NAME }},mountPath=/mnt/gcs,mode=ro
+            --memory=1Gi --port=5000 --allow-unauthenticated
+        # \
+        #  --update-volumes=my-volume=projects/${{ env.GCP_PROJECT_ID }}/locations/${{ env.REGION }}/buckets/${{ env.GCS_BUCKET_NAME }},mountPath=/mnt/gcs,mode=ro
         env:
           GCP_PROJECT_ID: ${{ secrets.PROJECT_ID}}
           GCS_BUCKET_NAME: ${{ secrets.GCS_BUCKET_NAME }}
