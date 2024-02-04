@@ -11,14 +11,16 @@ services:
      - ASPNETCORE_URLS=http://*:5002;
      - MOUNT_GCS_BUCKET=false
      - GCS_BUCKET_NAME=files-shapes
+     - GOOGLE_APPLICATION_CREDENTIALS=/etc/gcsfuse/key/service-account-key.json
     ports:
      - "5002:5002"
     cap_add:
       - SYS_ADMIN  # Required for fuse
     devices:
-      - "/dev/fuse"  # Required for fuse
+      - "/dev/fuse:/dev/fuse"  # Required for fuse
     volumes:
-      - "/home/vagrant/keys/service-account-key.json:/etc/gcsfuse/key/service-account-key.json
+      - "/home/vagrant/.config/gcloud:/root/.config/gcloud"
+      - "/home/vagrant/keys/service-account-key.json:/etc/gcsfuse/key/service-account-key.json"
     networks:
       - microservice-network
 
