@@ -9,9 +9,16 @@ services:
     environment:
      - ASPNETCORE_ENVIRONMENT=Docker
      - ASPNETCORE_URLS=http://*:5002;
-     #- ConnectionStrings:PostgreSql=User ID=postgres;Password=password;Server=database;Port=5432;Database=postgres;Integrated Security=true;Pooling=true;
+     - MOUNT_GCS_BUCKET=false
+     - GCS_BUCKET_NAME=files-shapes
     ports:
      - "5002:5002"
+    cap_add:
+      - SYS_ADMIN  # Required for fuse
+    devices:
+      - "/dev/fuse"  # Required for fuse
+    volumes:
+      - "/home/vagrant/keys/service-account-key.json:/etc/gcsfuse/key/service-account-key.json
     networks:
       - microservice-network
 
