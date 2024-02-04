@@ -187,6 +187,18 @@ jobs:
         with:
           project_id: ${{ secrets.GCP_PROJECT }}
 
+      - name: Deploy to Cloud Run with GCS Bucket Mount
+        run: |
+          gcloud run deploy ${{ env.SERVICE }} \
+            --image=${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}} \
+            --region=${{ env.REGION }} \
+            --set-env-vars=ASPNETCORE_ENVIRONMENT=${{ env.ASPNETCORE_ENVIRONMENT }},ASPNETCORE_URLS=${{ env.ASPNETCORE_URLS }} \
+            --memory=1Gi --port=5000 --allow-unauthenticated \
+            --update-volumes=my-volume=projects/${{ env.GCP_PROJECT_ID }}/locations/${{ env.REGION }}/buckets/${{ env.GCS_BUCKET_NAME }},mountPath=/mnt/gcs,mode=ro
+        env:
+          GCP_PROJECT_ID: ${{ secrets.PROJECT_ID}}
+          GCS_BUCKET_NAME: ${{ secrets.GCS_BUCKET_NAME }}
+
       #- name: Deploy to Cloud Run
       #  id: deploy
       #  uses: 'google-github-actions/deploy-cloudrun@v1'
@@ -198,19 +210,6 @@ jobs:
       #      ASPNETCORE_ENVIRONMENT=${{ env.ASPNETCORE_ENVIRONMENT }}
       #      ASPNETCORE_URLS=${{ env.ASPNETCORE_URLS }}
       #    flags: '--memory 1Gi --port 5000 --allow-unauthenticated'
-
-    - name: Deploy to Cloud Run with GCS Bucket Mount
-      run: |
-        gcloud run deploy ${{ env.SERVICE }} \
-          --image=${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}} \
-          --region=${{ env.REGION }} \
-          --set-env-vars=ASPNETCORE_ENVIRONMENT=${{ env.ASPNETCORE_ENVIRONMENT }},ASPNETCORE_URLS=${{ env.ASPNETCORE_URLS }} \
-          --memory=1Gi --port=5000 --allow-unauthenticated \
-          --update-volumes=my-volume=projects/${{ env.GCP_PROJECT_ID }}/locations/${{ env.REGION }}/buckets/${{ env.GCS_BUCKET_NAME }},mountPath=/mnt/gcs,mode=ro
-      env:
-        GCP_PROJECT_ID: ${{ secrets.PROJECT_ID}}
-        GCS_BUCKET_NAME: ${{ secrets.GCS_BUCKET_NAME }}
-
 
 
   health-googlecloud:
