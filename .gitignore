@@ -226,3 +226,5 @@ ModelManifest.xml
 # MacOS file
 .DS_Store
 .vscode/
+
+files/LPC_Individual_Landmark_and_Historic_Building_Database/LPC_Individual_Landmark_and_Historic_District_Building_Database_20231209.dbf
