@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.Internal;
 using HealthChecks.UI.Client;
 using MicroService.Common.Constants;
 using MicroService.Common.Health;
@@ -66,7 +65,7 @@ void SetupMappings()
 {
     services.AddSingleton(_ => new MapperConfiguration(cfg =>
     {
-        cfg.Internal().AllowAdditiveTypeMapCreation = true;
+        //cfg.Internal().AllowAdditiveTypeMapCreation = true;
         cfg.AddMaps(typeof(BoroughBoundaryShapeProfile).Assembly);
     }).CreateMapper());
 }

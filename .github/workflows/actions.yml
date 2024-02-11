@@ -197,7 +197,7 @@ jobs:
           env_vars: |
             ASPNETCORE_ENVIRONMENT=${{ env.ASPNETCORE_ENVIRONMENT }}
             ASPNETCORE_URLS=${{ env.ASPNETCORE_URLS }}
-          flags: '--memory 1Gi --port 5000 --allow-unauthenticated'
+          flags: '--memory 2Gi --port 5000 --allow-unauthenticated'
 
   health-googlecloud:
     name: health check

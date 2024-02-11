@@ -18,7 +18,6 @@
 		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="8.0.0" />
 		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.0" />
 		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="8.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
 		<PackageReference Include="Flurl" Version="4.0.0" />
 		<PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
 		<PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="8.2.1" />
@@ -27,7 +26,7 @@
 		<PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
 		<PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
 		<PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
-		<PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="8.2.0" />
+		<PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="8.3.0" />
 	</ItemGroup>
 
 </Project>
