@@ -204,9 +204,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy-googlecloud
     env:
-      HEALTH_URL: ${{ needs.deploy-googlecloud.outputs.url }}/health
+      HEALTH_URL: ${{ needs['deploy-googlecloud'].outputs.url }}/health
       MAX_ATTEMPTS: 15
       RETRY_DELAY_SECONDS: 5
+      CONNECT_TIMEOUT_SECONDS: 10
+      REQUEST_TIMEOUT_SECONDS: 30
     steps:
       - run: |
           set -euo pipefail
@@ -221,6 +223,8 @@ jobs:
             --show-error \
             --silent \
             --location \
+            --connect-timeout "${CONNECT_TIMEOUT_SECONDS}" \
+            --max-time "${REQUEST_TIMEOUT_SECONDS}" \
             --retry "${MAX_ATTEMPTS}" \
             --retry-delay "${RETRY_DELAY_SECONDS}" \
             --retry-connrefused \
