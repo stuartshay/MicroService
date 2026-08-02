@@ -63,11 +63,11 @@ void SetupConfiguration()
 
 void SetupMappings()
 {
-    services.AddSingleton(_ => new MapperConfiguration(cfg =>
+    services.AddSingleton(serviceProvider => new MapperConfiguration(cfg =>
     {
         //cfg.Internal().AllowAdditiveTypeMapCreation = true;
         cfg.AddMaps(typeof(BoroughBoundaryShapeProfile).Assembly);
-    }).CreateMapper());
+    }, serviceProvider.GetRequiredService<ILoggerFactory>()).CreateMapper());
 }
 
 void SetupServices()

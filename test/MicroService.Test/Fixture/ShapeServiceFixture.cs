@@ -88,11 +88,11 @@ namespace MicroService.Test.Fixture
                 .Configure<ApplicationOptions>(Configuration)
                 .AddSingleton(Configuration)
 
-                .AddSingleton(_ => new MapperConfiguration(cfg =>
+                .AddSingleton(serviceProvider => new MapperConfiguration(cfg =>
                 {
                     //cfg.Internal().AllowAdditiveTypeMapCreation = true;
                     cfg.AddMaps(typeof(BoroughBoundaryShapeProfile).Assembly);
-                }).CreateMapper())
+                }, serviceProvider.GetRequiredService<Microsoft.Extensions.Logging.ILoggerFactory>()).CreateMapper())
 
                 .BuildServiceProvider();
 
