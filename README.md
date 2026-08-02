@@ -50,3 +50,14 @@ This project primarily focuses on datasets related to NYC Monuments, Landmarks, 
 ## Developer Documentation
 
 - [DocFX](https://stuartshay.github.io/MicroService/)
+
+## Local Development
+
+Install the .NET SDK version selected by `global.json` and GNU Make, then run:
+
+```bash
+make build
+make run
+```
+
+Use `make help` to list the available targets and configuration options.
