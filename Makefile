@@ -7,7 +7,7 @@ PRE_COMMIT ?= $(HOME)/.local/share/MicroService/pre-commit/bin/pre-commit
 
 .DEFAULT_GOAL := help
 
-.PHONY: help setup hooks check restore build run test
+.PHONY: help setup hooks check restore build run test sonar
 
 help:
 	@echo "Available targets:"
@@ -18,6 +18,7 @@ help:
 	@echo "  make build    Build the solution"
 	@echo "  make run      Run the Web API locally"
 	@echo "  make test     Run the test project"
+	@echo "  make sonar    Build, test, and submit analysis to SonarQube"
 	@echo ""
 	@echo "Options:"
 	@echo "  CONFIGURATION=Debug|Release (default: Debug)"
@@ -42,3 +43,6 @@ run:
 
 test:
 	$(DOTNET) test $(TEST_PROJECT) --configuration $(CONFIGURATION)
+
+sonar:
+	./scripts/sonar.sh

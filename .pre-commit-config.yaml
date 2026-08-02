@@ -11,3 +11,17 @@ repos:
       - id: check-symlinks
       - id: check-yaml
       - id: forbid-submodules
+
+  - repo: local
+    hooks:
+      - id: shellcheck
+        name: shellcheck
+        entry: shellcheck
+        language: system
+        types: [shell]
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.3
+    hooks:
+      - id: codespell
+        exclude: ^(files/|docfx/articles/howto/|docfx/restapi/redoc\.standalone\.js|docker/grafana/provisioning/dashboards/)

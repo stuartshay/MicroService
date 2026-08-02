@@ -9,5 +9,5 @@ SonarQube
 
 #### Prerequisites:
 ```
-Java Lattest JDK/JRE
+Java Latest JDK/JRE
 ```

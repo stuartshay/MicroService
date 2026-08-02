@@ -28,6 +28,7 @@ tools/
 healthchecksdb
 
 # Project Specific Files
+.env
 docker/postgres/data/
 
 # Coverage Test Files 
