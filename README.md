@@ -60,11 +60,13 @@ the required development tools with:
 ./scripts/setup.sh
 ```
 
-Open a new terminal after setup, then run:
+Setup also installs and activates the project's pre-commit hooks. Open a new
+terminal after setup, then run:
 
 ```bash
 make build
 make run
 ```
 
-Use `make help` to list the available targets and configuration options.
+Use `make check` to run every pre-commit check manually. Use `make help` to list
+the available targets and configuration options.
