@@ -2914,18 +2914,18 @@ references:
   commentId: F:MicroService.Service.Models.Enum.ShapeProperties.NationalRegisterHistoricPlaces
   fullName: MicroService.Service.Models.Enum.ShapeProperties.NationalRegisterHistoricPlaces
   nameWithType: ShapeProperties.NationalRegisterHistoricPlaces
-- uid: MicroService.Service.Models.Enum.ShapeProperties.Neighborhoods
-  name: Neighborhoods
-  href: api/MicroService.Service.Models.Enum.ShapeProperties.html#MicroService_Service_Models_Enum_ShapeProperties_Neighborhoods
-  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.Neighborhoods
-  fullName: MicroService.Service.Models.Enum.ShapeProperties.Neighborhoods
-  nameWithType: ShapeProperties.Neighborhoods
 - uid: MicroService.Service.Models.Enum.ShapeProperties.NeighborhoodTabulationAreas
   name: NeighborhoodTabulationAreas
   href: api/MicroService.Service.Models.Enum.ShapeProperties.html#MicroService_Service_Models_Enum_ShapeProperties_NeighborhoodTabulationAreas
   commentId: F:MicroService.Service.Models.Enum.ShapeProperties.NeighborhoodTabulationAreas
   fullName: MicroService.Service.Models.Enum.ShapeProperties.NeighborhoodTabulationAreas
   nameWithType: ShapeProperties.NeighborhoodTabulationAreas
+- uid: MicroService.Service.Models.Enum.ShapeProperties.Neighborhoods
+  name: Neighborhoods
+  href: api/MicroService.Service.Models.Enum.ShapeProperties.html#MicroService_Service_Models_Enum_ShapeProperties_Neighborhoods
+  commentId: F:MicroService.Service.Models.Enum.ShapeProperties.Neighborhoods
+  fullName: MicroService.Service.Models.Enum.ShapeProperties.Neighborhoods
+  nameWithType: ShapeProperties.Neighborhoods
 - uid: MicroService.Service.Models.Enum.ShapeProperties.NychaDevelopments
   name: NychaDevelopments
   href: api/MicroService.Service.Models.Enum.ShapeProperties.html#MicroService_Service_Models_Enum_ShapeProperties_NychaDevelopments
@@ -3317,19 +3317,6 @@ references:
   isSpec: "True"
   fullName: MicroService.Service.Models.HistoricDistrictShape.Extension
   nameWithType: HistoricDistrictShape.Extension
-- uid: MicroService.Service.Models.HistoricDistrictShape.LastAction
-  name: LastAction
-  href: api/MicroService.Service.Models.HistoricDistrictShape.html#MicroService_Service_Models_HistoricDistrictShape_LastAction
-  commentId: P:MicroService.Service.Models.HistoricDistrictShape.LastAction
-  fullName: MicroService.Service.Models.HistoricDistrictShape.LastAction
-  nameWithType: HistoricDistrictShape.LastAction
-- uid: MicroService.Service.Models.HistoricDistrictShape.LastAction*
-  name: LastAction
-  href: api/MicroService.Service.Models.HistoricDistrictShape.html#MicroService_Service_Models_HistoricDistrictShape_LastAction_
-  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.LastAction
-  isSpec: "True"
-  fullName: MicroService.Service.Models.HistoricDistrictShape.LastAction
-  nameWithType: HistoricDistrictShape.LastAction
 - uid: MicroService.Service.Models.HistoricDistrictShape.LPNumber
   name: LPNumber
   href: api/MicroService.Service.Models.HistoricDistrictShape.html#MicroService_Service_Models_HistoricDistrictShape_LPNumber
@@ -3343,6 +3330,19 @@ references:
   isSpec: "True"
   fullName: MicroService.Service.Models.HistoricDistrictShape.LPNumber
   nameWithType: HistoricDistrictShape.LPNumber
+- uid: MicroService.Service.Models.HistoricDistrictShape.LastAction
+  name: LastAction
+  href: api/MicroService.Service.Models.HistoricDistrictShape.html#MicroService_Service_Models_HistoricDistrictShape_LastAction
+  commentId: P:MicroService.Service.Models.HistoricDistrictShape.LastAction
+  fullName: MicroService.Service.Models.HistoricDistrictShape.LastAction
+  nameWithType: HistoricDistrictShape.LastAction
+- uid: MicroService.Service.Models.HistoricDistrictShape.LastAction*
+  name: LastAction
+  href: api/MicroService.Service.Models.HistoricDistrictShape.html#MicroService_Service_Models_HistoricDistrictShape_LastAction_
+  commentId: Overload:MicroService.Service.Models.HistoricDistrictShape.LastAction
+  isSpec: "True"
+  fullName: MicroService.Service.Models.HistoricDistrictShape.LastAction
+  nameWithType: HistoricDistrictShape.LastAction
 - uid: MicroService.Service.Models.HistoricDistrictShape.OtherHearing
   name: OtherHearing
   href: api/MicroService.Service.Models.HistoricDistrictShape.html#MicroService_Service_Models_HistoricDistrictShape_OtherHearing
@@ -3661,6 +3661,19 @@ references:
   isSpec: "True"
   fullName: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.HistDist
   nameWithType: IndividualLandmarkHistoricDistrictsShape.HistDist
+- uid: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber
+  name: LPNumber
+  href: api/MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.html#MicroService_Service_Models_IndividualLandmarkHistoricDistrictsShape_LPNumber
+  commentId: P:MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber
+  fullName: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber
+  nameWithType: IndividualLandmarkHistoricDistrictsShape.LPNumber
+- uid: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber*
+  name: LPNumber
+  href: api/MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.html#MicroService_Service_Models_IndividualLandmarkHistoricDistrictsShape_LPNumber_
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber
+  isSpec: "True"
+  fullName: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber
+  nameWithType: IndividualLandmarkHistoricDistrictsShape.LPNumber
 - uid: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LmNew
   name: LmNew
   href: api/MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.html#MicroService_Service_Models_IndividualLandmarkHistoricDistrictsShape_LmNew
@@ -3687,19 +3700,6 @@ references:
   isSpec: "True"
   fullName: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.Lot
   nameWithType: IndividualLandmarkHistoricDistrictsShape.Lot
-- uid: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber
-  name: LPNumber
-  href: api/MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.html#MicroService_Service_Models_IndividualLandmarkHistoricDistrictsShape_LPNumber
-  commentId: P:MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber
-  fullName: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber
-  nameWithType: IndividualLandmarkHistoricDistrictsShape.LPNumber
-- uid: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber*
-  name: LPNumber
-  href: api/MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.html#MicroService_Service_Models_IndividualLandmarkHistoricDistrictsShape_LPNumber_
-  commentId: Overload:MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber
-  isSpec: "True"
-  fullName: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber
-  nameWithType: IndividualLandmarkHistoricDistrictsShape.LPNumber
 - uid: MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.MatFour
   name: MatFour
   href: api/MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.html#MicroService_Service_Models_IndividualLandmarkHistoricDistrictsShape_MatFour
@@ -3979,6 +3979,19 @@ references:
   isSpec: "True"
   fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.DesignationStatus
   nameWithType: IndividualLandmarkSiteShape.DesignationStatus
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
+  name: LPNumber
+  href: api/MicroService.Service.Models.IndividualLandmarkSiteShape.html#MicroService_Service_Models_IndividualLandmarkSiteShape_LPNumber
+  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
+  nameWithType: IndividualLandmarkSiteShape.LPNumber
+- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber*
+  name: LPNumber
+  href: api/MicroService.Service.Models.IndividualLandmarkSiteShape.html#MicroService_Service_Models_IndividualLandmarkSiteShape_LPNumber_
+  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
+  isSpec: "True"
+  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
+  nameWithType: IndividualLandmarkSiteShape.LPNumber
 - uid: MicroService.Service.Models.IndividualLandmarkSiteShape.LandmarkType
   name: LandmarkType
   href: api/MicroService.Service.Models.IndividualLandmarkSiteShape.html#MicroService_Service_Models_IndividualLandmarkSiteShape_LandmarkType
@@ -4005,19 +4018,6 @@ references:
   isSpec: "True"
   fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.Lot
   nameWithType: IndividualLandmarkSiteShape.Lot
-- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
-  name: LPNumber
-  href: api/MicroService.Service.Models.IndividualLandmarkSiteShape.html#MicroService_Service_Models_IndividualLandmarkSiteShape_LPNumber
-  commentId: P:MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
-  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
-  nameWithType: IndividualLandmarkSiteShape.LPNumber
-- uid: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber*
-  name: LPNumber
-  href: api/MicroService.Service.Models.IndividualLandmarkSiteShape.html#MicroService_Service_Models_IndividualLandmarkSiteShape_LPNumber_
-  commentId: Overload:MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
-  isSpec: "True"
-  fullName: MicroService.Service.Models.IndividualLandmarkSiteShape.LPNumber
-  nameWithType: IndividualLandmarkSiteShape.LPNumber
 - uid: MicroService.Service.Models.IndividualLandmarkSiteShape.ObjectId
   name: ObjectId
   href: api/MicroService.Service.Models.IndividualLandmarkSiteShape.html#MicroService_Service_Models_IndividualLandmarkSiteShape_ObjectId
@@ -4180,6 +4180,19 @@ references:
   isSpec: "True"
   fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.DesignationStatus
   nameWithType: NationalRegisterHistoricPlacesShape.DesignationStatus
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
+  name: LPNumber
+  href: api/MicroService.Service.Models.NationalRegisterHistoricPlacesShape.html#MicroService_Service_Models_NationalRegisterHistoricPlacesShape_LPNumber
+  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
+  nameWithType: NationalRegisterHistoricPlacesShape.LPNumber
+- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber*
+  name: LPNumber
+  href: api/MicroService.Service.Models.NationalRegisterHistoricPlacesShape.html#MicroService_Service_Models_NationalRegisterHistoricPlacesShape_LPNumber_
+  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
+  isSpec: "True"
+  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
+  nameWithType: NationalRegisterHistoricPlacesShape.LPNumber
 - uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LandmarkType
   name: LandmarkType
   href: api/MicroService.Service.Models.NationalRegisterHistoricPlacesShape.html#MicroService_Service_Models_NationalRegisterHistoricPlacesShape_LandmarkType
@@ -4206,19 +4219,6 @@ references:
   isSpec: "True"
   fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.Lot
   nameWithType: NationalRegisterHistoricPlacesShape.Lot
-- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
-  name: LPNumber
-  href: api/MicroService.Service.Models.NationalRegisterHistoricPlacesShape.html#MicroService_Service_Models_NationalRegisterHistoricPlacesShape_LPNumber
-  commentId: P:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
-  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
-  nameWithType: NationalRegisterHistoricPlacesShape.LPNumber
-- uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber*
-  name: LPNumber
-  href: api/MicroService.Service.Models.NationalRegisterHistoricPlacesShape.html#MicroService_Service_Models_NationalRegisterHistoricPlacesShape_LPNumber_
-  commentId: Overload:MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
-  isSpec: "True"
-  fullName: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.LPNumber
-  nameWithType: NationalRegisterHistoricPlacesShape.LPNumber
 - uid: MicroService.Service.Models.NationalRegisterHistoricPlacesShape.ObjectId
   name: ObjectId
   href: api/MicroService.Service.Models.NationalRegisterHistoricPlacesShape.html#MicroService_Service_Models_NationalRegisterHistoricPlacesShape_ObjectId
@@ -5745,6 +5745,47 @@ references:
   isSpec: "True"
   fullName: MicroService.Service.Services.NationalRegisterHistoricPlacesService.GetFeatureCollection
   nameWithType: NationalRegisterHistoricPlacesService.GetFeatureCollection
+- uid: MicroService.Service.Services.NeighborhoodTabulationAreasService
+  name: NeighborhoodTabulationAreasService
+  href: api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html
+  commentId: T:MicroService.Service.Services.NeighborhoodTabulationAreasService
+  fullName: MicroService.Service.Services.NeighborhoodTabulationAreasService
+  nameWithType: NeighborhoodTabulationAreasService
+- uid: MicroService.Service.Services.NeighborhoodTabulationAreasService.#ctor(MicroService.Service.Services.Base.ShapefileDataReaderResolver,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{MicroService.Service.Services.NeighborhoodTabulationAreasService})
+  name: NeighborhoodTabulationAreasService(ShapefileDataReaderResolver, IMapper, ILogger<NeighborhoodTabulationAreasService>)
+  href: api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html#MicroService_Service_Services_NeighborhoodTabulationAreasService__ctor_MicroService_Service_Services_Base_ShapefileDataReaderResolver_AutoMapper_IMapper_Microsoft_Extensions_Logging_ILogger_MicroService_Service_Services_NeighborhoodTabulationAreasService__
+  commentId: M:MicroService.Service.Services.NeighborhoodTabulationAreasService.#ctor(MicroService.Service.Services.Base.ShapefileDataReaderResolver,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{MicroService.Service.Services.NeighborhoodTabulationAreasService})
+  name.vb: New(ShapefileDataReaderResolver, IMapper, ILogger(Of NeighborhoodTabulationAreasService))
+  fullName: MicroService.Service.Services.NeighborhoodTabulationAreasService.NeighborhoodTabulationAreasService(MicroService.Service.Services.Base.ShapefileDataReaderResolver, AutoMapper.IMapper, Microsoft.Extensions.Logging.ILogger<MicroService.Service.Services.NeighborhoodTabulationAreasService>)
+  fullName.vb: MicroService.Service.Services.NeighborhoodTabulationAreasService.New(MicroService.Service.Services.Base.ShapefileDataReaderResolver, AutoMapper.IMapper, Microsoft.Extensions.Logging.ILogger(Of MicroService.Service.Services.NeighborhoodTabulationAreasService))
+  nameWithType: NeighborhoodTabulationAreasService.NeighborhoodTabulationAreasService(ShapefileDataReaderResolver, IMapper, ILogger<NeighborhoodTabulationAreasService>)
+  nameWithType.vb: NeighborhoodTabulationAreasService.New(ShapefileDataReaderResolver, IMapper, ILogger(Of NeighborhoodTabulationAreasService))
+- uid: MicroService.Service.Services.NeighborhoodTabulationAreasService.#ctor*
+  name: NeighborhoodTabulationAreasService
+  href: api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html#MicroService_Service_Services_NeighborhoodTabulationAreasService__ctor_
+  commentId: Overload:MicroService.Service.Services.NeighborhoodTabulationAreasService.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: MicroService.Service.Services.NeighborhoodTabulationAreasService.NeighborhoodTabulationAreasService
+  fullName.vb: MicroService.Service.Services.NeighborhoodTabulationAreasService.New
+  nameWithType: NeighborhoodTabulationAreasService.NeighborhoodTabulationAreasService
+  nameWithType.vb: NeighborhoodTabulationAreasService.New
+- uid: MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  name: GetFeatureCollection(List<KeyValuePair<string, object>>)
+  href: api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html#MicroService_Service_Services_NeighborhoodTabulationAreasService_GetFeatureCollection_System_Collections_Generic_List_System_Collections_Generic_KeyValuePair_System_String_System_Object___
+  commentId: M:MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+  name.vb: GetFeatureCollection(List(Of KeyValuePair(Of String, Object)))
+  fullName: MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
+  fullName.vb: MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  nameWithType: NeighborhoodTabulationAreasService.GetFeatureCollection(List<KeyValuePair<string, object>>)
+  nameWithType.vb: NeighborhoodTabulationAreasService.GetFeatureCollection(List(Of KeyValuePair(Of String, Object)))
+- uid: MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection*
+  name: GetFeatureCollection
+  href: api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html#MicroService_Service_Services_NeighborhoodTabulationAreasService_GetFeatureCollection_
+  commentId: Overload:MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection
+  isSpec: "True"
+  fullName: MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection
+  nameWithType: NeighborhoodTabulationAreasService.GetFeatureCollection
 - uid: MicroService.Service.Services.NeighborhoodsService
   name: NeighborhoodsService
   href: api/MicroService.Service.Services.NeighborhoodsService.html
@@ -5799,47 +5840,6 @@ references:
   isSpec: "True"
   fullName: MicroService.Service.Services.NeighborhoodsService.GetFeatureList
   nameWithType: NeighborhoodsService.GetFeatureList
-- uid: MicroService.Service.Services.NeighborhoodTabulationAreasService
-  name: NeighborhoodTabulationAreasService
-  href: api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html
-  commentId: T:MicroService.Service.Services.NeighborhoodTabulationAreasService
-  fullName: MicroService.Service.Services.NeighborhoodTabulationAreasService
-  nameWithType: NeighborhoodTabulationAreasService
-- uid: MicroService.Service.Services.NeighborhoodTabulationAreasService.#ctor(MicroService.Service.Services.Base.ShapefileDataReaderResolver,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{MicroService.Service.Services.NeighborhoodTabulationAreasService})
-  name: NeighborhoodTabulationAreasService(ShapefileDataReaderResolver, IMapper, ILogger<NeighborhoodTabulationAreasService>)
-  href: api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html#MicroService_Service_Services_NeighborhoodTabulationAreasService__ctor_MicroService_Service_Services_Base_ShapefileDataReaderResolver_AutoMapper_IMapper_Microsoft_Extensions_Logging_ILogger_MicroService_Service_Services_NeighborhoodTabulationAreasService__
-  commentId: M:MicroService.Service.Services.NeighborhoodTabulationAreasService.#ctor(MicroService.Service.Services.Base.ShapefileDataReaderResolver,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{MicroService.Service.Services.NeighborhoodTabulationAreasService})
-  name.vb: New(ShapefileDataReaderResolver, IMapper, ILogger(Of NeighborhoodTabulationAreasService))
-  fullName: MicroService.Service.Services.NeighborhoodTabulationAreasService.NeighborhoodTabulationAreasService(MicroService.Service.Services.Base.ShapefileDataReaderResolver, AutoMapper.IMapper, Microsoft.Extensions.Logging.ILogger<MicroService.Service.Services.NeighborhoodTabulationAreasService>)
-  fullName.vb: MicroService.Service.Services.NeighborhoodTabulationAreasService.New(MicroService.Service.Services.Base.ShapefileDataReaderResolver, AutoMapper.IMapper, Microsoft.Extensions.Logging.ILogger(Of MicroService.Service.Services.NeighborhoodTabulationAreasService))
-  nameWithType: NeighborhoodTabulationAreasService.NeighborhoodTabulationAreasService(ShapefileDataReaderResolver, IMapper, ILogger<NeighborhoodTabulationAreasService>)
-  nameWithType.vb: NeighborhoodTabulationAreasService.New(ShapefileDataReaderResolver, IMapper, ILogger(Of NeighborhoodTabulationAreasService))
-- uid: MicroService.Service.Services.NeighborhoodTabulationAreasService.#ctor*
-  name: NeighborhoodTabulationAreasService
-  href: api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html#MicroService_Service_Services_NeighborhoodTabulationAreasService__ctor_
-  commentId: Overload:MicroService.Service.Services.NeighborhoodTabulationAreasService.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: MicroService.Service.Services.NeighborhoodTabulationAreasService.NeighborhoodTabulationAreasService
-  fullName.vb: MicroService.Service.Services.NeighborhoodTabulationAreasService.New
-  nameWithType: NeighborhoodTabulationAreasService.NeighborhoodTabulationAreasService
-  nameWithType.vb: NeighborhoodTabulationAreasService.New
-- uid: MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
-  name: GetFeatureCollection(List<KeyValuePair<string, object>>)
-  href: api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html#MicroService_Service_Services_NeighborhoodTabulationAreasService_GetFeatureCollection_System_Collections_Generic_List_System_Collections_Generic_KeyValuePair_System_String_System_Object___
-  commentId: M:MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
-  name.vb: GetFeatureCollection(List(Of KeyValuePair(Of String, Object)))
-  fullName: MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection(System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>>)
-  fullName.vb: MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection(System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
-  nameWithType: NeighborhoodTabulationAreasService.GetFeatureCollection(List<KeyValuePair<string, object>>)
-  nameWithType.vb: NeighborhoodTabulationAreasService.GetFeatureCollection(List(Of KeyValuePair(Of String, Object)))
-- uid: MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection*
-  name: GetFeatureCollection
-  href: api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html#MicroService_Service_Services_NeighborhoodTabulationAreasService_GetFeatureCollection_
-  commentId: Overload:MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection
-  isSpec: "True"
-  fullName: MicroService.Service.Services.NeighborhoodTabulationAreasService.GetFeatureCollection
-  nameWithType: NeighborhoodTabulationAreasService.GetFeatureCollection
 - uid: MicroService.Service.Services.NychaDevelopmentService
   name: NychaDevelopmentService
   href: api/MicroService.Service.Services.NychaDevelopmentService.html

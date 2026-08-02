@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
 
@@ -84,7 +84,7 @@
 <h2 id="tools">Tools</h2>
 <ul>
 <li><a href="http://www.jetbrains.com/resharper/">Resharper</a> is a great 3rd party code cleanup and style tool.</li>
-<li><a href="http://stylecop.codeplex.com/">StyleCop</a> analyzes C# srouce code to enforce a set of style and consistency rules and has been integrated into many 3rd party development tools such as Resharper.</li>
+<li><a href="http://stylecop.codeplex.com/">StyleCop</a> analyzes C# source code to enforce a set of style and consistency rules and has been integrated into many 3rd party development tools such as Resharper.</li>
 <li><a href="http://codebox/SDLFxCop">FxCop</a> is an application that analyzes managed code assemblies (code that targets the .NET Framework common language runtime) and reports information about the assemblies, such as possible design, localization, performance, and security improvements.</li>
 <li><a href="http://toolbox/22561">C# Stylizer</a> does many of the style rules automatically</li>
 </ul>
@@ -166,13 +166,13 @@
 </li>
 </ul>
 <h3 id="cross-platform-coding">Cross-platform coding</h3>
-<p>Our code should supports multiple operating systems. Don't assume we only run (and develop) on Windows. Code should be sensitvie to the differences between OS's. Here are some specifics to consider.</p>
+<p>Our code should support multiple operating systems. Don't assume we only run (and develop) on Windows. Code should be sensitive to the differences between OS's. Here are some specifics to consider.</p>
 <ul>
-<li><strong>DO</strong> use <code>Enviroment.NewLine</code> instead of hard-coding the line break instead of <code>\r\n</code>, as Windows uses <code>\r\n</code> and OSX/Linux uses <code>\n</code>.</li>
+<li><strong>DO</strong> use <code>Environment.NewLine</code> instead of hard-coding the line break instead of <code>\r\n</code>, as Windows uses <code>\r\n</code> and OSX/Linux uses <code>\n</code>.</li>
 </ul>
 <blockquote>
 <p><strong>Note</strong></p>
-<p>Be aware that thes line-endings may cause problems in code when using <code>@&quot;&quot;</code> text blocks with line breaks.</p>
+<p>Be aware that these line-endings may cause problems in code when using <code>@&quot;&quot;</code> text blocks with line breaks.</p>
 </blockquote>
 <ul>
 <li><strong>DO</strong> Use <code>Path.Combine()</code> or <code>Path.DirectorySeparatorChar</code> to separate directories. If this is not possible (such as in scripting), use a forward slash <code>/</code>. Windows is more forgiving than Linux in this regard.</li>
@@ -180,8 +180,8 @@
 <h3 id="unit-tests-and-functional-tests">Unit tests and functional tests</h3>
 <h4 id="assembly-naming">Assembly naming</h4>
 <p>The unit tests for the <code>Microsoft.Foo</code> assembly live in the <code>Microsoft.Foo.Tests</code> assembly.</p>
-<p>The functional tests for the <code>Microsoft.Foo</code> assmebly live in the <code>Microsoft.Foo.FunctionalTests</code> assmebly.</p>
-<p>In general there should be exactly one unit test assebmly for each product runtime assembly. In general there should be one functional test assembly per repo. Exceptions can be made for both.</p>
+<p>The functional tests for the <code>Microsoft.Foo</code> assembly live in the <code>Microsoft.Foo.FunctionalTests</code> assembly.</p>
+<p>In general there should be exactly one unit test assembly for each product runtime assembly. In general there should be one functional test assembly per repo. Exceptions can be made for both.</p>
 <h4 id="unit-test-class-naming">Unit test class naming</h4>
 <p>Test class names end with <code>Test</code> and live in the same namespace as the class being tested. For example, the unit tests for the <code>Microsoft.Foo.Boo</code> class would be in a <code>Microsoft.Foo.Boo</code> class in the test assembly.</p>
 <h4 id="unit-test-method-naming">Unit test method naming</h4>
@@ -204,7 +204,7 @@ GetData
 <p>The crucial thing here is the <code>Act</code> stage is exactly one statement. That one statement is nothing more than a call to the one method that you are trying to test. keeping that one statement as simple as possible is also very important. For example, this is not ideal:</p>
 <pre><code class="lang-cs">int result = myObj.CallSomeMethod(GetComplexParam1(), GetComplexParam2(), GetComplexParam3());
 </code></pre>
-<p>This style is not recomended because way too many things can go wrong in this one statement. All the <code>GetComplexParamN()</code> calls can throw for a variety of reasons unrelated to the test itself. It is thus unclear to someone running into a problem why the failure occured.</p>
+<p>This style is not recommended because way too many things can go wrong in this one statement. All the <code>GetComplexParamN()</code> calls can throw for a variety of reasons unrelated to the test itself. It is thus unclear to someone running into a problem why the failure occurred.</p>
 <p>The ideal pattern is to move the complex parameter building into the `Arrange section:</p>
 <pre><code class="lang-cs">// Arrange
 P1 p1 = GetComplexParam1();
@@ -253,6 +253,7 @@ Assert.Equal(list1, list2, StringComparer.OrdinalIgnoreCase);
 <h4 id="parallel-tests">Parallel tests</h4>
 <p>By default all unit test assemblies should run in parallel mode, which is the default. Unit tests shouldn't depend on any shared state, and so should generally be runnable in parallel. If the tests fail in parallel, the first thing to do is to figure out why; do not just disable parallel tests!</p>
 <p>For functional tests it is reasonable to disable parallel tests.</p>
+
 </article>
           </div>
 
@@ -261,12 +262,12 @@ Assert.Equal(list1, list2, StringComparer.OrdinalIgnoreCase);
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/stuartshay/MicroService/blob/master/docfx/articles/csharp_coding_standards.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/stuartshay/MicroService/blob/master/docfx/articles/csharp_coding_standards.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>

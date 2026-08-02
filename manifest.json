@@ -1,5 +1,4 @@
 {
-  "homepages": [],
   "source_base_path": "/home/runner/work/MicroService/MicroService/docfx",
   "xrefmap": "xrefmap.yml",
   "files": [
@@ -8,1870 +7,2373 @@
       "source_relative_path": "api/MicroService.Common.Configuration.ApplicationOptions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Common.Configuration.ApplicationOptions.html",
-          "hash": "1tUxIhMdKiaKXHPq53s5vrWhf5KJRCIaICSzJM3SAY8="
+          "relative_path": "api/MicroService.Common.Configuration.ApplicationOptions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Common.Configuration.ApplicationOptions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Common.Configuration.GrafanaLokiConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Common.Configuration.GrafanaLokiConfiguration.html",
-          "hash": "HmvKR2mxmqssUliuFZSfin0BaZkpyzMKIE4czIjjNkY="
+          "relative_path": "api/MicroService.Common.Configuration.GrafanaLokiConfiguration.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Common.Configuration.GrafanaLokiConfiguration",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Common.Configuration.JaegerConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Common.Configuration.JaegerConfiguration.html",
-          "hash": "MOtspofptEuZ6SNpLWQ8l6TOWEw4DyfgJJEo6wvZTr0="
+          "relative_path": "api/MicroService.Common.Configuration.JaegerConfiguration.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Common.Configuration.JaegerConfiguration",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Common.Configuration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Common.Configuration.html",
-          "hash": "vIIK0AQcie1arXqxAdGJAOn+HjV0gxGipJ7CxUZ+DXQ="
+          "relative_path": "api/MicroService.Common.Configuration.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Common.Configuration",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Common.Constants.HealthCheckType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Common.Constants.HealthCheckType.html",
-          "hash": "494o9qbEfFR1HFWoDVRoXbcW9b1QUaIwmKtvTCu0PCg="
+          "relative_path": "api/MicroService.Common.Constants.HealthCheckType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Common.Constants.HealthCheckType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Common.Constants.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Common.Constants.html",
-          "hash": "QIgcdO5L7XOmkAuPw3vtD2YtwyxdCVx/vXC1nxdX5D8="
+          "relative_path": "api/MicroService.Common.Constants.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Common.Constants",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Common.Health.HealthCheckServerExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Common.Health.HealthCheckServerExtensions.html",
-          "hash": "+alcKhd4acfMYgZAPff2+rDnPK5CasPn+5qHfeo5/3k="
+          "relative_path": "api/MicroService.Common.Health.HealthCheckServerExtensions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Common.Health.HealthCheckServerExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Common.Health.RandomHealthCheck.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Common.Health.RandomHealthCheck.html",
-          "hash": "RUoZryMNdjPILEYz1NNwLePbnCjHDmatBFPFu7pB3Zw="
+          "relative_path": "api/MicroService.Common.Health.RandomHealthCheck.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Common.Health.RandomHealthCheck",
+      "Summary": "<p sourcefile=\"api/MicroService.Common.Health.RandomHealthCheck.yml\" sourcestartlinenumber=\"2\">Health Check</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Common.Health.VersionHealthCheck.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Common.Health.VersionHealthCheck.html",
-          "hash": "pTktLsSGzQwWKdFeYJA7vwh6SzBHNhbKOVw+HRENX38="
+          "relative_path": "api/MicroService.Common.Health.VersionHealthCheck.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Common.Health.VersionHealthCheck",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Common.Health.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Common.Health.html",
-          "hash": "oSJs8C+vtMiroi34L7cBwRIizxKn0K3seGI+RXmJqHY="
+          "relative_path": "api/MicroService.Common.Health.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Common.Health",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Common.Logging.Logging.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Common.Logging.Logging.html",
-          "hash": "sMVNpgJjsmCzVE9rmbcRELD0U0ic9N0zU4cjcov4JSI="
+          "relative_path": "api/MicroService.Common.Logging.Logging.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Common.Logging.Logging",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Common.Logging.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Common.Logging.html",
-          "hash": "sy6U3upAxetFxIxM0Bno4yMjX44TKacM6pEn/Kl/uOs="
+          "relative_path": "api/MicroService.Common.Logging.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Common.Logging",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Data.Enum.Borough.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Data.Enum.Borough.html",
-          "hash": "jFSznQ3ngwol876Vqh+OS3pTvUJq3MReitWkDJ9uz2o="
+          "relative_path": "api/MicroService.Data.Enum.Borough.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Data.Enum.Borough",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Data.Enum.DsnyOperationZone.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Data.Enum.DsnyOperationZone.html",
-          "hash": "LIntxdLOwDCOkk0qYbrMv6t9mSFzNKuv3oQo+KX5vlA="
+          "relative_path": "api/MicroService.Data.Enum.DsnyOperationZone.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Data.Enum.DsnyOperationZone",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Data.Enum.NtaType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Data.Enum.NtaType.html",
-          "hash": "13iImTPylHwM/YvZshnqS6Lcn4izNvQflnhCu3c7gZM="
+          "relative_path": "api/MicroService.Data.Enum.NtaType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Data.Enum.NtaType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Data.Enum.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Data.Enum.html",
-          "hash": "1fCKZDaEFLfYAj7s8tfg4dOVOT4I8X6+aiO/SLZM6YQ="
+          "relative_path": "api/MicroService.Data.Enum.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Data.Enum",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Data.Models.BaseEntity.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Data.Models.BaseEntity.html",
-          "hash": "jGiZ9TkU9C0UXkf1Ius0bL3AIjzgjdKOBMCklmgi2p4="
+          "relative_path": "api/MicroService.Data.Models.BaseEntity.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Data.Models.BaseEntity",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Data.Models.TestData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Data.Models.TestData.html",
-          "hash": "LFLMygOU0RX4CBY5y3dtH0DjsL5o4n+27IfRMTYIGAU="
+          "relative_path": "api/MicroService.Data.Models.TestData.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Data.Models.TestData",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Data.Models.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Data.Models.html",
-          "hash": "raddgl8K5jxxLhpp7rfIjWobAHMXe4MKFhSq2zZe0vA="
+          "relative_path": "api/MicroService.Data.Models.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Data.Models",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Data.Repository.IRepository-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Data.Repository.IRepository-1.html",
-          "hash": "nE+aVNZ53f/RQ9VFDN6HbBb7DsXKiHUYTKc9PJ8E7ag="
+          "relative_path": "api/MicroService.Data.Repository.IRepository-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Data.Repository.IRepository<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Data.Repository.ITestDataRepository.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Data.Repository.ITestDataRepository.html",
-          "hash": "Z2IFhN4mjwJtoRrz5Kck+Nxn3S6Rp5zm+Cw94egjmiA="
+          "relative_path": "api/MicroService.Data.Repository.ITestDataRepository.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Data.Repository.ITestDataRepository",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Data.Repository.TestDataRepository.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Data.Repository.TestDataRepository.html",
-          "hash": "V10EqkQM4OaoZ/ovTqejoVxOhRgsuhWdn0bPxBUtB40="
+          "relative_path": "api/MicroService.Data.Repository.TestDataRepository.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Data.Repository.TestDataRepository",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Data.Repository.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Data.Repository.html",
-          "hash": "52txjC8iXfPjLGqBrrB1eg9nNdITY1kS3tD/u5OzdWQ="
+          "relative_path": "api/MicroService.Data.Repository.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Data.Repository",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Configuration.ApplicationOptions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Configuration.ApplicationOptions.html",
-          "hash": "od754uYKLstLiQf81xd8rIIl79SW4LIe7nFAfoA8JwM="
+          "relative_path": "api/MicroService.Service.Configuration.ApplicationOptions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Configuration.ApplicationOptions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Configuration.ConnectionStrings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Configuration.ConnectionStrings.html",
-          "hash": "q8t9s1ihYlEJkmi+NwDIf8ubTJcfuUVekmiu6J+tZfM="
+          "relative_path": "api/MicroService.Service.Configuration.ConnectionStrings.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Configuration.ConnectionStrings",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Configuration.ShapeConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Configuration.ShapeConfiguration.html",
-          "hash": "lL5n/CN/UvJEaFPzZJf3KOFBC9SiFrie1kzvJBX7eO8="
+          "relative_path": "api/MicroService.Service.Configuration.ShapeConfiguration.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Configuration.ShapeConfiguration",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Configuration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Configuration.html",
-          "hash": "EJDUgrq8ayxXKWG5vR1zAaPXSfUKQPwXxPsTioqwb6g="
+          "relative_path": "api/MicroService.Service.Configuration.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Configuration",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Constants.DataConstants.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Constants.DataConstants.html",
-          "hash": "F1sog92T/NIrUZgrU0YeLWx1kzoDMvH9+kl46J5x79E="
+          "relative_path": "api/MicroService.Service.Constants.DataConstants.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Constants.DataConstants",
+      "Summary": "<p sourcefile=\"api/MicroService.Service.Constants.DataConstants.yml\" sourcestartlinenumber=\"2\">Data Business Rules Constants</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Constants.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Constants.html",
-          "hash": "Bn3/aceQAH/4x5DI2pTmV/nmGj3dK9zrj7brwPODygA="
+          "relative_path": "api/MicroService.Service.Constants.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Constants",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Extensions.ShapefileDataReaderExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Extensions.ShapefileDataReaderExtensions.html",
-          "hash": "bUQ7tvXLPzD3je60beF00UJLgOOzeDOYy0/Mi/WVbmk="
+          "relative_path": "api/MicroService.Service.Extensions.ShapefileDataReaderExtensions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Extensions.ShapefileDataReaderExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Extensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Extensions.html",
-          "hash": "gvddg2Bl2lWh35nb8A/hzVxKIsXQHYaK+tMHeviCdUQ="
+          "relative_path": "api/MicroService.Service.Extensions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Extensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Helpers.CachedShapefileDataReader.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Helpers.CachedShapefileDataReader.html",
-          "hash": "7FnhW1XKMJa9kclthzv8LuK42Nolcs/zDjlvJ9CdG6Y="
+          "relative_path": "api/MicroService.Service.Helpers.CachedShapefileDataReader.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Helpers.CachedShapefileDataReader",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Helpers.EnumHelper.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Helpers.EnumHelper.html",
-          "hash": "Mnwdh9/d+/uFbj6jEdAtJxVioNxBiqZ9D/LuLjadV+c="
+          "relative_path": "api/MicroService.Service.Helpers.EnumHelper.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Helpers.EnumHelper",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Helpers.FileHelpers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Helpers.FileHelpers.html",
-          "hash": "dSg0UTod7VLIw8qAs/XgM+V71IFUQR3heFXIy2GxZos="
+          "relative_path": "api/MicroService.Service.Helpers.FileHelpers.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Helpers.FileHelpers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Helpers.FunctionHelper.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Helpers.FunctionHelper.html",
-          "hash": "qW3vudopjo5mwM+86vjWGQRc6pn9ju3jNBcQX1YAV28="
+          "relative_path": "api/MicroService.Service.Helpers.FunctionHelper.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Helpers.FunctionHelper",
+      "Summary": "<p sourcefile=\"api/MicroService.Service.Helpers.FunctionHelper.yml\" sourcestartlinenumber=\"2\">Function Helper\nSource: <a href=\"https://stackoverflow.com/questions/8137391/percentile-calculation\" sourcefile=\"api/MicroService.Service.Helpers.FunctionHelper.yml\" sourcestartlinenumber=\"3\">https://stackoverflow.com/questions/8137391/percentile-calculation</a></p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Helpers.GeoTransformationHelper.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Helpers.GeoTransformationHelper.html",
-          "hash": "mW8z72FYbohwcK7AS+Dv6H3c7E/nAghlDU9Dso4RxoI="
+          "relative_path": "api/MicroService.Service.Helpers.GeoTransformationHelper.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Helpers.GeoTransformationHelper",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Helpers.IShapefileDataReaderService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Helpers.IShapefileDataReaderService.html",
-          "hash": "SD3ZHkk6RKHrwduItfXQeksTInj/Us1RRh090xyZZEQ="
+          "relative_path": "api/MicroService.Service.Helpers.IShapefileDataReaderService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Helpers.IShapefileDataReaderService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Helpers.ReflectionExtensions.PropertyCache-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Helpers.ReflectionExtensions.PropertyCache-1.html",
-          "hash": "bT9kEHTti+8eEe7gmzAhrn2PX42Ts/rHccJWbLAAc+E="
+          "relative_path": "api/MicroService.Service.Helpers.ReflectionExtensions.PropertyCache-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Helpers.ReflectionExtensions.PropertyCache<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Helpers.ReflectionExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Helpers.ReflectionExtensions.html",
-          "hash": "QMcXeMBVCDDpa1gjy/Gpc4fHf4eAp8Rtf25OZRIh9xs="
+          "relative_path": "api/MicroService.Service.Helpers.ReflectionExtensions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Helpers.ReflectionExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Helpers.StringHelper.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Helpers.StringHelper.html",
-          "hash": "mIxJPNZBL5eWodp7AAPk3u9SOT90qs2ufQhcMS646f0="
+          "relative_path": "api/MicroService.Service.Helpers.StringHelper.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Helpers.StringHelper",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Helpers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Helpers.html",
-          "hash": "2FsTxrdFD8bYEQGpawgZx1X4RVuwtRSM8osiy3iO/5U="
+          "relative_path": "api/MicroService.Service.Helpers.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Helpers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Interfaces.ICalculationService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Interfaces.ICalculationService.html",
-          "hash": "c55fkPPqH5yIgLc71yUAEqwJDDsW0TvDjAZqOdOObf0="
+          "relative_path": "api/MicroService.Service.Interfaces.ICalculationService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Interfaces.ICalculationService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Interfaces.IPointService-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Interfaces.IPointService-1.html",
-          "hash": "NFxW0m/BltAgMsV0AE7rcxszQ57LCL6FPIEkX9AnluU="
+          "relative_path": "api/MicroService.Service.Interfaces.IPointService-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Interfaces.IPointService<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Interfaces.IShapeService-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Interfaces.IShapeService-1.html",
-          "hash": "sMnHshyGA59H607vgoqI7PoRx9Xd8KtdI1Ak9tQ601c="
+          "relative_path": "api/MicroService.Service.Interfaces.IShapeService-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Interfaces.IShapeService<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Interfaces.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Interfaces.html",
-          "hash": "czIhjDHOahmXSLUBBLiWGESQo+VAaV6QVhjHu10KVEQ="
+          "relative_path": "api/MicroService.Service.Interfaces.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Interfaces",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.Base.GeometryProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.Base.GeometryProfile.html",
-          "hash": "3L2is7kWMAFSE2SN+xD/5frTCjEH5RxArEMIcRQkXbU="
+          "relative_path": "api/MicroService.Service.Mappings.Base.GeometryProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.Base.GeometryProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.Base.ShapeProfile-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.Base.ShapeProfile-1.html",
-          "hash": "A7sX81VRprazvhCigw7VHv3Ylok+pOUzxhGXn/py9E4="
+          "relative_path": "api/MicroService.Service.Mappings.Base.ShapeProfile-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.Base.ShapeProfile<TShape>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.Base.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.Base.html",
-          "hash": "658nfYe7IqOs7ofWCVCDvr/Cuzz3aEuLIvjl/jBnZHc="
+          "relative_path": "api/MicroService.Service.Mappings.Base.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.Base",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.BoroughBoundaryShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.BoroughBoundaryShapeProfile.html",
-          "hash": "MssBLkrJ4ssxAGeyKFVKNwkx+WX548H2LnlAo2aPXcE="
+          "relative_path": "api/MicroService.Service.Mappings.BoroughBoundaryShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.BoroughBoundaryShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.CommunityDistrictShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.CommunityDistrictShapeProfile.html",
-          "hash": "k0lMNSLfhKONELnEzSjXHDpg63gb56zZjokkHb/vTfM="
+          "relative_path": "api/MicroService.Service.Mappings.CommunityDistrictShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.CommunityDistrictShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.DsnyDistrictsShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.DsnyDistrictsShapeProfile.html",
-          "hash": "aXEckhf4+m3DNaK8uaJIBlT2QQxnS7YZRB/ar04rSZg="
+          "relative_path": "api/MicroService.Service.Mappings.DsnyDistrictsShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.DsnyDistrictsShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile.html",
-          "hash": "kBD7ZC+hwK6lMcNNd2768xaKbhraMVl/0RFvOeej+2c="
+          "relative_path": "api/MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.FeatureToScenicLandmarkShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.HistoricDistrictShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.HistoricDistrictShapeProfile.html",
-          "hash": "H+pitFx1xVA4lAFIH1rhbaH1k0BmaM45VWHuiBPgu70="
+          "relative_path": "api/MicroService.Service.Mappings.HistoricDistrictShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.HistoricDistrictShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.IndividualLandmarkHistoricDistrictsShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.IndividualLandmarkHistoricDistrictsShapeProfile.html",
-          "hash": "wIdSNZNTsX9B1TDH7UPXVau1Shu1jiVY0oGXiFF9Nys="
+          "relative_path": "api/MicroService.Service.Mappings.IndividualLandmarkHistoricDistrictsShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.IndividualLandmarkHistoricDistrictsShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.IndividualLandmarkSiteShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.IndividualLandmarkSiteShapeProfile.html",
-          "hash": "igIyrsIoGaKS14DUDZsDsly6uFbRuTs1htkyrFfiHqU="
+          "relative_path": "api/MicroService.Service.Mappings.IndividualLandmarkSiteShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.IndividualLandmarkSiteShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.NationalRegisterHistoricPlacesShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.NationalRegisterHistoricPlacesShapeProfile.html",
-          "hash": "So98zWsg+LYXWdNJ6zzAJkglnAXtHx9ari7y4vSakkM="
+          "relative_path": "api/MicroService.Service.Mappings.NationalRegisterHistoricPlacesShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.NationalRegisterHistoricPlacesShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.NeighborhoodShapeMappingsProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.NeighborhoodShapeMappingsProfile.html",
-          "hash": "6bMIBSegdjwm8zDgI6TAESVqCpA4ImaQB7vCzwZ1UC8="
+          "relative_path": "api/MicroService.Service.Mappings.NeighborhoodShapeMappingsProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.NeighborhoodShapeMappingsProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.NeighborhoodTabulationAreaShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.NeighborhoodTabulationAreaShapeProfile.html",
-          "hash": "y+Z/SpxAXHSTIC5wtR057yVKAHo+DC13YSih/1RjTWk="
+          "relative_path": "api/MicroService.Service.Mappings.NeighborhoodTabulationAreaShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.NeighborhoodTabulationAreaShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.NychaDevelopmentShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.NychaDevelopmentShapeProfile.html",
-          "hash": "Ho9eJ+40GX/KnVOcp6wNgKrfPK+1J7j5KHnjxzhAVqQ="
+          "relative_path": "api/MicroService.Service.Mappings.NychaDevelopmentShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.NychaDevelopmentShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.NypdPrecinctShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.NypdPrecinctShapeProfile.html",
-          "hash": "WWwM95g/Yo84EzragFpGcWX6bljDQK3Y39tX6dLfYdU="
+          "relative_path": "api/MicroService.Service.Mappings.NypdPrecinctShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.NypdPrecinctShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.NypdSectorShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.NypdSectorShapeProfile.html",
-          "hash": "M/dneEZW0e6J6+FcQcdp9u2mlAN1QcqmAhL2pr90t0M="
+          "relative_path": "api/MicroService.Service.Mappings.NypdSectorShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.NypdSectorShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.ParkShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.ParkShapeProfile.html",
-          "hash": "X9w90ybyYBVKexO5T+y1hwdp9ArzpA+nCzx20kKt/P0="
+          "relative_path": "api/MicroService.Service.Mappings.ParkShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.ParkShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.SubwayShapeProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.SubwayShapeProfile.html",
-          "hash": "BR4sTXMtcZv1nGOoR3rcbwR270HtNqxaYKuQfw1bnC8="
+          "relative_path": "api/MicroService.Service.Mappings.SubwayShapeProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.SubwayShapeProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.ZipCodeMappingsProfile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.ZipCodeMappingsProfile.html",
-          "hash": "1UZmiTWMSSTMcUE3Dk8CwBU1wM1JsBdgE29gGsSNAZQ="
+          "relative_path": "api/MicroService.Service.Mappings.ZipCodeMappingsProfile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings.ZipCodeMappingsProfile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Mappings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Mappings.html",
-          "hash": "NreB9erkAKHFH3z0+aBKlX+LeG79SpGzSXvUsZRILdc="
+          "relative_path": "api/MicroService.Service.Mappings.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Mappings",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Base.BoundingBox.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Base.BoundingBox.html",
-          "hash": "sDecV3v7QRdHVcaSAvhBbk+Haeet78xe2HsErPdxU0I="
+          "relative_path": "api/MicroService.Service.Models.Base.BoundingBox.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Base.BoundingBox",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Base.CentrePoint.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Base.CentrePoint.html",
-          "hash": "nPihMHRMNPHbg9yF98ThRky11wwu8tUZhPIN8WWCMrU="
+          "relative_path": "api/MicroService.Service.Models.Base.CentrePoint.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Base.CentrePoint",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Base.FlatFileBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Base.FlatFileBase.html",
-          "hash": "IQpqlz8Bm39gxzcIy5fGhDqKjx5JQwKYzLQG2ha7ACY="
+          "relative_path": "api/MicroService.Service.Models.Base.FlatFileBase.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Base.FlatFileBase",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Base.ShapeBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Base.ShapeBase.html",
-          "hash": "K/Hvq4E7OtNfwkV9R0JbYH5hCF7VOBaqhZXF8yqUR+8="
+          "relative_path": "api/MicroService.Service.Models.Base.ShapeBase.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Base.ShapeBase",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Base.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Base.html",
-          "hash": "5REiIdlxhfxdUDE6M0n8QPq2+ye5/ftseGUmJP2RWkg="
+          "relative_path": "api/MicroService.Service.Models.Base.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Base",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.BoroughBoundaryShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.BoroughBoundaryShape.html",
-          "hash": "bguRJHqpMIG/SfbYzw6s5a/PJRJ+EBrkWA4wjETj3Ck="
+          "relative_path": "api/MicroService.Service.Models.BoroughBoundaryShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.BoroughBoundaryShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.CommunityDistrictShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.CommunityDistrictShape.html",
-          "hash": "mbY0+DPXw1PR0pMyPFT4lQWWrLqXaZSzu75vOeD3TTM="
+          "relative_path": "api/MicroService.Service.Models.CommunityDistrictShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.CommunityDistrictShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.DataMaps.StationComplexDataMap.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.DataMaps.StationComplexDataMap.html",
-          "hash": "rn636Q1JmDtkTP5UQEuSigYqibMbVob+pufh3ucioeo="
+          "relative_path": "api/MicroService.Service.Models.DataMaps.StationComplexDataMap.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.DataMaps.StationComplexDataMap",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.DataMaps.StationDataMap.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.DataMaps.StationDataMap.html",
-          "hash": "Bx77nHEC6EnnrOSxrQtPm/Seqs2VrgB9D2smXnDo31g="
+          "relative_path": "api/MicroService.Service.Models.DataMaps.StationDataMap.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.DataMaps.StationDataMap",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.DataMaps.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.DataMaps.html",
-          "hash": "n3mokb2U1WLHxnscd2BVJjo5+jEN5DfkOJU5DvYXFtM="
+          "relative_path": "api/MicroService.Service.Models.DataMaps.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.DataMaps",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.DsnyDistrictsShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.DsnyDistrictsShape.html",
-          "hash": "tnaTZ6dbcoBp6d040PGqMSeiN19iNgmnMAiyzwNpamg="
+          "relative_path": "api/MicroService.Service.Models.DsnyDistrictsShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.DsnyDistrictsShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.Color.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.Color.html",
-          "hash": "Ds8CxqiYGC/qeX++mWD4BeG8mSK8Zu28gAgSAttKwns="
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.Color.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.Attributes.Color",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.Datum.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.Datum.html",
-          "hash": "WX6fDG5UP0ajlMwbzongMpuPe7D8X+REsdsRTzRu5bM="
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.Datum.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.Attributes.Datum",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureCollectionAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureCollectionAttribute.html",
-          "hash": "9hem/Fnih0/VZrfyRAJaRVOfGsk4MycHSHFGBFwqogM="
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureCollectionAttribute.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.Attributes.FeatureCollectionAttribute",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureCollectionExcludeAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureCollectionExcludeAttribute.html",
-          "hash": "6wzfo+g3Qo7LOnoTnEr6vB1TzFiiTjIH95hk4PoYr3g="
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureCollectionExcludeAttribute.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.Attributes.FeatureCollectionExcludeAttribute",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.html",
-          "hash": "s+xSNxQ7xNO4HHpM9vSaARHfDpSJEXjjWF6aOZukZmo="
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.Attributes.FeatureNameAttribute",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.FileTypes.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FileTypes.html",
-          "hash": "dBW8Cwfc9jmeH4W3HfEyJg4JAAdOeGNDylLsXT9DgPc="
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FileTypes.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.Attributes.FileTypes",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.FlatFileAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FlatFileAttribute.html",
-          "hash": "ATuxMgU+mwdlsWnsuSdjctw5HAhUH1qsNjIB3OSFFHs="
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.FlatFileAttribute.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.Attributes.FlatFileAttribute",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.MappingKeyAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.MappingKeyAttribute.html",
-          "hash": "j1an4/1L+3yUAxNf0WsouGJMQGjadCH2RDrZafh2tp8="
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.MappingKeyAttribute.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.Attributes.MappingKeyAttribute",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapeAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapeAttribute.html",
-          "hash": "CN74WZFGRbO/C/Upp+wF5vN92K9PiczXpI+15NdGI38="
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapeAttribute.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.Attributes.ShapeAttribute",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute.html",
-          "hash": "/PjhAclOn+bB4c/wiKC6mG6zJnen+lncaM9eGzhyRzs="
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.Attributes.ShapePropertiesAttribute",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.html",
-          "hash": "Uk7uFAoJxxrh/v8ozsLGm2FrtJF5WDJSeXv+nWRWYpc="
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.Attributes.ShapeStyleAttribute",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.Attributes.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.html",
-          "hash": "tyuxPV6osf9ciqMq8NTn4LuyhhwyveihOJXaY3AOLRg="
+          "relative_path": "api/MicroService.Service.Models.Enum.Attributes.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.Attributes",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.FlatFileProperties.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.FlatFileProperties.html",
-          "hash": "3WgOLQlq/7RlS4IjSDg3kvMPzdtHL9r4x4tuQQ7uLN0="
+          "relative_path": "api/MicroService.Service.Models.Enum.FlatFileProperties.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.FlatFileProperties",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.ShapeProperties.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.ShapeProperties.html",
-          "hash": "5BdzyJ3veXlDEmyDTwWPbDJsygrD18boTwdDoD/kzqU="
+          "relative_path": "api/MicroService.Service.Models.Enum.ShapeProperties.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum.ShapeProperties",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.Enum.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.Enum.html",
-          "hash": "DUDL9SXS4dEc7ytPxOC8WMcidPcW+ZFqB+Zotd/lldU="
+          "relative_path": "api/MicroService.Service.Models.Enum.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.Enum",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.html",
-          "hash": "0M+nHTOn1K9hA1L9hbe1xb5qf0Brg3OtZUo68V9wc/o="
+          "relative_path": "api/MicroService.Service.Models.FlatFileModels.StationComplexFlatFile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.FlatFileModels.StationComplexFlatFile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.FlatFileModels.StationFlatFile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.FlatFileModels.StationFlatFile.html",
-          "hash": "SDYHRHo5vNADOi/SxVxH7PuPtRjfp2cZyGoDreX2lU8="
+          "relative_path": "api/MicroService.Service.Models.FlatFileModels.StationFlatFile.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.FlatFileModels.StationFlatFile",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.FlatFileModels.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.FlatFileModels.html",
-          "hash": "lIbweZeoWukItDsd+1Dhw/70a1OVriI/UnechhkRXmE="
+          "relative_path": "api/MicroService.Service.Models.FlatFileModels.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.FlatFileModels",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.HistoricDistrictShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.HistoricDistrictShape.html",
-          "hash": "j5g3Bc2FRiQD4QK1frZ8QO5Q6BYTxlFraI+8tgEyjQ8="
+          "relative_path": "api/MicroService.Service.Models.HistoricDistrictShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.HistoricDistrictShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.html",
-          "hash": "5f49gegqwuJLpcUca2wXdm+gVHuTeQozHoviAHfdjP8="
+          "relative_path": "api/MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.IndividualLandmarkSiteShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.IndividualLandmarkSiteShape.html",
-          "hash": "xmtg21TYthWDI5CGSmmNUmnynTSBk2lnRBm+LrZty+E="
+          "relative_path": "api/MicroService.Service.Models.IndividualLandmarkSiteShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.IndividualLandmarkSiteShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.NationalRegisterHistoricPlacesShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.NationalRegisterHistoricPlacesShape.html",
-          "hash": "QoidGm6+avs/VaByH4NYfeZaKnshNJd1MPgGCoSL/ac="
+          "relative_path": "api/MicroService.Service.Models.NationalRegisterHistoricPlacesShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.NationalRegisterHistoricPlacesShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.NeighborhoodShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.NeighborhoodShape.html",
-          "hash": "J4CNoKDpHejeOPkZ1IalNdbDoj9/C2sa+N8BZnx24aA="
+          "relative_path": "api/MicroService.Service.Models.NeighborhoodShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.NeighborhoodShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.NeighborhoodTabulationAreaShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.NeighborhoodTabulationAreaShape.html",
-          "hash": "ZKkCWYjaLnPQKOzyI63ui/QKOWFeRr2dX7sGHyoCelg="
+          "relative_path": "api/MicroService.Service.Models.NeighborhoodTabulationAreaShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.NeighborhoodTabulationAreaShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.NychaDevelopmentShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.NychaDevelopmentShape.html",
-          "hash": "PwNVU5uLDBqg0x1suGGoE51G5NFflmlt1Wq6yuxUwT4="
+          "relative_path": "api/MicroService.Service.Models.NychaDevelopmentShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.NychaDevelopmentShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.NypdPrecinctShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.NypdPrecinctShape.html",
-          "hash": "x2yxYKHblySQ4vSZdxw8ymJcLXyBYA2ID2yRzs3bPzg="
+          "relative_path": "api/MicroService.Service.Models.NypdPrecinctShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.NypdPrecinctShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.NypdSectorShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.NypdSectorShape.html",
-          "hash": "OmlsR7z7IYryxIw42vumQ31wT/b8zU99k/NxwlfRc6k="
+          "relative_path": "api/MicroService.Service.Models.NypdSectorShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.NypdSectorShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.ParkShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.ParkShape.html",
-          "hash": "VUVMHnW0+oTono7BsRXNinF2pMNc/175/Od7IfqgX8I="
+          "relative_path": "api/MicroService.Service.Models.ParkShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.ParkShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.ScenicLandmarkShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.ScenicLandmarkShape.html",
-          "hash": "RNvyc8hJvCA+SJl7iT0rSJobMAJ7aMdWeLoWXNZS0J8="
+          "relative_path": "api/MicroService.Service.Models.ScenicLandmarkShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.ScenicLandmarkShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.SubwayShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.SubwayShape.html",
-          "hash": "1VXQysVQ7Wfz7GL4MVjoQzZ+z+XxTZ+ggKVGZD+1VCA="
+          "relative_path": "api/MicroService.Service.Models.SubwayShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.SubwayShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.ZipCodeShape.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.ZipCodeShape.html",
-          "hash": "XFCeDkY1Ve8725joD1JX/kAF9Dqg///xEGow1OGNvoc="
+          "relative_path": "api/MicroService.Service.Models.ZipCodeShape.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models.ZipCodeShape",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Models.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Models.html",
-          "hash": "73JIODqZY12Ppsvjh/9Ic3BQk1hLfFXpCoopcfAnM9I="
+          "relative_path": "api/MicroService.Service.Models.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Models",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.Base.AbstractShapeService-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.Base.AbstractShapeService-2.html",
-          "hash": "qsV9pdLk4qBtplnOafAMdpVUIKvtbPDBFw6nPcjYMwM="
+          "relative_path": "api/MicroService.Service.Services.Base.AbstractShapeService-2.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.Base.AbstractShapeService<TShape, TProfile>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.Base.ShapefileDataReaderResolver.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.Base.ShapefileDataReaderResolver.html",
-          "hash": "McCF5PB+XhJYWaVX0QKTXHIK9FxXGM381jC1EQsa+N0="
+          "relative_path": "api/MicroService.Service.Services.Base.ShapefileDataReaderResolver.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.Base.ShapefileDataReaderResolver",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.Base.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.Base.html",
-          "hash": "5IGXh7IDC0GML0OkCXmQv14t60jIPgEYU5Px6YCe4pk="
+          "relative_path": "api/MicroService.Service.Services.Base.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.Base",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.BoroughBoundariesService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.BoroughBoundariesService.html",
-          "hash": "fxQ7/Nj65tO4lshKPtKF9UQ1dPYbRdWlN7X3y+5jQO0="
+          "relative_path": "api/MicroService.Service.Services.BoroughBoundariesService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.BoroughBoundariesService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.CommunityDistrictsService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.CommunityDistrictsService.html",
-          "hash": "ZSU6jIuP+GpU1FLGMx6uyt0j2ss7eei7isDgARA8/HY="
+          "relative_path": "api/MicroService.Service.Services.CommunityDistrictsService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.CommunityDistrictsService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.DataService.CalculationService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.DataService.CalculationService.html",
-          "hash": "IDlntyVow1H4JZqWUX9uW8V6RXkzKgWjApuDm469Bp8="
+          "relative_path": "api/MicroService.Service.Services.DataService.CalculationService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.DataService.CalculationService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.DataService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.DataService.html",
-          "hash": "SUpTHg95wy+CWH5K9xokJcU0nmHSED8CYI1wU7dcuBA="
+          "relative_path": "api/MicroService.Service.Services.DataService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.DataService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.DsnyDistrictsService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.DsnyDistrictsService.html",
-          "hash": "P8WWc/JlLT5sZL39BtU2aZqvJSMUc6Q1ffCnLuwYPso="
+          "relative_path": "api/MicroService.Service.Services.DsnyDistrictsService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.DsnyDistrictsService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.FlatFileService.IFlatFileService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.FlatFileService.IFlatFileService.html",
-          "hash": "lQGw0QzMnCpMlcbYWvPy10VkxcsuLLXbUIqmWsWbSeU="
+          "relative_path": "api/MicroService.Service.Services.FlatFileService.IFlatFileService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.FlatFileService.IFlatFileService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.FlatFileService.StationComplexFlatFileService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.FlatFileService.StationComplexFlatFileService.html",
-          "hash": "KKS9BZyltRn03tQxXyH/DKkiUiTBwKPLK3/LNX/wj3w="
+          "relative_path": "api/MicroService.Service.Services.FlatFileService.StationComplexFlatFileService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.FlatFileService.StationComplexFlatFileService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.FlatFileService.StationFlatFileService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.FlatFileService.StationFlatFileService.html",
-          "hash": "MzDCWswJripov7Rlw6bOPMraVggYUQ7kP4WsjwhLhHA="
+          "relative_path": "api/MicroService.Service.Services.FlatFileService.StationFlatFileService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.FlatFileService.StationFlatFileService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.FlatFileService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.FlatFileService.html",
-          "hash": "3WZ9js2t8X6G2r2tpLo9pcuA1ghhjlh2tTyGTqqOpbs="
+          "relative_path": "api/MicroService.Service.Services.FlatFileService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.FlatFileService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.HistoricDistrictService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.HistoricDistrictService.html",
-          "hash": "VNw3fU9TF49DPlJ/zdhoYKk4cDWsOsiUaWRthfmMeYo="
+          "relative_path": "api/MicroService.Service.Services.HistoricDistrictService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.HistoricDistrictService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService.html",
-          "hash": "iQlna7sohoOTIX0YetgaS5nvuu8pcvIoBXREQQOZKDA="
+          "relative_path": "api/MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.IndividualLandmarkHistoricDistrictsService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.IndividualLandmarkSiteService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.IndividualLandmarkSiteService.html",
-          "hash": "8kiNgvbTPyXz0jAwn47VJBJVbbyjqxhSUfCcXIYspfg="
+          "relative_path": "api/MicroService.Service.Services.IndividualLandmarkSiteService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.IndividualLandmarkSiteService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.NationalRegisterHistoricPlacesService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.NationalRegisterHistoricPlacesService.html",
-          "hash": "SsjzxdIOiTQy1s036OGcPY/ub3MD6VhbuQGTELlin5s="
+          "relative_path": "api/MicroService.Service.Services.NationalRegisterHistoricPlacesService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.NationalRegisterHistoricPlacesService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.NeighborhoodTabulationAreasService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html",
-          "hash": "3g0hXvfGYRdwQv9NkzCTZeFu3qHGDt3Hm5ocY4ZDjk0="
+          "relative_path": "api/MicroService.Service.Services.NeighborhoodTabulationAreasService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.NeighborhoodTabulationAreasService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.NeighborhoodsService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.NeighborhoodsService.html",
-          "hash": "rerPGICnQoEnlvWyckJ7kH/vRnodgEJjllrD52N30b8="
+          "relative_path": "api/MicroService.Service.Services.NeighborhoodsService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.NeighborhoodsService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.NychaDevelopmentService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.NychaDevelopmentService.html",
-          "hash": "Szap2uWC+LhHWxvf9a/ZqON+Xy+2ArSbcYSrwV8+KZA="
+          "relative_path": "api/MicroService.Service.Services.NychaDevelopmentService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.NychaDevelopmentService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.NypdPolicePrecinctService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.NypdPolicePrecinctService.html",
-          "hash": "sFnVdZrz465aKtiQrwaXdbteFEJnRNfsIGHVNx+hFZo="
+          "relative_path": "api/MicroService.Service.Services.NypdPolicePrecinctService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.NypdPolicePrecinctService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.NypdSectorsService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.NypdSectorsService.html",
-          "hash": "Mr/dUEgcDl47RiDevPHgHLrldKnnHq9KqdKpeNQiVyA="
+          "relative_path": "api/MicroService.Service.Services.NypdSectorsService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.NypdSectorsService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.ParkService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.ParkService.html",
-          "hash": "EpyJr33e24RaRYS4IjHLzy6WA0et4YFTAfl/9sWbp0w="
+          "relative_path": "api/MicroService.Service.Services.ParkService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.ParkService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.ScenicLandmarkService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.ScenicLandmarkService.html",
-          "hash": "3ASIGLpsmHQreY+8PBJZMlOv5GUwraVzCC5n1OU3YpI="
+          "relative_path": "api/MicroService.Service.Services.ScenicLandmarkService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.ScenicLandmarkService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.SubwayService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.SubwayService.html",
-          "hash": "m0tEB3VQvQ01H8mKxNCMjiMPawypAxhu2hVKRFUt01U="
+          "relative_path": "api/MicroService.Service.Services.SubwayService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.SubwayService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.ZipCodeService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.ZipCodeService.html",
-          "hash": "b3nklck3tsFNYvVQQ4WAFQq2IuTJE8yFA0JIej4DySg="
+          "relative_path": "api/MicroService.Service.Services.ZipCodeService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services.ZipCodeService",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.Service.Services.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.Service.Services.html",
-          "hash": "/hHutjG9zWLn9Sk4z+PmtsARHdGOfcN/qh7bg+6gEUU="
+          "relative_path": "api/MicroService.Service.Services.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.Service.Services",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Extensions.Constants.ApiConstants.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Extensions.Constants.ApiConstants.html",
-          "hash": "E9QR0cukVPXy9MOeVe9YeIVM1Oez/d8Sn/YuRWlaFVE="
+          "relative_path": "api/MicroService.WebApi.Extensions.Constants.ApiConstants.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Extensions.Constants.ApiConstants",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.Extensions.Constants.ApiConstants.yml\" sourcestartlinenumber=\"2\">Api Constants</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Extensions.Constants.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Extensions.Constants.html",
-          "hash": "ZXfFkfELfc2bkfvITxHwY6Dm1kQzjAxQInVZhtNDg2U="
+          "relative_path": "api/MicroService.WebApi.Extensions.Constants.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Extensions.Constants",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Extensions.FolderHealthCheck.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Extensions.FolderHealthCheck.html",
-          "hash": "O6WV7VdbvG+kA7ajU5BxQDTtRzuW4mDMxBXXo4cuuYg="
+          "relative_path": "api/MicroService.WebApi.Extensions.FolderHealthCheck.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Extensions.FolderHealthCheck",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.Extensions.FolderHealthCheck.yml\" sourcestartlinenumber=\"2\">Folder Health Check</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Extensions.ServiceCollectionExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Extensions.ServiceCollectionExtensions.html",
-          "hash": "N0OHb4+Y1tkmSV9qAIud5/zHZfhEus+oUcNH9kzVFFc="
+          "relative_path": "api/MicroService.WebApi.Extensions.ServiceCollectionExtensions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Extensions.ServiceCollectionExtensions",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.Extensions.ServiceCollectionExtensions.yml\" sourcestartlinenumber=\"2\">Service Collection Extensions</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Extensions.Swagger.ConfigureSwaggerOptions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Extensions.Swagger.ConfigureSwaggerOptions.html",
-          "hash": "C7L6pSdxhNCvpMDJH76v5W5eO8x5lkmuikpyOpFRt3c="
+          "relative_path": "api/MicroService.WebApi.Extensions.Swagger.ConfigureSwaggerOptions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Extensions.Swagger.ConfigureSwaggerOptions",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.Extensions.Swagger.ConfigureSwaggerOptions.yml\" sourcestartlinenumber=\"2\">Configures the Swagger generation options.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Extensions.Swagger.SwaggerDocumentFilter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Extensions.Swagger.SwaggerDocumentFilter.html",
-          "hash": "Xd27xz3SqGGYHYAudZhk1mNDQa0lnm0N4b7xWJTv3us="
+          "relative_path": "api/MicroService.WebApi.Extensions.Swagger.SwaggerDocumentFilter.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Extensions.Swagger.SwaggerDocumentFilter",
+      "Summary": ""
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Extensions.Swagger.SwaggerFeatureRequestExamples.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Extensions.Swagger.SwaggerFeatureRequestExamples.html",
-          "hash": "OVt5iZXl0GxGw5nB+Pu0XMWMAIJI/XHY7ZAQyipnUco="
+          "relative_path": "api/MicroService.WebApi.Extensions.Swagger.SwaggerFeatureRequestExamples.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Extensions.Swagger.SwaggerFeatureRequestExamples",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.Extensions.Swagger.SwaggerFeatureRequestExamples.yml\" sourcestartlinenumber=\"2\">Swagger Display Examples</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Extensions.Swagger.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Extensions.Swagger.html",
-          "hash": "gASjI8Icj/dZ+U4kgbPzNtTJyU67O92Hka3UEflIQbc="
+          "relative_path": "api/MicroService.WebApi.Extensions.Swagger.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Extensions.Swagger",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Extensions.SystemHealthCheckBuilderExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Extensions.SystemHealthCheckBuilderExtensions.html",
-          "hash": "gB0jA2ulVmmai3zi+ceNS7w2Lb7WAWhDQpVm/3pG6qs="
+          "relative_path": "api/MicroService.WebApi.Extensions.SystemHealthCheckBuilderExtensions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Extensions.SystemHealthCheckBuilderExtensions",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.Extensions.SystemHealthCheckBuilderExtensions.yml\" sourcestartlinenumber=\"2\">System Health Check Builder Extensions</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Extensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Extensions.html",
-          "hash": "BbfsK0NT3nrLVPyqphcb/mPV++RHkiWFjRpWiESx4Xw="
+          "relative_path": "api/MicroService.WebApi.Extensions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Extensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Models.FeatureAttributeLookupRequestModel.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Models.FeatureAttributeLookupRequestModel.html",
-          "hash": "JAZSKhnbTdzDWEKL/olnPgQjvpZqDOdaEaId/Bte+z4="
+          "relative_path": "api/MicroService.WebApi.Models.FeatureAttributeLookupRequestModel.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Models.FeatureAttributeLookupRequestModel",
+      "Summary": ""
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Models.FeatureAttributeRequestModel.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Models.FeatureAttributeRequestModel.html",
-          "hash": "mRUtjlsgKxhzZHaaiP9PME1v6K/iDDWQ2346Qg1MHpo="
+          "relative_path": "api/MicroService.WebApi.Models.FeatureAttributeRequestModel.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Models.FeatureAttributeRequestModel",
+      "Summary": ""
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Models.FeatureRequestModel.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Models.FeatureRequestModel.html",
-          "hash": "BEdos8f9VotaNDSKlorhpuCZf5f9kI7gEskMrKyDCvk="
+          "relative_path": "api/MicroService.WebApi.Models.FeatureRequestModel.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Models.FeatureRequestModel",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.Models.FeatureRequestModel.yml\" sourcestartlinenumber=\"2\">Feature Request Model</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Models.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Models.html",
-          "hash": "u+bnS6XKyTeNdIjcPWII/3tbgHxT34D00r1dQivT9xM="
+          "relative_path": "api/MicroService.WebApi.Models.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Models",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Services.Cron.CronJobService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Services.Cron.CronJobService.html",
-          "hash": "FDQ8dwFLINxemyN+vs+ccx82WdXG4LGBNz7l9+ap4YA="
+          "relative_path": "api/MicroService.WebApi.Services.Cron.CronJobService.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Services.Cron.CronJobService",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.Services.Cron.CronJobService.yml\" sourcestartlinenumber=\"2\">Cron Job Service</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Services.Cron.IScheduleConfig.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Services.Cron.IScheduleConfig.html",
-          "hash": "ptcmGNzEzpZeMt7Vgu+o8vNSQ4UmEbpi68TpTg6f40I="
+          "relative_path": "api/MicroService.WebApi.Services.Cron.IScheduleConfig.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Services.Cron.IScheduleConfig",
+      "Summary": ""
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Services.Cron.ScheduleConfig.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Services.Cron.ScheduleConfig.html",
-          "hash": "xLomnK+GBcdopH08Eu3JW5ecmwmhho0wxSsHwJANj9s="
+          "relative_path": "api/MicroService.WebApi.Services.Cron.ScheduleConfig.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Services.Cron.ScheduleConfig",
+      "Summary": ""
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.Services.Cron.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.Services.Cron.html",
-          "hash": "EnY+OxfF6ViKQqkmOjMg9yj9gAepD7owcwhg03nwe4c="
+          "relative_path": "api/MicroService.WebApi.Services.Cron.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.Services.Cron",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V1.Controllers.FeatureServiceController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V1.Controllers.FeatureServiceController.html",
-          "hash": "2bVdAXjq57eYCrl1etQG+G2moPBaelCGn1mtdA6vDXM="
+          "relative_path": "api/MicroService.WebApi.V1.Controllers.FeatureServiceController.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V1.Controllers.FeatureServiceController",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.V1.Controllers.FeatureServiceController.yml\" sourcestartlinenumber=\"2\">Feature Service Controller</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V1.Controllers.FlatFileServiceController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V1.Controllers.FlatFileServiceController.html",
-          "hash": "ORKMHhrGLMp5Zz8xHLGoi5gBXxnu4w02McQtYSyp/mg="
+          "relative_path": "api/MicroService.WebApi.V1.Controllers.FlatFileServiceController.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V1.Controllers.FlatFileServiceController",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.V1.Controllers.FlatFileServiceController.yml\" sourcestartlinenumber=\"2\">FlatFile Service Controller</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V1.Controllers.TestDataController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V1.Controllers.TestDataController.html",
-          "hash": "HcuuNwhtkOIQgLYsP/bDROO8PMilpKf0AS+WuJMCxmU="
+          "relative_path": "api/MicroService.WebApi.V1.Controllers.TestDataController.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V1.Controllers.TestDataController",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.V1.Controllers.TestDataController.yml\" sourcestartlinenumber=\"2\">Test Data Controller</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V1.Controllers.TransformationServiceController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V1.Controllers.TransformationServiceController.html",
-          "hash": "0rj3c+HvcVAWyf+IZCwo8V4iWSvh0gd+B3lVr7wTETs="
+          "relative_path": "api/MicroService.WebApi.V1.Controllers.TransformationServiceController.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V1.Controllers.TransformationServiceController",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.V1.Controllers.TransformationServiceController.yml\" sourcestartlinenumber=\"2\">Feature Service Controller</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V1.Controllers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V1.Controllers.html",
-          "hash": "+Kp4IdWWp7A0pQQrNtY4ZcOgHTXfszuMPmswaOIuXZs="
+          "relative_path": "api/MicroService.WebApi.V1.Controllers.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V1.Controllers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V2.Models.Order.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V2.Models.Order.html",
-          "hash": "Qhxyoj0oss0clkBtiZwkxu01U/JlxeM0HC5uE+57zDQ="
+          "relative_path": "api/MicroService.WebApi.V2.Models.Order.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V2.Models.Order",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.V2.Models.Order.yml\" sourcestartlinenumber=\"2\">Represents an order.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V2.Models.Person.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V2.Models.Person.html",
-          "hash": "+iNa8NqHUWICM2fjugVBrF5pkw7jwyfAnxHJ9gA+WJo="
+          "relative_path": "api/MicroService.WebApi.V2.Models.Person.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V2.Models.Person",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.V2.Models.Person.yml\" sourcestartlinenumber=\"2\">Represents a person.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V2.Models.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V2.Models.html",
-          "hash": "d5T6KcVIOiX6mZPXKSCxFjNruju0ezjHL/5xOWYu+iA="
+          "relative_path": "api/MicroService.WebApi.V2.Models.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V2.Models",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V3.Controllers.OrdersController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V3.Controllers.OrdersController.html",
-          "hash": "4Zq+lPawhXWpRhk2parATmVhiEE5m1UblydB+wtwVVE="
+          "relative_path": "api/MicroService.WebApi.V3.Controllers.OrdersController.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V3.Controllers.OrdersController",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.V3.Controllers.OrdersController.yml\" sourcestartlinenumber=\"2\">Represents a RESTful service of orders.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V3.Controllers.PeopleController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V3.Controllers.PeopleController.html",
-          "hash": "Z4zOY78g0ifrMua+RC/JlqnQZJna6OVs3IGevmkpDjQ="
+          "relative_path": "api/MicroService.WebApi.V3.Controllers.PeopleController.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V3.Controllers.PeopleController",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.V3.Controllers.PeopleController.yml\" sourcestartlinenumber=\"2\">Represents a RESTful people service.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V3.Controllers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V3.Controllers.html",
-          "hash": "PqBFBR7UNmuCq7KWThCvyIjBOKoNyZm4LD1infAotbQ="
+          "relative_path": "api/MicroService.WebApi.V3.Controllers.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V3.Controllers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V3.Models.Order.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V3.Models.Order.html",
-          "hash": "L/i3R5Qf68BFFAmo92oVVBzSRBu3T/4FEYtAHQ8cC+w="
+          "relative_path": "api/MicroService.WebApi.V3.Models.Order.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V3.Models.Order",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.V3.Models.Order.yml\" sourcestartlinenumber=\"2\">Represents an order.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V3.Models.Person.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V3.Models.Person.html",
-          "hash": "9k+UkpEWK5rsDWurLnGCl+PA887cH1KTg+l6WhEy1uA="
+          "relative_path": "api/MicroService.WebApi.V3.Models.Person.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V3.Models.Person",
+      "Summary": "<p sourcefile=\"api/MicroService.WebApi.V3.Models.Person.yml\" sourcestartlinenumber=\"2\">Represents a person.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/MicroService.WebApi.V3.Models.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MicroService.WebApi.V3.Models.html",
-          "hash": "Jw4kHxh8G7/Iv5ob6RKna46nU3tBgNSG5anPZr+Xq8s="
+          "relative_path": "api/MicroService.WebApi.V3.Models.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MicroService.WebApi.V3.Models",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/Microsoft.Examples.V2.Controllers.OrdersController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Microsoft.Examples.V2.Controllers.OrdersController.html",
-          "hash": "6+V0xfsE5u3a6BpXBiaotLE3+huxmj/Y8JR+YccqJVs="
+          "relative_path": "api/Microsoft.Examples.V2.Controllers.OrdersController.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Microsoft.Examples.V2.Controllers.OrdersController",
+      "Summary": "<p sourcefile=\"api/Microsoft.Examples.V2.Controllers.OrdersController.yml\" sourcestartlinenumber=\"2\">Represents a RESTful service of orders.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/Microsoft.Examples.V2.Controllers.PeopleController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Microsoft.Examples.V2.Controllers.PeopleController.html",
-          "hash": "wBmWl/vQ2UUvZEnj5ntj4YL84OfJAt8pydwcQEIT4jY="
+          "relative_path": "api/Microsoft.Examples.V2.Controllers.PeopleController.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Microsoft.Examples.V2.Controllers.PeopleController",
+      "Summary": "<p sourcefile=\"api/Microsoft.Examples.V2.Controllers.PeopleController.yml\" sourcestartlinenumber=\"2\">Represents a RESTful people service.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/Microsoft.Examples.V2.Controllers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Microsoft.Examples.V2.Controllers.html",
-          "hash": "pf7ks54lOO+48s8Ac7liMQlh7zfy1iAnqhWZqLsDMJI="
+          "relative_path": "api/Microsoft.Examples.V2.Controllers.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Microsoft.Examples.V2.Controllers",
+      "Summary": null
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "api/index.md",
       "output": {
         ".html": {
-          "relative_path": "api/index.html",
-          "hash": "CI0gNdYKwUMCUPGtuHKzIFCX/X9HKd68UIQGYY8Uby8="
+          "relative_path": "api/index.html"
         }
       },
       "version": ""
@@ -1881,8 +2383,10 @@
       "source_relative_path": "api/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "api/toc.html",
-          "hash": "neXt5TOZLbHgGsERd+l8dCArHLcIBDeZnQEWjcqbc3k="
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
         }
       },
       "version": ""
@@ -1892,8 +2396,7 @@
       "source_relative_path": "articles/csharp_coding_standards.md",
       "output": {
         ".html": {
-          "relative_path": "articles/csharp_coding_standards.html",
-          "hash": "VMbEese5DaFlR8AJ6flbLLHiaIpchKqlm5OANrCqZHQ="
+          "relative_path": "articles/csharp_coding_standards.html"
         }
       },
       "version": ""
@@ -1903,22 +2406,17 @@
       "source_relative_path": "articles/details1.md",
       "output": {
         ".html": {
-          "relative_path": "articles/details1.html",
-          "hash": "CAJ3kqPlwNInh3izqU9jPCbw5TF5OKdnPNoShFzy56c="
+          "relative_path": "articles/details1.html"
         }
       },
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "articles/docfx.md",
       "output": {
         ".html": {
-          "relative_path": "articles/docfx.html",
-          "hash": "fqLrlh51MuAVKnAoKeTYoTKfnG9IgwdSlzlwEbWZHso="
+          "relative_path": "articles/docfx.html"
         }
       },
       "version": ""
@@ -1928,8 +2426,7 @@
       "source_relative_path": "articles/eks.md",
       "output": {
         ".html": {
-          "relative_path": "articles/eks.html",
-          "hash": "aehyHuvTYes9VdktH8MysfeXqRbO1NFSjui/sY9SUfE="
+          "relative_path": "articles/eks.html"
         }
       },
       "version": ""
@@ -1939,8 +2436,7 @@
       "source_relative_path": "articles/howto/howto1.md",
       "output": {
         ".html": {
-          "relative_path": "articles/howto/howto1.html",
-          "hash": "39URSwBCbcSMkrPRyGYYO/E8/vZDajvo3VQJdxM0L5Q="
+          "relative_path": "articles/howto/howto1.html"
         }
       },
       "version": ""
@@ -1950,8 +2446,7 @@
       "source_relative_path": "articles/howto/howto2.md",
       "output": {
         ".html": {
-          "relative_path": "articles/howto/howto2.html",
-          "hash": "jTQBLCZAoviwvn3O+NgA9dZxQM/pWjb1BmtqdVVSmuA="
+          "relative_path": "articles/howto/howto2.html"
         }
       },
       "version": ""
@@ -1961,8 +2456,7 @@
       "source_relative_path": "articles/howto/overview.md",
       "output": {
         ".html": {
-          "relative_path": "articles/howto/overview.html",
-          "hash": "ir7BTLSubVZ3kY9qAQRHeM7QcbH8VbE7+kzF65qoxbQ="
+          "relative_path": "articles/howto/overview.html"
         }
       },
       "version": ""
@@ -1972,8 +2466,7 @@
       "source_relative_path": "articles/hyper-v.md",
       "output": {
         ".html": {
-          "relative_path": "articles/hyper-v.html",
-          "hash": "oc54BItzV7sg6O0tyWkXNl+ODNhSgyspQc0ycs7Fl/k="
+          "relative_path": "articles/hyper-v.html"
         }
       },
       "version": ""
@@ -2073,8 +2566,7 @@
       "source_relative_path": "articles/intro.md",
       "output": {
         ".html": {
-          "relative_path": "articles/intro.html",
-          "hash": "OYZIkEy/wWw7ZlaVDZ9HTJYyLCQRx5E1wVxeONU665U="
+          "relative_path": "articles/intro.html"
         }
       },
       "version": ""
@@ -2084,8 +2576,7 @@
       "source_relative_path": "articles/kubernetes.md",
       "output": {
         ".html": {
-          "relative_path": "articles/kubernetes.html",
-          "hash": "cBaR/n3a9k2Yq91JU1U/CVFsAk13XF9CRKfhb8gznsY="
+          "relative_path": "articles/kubernetes.html"
         }
       },
       "version": ""
@@ -2095,8 +2586,7 @@
       "source_relative_path": "articles/myget.md",
       "output": {
         ".html": {
-          "relative_path": "articles/myget.html",
-          "hash": "nbhCUQoYUlgli5F3DBPUKS4atk1Tp7XhMKaaYxGhrjw="
+          "relative_path": "articles/myget.html"
         }
       },
       "version": ""
@@ -2106,8 +2596,7 @@
       "source_relative_path": "articles/requirements.md",
       "output": {
         ".html": {
-          "relative_path": "articles/requirements.html",
-          "hash": "VBorIXxvZUy1q8BuA6vydDwmcwV6R26VHY7ejUWAR04="
+          "relative_path": "articles/requirements.html"
         }
       },
       "version": ""
@@ -2117,22 +2606,17 @@
       "source_relative_path": "articles/sonarqube.md",
       "output": {
         ".html": {
-          "relative_path": "articles/sonarqube.html",
-          "hash": "xZx5/Cq0RwS28A6NGLAVe2De4QbB4MUdVLOgbOb8/Zw="
+          "relative_path": "articles/sonarqube.html"
         }
       },
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "articles/swagger.md",
       "output": {
         ".html": {
-          "relative_path": "articles/swagger.html",
-          "hash": "toIHfR3IOWxyxhqwgnbZqrmjOneJkSWYP7t97Xuc4VA="
+          "relative_path": "articles/swagger.html"
         }
       },
       "version": ""
@@ -2142,8 +2626,10 @@
       "source_relative_path": "articles/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "articles/toc.html",
-          "hash": "pAO06avyGYRoqDvrMkrynLruYQ0gLnnVHX52b52itNs="
+          "relative_path": "articles/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/toc.json"
         }
       },
       "version": ""
@@ -2153,8 +2639,7 @@
       "source_relative_path": "index.md",
       "output": {
         ".html": {
-          "relative_path": "index.html",
-          "hash": "1wSNJHWMTIgH+tK98mH+NIyouP/+go/nlTYkogP9+Rg="
+          "relative_path": "index.html"
         }
       },
       "version": ""
@@ -2170,15 +2655,11 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "restapi/redoc.md",
       "output": {
         ".html": {
-          "relative_path": "restapi/redoc.html",
-          "hash": "VB7v7/Io8Us0bHUvZ/bnJIRmGIBpLjOCtQYJk4WFjGA="
+          "relative_path": "restapi/redoc.html"
         }
       },
       "version": ""
@@ -2208,14 +2689,15 @@
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
-          "relative_path": "toc.html",
-          "hash": "6qMGQKo02KxLi/AdnBNmbtlVl2iDt7Mq59UKXNogD+g="
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
       "version": ""
     }
   ],
-  "version_info": {},
   "groups": [
     {
       "xrefmap": "xrefmap.yml"
