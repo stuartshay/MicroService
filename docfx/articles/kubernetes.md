@@ -28,7 +28,7 @@ choco install kubernetes-helm
 ![](images/docker-desktop.png)
 
 
-#### Verify Instalation 
+#### Verify Installation
 
 ```
 kubectl version
@@ -40,7 +40,7 @@ kubectl cluster-info
 kubectl get nodes
 ```
 
-### Installating the Kubernetes Dashboard
+### Installing the Kubernetes Dashboard
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
