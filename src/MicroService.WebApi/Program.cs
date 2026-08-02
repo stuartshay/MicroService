@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Asp.Versioning.ApiExplorer;
+using AutoMapper;
 using HealthChecks.UI.Client;
 using MicroService.Common.Constants;
 using MicroService.Common.Health;
@@ -19,7 +20,6 @@ using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.Swagger;
 using MicroService.WebApi.Services;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;

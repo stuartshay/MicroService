@@ -1,4 +1,5 @@
-﻿using MicroService.Service.Helpers;
+﻿using Asp.Versioning;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
