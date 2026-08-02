@@ -53,7 +53,14 @@ This project primarily focuses on datasets related to NYC Monuments, Landmarks, 
 
 ## Local Development
 
-Install the .NET SDK version selected by `global.json` and GNU Make, then run:
+On Debian, Ubuntu, or macOS, install the .NET SDK selected by `global.json` and
+the required development tools with:
+
+```bash
+./scripts/setup.sh
+```
+
+Open a new terminal after setup, then run:
 
 ```bash
 make build
