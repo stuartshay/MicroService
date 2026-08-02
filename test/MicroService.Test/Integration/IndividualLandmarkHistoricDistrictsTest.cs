@@ -194,7 +194,6 @@ namespace MicroService.Test.Integration
             Assert.Null(sut);
         }
 
-
         [Fact(DisplayName = "Get Feature List")]
         public void Get_Feature_List()
         {
