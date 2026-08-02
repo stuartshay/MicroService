@@ -1,4 +1,5 @@
-﻿using MicroService.Data.Models;
+﻿using Asp.Versioning;
+using MicroService.Data.Models;
 using MicroService.Data.Repository;
 using MicroService.Service.Constants;
 using MicroService.Service.Interfaces;

@@ -1,9 +1,10 @@
-﻿using MicroService.Service.Configuration;
+﻿using Asp.Versioning;
+using Asp.Versioning.ApiExplorer;
+using MicroService.Service.Configuration;
 using MicroService.Service.Models.Enum;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Resources;
@@ -64,9 +65,9 @@ namespace MicroService.WebApi.Extensions
         /// <param name="services"></param>
         public static void AddCustomApiVersioning(this IServiceCollection services)
         {
-            _ = services.AddApiVersioning(options => { options.ReportApiVersions = true; });
-
-            _ = services.AddVersionedApiExplorer(
+            _ = services.AddApiVersioning(options => { options.ReportApiVersions = true; })
+                .AddMvc()
+                .AddApiExplorer(
                 options =>
                 {
                     // add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
