@@ -56,6 +56,10 @@ install_linux_prerequisites() {
         fi
     done
 
+    if ! python3 -c 'import ensurepip, venv' >/dev/null 2>&1; then
+        prerequisites_present=false
+    fi
+
     if [[ "${prerequisites_present}" == true ]] && \
         command -v ldconfig >/dev/null 2>&1 && ldconfig -p 2>/dev/null | grep -Fq 'libicu'; then
         log "Linux prerequisite packages are already installed"
