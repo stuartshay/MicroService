@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Install pre-commit
+        run: python -m pip install --disable-pip-version-check pre-commit==4.6.0
+
+      - name: Run pre-commit
+        run: pre-commit run --all-files --show-diff-on-failure
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - name: Restore dependencies
+        run: dotnet restore MicroService.sln
+
+      - name: Build solution
+        run: dotnet build MicroService.sln --configuration Release --no-restore
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - name: Prepare test data
+        run: |
+          unzip -p \
+            'files/LPC_Individual_Landmark_and_Historic_Building_Database/20231209/Individual Landmark and Historic District Building Database_20240211.zip' \
+            'geo_export_590d5a7b-ac38-4625-a642-55d90456869d.dbf' \
+            > 'files/LPC_Individual_Landmark_and_Historic_Building_Database/LPC_Individual_Landmark_and_Historic_District_Building_Database_20231209.dbf'
+
+      - name: Test solution
+        run: dotnet test MicroService.sln --configuration Release

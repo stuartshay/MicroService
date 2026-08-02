@@ -50,3 +50,23 @@ This project primarily focuses on datasets related to NYC Monuments, Landmarks, 
 ## Developer Documentation
 
 - [DocFX](https://stuartshay.github.io/MicroService/)
+
+## Local Development
+
+On Debian, Ubuntu, or macOS, install the .NET SDK selected by `global.json` and
+the required development tools with:
+
+```bash
+./scripts/setup.sh
+```
+
+Setup also installs and activates the project's pre-commit hooks. Open a new
+terminal after setup, then run:
+
+```bash
+make build
+make run
+```
+
+Use `make check` to run every pre-commit check manually. Use `make help` to list
+the available targets and configuration options.

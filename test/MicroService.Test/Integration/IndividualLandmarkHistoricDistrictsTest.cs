@@ -67,15 +67,15 @@ namespace MicroService.Test.Integration
             Assert.NotNull(features);
         }
 
-        [InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique", "MN")]
+        [InlineData(-73.9600952918919, 40.63098618196636, "803 East 17th Street", "BK")]
         [Theory(DisplayName = "Get Geospatial Point Lookup")]
         public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object expected2)
         {
-            var sut = _service.GetFeatureLookup(x, y, Datum.Nad83);
+            var actual = _service.GetFeatureLookup(x, y, Datum.Nad83);
 
-            Assert.NotNull(sut);
-            Assert.Equal(expected, sut.AreaName);
-            Assert.Equal(expected2, sut.BoroName);
+            Assert.NotNull(actual);
+            Assert.Equal(expected, actual.Address);
+            Assert.Equal(expected2, actual.BoroName);
         }
 
         [InlineData(-73.920786, 40.644343, "Pieter Claesen Wyckoff House", "BK")]
@@ -193,7 +193,6 @@ namespace MicroService.Test.Integration
 
             Assert.Null(sut);
         }
-
 
         [Fact(DisplayName = "Get Feature List")]
         public void Get_Feature_List()
