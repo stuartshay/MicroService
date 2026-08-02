@@ -3,16 +3,100 @@
   "extends": [
     "config:recommended"
   ],
+  "dependencyDashboard": true,
+  "labels": [
+    "dependencies"
+  ],
   "packageRules": [
     {
-      "description": "Group all GitHub Actions updates into one pull request",
+      "description": "Group GitHub Actions updates",
       "matchManagers": [
         "github-actions"
       ],
       "groupName": "GitHub Actions",
       "groupSlug": "github-actions",
-      "groupSingleUpdates": true,
       "separateMajorMinor": false
+    },
+    {
+      "description": "Group Microsoft runtime packages",
+      "matchManagers": [
+        "nuget"
+      ],
+      "matchPackageNames": [
+        "Microsoft.Extensions.*",
+        "Microsoft.IdentityModel.*",
+        "System.IdentityModel.*"
+      ],
+      "groupName": "Microsoft .NET runtime packages",
+      "groupSlug": "microsoft-dotnet-runtime"
+    },
+    {
+      "description": "Group OpenTelemetry packages",
+      "matchManagers": [
+        "nuget"
+      ],
+      "matchPackageNames": [
+        "OpenTelemetry*"
+      ],
+      "groupName": "OpenTelemetry",
+      "groupSlug": "opentelemetry"
+    },
+    {
+      "description": "Group ASP.NET Core health check packages",
+      "matchManagers": [
+        "nuget"
+      ],
+      "matchPackageNames": [
+        "AspNetCore.HealthChecks.*"
+      ],
+      "groupName": "ASP.NET Core health checks",
+      "groupSlug": "aspnet-health-checks"
+    },
+    {
+      "description": "Group Swagger packages",
+      "matchManagers": [
+        "nuget"
+      ],
+      "matchPackageNames": [
+        "Swashbuckle.AspNetCore*"
+      ],
+      "groupName": "Swashbuckle",
+      "groupSlug": "swashbuckle"
+    },
+    {
+      "description": "Group geospatial packages",
+      "matchManagers": [
+        "nuget"
+      ],
+      "matchPackageNames": [
+        "NetTopologySuite*",
+        "ProjNet"
+      ],
+      "groupName": "Geospatial packages",
+      "groupSlug": "geospatial"
+    },
+    {
+      "description": "Group test infrastructure packages",
+      "matchManagers": [
+        "nuget"
+      ],
+      "matchPackageNames": [
+        "coverlet.collector",
+        "Microsoft.NET.Test.Sdk",
+        "xunit",
+        "xunit.runner.visualstudio"
+      ],
+      "groupName": ".NET test infrastructure",
+      "groupSlug": "dotnet-test-infrastructure"
+    },
+    {
+      "description": "Group Docker image updates",
+      "matchManagers": [
+        "dockerfile",
+        "docker-compose"
+      ],
+      "groupName": "Docker images",
+      "groupSlug": "docker-images"
     }
   ]
 }
