@@ -9,6 +9,8 @@ readonly REPO_ROOT
 readonly GLOBAL_JSON="${REPO_ROOT}/global.json"
 readonly DOTNET_INSTALL_DIR="${HOME}/.dotnet"
 readonly DOTNET_INSTALL_URL="https://dot.net/v1/dotnet-install.sh"
+readonly PRE_COMMIT_VERSION="4.6.0"
+readonly PRE_COMMIT_ENV="${HOME}/.local/share/MicroService/pre-commit"
 
 log() {
     printf '[setup] %s\n' "$*"
@@ -52,7 +54,8 @@ install_linux_prerequisites() {
             run_as_root apt-get update
             icu_package="$(apt-cache pkgnames | grep -E '^libicu[0-9]+$' | sort -V | tail -n 1 || true)"
             [[ -n "${icu_package}" ]] || fail "Could not find the ICU runtime package"
-            run_as_root apt-get install -y --no-install-recommends ca-certificates curl git "${icu_package}" make unzip
+            run_as_root apt-get install -y --no-install-recommends \
+                ca-certificates curl git "${icu_package}" make python3 python3-venv unzip
             ;;
         *)
             fail "Unsupported Linux distribution: ${ID:-unknown}. Install curl, git, make, and unzip manually."
@@ -65,7 +68,7 @@ install_macos_prerequisites() {
         fail "Install the Xcode Command Line Tools with 'xcode-select --install', then rerun this script"
     fi
 
-    for command_name in curl git make unzip; do
+    for command_name in curl git make python3 unzip; do
         command -v "${command_name}" >/dev/null 2>&1 || fail "Required command not found: ${command_name}"
     done
 }
@@ -102,6 +105,25 @@ configure_dotnet_path() {
             printf 'export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"\n'
         } >> "${profile_file}"
     fi
+}
+
+install_pre_commit() {
+    local pre_commit_bin="${PRE_COMMIT_ENV}/bin/pre-commit"
+
+    mkdir -p "$(dirname "${PRE_COMMIT_ENV}")"
+
+    if [[ ! -x "${pre_commit_bin}" ]] || \
+        [[ "$("${pre_commit_bin}" --version 2>/dev/null || true)" != "pre-commit ${PRE_COMMIT_VERSION}" ]]; then
+        log "Installing pre-commit ${PRE_COMMIT_VERSION} into ${PRE_COMMIT_ENV}"
+        python3 -m venv "${PRE_COMMIT_ENV}"
+        "${PRE_COMMIT_ENV}/bin/python" -m pip install --disable-pip-version-check \
+            "pre-commit==${PRE_COMMIT_VERSION}"
+    else
+        log "pre-commit ${PRE_COMMIT_VERSION} is already installed"
+    fi
+
+    log "Installing pre-commit Git hook"
+    (cd "${REPO_ROOT}" && "${pre_commit_bin}" install --install-hooks)
 }
 
 install_dotnet_sdk() {
@@ -170,6 +192,7 @@ main() {
     sdk_version="$(read_sdk_version)"
     install_prerequisites
     install_dotnet_sdk "${sdk_version}"
+    install_pre_commit
     verify_toolchain "${sdk_version}"
     repair_generated_artifact_permissions
 
