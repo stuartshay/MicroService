@@ -1,4 +1,4 @@
-# app.py - this should run automativly  when the docker is Built and Run
+# app.py - this should run automatically when the Docker image is built and run
 import os
 print ('[info] - running script in gdal container \n')
 print (r"[info] - /from_shapefile/",os.listdir(r'/scripts/from_shapefile'))
@@ -11,7 +11,7 @@ for f in os.listdir(r'/scripts/from_shapefile') :
         # the name of the json file is the same name as the shp file
         json_file = f.split('.')[0] + '.json' 
         cmd = f'ogr2ogr -f GeoJSON /scripts/to_GeoJSON/{json_file} /scripts/from_shapefile/{shp_file}'
-        print ('[info] - runing: ', cmd)
+        print ('[info] - running: ', cmd)
         os.system(cmd)
                 
 print (r"[info] - /to_GeoJSON/",os.listdir(r'/scripts/to_GeoJSON'))

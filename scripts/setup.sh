@@ -11,6 +11,7 @@ readonly DOTNET_INSTALL_DIR="${HOME}/.dotnet"
 readonly DOTNET_INSTALL_URL="https://dot.net/v1/dotnet-install.sh"
 readonly PRE_COMMIT_VERSION="4.6.0"
 readonly PRE_COMMIT_ENV="${HOME}/.local/share/MicroService/pre-commit"
+readonly SONAR_SCANNER_VERSION="11.2.1"
 
 log() {
     printf '[setup] %s\n' "$*"
@@ -43,8 +44,27 @@ run_as_root() {
 
 install_linux_prerequisites() {
     local icu_package
+    local command_name
+    local prerequisites_present=true
 
     [[ -r /etc/os-release ]] || fail "Cannot identify this Linux distribution"
+
+    for command_name in curl git make python3 shellcheck unzip; do
+        if ! command -v "${command_name}" >/dev/null 2>&1; then
+            prerequisites_present=false
+            break
+        fi
+    done
+
+    if ! python3 -c 'import ensurepip, venv' >/dev/null 2>&1; then
+        prerequisites_present=false
+    fi
+
+    if [[ "${prerequisites_present}" == true ]] && \
+        command -v ldconfig >/dev/null 2>&1 && ldconfig -p 2>/dev/null | grep -Fq 'libicu'; then
+        log "Linux prerequisite packages are already installed"
+        return
+    fi
 
     # shellcheck disable=SC1091
     source /etc/os-release
@@ -55,10 +75,10 @@ install_linux_prerequisites() {
             icu_package="$(apt-cache pkgnames | grep -E '^libicu[0-9]+$' | sort -V | tail -n 1 || true)"
             [[ -n "${icu_package}" ]] || fail "Could not find the ICU runtime package"
             run_as_root apt-get install -y --no-install-recommends \
-                ca-certificates curl git "${icu_package}" make python3 python3-venv unzip
+                ca-certificates curl git "${icu_package}" make python3 python3-venv shellcheck unzip
             ;;
         *)
-            fail "Unsupported Linux distribution: ${ID:-unknown}. Install curl, git, make, and unzip manually."
+            fail "Unsupported Linux distribution: ${ID:-unknown}. Install curl, git, make, Python 3, ShellCheck, and unzip manually."
             ;;
     esac
 }
@@ -71,6 +91,12 @@ install_macos_prerequisites() {
     for command_name in curl git make python3 unzip; do
         command -v "${command_name}" >/dev/null 2>&1 || fail "Required command not found: ${command_name}"
     done
+
+    if ! command -v shellcheck >/dev/null 2>&1; then
+        command -v brew >/dev/null 2>&1 || fail "Install Homebrew or ShellCheck, then rerun this script"
+        log "Installing ShellCheck with Homebrew"
+        brew install shellcheck
+    fi
 }
 
 install_prerequisites() {
@@ -147,6 +173,24 @@ install_dotnet_sdk() {
     rm -rf -- "${temp_dir}"
 }
 
+install_sonar_scanner() {
+    local installed_version
+
+    installed_version="$(dotnet tool list --global | awk '$1 == "dotnet-sonarscanner" { print $2 }')"
+    if [[ "${installed_version}" == "${SONAR_SCANNER_VERSION}" ]]; then
+        log "SonarScanner for .NET ${SONAR_SCANNER_VERSION} is already installed"
+        return
+    fi
+
+    if [[ -n "${installed_version}" ]]; then
+        log "Updating SonarScanner for .NET from ${installed_version} to ${SONAR_SCANNER_VERSION}"
+        dotnet tool update --global dotnet-sonarscanner --version "${SONAR_SCANNER_VERSION}"
+    else
+        log "Installing SonarScanner for .NET ${SONAR_SCANNER_VERSION}"
+        dotnet tool install --global dotnet-sonarscanner --version "${SONAR_SCANNER_VERSION}"
+    fi
+}
+
 verify_toolchain() {
     local expected_sdk="$1"
     local actual_sdk
@@ -157,6 +201,7 @@ verify_toolchain() {
     log ".NET SDK: ${actual_sdk}"
     log "Git: $(git --version)"
     log "Make: $(make --version | head -n 1)"
+    log "ShellCheck: $(shellcheck --version | sed -n 's/^version: //p')"
 
     if command -v docker >/dev/null 2>&1; then
         log "Docker: $(docker --version)"
@@ -192,6 +237,7 @@ main() {
     sdk_version="$(read_sdk_version)"
     install_prerequisites
     install_dotnet_sdk "${sdk_version}"
+    install_sonar_scanner
     install_pre_commit
     verify_toolchain "${sdk_version}"
     repair_generated_artifact_permissions

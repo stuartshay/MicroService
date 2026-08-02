@@ -21,7 +21,7 @@ Your solution will be assessed on the following:
 * Performance
 * Code quality
 * Testing style and quality
-* Scaleability
+* Scalability
 
 Take as long as you feel is necessary to complete the task to fulfil the requirements.
 But as guidance, aim to spend no more than 3-4 hours.  
