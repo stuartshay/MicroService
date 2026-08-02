@@ -19,10 +19,25 @@ fail() {
 
 [[ -f "${ENV_FILE}" ]] || fail "Missing ${ENV_FILE}. Define SONAR_HOST_URL and SONAR_TOKEN."
 
-set -a
-# shellcheck disable=SC1090
-source "${ENV_FILE}"
-set +a
+while IFS='=' read -r env_key env_value; do
+    env_value="${env_value%$'\r'}"
+    case "${env_key}" in
+        SONAR_HOST_URL|SONAR_TOKEN)
+            if [[ "${env_value}" == \"*\" && "${env_value}" == *\" ]]; then
+                env_value="${env_value:1:${#env_value}-2}"
+            elif [[ "${env_value}" == \'*\' && "${env_value}" == *\' ]]; then
+                env_value="${env_value:1:${#env_value}-2}"
+            fi
+            if [[ "${env_key}" == "SONAR_HOST_URL" ]]; then
+                SONAR_HOST_URL="${env_value}"
+                export SONAR_HOST_URL
+            else
+                SONAR_TOKEN="${env_value}"
+                export SONAR_TOKEN
+            fi
+            ;;
+    esac
+done < "${ENV_FILE}"
 
 : "${SONAR_HOST_URL:?SONAR_HOST_URL must be set in .env}"
 : "${SONAR_TOKEN:?SONAR_TOKEN must be set in .env}"

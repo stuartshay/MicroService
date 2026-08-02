@@ -99,7 +99,7 @@ The class definition contains class members in the following order, from *less* 
 	2. `if (a == b)`
 
 ### Cross-platform coding
-Our code should supports multiple operating systems. Don't assume we only run (and develop) on Windows. Code should be sensitive to the differences between OS's. Here are some specifics to consider.
+Our code should support multiple operating systems. Don't assume we only run (and develop) on Windows. Code should be sensitive to the differences between OS's. Here are some specifics to consider.
 
 * **DO** use `Environment.NewLine` instead of hard-coding the line break instead of `\r\n`, as Windows uses `\r\n` and OSX/Linux uses `\n`.
 
