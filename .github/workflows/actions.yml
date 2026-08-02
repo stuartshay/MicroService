@@ -69,7 +69,7 @@ jobs:
 
       - name: Set current_datetime
         id: set_datetime
-        run: echo "::set-output name=current_datetime::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+        run: echo "current_datetime=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "$GITHUB_OUTPUT"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
@@ -158,7 +158,7 @@ jobs:
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v3
         with:
-          project_id: ${{ secrets.gcp_project }}
+          project_id: ${{ secrets.GCP_PROJECT }}
 
       - name: Google Cloud Artifacts/Authorize Docker push
         run: gcloud auth configure-docker ${{ env.ARTIFACT_REGISTRY_HOST }}
