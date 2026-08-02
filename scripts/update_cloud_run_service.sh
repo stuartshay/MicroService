@@ -19,14 +19,11 @@ echo "Updating Cloud Run service: $SERVICE_NAME in region: $REGION"
 echo "Mounting GCS Bucket: $BUCKET_NAME at $MOUNT_PATH"
 
 # Update the Cloud Run service to mount the GCS bucket
-gcloud beta run services update $SERVICE_NAME \
+if gcloud beta run services update "${SERVICE_NAME}" \
   --execution-environment gen2 \
-  --add-volume=name=$VOLUME_NAME,type=cloud-storage,bucket=$BUCKET_NAME \
-  --add-volume-mount=volume=$VOLUME_NAME,mount-path=$MOUNT_PATH \
-  --region=$REGION  # Specify the region
-
-# Check the exit status of the gcloud command
-if [ $? -eq 0 ]; then
+  --add-volume="name=${VOLUME_NAME},type=cloud-storage,bucket=${BUCKET_NAME}" \
+  --add-volume-mount="volume=${VOLUME_NAME},mount-path=${MOUNT_PATH}" \
+  --region="${REGION}"; then
   echo "Cloud Run service updated successfully."
 else
   echo "Failed to update Cloud Run service."

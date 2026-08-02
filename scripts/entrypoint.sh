@@ -9,8 +9,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="/etc/gcsfuse/key/service-account-key.json
 if [[ "${MOUNT_GCS_BUCKET}" == "true" && -n "${GCS_BUCKET_NAME}" ]]; then
     echo "Mounting GCS Bucket: ${GCS_BUCKET_NAME}"
     # Attempt to mount the GCS bucket
-    gcsfuse -o nonempty -o allow_other "${GCS_BUCKET_NAME}" /mnt/gcs-bucket
-    if [[ $? -ne 0 ]]; then
+    if ! gcsfuse -o nonempty -o allow_other "${GCS_BUCKET_NAME}" /mnt/gcs-bucket; then
         echo "Failed to mount GCS bucket. Exiting."
         exit 1
     fi
