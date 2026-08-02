@@ -6,10 +6,11 @@ DOTNET ?= dotnet
 
 .DEFAULT_GOAL := help
 
-.PHONY: help restore build run test
+.PHONY: help setup restore build run test
 
 help:
 	@echo "Available targets:"
+	@echo "  make setup    Install .NET 10 and essential development tools"
 	@echo "  make restore  Restore NuGet packages"
 	@echo "  make build    Build the solution"
 	@echo "  make run      Run the Web API locally"
@@ -17,6 +18,9 @@ help:
 	@echo ""
 	@echo "Options:"
 	@echo "  CONFIGURATION=Debug|Release (default: Debug)"
+
+setup:
+	./scripts/setup.sh
 
 restore:
 	$(DOTNET) restore $(SOLUTION)
