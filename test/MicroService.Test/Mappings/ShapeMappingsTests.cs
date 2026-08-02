@@ -13,7 +13,7 @@ namespace MicroService.Test.Mappings
             var mapperConfig = new MapperConfiguration(cfg =>
             {
                 cfg.AddMaps(typeof(BoroughBoundaryShapeProfile).Assembly);
-            });
+            }, Microsoft.Extensions.Logging.Abstractions.NullLoggerFactory.Instance);
 
             // Act and Assert
             mapperConfig.AssertConfigurationIsValid();
@@ -21,4 +21,3 @@ namespace MicroService.Test.Mappings
 
     }
 }
-
