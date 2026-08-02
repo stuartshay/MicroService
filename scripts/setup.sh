@@ -143,6 +143,27 @@ verify_toolchain() {
     fi
 }
 
+repair_generated_artifact_permissions() {
+    local artifact_dir
+    local -a unwritable_dirs=()
+
+    while IFS= read -r -d '' artifact_dir; do
+        if [[ ! -w "${artifact_dir}" ]]; then
+            unwritable_dirs+=("${artifact_dir}")
+        fi
+    done < <(find "${REPO_ROOT}/src" "${REPO_ROOT}/test" \
+        -type d \( -name bin -o -name obj \) -prune -print0)
+
+    if (( ${#unwritable_dirs[@]} == 0 )); then
+        return
+    fi
+
+    log "Repairing permissions on generated build directories"
+    for artifact_dir in "${unwritable_dirs[@]}"; do
+        run_as_root chown -R "$(id -u):$(id -g)" "${artifact_dir}"
+    done
+}
+
 main() {
     local sdk_version
 
@@ -150,6 +171,7 @@ main() {
     install_prerequisites
     install_dotnet_sdk "${sdk_version}"
     verify_toolchain "${sdk_version}"
+    repair_generated_artifact_permissions
 
     log "Restoring NuGet packages"
     (cd "${REPO_ROOT}" && dotnet restore MicroService.sln)
