@@ -5,7 +5,6 @@ using MicroService.Service.Models.Enum.Attributes;
 using System.ComponentModel;
 using System.Reflection;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace MicroService.Test.Enum;
 

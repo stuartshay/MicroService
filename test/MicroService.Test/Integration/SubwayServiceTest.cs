@@ -7,7 +7,6 @@ using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace MicroService.Test.Integration
 {
