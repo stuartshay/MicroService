@@ -2,7 +2,6 @@
 using MicroService.Service.Helpers;
 using MicroService.Test.Fixture;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace MicroService.Test.Functions
 {
