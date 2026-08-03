@@ -101,45 +101,37 @@ namespace MicroService.Service.Helpers
                 throw new ArgumentException("Invalid datum combination.");
             }
 
-            if (geometry is Point point)
+            switch (geometry)
             {
-                var xy = new[] { point.X, point.Y };
-                xy = wgs84ToNad83 ? ConvertWgs84ToNad83(xy) : ConvertNad83ToWgs84(xy);
-                point.X = xy[0];
-                point.Y = xy[1];
-            }
-            else if (geometry is LineString lineString)
-            {
-                for (int i = 0; i < lineString.Coordinates.Length; i++)
-                {
-                    var xy = new[] { lineString.Coordinates[i].X, lineString.Coordinates[i].Y };
-                    xy = wgs84ToNad83 ? ConvertWgs84ToNad83(xy) : ConvertNad83ToWgs84(xy);
-                    lineString.Coordinates[i].X = xy[0];
-                    lineString.Coordinates[i].Y = xy[1];
-                }
-            }
-            else if (geometry is Polygon polygon)
-            {
-                for (int i = 0; i < polygon.Shell.Coordinates.Length; i++)
-                {
-                    var xy = new[] { polygon.Shell.Coordinates[i].X, polygon.Shell.Coordinates[i].Y };
-                    xy = wgs84ToNad83 ? ConvertWgs84ToNad83(xy) : ConvertNad83ToWgs84(xy);
-                    polygon.Shell.Coordinates[i].X = xy[0];
-                    polygon.Shell.Coordinates[i].Y = xy[1];
-                }
-                for (int i = 0; i < polygon.Holes.Length; i++)
-                {
-                    for (int j = 0; j < polygon.Holes[i].Coordinates.Length; j++)
+                case Point point:
+                    TransformCoordinates(point.Coordinates, wgs84ToNad83);
+                    break;
+                case LineString lineString:
+                    TransformCoordinates(lineString.Coordinates, wgs84ToNad83);
+                    break;
+                case Polygon polygon:
+                    TransformCoordinates(polygon.Shell.Coordinates, wgs84ToNad83);
+                    foreach (var hole in polygon.Holes)
                     {
-                        var xy = new[] { polygon.Holes[i].Coordinates[j].X, polygon.Holes[i].Coordinates[j].Y };
-                        xy = wgs84ToNad83 ? ConvertWgs84ToNad83(xy) : ConvertNad83ToWgs84(xy);
-                        polygon.Holes[i].Coordinates[j].X = xy[0];
-                        polygon.Holes[i].Coordinates[j].Y = xy[1];
+                        TransformCoordinates(hole.Coordinates, wgs84ToNad83);
                     }
-                }
+                    break;
             }
 
             return geometry;
+        }
+
+        private static void TransformCoordinates(IEnumerable<Coordinate> coordinates, bool wgs84ToNad83)
+        {
+            foreach (var coordinate in coordinates)
+            {
+                var transformed = wgs84ToNad83
+                    ? ConvertWgs84ToNad83(new[] { coordinate.X, coordinate.Y })
+                    : ConvertNad83ToWgs84(new[] { coordinate.X, coordinate.Y });
+
+                coordinate.X = transformed[0];
+                coordinate.Y = transformed[1];
+            }
         }
 
     }
