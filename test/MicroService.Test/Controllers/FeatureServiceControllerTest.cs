@@ -30,7 +30,7 @@ namespace MicroService.Test.Controllers
         public async Task GetFeatureList_WithValidRequest_ReturnsOkResult(string key, List<ShapeBase> expectedResults)
         {
             // Arrange
-            var request = new FeatureAttributeRequestModel { Key = (ShapeProperties)System.Enum.Parse(typeof(ShapeProperties), key) };
+            var request = new FeatureAttributeRequestModel { Key = System.Enum.Parse<ShapeProperties>(key) };
 
             var shapeServiceMock = new Mock<IShapeService<ShapeBase>>();
             shapeServiceMock.Setup(s => s.GetFeatureList()).Returns(expectedResults);
@@ -54,7 +54,7 @@ namespace MicroService.Test.Controllers
         public async Task GetFeatureList_WithInvalidRequest_ReturnsBadRequestResult(string key)
         {
             // Arrange
-            var request = new FeatureAttributeRequestModel { Key = (ShapeProperties)System.Enum.Parse(typeof(ShapeProperties), key) }; ;
+            var request = new FeatureAttributeRequestModel { Key = System.Enum.Parse<ShapeProperties>(key) };
 
             // Act
             var controller = GetFeatureServiceController();

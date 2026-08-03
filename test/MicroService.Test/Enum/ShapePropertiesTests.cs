@@ -21,7 +21,7 @@ public class ShapePropertiesTests
     {
         var invalidEnumValues = new List<string>();
 
-        foreach (var enumValue in System.Enum.GetValues(typeof(ShapeProperties)).Cast<ShapeProperties>())
+        foreach (var enumValue in System.Enum.GetValues<ShapeProperties>())
         {
             var shapeAttribute = enumValue.GetType()
                 .GetMember(enumValue.ToString())[0]
