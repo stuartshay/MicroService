@@ -9,13 +9,13 @@ namespace MicroService.Service.Mappings
         public NeighborhoodShapeMappingsProfile()
         {
             CreateMap<Feature, NeighborhoodShape>()
-                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => int.Parse(src.Attributes["BoroCode"].ToString())))
-                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => src.Attributes["BoroName"].ToString()))
-                .ForMember(dest => dest.CountyFIPS, opt => opt.MapFrom(src => src.Attributes["CountyFIPS"].ToString()))
-                .ForMember(dest => dest.NTACode, opt => opt.MapFrom(src => src.Attributes["NTACode"].ToString()))
-                .ForMember(dest => dest.NTAName, opt => opt.MapFrom(src => src.Attributes["NTAName"].ToString()))
-                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => double.Parse(src.Attributes["Shape_Area"].ToString())))
-                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => double.Parse(src.Attributes["Shape_Leng"].ToString())))
+                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => int.Parse(src.Attributes["BoroCode"].ToString() ?? string.Empty)))
+                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => src.Attributes["BoroName"].ToString() ?? string.Empty))
+                .ForMember(dest => dest.CountyFIPS, opt => opt.MapFrom(src => src.Attributes["CountyFIPS"].ToString() ?? string.Empty))
+                .ForMember(dest => dest.NTACode, opt => opt.MapFrom(src => src.Attributes["NTACode"].ToString() ?? string.Empty))
+                .ForMember(dest => dest.NTAName, opt => opt.MapFrom(src => src.Attributes["NTAName"].ToString() ?? string.Empty))
+                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => double.Parse(src.Attributes["Shape_Area"].ToString() ?? string.Empty)))
+                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => double.Parse(src.Attributes["Shape_Leng"].ToString() ?? string.Empty)))
                 .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
                 .ForMember(dest => dest.Feature, opt => opt.Ignore());
         }
