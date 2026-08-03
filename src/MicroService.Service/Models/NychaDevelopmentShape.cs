@@ -8,12 +8,12 @@ namespace MicroService.Service.Models
     public class NychaDevelopmentShape : ShapeBase
     {
         [FeatureName("DEVELOPMEN")]
-        public string Development { get; set; }
+        public string Development { get; set; } = string.Empty;
 
         [FeatureName("TDS_NUM")]
-        public string TdsNumber { get; set; }
+        public string TdsNumber { get; set; } = string.Empty;
 
         [FeatureName("BOROUGH")]
-        public string Borough { get; set; }
+        public string Borough { get; set; } = string.Empty;
     }
 }

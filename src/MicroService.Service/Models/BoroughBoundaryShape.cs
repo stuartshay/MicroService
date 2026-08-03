@@ -11,6 +11,6 @@ namespace MicroService.Service.Models
         public int BoroCode { get; set; }
 
         [FeatureName("BoroName")]
-        public string BoroName { get; set; }
+        public string BoroName { get; set; } = string.Empty;
     }
 }

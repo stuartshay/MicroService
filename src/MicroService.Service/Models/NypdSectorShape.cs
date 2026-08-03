@@ -8,15 +8,15 @@ namespace MicroService.Service.Models
     public class NypdSectorShape : ShapeBase
     {
         [FeatureName("pct")]
-        public string Pct { get; set; }
+        public string Pct { get; set; } = string.Empty;
 
         [FeatureName("sector")]
-        public string Sector { get; set; }
+        public string Sector { get; set; } = string.Empty;
 
         [FeatureName("patrol_bor")]
-        public string PatrolBoro { get; set; }
+        public string PatrolBoro { get; set; } = string.Empty;
 
         [FeatureName("phase")]
-        public string Phase { get; set; }
+        public string Phase { get; set; } = string.Empty;
     }
 }

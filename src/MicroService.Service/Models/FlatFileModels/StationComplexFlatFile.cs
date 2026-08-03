@@ -6,6 +6,6 @@ namespace MicroService.Service.Models.FlatFileModels
     {
         public int ComplexId { get; set; }
 
-        public string ComplexName { get; set; }
+        public string ComplexName { get; set; } = string.Empty;
     }
 }

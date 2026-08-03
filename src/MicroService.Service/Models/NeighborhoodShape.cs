@@ -11,15 +11,15 @@ namespace MicroService.Service.Models
         public int BoroCode { get; set; }
 
         [FeatureName("BoroName")]
-        public string BoroName { get; set; }
+        public string BoroName { get; set; } = string.Empty;
 
         [FeatureName("CountyFIPS")]
-        public string CountyFIPS { get; set; }
+        public string CountyFIPS { get; set; } = string.Empty;
 
         [FeatureName("NTACode")]
-        public string NTACode { get; set; }
+        public string NTACode { get; set; } = string.Empty;
 
         [FeatureName("NTAName")]
-        public string NTAName { get; set; }
+        public string NTAName { get; set; } = string.Empty;
     }
 }

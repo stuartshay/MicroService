@@ -14,9 +14,9 @@ namespace MicroService.Service.Models
 
         public int BoroCode { get; set; }
 
-        public string Borough { get; set; }
+        public string Borough { get; set; } = string.Empty;
 
-        public string BoroName { get; set; }
+        public string BoroName { get; set; } = string.Empty;
 
     }
 }
