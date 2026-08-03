@@ -105,7 +105,7 @@ namespace MicroService.WebApi.Extensions
                 c.MapType<ShapeProperties>(() => new OpenApiSchema
                 {
                     Type = JsonSchemaType.String,
-                    Enum = Enum.GetNames(typeof(ShapeProperties))
+                    Enum = Enum.GetNames<ShapeProperties>()
                         .Select(name => JsonValue.Create(name))
                         .Cast<JsonNode>()
                         .ToList(),
