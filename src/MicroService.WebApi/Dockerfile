@@ -29,7 +29,11 @@ RUN dotnet build "MicroService.WebApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
 ARG BUILD_NUMBER=0
-RUN dotnet publish "MicroService.WebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false /p:Version=10.0.1.${BUILD_NUMBER}
+RUN dotnet publish "MicroService.WebApi.csproj" \
+    -c Release \
+    -o /app/publish \
+    /p:UseAppHost=false \
+    /p:Version=10.0.1.${BUILD_NUMBER}
 
 FROM base AS final
 
