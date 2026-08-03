@@ -40,6 +40,14 @@ namespace MicroService.Test.Unit
             Assert.Null(result);
         }
 
+        [Fact]
+        public void GetFeatureLookup_ReturnsEmptySequenceForNullAttributes()
+        {
+            var result = _service.GetFeatureLookup(null);
+
+            Assert.Empty(result);
+        }
+
         private sealed class TestShapeService : AbstractShapeService<BoroughBoundaryShape, BoroughBoundaryShapeProfile>
         {
             public TestShapeService()

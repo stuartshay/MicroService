@@ -26,7 +26,7 @@ namespace MicroService.Service.Services
             _individualLandmarkSiteService = individualLandmarkSiteService;
         }
 
-        public override IEnumerable<IndividualLandmarkHistoricDistrictsShape>? GetFeatureLookup(List<KeyValuePair<string, object>>? attributes)
+        public override IEnumerable<IndividualLandmarkHistoricDistrictsShape> GetFeatureLookup(List<KeyValuePair<string, object>>? attributes)
         {
             attributes = MapLandmarkAttributes(attributes);
             return base.GetFeatureLookup(attributes);
@@ -61,6 +61,11 @@ namespace MicroService.Service.Services
 
         private List<KeyValuePair<string, object>>? MapLandmarkAttributes(List<KeyValuePair<string, object>>? attributes)
         {
+            if (attributes is null)
+            {
+                return null;
+            }
+
             if (attributes.Any(a => a.Key.Equals("LPNumber", StringComparison.InvariantCultureIgnoreCase)))
             {
                 var lpNumberValue = attributes.First(a => a.Key.Equals("LPNumber", StringComparison.InvariantCultureIgnoreCase)).Value.ToString();
