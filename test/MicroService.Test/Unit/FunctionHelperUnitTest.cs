@@ -139,6 +139,7 @@ namespace MicroService.Test.Unit
                 new Coordinate(90.12, 34.56),
                 new Coordinate(78.90, 12.34)
             });
+            var originalFirstCoordinate = lineString.Coordinates[0].Copy();
 
 
             // Act
@@ -150,6 +151,8 @@ namespace MicroService.Test.Unit
 
             var transformedLineString = (LineString)result;
             Assert.Equal(lineString.Coordinates.Length, transformedLineString.Coordinates.Length);
+            Assert.NotEqual(originalFirstCoordinate.X, transformedLineString.Coordinates[0].X);
+            Assert.NotEqual(originalFirstCoordinate.Y, transformedLineString.Coordinates[0].Y);
 
             for (int i = 0; i < lineString.Coordinates.Length; i++)
             {
@@ -180,6 +183,8 @@ namespace MicroService.Test.Unit
                 new Coordinate(34.56, 78.90)
             };
             var polygon = new Polygon(new LinearRing(exteriorRing), new[] { new LinearRing(interiorRing) });
+            var originalExteriorCoordinate = polygon.ExteriorRing.Coordinates[0].Copy();
+            var originalInteriorCoordinate = polygon.InteriorRings[0].Coordinates[0].Copy();
 
             // Act
             var result = GeoTransformationHelper.TransformGeometry(polygon, fromDatum, toDatum);
@@ -191,6 +196,10 @@ namespace MicroService.Test.Unit
             var transformedPolygon = (Polygon)result;
             Assert.Equal(exteriorRing.Length, transformedPolygon.ExteriorRing.Coordinates.Length);
             Assert.Equal(interiorRing.Length, transformedPolygon.InteriorRings[0].Coordinates.Length);
+            Assert.NotEqual(originalExteriorCoordinate.X, transformedPolygon.ExteriorRing.Coordinates[0].X);
+            Assert.NotEqual(originalExteriorCoordinate.Y, transformedPolygon.ExteriorRing.Coordinates[0].Y);
+            Assert.NotEqual(originalInteriorCoordinate.X, transformedPolygon.InteriorRings[0].Coordinates[0].X);
+            Assert.NotEqual(originalInteriorCoordinate.Y, transformedPolygon.InteriorRings[0].Coordinates[0].Y);
 
             //for (int i = 0; i < exteriorRing.Length; i++)
             //{
