@@ -59,7 +59,7 @@ namespace MicroService.WebApi.V1.Controllers
                 fileName = j.GetAttribute<ShapeAttribute>().FileName,
                 directory = j.GetAttribute<ShapeAttribute>().Directory,
                 datum = j.GetAttribute<ShapeAttribute>().Datum.ToString(),
-            });
+            }).ToList();
 
             _logger.LogInformation("{@ShapeProperties}", result);
 
@@ -82,7 +82,7 @@ namespace MicroService.WebApi.V1.Controllers
         public ActionResult<object> GetShapeProperties(
             [FromRoute][EnumDataType(typeof(ShapeProperties))] ShapeProperties id)
         {
-            if (!Enum.IsDefined(typeof(ShapeProperties), id))
+            if (!Enum.IsDefined(id))
                 return BadRequest();
 
             var service = _shapeServiceResolver!(id.ToString());
@@ -126,7 +126,7 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult<object>> GetFeatureList([FromQuery] FeatureAttributeRequestModel request)
         {
-            if (string.IsNullOrEmpty(request?.Key.ToString()) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
+            if (request is null || !Enum.IsDefined(request.Key))
                 return BadRequest();
 
             IEnumerable<ShapeBase> results = _shapeServiceResolver!(request.Key.ToString()).GetFeatureList();
@@ -145,7 +145,7 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult<object>> GetGeospatialLookup([FromQuery] FeatureGeoRequestModel request)
         {
-            if (string.IsNullOrEmpty(request?.Type.ToString()) || !Enum.IsDefined(typeof(ShapeProperties), request.Type))
+            if (request is null || !Enum.IsDefined(request.Type))
                 return BadRequest();
 
             var validate = _shapeServiceResolver!(ShapeProperties.BoroughBoundaries.ToString()).GetFeatureLookup(request.X, request.Y, request.Datum);

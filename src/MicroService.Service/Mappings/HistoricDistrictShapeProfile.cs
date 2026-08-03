@@ -34,7 +34,7 @@ namespace MicroService.Service.Mappings
                         : Regex.Replace(src.Attributes["other_hear"].ToString(), @"\u0000", string.Empty)))
                 .ForMember(dest => dest.PublicHearing, opt => opt.MapFrom(src => src.Attributes["public_hea"].ToString()))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Attributes["status_of_"].ToString()))
-                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => (int)Enum.Parse(typeof(Borough), src.Attributes["borough"].ToString())))
+                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => (int)Enum.Parse<Borough>(src.Attributes["borough"].ToString()!)))
                 .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_area"].ToString())))
                 .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_leng"].ToString())))
                 .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))

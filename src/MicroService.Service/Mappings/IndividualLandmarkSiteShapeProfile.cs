@@ -15,9 +15,9 @@ namespace MicroService.Service.Mappings
             CreateMap<Feature, IndividualLandmarkSiteShape>()
                 .ForMember(dest => dest.LPNumber, opt => opt.MapFrom(src => src.Attributes["lpc_lpnumb"].ToString()))
                 .ForMember(dest => dest.AreaName, opt => opt.MapFrom(src => src.Attributes["lpc_name"].ToString()))
-                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => EnumHelper.IsEnumValid<Borough>(src.Attributes["borough"].ToString()) && src.Attributes["borough"] != null ?
-                    (int)Enum.Parse(typeof(Borough), src.Attributes["borough"].ToString()) : 0))
-                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => EnumHelper.IsEnumValid<Borough>(src.Attributes["borough"].ToString()) && src.Attributes["borough"] != null ?
+                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => src.Attributes["borough"] != null && EnumHelper.IsEnumValid<Borough>(src.Attributes["borough"].ToString()) ?
+                    (int)Enum.Parse<Borough>(src.Attributes["borough"].ToString()!) : 0))
+                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => src.Attributes["borough"] != null && EnumHelper.IsEnumValid<Borough>(src.Attributes["borough"].ToString()) ?
                     src.Attributes["borough"].ToString() : null))
                 .ForMember(dest => dest.BBL, opt => opt.MapFrom(src => src.Attributes["bbl"] != null ? Double.Parse(src.Attributes["bbl"].ToString()) : 0))
                 .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Attributes["address"].ToString()))
