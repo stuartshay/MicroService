@@ -8,31 +8,31 @@ namespace MicroService.Service.Models.FlatFileModels
 
         public int ComplexId { get; set; }
 
-        public string GtfsStopId { get; set; }
+        public string GtfsStopId { get; set; } = string.Empty;
 
-        public string Division { get; set; }
+        public string Division { get; set; } = string.Empty;
 
-        public string Line { get; set; }
+        public string Line { get; set; } = string.Empty;
 
-        public string StopName { get; set; }
+        public string StopName { get; set; } = string.Empty;
 
-        public string Borough { get; set; }
+        public string Borough { get; set; } = string.Empty;
 
-        public string DaytimeRoutes { get; set; }
+        public string DaytimeRoutes { get; set; } = string.Empty;
 
-        public string Structure { get; set; }
+        public string Structure { get; set; } = string.Empty;
 
         public double GTFSLatitude { get; set; }
         
         public double GTFSLongitude { get; set; }
 
-        public string NorthDirectionLabel { get; set; }
+        public string NorthDirectionLabel { get; set; } = string.Empty;
 
-        public string SouthDirectionLabel { get; set; }
+        public string SouthDirectionLabel { get; set; } = string.Empty;
 
         public bool ADA { get; set; }
         
-        public string ADANotes { get; set; }
+        public string ADANotes { get; set; } = string.Empty;
 
     }
 }
