@@ -1,0 +1,130 @@
+name: Auto Approve
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  auto-approve-bot:
+    name: Auto Approve Bot PRs
+    runs-on: ubuntu-latest
+    if: >-
+      github.event.pull_request.user.login == 'renovate[bot]' ||
+      github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Auto approve PR
+        uses: actions/github-script@v9
+        with:
+          script: |
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              event: 'APPROVE'
+            });
+
+  auto-approve:
+    name: Auto Approve after Copilot Review
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'stuartshay'
+    steps:
+      - name: Wait for Copilot review
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const maxAttempts = 30;
+            const delayMs = 10000;
+            const prNumber = context.payload.pull_request.number;
+
+            for (let i = 0; i < maxAttempts; i++) {
+              const { data: reviews } = await github.rest.pulls.listReviews({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: prNumber,
+              });
+
+              const copilotReview = reviews
+                .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED')
+                .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at))[0];
+
+              if (copilotReview) {
+                core.info(`Copilot review found (state: ${copilotReview.state})`);
+                return;
+              }
+
+              core.info(`Attempt ${i + 1}/${maxAttempts}: waiting for Copilot review...`);
+              await new Promise(r => setTimeout(r, delayMs));
+            }
+
+            core.setFailed('Copilot review not found after 5 minutes');
+
+      - name: Log review context
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+
+            const { data: reviews } = await github.rest.pulls.listReviews({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+            });
+
+            const copilotReview = reviews
+              .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED')
+              .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at))[0];
+
+            if (!copilotReview) {
+              core.setFailed('No active Copilot review found — cannot log review context');
+              return;
+            }
+
+            const comments = await github.paginate(github.rest.pulls.listReviewComments, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+            });
+
+            const copilotComments = comments.filter(
+              c => c.user.login === 'copilot-pull-request-reviewer[bot]'
+            );
+
+            core.info(`PR #${prNumber}: ${context.payload.pull_request.title}`);
+            core.info(`Review by: ${copilotReview.user.login}`);
+            core.info(`Review state: ${copilotReview.state}`);
+            core.info(`Copilot inline comments: ${copilotComments.length}`);
+
+            if (copilotComments.length > 0) {
+              core.warning(`Copilot left ${copilotComments.length} inline comment(s) — review before merging`);
+            }
+
+      - name: Auto approve PR
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+
+            const { data: reviews } = await github.rest.pulls.listReviews({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+            });
+
+            const copilotReview = reviews
+              .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED')
+              .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at))[0];
+
+            if (copilotReview && copilotReview.state === 'CHANGES_REQUESTED') {
+              core.setFailed(`Copilot requested changes — not auto-approving (state: ${copilotReview.state})`);
+              return;
+            }
+
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              event: 'APPROVE'
+            });
