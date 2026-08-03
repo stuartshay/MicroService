@@ -1,4 +1,4 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace MicroService.WebApi.Extensions.Swagger
@@ -16,7 +16,7 @@ namespace MicroService.WebApi.Extensions.Swagger
                 throw new ArgumentNullException(nameof(swaggerDoc));
             }
 
-            swaggerDoc.Tags = new List<OpenApiTag> { new OpenApiTag { Name = "RoutingApi", Description = "This is a description for the api routes" }, };
+            swaggerDoc.Tags = new HashSet<OpenApiTag> { new OpenApiTag { Name = "RoutingApi", Description = "This is a description for the api routes" }, };
         }
     }
 }
