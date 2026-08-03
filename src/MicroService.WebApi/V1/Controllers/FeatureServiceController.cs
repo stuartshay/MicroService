@@ -61,7 +61,10 @@ namespace MicroService.WebApi.V1.Controllers
                 datum = j.GetAttribute<ShapeAttribute>().Datum.ToString(),
             }).ToList();
 
-            _logger.LogInformation("{@ShapeProperties}", result);
+            if (_logger.IsEnabled(LogLevel.Information))
+            {
+                _logger.LogInformation("{@ShapeProperties}", result);
+            }
 
             return Ok(result);
         }

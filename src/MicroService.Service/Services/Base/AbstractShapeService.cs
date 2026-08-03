@@ -165,7 +165,10 @@ namespace MicroService.Service.Services.Base
         public virtual IEnumerable<TShape> GetFeatureList()
         {
             var features = GetFeatures();
-            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
+            if (Logger.IsEnabled(LogLevel.Information))
+            {
+                Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
+            }
 
             var results = Mapper.Map<IEnumerable<TShape>>(features);
             return results;

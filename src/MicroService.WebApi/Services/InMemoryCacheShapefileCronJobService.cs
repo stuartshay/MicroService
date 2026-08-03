@@ -36,7 +36,10 @@ namespace MicroService.WebApi.Services
 
         public override async Task StartAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"[Start]:{{ServiceName}}", nameof(InMemoryCacheShapefileCronJobService));
+            if (_logger.IsEnabled(LogLevel.Information))
+            {
+                _logger.LogInformation("[Start]:{ServiceName}", nameof(InMemoryCacheShapefileCronJobService));
+            }
 
             await base.StartAsync(cancellationToken);
 
@@ -62,7 +65,10 @@ namespace MicroService.WebApi.Services
                 var memCacheTimeSpan = TimeSpan.FromHours(3);
                 _cache.Set(name, features, memCacheTimeSpan);
 
-                _logger.LogInformation($"[CacheRefresh]:{{ServiceName}}|ShapeName:{{ShapeName}}|CacheTimeSpan:{{memCacheTimeSpan}}", nameof(InMemoryCacheShapefileCronJobService), name, memCacheTimeSpan);
+                if (_logger.IsEnabled(LogLevel.Information))
+                {
+                    _logger.LogInformation("[CacheRefresh]:{ServiceName}|ShapeName:{ShapeName}|CacheTimeSpan:{CacheTimeSpan}", nameof(InMemoryCacheShapefileCronJobService), name, memCacheTimeSpan);
+                }
             }
 
             return Task.CompletedTask;
@@ -70,7 +76,10 @@ namespace MicroService.WebApi.Services
 
         public override Task StopAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"[Stop]:{{ServiceName}}", nameof(InMemoryCacheShapefileCronJobService));
+            if (_logger.IsEnabled(LogLevel.Information))
+            {
+                _logger.LogInformation("[Stop]:{ServiceName}", nameof(InMemoryCacheShapefileCronJobService));
+            }
             _cache.Dispose();
 
             return base.StopAsync(cancellationToken);
@@ -103,9 +112,19 @@ namespace MicroService.WebApi.Services
                     };
                     fileSystemWatcher.Changed += async (sender, e) =>
                     {
-                        _logger.LogInformation($"[FileChanged]:{{ServiceName}}|FileName:{{Name}}", nameof(InMemoryCacheShapefileCronJobService), e.Name);
+                        try
+                        {
+                            if (_logger.IsEnabled(LogLevel.Information))
+                            {
+                                _logger.LogInformation("[FileChanged]:{ServiceName}|FileName:{Name}", nameof(InMemoryCacheShapefileCronJobService), e.Name);
+                            }
 
-                        await DoWork(CancellationToken.None);
+                            await DoWork(CancellationToken.None);
+                        }
+                        catch (Exception exception)
+                        {
+                            _logger.LogError(exception, "[FileChangedError]:{ServiceName}|FileName:{Name}", nameof(InMemoryCacheShapefileCronJobService), e.Name);
+                        }
                     };
 
                     _entries.TryAdd(name, (shapeFilePath, fileSystemWatcher));
@@ -113,7 +132,10 @@ namespace MicroService.WebApi.Services
                 else
                 {
                     _entries.Remove(name, out _);
-                    _logger.LogInformation($"[FileNotExists]:{{ServiceName}}|Directory:{{Name}}", nameof(InMemoryCacheShapefileCronJobService), shapeFilePath);
+                    if (_logger.IsEnabled(LogLevel.Information))
+                    {
+                        _logger.LogInformation("[FileNotExists]:{ServiceName}|ShapeFilePath:{ShapeFilePath}", nameof(InMemoryCacheShapefileCronJobService), shapeFilePath);
+                    }
                 }
             }
         }

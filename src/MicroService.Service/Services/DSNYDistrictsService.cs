@@ -41,7 +41,10 @@ namespace MicroService.Service.Services
         {
             var features = GetFeatures();
 
-            Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
+            if (Logger.IsEnabled(LogLevel.Information))
+            {
+                Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
+            }
 
             var results = Mapper.Map<IEnumerable<DsnyDistrictsShape>>(features).OrderBy(x => x.District);
             return results;
