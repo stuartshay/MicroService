@@ -41,7 +41,10 @@ namespace MicroService.Service.Services
         {
             var features = GetFeatures();
 
-            Logger.LogInformation("Feature Count|{count}", features.Count);
+            if (Logger.IsEnabled(LogLevel.Information))
+            {
+                Logger.LogInformation("Feature Count|{count}", features.Count);
+            }
             return Mapper.Map<IEnumerable<ParkShape>>(features).Take(100);
         }
     }
