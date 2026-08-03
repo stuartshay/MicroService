@@ -199,8 +199,11 @@ namespace MicroService.WebApi.V1.Controllers
             if (string.IsNullOrEmpty(request?.Key) || !Enum.IsDefined(typeof(ShapeProperties), request.Key))
                 return BadRequest();
 
-            var keys = request.Attributes!.Select(kv => kv.Key).ToList();
-            var service = _shapeServiceResolver!(request?.Key!);
+            if (request.Attributes is null || request.Attributes.Count == 0)
+                return BadRequest("Attributes are required.");
+
+            var keys = request.Attributes.Select(kv => kv.Key).ToList();
+            var service = _shapeServiceResolver!(request.Key);
 
             var shapeType = service.GetType().GetInterface("IShapeService`1")!.GetGenericArguments()[0];
 
@@ -216,7 +219,7 @@ namespace MicroService.WebApi.V1.Controllers
                 return BadRequest($"The following attributes are not valid for the selected shape type: {invalidFields}");
             }
 
-            var featureCollection = _shapeServiceResolver(request!.Key).GetFeatureCollection(request.Attributes!);
+            var featureCollection = service.GetFeatureCollection(request.Attributes);
             if (featureCollection == null)
                 return NotFound();
 
@@ -247,8 +250,13 @@ namespace MicroService.WebApi.V1.Controllers
                 return BadRequest();
             }
 
-            var keys = request.Attributes!.Select(kv => kv.Key).ToList();
-            var service = _shapeServiceResolver!(request?.Key!);
+            if (request.Attributes is null || request.Attributes.Count == 0)
+            {
+                return BadRequest("Attributes are required.");
+            }
+
+            var keys = request.Attributes.Select(kv => kv.Key).ToList();
+            var service = _shapeServiceResolver!(request.Key);
 
             var shapeType = service.GetType().GetInterface("IShapeService`1")!.GetGenericArguments()[0];
 
@@ -268,7 +276,7 @@ namespace MicroService.WebApi.V1.Controllers
                 return BadRequest($"The following attributes are not valid for the selected shape type: {invalidFields}");
             }
 
-            var results = lookupFunction(service, request!.Attributes!).ToList();
+            var results = lookupFunction(service, request.Attributes).ToList();
             if (!results.Any())
             {
                 return NotFound();
