@@ -66,6 +66,14 @@ namespace MicroService.Test.Integration
             Assert.NotNull(features);
         }
 
+        [Fact]
+        public void GetFeatureLookup_ReturnsEmptySequenceForNullAttributes()
+        {
+            var result = _service.GetFeatureLookup(null);
+
+            Assert.Empty(result);
+        }
+
         [InlineData(-73.9600952918919, 40.63098618196636, "803 East 17th Street", "BK")]
         [Theory(DisplayName = "Get Geospatial Point Lookup")]
         public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object expected2)

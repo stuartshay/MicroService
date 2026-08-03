@@ -171,11 +171,11 @@ namespace MicroService.Service.Services.Base
             return results;
         }
 
-        public virtual IEnumerable<TShape>? GetFeatureLookup(List<KeyValuePair<string, object>>? attributes)
+        public virtual IEnumerable<TShape> GetFeatureLookup(List<KeyValuePair<string, object>>? attributes)
         {
             if (attributes == null)
             {
-                return null;
+                return Enumerable.Empty<TShape>();
             }
 
             attributes = ValidateFeatureKey(attributes);
