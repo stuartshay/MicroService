@@ -73,7 +73,7 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, sut.CDTAName);
         }
 
-        public void Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
+        void IShapeTest.Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
         {
             throw new NotImplementedException();
         }

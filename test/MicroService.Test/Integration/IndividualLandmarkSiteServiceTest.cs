@@ -80,7 +80,7 @@ namespace MicroService.Test.Integration
 
         //[InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique", "MN")]
         //[Theory(DisplayName = "Get Geospatial Point Lookup -NAD83")]
-        public void Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
+        void IShapeTest.Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
         {
             throw new NotImplementedException();
         }

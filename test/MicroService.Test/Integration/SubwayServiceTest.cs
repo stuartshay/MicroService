@@ -80,7 +80,7 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, sut.Line);
         }
 
-        public void Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
+        void IShapeTest.Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
         {
             throw new NotImplementedException();
         }
@@ -96,8 +96,9 @@ namespace MicroService.Test.Integration
 
         [InlineData("Junction Boulevard & Roosevelt Avenue at NE corner", "", "1789")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
-        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
+        public void Get_Feature_Attribute_Lookup(object value1, object _value2, string expected)
         {
+            _ = _value2; // Required by the shared shape-test contract.
             var attributes = new List<KeyValuePair<string, object>>
             {
                  new("Name", value1),
