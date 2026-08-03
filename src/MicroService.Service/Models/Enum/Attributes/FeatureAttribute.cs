@@ -2,6 +2,7 @@
 
 namespace MicroService.Service.Models.Enum.Attributes
 {
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
     public class FeatureNameAttribute : Attribute
     {
         public FeatureNameAttribute(string attributeName)
@@ -12,16 +13,19 @@ namespace MicroService.Service.Models.Enum.Attributes
         public string AttributeName { get; set; }
     }
 
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
     public class FeatureCollectionAttribute : Attribute
     {
         public string Name { get; set; }
     }
 
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
     public class FeatureCollectionExcludeAttribute : Attribute
     {
         public string Name { get; set; }
     }
 
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
     public class MappingKeyAttribute : Attribute
     {
         public MappingKeyAttribute(string attributeName)
