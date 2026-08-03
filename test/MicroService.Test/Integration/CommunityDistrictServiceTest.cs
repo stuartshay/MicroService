@@ -106,9 +106,9 @@ namespace MicroService.Test.Integration
         }
 
 
-        [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
-        [InlineData("312", "Manhattan", "Manhattan")]
-        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        [Theory(DisplayName = "GetFeatureCollection returns a feature collection")]
+        [InlineData("312")]
+        public void GetFeatureCollection_ValidInput_ReturnsFeatureCollection(string value1)
         {
             // Arrange
             var attributes = new List<KeyValuePair<string, object>>
@@ -118,13 +118,10 @@ namespace MicroService.Test.Integration
 
             // Act
             var sut = _service.GetFeatureCollection(attributes);
-            //var result = sut.Single();
 
-            //// Assert
-            //Assert.NotNull(sut);
-            //Assert.IsType<FeatureCollection>(sut);
-            //Assert.NotNull(result);;
-            //Assert.Equal(int.Parse(value1), (int)result.Attributes["BoroCode"]);
+            // Assert
+            var collection = Assert.IsType<FeatureCollection>(sut);
+            Assert.NotEmpty(collection);
         }
 
 

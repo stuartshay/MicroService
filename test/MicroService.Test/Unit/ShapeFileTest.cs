@@ -68,17 +68,16 @@ namespace MicroService.Test.Unit
                 features.Add(feature);
             }
 
-            var result = features;
-            foreach (var f in features)
+            Assert.NotEmpty(features);
+            Assert.All(features, feature =>
             {
-                var z = f.Geometry.Contains(new Point(1032999, 217570));
-                if (z)
-                {
-                    var z1 = f.Attributes["pct"];
-                    // var z2 = f.Attributes["patrol_bor"];
-                    // var z3 = f.Attributes["sector"];
-                }
-            }
+                Assert.NotNull(feature.Geometry);
+                Assert.NotNull(feature.Attributes);
+            });
+
+            var containingFeature = Assert.Single(features, feature =>
+                feature.Geometry.Contains(new Point(1032999, 217570)));
+            Assert.NotNull(containingFeature.Attributes["pct"]);
         }
 
         [Fact]
