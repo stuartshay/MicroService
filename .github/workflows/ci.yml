@@ -53,6 +53,21 @@ jobs:
       - name: Build solution
         run: dotnet build MicroService.sln --configuration Release --no-restore
 
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - name: Run analyzer validation
+        run: make analyze
+
   test:
     name: Test
     runs-on: ubuntu-latest
