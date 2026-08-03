@@ -8,10 +8,10 @@ namespace MicroService.Service.Models
     public class ParkShape : ShapeBase
     {
         [FeatureName("PARK_NAME")]
-        public string ParkName { get; set; }
+        public string ParkName { get; set; } = string.Empty;
 
         [FeatureName("PARKNUM")]
-        public string ParkNumber { get; set; }
+        public string ParkNumber { get; set; } = string.Empty;
 
         [FeatureName("SOURCE_ID")]
         public long SourceId { get; set; }
@@ -23,12 +23,12 @@ namespace MicroService.Service.Models
         public int SubCode { get; set; }
 
         [FeatureName("LANDUSE")]
-        public string LandUse { get; set; }
+        public string LandUse { get; set; } = string.Empty;
 
         [FeatureName("SYSTEM")]
-        public string System { get; set; }
+        public string System { get; set; } = string.Empty;
 
         [FeatureName("STATUS")]
-        public string Status { get; set; }
+        public string Status { get; set; } = string.Empty;
     }
 }

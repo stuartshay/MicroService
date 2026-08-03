@@ -13,22 +13,22 @@ namespace MicroService.Service.Models
         public double ObjectId { get; set; }
 
         [FeatureName("lpc_lpnumb")]
-        public string LPNumber { get; set; }
+        public string LPNumber { get; set; } = string.Empty;
 
         [FeatureName("lpc_name")]
-        public string AreaName { get; set; }
+        public string AreaName { get; set; } = string.Empty;
 
         [FeatureName("lpc_altern")]
-        public string AlternativeName { get; set; }
+        public string AlternativeName { get; set; } = string.Empty;
 
         [FeatureName("bbl")]
         public double BBL { get; set; }
 
         [FeatureName("borough")]
-        public string BoroName { get; set; }
+        public string BoroName { get; set; } = string.Empty;
 
         [FeatureName("address")]
-        public string Address { get; set; }
+        public string Address { get; set; } = string.Empty;
 
         [FeatureName("block")]
         public double Block { get; set; }
@@ -37,19 +37,19 @@ namespace MicroService.Service.Models
         public double Lot { get; set; }
 
         [FeatureName("date_des_d")]
-        public string DesignationDate { get; set; }
+        public string DesignationDate { get; set; } = string.Empty;
 
         [FeatureName("url_report")]
-        public string UrlReport { get; set; }
+        public string UrlReport { get; set; } = string.Empty;
 
         [FeatureName("lpc_site_d")]
-        public string SiteDesignation { get; set; }
+        public string SiteDesignation { get; set; } = string.Empty;
 
         [FeatureName("lpc_site_s")]
-        public string DesignationStatus { get; set; }
+        public string DesignationStatus { get; set; } = string.Empty;
 
         [FeatureName("landmark_t")]
-        public string LandmarkType { get; set; }
+        public string LandmarkType { get; set; } = string.Empty;
 
 
 

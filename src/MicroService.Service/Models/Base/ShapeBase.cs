@@ -12,15 +12,15 @@ namespace MicroService.Service.Models.Base
         public double ShapeLength { get; set; }
 
         [FeatureCollectionExclude]
-        public BoundingBox BoundingBox { get; set; }
+        public BoundingBox BoundingBox { get; set; } = null!;
 
         [FeatureCollectionExclude]
         [JsonIgnore]
-        public Geometry Geometry { get; set; }
+        public Geometry Geometry { get; set; } = null!;
 
         [FeatureCollectionExclude]
         [JsonIgnore]
-        public FeatureCollection Feature { get; set; }
+        public FeatureCollection Feature { get; set; } = null!;
 
     }
 
@@ -28,7 +28,7 @@ namespace MicroService.Service.Models.Base
     {
         public double Area { get; set; }
 
-        public CentrePoint Centre { get; set; }
+        public CentrePoint Centre { get; set; } = null!;
 
         public double Diameter { get; set; }
 

@@ -8,13 +8,13 @@ namespace MicroService.Service.Models
     public class ZipCodeShape : ShapeBase
     {
         [FeatureName("ZIPCODE")]
-        public string ZipCode { get; set; }
+        public string ZipCode { get; set; } = string.Empty;
 
         [FeatureName("BLDGZIP")]
-        public string BldgZip { get; set; }
+        public string BldgZip { get; set; } = string.Empty;
 
         [FeatureName("PO_NAME")]
-        public string PostOfficeName { get; set; }
+        public string PostOfficeName { get; set; } = string.Empty;
 
         [FeatureName("POPULATION")]
         public int Population { get; set; }
@@ -23,19 +23,19 @@ namespace MicroService.Service.Models
         public double Area { get; set; }
 
         [FeatureName("STATE")]
-        public string State { get; set; }
+        public string State { get; set; } = string.Empty;
 
         [FeatureName("COUNTY")]
-        public string County { get; set; }
+        public string County { get; set; } = string.Empty;
 
         [FeatureName("ST_FIPS")]
-        public string StateFibs { get; set; }
+        public string StateFibs { get; set; } = string.Empty;
 
         [FeatureName("CTY_FIPS")]
-        public string CityFibs { get; set; }
+        public string CityFibs { get; set; } = string.Empty;
 
         [FeatureName("URL")]
-        public string Url { get; set; }
+        public string Url { get; set; } = string.Empty;
 
     }
 }
