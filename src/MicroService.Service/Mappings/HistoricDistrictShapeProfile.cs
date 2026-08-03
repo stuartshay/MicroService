@@ -1,9 +1,8 @@
-﻿using MicroService.Data.Enum;
+using MicroService.Data.Enum;
 using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 using System;
-using System.Text.RegularExpressions;
 
 namespace MicroService.Service.Mappings
 {
@@ -12,31 +11,21 @@ namespace MicroService.Service.Mappings
         public HistoricDistrictShapeProfile()
         {
             CreateMap<Feature, HistoricDistrictShape>()
-                .ForMember(dest => dest.LPNumber, opt => opt.MapFrom(src => src.Attributes["lp_number"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.AreaName, opt => opt.MapFrom(src => src.Attributes["area_name"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => src.Attributes["borough"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.BoundaryName, opt =>
-                    opt.MapFrom(src => string.IsNullOrEmpty(src.Attributes["boundary_n"].ToString() ?? string.Empty) ? null
-                        : Regex.Replace(src.Attributes["boundary_n"].ToString() ?? string.Empty, @"\u0000", string.Empty)))
-                .ForMember(dest => dest.CalendarDate, opt =>
-                    opt.MapFrom(src => string.IsNullOrEmpty(src.Attributes["caldate"].ToString() ?? string.Empty) ? null
-                        : Regex.Replace(src.Attributes["caldate"].ToString() ?? string.Empty, @"\u0000", string.Empty)))
-                .ForMember(dest => dest.Current, opt => opt.MapFrom(src => src.Attributes["current_"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.DesignationDate, opt =>
-                    opt.MapFrom(src => string.IsNullOrEmpty(src.Attributes["desdate"].ToString() ?? string.Empty) ? null
-                        : Regex.Replace(src.Attributes["desdate"].ToString() ?? string.Empty, @"\u0000", string.Empty)))
-                .ForMember(dest => dest.Extension, opt =>
-                    opt.MapFrom(src => string.IsNullOrEmpty(src.Attributes["extension"].ToString() ?? string.Empty) ? null
-                        : Regex.Replace(src.Attributes["extension"].ToString() ?? string.Empty, @"\u0000", string.Empty)))
-                .ForMember(dest => dest.LastAction, opt => opt.MapFrom(src => src.Attributes["last_actio"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.OtherHearing, opt =>
-                    opt.MapFrom(src => string.IsNullOrEmpty(src.Attributes["other_hear"].ToString() ?? string.Empty) ? null
-                        : Regex.Replace(src.Attributes["other_hear"].ToString() ?? string.Empty, @"\u0000", string.Empty)))
-                .ForMember(dest => dest.PublicHearing, opt => opt.MapFrom(src => src.Attributes["public_hea"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Attributes["status_of_"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => (int)Enum.Parse<Borough>(src.Attributes["borough"].ToString() ?? string.Empty)))
-                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_area"].ToString() ?? string.Empty)))
-                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_leng"].ToString() ?? string.Empty)))
+                .ForMember(dest => dest.LPNumber, opt => opt.MapFrom(src => GetString(src, "lp_number")))
+                .ForMember(dest => dest.AreaName, opt => opt.MapFrom(src => GetString(src, "area_name")))
+                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => GetString(src, "borough")))
+                .ForMember(dest => dest.BoundaryName, opt => opt.MapFrom(src => GetSanitizedString(src, "boundary_n")))
+                .ForMember(dest => dest.CalendarDate, opt => opt.MapFrom(src => GetSanitizedString(src, "caldate")))
+                .ForMember(dest => dest.Current, opt => opt.MapFrom(src => GetString(src, "current_")))
+                .ForMember(dest => dest.DesignationDate, opt => opt.MapFrom(src => GetSanitizedString(src, "desdate")))
+                .ForMember(dest => dest.Extension, opt => opt.MapFrom(src => GetSanitizedString(src, "extension")))
+                .ForMember(dest => dest.LastAction, opt => opt.MapFrom(src => GetString(src, "last_actio")))
+                .ForMember(dest => dest.OtherHearing, opt => opt.MapFrom(src => GetSanitizedString(src, "other_hear")))
+                .ForMember(dest => dest.PublicHearing, opt => opt.MapFrom(src => GetString(src, "public_hea")))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => GetString(src, "status_of_")))
+                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => (int)Enum.Parse<Borough>(GetString(src, "borough"))))
+                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => ParseDouble(src, "shape_area")))
+                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => ParseDouble(src, "shape_leng")))
                 .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
                 .ForMember(dest => dest.Feature, opt => opt.Ignore());
         }

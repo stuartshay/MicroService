@@ -1,4 +1,4 @@
-﻿using MicroService.Data.Enum;
+using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
@@ -13,29 +13,49 @@ namespace MicroService.Service.Mappings
         public IndividualLandmarkSiteShapeProfile()
         {
             CreateMap<Feature, IndividualLandmarkSiteShape>()
-                .ForMember(dest => dest.LPNumber, opt => opt.MapFrom(src => src.Attributes["lpc_lpnumb"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.AreaName, opt => opt.MapFrom(src => src.Attributes["lpc_name"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => src.Attributes["borough"] != null && EnumHelper.IsEnumValid<Borough>(src.Attributes["borough"].ToString() ?? string.Empty) ?
-                    (int)Enum.Parse<Borough>(src.Attributes["borough"].ToString() ?? string.Empty) : 0))
-                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => src.Attributes["borough"] != null && EnumHelper.IsEnumValid<Borough>(src.Attributes["borough"].ToString() ?? string.Empty) ?
-                    src.Attributes["borough"].ToString() ?? string.Empty : null))
-                .ForMember(dest => dest.BBL, opt => opt.MapFrom(src => src.Attributes["bbl"] != null ? Double.Parse(src.Attributes["bbl"].ToString() ?? string.Empty) : 0))
-                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Attributes["address"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.Block, opt => opt.MapFrom(src => src.Attributes["block"] != null ? Double.Parse(src.Attributes["block"].ToString() ?? string.Empty) : 0))
-                .ForMember(dest => dest.Lot, opt => opt.MapFrom(src => src.Attributes["lot"] != null ? Double.Parse(src.Attributes["lot"].ToString() ?? string.Empty) : 0))
-                .ForMember(dest => dest.ObjectId, opt => opt.MapFrom(src => src.Attributes["objectid"] != null ? Double.Parse(src.Attributes["objectid"].ToString() ?? string.Empty) : 0))
-                .ForMember(dest => dest.DesignationDate, opt => opt.MapFrom(src => src.Attributes["date_des_d"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.AlternativeName, opt =>
-                    opt.MapFrom(src => string.IsNullOrEmpty(src.Attributes["lpc_altern"].ToString() ?? string.Empty) ? null
-                        : Regex.Replace(src.Attributes["lpc_altern"].ToString() ?? string.Empty, @"\u0000", string.Empty)))
-                .ForMember(dest => dest.SiteDesignation, opt => opt.MapFrom(src => src.Attributes["lpc_site_d"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.LandmarkType, opt => opt.MapFrom(src => src.Attributes["landmark_t"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.DesignationStatus, opt => opt.MapFrom(src => src.Attributes["lpc_site_s"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.UrlReport, opt => opt.MapFrom(src => src.Attributes["url_report"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_area"].ToString() ?? string.Empty)))
-                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_leng"].ToString() ?? string.Empty)))
+                .ForMember(dest => dest.LPNumber, opt => opt.MapFrom(src => GetString(src, "lpc_lpnumb")))
+                .ForMember(dest => dest.AreaName, opt => opt.MapFrom(src => GetString(src, "lpc_name")))
+                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => GetBoroCode(src)))
+                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => GetValidBoroughName(src)))
+                .ForMember(dest => dest.BBL, opt => opt.MapFrom(src => GetDouble(src, "bbl")))
+                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => GetString(src, "address")))
+                .ForMember(dest => dest.Block, opt => opt.MapFrom(src => GetDouble(src, "block")))
+                .ForMember(dest => dest.Lot, opt => opt.MapFrom(src => GetDouble(src, "lot")))
+                .ForMember(dest => dest.ObjectId, opt => opt.MapFrom(src => GetDouble(src, "objectid")))
+                .ForMember(dest => dest.DesignationDate, opt => opt.MapFrom(src => GetString(src, "date_des_d")))
+                .ForMember(dest => dest.AlternativeName, opt => opt.MapFrom(src => GetAlternativeName(src)))
+                .ForMember(dest => dest.SiteDesignation, opt => opt.MapFrom(src => GetString(src, "lpc_site_d")))
+                .ForMember(dest => dest.LandmarkType, opt => opt.MapFrom(src => GetString(src, "landmark_t")))
+                .ForMember(dest => dest.DesignationStatus, opt => opt.MapFrom(src => GetString(src, "lpc_site_s")))
+                .ForMember(dest => dest.UrlReport, opt => opt.MapFrom(src => GetString(src, "url_report")))
+                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => ParseDouble(src, "shape_area")))
+                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => ParseDouble(src, "shape_leng")))
                 .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
                 .ForMember(dest => dest.Feature, opt => opt.Ignore());
+        }
+
+        private static int GetBoroCode(Feature src)
+        {
+            var borough = GetString(src, "borough");
+            return src.Attributes["borough"] != null && EnumHelper.IsEnumValid<Borough>(borough)
+                ? (int)Enum.Parse<Borough>(borough)
+                : 0;
+        }
+
+        private static string? GetValidBoroughName(Feature src)
+        {
+            var borough = GetString(src, "borough");
+            return src.Attributes["borough"] != null && EnumHelper.IsEnumValid<Borough>(borough)
+                ? borough
+                : null;
+        }
+
+        private static string? GetAlternativeName(Feature src)
+        {
+            var alternativeName = GetString(src, "lpc_altern");
+            return string.IsNullOrEmpty(alternativeName)
+                ? null
+                : Regex.Replace(alternativeName, @"\u0000", string.Empty);
         }
     }
 
