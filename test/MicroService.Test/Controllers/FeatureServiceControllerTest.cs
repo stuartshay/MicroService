@@ -38,7 +38,7 @@ namespace MicroService.Test.Controllers
             var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
             shapeServiceResolver.Setup(r => r!(request.Key.ToString())).Returns(shapeServiceMock.Object);
 
-            var controller = GetFeatureServiceController(shapeServiceResolver.Object, shapeServiceMock.Object);
+            var controller = GetFeatureServiceController(shapeServiceResolver.Object);
 
             // Act
             var result = await controller.GetFeatureList(request);
@@ -103,7 +103,7 @@ namespace MicroService.Test.Controllers
             var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
             shapeServiceResolver.Setup(r => r!(id.ToString())).Returns(shapeServiceMock.Object);
 
-            var controller = GetFeatureServiceController(shapeServiceResolver.Object, shapeServiceMock.Object);
+            var controller = GetFeatureServiceController(shapeServiceResolver.Object);
 
             // Act
             var sut = controller.GetShapeProperties(id);
@@ -118,7 +118,7 @@ namespace MicroService.Test.Controllers
         public void GetShapeProperties_ReturnsBadRequestResult(string key)
         {
             //Arrange
-            var controller = GetFeatureServiceController(null, null);
+            var controller = GetFeatureServiceController();
 
             // Act
             var sut = controller.GetShapeProperties(System.Enum.Parse<ShapeProperties>(key));
@@ -145,7 +145,7 @@ namespace MicroService.Test.Controllers
             var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
             shapeServiceResolver.Setup(r => r!(id)).Returns(shapeServiceMock.Object);
 
-            var controller = GetFeatureServiceController(shapeServiceResolver.Object, shapeServiceMock.Object);
+            var controller = GetFeatureServiceController(shapeServiceResolver.Object);
 
             // Act
             var result = await controller.GetGeospatialLookup(request);
@@ -174,8 +174,7 @@ namespace MicroService.Test.Controllers
             Assert.IsType<BadRequestResult>(sut.Result);
         }
 
-        private static FeatureServiceController GetFeatureServiceController(ShapeServiceResolver? resolver = null,
-            IShapeService<ShapeBase>? shapeService = null)
+        private static FeatureServiceController GetFeatureServiceController(ShapeServiceResolver? resolver = null)
         {
 
             ILogger<FeatureServiceController> logger = new Mock<ILogger<FeatureServiceController>>().Object;

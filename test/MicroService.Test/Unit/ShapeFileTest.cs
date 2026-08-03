@@ -77,7 +77,10 @@ namespace MicroService.Test.Unit
 
             var containingFeature = Assert.Single(features, feature =>
                 feature.Geometry.Contains(new Point(1032999, 217570)));
-            Assert.NotNull(containingFeature.Attributes["pct"]);
+            Assert.Contains("pct", containingFeature.Attributes.GetNames());
+            var precinct = containingFeature.Attributes["pct"];
+            Assert.NotNull(precinct);
+            Assert.NotEqual(DBNull.Value, precinct);
         }
 
         [Fact]

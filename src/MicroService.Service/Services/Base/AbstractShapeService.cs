@@ -117,36 +117,37 @@ namespace MicroService.Service.Services.Base
             return attributes;
         }
 
-        protected object MatchAttributeValue(object value, object expectedValue)
+        protected object? MatchAttributeValue(object value, object expectedValue)
         {
             if (value is string s)
             {
                 if (expectedValue is string es)
                 {
-                    return s == es ? s : default;
+                    return s == es ? s : null;
                 }
             }
             else if (value is int i)
             {
                 if (expectedValue is int ei)
                 {
-                    return i == ei ? i : default;
+                    return i == ei ? i : null;
                 }
                 else if (expectedValue is double ed)
                 {
-                    return i == (int)ed ? i : default;
+                    return i == (int)ed ? i : null;
                 }
             }
             else if (value is double d)
             {
                 if (expectedValue is int ei)
                 {
-                    return (int)d == ei ? d : default;
+                    return (int)d == ei ? d : null;
                 }
 
                 if (expectedValue is double ed)
                 {
-                    return d == ed ? d : default;
+                    const double tolerance = 1e-9;
+                    return Math.Abs(d - ed) <= tolerance ? d : null;
                 }
             }
 

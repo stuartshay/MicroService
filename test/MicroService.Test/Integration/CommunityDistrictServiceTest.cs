@@ -122,6 +122,8 @@ namespace MicroService.Test.Integration
             // Assert
             var collection = Assert.IsType<FeatureCollection>(sut);
             Assert.NotEmpty(collection);
+            Assert.All(collection, feature =>
+                Assert.Equal(int.Parse(value1), Assert.IsType<int>(feature.Attributes["BoroCd"])));
         }
 
 

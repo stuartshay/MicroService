@@ -78,8 +78,8 @@ namespace MicroService.Test.Integration
             throw new NotImplementedException();
         }
 
-        [InlineData("12", "MN1202", "MN12 Washington Heights-Inwood (CD 12 Equivalent)")]
-        [InlineData(12, "MN1202", "MN12 Washington Heights-Inwood (CD 12 Equivalent)")]
+        [InlineData("1", "MN1202", "MN12 Washington Heights-Inwood (CD 12 Equivalent)")]
+        [InlineData(1, "MN1202", "MN12 Washington Heights-Inwood (CD 12 Equivalent)")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
