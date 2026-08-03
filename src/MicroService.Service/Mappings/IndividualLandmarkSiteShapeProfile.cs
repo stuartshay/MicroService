@@ -21,8 +21,8 @@ namespace MicroService.Service.Mappings
                     src.Attributes["borough"].ToString() ?? string.Empty : null))
                 .ForMember(dest => dest.BBL, opt => opt.MapFrom(src => src.Attributes["bbl"] != null ? Double.Parse(src.Attributes["bbl"].ToString() ?? string.Empty) : 0))
                 .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Attributes["address"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.Block, opt => opt.MapFrom(src => src.Attributes["bbl"] != null ? Double.Parse(src.Attributes["block"].ToString() ?? string.Empty) : 0))
-                .ForMember(dest => dest.Lot, opt => opt.MapFrom(src => src.Attributes["bbl"] != null ? Double.Parse(src.Attributes["lot"].ToString() ?? string.Empty) : 0))
+                .ForMember(dest => dest.Block, opt => opt.MapFrom(src => src.Attributes["block"] != null ? Double.Parse(src.Attributes["block"].ToString() ?? string.Empty) : 0))
+                .ForMember(dest => dest.Lot, opt => opt.MapFrom(src => src.Attributes["lot"] != null ? Double.Parse(src.Attributes["lot"].ToString() ?? string.Empty) : 0))
                 .ForMember(dest => dest.ObjectId, opt => opt.MapFrom(src => src.Attributes["objectid"] != null ? Double.Parse(src.Attributes["objectid"].ToString() ?? string.Empty) : 0))
                 .ForMember(dest => dest.DesignationDate, opt => opt.MapFrom(src => src.Attributes["date_des_d"].ToString() ?? string.Empty))
                 .ForMember(dest => dest.AlternativeName, opt =>
