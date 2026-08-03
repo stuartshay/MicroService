@@ -65,8 +65,9 @@ namespace MicroService.Test.Integration
         [InlineData(1000443, 0239270, "32", 0)]
         [InlineData(1021192.9426658918, 212550.01741990919, "115", 0)]
         [Theory(DisplayName = "Get Geospatial Point Lookup")]
-        public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object lookupExpected)
+        public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object _lookupExpected)
         {
+            _ = _lookupExpected; // Required by the shared shape-test contract.
             var sut = _service.GetFeatureLookup(x, y, Datum.Nad83);
 
             Assert.NotNull(sut);
@@ -75,8 +76,9 @@ namespace MicroService.Test.Integration
 
         [InlineData(-73.965624, 40.78268, "22", "22")]
         [Theory(DisplayName = "Get Geospatial Point Lookup - WGS84")]
-        public void Get_Geospatial_Point_Lookup_Wgs84(double x, double y, string expected, object expected2)
+        public void Get_Geospatial_Point_Lookup_Wgs84(double x, double y, string expected, object _expected2)
         {
+            _ = _expected2; // Required by the shared shape-test contract.
             var sut = _service.GetFeatureLookup(x, y, Datum.Wgs84);
 
             Assert.NotNull(sut);
@@ -85,8 +87,9 @@ namespace MicroService.Test.Integration
 
         [InlineData("14", "", "14")]
         [Theory(Skip = "TODO FIX - Not Filtering", DisplayName = "Get Feature Attribute Lookup")]
-        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
+        public void Get_Feature_Attribute_Lookup(object value1, object _value2, string expected)
         {
+            _ = _value2; // Required by the shared shape-test contract.
             // var value = Convert.ToDouble(value1);
             // var value = Convert.ToString(value1);
             var attributes = new List<KeyValuePair<string, object>>
