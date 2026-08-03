@@ -15,10 +15,14 @@ docker volume prune
 
 ### Cluster Mode
 ```
+make certificates
 cd docker
 docker-compose -f docker-compose-cluster.yml pull
 docker-compose -f docker-compose-cluster.yml up --scale api=4
 ```
+
+`make certificates` creates a self-signed certificate for local development.
+The generated certificate and private key are intentionally excluded from Git.
 
 ## Grafana UI
 

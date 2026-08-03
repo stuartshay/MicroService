@@ -49,7 +49,7 @@ install_linux_prerequisites() {
 
     [[ -r /etc/os-release ]] || fail "Cannot identify this Linux distribution"
 
-    for command_name in curl git make python3 shellcheck unzip; do
+    for command_name in curl git make openssl python3 shellcheck unzip; do
         if ! command -v "${command_name}" >/dev/null 2>&1; then
             prerequisites_present=false
             break
@@ -75,10 +75,10 @@ install_linux_prerequisites() {
             icu_package="$(apt-cache pkgnames | grep -E '^libicu[0-9]+$' | sort -V | tail -n 1 || true)"
             [[ -n "${icu_package}" ]] || fail "Could not find the ICU runtime package"
             run_as_root apt-get install -y --no-install-recommends \
-                ca-certificates curl git "${icu_package}" make python3 python3-venv shellcheck unzip
+                ca-certificates curl git "${icu_package}" make openssl python3 python3-venv shellcheck unzip
             ;;
         *)
-            fail "Unsupported Linux distribution: ${ID:-unknown}. Install curl, git, make, Python 3, ShellCheck, and unzip manually."
+            fail "Unsupported Linux distribution: ${ID:-unknown}. Install curl, git, make, OpenSSL, Python 3, ShellCheck, and unzip manually."
             ;;
     esac
 }
@@ -88,7 +88,7 @@ install_macos_prerequisites() {
         fail "Install the Xcode Command Line Tools with 'xcode-select --install', then rerun this script"
     fi
 
-    for command_name in curl git make python3 unzip; do
+    for command_name in curl git make openssl python3 unzip; do
         command -v "${command_name}" >/dev/null 2>&1 || fail "Required command not found: ${command_name}"
     done
 

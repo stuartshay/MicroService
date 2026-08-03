@@ -30,6 +30,9 @@ healthchecksdb
 # Project Specific Files
 .env
 docker/postgres/data/
+docker/nginx/ssl/*.cer
+docker/nginx/ssl/*.crt
+docker/nginx/ssl/*.key
 
 # Coverage Test Files 
 *coverage*
