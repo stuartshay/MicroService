@@ -9,15 +9,15 @@ namespace MicroService.Service.Models
     {
         [FeatureCollection]
         [FeatureName("lp_number")]
-        public string LPNumber { get; set; }
+        public string LPNumber { get; set; } = string.Empty;
 
         [FeatureCollection]
         [FeatureName("scen_lm_na")]
-        public string AreaName { get; set; }
+        public string AreaName { get; set; } = string.Empty;
 
         [FeatureCollection]
         [FeatureName("borough")]
-        public string BoroName { get; set; }
+        public string BoroName { get; set; } = string.Empty;
 
         [FeatureCollection]
         public int BoroCode { get; set; }

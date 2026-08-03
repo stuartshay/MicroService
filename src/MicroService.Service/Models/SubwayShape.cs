@@ -11,13 +11,13 @@ namespace MicroService.Service.Models
         public double ObjectId { get; set; }
 
         [FeatureName("line")]
-        public string Line { get; set; }
+        public string Line { get; set; } = string.Empty;
 
         [FeatureName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [FeatureName("url")]
-        public string Url { get; set; }
+        public string Url { get; set; } = string.Empty;
 
         public double Distance { get; set; }
     }
