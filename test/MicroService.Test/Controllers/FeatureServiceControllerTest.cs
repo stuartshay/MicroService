@@ -38,7 +38,7 @@ namespace MicroService.Test.Controllers
             var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
             shapeServiceResolver.Setup(r => r!(request.Key.ToString())).Returns(shapeServiceMock.Object);
 
-            var controller = GetFeatureServiceController(shapeServiceResolver.Object, shapeServiceMock.Object);
+            var controller = GetFeatureServiceController(shapeServiceResolver.Object);
 
             // Act
             var result = await controller.GetFeatureList(request);
@@ -103,7 +103,7 @@ namespace MicroService.Test.Controllers
             var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
             shapeServiceResolver.Setup(r => r!(id.ToString())).Returns(shapeServiceMock.Object);
 
-            var controller = GetFeatureServiceController(shapeServiceResolver.Object, shapeServiceMock.Object);
+            var controller = GetFeatureServiceController(shapeServiceResolver.Object);
 
             // Act
             var sut = controller.GetShapeProperties(id);
@@ -118,7 +118,7 @@ namespace MicroService.Test.Controllers
         public void GetShapeProperties_ReturnsBadRequestResult(string key)
         {
             //Arrange
-            var controller = GetFeatureServiceController(null, null);
+            var controller = GetFeatureServiceController();
 
             // Act
             var sut = controller.GetShapeProperties(System.Enum.Parse<ShapeProperties>(key));
@@ -132,27 +132,27 @@ namespace MicroService.Test.Controllers
         {
             // Arrange
             var id = "BoroughBoundaries";
-            var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
-            shapeServiceMock.Setup(s => s.GetFeatureLookup(1, 1, Datum.Nad83)).Returns(new BoroughBoundaryShape { BoroCode = 1 });
-
-            var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
-            shapeServiceResolver.Setup(r => r!(id)).Returns(shapeServiceMock.Object);
-
-            var controller = GetFeatureServiceController(shapeServiceResolver.Object, shapeServiceMock.Object);
             var request = new FeatureGeoRequestModel
             {
                 Type = ShapeProperties.BoroughBoundaries,
                 X = -74.0064,
                 Y = 40.7142
             };
+            var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
+            var expected = new BoroughBoundaryShape { BoroCode = 1 };
+            shapeServiceMock.Setup(s => s.GetFeatureLookup(request.X, request.Y, request.Datum)).Returns(expected);
+
+            var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
+            shapeServiceResolver.Setup(r => r!(id)).Returns(shapeServiceMock.Object);
+
+            var controller = GetFeatureServiceController(shapeServiceResolver.Object);
 
             // Act
             var result = await controller.GetGeospatialLookup(request);
 
             // Assert
-            //var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            //var shapeResult = Assert.IsType<ShapeBase>(okResult.Value);
-            //Assert.NotNull(shapeResult);
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            Assert.Same(expected, okResult.Value);
         }
 
         [Fact(Skip = "TODO: Fix")]
@@ -174,8 +174,7 @@ namespace MicroService.Test.Controllers
             Assert.IsType<BadRequestResult>(sut.Result);
         }
 
-        private static FeatureServiceController GetFeatureServiceController(ShapeServiceResolver? resolver = null,
-            IShapeService<ShapeBase>? shapeService = null)
+        private static FeatureServiceController GetFeatureServiceController(ShapeServiceResolver? resolver = null)
         {
 
             ILogger<FeatureServiceController> logger = new Mock<ILogger<FeatureServiceController>>().Object;
