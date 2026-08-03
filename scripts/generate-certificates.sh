@@ -11,15 +11,22 @@ readonly CERTIFICATE_FILE="${CERTIFICATE_DIRECTORY}/localhost.crt"
 readonly KEY_FILE="${CERTIFICATE_DIRECTORY}/localhost.key"
 
 command -v openssl >/dev/null 2>&1 || {
-    printf '[certificates] ERROR: OpenSSL is required. Run make setup.\n' >&2
+    printf '[certificates] ERROR: OpenSSL is required. Install OpenSSL, or run make setup on Linux.\n' >&2
     exit 1
 }
 
+umask 077
 mkdir -p "${CERTIFICATE_DIRECTORY}"
 
 if [[ -s "${CERTIFICATE_FILE}" && -s "${KEY_FILE}" ]]; then
     printf '[certificates] Local development certificate already exists.\n'
     exit 0
+fi
+
+if [[ -e "${CERTIFICATE_FILE}" || -e "${KEY_FILE}" ]]; then
+    printf '[certificates] ERROR: Incomplete certificate pair. Remove both %s and %s, then retry.\n' \
+        "${CERTIFICATE_FILE}" "${KEY_FILE}" >&2
+    exit 1
 fi
 
 openssl req \
