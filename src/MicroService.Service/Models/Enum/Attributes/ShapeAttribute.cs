@@ -1,5 +1,6 @@
 ﻿namespace MicroService.Service.Models.Enum.Attributes
 {
+    [System.AttributeUsage(System.AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
     public class ShapeAttribute : System.Attribute
     {
         public ShapeAttribute(string directory, string fileName, Datum datum)

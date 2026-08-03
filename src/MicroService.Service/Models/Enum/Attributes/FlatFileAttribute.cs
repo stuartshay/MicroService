@@ -1,5 +1,6 @@
 ﻿namespace MicroService.Service.Models.Enum.Attributes
 {
+    [System.AttributeUsage(System.AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
     public class FlatFileAttribute : System.Attribute
     {
         public FlatFileAttribute(string directory, string fileName, string modelName, FileTypes fileType)
