@@ -10,7 +10,7 @@ namespace MicroService.Service.Interfaces
     {
         IReadOnlyCollection<Feature> GetFeatures();
 
-        T GetFeatureLookup(double x, double y, Datum datum);
+        T? GetFeatureLookup(double x, double y, Datum datum);
 
         IEnumerable<T> GetFeatureLookup(List<KeyValuePair<string, object>>? attributes);
 

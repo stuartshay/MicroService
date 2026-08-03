@@ -106,10 +106,15 @@ void SetupServices()
 
 void AddServices()
 {
-    var config = configuration.Get<ApplicationOptions>();
+    var config = configuration.Get<ApplicationOptions>()
+        ?? throw new InvalidOperationException("Application configuration could not be loaded.");
+    var connectionString = config.ConnectionStrings?.PostgreSql
+        ?? throw new InvalidOperationException("ConnectionStrings:PostgreSql configuration is required.");
+    var shapeConfiguration = config.ShapeConfiguration
+        ?? throw new InvalidOperationException("ShapeConfiguration is required.");
 
     // Repositories
-    services.AddScoped<ITestDataRepository>(x => new TestDataRepository(config!.ConnectionStrings.PostgreSql));
+    services.AddScoped<ITestDataRepository>(x => new TestDataRepository(connectionString));
 
     // Services
     services.AddScoped<ICalculationService, CalculationService>();
@@ -152,11 +157,12 @@ void AddServices()
         else
             throw new KeyNotFoundException(key);
 
-        var options = serviceProvider.GetService<IOptions<ApplicationOptions>>();
-        var cache = serviceProvider.GetService<IMemoryCache>();
+        var options = serviceProvider.GetRequiredService<IOptions<ApplicationOptions>>();
+        var cache = serviceProvider.GetRequiredService<IMemoryCache>();
 
-        var rootDirectory = options?.Value?.ShapeConfiguration.ShapeSystemRootDirectory;
-        string shapeFileNamePath = Path.Combine(rootDirectory!, shapeProperties.Directory, shapeProperties.FileName);
+        var rootDirectory = options.Value.ShapeConfiguration?.ShapeSystemRootDirectory
+            ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory configuration is required.");
+        string shapeFileNamePath = Path.Combine(rootDirectory, shapeProperties.Directory, shapeProperties.FileName);
 
         return new CachedShapefileDataReader(cache, key, shapeFileNamePath);
     });
@@ -217,14 +223,16 @@ void AddServices()
     services.AddCronJob<InMemoryCacheShapefileCronJobService>(x =>
     {
         x.TimeZoneInfo = TimeZoneInfo.Local;
-        x.CronExpression = config!.ShapeConfiguration.CronExpression;
+        x.CronExpression = shapeConfiguration.CronExpression;
     });
 }
 
 void AddHealthCheckServices()
 {
-    var config = configuration.Get<ApplicationOptions>();
-    var shapeDirectory = config!.ShapeConfiguration.ShapeRootDirectory;
+    var config = configuration.Get<ApplicationOptions>()
+        ?? throw new InvalidOperationException("Application configuration could not be loaded.");
+    var shapeDirectory = config.ShapeConfiguration?.ShapeRootDirectory
+        ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory configuration is required.");
     string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
     services

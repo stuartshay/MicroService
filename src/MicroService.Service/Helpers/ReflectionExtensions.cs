@@ -21,10 +21,11 @@ namespace MicroService.Service.Helpers
             public static IReadOnlyCollection<PropertyInfo> PublicProperties => PropertyCache<T>.publicPropertiesLazy.Value;
         }
 
-        public static TAttribute GetAttributeFromProperty<TAttribute>(object obj, string propertyName) where TAttribute : Attribute
+        public static TAttribute? GetAttributeFromProperty<TAttribute>(object obj, string propertyName) where TAttribute : Attribute
         {
-            var property = obj.GetType().GetProperty(propertyName);
-            return property!.GetCustomAttribute<TAttribute>();
+            var property = obj.GetType().GetProperty(propertyName)
+                ?? throw new ArgumentException($"Property '{propertyName}' not found on {obj.GetType()}.", nameof(propertyName));
+            return property.GetCustomAttribute<TAttribute>();
         }
 
         public static PropertyInfo[] GetPropertiesWithCustomAttribute<T>(this Type type) where T : Attribute

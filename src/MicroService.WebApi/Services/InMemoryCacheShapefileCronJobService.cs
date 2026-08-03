@@ -52,7 +52,8 @@ namespace MicroService.WebApi.Services
 
             foreach (var (name, _) in _entries)
             {
-                var rootDirectory = _applicationOptions.Value.ShapeConfiguration.ShapeSystemRootDirectory;
+                var rootDirectory = _applicationOptions.Value.ShapeConfiguration?.ShapeSystemRootDirectory
+                    ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory configuration is required.");
                 var directory = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttribute>().Directory;
                 var file = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttribute>().FileName;
 
@@ -93,7 +94,8 @@ namespace MicroService.WebApi.Services
 
             foreach (var (name, shapeAttribute) in nameWithShapeAttributes)
             {
-                var rootDirectory = _applicationOptions.Value.ShapeConfiguration.ShapeSystemRootDirectory;
+                var rootDirectory = _applicationOptions.Value.ShapeConfiguration?.ShapeSystemRootDirectory
+                    ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory configuration is required.");
                 var directory = shapeAttribute.Directory;
                 var file = $"{shapeAttribute.FileName}.dbf";
 
