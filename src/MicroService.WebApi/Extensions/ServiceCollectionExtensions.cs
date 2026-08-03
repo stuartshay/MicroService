@@ -5,13 +5,13 @@ using MicroService.Service.Models.Enum;
 using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Swashbuckle.AspNetCore.Filters;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using System.Text.Json.Nodes;
 
 namespace MicroService.WebApi.Extensions
 {
@@ -96,25 +96,18 @@ namespace MicroService.WebApi.Extensions
                     Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer"
                 });
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                c.AddSecurityRequirement(document => new OpenApiSecurityRequirement {
                     {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        Array.Empty<string>()
+                        new OpenApiSecuritySchemeReference("Bearer", document, null),
+                        new List<string>()
                     }
                 });
                 c.MapType<ShapeProperties>(() => new OpenApiSchema
                 {
-                    Type = "string",
+                    Type = JsonSchemaType.String,
                     Enum = Enum.GetNames(typeof(ShapeProperties))
-                        .Select(name => new OpenApiString(name))
-                        .Cast<IOpenApiAny>()
+                        .Select(name => JsonValue.Create(name))
+                        .Cast<JsonNode>()
                         .ToList(),
                 });
 
