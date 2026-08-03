@@ -6,6 +6,8 @@
 
         public string? CronExpression { get; set; }
 
-        public string? ShapeSystemRootDirectory => Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), ShapeRootDirectory));
+        public string? ShapeSystemRootDirectory => ShapeRootDirectory == null
+            ? null
+            : Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), ShapeRootDirectory));
     }
 }

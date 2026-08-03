@@ -68,7 +68,7 @@ namespace MicroService.Service.Services
 
             if (attributes.Any(a => a.Key.Equals("LPNumber", StringComparison.InvariantCultureIgnoreCase)))
             {
-                var lpNumberValue = attributes.First(a => a.Key.Equals("LPNumber", StringComparison.InvariantCultureIgnoreCase)).Value.ToString();
+                var lpNumberValue = attributes.First(a => a.Key.Equals("LPNumber", StringComparison.InvariantCultureIgnoreCase)).Value.ToString() ?? string.Empty;
                 var propertyAttributes = new List<KeyValuePair<string, object>>
                 {
                     new KeyValuePair<string, object>("LPNumber", lpNumberValue)

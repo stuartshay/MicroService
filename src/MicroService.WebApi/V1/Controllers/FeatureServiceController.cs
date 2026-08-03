@@ -216,7 +216,7 @@ namespace MicroService.WebApi.V1.Controllers
                 return BadRequest($"The following attributes are not valid for the selected shape type: {invalidFields}");
             }
 
-            var featureCollection = _shapeServiceResolver(request!.Key).GetFeatureCollection(request.Attributes);
+            var featureCollection = _shapeServiceResolver(request!.Key).GetFeatureCollection(request.Attributes!);
             if (featureCollection == null)
                 return NotFound();
 

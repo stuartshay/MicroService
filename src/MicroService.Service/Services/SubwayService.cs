@@ -25,11 +25,13 @@ namespace MicroService.Service.Services
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Subway));
         }
 
-        public override SubwayShape GetFeatureLookup(double x, double y, Datum datum)
+        public override SubwayShape? GetFeatureLookup(double x, double y, Datum datum)
         {
             // Validate Point is in Range
+            // ConvertNad83ToWgs84 only returns null components when its x/y arguments
+            // are null; x and y here are non-nullable doubles, so the result is always populated.
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
-            var point = new Point(result.Item1.Value, result.Item2.Value);
+            var point = new Point(result.Item1!.Value, result.Item2!.Value);
 
             var features = GetFeatures();
             var subwayStops = new List<SubwayShape>(features.Count);
@@ -39,9 +41,9 @@ namespace MicroService.Service.Services
                 var distance = f.Geometry.Distance(point);
                 var model = new SubwayShape
                 {
-                    Line = f.Attributes["line"].ToString(),
-                    Name = f.Attributes["name"].ToString(),
-                    ObjectId = int.Parse(f.Attributes["objectid"].ToString()),
+                    Line = f.Attributes["line"].ToString() ?? string.Empty,
+                    Name = f.Attributes["name"].ToString() ?? string.Empty,
+                    ObjectId = int.Parse(f.Attributes["objectid"].ToString() ?? string.Empty),
                     Distance = distance,
                 };
 
