@@ -9,9 +9,9 @@ namespace MicroService.Service.Mappings
         public SubwayShapeProfile()
         {
             CreateMap<Feature, SubwayShape>()
-                .ForMember(dest => dest.Line, opt => opt.MapFrom(src => src.Attributes["line"].ToString()))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Attributes["name"].ToString()))
-                .ForMember(dest => dest.ObjectId, opt => opt.MapFrom(src => int.Parse(src.Attributes["objectid"].ToString())))
+                .ForMember(dest => dest.Line, opt => opt.MapFrom(src => src.Attributes["line"].ToString() ?? string.Empty))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Attributes["name"].ToString() ?? string.Empty))
+                .ForMember(dest => dest.ObjectId, opt => opt.MapFrom(src => int.Parse(src.Attributes["objectid"].ToString() ?? string.Empty)))
                 .ForMember(dest => dest.Url, opt => opt.Ignore())
                 .ForMember(dest => dest.Distance, opt => opt.Ignore())
                 .ForMember(dest => dest.ShapeArea, opt => opt.Ignore())
