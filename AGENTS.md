@@ -9,12 +9,21 @@ under `.github/instructions/`.
 - Restore and build: `make build`
 - Test: `make test`
 - Run all local checks: `make check`
+- Run analyzer validation: `make analyze`
 - Run pre-commit directly: `pre-commit run --all-files`
+
+## Local AI Skills
+
+This repository keeps shared project-local skills under `.agents/skills/`.
+
+- Roslyn skill: `.agents/skills/net-roslyn-code-analyzers/SKILL.md`
 
 ## Pull Request Workflow
 
 Follow `.github/instructions/pull-requests.instructions.md` for every pull
 request. In particular:
+
+- Stacked PR reference: `https://docs.github.com/en/pull-requests/how-tos/stacked-pull-requests`
 
 - Never commit directly to `master`.
 - Create focused branches and pull requests that are ready for review, not

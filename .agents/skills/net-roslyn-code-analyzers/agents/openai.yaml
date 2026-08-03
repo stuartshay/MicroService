@@ -1,0 +1,4 @@
+interface:
+  display_name: "Roslyn Analyzer Cleanup"
+  short_description: "Diagnose and fix .NET analyzer findings"
+  default_prompt: "Use $net-roslyn-code-analyzers to diagnose and remediate the reported C# analyzer findings."
