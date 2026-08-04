@@ -5,8 +5,6 @@
 		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
-		<NoWarn>$(NoWarn),1701;1702;1705,NU1803</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
