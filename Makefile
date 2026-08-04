@@ -43,7 +43,7 @@ check:
 	fi
 
 analyze: restore
-	$(DOTNET) build $(SOLUTION) --configuration $(ANALYZE_CONFIGURATION) --no-restore /p:RunAnalyzers=true /p:EnforceCodeStyleInBuild=true /p:ContinuousIntegrationBuild=true /p:CodeAnalysisTreatWarningsAsErrors=true
+	$(DOTNET) build $(SOLUTION) --configuration $(ANALYZE_CONFIGURATION) --no-restore /p:RunAnalyzers=true /p:EnforceCodeStyleInBuild=true /p:ContinuousIntegrationBuild=true /p:CodeAnalysisTreatWarningsAsErrors=true /p:TreatWarningsAsErrors=true
 
 restore:
 	$(DOTNET) restore $(SOLUTION)

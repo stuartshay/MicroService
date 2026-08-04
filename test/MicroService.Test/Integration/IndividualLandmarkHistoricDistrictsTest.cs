@@ -133,7 +133,8 @@ namespace MicroService.Test.Integration
 
             // Act
             var sut = _service.GetFeatureCollection(attributes);
-            var result = sut.Single();
+            var typedSut = Assert.IsType<FeatureCollection>(sut);
+            var result = typedSut.Single();
 
             // Assert
             Assert.NotNull(sut);
@@ -156,7 +157,8 @@ namespace MicroService.Test.Integration
 
             // Act
             var sut = _service.GetFeatureCollection(attributes);
-            var result = sut.Single();
+            var typedSut = Assert.IsType<FeatureCollection>(sut);
+            var result = typedSut.Single();
 
             // Assert
             Assert.NotNull(sut);
@@ -181,7 +183,8 @@ namespace MicroService.Test.Integration
 
             // Act
             var sut = _service.GetFeatureCollection(attributes);
-            var result = sut.Single();
+            var typedSut = Assert.IsType<FeatureCollection>(sut);
+            var result = typedSut.Single();
 
             // Assert
             Assert.NotNull(sut);
