@@ -72,7 +72,7 @@ namespace MicroService.Test.Fixture
                     var relativeDirectory = resolvedShapeProperties.Directory.TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
                     var relativeFileName = resolvedShapeProperties.FileName.TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
                     var shapeDirectory = Path.Combine(shapeRootDirectory, relativeDirectory, relativeFileName);
-                    string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
+                    string shapePath = Path.GetFullPath(shapeDirectory);
 
                     return new CachedShapefileDataReader(cache, key, shapePath);
                 })
