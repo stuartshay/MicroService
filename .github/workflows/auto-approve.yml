@@ -46,9 +46,8 @@ jobs:
                 pull_number: prNumber,
               });
 
-              const headSha = context.payload.pull_request.head.sha;
               const copilotReview = reviews
-                .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED' && r.commit_id === headSha)
+                .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED')
                 .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at))[0];
 
               if (copilotReview) {
@@ -74,9 +73,8 @@ jobs:
               pull_number: prNumber,
             });
 
-            const headSha = context.payload.pull_request.head.sha;
             const copilotReview = reviews
-              .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED' && r.commit_id === headSha)
+              .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED')
               .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at))[0];
 
             if (!copilotReview) {
@@ -115,9 +113,8 @@ jobs:
               pull_number: prNumber,
             });
 
-            const headSha = context.payload.pull_request.head.sha;
             const copilotReview = reviews
-              .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED' && r.commit_id === headSha)
+              .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED')
               .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at))[0];
 
             if (copilotReview && copilotReview.state === 'CHANGES_REQUESTED') {
