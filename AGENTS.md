@@ -34,6 +34,8 @@ request. In particular:
 - Use a GitHub stacked pull request when a change depends on an unmerged pull
   request. Keep the bottom PR based on `master` and each higher PR based on the
   branch immediately below it.
+- Ensure required CI checks, including CodeQL code scanning, pass on the current
+  head SHA before considering a PR merge-ready.
 - Do not describe a PR or stack as merge-ready, enable auto-merge, add it to a
   merge queue, or merge it until GitHub Copilot has completed its review.
 - Address every actionable Copilot comment, reply with the resolution and
