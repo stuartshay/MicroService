@@ -126,7 +126,7 @@ namespace MicroService.Test.Integration
 
             // Act
             var sut = _service.GetFeatureCollection(attributes);
-            var result = sut.Single();
+            var result = sut!.Single();
 
             // Assert
             Assert.NotNull(sut);

@@ -35,8 +35,8 @@ namespace MicroService.Test.Controllers
             var shapeServiceMock = new Mock<IShapeService<ShapeBase>>();
             shapeServiceMock.Setup(s => s.GetFeatureList()).Returns(expectedResults);
 
-            var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
-            shapeServiceResolver.Setup(r => r!(request.Key.ToString())).Returns(shapeServiceMock.Object);
+            var shapeServiceResolver = new Mock<ShapeServiceResolver>();
+            shapeServiceResolver.Setup(r => r(request.Key.ToString())).Returns(shapeServiceMock.Object);
 
             var controller = GetFeatureServiceController(shapeServiceResolver.Object);
 
@@ -100,8 +100,8 @@ namespace MicroService.Test.Controllers
                 ShapeType = ShapeGeometryType.Polygon,
             });
 
-            var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
-            shapeServiceResolver.Setup(r => r!(id.ToString())).Returns(shapeServiceMock.Object);
+            var shapeServiceResolver = new Mock<ShapeServiceResolver>();
+            shapeServiceResolver.Setup(r => r(id.ToString())).Returns(shapeServiceMock.Object);
 
             var controller = GetFeatureServiceController(shapeServiceResolver.Object);
 
@@ -142,8 +142,8 @@ namespace MicroService.Test.Controllers
             var expected = new BoroughBoundaryShape { BoroCode = 1 };
             shapeServiceMock.Setup(s => s.GetFeatureLookup(request.X, request.Y, request.Datum)).Returns(expected);
 
-            var shapeServiceResolver = new Mock<ShapeServiceResolver?>();
-            shapeServiceResolver.Setup(r => r!(id)).Returns(shapeServiceMock.Object);
+            var shapeServiceResolver = new Mock<ShapeServiceResolver>();
+            shapeServiceResolver.Setup(r => r(id)).Returns(shapeServiceMock.Object);
 
             var controller = GetFeatureServiceController(shapeServiceResolver.Object);
 
@@ -223,7 +223,7 @@ namespace MicroService.Test.Controllers
         {
 
             ILogger<FeatureServiceController> logger = new Mock<ILogger<FeatureServiceController>>().Object;
-            resolver ??= new Mock<ShapeServiceResolver?>().Object;
+            resolver ??= new Mock<ShapeServiceResolver>().Object;
 
 
             return new FeatureServiceController(resolver, logger);
