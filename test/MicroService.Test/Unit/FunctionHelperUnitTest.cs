@@ -121,7 +121,7 @@ namespace MicroService.Test.Unit
             double[]? xy = null;
 
             // Act
-            var result = GeoTransformationHelper.ConvertNad83ToWgs84(xy);
+            var result = GeoTransformationHelper.ConvertNad83ToWgs84(xy!);
 
             // Assert
             Assert.Empty(result);

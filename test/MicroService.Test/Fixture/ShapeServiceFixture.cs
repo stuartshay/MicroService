@@ -60,11 +60,19 @@ namespace MicroService.Test.Fixture
                     else
                         throw new KeyNotFoundException(key);
 
-                    var options = serviceProvider.GetService<IOptions<ApplicationOptions>>();
-                    var cache = serviceProvider.GetService<IMemoryCache>();
+                    var options = serviceProvider.GetRequiredService<IOptions<ApplicationOptions>>();
+                    var cache = serviceProvider.GetRequiredService<IMemoryCache>();
 
-                    var shapeDirectory = $"{Path.Combine(options!.Value.ShapeConfiguration.ShapeRootDirectory, shapeProperties!.Directory, shapeProperties.FileName)}";
-                    string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
+                    var resolvedShapeProperties = shapeProperties
+                        ?? throw new InvalidOperationException($"Shape attribute metadata is missing for key '{key}'.");
+                    var shapeConfiguration = options.Value.ShapeConfiguration
+                        ?? throw new InvalidOperationException("ShapeConfiguration is required for tests.");
+                    var shapeRootDirectory = shapeConfiguration.ShapeRootDirectory
+                        ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory is required for tests.");
+                    var relativeDirectory = resolvedShapeProperties.Directory.TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                    var relativeFileName = resolvedShapeProperties.FileName.TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                    var shapeDirectory = Path.Combine(shapeRootDirectory, relativeDirectory, relativeFileName);
+                    string shapePath = Path.GetFullPath(shapeDirectory);
 
                     return new CachedShapefileDataReader(cache, key, shapePath);
                 })
