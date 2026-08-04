@@ -5,6 +5,8 @@ on:
     types: [opened, reopened, synchronize]
 
 permissions:
+  checks: read
+  contents: read
   pull-requests: write
 
 jobs:
@@ -38,6 +40,22 @@ jobs:
             const maxAttempts = 30;
             const delayMs = 10000;
             const prNumber = context.payload.pull_request.number;
+            const headSha = context.payload.pull_request.head.sha;
+
+            const hasCopilotCheckSuccessForHead = async () => {
+              const { data: checks } = await github.rest.checks.listForRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: headSha,
+              });
+
+              return checks.check_runs.some(
+                run =>
+                  run.name === 'copilot-pull-request-reviewer' &&
+                  run.status === 'completed' &&
+                  run.conclusion === 'success'
+              );
+            };
 
             for (let i = 0; i < maxAttempts; i++) {
               const { data: reviews } = await github.rest.pulls.listReviews({
@@ -47,11 +65,16 @@ jobs:
               });
 
               const copilotReview = reviews
-                .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED')
+                .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED' && r.commit_id === headSha)
                 .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at))[0];
 
               if (copilotReview) {
                 core.info(`Copilot review found (state: ${copilotReview.state})`);
+                return;
+              }
+
+              if (await hasCopilotCheckSuccessForHead()) {
+                core.info('Copilot check-run succeeded for current head SHA');
                 return;
               }
 
@@ -66,6 +89,22 @@ jobs:
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
+            const headSha = context.payload.pull_request.head.sha;
+
+            const hasCopilotCheckSuccessForHead = async () => {
+              const { data: checks } = await github.rest.checks.listForRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: headSha,
+              });
+
+              return checks.check_runs.some(
+                run =>
+                  run.name === 'copilot-pull-request-reviewer' &&
+                  run.status === 'completed' &&
+                  run.conclusion === 'success'
+              );
+            };
 
             const { data: reviews } = await github.rest.pulls.listReviews({
               owner: context.repo.owner,
@@ -74,11 +113,13 @@ jobs:
             });
 
             const copilotReview = reviews
-              .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED')
+              .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED' && r.commit_id === headSha)
               .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at))[0];
 
-            if (!copilotReview) {
-              core.setFailed('No active Copilot review found — cannot log review context');
+            const copilotCheckSuccess = await hasCopilotCheckSuccessForHead();
+
+            if (!copilotReview && !copilotCheckSuccess) {
+              core.setFailed('No current-head Copilot review or successful check-run found — cannot log review context');
               return;
             }
 
@@ -93,8 +134,13 @@ jobs:
             );
 
             core.info(`PR #${prNumber}: ${context.payload.pull_request.title}`);
-            core.info(`Review by: ${copilotReview.user.login}`);
-            core.info(`Review state: ${copilotReview.state}`);
+            core.info(`Head SHA: ${headSha}`);
+            if (copilotReview) {
+              core.info(`Review by: ${copilotReview.user.login}`);
+              core.info(`Review state: ${copilotReview.state}`);
+            } else {
+              core.info('No current-head review found; using successful Copilot check-run signal');
+            }
             core.info(`Copilot inline comments: ${copilotComments.length}`);
 
             if (copilotComments.length > 0) {
@@ -106,6 +152,22 @@ jobs:
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
+            const headSha = context.payload.pull_request.head.sha;
+
+            const hasCopilotCheckSuccessForHead = async () => {
+              const { data: checks } = await github.rest.checks.listForRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: headSha,
+              });
+
+              return checks.check_runs.some(
+                run =>
+                  run.name === 'copilot-pull-request-reviewer' &&
+                  run.status === 'completed' &&
+                  run.conclusion === 'success'
+              );
+            };
 
             const { data: reviews } = await github.rest.pulls.listReviews({
               owner: context.repo.owner,
@@ -114,8 +176,15 @@ jobs:
             });
 
             const copilotReview = reviews
-              .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED')
+              .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED' && r.commit_id === headSha)
               .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at))[0];
+
+            const copilotCheckSuccess = await hasCopilotCheckSuccessForHead();
+
+            if (!copilotReview && !copilotCheckSuccess) {
+              core.setFailed('No current-head Copilot review or successful check-run found — not auto-approving');
+              return;
+            }
 
             if (copilotReview && copilotReview.state === 'CHANGES_REQUESTED') {
               core.setFailed(`Copilot requested changes — not auto-approving (state: ${copilotReview.state})`);
