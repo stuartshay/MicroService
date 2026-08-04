@@ -11,12 +11,12 @@ namespace MicroService.Service.Mappings
         public FeatureToScenicLandmarkShapeProfile()
         {
             CreateMap<Feature, ScenicLandmarkShape>()
-                .ForMember(dest => dest.LPNumber, opt => opt.MapFrom(src => src.Attributes["lp_number"].ToString()))
-                .ForMember(dest => dest.AreaName, opt => opt.MapFrom(src => src.Attributes["scen_lm_na"].ToString()))
-                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => src.Attributes["borough"].ToString()))
-                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => (int)Enum.Parse<Borough>(src.Attributes["borough"].ToString()!)))
-                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_area"].ToString())))
-                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_leng"].ToString())))
+                .ForMember(dest => dest.LPNumber, opt => opt.MapFrom(src => src.Attributes["lp_number"].ToString() ?? string.Empty))
+                .ForMember(dest => dest.AreaName, opt => opt.MapFrom(src => src.Attributes["scen_lm_na"].ToString() ?? string.Empty))
+                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => src.Attributes["borough"].ToString() ?? string.Empty))
+                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => (int)Enum.Parse<Borough>(src.Attributes["borough"].ToString() ?? string.Empty)))
+                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_area"].ToString() ?? string.Empty)))
+                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_leng"].ToString() ?? string.Empty)))
                 .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
                 .ForMember(dest => dest.Feature, opt => opt.Ignore());
         }
