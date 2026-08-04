@@ -14,6 +14,7 @@ These rules apply to every change proposed to this repository.
    - `make check`
    - `make build`
    - `make test`
+   - `make analyze`
 4. Resolve conflicts and verify that the intended diff contains no unrelated
    files or secrets.
 
@@ -67,6 +68,7 @@ the following are true:
 
 - [ ] The PR is ready for review and conflict-free.
 - [ ] Required lint, build, and test checks pass on the current head SHA.
+- [ ] Required code scanning checks pass on the current head SHA.
 - [ ] GitHub Copilot has completed its review on every affected PR.
 - [ ] Every actionable review comment has been addressed and replied to.
 - [ ] Required review threads are resolved.
