@@ -1,5 +1,5 @@
 ## Summary
-- 
+- Describe the change.
 
 ## Validation
 - [ ] `make check`
@@ -8,15 +8,15 @@
 - [ ] `make analyze`
 
 Validation results:
-- 
+- Summarize command outcomes and notable details.
 
 ## Dependency / Stack Info
-- Base branch: `master`
+- Base branch:
 - Stack dependencies:
 - Related PRs:
 
 ## Known Risks
-- 
+- Describe any known risks or write `None`.
 
 ## Review Follow-Up
 - [ ] GitHub Copilot review completed on the current head SHA
