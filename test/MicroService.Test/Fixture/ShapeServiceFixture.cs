@@ -69,7 +69,9 @@ namespace MicroService.Test.Fixture
                         ?? throw new InvalidOperationException("ShapeConfiguration is required for tests.");
                     var shapeRootDirectory = shapeConfiguration.ShapeRootDirectory
                         ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory is required for tests.");
-                    var shapeDirectory = Path.Combine(shapeRootDirectory, resolvedShapeProperties.Directory, resolvedShapeProperties.FileName);
+                    var relativeDirectory = resolvedShapeProperties.Directory.TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                    var relativeFileName = resolvedShapeProperties.FileName.TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                    var shapeDirectory = Path.Combine(shapeRootDirectory, relativeDirectory, relativeFileName);
                     string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
                     return new CachedShapefileDataReader(cache, key, shapePath);
