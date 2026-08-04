@@ -30,12 +30,15 @@ namespace MicroService.WebApi.Extensions
         {
             var config = configuration.Get<ApplicationOptions>();
             var shapeRootDirectory = config?.ShapeConfiguration?.ShapeRootDirectory;
-            var shapeCronExpressionDescription = CronExpressionDescriptor.ExpressionDescriptor.GetDescription(config?.ShapeConfiguration?.CronExpression ?? string.Empty);
+            var shapeCronExpression = config?.ShapeConfiguration?.CronExpression;
+            var shapeCronExpressionDescription = string.IsNullOrWhiteSpace(shapeCronExpression)
+                ? "(not configured)"
+                : CronExpressionDescriptor.ExpressionDescriptor.GetDescription(shapeCronExpression);
 
             Console.WriteLine($"PostgreSql: {config?.ConnectionStrings?.PostgreSql}");
             Console.WriteLine($"ShapeRootDirectory Config: {shapeRootDirectory}");
             Console.WriteLine($"ShapeRootDirectory: {(shapeRootDirectory == null ? "(not configured)" : Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeRootDirectory)))}");
-            Console.WriteLine($"Shape CronExpression: {config?.ShapeConfiguration?.CronExpression}");
+            Console.WriteLine($"Shape CronExpression: {shapeCronExpression}");
             Console.WriteLine($"Shape Cron Description: {shapeCronExpressionDescription}");
         }
 
