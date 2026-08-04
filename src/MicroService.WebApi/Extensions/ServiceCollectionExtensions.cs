@@ -29,12 +29,16 @@ namespace MicroService.WebApi.Extensions
         public static void DisplayConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             var config = configuration.Get<ApplicationOptions>();
-            var shapeCronExpressionDescription = CronExpressionDescriptor.ExpressionDescriptor.GetDescription(config!.ShapeConfiguration?.CronExpression);
+            var shapeRootDirectory = config?.ShapeConfiguration?.ShapeRootDirectory;
+            var shapeCronExpression = config?.ShapeConfiguration?.CronExpression;
+            var shapeCronExpressionDescription = string.IsNullOrWhiteSpace(shapeCronExpression)
+                ? "(not configured)"
+                : CronExpressionDescriptor.ExpressionDescriptor.GetDescription(shapeCronExpression);
 
             Console.WriteLine($"PostgreSql: {config?.ConnectionStrings?.PostgreSql}");
-            Console.WriteLine($"ShapeRootDirectory Config: {config?.ShapeConfiguration?.ShapeRootDirectory}");
-            Console.WriteLine($"ShapeRootDirectory: {Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), config?.ShapeConfiguration?.ShapeRootDirectory))}");
-            Console.WriteLine($"Shape CronExpression: {config.ShapeConfiguration.CronExpression}");
+            Console.WriteLine($"ShapeRootDirectory Config: {shapeRootDirectory}");
+            Console.WriteLine($"ShapeRootDirectory: {(shapeRootDirectory == null ? "(not configured)" : Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeRootDirectory)))}");
+            Console.WriteLine($"Shape CronExpression: {shapeCronExpression}");
             Console.WriteLine($"Shape Cron Description: {shapeCronExpressionDescription}");
         }
 
@@ -132,8 +136,9 @@ namespace MicroService.WebApi.Extensions
         {
             var serviceVersion = Assembly.GetEntryAssembly()?.GetName().Version?.ToString();
 
-            var commonConfig = configuration.Get<MicroService.Common.Configuration.ApplicationOptions>();
-            if (commonConfig!.JaegerConfiguration.Enabled)
+            var commonConfig = configuration.Get<MicroService.Common.Configuration.ApplicationOptions>()
+                ?? throw new InvalidOperationException("Application configuration could not be loaded.");
+            if (commonConfig.JaegerConfiguration?.Enabled == true)
             {
                 services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
                 {

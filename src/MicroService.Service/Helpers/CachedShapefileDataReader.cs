@@ -36,6 +36,6 @@ namespace MicroService.Service.Helpers
                 cacheEntry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(3);
 
                 return features;
-            });
+            }) ?? [];
     }
 }

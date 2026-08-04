@@ -17,13 +17,21 @@ namespace MicroService.Service.Helpers
             where TAttribute : Attribute
         {
             var enumType = value.GetType();
-            var name = Enum.GetName(enumType, value);
-            return enumType.GetField(name).GetCustomAttributes(false).OfType<TAttribute>().SingleOrDefault();
+            var name = Enum.GetName(enumType, value)
+                ?? throw new ArgumentException($"'{value}' is not a defined member of {enumType}.", nameof(value));
+            var field = enumType.GetField(name)
+                ?? throw new ArgumentException($"Field '{name}' not found on {enumType}.", nameof(value));
+            return field.GetCustomAttributes(false).OfType<TAttribute>().SingleOrDefault()
+                ?? throw new ArgumentException($"'{value}' does not have attribute '{typeof(TAttribute)}'.", nameof(value));
         }
 
         public static string GetEnumDescription(this Enum value)
         {
-            FieldInfo fi = value.GetType().GetField(value.ToString());
+            var fi = value.GetType().GetField(value.ToString());
+            if (fi == null)
+            {
+                return value.ToString();
+            }
 
             var attributes = fi.GetCustomAttributes(typeof(DescriptionAttribute), false)
                 .OfType<DescriptionAttribute>();
@@ -39,13 +47,15 @@ namespace MicroService.Service.Helpers
             {
                 var attribute =
                     Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
+                // field.GetValue(null) reads a static enum field's boxed value, which is
+                // never null for an actual enum member.
                 if (attribute != null)
                 {
-                    if (attribute.Description == description) return (T)field.GetValue(null);
+                    if (attribute.Description == description) return (T)field.GetValue(null)!;
                 }
                 else
                 {
-                    if (field.Name == description) return (T)field.GetValue(null);
+                    if (field.Name == description) return (T)field.GetValue(null)!;
                 }
             }
 

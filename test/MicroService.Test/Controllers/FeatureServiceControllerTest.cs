@@ -174,6 +174,51 @@ namespace MicroService.Test.Controllers
             Assert.IsType<BadRequestResult>(sut.Result);
         }
 
+        [Fact]
+        public async Task GetAttributeLookup_WithMissingAttributes_ReturnsBadRequestResult()
+        {
+            // Arrange
+            var request = new FeatureAttributeLookupRequestModel { Key = "BoroughBoundaries", Attributes = null };
+
+            var controller = GetFeatureServiceController();
+
+            // Act
+            var result = await controller.GetAttributeLookup(request);
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result.Result);
+        }
+
+        [Fact]
+        public async Task GetAttributeLookup_WithEmptyAttributes_ReturnsBadRequestResult()
+        {
+            // Arrange
+            var request = new FeatureAttributeLookupRequestModel { Key = "BoroughBoundaries", Attributes = new List<KeyValuePair<string, object>>() };
+
+            var controller = GetFeatureServiceController();
+
+            // Act
+            var result = await controller.GetAttributeLookup(request);
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result.Result);
+        }
+
+        [Fact]
+        public async Task GetLookupFeatureGeoJson_WithMissingAttributes_ReturnsBadRequestResult()
+        {
+            // Arrange
+            var request = new FeatureAttributeLookupRequestModel { Key = "BoroughBoundaries", Attributes = null };
+
+            var controller = GetFeatureServiceController();
+
+            // Act
+            var result = await controller.GetLookupFeatureGeoJson(request);
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result.Result);
+        }
+
         private static FeatureServiceController GetFeatureServiceController(ShapeServiceResolver? resolver = null)
         {
 
