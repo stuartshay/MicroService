@@ -40,7 +40,8 @@ namespace MicroService.Data.Repository
             {
                 dbConnection.Open();
                 var result = await dbConnection.QueryAsync<TestData>("SELECT id, data FROM test_data WHERE id = @Id", new { Id = id });
-                return result.FirstOrDefault();
+                return result.FirstOrDefault()
+                    ?? throw new KeyNotFoundException($"TestData with id {id} was not found.");
             }
         }
 

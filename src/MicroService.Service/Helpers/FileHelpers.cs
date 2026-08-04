@@ -17,10 +17,9 @@ namespace MicroService.Service.Helpers
 
         private static string GetAssemblyDirectory()
         {
-            string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-            UriBuilder uri = new UriBuilder(codeBase);
-            string path = Uri.UnescapeDataString(uri.Path);
-            return Path.GetDirectoryName(path);
+            var location = Assembly.GetExecutingAssembly().Location;
+            return Path.GetDirectoryName(location)
+                ?? throw new InvalidOperationException("Unable to determine the executing assembly's directory.");
         }
 
     }

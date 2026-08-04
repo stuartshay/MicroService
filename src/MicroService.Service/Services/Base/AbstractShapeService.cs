@@ -15,7 +15,8 @@ namespace MicroService.Service.Services.Base
         where TShape : class, new()
         where TProfile : Profile, new()
     {
-        protected IShapefileDataReaderService ShapeFileDataReader { get; set; }
+        // Always assigned in each derived class's constructor via a ShapefileDataReaderResolver.
+        protected IShapefileDataReaderService ShapeFileDataReader { get; set; } = null!;
 
         protected readonly IMapper Mapper;
 
@@ -58,7 +59,7 @@ namespace MicroService.Service.Services.Base
             for (int i = 0; i < attributes.Count; i++)
             {
                 var key = attributes[i].Key;
-                var featureName = GetFeatureName(key);
+                var featureName = GetFeatureName(key) ?? key;
                 var propertyInfo = typeof(TShape).GetProperty(key);
 
                 if (propertyInfo != null)
@@ -70,7 +71,7 @@ namespace MicroService.Service.Services.Base
                     {
                         try
                         {
-                            object convertedValue = null;
+                            object? convertedValue = null;
                             if (typeOfMyProperty == typeof(int))
                             {
                                 if (int.TryParse(value.ToString(), out int intValue))
@@ -109,7 +110,7 @@ namespace MicroService.Service.Services.Base
                     }
                     else
                     {
-                        attributes[i] = new KeyValuePair<string, object>(featureName, value);
+                        attributes[i] = new KeyValuePair<string, object>(featureName, value!);
                     }
                 }
             }
@@ -154,7 +155,7 @@ namespace MicroService.Service.Services.Base
             return default;
         }
 
-        public string GetFeatureName(string propertyName)
+        public string? GetFeatureName(string propertyName)
         {
             TShape shapeClass = Activator.CreateInstance<TShape>();
             var featureName = ReflectionExtensions.GetAttributeFromProperty<FeatureNameAttribute>(shapeClass, propertyName);
@@ -196,14 +197,15 @@ namespace MicroService.Service.Services.Base
             return results;
         }
 
-        public virtual TShape GetFeatureLookup(double x, double y, Datum datum)
+        public virtual TShape? GetFeatureLookup(double x, double y, Datum datum)
         {
             ShapePropertiesAttribute shapePropertiesAttribute = typeof(TShape)
                 .GetCustomAttributes(typeof(ShapePropertiesAttribute), false)
                 .OfType<ShapePropertiesAttribute>()
-                .SingleOrDefault();
+                .SingleOrDefault()
+                ?? throw new InvalidOperationException($"{typeof(TShape)} does not declare a {nameof(ShapePropertiesAttribute)}.");
 
-            ShapeProperties shapeProperties = shapePropertiesAttribute!.ShapeProperties;
+            ShapeProperties shapeProperties = shapePropertiesAttribute.ShapeProperties;
             Datum sourceDatum = shapeProperties.GetAttribute<ShapeAttribute>().Datum;
 
             (x, y) = TransformCoordinates(x, y, datum, sourceDatum);
@@ -226,17 +228,20 @@ namespace MicroService.Service.Services.Base
 
         private (double, double) TransformCoordinates(double x, double y, Datum fromDatum, Datum toDatum)
         {
+            // GeoTransformationHelper only returns null components when its own x/y
+            // arguments are null; x and y here are non-nullable doubles, so the
+            // conversion result is always populated.
             if (fromDatum != toDatum)
             {
                 if (fromDatum == Datum.Nad83 && toDatum == Datum.Wgs84)
                 {
                     var (x1, y1) = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
-                    return (x1.Value, y1.Value);
+                    return (x1!.Value, y1!.Value);
                 }
                 else if (fromDatum == Datum.Wgs84 && toDatum == Datum.Nad83)
                 {
                     var (x1, y1) = GeoTransformationHelper.ConvertWgs84ToNad83(x, y);
-                    return (x1.Value, y1.Value);
+                    return (x1!.Value, y1!.Value);
                 }
             }
 
