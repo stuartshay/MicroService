@@ -16,7 +16,7 @@ namespace MicroService.Test.Unit
         {
             const double value = 40.7128000005;
 
-            var result = _service.Match(value, 40.7128);
+            var result = TestShapeService.Match(value, 40.7128);
 
             Assert.Equal(value, result);
         }
@@ -24,7 +24,7 @@ namespace MicroService.Test.Unit
         [Fact]
         public void MatchAttributeValue_RejectsDoubleOutsideTolerance()
         {
-            var result = _service.Match(40.712800002, 40.7128);
+            var result = TestShapeService.Match(40.712800002, 40.7128);
 
             Assert.Null(result);
         }
@@ -35,7 +35,7 @@ namespace MicroService.Test.Unit
         [InlineData(42d, 43)]
         public void MatchAttributeValue_ReturnsNullForNumericMismatch(object value, object expectedValue)
         {
-            var result = _service.Match(value, expectedValue);
+            var result = TestShapeService.Match(value, expectedValue);
 
             Assert.Null(result);
         }
@@ -55,7 +55,7 @@ namespace MicroService.Test.Unit
             {
             }
 
-            public object? Match(object value, object expectedValue)
+            public static object? Match(object value, object expectedValue)
             {
                 return MatchAttributeValue(value, expectedValue);
             }
