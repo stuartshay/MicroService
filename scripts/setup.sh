@@ -12,6 +12,8 @@ readonly DOTNET_INSTALL_URL="https://dot.net/v1/dotnet-install.sh"
 readonly PRE_COMMIT_VERSION="4.6.0"
 readonly PRE_COMMIT_ENV="${HOME}/.local/share/MicroService/pre-commit"
 readonly SONAR_SCANNER_VERSION="11.2.1"
+readonly ACTIONLINT_VERSION="1.7.12"
+readonly ACTIONLINT_INSTALL_DIR="${HOME}/.local/bin"
 
 log() {
     printf '[setup] %s\n' "$*"
@@ -191,6 +193,56 @@ install_sonar_scanner() {
     fi
 }
 
+actionlint_asset_name() {
+    local os arch
+
+    os="$(uname -s)"
+    arch="$(uname -m)"
+
+    case "${os}" in
+        Linux) os="linux" ;;
+        Darwin) os="darwin" ;;
+        *) fail "Unsupported operating system for actionlint: ${os}" ;;
+    esac
+
+    case "${arch}" in
+        x86_64) arch="amd64" ;;
+        aarch64|arm64) arch="arm64" ;;
+        *) fail "Unsupported architecture for actionlint: ${arch}" ;;
+    esac
+
+    printf 'actionlint_%s_%s_%s.tar.gz\n' "${ACTIONLINT_VERSION}" "${os}" "${arch}"
+}
+
+install_actionlint() {
+    local actionlint_bin="${ACTIONLINT_INSTALL_DIR}/actionlint"
+    local installed_version
+    local asset_name temp_dir archive url
+
+    export PATH="${ACTIONLINT_INSTALL_DIR}:${PATH}"
+
+    if [[ -x "${actionlint_bin}" ]]; then
+        installed_version="$("${actionlint_bin}" -version 2>/dev/null | head -n 1)"
+        if [[ "${installed_version}" == *"${ACTIONLINT_VERSION}"* ]]; then
+            log "actionlint ${ACTIONLINT_VERSION} is already installed"
+            return
+        fi
+    fi
+
+    asset_name="$(actionlint_asset_name)"
+    url="https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/${asset_name}"
+    temp_dir="$(mktemp -d)"
+    archive="${temp_dir}/${asset_name}"
+
+    log "Installing actionlint ${ACTIONLINT_VERSION}"
+    curl --fail --location --retry 3 --silent --show-error "${url}" --output "${archive}"
+
+    mkdir -p "${ACTIONLINT_INSTALL_DIR}"
+    tar -xzf "${archive}" -C "${temp_dir}" actionlint
+    install -m 755 "${temp_dir}/actionlint" "${actionlint_bin}"
+    rm -rf -- "${temp_dir}"
+}
+
 verify_toolchain() {
     local expected_sdk="$1"
     local actual_sdk
@@ -202,6 +254,7 @@ verify_toolchain() {
     log "Git: $(git --version)"
     log "Make: $(make --version | head -n 1)"
     log "ShellCheck: $(shellcheck --version | sed -n 's/^version: //p')"
+    log "actionlint: $(actionlint -version | head -n 1)"
 
     if command -v docker >/dev/null 2>&1; then
         log "Docker: $(docker --version)"
@@ -238,6 +291,7 @@ main() {
     install_prerequisites
     install_dotnet_sdk "${sdk_version}"
     install_sonar_scanner
+    install_actionlint
     install_pre_commit
     verify_toolchain "${sdk_version}"
     repair_generated_artifact_permissions

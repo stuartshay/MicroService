@@ -32,6 +32,15 @@ jobs:
       - name: Install pre-commit
         run: python -m pip install --disable-pip-version-check pre-commit==4.6.0
 
+      - name: Install actionlint
+        run: |
+          curl --fail --location --retry 3 --silent --show-error \
+            https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz \
+            --output actionlint.tar.gz
+          tar -xzf actionlint.tar.gz actionlint
+          rm -f actionlint.tar.gz
+          echo "$PWD" >> "$GITHUB_PATH"
+
       - name: Run pre-commit
         run: pre-commit run --all-files --show-diff-on-failure
 
