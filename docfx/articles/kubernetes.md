@@ -2,15 +2,16 @@
 
 ## Prerequisites
 
-- Hyper-V     
+- Hyper-V
 [Hyper-V Install](hyper-v.md)
-- Powershell  > 6.2   
-https://github.com/PowerShell/PowerShell
+- Powershell  > 6.2
+<https://github.com/PowerShell/PowerShell>
 
-- Chocolatey   
-https://chocolatey.org/docs/installation
+- Chocolatey
+<https://chocolatey.org/docs/installation>
 
 - Choco Essentials
+
 ```
 choco install vscode
 choco install cmder
@@ -25,10 +26,9 @@ choco install docker-desktop
 choco install kubernetes-helm
 ```
 
-![](images/docker-desktop.png)
+![Docker Desktop installation](images/docker-desktop.png)
 
-
-#### Verify Installation
+### Verify Installation
 
 ```
 kubectl version
@@ -46,7 +46,7 @@ kubectl get nodes
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 ```
 
-#### Enable Dashboard & Create Access Token
+### Enable Dashboard & Create Access Token
 
 ```
 kubectl proxy
@@ -58,7 +58,7 @@ $TOKEN=((kubectl -n kube-system describe secret default | Select-String "token:"
 kubectl config set-credentials docker-for-desktop --token="${TOKEN}"
 ```
 
-#### Access Dashboard
+### Access Dashboard
 
 ```
 http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/ 
@@ -68,14 +68,15 @@ http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-da
 Click on Kubeconfig and select the “config” file under C:\Users<Username>.kube\config
 ```
 
-![](images/kube-dashboard.png)
+![Kubernetes dashboard](images/kube-dashboard.png)
 
 ## Helm
 
 ```
 helm init
 ```
-#### Verify 
+
+### Verify
 
 ```
 kubectl get pods -n kube-system
@@ -97,18 +98,20 @@ kubectl get svc -n microservices
 ```
 
 ### Update Release
+
 ```
 helm upgrade microservice-release ./microservice-stack
 ```
 
 ### Delete and Purge
+
 ```
  helm delete --purge  microservice-release
 ```
 
 ## Reset Kubernetes
 
-![](images/kube-reset.png)
+![Reset Kubernetes](images/kube-reset.png)
 
 ## References
 

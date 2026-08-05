@@ -6,25 +6,25 @@ DocFX generates Documentation directly from source code (.NET, RESTful API, Java
 https://dotnet.github.io/docfx/
 ```
 
-# On Windows
+## On Windows
 
 rmdir F:\Build3\MicroService\docfx_site
 docfx build docFX/docfx.json
 
-# On Linux/Mac
+## On Linux/Mac
 
 rm -rf \_site
 docfx build docFX/docfx.json
 
-![](assets/docfx.png)
+![DocFX generated site](assets/docfx.png)
 
-#### Prerequisites:
+## Prerequisites
 
 ```powershell
 choco install docfx
 ```
 
-#### Build and Serve Website
+## Build and Serve Website
 
 ```powershell
 docfx docfx/docfx.json
