@@ -9,11 +9,12 @@ ANALYZE_CONFIGURATION ?= Release
 
 .DEFAULT_GOAL := help
 
-.PHONY: help setup hooks check analyze restore build run test sonar certificates
+.PHONY: help setup setup-gcloud hooks check analyze restore build run test sonar certificates
 
 help:
 	@echo "Available targets:"
 	@echo "  make setup    Install .NET 10 and essential development tools"
+	@echo "  make setup-gcloud  Install and verify the Google Cloud CLI"
 	@echo "  make hooks    Install the pre-commit Git hook"
 	@echo "  make check    Run pre-commit checks against all tracked files"
 	@echo "                Set RUN_ANALYZERS=1 to also run analyzer validation"
@@ -32,6 +33,9 @@ help:
 
 setup:
 	./scripts/setup.sh
+
+setup-gcloud:
+	./scripts/setup_gcloud.sh
 
 hooks:
 	$(PRE_COMMIT) install --install-hooks

@@ -197,6 +197,10 @@ jobs:
           env_vars: |
             ASPNETCORE_ENVIRONMENT=${{ env.ASPNETCORE_ENVIRONMENT }}
             ASPNETCORE_URLS=${{ env.ASPNETCORE_URLS }}
+          env_vars_update_strategy: 'merge'
+          secrets: |
+            ConnectionStrings__PostgreSql=postgres_coredatastore:latest
+          secrets_update_strategy: 'merge'
           flags: '--memory 2Gi --port 5000 --allow-unauthenticated'
 
   health-googlecloud:
