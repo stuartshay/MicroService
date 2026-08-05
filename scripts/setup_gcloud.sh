@@ -21,8 +21,6 @@ configure_gcloud_path() {
     local profile_file
     local marker='# MicroService Google Cloud SDK'
 
-    export PATH="${GCLOUD_INSTALL_DIR}/bin:${PATH}"
-
     case "${SHELL:-}" in
         */zsh) profile_file="${HOME}/.zshrc" ;;
         *) profile_file="${HOME}/.bashrc" ;;
@@ -69,12 +67,12 @@ install_gcloud_cli() {
 
     if command -v gcloud >/dev/null 2>&1; then
         log "Google Cloud CLI already installed: $(gcloud --version | head -n 1)"
-        return
+        return 1
     fi
 
     if [[ -x "${GCLOUD_INSTALL_DIR}/bin/gcloud" ]]; then
         log "Google Cloud CLI found in ${GCLOUD_INSTALL_DIR}"
-        return
+        return 0
     fi
 
     url="$(installer_url)"
@@ -90,6 +88,7 @@ install_gcloud_cli() {
     rm -rf -- "${temp_dir}"
 
     "${GCLOUD_INSTALL_DIR}/install.sh" --quiet --usage-reporting=false --path-update=false --command-completion=false
+    return 0
 }
 
 verify_gcloud() {
@@ -104,8 +103,10 @@ verify_gcloud() {
 }
 
 main() {
-    install_gcloud_cli
-    configure_gcloud_path
+    if install_gcloud_cli; then
+        export PATH="${GCLOUD_INSTALL_DIR}/bin:${PATH}"
+        configure_gcloud_path
+    fi
     verify_gcloud
 
     log "Setup complete. Open a new terminal, or run 'source ~/.bashrc' (or ~/.zshrc), then use 'gcloud'."
