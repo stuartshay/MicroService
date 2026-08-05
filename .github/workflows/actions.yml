@@ -197,6 +197,8 @@ jobs:
           env_vars: |
             ASPNETCORE_ENVIRONMENT=${{ env.ASPNETCORE_ENVIRONMENT }}
             ASPNETCORE_URLS=${{ env.ASPNETCORE_URLS }}
+          secrets: |
+            ConnectionStrings__PostgreSql=postgres_coredatastore:latest
           flags: '--memory 2Gi --port 5000 --allow-unauthenticated'
 
   health-googlecloud:
