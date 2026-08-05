@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
+using System.Reflection;
 
 namespace MicroService.Service.Services.Base
 {
@@ -49,115 +50,105 @@ namespace MicroService.Service.Services.Base
         /// <returns></returns>
         public List<KeyValuePair<string, object>>? ValidateFeatureKey(List<KeyValuePair<string, object>>? attributes)
         {
-            var shapeClass = Activator.CreateInstance<TShape>(); // create an instance of the class
-
             if (attributes == null)
             {
                 return null;
             }
 
+            var shapeClass = new TShape();
+
             for (int i = 0; i < attributes.Count; i++)
             {
                 var key = attributes[i].Key;
-                var featureName = GetFeatureName(key) ?? key;
                 var propertyInfo = typeof(TShape).GetProperty(key);
 
-                if (propertyInfo != null)
+                if (propertyInfo == null)
                 {
-                    var typeOfMyProperty = propertyInfo.PropertyType;
-                    var value = attributes[i].Value;
-
-                    if (value != null && value.GetType() != typeOfMyProperty)
-                    {
-                        try
-                        {
-                            object? convertedValue = null;
-                            if (typeOfMyProperty == typeof(int))
-                            {
-                                if (int.TryParse(value.ToString(), out int intValue))
-                                {
-                                    convertedValue = intValue;
-                                }
-                            }
-                            else if (typeOfMyProperty == typeof(double))
-                            {
-                                if (double.TryParse(value.ToString(), out double doubleValue))
-                                {
-                                    convertedValue = doubleValue;
-                                }
-                            }
-                            else if (typeOfMyProperty == typeof(string))
-                            {
-                                convertedValue = Convert.ToString(value);
-                            }
-                            else
-                            {
-                                throw new NotSupportedException($"Converting type {value.GetType()} to {typeOfMyProperty} is not supported.");
-                            }
-
-                            if (convertedValue == null)
-                            {
-                                throw new FormatException($"Failed to convert value of type {value.GetType()} to {typeOfMyProperty}.");
-                            }
-
-                            propertyInfo.SetValue(shapeClass, convertedValue);
-                            attributes[i] = new KeyValuePair<string, object>(featureName, convertedValue);
-                        }
-                        catch (FormatException ex)
-                        {
-                            throw new FormatException($"Failed to convert value of type {value.GetType()} to {typeOfMyProperty}.", ex);
-                        }
-                    }
-                    else
-                    {
-                        attributes[i] = new KeyValuePair<string, object>(featureName, value!);
-                    }
+                    continue;
                 }
+
+                var featureName = GetFeatureName(key) ?? key;
+                var value = attributes[i].Value;
+
+                attributes[i] = value != null && value.GetType() != propertyInfo.PropertyType
+                    ? new KeyValuePair<string, object>(featureName, ConvertAttributeValue(shapeClass, propertyInfo, value))
+                    : new KeyValuePair<string, object>(featureName, value!);
             }
 
             return attributes;
         }
 
-        protected object? MatchAttributeValue(object value, object expectedValue)
+        private static object ConvertAttributeValue(TShape shapeClass, PropertyInfo propertyInfo, object value)
         {
-            if (value is string s)
-            {
-                if (expectedValue is string es)
-                {
-                    return s == es ? s : null;
-                }
-            }
-            else if (value is int i)
-            {
-                if (expectedValue is int ei)
-                {
-                    return i == ei ? i : null;
-                }
-                else if (expectedValue is double ed)
-                {
-                    return i == (int)ed ? i : null;
-                }
-            }
-            else if (value is double d)
-            {
-                if (expectedValue is int ei)
-                {
-                    return (int)d == ei ? d : null;
-                }
+            var typeOfMyProperty = propertyInfo.PropertyType;
 
-                if (expectedValue is double ed)
-                {
-                    const double tolerance = 1e-9;
-                    return Math.Abs(d - ed) <= tolerance ? d : null;
-                }
+            try
+            {
+                var convertedValue = ConvertToPropertyType(value, typeOfMyProperty)
+                    ?? throw new FormatException($"Failed to convert value of type {value.GetType()} to {typeOfMyProperty}.");
+
+                propertyInfo.SetValue(shapeClass, convertedValue);
+                return convertedValue;
+            }
+            catch (FormatException ex)
+            {
+                throw new FormatException($"Failed to convert value of type {value.GetType()} to {typeOfMyProperty}.", ex);
+            }
+        }
+
+        private static object? ConvertToPropertyType(object value, Type typeOfMyProperty)
+        {
+            if (typeOfMyProperty == typeof(int))
+            {
+                return int.TryParse(value.ToString(), out int intValue) ? intValue : null;
             }
 
-            return default;
+            if (typeOfMyProperty == typeof(double))
+            {
+                return double.TryParse(value.ToString(), out double doubleValue) ? doubleValue : null;
+            }
+
+            if (typeOfMyProperty == typeof(string))
+            {
+                return Convert.ToString(value);
+            }
+
+            throw new NotSupportedException($"Converting type {value.GetType()} to {typeOfMyProperty} is not supported.");
+        }
+
+        protected static object? MatchAttributeValue(object value, object expectedValue) => value switch
+        {
+            string s => MatchString(s, expectedValue),
+            int i => MatchInt(i, expectedValue),
+            double d => MatchDouble(d, expectedValue),
+            _ => null
+        };
+
+        private static object? MatchString(string value, object expectedValue) =>
+            expectedValue is string expected && value == expected ? value : null;
+
+        private static object? MatchInt(int value, object expectedValue) => expectedValue switch
+        {
+            int expected => value == expected ? value : null,
+            double expected => value == (int)expected ? value : null,
+            _ => null
+        };
+
+        private static object? MatchDouble(double value, object expectedValue)
+        {
+            const double tolerance = 1e-9;
+
+            return expectedValue switch
+            {
+                int expected => (int)value == expected ? value : null,
+                double expected => Math.Abs(value - expected) <= tolerance ? value : null,
+                _ => null
+            };
         }
 
         public string? GetFeatureName(string propertyName)
         {
-            TShape shapeClass = Activator.CreateInstance<TShape>();
+            TShape shapeClass = new();
             var featureName = ReflectionExtensions.GetAttributeFromProperty<FeatureNameAttribute>(shapeClass, propertyName);
 
             return featureName?.AttributeName;
