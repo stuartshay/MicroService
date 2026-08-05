@@ -40,8 +40,8 @@ repos:
         files: >-
           (?x)^(
             .*\.(cs|md|ya?ml|sh|json|csproj|props|py|js|html?|css|conf|ini)|
-            .*/Dockerfile.*|
-            .*/Makefile|
-            .*/Jenkinsfile|
+            (.*/)?Dockerfile.*|
+            (.*/)?Makefile|
+            (.*/)?Jenkinsfile|
             \.editorconfig
           )$
