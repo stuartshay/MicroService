@@ -29,6 +29,7 @@ healthchecksdb
 
 # Project Specific Files
 .env
+credentials/
 docker/postgres/data/
 docker/nginx/ssl/*.cer
 docker/nginx/ssl/*.crt
