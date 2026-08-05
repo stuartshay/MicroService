@@ -12,11 +12,11 @@ VPC_Module >> EKS_Module >> Helm_Charts
 
 Provisions the Network Resources such as the Gateway, Subnets and Routing Rules
 
-![](images/vpc-diagram.png)
+![VPC diagram](images/vpc-diagram.png)
 
-### Jenkins Job
+### VPC Jenkins Job
 
-![](images/vpc-jenkins.png)
+![VPC Jenkins job](images/vpc-jenkins.png)
 
 ```
 1. Plan_Only: to plan the tf-modules, and then select “ branch” name.
@@ -25,28 +25,21 @@ Provisions the Network Resources such as the Gateway, Subnets and Routing Rules
 
 3. And if you want to deploy tf-modules just only select the “ branch ”.
 ```
+
 ### AWS Management Console
 
-
-![](images/vpc-aws.png)
-
+![AWS Management Console showing VPC resources](images/vpc-aws.png)
 
 ## EKS Module
 
 ### Elastic Kubernetes Service (Amazon EKS)
 
-EKS runs the Kubernetes management infrastructure 
+EKS runs the Kubernetes management infrastructure
 
-### Jenkins Job
+### EKS Jenkins Job
 
+![EKS Jenkins job](images/eks-jenkins.png)
 
-![](images/eks-jenkins.png)
-
-
-
-![](images/eks_terraform.png)
-
+![EKS Terraform output](images/eks_terraform.png)
 
 ## Helm Charts
-
- 

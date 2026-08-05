@@ -2,11 +2,11 @@
 
 [![Build/Test/Deploy](https://github.com/stuartshay/MicroService/actions/workflows/actions.yml/badge.svg)](https://github.com/stuartshay/MicroService/actions/workflows/actions.yml) [![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-api.svg)](https://hub.docker.com/r/stuartshay/microservice-api/) [![codecov](https://codecov.io/gh/stuartshay/MicroService/branch/master/graph/badge.svg?token=bMKXJXK0Q3)](https://codecov.io/gh/stuartshay/MicroService) [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://developer.mend.io/github/stuartshay/MicroService)
 
-# NYC Open Data GeoSpatial & Data Enrichment API
+## NYC Open Data GeoSpatial & Data Enrichment API
 
 [Microservice API Endpoint](https://microservice-api-w6zlqlyoma-uk.a.run.app/)
 
-### Overview
+## Overview
 
 Working with [NYC OpenData](https://opendata.cityofnewyork.us/) offers an exciting opportunity to gain valuable insights from the vast resources available in New York City. However, challenges arise when dealing with various datasets due to a lack of standardization, inconsistent code usage, changing codes between versions, and different spatial reference formats (NAD83 or WGS84). Additionally, formatting errors may occur in the results.
 

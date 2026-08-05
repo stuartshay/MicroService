@@ -1,7 +1,7 @@
-## Swagger API Documentation
+# Swagger API Documentation
 
 ```
 http://localhost:5000/swagger/index.html
 ```
 
-![](assets/swagger.png)
+![Swagger UI](assets/swagger.png)
