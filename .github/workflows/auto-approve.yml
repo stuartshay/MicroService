@@ -191,6 +191,23 @@ jobs:
               return;
             }
 
+            if (copilotReview) {
+              const comments = await github.paginate(github.rest.pulls.listReviewComments, {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: prNumber,
+              });
+
+              const copilotHeadComments = comments.filter(
+                c => c.user.login === 'copilot-pull-request-reviewer[bot]' && c.commit_id === headSha
+              );
+
+              if (copilotHeadComments.length > 0) {
+                core.setFailed(`Copilot left ${copilotHeadComments.length} inline comment(s) on the current head — not auto-approving`);
+                return;
+              }
+            }
+
             await github.rest.pulls.createReview({
               owner: context.repo.owner,
               repo: context.repo.repo,
