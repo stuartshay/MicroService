@@ -37,7 +37,8 @@ jobs:
         uses: actions/github-script@v9
         with:
           script: |
-            const maxAttempts = 30;
+            const initialDelayMs = 60000;
+            const maxAttempts = 24;
             const delayMs = 10000;
             const prNumber = context.payload.pull_request.number;
             const headSha = context.payload.pull_request.head.sha;
@@ -56,6 +57,9 @@ jobs:
                   run.conclusion === 'success'
               );
             };
+
+            core.info(`Waiting ${initialDelayMs / 1000}s before the first check — Copilot review consistently takes over a minute to appear`);
+            await new Promise(r => setTimeout(r, initialDelayMs));
 
             for (let i = 0; i < maxAttempts; i++) {
               const { data: reviews } = await github.rest.pulls.listReviews({
