@@ -34,7 +34,7 @@ namespace MicroService.Test.Unit
 
                 Assert.Equal(expected, contains);
 
-                System.Console.Write(poly.Contains(points[i]));
+                System.Console.Write(contains);
             }
         }
 
