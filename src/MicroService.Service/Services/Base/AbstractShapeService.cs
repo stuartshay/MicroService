@@ -12,7 +12,11 @@ namespace MicroService.Service.Services.Base
 {
     public delegate IShapefileDataReaderService ShapefileDataReaderResolver(string key);
 
-    public abstract class AbstractShapeService<TShape, TProfile>
+    // TProfile is intentionally unused in members: it pairs each concrete
+    // service with its AutoMapper profile type at the type level, matching
+    // the pattern every derived service class (ParkService, SubwayService,
+    // etc.) already declares.
+    public abstract class AbstractShapeService<TShape, TProfile> // NOSONAR
         where TShape : class, new()
         where TProfile : Profile, new()
     {

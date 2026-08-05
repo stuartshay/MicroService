@@ -10,6 +10,8 @@ namespace MicroService.Service.Mappings
 {
     public partial class IndividualLandmarkSiteShapeProfile : ShapeProfile<IndividualLandmarkSiteShape>
     {
+        private const string BoroughField = "borough";
+
         public IndividualLandmarkSiteShapeProfile()
         {
             CreateMap<Feature, IndividualLandmarkSiteShape>()
@@ -36,16 +38,16 @@ namespace MicroService.Service.Mappings
 
         private static int GetBoroCode(Feature src)
         {
-            var borough = GetString(src, "borough");
-            return src.Attributes["borough"] != null && EnumHelper.IsEnumValid<Borough>(borough)
+            var borough = GetString(src, BoroughField);
+            return src.Attributes[BoroughField] != null && EnumHelper.IsEnumValid<Borough>(borough)
                 ? (int)Enum.Parse<Borough>(borough)
                 : 0;
         }
 
         private static string? GetValidBoroughName(Feature src)
         {
-            var borough = GetString(src, "borough");
-            return src.Attributes["borough"] != null && EnumHelper.IsEnumValid<Borough>(borough)
+            var borough = GetString(src, BoroughField);
+            return src.Attributes[BoroughField] != null && EnumHelper.IsEnumValid<Borough>(borough)
                 ? borough
                 : null;
         }

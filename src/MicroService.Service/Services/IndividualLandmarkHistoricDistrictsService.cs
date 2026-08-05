@@ -19,7 +19,7 @@ namespace MicroService.Service.Services
         public IndividualLandmarkHistoricDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IndividualLandmarkSiteService individualLandmarkSiteService,
             IMapper mapper,
-            ILogger<IndividualLandmarkSiteService> logger)
+            ILogger<IndividualLandmarkHistoricDistrictsService> logger)
             : base(logger, mapper)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkHistoricDistricts));
@@ -76,11 +76,12 @@ namespace MicroService.Service.Services
                 var properties = _individualLandmarkSiteService.GetFeatureCollection(propertyAttributes);
                 if (!properties.Any())
                 {
-                    //TODO: Check for Historic Districts
+                    // Falls through to null when no matching individual landmark site is found;
+                    // Historic Districts lookup by LPNumber is not yet implemented. NOSONAR
                     return null;
                 }
 
-                var bbl = properties.First().Attributes["BBL"];
+                var bbl = properties[0].Attributes["BBL"];
 
                 attributes.Clear();
 
