@@ -93,9 +93,8 @@
 <h3 id="file-layout-recommended">File Layout (Recommended)</h3>
 <p>Only one public class is allowed per file.</p>
 <p>The file name is derived from the class name.</p>
-<pre><code>	Class   : Observer
-	Filename: Observer.cs
-</code></pre>
+<p>Class   : Observer
+Filename: Observer.cs</p>
 <h3 id="class-definition-order-mandatory">Class Definition Order (Mandatory)</h3>
 <p>The class definition contains class members in the following order, from <em>less</em> restricted scope (public) to <em>more</em> restrictive (private):</p>
 <ul>
@@ -113,28 +112,24 @@
 <h3 id="naming-mandatory">Naming (Mandatory)</h3>
 <ul>
 <li><p><strong>DO</strong> use PascalCasing for all public member, type, and namespace names consisting of multiple words.</p>
-<pre><code>  PropertyDescriptor
-  HtmlTag
-  IOStream
-</code></pre>
+<p>PropertyDescriptor
+HtmlTag
+IOStream</p>
 </li>
 </ul>
 <p><strong>NOTE</strong>: A special case is made for two-letter acronyms in which both letters are capitalized, e.g. <em>IOStream</em></p>
 <ul>
 <li><p><strong>DO</strong> use camelCasing for parameter names.</p>
-<pre><code>  propertyDescriptor
-  htmlTag
-  ioStream
-</code></pre>
+<p>propertyDescriptor
+htmlTag
+ioStream</p>
 </li>
 <li><p><strong>DO</strong> start with underscore for private fields</p>
-<pre><code>  private readonly Guid _userId = Guid.NewGuid();
-</code></pre>
+<p>private readonly Guid _userId = Guid.NewGuid();</p>
 </li>
 <li><p><strong>DO</strong> start static readonly fields, constants with capitalized case</p>
-<pre><code>  private static readonly IEntityAccessor EntityAccessor = null;
-  private const string MetadataName = &quot;MetadataName&quot;;
-</code></pre>
+<p>private static readonly IEntityAccessor EntityAccessor = null;
+private const string MetadataName = &quot;MetadataName&quot;;</p>
 </li>
 <li><p><strong>DO NOT</strong> capitalize each word in so-called <a href="http://msdn.microsoft.com/en-us/library/ms229043.aspx">closed-form compound words</a>.</p>
 </li>
@@ -152,11 +147,10 @@
 </blockquote>
 <ul>
 <li><p><strong>DO</strong> add <em>using</em> inside <em>namespace</em> declaration</p>
-<pre><code>  namespace Microsoft.Content.Build.BuildWorker.UnitTest
-  {
-  	using System;
-  }
-</code></pre>
+<p>namespace Microsoft.Content.Build.BuildWorker.UnitTest
+{
+using System;
+}</p>
 </li>
 <li><p><strong>DO</strong> add a space when:</p>
 <ol>

@@ -72,13 +72,13 @@
 
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li><p>Hyper-V<br>
+<li><p>Hyper-V
 <a href="hyper-v.html">Hyper-V Install</a></p>
 </li>
-<li><p>Powershell  &gt; 6.2<br>
+<li><p>Powershell  &gt; 6.2
 <a href="https://github.com/PowerShell/PowerShell">https://github.com/PowerShell/PowerShell</a></p>
 </li>
-<li><p>Chocolatey<br>
+<li><p>Chocolatey
 <a href="https://chocolatey.org/docs/installation">https://chocolatey.org/docs/installation</a></p>
 </li>
 <li><p>Choco Essentials</p>
@@ -93,8 +93,8 @@ choco install openssh
 <pre><code>choco install docker-desktop
 choco install kubernetes-helm
 </code></pre>
-<p><img src="images/docker-desktop.png" alt=""></p>
-<h4 id="verify-installation">Verify Installation</h4>
+<p><img src="images/docker-desktop.png" alt="Docker Desktop installation"></p>
+<h3 id="verify-installation">Verify Installation</h3>
 <pre><code>kubectl version
 
 kubectl config current-context
@@ -106,23 +106,23 @@ kubectl get nodes
 <h3 id="installing-the-kubernetes-dashboard">Installing the Kubernetes Dashboard</h3>
 <pre><code>kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 </code></pre>
-<h4 id="enable-dashboard--create-access-token">Enable Dashboard &amp; Create Access Token</h4>
+<h3 id="enable-dashboard--create-access-token">Enable Dashboard &amp; Create Access Token</h3>
 <pre><code>kubectl proxy
 </code></pre>
 <pre><code>$TOKEN=((kubectl -n kube-system describe secret default | Select-String &quot;token:&quot;) -split &quot; +&quot;)[1]
 
 kubectl config set-credentials docker-for-desktop --token=&quot;${TOKEN}&quot;
 </code></pre>
-<h4 id="access-dashboard">Access Dashboard</h4>
+<h3 id="access-dashboard">Access Dashboard</h3>
 <pre><code>http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/ 
 </code></pre>
 <pre><code>Click on Kubeconfig and select the “config” file under C:\Users&lt;Username&gt;.kube\config
 </code></pre>
-<p><img src="images/kube-dashboard.png" alt=""></p>
+<p><img src="images/kube-dashboard.png" alt="Kubernetes dashboard"></p>
 <h2 id="helm">Helm</h2>
 <pre><code>helm init
 </code></pre>
-<h4 id="verify">Verify</h4>
+<h3 id="verify">Verify</h3>
 <pre><code>kubectl get pods -n kube-system
 </code></pre>
 <pre><code>cd /helm
@@ -142,7 +142,7 @@ kubectl get pods -n microservices
 <pre><code> helm delete --purge  microservice-release
 </code></pre>
 <h2 id="reset-kubernetes">Reset Kubernetes</h2>
-<p><img src="images/kube-reset.png" alt=""></p>
+<p><img src="images/kube-reset.png" alt="Reset Kubernetes"></p>
 <h2 id="references">References</h2>
 <pre><code>http://collabnix.com/kubernetes-dashboard-on-docker-desktop-for-windows-2-0-0-3-in-2-minutes/
 </code></pre>
