@@ -60,7 +60,7 @@ namespace MicroService.Test.Functions
             // Arrange
             var expectedProperties = typeof(HistoricDistrictShape)
                 .GetProperties()
-                .Where(p => !p.GetCustomAttributes(typeof(FeatureCollectionExcludeAttribute), true).Any())
+                .Where(p => p.GetCustomAttributes(typeof(FeatureCollectionExcludeAttribute), true).Length == 0)
                 .ToList();
 
             // Act

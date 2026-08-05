@@ -7,13 +7,13 @@ using System.Text.RegularExpressions;
 
 namespace MicroService.Service.Mappings.Base
 {
-    public abstract class ShapeProfile<TShape> : Profile where TShape : class
+    public abstract partial class ShapeProfile<TShape> : Profile where TShape : class
     {
         protected ShapeProfile()
         {
             CreateMap<TShape, IDictionary<string, object>>()
                 .ConvertUsing(shape => shape.GetType().GetProperties()
-                    .Where(prop => !prop.GetCustomAttributes(typeof(FeatureCollectionExcludeAttribute), false).Any())
+                    .Where(prop => prop.GetCustomAttributes(typeof(FeatureCollectionExcludeAttribute), false).Length == 0)
                     // No shape model exposes a nullable-valued property, so GetValue(shape) is
                     // never actually null here; PropertyInfo.GetValue's object? return is a
                     // general reflection contract, not a real possibility for this closed set of types.
@@ -46,7 +46,10 @@ namespace MicroService.Service.Mappings.Base
         protected static string? GetSanitizedString(Feature src, string key)
         {
             var value = GetString(src, key);
-            return string.IsNullOrEmpty(value) ? null : Regex.Replace(value, @"\u0000", string.Empty);
+            return string.IsNullOrEmpty(value) ? null : NullCharacterRegex().Replace(value, string.Empty);
         }
+
+        [GeneratedRegex(@"\u0000")]
+        private static partial Regex NullCharacterRegex();
     }
 }

@@ -213,7 +213,7 @@ namespace MicroService.WebApi.V1.Controllers
             var allFields = fields.Union(mappingFields).ToList();
 
             var invalidItems = keys.Where(x => !allFields.Contains(x)).ToList();
-            if (invalidItems.Any())
+            if (invalidItems.Count > 0)
             {
                 var invalidFields = string.Join(", ", invalidItems);
                 return BadRequest($"The following attributes are not valid for the selected shape type: {invalidFields}");
@@ -270,14 +270,14 @@ namespace MicroService.WebApi.V1.Controllers
             var allFields = fields.Union(mappingFields).ToList();
 
             var invalidItems = keys.Where(x => !allFields.Contains(x)).ToList();
-            if (invalidItems.Any())
+            if (invalidItems.Count > 0)
             {
                 var invalidFields = string.Join(", ", invalidItems);
                 return BadRequest($"The following attributes are not valid for the selected shape type: {invalidFields}");
             }
 
             var results = lookupFunction(service, request.Attributes).ToList();
-            if (!results.Any())
+            if (results.Count == 0)
             {
                 return NotFound();
             }

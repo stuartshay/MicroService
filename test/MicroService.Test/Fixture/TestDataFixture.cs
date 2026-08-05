@@ -1,5 +1,6 @@
 ﻿using MicroService.Data.Repository;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace MicroService.Test.Fixture
 {
@@ -18,6 +19,7 @@ namespace MicroService.Test.Fixture
 
         public override void Dispose()
         {
+            GC.SuppressFinalize(this);
         }
     }
 }

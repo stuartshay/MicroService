@@ -18,11 +18,11 @@ namespace MicroService.Test.Controllers
 {
     public class FeatureServiceControllerTests
     {
-        public static IEnumerable<object[]> ValidRequests =>
-            new List<object[]>
+        public static TheoryData<string, List<ShapeBase>> ValidRequests =>
+            new()
             {
-            new object[] { "BoroughBoundaries", new List<ShapeBase> { new BoroughBoundaryShape(), new CommunityDistrictShape() } },
-            new object[] { "CommunityDistricts", new List<ShapeBase> { new CommunityDistrictShape(), new CommunityDistrictShape() } }
+                { "BoroughBoundaries", new List<ShapeBase> { new BoroughBoundaryShape(), new CommunityDistrictShape() } },
+                { "CommunityDistricts", new List<ShapeBase> { new CommunityDistrictShape(), new CommunityDistrictShape() } }
             };
 
         [Theory]
@@ -75,7 +75,7 @@ namespace MicroService.Test.Controllers
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(sut.Result);
-            var shapesResult = Assert.IsAssignableFrom<IEnumerable<object>>(okResult.Value);
+            var shapesResult = Assert.IsType<IEnumerable<object>>(okResult.Value, exactMatch: false);
 
             Assert.All(shapesResult, Assert.NotNull);
         }
