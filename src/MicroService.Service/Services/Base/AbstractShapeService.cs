@@ -55,7 +55,7 @@ namespace MicroService.Service.Services.Base
                 return null;
             }
 
-            var shapeClass = Activator.CreateInstance<TShape>(); // create an instance of the class
+            var shapeClass = new TShape();
 
             for (int i = 0; i < attributes.Count; i++)
             {
@@ -71,7 +71,7 @@ namespace MicroService.Service.Services.Base
                 var value = attributes[i].Value;
 
                 attributes[i] = value != null && value.GetType() != propertyInfo.PropertyType
-                    ? new KeyValuePair<string, object>(featureName, ConvertAttributeValue(shapeClass!, propertyInfo, value))
+                    ? new KeyValuePair<string, object>(featureName, ConvertAttributeValue(shapeClass, propertyInfo, value))
                     : new KeyValuePair<string, object>(featureName, value!);
             }
 
@@ -148,7 +148,7 @@ namespace MicroService.Service.Services.Base
 
         public string? GetFeatureName(string propertyName)
         {
-            TShape shapeClass = Activator.CreateInstance<TShape>();
+            TShape shapeClass = new();
             var featureName = ReflectionExtensions.GetAttributeFromProperty<FeatureNameAttribute>(shapeClass, propertyName);
 
             return featureName?.AttributeName;
