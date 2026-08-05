@@ -37,7 +37,8 @@ jobs:
         uses: actions/github-script@v9
         with:
           script: |
-            const maxAttempts = 30;
+            const initialDelayMs = 60000;
+            const maxAttempts = 24;
             const delayMs = 10000;
             const prNumber = context.payload.pull_request.number;
             const headSha = context.payload.pull_request.head.sha;
@@ -57,6 +58,9 @@ jobs:
               );
             };
 
+            core.info(`Waiting ${initialDelayMs / 1000}s before the first check — Copilot review consistently takes over a minute to appear`);
+            await new Promise(r => setTimeout(r, initialDelayMs));
+
             for (let i = 0; i < maxAttempts; i++) {
               const { data: reviews } = await github.rest.pulls.listReviews({
                 owner: context.repo.owner,
@@ -65,7 +69,7 @@ jobs:
               });
 
               const copilotReview = reviews
-                .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED' && r.commit_id === headSha)
+                .filter(r => r.user?.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED' && r.commit_id === headSha)
                 .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at))[0];
 
               if (copilotReview) {
@@ -113,7 +117,7 @@ jobs:
             });
 
             const copilotReview = reviews
-              .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED' && r.commit_id === headSha)
+              .filter(r => r.user?.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED' && r.commit_id === headSha)
               .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at))[0];
 
             const copilotCheckSuccess = await hasCopilotCheckSuccessForHead();
@@ -130,7 +134,7 @@ jobs:
             });
 
             const copilotComments = comments.filter(
-              c => c.user.login === 'copilot-pull-request-reviewer[bot]'
+              c => c.user?.login === 'copilot-pull-request-reviewer[bot]'
             );
 
             core.info(`PR #${prNumber}: ${context.payload.pull_request.title}`);
@@ -176,7 +180,7 @@ jobs:
             });
 
             const copilotReview = reviews
-              .filter(r => r.user.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED' && r.commit_id === headSha)
+              .filter(r => r.user?.login === 'copilot-pull-request-reviewer[bot]' && r.state !== 'DISMISSED' && r.commit_id === headSha)
               .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at))[0];
 
             const copilotCheckSuccess = await hasCopilotCheckSuccessForHead();
@@ -188,6 +192,21 @@ jobs:
 
             if (copilotReview && copilotReview.state === 'CHANGES_REQUESTED') {
               core.setFailed(`Copilot requested changes — not auto-approving (state: ${copilotReview.state})`);
+              return;
+            }
+
+            const comments = await github.paginate(github.rest.pulls.listReviewComments, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+            });
+
+            const copilotHeadComments = comments.filter(
+              c => c.user?.login === 'copilot-pull-request-reviewer[bot]' && c.commit_id === headSha
+            );
+
+            if (copilotHeadComments.length > 0) {
+              core.setFailed(`Copilot left ${copilotHeadComments.length} inline comment(s) on the current head — not auto-approving`);
               return;
             }
 
