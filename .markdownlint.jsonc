@@ -1,0 +1,12 @@
+{
+  "default": true,
+  // Long lines are common in this repo's existing prose and generated docs;
+  // enforcing a wrap width would mean rewriting content, not just formatting.
+  "MD013": false,
+  // Not every fenced code block (shell snippets, directory trees, sample
+  // output) has a meaningful language to tag.
+  "MD040": false,
+  "MD003": { "style": "atx" },
+  "MD046": { "style": "fenced" },
+  "MD007": { "indent": 2 }
+}

@@ -3,7 +3,8 @@
 ## Prerequisites
 
 Azure VM with Hyper-V
- - Standard D2s v3 (2 vcpus, 8 GiB memory)
+
+- Standard D2s v3 (2 vcpus, 8 GiB memory)
 
 ## Install Hyper-V
 

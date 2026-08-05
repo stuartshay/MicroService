@@ -1,13 +1,7 @@
-SonarQube
+# SonarQube
 
+## Prerequisites
 
-
-
-
-
-
-
-#### Prerequisites:
 ```
 Java Latest JDK/JRE
 ```

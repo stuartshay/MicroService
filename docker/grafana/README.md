@@ -1,11 +1,11 @@
 # Microservice Grafana
 
-[![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-grafana.svg)](https://hub.docker.com/r/stuartshay/microservice-grafana/) [![](https://images.microbadger.com/badges/image/stuartshay/microservice-grafana.svg)](https://microbadger.com/images/stuartshay/microservice-grafana "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/stuartshay/microservice-grafana.svg)](https://microbadger.com/images/stuartshay/microservice-grafana "Get your own version badge on microbadger.com")
+[![This image on DockerHub](https://img.shields.io/docker/pulls/stuartshay/microservice-grafana.svg)](https://hub.docker.com/r/stuartshay/microservice-grafana/) [![Image badge](https://images.microbadger.com/badges/image/stuartshay/microservice-grafana.svg)](https://microbadger.com/images/stuartshay/microservice-grafana "Get your own image badge on microbadger.com")
+[![Version badge](https://images.microbadger.com/badges/version/stuartshay/microservice-grafana.svg)](https://microbadger.com/images/stuartshay/microservice-grafana "Get your own version badge on microbadger.com")
 
 Jenkins | Status  
 ------------ | -------------
-Build Image  | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService-Infrastructure/microservice-grafana)](https://jenkins.navigatorglass.com/job/MicroService-Infrastructure/job/microservice-grafana/)
+Build Image | [![Build Status](https://jenkins.navigatorglass.com/buildStatus/icon?job=MicroService-Infrastructure/microservice-grafana)](https://jenkins.navigatorglass.com/job/MicroService-Infrastructure/job/microservice-grafana/)
 
 ```
 ├── grafana

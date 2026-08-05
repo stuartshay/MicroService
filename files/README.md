@@ -1,36 +1,49 @@
+# NYC Open Data Sources
 
-### Borough Boundaries
-https://data.cityofnewyork.us/City-Government/Borough-Boundaries/tqmj-j8zm
+## Borough Boundaries
 
-### Community Districts 
-https://data.cityofnewyork.us/City-Government/Community-Districts/yfnk-k7r4
+<https://data.cityofnewyork.us/City-Government/Borough-Boundaries/tqmj-j8zm>
 
-### Fire Companies
-https://data.cityofnewyork.us/Public-Safety/Fire-Companies/iiv7-jaj9
+## Community Districts
 
-### Historic Districts 
-https://data.cityofnewyork.us/Housing-Development/Historic-Districts/xbvj-gfnw
+<https://data.cityofnewyork.us/City-Government/Community-Districts/yfnk-k7r4>
 
-### LPC Individual Landmark and Historic District Building Data
-https://data.cityofnewyork.us/Housing-Development/LPC-Individual-Landmark-and-Historic-District-Buil/7mgd-s57w
+## Fire Companies
 
-### Neighborhood Tabulation Areas
-https://www1.nyc.gov/site/planning/data-maps/open-data/census-download-metadata.page
+<https://data.cityofnewyork.us/Public-Safety/Fire-Companies/iiv7-jaj9>
 
-### NYPD Police Precincts 
-https://data.cityofnewyork.us/Public-Safety/Police-Precincts/78dh-3ptz
+## Historic Districts
 
-### NYPD Sectors 
-https://data.cityofnewyork.us/Public-Safety/NYPD-Sectors/eizi-ujye
+<https://data.cityofnewyork.us/Housing-Development/Historic-Districts/xbvj-gfnw>
 
-### NYCHA Developments 
-https://data.cityofnewyork.us/Housing-Development/Map-of-NYCHA-Developments/i9rv-hdr5
+## LPC Individual Landmark and Historic District Building Data
 
-### Parking Meters
-https://data.cityofnewyork.us/Transportation/Parking-Meters-GPS-Coordinates-and-Status/5jsj-cq4s
+<https://data.cityofnewyork.us/Housing-Development/LPC-Individual-Landmark-and-Historic-District-Buil/7mgd-s57w>
 
-### Parks (Open Space) 
-https://data.cityofnewyork.us/Recreation/Open-Space-Parks-/g84h-jbjm
+## Neighborhood Tabulation Areas
 
-### Points Of Interest 
-https://data.cityofnewyork.us/City-Government/Points-Of-Interest/rxuy-2muj
+<https://www1.nyc.gov/site/planning/data-maps/open-data/census-download-metadata.page>
+
+## NYPD Police Precincts
+
+<https://data.cityofnewyork.us/Public-Safety/Police-Precincts/78dh-3ptz>
+
+## NYPD Sectors
+
+<https://data.cityofnewyork.us/Public-Safety/NYPD-Sectors/eizi-ujye>
+
+## NYCHA Developments
+
+<https://data.cityofnewyork.us/Housing-Development/Map-of-NYCHA-Developments/i9rv-hdr5>
+
+## Parking Meters
+
+<https://data.cityofnewyork.us/Transportation/Parking-Meters-GPS-Coordinates-and-Status/5jsj-cq4s>
+
+## Parks (Open Space)
+
+<https://data.cityofnewyork.us/Recreation/Open-Space-Parks-/g84h-jbjm>
+
+## Points Of Interest
+
+<https://data.cityofnewyork.us/City-Government/Points-Of-Interest/rxuy-2muj>

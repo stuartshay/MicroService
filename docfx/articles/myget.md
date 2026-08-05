@@ -8,7 +8,7 @@ Windows
 ```
 
 Linux
- 
+
 ```bash
  export mygetApiKey="adab4634-8ddb-4789-ae92-6461295ac69c"
 ./build.sh --target=push-myget

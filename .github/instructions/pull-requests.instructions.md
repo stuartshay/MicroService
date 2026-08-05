@@ -31,7 +31,7 @@ These rules apply to every change proposed to this repository.
 
 Use GitHub stacked pull requests when work depends on an unmerged change:
 
-Reference: https://docs.github.com/en/pull-requests/how-tos/stacked-pull-requests
+Reference: <https://docs.github.com/en/pull-requests/how-tos/stacked-pull-requests>
 
 1. The bottom PR targets `master`.
 2. Each higher PR targets the head branch of the PR immediately below it.
