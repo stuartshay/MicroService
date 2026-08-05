@@ -34,8 +34,11 @@ jobs:
 
       - name: Install actionlint
         run: |
-          bash <(curl --fail --location --retry 3 --silent --show-error \
-            https://raw.githubusercontent.com/rhysd/actionlint/v1.7.12/scripts/download-actionlint.bash) 1.7.12
+          curl --fail --location --retry 3 --silent --show-error \
+            https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz \
+            --output actionlint.tar.gz
+          tar -xzf actionlint.tar.gz actionlint
+          rm -f actionlint.tar.gz
           echo "$PWD" >> "$GITHUB_PATH"
 
       - name: Run pre-commit

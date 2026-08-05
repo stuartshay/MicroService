@@ -223,7 +223,7 @@ install_actionlint() {
 
     if [[ -x "${actionlint_bin}" ]]; then
         installed_version="$("${actionlint_bin}" -version 2>/dev/null | head -n 1)"
-        if [[ "${installed_version}" == "${ACTIONLINT_VERSION}" ]]; then
+        if [[ "${installed_version}" == *"${ACTIONLINT_VERSION}"* ]]; then
             log "actionlint ${ACTIONLINT_VERSION} is already installed"
             return
         fi
