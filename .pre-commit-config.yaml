@@ -31,4 +31,17 @@ repos:
     rev: v2.4.3
     hooks:
       - id: codespell
-        exclude: ^(files/|docfx/articles/howto/|docfx/restapi/redoc\.standalone\.js|docker/grafana/provisioning/dashboards/)
+        exclude: ^(files/|docfx/articles/howto/|docfx/restapi/redoc\.standalone\.js|docker/grafana/provisioning/dashboards/|cspell\.json)
+
+  - repo: https://github.com/streetsidesoftware/cspell-cli
+    rev: v10.0.1
+    hooks:
+      - id: cspell
+        files: >-
+          (?x)^(
+            .*\.(cs|md|ya?ml|sh|json|csproj|props|py|js|html?|css|conf|ini)|
+            .*/Dockerfile.*|
+            .*/Makefile|
+            .*/Jenkinsfile|
+            \.editorconfig
+          )$
