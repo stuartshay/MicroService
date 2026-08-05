@@ -6,6 +6,8 @@ namespace MicroService.Test.Unit
 {
     public static class WktReaderFunctions
     {
+        private static readonly bool[] Inside = { false, true, true, true };
+
         public static void GeometryContainsPoint()
         {
             var services = NtsGeometryServices.Instance;
@@ -25,12 +27,10 @@ namespace MicroService.Test.Unit
                 factory.CreatePoint(new Coordinate(429016.9, 360413.04))
             });
 
-            var inside = new List<bool>(new[] { false, true, true, true });
-
             for (var i = 0; i < points.Count; i++)
             {
                 var contains = poly.Contains(points[i]);
-                var expected = inside[i];
+                var expected = Inside[i];
 
                 Assert.Equal(expected, contains);
 

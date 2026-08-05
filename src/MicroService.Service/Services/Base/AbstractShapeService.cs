@@ -226,7 +226,7 @@ namespace MicroService.Service.Services.Base
         public IReadOnlyCollection<Feature> GetFeatures() =>
                 ShapeFileDataReader.GetFeatures();
 
-        private (double, double) TransformCoordinates(double x, double y, Datum fromDatum, Datum toDatum)
+        private static (double, double) TransformCoordinates(double x, double y, Datum fromDatum, Datum toDatum)
         {
             // GeoTransformationHelper only returns null components when its own x/y
             // arguments are null; x and y here are non-nullable doubles, so the

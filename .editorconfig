@@ -1,0 +1,12 @@
+root = true
+
+[*.cs]
+# Elevate analyzer diagnostics that SonarQube's external_roslyn category already
+# reports at Info/Suggestion severity, so `make analyze` catches them locally too.
+dotnet_diagnostic.CA1816.severity = warning
+dotnet_diagnostic.CA1822.severity = warning
+dotnet_diagnostic.CA1860.severity = warning
+dotnet_diagnostic.CA1861.severity = warning
+dotnet_diagnostic.SYSLIB1045.severity = warning
+dotnet_diagnostic.xUnit1042.severity = warning
+dotnet_diagnostic.xUnit2032.severity = warning

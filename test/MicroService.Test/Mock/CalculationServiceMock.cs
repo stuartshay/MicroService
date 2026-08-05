@@ -37,7 +37,7 @@ namespace MicroService.Test.Mock
             Assert.Equal(result, sut);
         }
 
-        private CalculationService GetCalculationService(ITestDataRepository? testDataRepository = null)
+        private static CalculationService GetCalculationService(ITestDataRepository? testDataRepository = null)
         {
             testDataRepository ??= new Mock<ITestDataRepository>().Object;
 

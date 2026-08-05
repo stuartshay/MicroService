@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace MicroService.Service.Mappings
 {
-    public class IndividualLandmarkSiteShapeProfile : ShapeProfile<IndividualLandmarkSiteShape>
+    public partial class IndividualLandmarkSiteShapeProfile : ShapeProfile<IndividualLandmarkSiteShape>
     {
         public IndividualLandmarkSiteShapeProfile()
         {
@@ -55,8 +55,11 @@ namespace MicroService.Service.Mappings
             var alternativeName = GetString(src, "lpc_altern");
             return string.IsNullOrEmpty(alternativeName)
                 ? null
-                : Regex.Replace(alternativeName, @"\u0000", string.Empty);
+                : NullCharacterRegex().Replace(alternativeName, string.Empty);
         }
+
+        [GeneratedRegex(@"\u0000")]
+        private static partial Regex NullCharacterRegex();
     }
 
 }
