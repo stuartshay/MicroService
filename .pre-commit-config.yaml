@@ -20,6 +20,13 @@ repos:
         language: system
         types: [shell]
 
+      - id: actionlint
+        name: actionlint
+        entry: actionlint
+        language: system
+        types: [yaml]
+        files: ^\.github/workflows/
+
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.3
     hooks:
