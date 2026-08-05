@@ -43,7 +43,7 @@ namespace MicroService.Service.Services
 
             if (Logger.IsEnabled(LogLevel.Information))
             {
-                Logger.LogInformation("Feature Count|{count}", features.Count);
+                Logger.LogInformation("Feature Count|{Count}", features.Count);
             }
             return Mapper.Map<IEnumerable<ParkShape>>(features).Take(100);
         }

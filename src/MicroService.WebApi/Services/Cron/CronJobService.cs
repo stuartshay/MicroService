@@ -47,7 +47,7 @@ namespace MicroService.WebApi.Services.Cron
         /// <summary>
         /// 
         /// </summary>
-        public virtual void Dispose()
+        public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);

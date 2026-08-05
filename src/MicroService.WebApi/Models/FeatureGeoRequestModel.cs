@@ -13,16 +13,19 @@ namespace MicroService.WebApi.Models
         /// <summary>
         ///  X Point.
         /// </summary>
+        [Required]
         public double X { get; set; }
 
         /// <summary>
         ///  Y Point.
         /// </summary>
+        [Required]
         public double Y { get; set; }
 
         /// <summary>
         /// GeoSpatial Reference System
         /// </summary>
+        [Required]
         [EnumDataType(typeof(Datum))]
         [DefaultValue(Datum.Wgs84)]
         public Datum Datum { get; set; }
@@ -30,6 +33,7 @@ namespace MicroService.WebApi.Models
         /// <summary>
         /// Lookup Service Key
         /// </summary>
+        [Required]
         [EnumDataType(typeof(ShapeProperties))]
         [DefaultValue(ShapeProperties.BoroughBoundaries)]
         public ShapeProperties Type { get; set; }

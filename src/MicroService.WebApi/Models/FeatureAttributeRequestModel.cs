@@ -13,6 +13,7 @@ namespace MicroService.WebApi.Models
         /// <summary>
         /// Lookup Service Key
         /// </summary>
+        [Required]
         [SwaggerParameter("Shape Property Key")]
         [EnumDataType(typeof(ShapeProperties))]
         [DefaultValue(ShapeProperties.BoroughBoundaries)]
