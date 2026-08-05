@@ -124,7 +124,7 @@ namespace MicroService.Service.Services.Base
             _ => null
         };
 
-        private static object? MatchString(string value, object expectedValue) =>
+        private static string? MatchString(string value, object expectedValue) =>
             expectedValue is string expected && value == expected ? value : null;
 
         private static object? MatchInt(int value, object expectedValue) => expectedValue switch
