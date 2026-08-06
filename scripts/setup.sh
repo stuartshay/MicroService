@@ -14,6 +14,8 @@ readonly PRE_COMMIT_ENV="${HOME}/.local/share/MicroService/pre-commit"
 readonly SONAR_SCANNER_VERSION="11.2.1"
 readonly ACTIONLINT_VERSION="1.7.12"
 readonly ACTIONLINT_INSTALL_DIR="${HOME}/.local/bin"
+readonly GITLEAKS_VERSION="8.30.1"
+readonly GITLEAKS_INSTALL_DIR="${HOME}/.local/bin"
 
 log() {
     printf '[setup] %s\n' "$*"
@@ -243,6 +245,56 @@ install_actionlint() {
     rm -rf -- "${temp_dir}"
 }
 
+gitleaks_asset_name() {
+    local os arch
+
+    os="$(uname -s)"
+    arch="$(uname -m)"
+
+    case "${os}" in
+        Linux) os="linux" ;;
+        Darwin) os="darwin" ;;
+        *) fail "Unsupported operating system for gitleaks: ${os}" ;;
+    esac
+
+    case "${arch}" in
+        x86_64) arch="x64" ;;
+        aarch64|arm64) arch="arm64" ;;
+        *) fail "Unsupported architecture for gitleaks: ${arch}" ;;
+    esac
+
+    printf 'gitleaks_%s_%s_%s.tar.gz\n' "${GITLEAKS_VERSION}" "${os}" "${arch}"
+}
+
+install_gitleaks() {
+    local gitleaks_bin="${GITLEAKS_INSTALL_DIR}/gitleaks"
+    local installed_version
+    local asset_name temp_dir archive url
+
+    export PATH="${GITLEAKS_INSTALL_DIR}:${PATH}"
+
+    if [[ -x "${gitleaks_bin}" ]]; then
+        installed_version="$("${gitleaks_bin}" version 2>/dev/null | head -n 1)"
+        if [[ "${installed_version}" == *"${GITLEAKS_VERSION}"* ]]; then
+            log "gitleaks ${GITLEAKS_VERSION} is already installed"
+            return
+        fi
+    fi
+
+    asset_name="$(gitleaks_asset_name)"
+    url="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/${asset_name}"
+    temp_dir="$(mktemp -d)"
+    archive="${temp_dir}/${asset_name}"
+
+    log "Installing gitleaks ${GITLEAKS_VERSION}"
+    curl --fail --location --retry 3 --silent --show-error "${url}" --output "${archive}"
+
+    mkdir -p "${GITLEAKS_INSTALL_DIR}"
+    tar -xzf "${archive}" -C "${temp_dir}" gitleaks
+    install -m 755 "${temp_dir}/gitleaks" "${gitleaks_bin}"
+    rm -rf -- "${temp_dir}"
+}
+
 verify_toolchain() {
     local expected_sdk="$1"
     local actual_sdk
@@ -255,6 +307,7 @@ verify_toolchain() {
     log "Make: $(make --version | head -n 1)"
     log "ShellCheck: $(shellcheck --version | sed -n 's/^version: //p')"
     log "actionlint: $(actionlint -version | head -n 1)"
+    log "gitleaks: $(gitleaks version)"
 
     if command -v docker >/dev/null 2>&1; then
         log "Docker: $(docker --version)"
@@ -292,6 +345,7 @@ main() {
     install_dotnet_sdk "${sdk_version}"
     install_sonar_scanner
     install_actionlint
+    install_gitleaks
     install_pre_commit
     verify_toolchain "${sdk_version}"
     repair_generated_artifact_permissions

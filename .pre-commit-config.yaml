@@ -27,6 +27,12 @@ repos:
         types: [yaml]
         files: ^\.github/workflows/
 
+      - id: gitleaks
+        name: gitleaks
+        entry: gitleaks git --pre-commit --redact --staged --verbose
+        language: system
+        pass_filenames: false
+
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.3
     hooks:
