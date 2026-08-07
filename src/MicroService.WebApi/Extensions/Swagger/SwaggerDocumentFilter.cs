@@ -4,7 +4,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 namespace MicroService.WebApi.Extensions.Swagger
 {
     /// <summary>
-    ///
+    /// Adds custom tag metadata to the generated Swagger document.
     /// </summary>
     public class SwaggerDocumentFilter : IDocumentFilter
     {

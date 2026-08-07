@@ -8,7 +8,7 @@ namespace MicroService.WebApi.Extensions.Swagger.Examples;
 public class GetShapePropertiesExample : IExamplesProvider<object>
 {
     /// <summary>
-    /// 
+    /// Builds the example response payload for shape properties.
     /// </summary>
     /// <returns></returns>
     public object GetExamples()

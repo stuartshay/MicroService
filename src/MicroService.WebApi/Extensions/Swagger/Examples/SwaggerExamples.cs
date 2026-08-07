@@ -9,7 +9,7 @@ namespace MicroService.WebApi.Extensions.Swagger.Examples
     public class SwaggerFeatureRequestExamples : IExamplesProvider<FeatureAttributeLookupRequestModel>
     {
         /// <summary>
-        /// 
+        /// Builds an example feature attribute lookup request.
         /// </summary>
         /// <returns></returns>
         public FeatureAttributeLookupRequestModel GetExamples()
