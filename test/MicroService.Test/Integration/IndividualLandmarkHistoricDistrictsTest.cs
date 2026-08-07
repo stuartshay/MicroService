@@ -207,8 +207,26 @@ namespace MicroService.Test.Integration
         [Fact(DisplayName = "Get Feature List")]
         public void Get_Feature_List()
         {
-            var sut = _service.GetFeatureList();
+            var sut = _service.GetFeatureList().ToList();
             Assert.NotNull(sut);
+            Assert.NotEmpty(sut);
+        }
+
+        [InlineData("LP-99999")]
+        [Theory(DisplayName = "GetFeatureCollection Mapped Input returns null when no landmark site matches")]
+        public void GetFeatureCollection_Mapped_UnknownLPNumber_ReturnsNull(string value1)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("LPNumber", value1),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+
+            // Assert
+            Assert.Null(sut);
         }
 
     }

@@ -63,8 +63,9 @@ namespace MicroService.Test.Integration
         [Fact(DisplayName = "Get Feature List")]
         public void Get_Feature_List()
         {
-            var sut = _service.GetFeatureList();
+            var sut = _service.GetFeatureList().ToList();
             Assert.NotNull(sut);
+            Assert.NotEmpty(sut);
         }
 
         [InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique", "MN")]

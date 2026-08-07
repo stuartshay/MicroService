@@ -116,9 +116,30 @@ namespace MicroService.Test.Integration
         [Fact]
         public void Get_Feature_List()
         {
-            var sut = _service.GetFeatureList();
+            var sut = _service.GetFeatureList().ToList();
 
             Assert.NotNull(sut);
+            Assert.NotEmpty(sut);
+        }
+
+        [InlineData("14")]
+        [Theory(DisplayName = "GetFeatureCollection returns a feature collection")]
+        public void GetFeatureCollection_ValidInput_ReturnsFeatureCollection(string value1)
+        {
+            // Arrange
+            var attributes = new List<KeyValuePair<string, object>>
+            {
+                new("Precinct", int.Parse(value1)),
+            };
+
+            // Act
+            var sut = _service.GetFeatureCollection(attributes);
+
+            // Assert
+            var collection = Assert.IsType<FeatureCollection>(sut);
+            Assert.NotEmpty(collection);
+            Assert.All(collection, feature =>
+                Assert.Equal(int.Parse(value1), Assert.IsType<int>(feature.Attributes["Precinct"])));
         }
     }
 }

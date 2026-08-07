@@ -37,6 +37,12 @@ namespace MicroService.Test.Mock
             Assert.Equal(result, sut);
         }
 
+        [Fact]
+        public void Constructor_ThrowsArgumentNullException_WhenRepositoryIsNull()
+        {
+            Assert.Throws<System.ArgumentNullException>(() => new CalculationService(null!));
+        }
+
         private static CalculationService GetCalculationService(ITestDataRepository? testDataRepository = null)
         {
             testDataRepository ??= new Mock<ITestDataRepository>().Object;
