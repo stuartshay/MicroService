@@ -85,7 +85,7 @@ namespace MicroService.Test.Unit
         }
 
         [Fact]
-        public void ValidateFeatureKey_SkipsUnknownProperty()
+        public void ValidateFeatureKey_LeavesUnknownPropertyUnchanged()
         {
             var attributes = new List<KeyValuePair<string, object>>
             {
