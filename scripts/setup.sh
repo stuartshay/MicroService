@@ -257,7 +257,7 @@ install_actionlint() {
     log "Installing actionlint ${ACTIONLINT_VERSION}"
     curl --fail --location --retry 3 --silent --show-error "${url}" --output "${archive}"
 
-    actual_checksum="$(sha256sum "${archive}" | awk '{print $1}')"
+    actual_checksum="$(openssl dgst -sha256 -r "${archive}" | awk '{print $1}')"
     [[ "${actual_checksum}" == "${expected_checksum}" ]] \
         || fail "Checksum mismatch for ${asset_name}: expected ${expected_checksum}, got ${actual_checksum}"
 
@@ -329,7 +329,7 @@ install_gitleaks() {
     log "Installing gitleaks ${GITLEAKS_VERSION}"
     curl --fail --location --retry 3 --silent --show-error "${url}" --output "${archive}"
 
-    actual_checksum="$(sha256sum "${archive}" | awk '{print $1}')"
+    actual_checksum="$(openssl dgst -sha256 -r "${archive}" | awk '{print $1}')"
     [[ "${actual_checksum}" == "${expected_checksum}" ]] \
         || fail "Checksum mismatch for ${asset_name}: expected ${expected_checksum}, got ${actual_checksum}"
 
