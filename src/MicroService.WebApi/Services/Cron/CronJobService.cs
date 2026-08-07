@@ -27,14 +27,14 @@ namespace MicroService.WebApi.Services.Cron
         public virtual async Task StartAsync(CancellationToken cancellationToken) => await ScheduleJob(cancellationToken);
 
         /// <summary>
-        ///
+        /// Performs the work for a single scheduled run. Override in a derived class.
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public virtual async Task DoWork(CancellationToken cancellationToken) => await Task.Delay(5000, cancellationToken);
 
         /// <summary>
-        ///
+        /// Stops the scheduled timer.
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
@@ -45,7 +45,7 @@ namespace MicroService.WebApi.Services.Cron
         }
 
         /// <summary>
-        /// 
+        /// Releases the resources used by this <see cref="CronJobService"/>.
         /// </summary>
         public void Dispose()
         {
@@ -54,7 +54,7 @@ namespace MicroService.WebApi.Services.Cron
         }
 
         /// <summary>
-        /// 
+        /// Releases the scheduled timer when disposing.
         /// </summary>
         /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
@@ -73,7 +73,7 @@ namespace MicroService.WebApi.Services.Cron
         }
 
         /// <summary>
-        ///
+        /// Schedules the next run based on the configured cron expression, then recurses after each run.
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>

@@ -1,7 +1,7 @@
 ﻿namespace MicroService.WebApi.Services.Cron
 {
     /// <summary>
-    /// 
+    /// Configuration for a scheduled cron job's expression and time zone.
     /// </summary>
     public interface IScheduleConfig
     {
@@ -17,7 +17,7 @@
     }
 
     /// <summary>
-    /// 
+    /// Default implementation of <see cref="IScheduleConfig"/>.
     /// </summary>
     public class ScheduleConfig : IScheduleConfig
     {

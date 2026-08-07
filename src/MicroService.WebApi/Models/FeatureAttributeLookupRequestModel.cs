@@ -1,7 +1,7 @@
 ﻿namespace MicroService.WebApi.Models
 {
     /// <summary>
-    /// 
+    /// Request model for looking up a shape feature by attribute key/value pairs.
     /// </summary>
     public class FeatureAttributeLookupRequestModel
     {

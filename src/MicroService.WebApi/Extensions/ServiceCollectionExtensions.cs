@@ -207,7 +207,7 @@ namespace MicroService.WebApi.Extensions
         }
 
         /// <summary>
-        /// 
+        /// Registers a <see cref="CronJobService"/> as a hosted service with the given schedule configuration.
         /// </summary>
         /// <typeparam name="T">CronJobService Type</typeparam>
         /// <param name="services"></param>

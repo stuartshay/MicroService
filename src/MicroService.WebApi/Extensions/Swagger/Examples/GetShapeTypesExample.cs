@@ -8,7 +8,7 @@ namespace MicroService.WebApi.Extensions.Swagger.Examples
     public class GetShapeTypesExample : IExamplesProvider<IEnumerable<object>>
     {
         /// <summary>
-        /// 
+        /// Builds the example response payload listing available shape types.
         /// </summary>
         /// <returns></returns>
         public IEnumerable<object> GetExamples()
