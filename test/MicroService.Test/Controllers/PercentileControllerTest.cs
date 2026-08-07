@@ -1,3 +1,4 @@
+using MicroService.Service.Constants;
 using MicroService.Service.Interfaces;
 using MicroService.WebApi.V1.Controllers;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ namespace MicroService.Test.Controllers
         public async Task GetPercentile_ReturnsOkResult_WhenResultIsAtLeastFifteen()
         {
             var calculationServiceMock = new Mock<ICalculationService>();
-            calculationServiceMock.Setup(s => s.CalculatePercentile(It.IsAny<double>())).ReturnsAsync(42d);
+            calculationServiceMock.Setup(s => s.CalculatePercentile(DataConstants.ExcelPercentile)).ReturnsAsync(42d);
 
             var controller = new PercentileController(calculationServiceMock.Object);
 
@@ -26,19 +27,21 @@ namespace MicroService.Test.Controllers
 
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
             Assert.Equal(42d, okResult.Value);
+            calculationServiceMock.Verify(s => s.CalculatePercentile(DataConstants.ExcelPercentile), Times.Once);
         }
 
         [Fact]
         public async Task GetPercentile_ReturnsNotFound_WhenResultIsBelowFifteen()
         {
             var calculationServiceMock = new Mock<ICalculationService>();
-            calculationServiceMock.Setup(s => s.CalculatePercentile(It.IsAny<double>())).ReturnsAsync(1d);
+            calculationServiceMock.Setup(s => s.CalculatePercentile(DataConstants.ExcelPercentile)).ReturnsAsync(1d);
 
             var controller = new PercentileController(calculationServiceMock.Object);
 
             var result = await controller.GetPercentile();
 
             Assert.IsType<NotFoundResult>(result.Result);
+            calculationServiceMock.Verify(s => s.CalculatePercentile(DataConstants.ExcelPercentile), Times.Once);
         }
     }
 }

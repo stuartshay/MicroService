@@ -29,7 +29,12 @@ namespace MicroService.Test.Controllers
         {
             var result = _controller.ConvertWgs84ToNad83(40.681939660888951, -73.8832294373166);
 
-            Assert.IsType<OkObjectResult>(result.Result);
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var (x, y) = GetXY(okResult.Value);
+            Assert.NotNull(x);
+            Assert.NotNull(y);
+            Assert.NotEqual(0, x!.Value);
+            Assert.NotEqual(0, y!.Value);
         }
 
         [Fact]
@@ -53,7 +58,20 @@ namespace MicroService.Test.Controllers
         {
             var result = _controller.ConvertNad83ToWgs84(1016636.9999607186, 187747.02946839959);
 
-            Assert.IsType<OkObjectResult>(result.Result);
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var (x, y) = GetXY(okResult.Value);
+            Assert.NotNull(x);
+            Assert.NotNull(y);
+            Assert.NotEqual(0, x!.Value);
+            Assert.NotEqual(0, y!.Value);
+        }
+
+        private static (double? X, double? Y) GetXY(object? value)
+        {
+            var type = value!.GetType();
+            var x = (double?)type.GetProperty("X")!.GetValue(value);
+            var y = (double?)type.GetProperty("Y")!.GetValue(value);
+            return (x, y);
         }
     }
 }

@@ -1,3 +1,4 @@
+using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.FlatFileModels;
 using MicroService.Service.Services.FlatFileService;
 using MicroService.WebApi.V1.Controllers;
@@ -17,9 +18,26 @@ namespace MicroService.Test.Controllers
             var result = controller.Get();
 
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var items = Assert.IsType<IEnumerable<object>>(okResult.Value, exactMatch: false);
-            Assert.NotEmpty(items);
+            var items = Assert.IsType<IEnumerable<object>>(okResult.Value, exactMatch: false).ToList();
+
+            var expectedKeys = System.Enum.GetNames<FlatFileProperties>();
+            var actualKeys = items.Select(GetKey).ToList();
+
+            Assert.Equal(expectedKeys.Length, items.Count);
+            foreach (var expectedKey in expectedKeys)
+            {
+                Assert.Contains(expectedKey, actualKeys);
+            }
+
+            Assert.All(items, item =>
+            {
+                Assert.False(string.IsNullOrEmpty(GetKey(item)));
+                Assert.False(string.IsNullOrEmpty((string)item.GetType().GetProperty("fileName")!.GetValue(item)!));
+                Assert.False(string.IsNullOrEmpty((string)item.GetType().GetProperty("directory")!.GetValue(item)!));
+            });
         }
+
+        private static string GetKey(object item) => (string)item.GetType().GetProperty("key")!.GetValue(item)!;
 
         [Fact]
         public void GetFlatFile_ReturnsBadRequest_WhenIdIsNotDefined()
