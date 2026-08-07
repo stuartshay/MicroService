@@ -85,6 +85,16 @@ namespace MicroService.Test.Functions
         }
 
         [Fact]
+        public void GetAttributeFromProperty_PropertyDoesNotExist_ThrowsArgumentException()
+        {
+            // Arrange
+            var obj = new TestObjectWithAttribute();
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => ReflectionExtensions.GetAttributeFromProperty<MyCustomAttribute>(obj, "NotAProperty"));
+        }
+
+        [Fact]
         public void GetPropertiesWithCustomAttribute_TypeHasPropertiesWithAttribute_ReturnsPropertiesWithAttribute()
         {
             // Arrange
@@ -110,6 +120,19 @@ namespace MicroService.Test.Functions
 
             // Assert
             Assert.Empty(result);
+        }
+
+        [Fact]
+        public void GetPropertiesWithCustomAttribute_ReturnsPropertyDecoratedWithMappingKeyAttribute()
+        {
+            // Arrange
+            var type = typeof(MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape);
+
+            // Act
+            var result = type.GetPropertiesWithCustomAttribute<MicroService.Service.Models.Enum.Attributes.MappingKeyAttribute>();
+
+            // Assert
+            Assert.Contains(result, p => p.Name == nameof(MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber));
         }
     }
 

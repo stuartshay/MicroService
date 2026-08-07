@@ -229,6 +229,34 @@ namespace MicroService.Test.Unit
             Assert.Empty(result);
         }
 
+        [Fact]
+        public void Percentile_AtMaximum_ReturnsLastElement_WithoutInterpolation()
+        {
+            var result = FunctionHelper.Percentile(new double[] { 1, 2, 3, 4 }, 1.0);
+
+            Assert.Equal(4, result);
+        }
+
+        [Fact]
+        public void ConvertWgs84ToNad83_Array_ThrowsArgumentException_WhenInputHasIncorrectLength()
+        {
+            // Arrange
+            double[] point = { 1.0, 2.0, 3.0 };
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => GeoTransformationHelper.ConvertWgs84ToNad83(point));
+        }
+
+        [Fact]
+        public void TransformGeometry_ThrowsArgumentException_ForInvalidDatumCombination()
+        {
+            // Arrange
+            var point = new Point(-73.8832294373166, 40.681939660888951);
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => GeoTransformationHelper.TransformGeometry(point, Datum.Nad83, Datum.Nad83));
+        }
+
 
         [InlineData(40.681939660888951, -73.8832294373166, 187747.0294683996, 1016636.9999607186)]
         [Theory]

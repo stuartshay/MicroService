@@ -100,5 +100,50 @@ namespace MicroService.Test.Functions
             // Act & Assert
             Assert.Throws<ArgumentException>(() => EnumHelper.EnumToList<ShapeBase>());
         }
+
+        [Fact]
+        public void GetAttribute_ThrowsArgumentException_WhenMemberHasNoMatchingAttribute()
+        {
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => NoAttributeEnum.Value.GetAttribute<FeatureNameAttribute>());
+        }
+
+        [Fact]
+        public void GetEnumDescription_ReturnsEnumName_WhenNoDescriptionAttributePresent()
+        {
+            // Act
+            var result = NoAttributeEnum.Value.GetEnumDescription();
+
+            // Assert
+            Assert.Equal(nameof(NoAttributeEnum.Value), result);
+        }
+
+        [Fact]
+        public void GetValueFromDescription_FallsBackToFieldName_WhenNoDescriptionAttributePresent()
+        {
+            // Act
+            var result = EnumHelper.GetValueFromDescription<NoAttributeEnum>(nameof(NoAttributeEnum.Value));
+
+            // Assert
+            Assert.Equal(NoAttributeEnum.Value, result);
+        }
+
+        [Fact]
+        public void GetEnumDescription_ReturnsToString_WhenValueIsNotADefinedMember()
+        {
+            // Arrange: an undefined enum value has no backing field to reflect over.
+            var undefined = (NoAttributeEnum)999;
+
+            // Act
+            var result = undefined.GetEnumDescription();
+
+            // Assert
+            Assert.Equal(undefined.ToString(), result);
+        }
+
+        private enum NoAttributeEnum
+        {
+            Value
+        }
     }
 }

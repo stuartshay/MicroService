@@ -11,6 +11,7 @@ using MicroService.Service.Services.Base;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace MicroService.Test.Fixture
@@ -21,7 +22,7 @@ namespace MicroService.Test.Fixture
         {
             var serviceProvider = new ServiceCollection()
                 .AddMemoryCache()
-                .AddLogging()
+                .AddLogging(builder => builder.AddConsole().SetMinimumLevel(LogLevel.Information))
                 .AddScoped<ShapefileDataReaderResolver>(serviceProvider => key =>
                 {
                     ShapeAttribute shapeProperties = null!;
