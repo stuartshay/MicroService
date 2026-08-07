@@ -7,7 +7,4 @@ useDefault = true
 paths = [
   '''docfx/articles/myget\.md''',
   '''docfx/restapi/redoc\.standalone\.js''',
-  '''\.sonarqube/''',
-  '''\.test-results/''',
-  '''credentials/''',
 ]
