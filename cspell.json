@@ -162,6 +162,7 @@
     "nodelay",
     "noninteractive",
     "nosniff",
+    "nosonar",
     "novalabs",
     "npgsql",
     "nuget",

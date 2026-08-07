@@ -1,8 +1,6 @@
 ﻿using Asp.Versioning;
 using MicroService.Data.Models;
 using MicroService.Data.Repository;
-using MicroService.Service.Constants;
-using MicroService.Service.Interfaces;
 using MicroService.WebApi.Extensions.Constants;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -23,18 +21,14 @@ namespace MicroService.WebApi.V1.Controllers
     {
         private readonly ITestDataRepository _testDataRepository;
 
-        private readonly ICalculationService _calculationService;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="TestDataController"/> class.
         ///  TestDataController
         /// </summary>
         /// <param name="testDataRepository"></param>
-        /// <param name="calculationService"></param>
-        public TestDataController(ITestDataRepository testDataRepository, ICalculationService calculationService)
+        public TestDataController(ITestDataRepository testDataRepository)
         {
             _testDataRepository = testDataRepository ?? throw new ArgumentNullException(nameof(testDataRepository));
-            _calculationService = calculationService ?? throw new ArgumentNullException(nameof(calculationService));
         }
 
         /// <summary>
@@ -49,25 +43,6 @@ namespace MicroService.WebApi.V1.Controllers
         {
             var results = await _testDataRepository.FindAll().ConfigureAwait(false);
             if (results == null)
-                return NotFound();
-
-            return Ok(results);
-        }
-
-        /// <summary>
-        /// Get Test Data Percentile.
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("percentile")]
-        [Produces("application/json", Type = typeof(IEnumerable<TestData>))]
-        [ProducesResponseType(typeof(double), 200)]
-        [ProducesResponseType(404)]
-        public async Task<ActionResult<double>> GetPercentile()
-        {
-            var results = await _calculationService.CalculatePercentile(DataConstants.ExcelPercentile).ConfigureAwait(false);
-
-            if (Math.Abs(results) < 15)
                 return NotFound();
 
             return Ok(results);
