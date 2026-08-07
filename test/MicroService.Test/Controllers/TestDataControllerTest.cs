@@ -33,8 +33,9 @@ namespace MicroService.Test.Controllers
         [Fact]
         public async Task Get_ReturnsNotFound_WhenRepositoryReturnsNull()
         {
+            IEnumerable<TestData>? nullResult = null;
             var repositoryMock = new Mock<ITestDataRepository>();
-            repositoryMock.Setup(r => r.FindAll()).ReturnsAsync((IEnumerable<TestData>)null!);
+            repositoryMock.Setup(r => r.FindAll()).ReturnsAsync(nullResult!);
 
             var controller = new TestDataController(repositoryMock.Object);
 
