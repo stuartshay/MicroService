@@ -111,12 +111,6 @@ namespace MicroService.Service.Models
         [FeatureName("lm_orig")]
         public string AreaName { get; set; } = string.Empty;
 
-        //[FeatureName("SC_Flag")]
-        //public int ScFlag { get; set; }
-
-        //[FeatureName("BBL_Int")]
-        //public int BblInt { get; set; }
-
         [MappingKeyAttribute("LPNumber")]
         public string LPNumber { get; set; } = string.Empty;
     }
