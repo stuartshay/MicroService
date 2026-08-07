@@ -1,0 +1,10 @@
+title = "MicroService gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+paths = [
+  '''docfx/articles/myget\.md''',
+  '''docfx/restapi/redoc\.standalone\.js''',
+]

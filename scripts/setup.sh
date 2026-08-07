@@ -14,6 +14,8 @@ readonly PRE_COMMIT_ENV="${HOME}/.local/share/MicroService/pre-commit"
 readonly SONAR_SCANNER_VERSION="11.2.1"
 readonly ACTIONLINT_VERSION="1.7.12"
 readonly ACTIONLINT_INSTALL_DIR="${HOME}/.local/bin"
+readonly GITLEAKS_VERSION="8.30.1"
+readonly GITLEAKS_INSTALL_DIR="${HOME}/.local/bin"
 
 log() {
     printf '[setup] %s\n' "$*"
@@ -214,10 +216,27 @@ actionlint_asset_name() {
     printf 'actionlint_%s_%s_%s.tar.gz\n' "${ACTIONLINT_VERSION}" "${os}" "${arch}"
 }
 
+actionlint_asset_checksum() {
+    local asset_name="$1"
+
+    case "${asset_name}" in
+        actionlint_1.7.12_linux_amd64.tar.gz)
+            printf '8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8\n' ;;
+        actionlint_1.7.12_linux_arm64.tar.gz)
+            printf '325e971b6ba9bfa504672e29be93c24981eeb1c07576d730e9f7c8805afff0c6\n' ;;
+        actionlint_1.7.12_darwin_amd64.tar.gz)
+            printf '5b44c3bc2255115c9b69e30efc0fecdf498fdb63c5d58e17084fd5f16324c644\n' ;;
+        actionlint_1.7.12_darwin_arm64.tar.gz)
+            printf 'aba9ced2dee8d27fecca3dc7feb1a7f9a52caefa1eb46f3271ea66b6e0e6953f\n' ;;
+        *)
+            fail "No pinned checksum for actionlint asset: ${asset_name}" ;;
+    esac
+}
+
 install_actionlint() {
     local actionlint_bin="${ACTIONLINT_INSTALL_DIR}/actionlint"
     local installed_version
-    local asset_name temp_dir archive url
+    local asset_name temp_dir archive url expected_checksum actual_checksum
 
     export PATH="${ACTIONLINT_INSTALL_DIR}:${PATH}"
 
@@ -230,6 +249,7 @@ install_actionlint() {
     fi
 
     asset_name="$(actionlint_asset_name)"
+    expected_checksum="$(actionlint_asset_checksum "${asset_name}")"
     url="https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/${asset_name}"
     temp_dir="$(mktemp -d)"
     archive="${temp_dir}/${asset_name}"
@@ -237,9 +257,85 @@ install_actionlint() {
     log "Installing actionlint ${ACTIONLINT_VERSION}"
     curl --fail --location --retry 3 --silent --show-error "${url}" --output "${archive}"
 
+    actual_checksum="$(openssl dgst -sha256 -r "${archive}" | awk '{print $1}')"
+    [[ "${actual_checksum}" == "${expected_checksum}" ]] \
+        || fail "Checksum mismatch for ${asset_name}: expected ${expected_checksum}, got ${actual_checksum}"
+
     mkdir -p "${ACTIONLINT_INSTALL_DIR}"
     tar -xzf "${archive}" -C "${temp_dir}" actionlint
     install -m 755 "${temp_dir}/actionlint" "${actionlint_bin}"
+    rm -rf -- "${temp_dir}"
+}
+
+gitleaks_asset_name() {
+    local os arch
+
+    os="$(uname -s)"
+    arch="$(uname -m)"
+
+    case "${os}" in
+        Linux) os="linux" ;;
+        Darwin) os="darwin" ;;
+        *) fail "Unsupported operating system for gitleaks: ${os}" ;;
+    esac
+
+    case "${arch}" in
+        x86_64) arch="x64" ;;
+        aarch64|arm64) arch="arm64" ;;
+        *) fail "Unsupported architecture for gitleaks: ${arch}" ;;
+    esac
+
+    printf 'gitleaks_%s_%s_%s.tar.gz\n' "${GITLEAKS_VERSION}" "${os}" "${arch}"
+}
+
+gitleaks_asset_checksum() {
+    local asset_name="$1"
+
+    case "${asset_name}" in
+        gitleaks_8.30.1_linux_x64.tar.gz)
+            printf '551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb\n' ;;
+        gitleaks_8.30.1_linux_arm64.tar.gz)
+            printf 'e4a487ee7ccd7d3a7f7ec08657610aa3606637dab924210b3aee62570fb4b080\n' ;;
+        gitleaks_8.30.1_darwin_x64.tar.gz)
+            printf 'dfe101a4db2255fc85120ac7f3d25e4342c3c20cf749f2c20a18081af1952709\n' ;;
+        gitleaks_8.30.1_darwin_arm64.tar.gz)
+            printf 'b40ab0ae55c505963e365f271a8d3846efbc170aa17f2607f13df610a9aeb6a5\n' ;;
+        *)
+            fail "No pinned checksum for gitleaks asset: ${asset_name}" ;;
+    esac
+}
+
+install_gitleaks() {
+    local gitleaks_bin="${GITLEAKS_INSTALL_DIR}/gitleaks"
+    local installed_version
+    local asset_name temp_dir archive url expected_checksum actual_checksum
+
+    export PATH="${GITLEAKS_INSTALL_DIR}:${PATH}"
+
+    if [[ -x "${gitleaks_bin}" ]]; then
+        installed_version="$("${gitleaks_bin}" version 2>/dev/null | head -n 1)"
+        if [[ "${installed_version}" == *"${GITLEAKS_VERSION}"* ]]; then
+            log "gitleaks ${GITLEAKS_VERSION} is already installed"
+            return
+        fi
+    fi
+
+    asset_name="$(gitleaks_asset_name)"
+    expected_checksum="$(gitleaks_asset_checksum "${asset_name}")"
+    url="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/${asset_name}"
+    temp_dir="$(mktemp -d)"
+    archive="${temp_dir}/${asset_name}"
+
+    log "Installing gitleaks ${GITLEAKS_VERSION}"
+    curl --fail --location --retry 3 --silent --show-error "${url}" --output "${archive}"
+
+    actual_checksum="$(openssl dgst -sha256 -r "${archive}" | awk '{print $1}')"
+    [[ "${actual_checksum}" == "${expected_checksum}" ]] \
+        || fail "Checksum mismatch for ${asset_name}: expected ${expected_checksum}, got ${actual_checksum}"
+
+    mkdir -p "${GITLEAKS_INSTALL_DIR}"
+    tar -xzf "${archive}" -C "${temp_dir}" gitleaks
+    install -m 755 "${temp_dir}/gitleaks" "${gitleaks_bin}"
     rm -rf -- "${temp_dir}"
 }
 
@@ -255,6 +351,7 @@ verify_toolchain() {
     log "Make: $(make --version | head -n 1)"
     log "ShellCheck: $(shellcheck --version | sed -n 's/^version: //p')"
     log "actionlint: $(actionlint -version | head -n 1)"
+    log "gitleaks: $(gitleaks version)"
 
     if command -v docker >/dev/null 2>&1; then
         log "Docker: $(docker --version)"
@@ -292,6 +389,7 @@ main() {
     install_dotnet_sdk "${sdk_version}"
     install_sonar_scanner
     install_actionlint
+    install_gitleaks
     install_pre_commit
     verify_toolchain "${sdk_version}"
     repair_generated_artifact_permissions
