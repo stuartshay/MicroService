@@ -33,7 +33,7 @@ namespace MicroService.Test.Unit
         [Fact]
         public async Task CheckHealthAsync_ReturnsUnhealthy_WhenFolderDoesNotExist()
         {
-            var missingPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            var missingPath = Path.Join(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
             var healthCheck = new FolderHealthCheck(missingPath);
 
             var result = await healthCheck.CheckHealthAsync(new HealthCheckContext(), TestContext.Current.CancellationToken);
