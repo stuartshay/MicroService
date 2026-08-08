@@ -58,8 +58,13 @@ jobs:
               );
             };
 
-            core.info(`Waiting ${initialDelayMs / 1000}s before the first check — Copilot review consistently takes over a minute to appear`);
-            await new Promise(r => setTimeout(r, initialDelayMs));
+            const runAttempt = Number(process.env.GITHUB_RUN_ATTEMPT || '1');
+            if (runAttempt > 1) {
+              core.info(`Run attempt ${runAttempt} (manual re-run) — skipping the initial ${initialDelayMs / 1000}s wait, Copilot review has likely already posted`);
+            } else {
+              core.info(`Waiting ${initialDelayMs / 1000}s before the first check — Copilot review consistently takes over a minute to appear`);
+              await new Promise(r => setTimeout(r, initialDelayMs));
+            }
 
             for (let i = 0; i < maxAttempts; i++) {
               const { data: reviews } = await github.rest.pulls.listReviews({
