@@ -95,7 +95,19 @@ namespace MicroService.Test.Controllers
 
             // Assert
             Assert.IsType<OkObjectResult>(sut.Result);
-            loggerMock.Verify(l => l.IsEnabled(LogLevel.Information), Times.AtLeastOnce);
+
+            // CA1873 misreads this Moq verification expression as a real, eagerly-evaluated
+            // logger call; it's an expression tree matched against recorded invocations.
+#pragma warning disable CA1873
+            loggerMock.Verify(
+                l => l.Log(
+                    LogLevel.Information,
+                    It.IsAny<EventId>(),
+                    It.IsAny<It.IsAnyType>(),
+                    It.IsAny<Exception?>(),
+                    It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
+                Times.Once);
+#pragma warning restore CA1873
         }
 
         [Fact]
@@ -172,8 +184,9 @@ namespace MicroService.Test.Controllers
         {
             // Arrange
             var id = ShapeProperties.BoroughBoundaries;
+            DbaseFileHeader? nullDatabaseProperties = null;
             var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
-            shapeServiceMock.Setup(s => s.GetShapeDatabaseProperties()).Returns((DbaseFileHeader)null!);
+            shapeServiceMock.Setup(s => s.GetShapeDatabaseProperties()).Returns(nullDatabaseProperties!);
             shapeServiceMock.Setup(x => x.GetShapeProperties()).Returns(new ShapefileHeader
             {
                 Bounds = new Envelope(1, 2, 3, 4),
@@ -247,8 +260,9 @@ namespace MicroService.Test.Controllers
                 Y = 732036
             };
 
+            BoroughBoundaryShape? nullShape = null;
             var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
-            shapeServiceMock.Setup(s => s.GetFeatureLookup(request.X, request.Y, request.Datum)).Returns((BoroughBoundaryShape?)null);
+            shapeServiceMock.Setup(s => s.GetFeatureLookup(request.X, request.Y, request.Datum)).Returns(nullShape);
 
             var shapeServiceResolver = new Mock<ShapeServiceResolver>();
             shapeServiceResolver.Setup(r => r("BoroughBoundaries")).Returns(shapeServiceMock.Object);
@@ -278,8 +292,9 @@ namespace MicroService.Test.Controllers
             boroughServiceMock.Setup(s => s.GetFeatureLookup(request.X, request.Y, request.Datum))
                 .Returns(new BoroughBoundaryShape { BoroCode = 1 });
 
+            CommunityDistrictShape? nullCommunityShape = null;
             var communityServiceMock = new Mock<IShapeService<CommunityDistrictShape>>();
-            communityServiceMock.Setup(s => s.GetFeatureLookup(request.X, request.Y, request.Datum)).Returns((CommunityDistrictShape?)null);
+            communityServiceMock.Setup(s => s.GetFeatureLookup(request.X, request.Y, request.Datum)).Returns(nullCommunityShape);
 
             var shapeServiceResolver = new Mock<ShapeServiceResolver>();
             shapeServiceResolver.Setup(r => r("BoroughBoundaries")).Returns(boroughServiceMock.Object);
@@ -481,8 +496,9 @@ namespace MicroService.Test.Controllers
                 Attributes = new List<KeyValuePair<string, object>> { new("BoroCode", 1) },
             };
 
+            IEnumerable<BoroughBoundaryShape>? nullResults = null;
             var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
-            shapeServiceMock.Setup(s => s.GetFeatureLookup(request.Attributes)).Returns((IEnumerable<BoroughBoundaryShape>)null!);
+            shapeServiceMock.Setup(s => s.GetFeatureLookup(request.Attributes)).Returns(nullResults!);
 
             var shapeServiceResolver = new Mock<ShapeServiceResolver>();
             shapeServiceResolver.Setup(r => r(request.Key)).Returns(shapeServiceMock.Object);
@@ -555,8 +571,9 @@ namespace MicroService.Test.Controllers
                 Attributes = new List<KeyValuePair<string, object>> { new("BoroCode", 999) },
             };
 
+            FeatureCollection? nullFeatureCollection = null;
             var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
-            shapeServiceMock.Setup(s => s.GetFeatureCollection(request.Attributes)).Returns((FeatureCollection?)null);
+            shapeServiceMock.Setup(s => s.GetFeatureCollection(request.Attributes)).Returns(nullFeatureCollection);
 
             var shapeServiceResolver = new Mock<ShapeServiceResolver>();
             shapeServiceResolver.Setup(r => r(request.Key)).Returns(shapeServiceMock.Object);
