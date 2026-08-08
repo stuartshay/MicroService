@@ -121,4 +121,11 @@ jobs:
             > 'files/LPC_Individual_Landmark_and_Historic_Building_Database/LPC_Individual_Landmark_and_Historic_District_Building_Database_20231209.dbf'
 
       - name: Test solution
-        run: dotnet test MicroService.sln --configuration Release
+        run: dotnet test MicroService.sln --configuration Release --collect:"XPlat Code Coverage" --results-directory ./coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage
+          fail_ci_if_error: false
