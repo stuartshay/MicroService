@@ -6,10 +6,13 @@ DOTNET ?= dotnet
 PRE_COMMIT ?= $(HOME)/.local/share/MicroService/pre-commit/bin/pre-commit
 RUN_ANALYZERS ?= 0
 ANALYZE_CONFIGURATION ?= Release
+LPC_DIRECTORY := files/LPC_Individual_Landmark_and_Historic_Building_Database
+TEST_DATA_ZIP := $(LPC_DIRECTORY)/20231209/Individual Landmark and Historic District Building Database_20240211.zip
+TEST_DATA_DBF := $(LPC_DIRECTORY)/LPC_Individual_Landmark_and_Historic_District_Building_Database_20231209.dbf
 
 .DEFAULT_GOAL := help
 
-.PHONY: help setup setup-gcloud hooks check analyze restore build run test sonar certificates
+.PHONY: help setup setup-gcloud hooks check analyze restore build run test test-data sonar certificates
 
 help:
 	@echo "Available targets:"
@@ -22,7 +25,8 @@ help:
 	@echo "  make restore  Restore NuGet packages"
 	@echo "  make build    Build the solution"
 	@echo "  make run      Run the Web API locally"
-	@echo "  make test     Run the test project"
+	@echo "  make test     Run the test project (extracts the test .dbf first if missing)"
+	@echo "  make test-data  Extract the git-ignored .dbf the tests need, if missing"
 	@echo "  make sonar    Build, test, and submit analysis to SonarQube"
 	@echo "  make certificates  Generate local nginx development certificates"
 	@echo ""
@@ -58,8 +62,16 @@ build: restore
 run:
 	$(DOTNET) run --project $(WEB_PROJECT) --configuration $(CONFIGURATION)
 
-test:
+test: test-data
 	$(DOTNET) test $(TEST_PROJECT) --configuration $(CONFIGURATION)
+
+# The building database .dbf is git-ignored; extract it from the committed zip
+# the same way CI's "Prepare test data" step does.
+test-data: $(TEST_DATA_DBF)
+
+$(TEST_DATA_DBF):
+	unzip -p '$(TEST_DATA_ZIP)' 'geo_export_590d5a7b-ac38-4625-a642-55d90456869d.dbf' > '$@.tmp'
+	mv '$@.tmp' '$@'
 
 sonar:
 	./scripts/sonar.sh

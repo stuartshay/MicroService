@@ -37,8 +37,8 @@ RUN dotnet publish "MicroService.WebApi.csproj" \
 
 FROM base AS final
 
-# Shape Files
-COPY files  /files
+# Shape files are not baked into the image; mount files/ at /files to run it
+# locally (see docker/README.md).
 
 WORKDIR /app
 COPY --from=publish /app/publish .

@@ -1,8 +1,6 @@
 using Asp.Versioning;
 using MicroService.Service.Constants;
 using MicroService.Service.Interfaces;
-using MicroService.WebApi.Extensions.Constants;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MicroService.WebApi.V1.Controllers
@@ -16,7 +14,6 @@ namespace MicroService.WebApi.V1.Controllers
     [ApiVersion("3.0")]
     [Route("api/v{version:apiVersion}/TestData")]
     [ApiExplorerSettings(IgnoreApi = true)]
-    [EnableCors(ApiConstants.CorsPolicy)]
     public class PercentileController : ControllerBase
     {
         private readonly ICalculationService _calculationService;
