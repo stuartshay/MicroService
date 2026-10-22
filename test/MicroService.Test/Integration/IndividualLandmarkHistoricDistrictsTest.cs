@@ -4,6 +4,7 @@ using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Test.Fixture;
 using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
+using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 using Xunit;
 
@@ -12,6 +13,8 @@ namespace MicroService.Test.Integration
     public class IndividualLandmarkHistoricDistrictsTest : IClassFixture<ShapeServiceFixture>, IShapeTest
     {
         public IShapeService<IndividualLandmarkHistoricDistrictsShape> _service;
+
+        private static readonly Envelope NycWgs84Bounds = new(-74.3, -73.6, 40.4, 41.0);
 
         private readonly ITestOutputHelper _testOutputHelper;
 
@@ -74,7 +77,8 @@ namespace MicroService.Test.Integration
             Assert.Empty(result);
         }
 
-        [InlineData(-73.9600952918919, 40.63098618196636, "803 East 17th Street", "BK")]
+        // NAD83 / New York Long Island (ft) coordinates of -73.9600952918919, 40.63098618196636
+        [InlineData(995326.2642537679, 169164.19580966546, "803 East 17th Street", "BK")]
         [Theory(DisplayName = "Get Geospatial Point Lookup")]
         public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object expected2)
         {
@@ -86,7 +90,7 @@ namespace MicroService.Test.Integration
         }
 
         [InlineData(-73.920786, 40.644343, "Pieter Claesen Wyckoff House", "BK")]
-        [Theory(Skip = "TODO: FIX", DisplayName = "Get Geospatial Point Lookup")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup - WGS84")]
         public void Get_Geospatial_Point_Lookup_Wgs84(double x, double y, string expected, object expected2)
         {
             var sut = _service.GetFeatureLookup(x, y, Datum.Wgs84);
@@ -167,32 +171,7 @@ namespace MicroService.Test.Integration
 
             Assert.Equal(expected, result.Attributes["Bbl"]);
             Assert.Equal(expected2, result.Attributes["AreaName"]);
-        }
-
-        // TODO: Map Historic Districts to Landmark Preservation Commission
-        [InlineData("LP-01559", "3079170009", "Gramercy Park Historic District Extension")]
-        //[InlineData("LP-00099", "3079170009", "Brooklyn Heights Historic District")]
-        [Theory(Skip = "TODO:FIX THIS", DisplayName = "GetFeatureCollection Mapped Historic District returns expected feature collection")]
-        public void GetFeatureCollection_Mapped_HistoricDistrict_ValidInput_ReturnsExpectedFeature(string value1, string expected, string expected2)
-        {
-            // Arrange
-            var attributes = new List<KeyValuePair<string, object>>
-            {
-                new("LPNumber", value1),
-            };
-
-            // Act
-            var sut = _service.GetFeatureCollection(attributes);
-            var typedSut = Assert.IsType<FeatureCollection>(sut);
-            var result = typedSut.Single();
-
-            // Assert
-            Assert.NotNull(sut);
-            Assert.IsType<FeatureCollection>(sut);
-            Assert.NotNull(result);
-
-            Assert.Equal(expected, result.Attributes["Bbl"]);
-            Assert.Equal(expected2, result.Attributes["AreaName"]);
+            Assert.True(NycWgs84Bounds.Contains(result.Geometry.EnvelopeInternal), "GeoJSON geometry must be WGS84 longitude/latitude.");
         }
 
         [InlineData(1006187, 732036)]

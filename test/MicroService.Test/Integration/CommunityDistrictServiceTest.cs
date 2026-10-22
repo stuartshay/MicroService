@@ -89,21 +89,23 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, sut.BoroCd);
         }
 
-        [InlineData(312, "", "312")]
-        [Theory(Skip = "TODO-FIX", DisplayName = "Get Feature Attribute Lookup")]
-        public void Get_Feature_Attribute_Lookup(object value1, object _value2, string expected)
+        // BoroCd 312 is Brooklyn (3) community district 12.
+        [InlineData(312, "BK", "12")]
+        [InlineData("312", "BK", "12")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
+        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
         {
-            _ = _value2; // Required by the shared shape-test contract.
             var attributes = new List<KeyValuePair<string, object>>
             {
                 new("BoroCd", value1),
             };
 
-            var sut = _service.GetFeatureLookup(attributes);
-            var result = sut.FirstOrDefault();
+            var sut = _service.GetFeatureLookup(attributes).ToList();
 
-            Assert.NotNull(sut);
-            Assert.Equal(int.Parse(expected), result?.Cd);
+            var result = Assert.Single(sut);
+            Assert.Equal(312, result.BoroCd);
+            Assert.Equal(int.Parse(expected), result.Cd);
+            Assert.Equal(value2, result.Borough);
         }
 
 
