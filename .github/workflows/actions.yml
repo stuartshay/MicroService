@@ -15,6 +15,10 @@ env:
   ASPNETCORE_ENVIRONMENT: CloudRun
   ASPNETCORE_URLS: 'http://*:5000'
 
+# Jobs that sign in to Google Cloud add id-token: write (workload identity, no key)
+permissions:
+  contents: read
+
 on:
   workflow_dispatch:
   push:
@@ -27,6 +31,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - uses: actions/checkout@v7
@@ -46,7 +53,8 @@ jobs:
         id: 'auth'
         uses: 'google-github-actions/auth@v3'
         with:
-          credentials_json: '${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT }}'
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOYER }}
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v3
@@ -104,6 +112,9 @@ jobs:
 
   publish-googlecloud:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     needs: [build]
     steps:
       - name: Download artifacts
@@ -117,7 +128,8 @@ jobs:
         id: 'auth'
         uses: 'google-github-actions/auth@v3'
         with:
-          credentials_json: '${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT  }}'
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOYER }}
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v3
@@ -132,6 +144,9 @@ jobs:
 
   deploy-googlecloud:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     needs: publish-googlecloud
     environment:
       name: prod
@@ -144,7 +159,8 @@ jobs:
         id: 'auth'
         uses: 'google-github-actions/auth@v3'
         with:
-          credentials_json: '${{ secrets.GH_ACTIONS_SERVICE_ACCOUNT }}'
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOYER }}
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v3
@@ -165,7 +181,9 @@ jobs:
           secrets: |
             ConnectionStrings__PostgreSql=postgres_coredatastore:latest
           secrets_update_strategy: 'merge'
-          flags: '--memory 2Gi --port 5000 --allow-unauthenticated'
+          # Public access is a Terraform-managed invoker binding (nyc-landmarks-vector-db
+          # infrastructure/github_deploy), so deploys no longer rewrite the service's IAM policy
+          flags: '--memory 2Gi --port 5000'
 
   health-googlecloud:
     name: health check
