@@ -225,6 +225,9 @@ jobs:
 
   cleanup:
     runs-on: ubuntu-latest
+    # Deleting the build artifact needs actions: write (the workflow default is contents: read)
+    permissions:
+      actions: write
     needs: [health-googlecloud]
     steps:
       - uses: geekyeggo/delete-artifact@v6
