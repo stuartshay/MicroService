@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
@@ -49,11 +48,8 @@ namespace MicroService.Service.Services
                 var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
                 featureAttributes.Add("ShapeColor", Color.Blue.ToString().ToLower());
 
-                // Transform geometry
-                var transformedGeometry = GeoTransformationHelper.TransformGeometry(feature.Geometry, Datum.Nad83, Datum.Wgs84);
-
-                // Add feature to collection
-                featureCollection.Add(new Feature(transformedGeometry, new AttributesTable(featureAttributes)));
+                // The building database geometry is already WGS84 (see its .prj), so no transform is needed
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
 
             return featureCollection;
