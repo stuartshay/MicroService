@@ -1,22 +1,28 @@
 ﻿using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
+using System;
 
 namespace MicroService.Service.Mappings
 {
     public class NychaDevelopmentShapeProfile : ShapeProfile<NychaDevelopmentShape>
     {
-        public NychaDevelopmentShapeProfile()
+        protected NychaDevelopmentShapeProfile()
         {
-            CreateMap<Feature, NychaDevelopmentShape>()
-                .ForMember(dest => dest.Development, opt => opt.MapFrom(src => src.Attributes["DEVELOPMEN"].ToString()))
-                .ForMember(dest => dest.TdsNumber, opt => opt.MapFrom(src => src.Attributes["TDS_NUM"] != null ? src.Attributes["TDS_NUM"].ToString() : null))
-                .ForMember(dest => dest.Borough, opt => opt.MapFrom(src => src.Attributes["BOROUGH"] != null ? src.Attributes["BOROUGH"].ToString() : null))
-                .ForMember(dest => dest.ShapeArea, opt => opt.Ignore())
-                .ForMember(dest => dest.ShapeLength, opt => opt.Ignore())
-                .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
-                .ForMember(dest => dest.Feature, opt => opt.Ignore());
+        }
+
+        public static NychaDevelopmentShape Map(Feature src)
+        {
+            ArgumentNullException.ThrowIfNull(src);
+
+            return new NychaDevelopmentShape
+            {
+                Development = src.Attributes["DEVELOPMEN"]?.ToString()!,
+                TdsNumber = src.Attributes["TDS_NUM"] != null ? src.Attributes["TDS_NUM"]?.ToString()! : null!,
+                Borough = src.Attributes["BOROUGH"] != null ? src.Attributes["BOROUGH"]?.ToString()! : null!,
+                BoundingBox = MapBoundingBox(src.BoundingBox),
+                Geometry = src.Geometry,
+            };
         }
     }
-
 }

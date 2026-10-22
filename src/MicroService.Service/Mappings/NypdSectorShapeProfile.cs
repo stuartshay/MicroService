@@ -1,23 +1,29 @@
 ﻿using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
+using System;
 
 namespace MicroService.Service.Mappings
 {
     public class NypdSectorShapeProfile : ShapeProfile<NypdSectorShape>
     {
-        public NypdSectorShapeProfile()
+        protected NypdSectorShapeProfile()
         {
-            CreateMap<Feature, NypdSectorShape>()
-                .ForMember(dest => dest.Pct, opt => opt.MapFrom(src => src.Attributes["pct"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.Sector, opt => opt.MapFrom(src => src.Attributes["sector"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.PatrolBoro, opt => opt.MapFrom(src => src.Attributes["patrol_bor"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.Phase, opt => opt.MapFrom(src => src.Attributes["phase"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.ShapeArea, opt => opt.Ignore())
-                .ForMember(dest => dest.ShapeLength, opt => opt.Ignore())
-                .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
-                .ForMember(dest => dest.Feature, opt => opt.Ignore());
+        }
+
+        public static NypdSectorShape Map(Feature src)
+        {
+            ArgumentNullException.ThrowIfNull(src);
+
+            return new NypdSectorShape
+            {
+                Pct = src.Attributes["pct"]?.ToString() ?? string.Empty,
+                Sector = src.Attributes["sector"]?.ToString() ?? string.Empty,
+                PatrolBoro = src.Attributes["patrol_bor"]?.ToString() ?? string.Empty,
+                Phase = src.Attributes["phase"]?.ToString() ?? string.Empty,
+                BoundingBox = MapBoundingBox(src.BoundingBox),
+                Geometry = src.Geometry,
+            };
         }
     }
-
 }

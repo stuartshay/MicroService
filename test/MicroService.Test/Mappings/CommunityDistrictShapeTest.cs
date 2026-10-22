@@ -1,24 +1,23 @@
-﻿using AutoMapper;
+﻿using MicroService.Service.Mappings;
 using MicroService.Service.Models;
-using MicroService.Test.Mappings.Base;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using Xunit;
 
 namespace MicroService.Test.Mappings
 {
-    public class CommunityDistrictShapeTest : BaseMapper<CommunityDistrictShape>
+    public class CommunityDistrictShapeTest
     {
         [InlineData(401, 401, 1, 4, "QN", "Queens")]
         [InlineData("312", 312, 12, 3, "BK", "Brooklyn")]
         [Theory(DisplayName = "Validate Mappings")]
-        public void TestAutomapperMapping(object value1, int expected1, int expectedCd, int expectedBoroCode, string expectedBorough, string expectedBoroName)
+        public void TestShapeMapping(object value1, int expected1, int expectedCd, int expectedBoroCode, string expectedBorough, string expectedBoroName)
         {
             // Arrange: the profile maps from a shapefile Feature, keyed by the .dbf column names
             var feature = CreateFeature(value1);
 
             // Act
-            var shape = Mapper.Map<CommunityDistrictShape>(feature);
+            var shape = CommunityDistrictShapeProfile.Map(feature);
 
             // Assert
             Assert.IsType<CommunityDistrictShape>(shape);
@@ -31,14 +30,13 @@ namespace MicroService.Test.Mappings
 
         [InlineData("Manhattan")]
         [Theory(DisplayName = "Validate Mappings - Invalid")]
-        public void TestAutomapperMapping_Invalid(string value1)
+        public void TestShapeMapping_Invalid(string value1)
         {
             // Arrange
             var feature = CreateFeature(value1);
 
             // Act & Assert
-            var exception = Assert.Throws<AutoMapperMappingException>(() => Mapper.Map<CommunityDistrictShape>(feature));
-            Assert.IsType<FormatException>(exception.InnerException);
+            Assert.Throws<FormatException>(() => CommunityDistrictShapeProfile.Map(feature));
         }
 
         private static Feature CreateFeature(object boroCd) =>
