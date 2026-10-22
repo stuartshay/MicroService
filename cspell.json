@@ -284,7 +284,9 @@
     "zmcode",
     "zonedist",
     "zonemap",
-    "zstd"
+    "zstd",
+    "dotnetcore",
+    "navigatormaps"
   ],
   "ignoreWords": [],
   "flagWords": []
