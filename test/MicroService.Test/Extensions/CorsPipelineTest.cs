@@ -55,13 +55,13 @@ namespace MicroService.Test.Extensions
                 // Program.cs reads these before the host is built, so pass them as host settings
                 builder.UseEnvironment("Docker");
                 builder.UseSetting("ConnectionStrings:PostgreSql", "Host=localhost;Database=unused;Username=unused;Password=unused");
-                builder.UseSetting("ShapeConfiguration:ShapeRootDirectory", Path.Combine(FindRepositoryRoot(), "files"));
+                builder.UseSetting("ShapeConfiguration:ShapeRootDirectory", Path.Join(FindRepositoryRoot(), "files"));
             }
 
             private static string FindRepositoryRoot()
             {
                 var directory = new DirectoryInfo(AppContext.BaseDirectory);
-                while (directory != null && !File.Exists(Path.Combine(directory.FullName, "MicroService.sln")))
+                while (directory != null && !File.Exists(Path.Join(directory.FullName, "MicroService.sln")))
                 {
                     directory = directory.Parent;
                 }

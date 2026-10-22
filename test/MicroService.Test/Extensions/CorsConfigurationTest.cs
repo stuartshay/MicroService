@@ -23,7 +23,7 @@ namespace MicroService.Test.Extensions
         {
             // The Web API's appsettings.json is copied to the test output directory
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "appsettings.json"))
+                .AddJsonFile(Path.Join(AppContext.BaseDirectory, "appsettings.json"))
                 .Build();
 
             Assert.Equal(allowed, await IsAllowed(configuration, "GET", origin));
@@ -34,7 +34,7 @@ namespace MicroService.Test.Extensions
         public async Task AppSettings_Preflight_Allowed()
         {
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "appsettings.json"))
+                .AddJsonFile(Path.Join(AppContext.BaseDirectory, "appsettings.json"))
                 .Build();
 
             Assert.True(await IsAllowed(configuration, "OPTIONS", "https://coredatastore.com", preflight: true));

@@ -10,10 +10,10 @@ namespace MicroService.Test.Extensions
         public void CloudRun_Default_LogLevel_Is_Information()
         {
             // The test project has its own appsettings.CloudRun.json, so read the Web API's from the source tree
-            var webApiDirectory = Path.Combine(FindRepositoryRoot(), "src", "MicroService.WebApi");
+            var webApiDirectory = Path.Join(FindRepositoryRoot(), "src", "MicroService.WebApi");
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile(Path.Combine(webApiDirectory, "appsettings.json"))
-                .AddJsonFile(Path.Combine(webApiDirectory, "appsettings.CloudRun.json"))
+                .AddJsonFile(Path.Join(webApiDirectory, "appsettings.json"))
+                .AddJsonFile(Path.Join(webApiDirectory, "appsettings.CloudRun.json"))
                 .Build();
 
             Assert.Equal("Information", configuration["Logging:LogLevel:Default"]);
@@ -22,7 +22,7 @@ namespace MicroService.Test.Extensions
         private static string FindRepositoryRoot()
         {
             var directory = new DirectoryInfo(AppContext.BaseDirectory);
-            while (directory != null && !File.Exists(Path.Combine(directory.FullName, "MicroService.sln")))
+            while (directory != null && !File.Exists(Path.Join(directory.FullName, "MicroService.sln")))
             {
                 directory = directory.Parent;
             }
