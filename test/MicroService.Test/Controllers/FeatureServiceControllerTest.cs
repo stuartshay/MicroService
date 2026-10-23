@@ -10,8 +10,6 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
-using System.Text;
 using Xunit;
 
 
@@ -110,18 +108,16 @@ namespace MicroService.Test.Controllers
             // Arrange
             const ShapeProperties id = ShapeProperties.BoroughBoundaries;
             var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
-            shapeServiceMock.Setup(s => s.GetShapeDatabaseProperties()).Returns(new DbaseFileHeader
+            shapeServiceMock.Setup(s => s.GetShapeDatabaseProperties()).Returns(new ShapeDatabaseProperties
             {
-                NumFields = 4,
                 NumRecords = 5,
-                Encoding = Encoding.UTF32,
                 LastUpdateDate = new DateTime(2022, 01, 01),
             });
 
-            shapeServiceMock.Setup(x => x.GetShapeProperties()).Returns(new ShapefileHeader
+            shapeServiceMock.Setup(x => x.GetShapeProperties()).Returns(new ShapefileProperties
             {
                 Bounds = new Envelope(1, 2, 3, 4),
-                ShapeType = ShapeGeometryType.Polygon,
+                ShapeType = "Polygon",
             });
 
             var shapeServiceResolver = new Mock<ShapeServiceResolver>();
@@ -141,21 +137,20 @@ namespace MicroService.Test.Controllers
         {
             // Arrange
             const ShapeProperties id = ShapeProperties.BoroughBoundaries;
-            var databaseProperties = new DbaseFileHeader
+            var databaseProperties = new ShapeDatabaseProperties
             {
                 NumRecords = 5,
-                Encoding = Encoding.UTF32,
                 LastUpdateDate = new DateTime(2022, 01, 01),
             };
-            databaseProperties.AddColumn("BoroCode", 'N', 10, 0);
+            databaseProperties = databaseProperties with { Fields = [new ShapeField("BoroCode", typeof(int), 'N', 10, 0)] };
 
             var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
             shapeServiceMock.Setup(s => s.GetShapeDatabaseProperties()).Returns(databaseProperties);
 
-            shapeServiceMock.Setup(x => x.GetShapeProperties()).Returns(new ShapefileHeader
+            shapeServiceMock.Setup(x => x.GetShapeProperties()).Returns(new ShapefileProperties
             {
                 Bounds = new Envelope(1, 2, 3, 4),
-                ShapeType = ShapeGeometryType.Polygon,
+                ShapeType = "Polygon",
             });
 
             var shapeServiceResolver = new Mock<ShapeServiceResolver>();
@@ -178,13 +173,13 @@ namespace MicroService.Test.Controllers
         {
             // Arrange
             const ShapeProperties id = ShapeProperties.BoroughBoundaries;
-            DbaseFileHeader? nullDatabaseProperties = null;
+            ShapeDatabaseProperties? nullDatabaseProperties = null;
             var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
             shapeServiceMock.Setup(s => s.GetShapeDatabaseProperties()).Returns(nullDatabaseProperties!);
-            shapeServiceMock.Setup(x => x.GetShapeProperties()).Returns(new ShapefileHeader
+            shapeServiceMock.Setup(x => x.GetShapeProperties()).Returns(new ShapefileProperties
             {
                 Bounds = new Envelope(1, 2, 3, 4),
-                ShapeType = ShapeGeometryType.Polygon,
+                ShapeType = "Polygon",
             });
 
             var shapeServiceResolver = new Mock<ShapeServiceResolver>();

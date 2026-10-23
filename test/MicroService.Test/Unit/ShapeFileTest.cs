@@ -1,6 +1,5 @@
-﻿using NetTopologySuite.Features;
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
 using Xunit;
 
 namespace MicroService.Test.Unit
@@ -21,52 +20,10 @@ namespace MicroService.Test.Unit
             string shapeDirectory = $"../../../../../files/{shapeFilePath}";
             string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
-            GeometryFactory factory = new();
-            ShapefileDataReader shapeFileDataReader = new(shapePath, factory);
-
-            ShapefileHeader shpHeader = shapeFileDataReader.ShapeHeader;
-            _testOutputHelper.WriteLine($"Shape type: {shpHeader.ShapeType}");
-
-            //Display the min and max bounds of the shapefile
-            var bounds = shpHeader.Bounds;
-            _testOutputHelper.WriteLine($"Min bounds: ({bounds.MinX},{bounds.MinY})");
-            _testOutputHelper.WriteLine($"Max bounds: ({bounds.MaxX},{bounds.MaxY})");
-
-            //Display summary information about the Dbase file
-            DbaseFileHeader header = shapeFileDataReader.DbaseHeader;
-            _testOutputHelper.WriteLine("Dbase info");
-            _testOutputHelper.WriteLine($"{header.Fields.Length} Columns, {header.NumRecords} Records");
-
-            for (int i = 0; i < header.NumFields; i++)
-            {
-                DbaseFieldDescriptor fldDescriptor = header.Fields[i];
-                _testOutputHelper.WriteLine($"   {fldDescriptor.Name} {fldDescriptor.DbaseType}");
-            }
-
-            // Read through all records of the shapefile (geometry and attributes) into a feature collection
-            var features = new List<Feature>();
-            while (shapeFileDataReader.Read())
-            {
-                Feature feature = new();
-                AttributesTable attributesTable = new();
-
-                string[] keys = new string[header.NumFields];
-                var geometry = shapeFileDataReader.Geometry;
-
-                for (int i = 0; i < header.NumFields; i++)
-                {
-                    DbaseFieldDescriptor fldDescriptor = header.Fields[i];
-                    keys[i] = fldDescriptor.Name;
-
-                    // First Field Geometry
-                    var value = shapeFileDataReader.GetValue(i + 1);
-                    attributesTable.Add(fldDescriptor.Name, value);
-                }
-
-                feature.Geometry = geometry;
-                feature.Attributes = attributesTable;
-                features.Add(feature);
-            }
+            var (shape, database) = MicroService.Service.Helpers.ShapefileSource.ReadMetadata(shapePath);
+            Assert.Equal("Polygon", shape.ShapeType);
+            Assert.True(database.NumFields > 0);
+            var features = MicroService.Service.Helpers.ShapefileSource.ReadFeatures(shapePath);
 
             Assert.NotEmpty(features);
             Assert.All(features, feature =>

@@ -301,7 +301,15 @@ Implementation decisions:
 
 ### Phase 10: replace the legacy shapefile reader (P3)
 
-**Approved, pending implementation and compatibility comparison** (2026-10-23).
+**Implemented, awaiting PR merge and production acceptance** (2026-10-23).
+Replaced the package, introduced application-owned metadata models, and routed
+request-time and cron refresh reads through one compatibility adapter. The
+independent legacy-versus-candidate comparison matched all 61,580 records across
+16 archives, plus the existing National Register service binding. Saved regression
+snapshots cover attributes and types, WKB geometry, mapped outcomes, and metadata.
+See [migration validation](shapefile-reader-migration.md) for provenance, results,
+compatibility decisions, and the existing National Register mismatch (#526).
+Production contract checks and the UI production suite remain required after merge.
 
 `NetTopologySuite.IO.ShapeFile` 2.1.0 (April 2022) is deprecated on NuGet as
 "Legacy". Its replacement is

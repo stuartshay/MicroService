@@ -1,8 +1,6 @@
-﻿using MicroService.Service.Extensions;
+using MicroService.Service.Models;
 using Microsoft.Extensions.Caching.Memory;
 using NetTopologySuite.Features;
-using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
 using System;
 using System.Collections.Generic;
 
@@ -10,28 +8,35 @@ namespace MicroService.Service.Helpers
 {
     public interface IShapefileDataReaderService
     {
-        ShapefileHeader ShapeHeader { get; }
+        ShapefileProperties ShapeHeader { get; }
 
-        DbaseFileHeader DbaseHeader { get; }
+        ShapeDatabaseProperties DbaseHeader { get; }
 
         IReadOnlyCollection<Feature> GetFeatures();
     }
 
-    public sealed class CachedShapefileDataReader : ShapefileDataReader, IShapefileDataReaderService
+    public sealed class CachedShapefileDataReader : IShapefileDataReaderService
     {
         private readonly IMemoryCache _cache;
         private readonly string _shapeProperties;
+        private readonly string _fileName;
 
-        public CachedShapefileDataReader(IMemoryCache memoryCache, string shapeProperties, string fileName) : base(fileName, new GeometryFactory())
+        public ShapefileProperties ShapeHeader { get; }
+
+        public ShapeDatabaseProperties DbaseHeader { get; }
+
+        public CachedShapefileDataReader(IMemoryCache memoryCache, string shapeProperties, string fileName)
         {
             _cache = memoryCache;
             _shapeProperties = shapeProperties;
+            _fileName = fileName;
+            (ShapeHeader, DbaseHeader) = ShapefileSource.ReadMetadata(fileName);
         }
 
         public IReadOnlyCollection<Feature> GetFeatures() =>
             _cache.GetOrCreate(_shapeProperties, cacheEntry =>
             {
-                var features = this.ReadFeatures();
+                var features = ShapefileSource.ReadFeatures(_fileName);
 
                 cacheEntry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(3);
 
