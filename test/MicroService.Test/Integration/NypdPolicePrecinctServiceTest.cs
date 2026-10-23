@@ -86,22 +86,19 @@ namespace MicroService.Test.Integration
         }
 
         [InlineData("14", "", "14")]
-        [Theory(Skip = "TODO FIX - Not Filtering", DisplayName = "Get Feature Attribute Lookup")]
+        [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object _value2, string expected)
         {
             _ = _value2; // Required by the shared shape-test contract.
-            // var value = Convert.ToDouble(value1);
-            // var value = Convert.ToString(value1);
             var attributes = new List<KeyValuePair<string, object>>
             {
                 new("Precinct", value1),
             };
 
-            var sut = _service.GetFeatureLookup(attributes);
-            var result = sut.FirstOrDefault();
+            var sut = _service.GetFeatureLookup(attributes).ToList();
 
-            Assert.NotNull(sut);
-            Assert.Equal(int.Parse(expected), result?.Precinct);
+            var result = Assert.Single(sut);
+            Assert.Equal(int.Parse(expected), result.Precinct);
         }
 
         [InlineData(1006187, 732036)]

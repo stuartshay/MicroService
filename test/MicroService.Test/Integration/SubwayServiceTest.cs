@@ -85,13 +85,12 @@ namespace MicroService.Test.Integration
             throw new NotImplementedException();
         }
 
-        [InlineData(27006187, 932036)]
-        [Theory(Skip = "TODO: FIX", DisplayName = "Get Geospatial Point Lookup Not Found")]
-        public void Get_Geospatial_Point_Lookup_Not_Found(double x, double y)
+        // SubwayService.GetFeatureLookup(x, y) returns the nearest entrance, so it never
+        // returns null; points outside the city are rejected by the controller's
+        // BoroughBoundaries check instead (see FeatureServiceControllerTest).
+        void IShapeTest.Get_Geospatial_Point_Lookup_Not_Found(double x, double y)
         {
-            var sut = _service.GetFeatureLookup(x, y, Datum.Nad83);
-
-            Assert.Null(sut);
+            throw new NotImplementedException();
         }
 
         [InlineData("Junction Boulevard & Roosevelt Avenue at NE corner", "", "1789")]
@@ -137,18 +136,22 @@ namespace MicroService.Test.Integration
             Assert.Equal(double.Parse(expected), result.Attributes["ObjectId"]);
         }
 
-        [Fact(Skip = "TODO FIX")]
+        [Fact]
         public void FindPointsByRadius_ReturnsPointsWithinRadius()
         {
-            // Arrange
-            var centerPoint = new Point(40.7677792, -73.969123);
-            var radius = 0.05; // meters
+            // Arrange: the subway entrances are WGS84, so the centre is (longitude, latitude)
+            // and the radius is in degrees (0.002 degrees is roughly 170-220 m).
+            // Lexington Ave & 68th St, at the 68 St-Hunter College station.
+            var centerPoint = new Point(-73.964, 40.768);
+            var radius = 0.002;
 
             // Act
             var pointsWithinRadius = _pointService.FindPointsByRadius(centerPoint, radius);
 
             // Assert
             Assert.NotEmpty(pointsWithinRadius);
+            Assert.True(pointsWithinRadius.Count < _service.GetFeatures().Count);
+            Assert.All(pointsWithinRadius, point => Assert.True(centerPoint.Distance(point) <= radius));
         }
 
 
