@@ -12,9 +12,7 @@ name: Code Scanning
   workflow_dispatch:
 
 permissions:
-  actions: read
   contents: read
-  security-events: write
 
 concurrency:
   group: code-scanning-${{ github.workflow }}-${{ github.ref }}
@@ -25,18 +23,23 @@ jobs:
     name: CodeQL Analyze
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    # CodeQL reads workflow run metadata and uploads results to code scanning
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Set up .NET
-        uses: actions/setup-dotnet@v6
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6
         with:
           global-json-file: global.json
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v4
+        uses: github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4
         with:
           languages: csharp
           config-file: ./.github/codeql/codeql-config.yml
@@ -45,6 +48,6 @@ jobs:
         run: make analyze ANALYZE_CONFIGURATION=Release
 
       - name: Perform CodeQL analysis
-        uses: github/codeql-action/analyze@v4
+        uses: github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4
         with:
           category: /language:csharp
