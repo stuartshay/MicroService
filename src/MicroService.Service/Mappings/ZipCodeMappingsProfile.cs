@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Mappings.Base;
+using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 using System;
@@ -20,15 +20,15 @@ namespace MicroService.Service.Mappings
                 ZipCode = src.Attributes["ZIPCODE"]?.ToString() ?? string.Empty,
                 BldgZip = src.Attributes["BLDGZIP"]?.ToString() ?? string.Empty,
                 PostOfficeName = src.Attributes["PO_NAME"]?.ToString() ?? string.Empty,
-                Population = int.Parse(src.Attributes["POPULATION"]?.ToString() ?? string.Empty),
+                Population = ParseInt(src, "POPULATION"),
                 State = src.Attributes["STATE"]?.ToString() ?? string.Empty,
                 County = src.Attributes["COUNTY"]?.ToString() ?? string.Empty,
-                Area = double.Parse(src.Attributes["AREA"]?.ToString() ?? string.Empty),
+                Area = ParseDouble(src, "AREA"),
                 StateFibs = src.Attributes["ST_FIPS"]?.ToString() ?? string.Empty,
                 CityFibs = src.Attributes["CTY_FIPS"]?.ToString() ?? string.Empty,
                 Url = src.Attributes["URL"]?.ToString() ?? string.Empty,
-                ShapeArea = double.Parse(src.Attributes["SHAPE_AREA"]?.ToString() ?? string.Empty),
-                ShapeLength = double.Parse(src.Attributes["SHAPE_LEN"]?.ToString() ?? string.Empty),
+                ShapeArea = ParseDouble(src, "SHAPE_AREA"),
+                ShapeLength = ParseDouble(src, "SHAPE_LEN"),
                 BoundingBox = MapBoundingBox(src.BoundingBox),
                 Geometry = src.Geometry,
             };

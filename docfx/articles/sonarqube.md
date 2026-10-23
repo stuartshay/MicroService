@@ -9,7 +9,8 @@ The script builds Release, collects coverage, and submits analysis for
 The API explicitly runs as `app`. GDAL, Grafana, Prometheus, and the custom
 NGINX image also run as non-root users. When bind-mounting files into these
 containers, grant their runtime users access to the mounted files. In particular,
-NGINX needs read access to its TLS certificate and private key and write access
+NGINX listens on container ports 8080/8443 (map host ports 80/443 to those
+ports). NGINX needs read access to its TLS certificate and private key and write access
 to any mounted log directory. Keep private keys restricted to the required user
 or group; do not make production private keys world-readable.
 

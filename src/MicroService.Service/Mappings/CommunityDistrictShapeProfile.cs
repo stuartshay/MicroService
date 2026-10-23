@@ -1,4 +1,4 @@
-﻿using MicroService.Data.Enum;
+using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
@@ -21,13 +21,13 @@ namespace MicroService.Service.Mappings
 
             return new CommunityDistrictShape
             {
-                Cd = int.Parse((src.Attributes[BoroCdField]?.ToString() ?? string.Empty).Substring(1, 2)),
-                BoroCd = int.Parse(src.Attributes[BoroCdField]?.ToString() ?? string.Empty),
-                BoroCode = int.Parse((src.Attributes[BoroCdField]?.ToString() ?? string.Empty).Substring(0, 1)),
-                Borough = (src.Attributes[BoroCdField]?.ToString() ?? string.Empty).Substring(0, 1).ParseEnum<Borough>().ToString(),
-                BoroName = (src.Attributes[BoroCdField]?.ToString() ?? string.Empty).Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
-                ShapeArea = double.Parse(src.Attributes["Shape_Area"]?.ToString() ?? string.Empty),
-                ShapeLength = double.Parse(src.Attributes["Shape_Leng"]?.ToString() ?? string.Empty),
+                Cd = int.Parse(GetString(src, BoroCdField).Substring(1, 2), System.Globalization.CultureInfo.InvariantCulture),
+                BoroCd = ParseInt(src, BoroCdField),
+                BoroCode = int.Parse(GetString(src, BoroCdField).Substring(0, 1), System.Globalization.CultureInfo.InvariantCulture),
+                Borough = GetString(src, BoroCdField).Substring(0, 1).ParseEnum<Borough>().ToString(),
+                BoroName = GetString(src, BoroCdField).Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
+                ShapeArea = ParseDouble(src, "Shape_Area"),
+                ShapeLength = ParseDouble(src, "Shape_Leng"),
                 BoundingBox = MapBoundingBox(src.BoundingBox),
                 Geometry = src.Geometry,
             };

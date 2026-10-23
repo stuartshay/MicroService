@@ -71,6 +71,31 @@ namespace MicroService.Test.Mappings.Base
             Assert.Null(result);
         }
 
+        [Theory]
+        [InlineData("en-US", false)]
+        [InlineData("fr-FR", false)]
+        [InlineData("ar-SA", false)]
+        [InlineData("en-US", true)]
+        [InlineData("fr-FR", true)]
+        [InlineData("ar-SA", true)]
+        public void GetDouble_ParsesStringAndNativeNumericAttributesAcrossCultures(string culture, bool nativeNumber)
+        {
+            var previousCulture = System.Globalization.CultureInfo.CurrentCulture;
+            try
+            {
+                System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo(culture);
+                object value = nativeNumber ? 12.5 : "12.5";
+                var feature = new Feature(null, new AttributesTable { { "key", value } });
+
+                Assert.Equal(12.5, TestShapeProfile.CallGetDouble(feature, "key"));
+                Assert.Equal("12.5", TestShapeProfile.CallGetString(feature, "key"));
+            }
+            finally
+            {
+                System.Globalization.CultureInfo.CurrentCulture = previousCulture;
+            }
+        }
+
         [Fact]
         public void GetSanitizedString_StripsNullCharacters()
         {

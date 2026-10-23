@@ -16,9 +16,13 @@ namespace MicroService.Test.Mappings
                 BoundingBox = DefaultBounds,
             };
 
-        [Fact]
-        public void BoroughBoundaryShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void BoroughBoundaryShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "BoroCode", "1" },
@@ -38,9 +42,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void CommunityDistrictShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void CommunityDistrictShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "BoroCD", "101" },
@@ -62,9 +70,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void DsnyDistrictsShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void DsnyDistrictsShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "district", "MN01" },
@@ -90,9 +102,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void HistoricDistrictShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void HistoricDistrictShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "lp_number", "LP-00099" },
@@ -133,9 +149,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void IndividualLandmarkHistoricDistrictsShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void IndividualLandmarkHistoricDistrictsShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "bin", "3000001" },
@@ -198,9 +218,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void IndividualLandmarkSiteShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void IndividualLandmarkSiteShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "lpc_lpnumb", "LP-00001" },
@@ -287,9 +311,13 @@ namespace MicroService.Test.Mappings
             }
         }
 
-        [Fact]
-        public void NeighborhoodShapeMappingsProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void NeighborhoodShapeMappingsProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "BoroCode", "1" },
@@ -313,9 +341,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void NeighborhoodTabulationAreaShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void NeighborhoodTabulationAreaShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "BoroCode", "3" },
@@ -347,9 +379,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void NychaDevelopmentShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void NychaDevelopmentShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "DEVELOPMEN", "ASTORIA" },
@@ -369,9 +405,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void NypdPrecinctShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void NypdPrecinctShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "Precinct", "1" },
@@ -389,9 +429,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void NypdSectorShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void NypdSectorShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "pct", "102" },
@@ -413,9 +457,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void ParkShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void ParkShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "PARK_NAME", "Central Park" },
@@ -445,9 +493,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void FeatureToScenicLandmarkShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void FeatureToScenicLandmarkShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "lp_number", "LP-00879" },
@@ -470,9 +522,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void SubwayShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void SubwayShapeProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "line", "4-6" },
@@ -495,9 +551,13 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void ZipCodeMappingsProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void ZipCodeMappingsProfile_MapsExpectedProperties(string culture)
         {
+            using var cultureScope = new CultureScope(culture);
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "ZIPCODE", "10001" },
@@ -531,6 +591,13 @@ namespace MicroService.Test.Mappings
             Assert.Same(DefaultGeometry, result.Geometry);
             Assert.NotNull(result.BoundingBox);
             Assert.Null(result.Feature);
+        }
+        private sealed class CultureScope : IDisposable
+        {
+            private readonly System.Globalization.CultureInfo _previous = System.Globalization.CultureInfo.CurrentCulture;
+            public CultureScope(string culture) =>
+                System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo(culture);
+            public void Dispose() => System.Globalization.CultureInfo.CurrentCulture = _previous;
         }
     }
 }

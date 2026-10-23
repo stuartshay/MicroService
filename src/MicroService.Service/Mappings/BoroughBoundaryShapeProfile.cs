@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Mappings.Base;
+using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 using System;
@@ -17,10 +17,10 @@ namespace MicroService.Service.Mappings
 
             return new BoroughBoundaryShape
             {
-                BoroCode = int.Parse(src.Attributes["BoroCode"]?.ToString() ?? string.Empty),
+                BoroCode = ParseInt(src, "BoroCode"),
                 BoroName = src.Attributes["BoroName"]?.ToString() ?? string.Empty,
-                ShapeArea = double.Parse(src.Attributes["Shape_Area"]?.ToString() ?? string.Empty),
-                ShapeLength = double.Parse(src.Attributes["Shape_Leng"]?.ToString() ?? string.Empty),
+                ShapeArea = ParseDouble(src, "Shape_Area"),
+                ShapeLength = ParseDouble(src, "Shape_Leng"),
                 BoundingBox = MapBoundingBox(src.BoundingBox),
                 Geometry = src.Geometry,
             };

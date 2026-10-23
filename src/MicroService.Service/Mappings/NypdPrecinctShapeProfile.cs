@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Mappings.Base;
+using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 using System;
@@ -17,9 +17,9 @@ namespace MicroService.Service.Mappings
 
             return new NypdPrecinctShape
             {
-                Precinct = int.Parse(src.Attributes["Precinct"]?.ToString() ?? string.Empty),
-                ShapeArea = double.Parse(src.Attributes["Shape_Area"]?.ToString() ?? string.Empty),
-                ShapeLength = double.Parse(src.Attributes["Shape_Leng"]?.ToString() ?? string.Empty),
+                Precinct = ParseInt(src, "Precinct"),
+                ShapeArea = ParseDouble(src, "Shape_Area"),
+                ShapeLength = ParseDouble(src, "Shape_Leng"),
                 BoundingBox = MapBoundingBox(src.BoundingBox),
                 Geometry = src.Geometry,
             };
