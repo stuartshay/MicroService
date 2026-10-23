@@ -1,8 +1,6 @@
-﻿using AutoMapper;
-using MicroService.Service.Configuration;
+﻿using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
-using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
@@ -96,12 +94,6 @@ namespace MicroService.Test.Fixture
                 .AddOptions()
                 .Configure<ApplicationOptions>(Configuration)
                 .AddSingleton(Configuration)
-
-                .AddSingleton(serviceProvider => new MapperConfiguration(cfg =>
-                {
-                    //cfg.Internal().AllowAdditiveTypeMapCreation = true;
-                    cfg.AddMaps(typeof(BoroughBoundaryShapeProfile).Assembly);
-                }, serviceProvider.GetRequiredService<Microsoft.Extensions.Logging.ILoggerFactory>()).CreateMapper())
 
                 .BuildServiceProvider();
 

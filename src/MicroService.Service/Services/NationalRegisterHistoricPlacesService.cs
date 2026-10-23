@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -11,13 +10,12 @@ using System.Collections.Generic;
 
 namespace MicroService.Service.Services
 {
-    public class NationalRegisterHistoricPlacesService : AbstractShapeService<NationalRegisterHistoricPlacesShape, NationalRegisterHistoricPlacesShapeProfile>, IShapeService<NationalRegisterHistoricPlacesShape>
+    public class NationalRegisterHistoricPlacesService : AbstractShapeService<NationalRegisterHistoricPlacesShape>, IShapeService<NationalRegisterHistoricPlacesShape>
     {
 
         public NationalRegisterHistoricPlacesService(ShapefileDataReaderResolver shapefileDataReaderResolver,
-            IMapper mapper,
             ILogger<NationalRegisterHistoricPlacesService> logger)
-            : base(logger, mapper)
+            : base(logger, NationalRegisterHistoricPlacesShapeProfile.Map)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkSite));
         }
@@ -29,7 +27,7 @@ namespace MicroService.Service.Services
 
             foreach (var feature in features)
             {
-                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
+                var featureAttributes = NationalRegisterHistoricPlacesShapeProfile.ToDictionary(feature);
                 featureAttributes.Add("ShapeColor", Color.Green.ToString().ToLower());
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }

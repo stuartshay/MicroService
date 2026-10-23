@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MicroService.Service.Helpers;
+﻿using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
 using Microsoft.Extensions.Logging;
@@ -12,27 +11,22 @@ namespace MicroService.Service.Services.Base
 {
     public delegate IShapefileDataReaderService ShapefileDataReaderResolver(string key);
 
-    // TProfile is intentionally unused in members: it pairs each concrete
-    // service with its AutoMapper profile type at the type level, matching
-    // the pattern every derived service class (ParkService, SubwayService,
-    // etc.) already declares.
-    public abstract class AbstractShapeService<TShape, TProfile> // NOSONAR
+    public abstract class AbstractShapeService<TShape>
         where TShape : class, new()
-        where TProfile : Profile, new()
     {
         // Always assigned in each derived class's constructor via a ShapefileDataReaderResolver.
         protected IShapefileDataReaderService ShapeFileDataReader { get; set; } = null!;
 
-        protected readonly IMapper Mapper;
+        protected readonly Func<Feature, TShape> MapFeature;
 
         protected readonly ILogger Logger;
 
         protected AbstractShapeService(
             ILogger logger,
-            IMapper mapper)
+            Func<Feature, TShape> mapFeature)
         {
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            Mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            MapFeature = mapFeature ?? throw new ArgumentNullException(nameof(mapFeature));
         }
 
         public ShapefileHeader GetShapeProperties()
@@ -166,7 +160,7 @@ namespace MicroService.Service.Services.Base
                 Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
             }
 
-            var results = Mapper.Map<IEnumerable<TShape>>(features);
+            var results = features.Select(MapFeature).ToList();
             return results;
         }
 
@@ -187,7 +181,7 @@ namespace MicroService.Service.Services.Base
                     var matchedValue = MatchAttributeValue(value, expectedValue);
                     return matchedValue != null;
                 }))
-                .Select(f => Mapper.Map<TShape>(f));
+                .Select(f => MapFeature(f));
 
             return results;
         }
@@ -215,7 +209,7 @@ namespace MicroService.Service.Services.Base
                 return null;
             }
 
-            return Mapper.Map<TShape>(feature);
+            return MapFeature(feature);
         }
 
         public IReadOnlyCollection<Feature> GetFeatures() =>

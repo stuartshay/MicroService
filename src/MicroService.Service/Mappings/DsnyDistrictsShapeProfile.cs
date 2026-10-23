@@ -3,24 +3,33 @@ using MicroService.Service.Helpers;
 using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
+using System;
 
 namespace MicroService.Service.Mappings
 {
     public class DsnyDistrictsShapeProfile : ShapeProfile<DsnyDistrictsShape>
     {
-        public DsnyDistrictsShapeProfile()
+        protected DsnyDistrictsShapeProfile()
         {
-            CreateMap<Feature, DsnyDistrictsShape>()
-                .ForMember(dest => dest.District, opt => opt.MapFrom(src => src.Attributes["district"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.DistrictCode, opt => opt.MapFrom(src => int.Parse(src.Attributes["districtco"].ToString() ?? string.Empty)))
-                .ForMember(dest => dest.Fid, opt => opt.MapFrom(src => src.Attributes["fid"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.GlobalId, opt => opt.MapFrom(src => src.Attributes["globalid"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.OperationZone, opt => opt.MapFrom(src => (src.Attributes["district"].ToString() ?? string.Empty).RemoveIntegers()))
-                .ForMember(dest => dest.OperationZoneName, opt => opt.MapFrom(src => (src.Attributes["district"].ToString() ?? string.Empty).RemoveIntegers().ParseEnum<DsnyOperationZone>().GetEnumDescription()))
-                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_area"].ToString() ?? string.Empty)))
-                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => double.Parse(src.Attributes["shape_leng"].ToString() ?? string.Empty)))
-                .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
-                .ForMember(dest => dest.Feature, opt => opt.Ignore());
+        }
+
+        public static DsnyDistrictsShape Map(Feature src)
+        {
+            ArgumentNullException.ThrowIfNull(src);
+
+            return new DsnyDistrictsShape
+            {
+                District = src.Attributes["district"]?.ToString() ?? string.Empty,
+                DistrictCode = int.Parse(src.Attributes["districtco"]?.ToString() ?? string.Empty),
+                Fid = src.Attributes["fid"]?.ToString() ?? string.Empty,
+                GlobalId = src.Attributes["globalid"]?.ToString() ?? string.Empty,
+                OperationZone = (src.Attributes["district"]?.ToString() ?? string.Empty).RemoveIntegers(),
+                OperationZoneName = (src.Attributes["district"]?.ToString() ?? string.Empty).RemoveIntegers().ParseEnum<DsnyOperationZone>().GetEnumDescription(),
+                ShapeArea = double.Parse(src.Attributes["shape_area"]?.ToString() ?? string.Empty),
+                ShapeLength = double.Parse(src.Attributes["shape_leng"]?.ToString() ?? string.Empty),
+                BoundingBox = MapBoundingBox(src.BoundingBox),
+                Geometry = src.Geometry,
+            };
         }
     }
 }

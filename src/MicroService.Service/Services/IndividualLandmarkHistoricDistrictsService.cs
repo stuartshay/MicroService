@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -10,16 +9,14 @@ using NetTopologySuite.Features;
 
 namespace MicroService.Service.Services
 {
-    public class IndividualLandmarkHistoricDistrictsService : AbstractShapeService<IndividualLandmarkHistoricDistrictsShape,
-            IndividualLandmarkHistoricDistrictsShapeProfile>, IShapeService<IndividualLandmarkHistoricDistrictsShape>
+    public class IndividualLandmarkHistoricDistrictsService : AbstractShapeService<IndividualLandmarkHistoricDistrictsShape>, IShapeService<IndividualLandmarkHistoricDistrictsShape>
     {
         private readonly IndividualLandmarkSiteService _individualLandmarkSiteService;
 
         public IndividualLandmarkHistoricDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IndividualLandmarkSiteService individualLandmarkSiteService,
-            IMapper mapper,
             ILogger<IndividualLandmarkHistoricDistrictsService> logger)
-            : base(logger, mapper)
+            : base(logger, IndividualLandmarkHistoricDistrictsShapeProfile.Map)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkHistoricDistricts));
             _individualLandmarkSiteService = individualLandmarkSiteService;
@@ -45,7 +42,7 @@ namespace MicroService.Service.Services
             foreach (var feature in features)
             {
                 // Map attributes
-                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
+                var featureAttributes = IndividualLandmarkHistoricDistrictsShapeProfile.ToDictionary(feature);
                 featureAttributes.Add("ShapeColor", Color.Blue.ToString().ToLower());
 
                 // The building database geometry is already WGS84 (see its .prj), so no transform is needed

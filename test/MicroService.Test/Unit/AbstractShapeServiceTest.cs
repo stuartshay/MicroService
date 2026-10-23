@@ -1,4 +1,4 @@
-using AutoMapper;
+using NetTopologySuite.Features;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Services.Base;
@@ -67,13 +67,13 @@ namespace MicroService.Test.Unit
         [Fact]
         public void Constructor_ThrowsArgumentNullException_WhenLoggerIsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => new TestShapeService(logger: null!, mapper: Moq.Mock.Of<IMapper>()));
+            Assert.Throws<ArgumentNullException>(() => new TestShapeService(logger: null!, mapFeature: BoroughBoundaryShapeProfile.Map));
         }
 
         [Fact]
         public void Constructor_ThrowsArgumentNullException_WhenMapperIsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => new TestShapeService(logger: Moq.Mock.Of<ILogger>(), mapper: null!));
+            Assert.Throws<ArgumentNullException>(() => new TestShapeService(logger: Moq.Mock.Of<ILogger>(), mapFeature: null!));
         }
 
         [Fact]
@@ -211,15 +211,15 @@ namespace MicroService.Test.Unit
             Assert.Null(result);
         }
 
-        private sealed class TestShapeService : AbstractShapeService<BoroughBoundaryShape, BoroughBoundaryShapeProfile>
+        private sealed class TestShapeService : AbstractShapeService<BoroughBoundaryShape>
         {
             public TestShapeService()
-                : base(Moq.Mock.Of<ILogger>(), Moq.Mock.Of<IMapper>())
+                : base(Moq.Mock.Of<ILogger>(), BoroughBoundaryShapeProfile.Map)
             {
             }
 
-            public TestShapeService(ILogger logger, IMapper mapper)
-                : base(logger, mapper)
+            public TestShapeService(ILogger logger, Func<Feature, BoroughBoundaryShape> mapFeature)
+                : base(logger, mapFeature)
             {
             }
 

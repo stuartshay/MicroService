@@ -1,24 +1,77 @@
-﻿using AutoMapper;
+﻿using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum.Attributes;
 using NetTopologySuite.Features;
+using NetTopologySuite.Geometries;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace MicroService.Service.Mappings.Base
 {
-    public abstract partial class ShapeProfile<TShape> : Profile where TShape : class
+    internal static class ShapePropertyCache
+    {
+        private static readonly ConcurrentDictionary<Type, PropertyInfo[]> Cache = new();
+
+        public static PropertyInfo[] GetIncludedProperties(Type type) =>
+            Cache.GetOrAdd(
+                type,
+                static t => t.GetProperties()
+                    .Where(prop => prop.GetCustomAttributes(typeof(FeatureCollectionExcludeAttribute), false).Length == 0)
+                    .ToArray());
+    }
+
+    public abstract partial class ShapeProfile<TShape> where TShape : class
     {
         protected ShapeProfile()
         {
-            CreateMap<TShape, IDictionary<string, object>>()
-                .ConvertUsing(shape => shape.GetType().GetProperties()
-                    .Where(prop => prop.GetCustomAttributes(typeof(FeatureCollectionExcludeAttribute), false).Length == 0)
-                    // No shape model exposes a nullable-valued property, so GetValue(shape) is
-                    // never actually null here; PropertyInfo.GetValue's object? return is a
-                    // general reflection contract, not a real possibility for this closed set of types.
-                    .ToDictionary(prop => prop.Name, prop => prop.GetValue(shape)!));
+        }
 
+        /// <summary>
+        /// Projects all public properties of <paramref name="shape"/> except those marked with
+        /// <see cref="FeatureCollectionExcludeAttribute"/> into a mutable dictionary keyed by property name.
+        /// </summary>
+        public static IDictionary<string, object> ToDictionary(TShape shape)
+        {
+            ArgumentNullException.ThrowIfNull(shape);
+
+            // No shape model exposes a nullable-valued property, so GetValue(shape) is
+            // never actually null here; PropertyInfo.GetValue's object? return is a
+            // general reflection contract, not a real possibility for this closed set of types.
+            return ShapePropertyCache.GetIncludedProperties(shape.GetType())
+                .ToDictionary(prop => prop.Name, prop => prop.GetValue(shape)!);
+        }
+
+        /// <summary>
+        /// Maps a NetTopologySuite <see cref="Envelope"/> to a <see cref="BoundingBox"/>.
+        /// </summary>
+        protected static BoundingBox MapBoundingBox(Envelope? envelope)
+        {
+            if (envelope is null)
+            {
+                return null!;
+            }
+
+            return new BoundingBox
+            {
+                Area = envelope.Area,
+                Centre = envelope.Centre is null
+                    ? null!
+                    : new CentrePoint
+                    {
+                        X = envelope.Centre.X,
+                        Y = envelope.Centre.Y,
+                    },
+                Diameter = envelope.Diameter,
+                MinX = envelope.MinX,
+                MaxX = envelope.MaxX,
+                MinY = envelope.MinY,
+                MaxY = envelope.MaxY,
+                MinExtent = envelope.MinExtent,
+                MaxExtent = envelope.MaxExtent,
+            };
         }
 
         /// <summary>

@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -12,12 +11,11 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class DsnyDistrictsService : AbstractShapeService<DsnyDistrictsShape, DsnyDistrictsShapeProfile>, IShapeService<DsnyDistrictsShape>
+    public class DsnyDistrictsService : AbstractShapeService<DsnyDistrictsShape>, IShapeService<DsnyDistrictsShape>
     {
         public DsnyDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
-            IMapper mapper,
             ILogger<DsnyDistrictsService> logger)
-            : base(logger, mapper)
+            : base(logger, DsnyDistrictsShapeProfile.Map)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.DSNYDistricts));
         }
@@ -29,7 +27,7 @@ namespace MicroService.Service.Services
 
             foreach (var feature in features)
             {
-                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
+                var featureAttributes = DsnyDistrictsShapeProfile.ToDictionary(feature);
                 featureAttributes.Add("ShapeColor", Color.Blue.ToString().ToLower());
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
@@ -46,7 +44,7 @@ namespace MicroService.Service.Services
                 Logger.LogInformation("FeatureCount {FeatureCount}", features.Count);
             }
 
-            var results = Mapper.Map<IEnumerable<DsnyDistrictsShape>>(features).OrderBy(x => x.District);
+            var results = features.Select(MapFeature).OrderBy(x => x.District);
             return results;
         }
     }

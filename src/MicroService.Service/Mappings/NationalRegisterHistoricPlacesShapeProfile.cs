@@ -9,29 +9,37 @@ namespace MicroService.Service.Mappings
 {
     public class NationalRegisterHistoricPlacesShapeProfile : ShapeProfile<NationalRegisterHistoricPlacesShape>
     {
-        public NationalRegisterHistoricPlacesShapeProfile()
+        protected NationalRegisterHistoricPlacesShapeProfile()
         {
-            CreateMap<Feature, NationalRegisterHistoricPlacesShape>()
-                .ForMember(dest => dest.ObjectId, opt => opt.MapFrom(src => ParseDouble(src, "objectid")))
-                .ForMember(dest => dest.Bbl, opt => opt.MapFrom(src => ParseDouble(src, "bbl")))
-                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => GetString(src, "borough")))
-                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => GetBoroCode(src)))
-                .ForMember(dest => dest.LPNumber, opt => opt.MapFrom(src => GetString(src, "lpc_lpnumb")))
-                .ForMember(dest => dest.AreaName, opt => opt.MapFrom(src => GetString(src, "lpc_name")))
-                .ForMember(dest => dest.SiteDesignation, opt => opt.MapFrom(src => GetString(src, "lpc_site_d")))
-                .ForMember(dest => dest.LandmarkType, opt => opt.MapFrom(src => GetString(src, "landmark_t")))
-                .ForMember(dest => dest.DesignationStatus, opt => opt.MapFrom(src => GetString(src, "lpc_site_s")))
-                .ForMember(dest => dest.AlternativeName, opt => opt.MapFrom(src => GetSanitizedString(src, "lpc_altern")))
-                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => GetString(src, "address")))
-                .ForMember(dest => dest.DateDesignated, opt => opt.MapFrom(src => GetString(src, "date_des_d")))
-                .ForMember(dest => dest.TimeDesignated, opt => opt.MapFrom(src => GetString(src, "time_des_d")))
-                .ForMember(dest => dest.Block, opt => opt.MapFrom(src => GetString(src, "block")))
-                .ForMember(dest => dest.Lot, opt => opt.MapFrom(src => GetString(src, "lot")))
-                .ForMember(dest => dest.UrlReport, opt => opt.MapFrom(src => GetString(src, "url_report")))
-                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => ParseDouble(src, "shape_area")))
-                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => ParseDouble(src, "shape_leng")))
-                .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
-                .ForMember(dest => dest.Feature, opt => opt.Ignore());
+        }
+
+        public static NationalRegisterHistoricPlacesShape Map(Feature src)
+        {
+            ArgumentNullException.ThrowIfNull(src);
+
+            return new NationalRegisterHistoricPlacesShape
+            {
+                ObjectId = ParseDouble(src, "objectid"),
+                Bbl = ParseDouble(src, "bbl"),
+                BoroName = GetString(src, "borough"),
+                BoroCode = GetBoroCode(src),
+                LPNumber = GetString(src, "lpc_lpnumb"),
+                AreaName = GetString(src, "lpc_name"),
+                SiteDesignation = GetString(src, "lpc_site_d"),
+                LandmarkType = GetString(src, "landmark_t"),
+                DesignationStatus = GetString(src, "lpc_site_s"),
+                AlternativeName = GetSanitizedString(src, "lpc_altern")!,
+                Address = GetString(src, "address"),
+                DateDesignated = DateTime.Parse(GetString(src, "date_des_d")),
+                TimeDesignated = GetString(src, "time_des_d"),
+                Block = double.Parse(GetString(src, "block")),
+                Lot = double.Parse(GetString(src, "lot")),
+                UrlReport = GetString(src, "url_report"),
+                ShapeArea = ParseDouble(src, "shape_area"),
+                ShapeLength = ParseDouble(src, "shape_leng"),
+                BoundingBox = MapBoundingBox(src.BoundingBox),
+                Geometry = src.Geometry,
+            };
         }
 
         private static int GetBoroCode(Feature src)
@@ -42,5 +50,4 @@ namespace MicroService.Service.Mappings
                 : 0;
         }
     }
-
 }
