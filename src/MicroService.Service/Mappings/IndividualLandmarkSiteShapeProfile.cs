@@ -12,28 +12,36 @@ namespace MicroService.Service.Mappings
     {
         private const string BoroughField = "borough";
 
-        public IndividualLandmarkSiteShapeProfile()
+        protected IndividualLandmarkSiteShapeProfile()
         {
-            CreateMap<Feature, IndividualLandmarkSiteShape>()
-                .ForMember(dest => dest.LPNumber, opt => opt.MapFrom(src => GetString(src, "lpc_lpnumb")))
-                .ForMember(dest => dest.AreaName, opt => opt.MapFrom(src => GetString(src, "lpc_name")))
-                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => GetBoroCode(src)))
-                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => GetValidBoroughName(src)))
-                .ForMember(dest => dest.BBL, opt => opt.MapFrom(src => GetDouble(src, "bbl")))
-                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => GetString(src, "address")))
-                .ForMember(dest => dest.Block, opt => opt.MapFrom(src => GetDouble(src, "block")))
-                .ForMember(dest => dest.Lot, opt => opt.MapFrom(src => GetDouble(src, "lot")))
-                .ForMember(dest => dest.ObjectId, opt => opt.MapFrom(src => GetDouble(src, "objectid")))
-                .ForMember(dest => dest.DesignationDate, opt => opt.MapFrom(src => GetString(src, "date_des_d")))
-                .ForMember(dest => dest.AlternativeName, opt => opt.MapFrom(src => GetAlternativeName(src)))
-                .ForMember(dest => dest.SiteDesignation, opt => opt.MapFrom(src => GetString(src, "lpc_site_d")))
-                .ForMember(dest => dest.LandmarkType, opt => opt.MapFrom(src => GetString(src, "landmark_t")))
-                .ForMember(dest => dest.DesignationStatus, opt => opt.MapFrom(src => GetString(src, "lpc_site_s")))
-                .ForMember(dest => dest.UrlReport, opt => opt.MapFrom(src => GetString(src, "url_report")))
-                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => ParseDouble(src, "shape_area")))
-                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => ParseDouble(src, "shape_leng")))
-                .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
-                .ForMember(dest => dest.Feature, opt => opt.Ignore());
+        }
+
+        public static IndividualLandmarkSiteShape Map(Feature src)
+        {
+            ArgumentNullException.ThrowIfNull(src);
+
+            return new IndividualLandmarkSiteShape
+            {
+                LPNumber = GetString(src, "lpc_lpnumb"),
+                AreaName = GetString(src, "lpc_name"),
+                BoroCode = GetBoroCode(src),
+                BoroName = GetValidBoroughName(src)!,
+                BBL = GetDouble(src, "bbl"),
+                Address = GetString(src, "address"),
+                Block = GetDouble(src, "block"),
+                Lot = GetDouble(src, "lot"),
+                ObjectId = GetDouble(src, "objectid"),
+                DesignationDate = GetString(src, "date_des_d"),
+                AlternativeName = GetAlternativeName(src)!,
+                SiteDesignation = GetString(src, "lpc_site_d"),
+                LandmarkType = GetString(src, "landmark_t"),
+                DesignationStatus = GetString(src, "lpc_site_s"),
+                UrlReport = GetString(src, "url_report"),
+                ShapeArea = ParseDouble(src, "shape_area"),
+                ShapeLength = ParseDouble(src, "shape_leng"),
+                BoundingBox = MapBoundingBox(src.BoundingBox),
+                Geometry = src.Geometry,
+            };
         }
 
         private static int GetBoroCode(Feature src)
@@ -63,5 +71,4 @@ namespace MicroService.Service.Mappings
         [GeneratedRegex(@"\u0000")]
         private static partial Regex NullCharacterRegex();
     }
-
 }

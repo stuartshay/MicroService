@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -12,12 +11,11 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class ParkService : AbstractShapeService<ParkShape, ParkShapeProfile>, IShapeService<ParkShape>
+    public class ParkService : AbstractShapeService<ParkShape>, IShapeService<ParkShape>
     {
         public ParkService(ShapefileDataReaderResolver shapefileDataReaderResolver,
-            IMapper mapper,
             ILogger<ParkService> logger)
-            : base(logger, mapper)
+            : base(logger, ParkShapeProfile.Map)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Parks));
         }
@@ -29,7 +27,7 @@ namespace MicroService.Service.Services
 
             foreach (var feature in features)
             {
-                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
+                var featureAttributes = ParkShapeProfile.ToDictionary(feature);
                 featureAttributes.Add("ShapeColor", Color.Blue.ToString().ToLower());
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
@@ -45,7 +43,7 @@ namespace MicroService.Service.Services
             {
                 Logger.LogInformation("Feature Count|{Count}", features.Count);
             }
-            return Mapper.Map<IEnumerable<ParkShape>>(features).Take(100);
+            return features.Select(MapFeature).Take(100);
         }
     }
 }

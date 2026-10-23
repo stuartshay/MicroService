@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -12,12 +11,11 @@ using System.Linq;
 
 namespace MicroService.Service.Services
 {
-    public class CommunityDistrictsService : AbstractShapeService<CommunityDistrictShape, CommunityDistrictShapeProfile>, IShapeService<CommunityDistrictShape>
+    public class CommunityDistrictsService : AbstractShapeService<CommunityDistrictShape>, IShapeService<CommunityDistrictShape>
     {
         public CommunityDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
-            IMapper mapper,
             ILogger<CommunityDistrictsService> logger)
-            : base(logger, mapper)
+            : base(logger, CommunityDistrictShapeProfile.Map)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.CommunityDistricts));
         }
@@ -29,7 +27,7 @@ namespace MicroService.Service.Services
 
             foreach (var feature in features)
             {
-                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
+                var featureAttributes = CommunityDistrictShapeProfile.ToDictionary(feature);
                 featureAttributes.Add("ShapeColor", Color.Blue.ToString().ToLower());
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
@@ -41,7 +39,7 @@ namespace MicroService.Service.Services
         {
             var features = GetFeatures();
 
-            var results = Mapper.Map<IEnumerable<CommunityDistrictShape>>(features).OrderBy(x => x.Cd);
+            var results = features.Select(MapFeature).OrderBy(x => x.Cd);
             return results;
         }
 

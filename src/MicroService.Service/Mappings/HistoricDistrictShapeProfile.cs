@@ -8,27 +8,34 @@ namespace MicroService.Service.Mappings
 {
     public class HistoricDistrictShapeProfile : ShapeProfile<HistoricDistrictShape>
     {
-        public HistoricDistrictShapeProfile()
+        protected HistoricDistrictShapeProfile()
         {
-            CreateMap<Feature, HistoricDistrictShape>()
-                .ForMember(dest => dest.LPNumber, opt => opt.MapFrom(src => GetString(src, "lp_number")))
-                .ForMember(dest => dest.AreaName, opt => opt.MapFrom(src => GetString(src, "area_name")))
-                .ForMember(dest => dest.BoroName, opt => opt.MapFrom(src => GetString(src, "borough")))
-                .ForMember(dest => dest.BoundaryName, opt => opt.MapFrom(src => GetSanitizedString(src, "boundary_n")))
-                .ForMember(dest => dest.CalendarDate, opt => opt.MapFrom(src => GetSanitizedString(src, "caldate")))
-                .ForMember(dest => dest.Current, opt => opt.MapFrom(src => GetString(src, "current_")))
-                .ForMember(dest => dest.DesignationDate, opt => opt.MapFrom(src => GetSanitizedString(src, "desdate")))
-                .ForMember(dest => dest.Extension, opt => opt.MapFrom(src => GetSanitizedString(src, "extension")))
-                .ForMember(dest => dest.LastAction, opt => opt.MapFrom(src => GetString(src, "last_actio")))
-                .ForMember(dest => dest.OtherHearing, opt => opt.MapFrom(src => GetSanitizedString(src, "other_hear")))
-                .ForMember(dest => dest.PublicHearing, opt => opt.MapFrom(src => GetString(src, "public_hea")))
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => GetString(src, "status_of_")))
-                .ForMember(dest => dest.BoroCode, opt => opt.MapFrom(src => (int)Enum.Parse<Borough>(GetString(src, "borough"))))
-                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => ParseDouble(src, "shape_area")))
-                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => ParseDouble(src, "shape_leng")))
-                .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
-                .ForMember(dest => dest.Feature, opt => opt.Ignore());
+        }
+
+        public static HistoricDistrictShape Map(Feature src)
+        {
+            ArgumentNullException.ThrowIfNull(src);
+
+            return new HistoricDistrictShape
+            {
+                LPNumber = GetString(src, "lp_number"),
+                AreaName = GetString(src, "area_name"),
+                BoroName = GetString(src, "borough"),
+                BoundaryName = GetSanitizedString(src, "boundary_n")!,
+                CalendarDate = GetSanitizedString(src, "caldate")!,
+                Current = GetString(src, "current_"),
+                DesignationDate = GetSanitizedString(src, "desdate")!,
+                Extension = GetSanitizedString(src, "extension")!,
+                LastAction = GetString(src, "last_actio"),
+                OtherHearing = GetSanitizedString(src, "other_hear")!,
+                PublicHearing = GetString(src, "public_hea"),
+                Status = GetString(src, "status_of_"),
+                BoroCode = (int)Enum.Parse<Borough>(GetString(src, "borough")),
+                ShapeArea = ParseDouble(src, "shape_area"),
+                ShapeLength = ParseDouble(src, "shape_leng"),
+                BoundingBox = MapBoundingBox(src.BoundingBox),
+                Geometry = src.Geometry,
+            };
         }
     }
-
 }

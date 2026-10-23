@@ -10,7 +10,6 @@ namespace MicroService.WebApi.V1.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    // [EnableCors(ApiConstants.CorsPolicy)]
     public class TransformationServiceController : ControllerBase
     {
         /// <summary>

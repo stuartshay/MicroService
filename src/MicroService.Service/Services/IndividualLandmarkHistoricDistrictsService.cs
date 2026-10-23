@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using MicroService.Service.Helpers;
-using MicroService.Service.Interfaces;
+﻿using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -11,16 +9,14 @@ using NetTopologySuite.Features;
 
 namespace MicroService.Service.Services
 {
-    public class IndividualLandmarkHistoricDistrictsService : AbstractShapeService<IndividualLandmarkHistoricDistrictsShape,
-            IndividualLandmarkHistoricDistrictsShapeProfile>, IShapeService<IndividualLandmarkHistoricDistrictsShape>
+    public class IndividualLandmarkHistoricDistrictsService : AbstractShapeService<IndividualLandmarkHistoricDistrictsShape>, IShapeService<IndividualLandmarkHistoricDistrictsShape>
     {
         private readonly IndividualLandmarkSiteService _individualLandmarkSiteService;
 
         public IndividualLandmarkHistoricDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IndividualLandmarkSiteService individualLandmarkSiteService,
-            IMapper mapper,
             ILogger<IndividualLandmarkHistoricDistrictsService> logger)
-            : base(logger, mapper)
+            : base(logger, IndividualLandmarkHistoricDistrictsShapeProfile.Map)
         {
             ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkHistoricDistricts));
             _individualLandmarkSiteService = individualLandmarkSiteService;
@@ -46,14 +42,11 @@ namespace MicroService.Service.Services
             foreach (var feature in features)
             {
                 // Map attributes
-                var featureAttributes = Mapper.Map<IDictionary<string, object>>(feature);
+                var featureAttributes = IndividualLandmarkHistoricDistrictsShapeProfile.ToDictionary(feature);
                 featureAttributes.Add("ShapeColor", Color.Blue.ToString().ToLower());
 
-                // Transform geometry
-                var transformedGeometry = GeoTransformationHelper.TransformGeometry(feature.Geometry, Datum.Nad83, Datum.Wgs84);
-
-                // Add feature to collection
-                featureCollection.Add(new Feature(transformedGeometry, new AttributesTable(featureAttributes)));
+                // The building database geometry is already WGS84 (see its .prj), so no transform is needed
+                featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
 
             return featureCollection;

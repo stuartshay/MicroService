@@ -1,8 +1,6 @@
 ﻿using Asp.Versioning;
 using MicroService.Data.Models;
 using MicroService.Data.Repository;
-using MicroService.WebApi.Extensions.Constants;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MicroService.WebApi.V1.Controllers
@@ -16,7 +14,6 @@ namespace MicroService.WebApi.V1.Controllers
     [ApiVersion("3.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiExplorerSettings(IgnoreApi = true)]
-    [EnableCors(ApiConstants.CorsPolicy)]
     public class TestDataController : ControllerBase
     {
         private readonly ITestDataRepository _testDataRepository;

@@ -1,24 +1,28 @@
 ﻿using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
+using System;
 
 namespace MicroService.Service.Mappings
 {
     public class SubwayShapeProfile : ShapeProfile<SubwayShape>
     {
-        public SubwayShapeProfile()
+        protected SubwayShapeProfile()
         {
-            CreateMap<Feature, SubwayShape>()
-                .ForMember(dest => dest.Line, opt => opt.MapFrom(src => src.Attributes["line"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Attributes["name"].ToString() ?? string.Empty))
-                .ForMember(dest => dest.ObjectId, opt => opt.MapFrom(src => int.Parse(src.Attributes["objectid"].ToString() ?? string.Empty)))
-                .ForMember(dest => dest.Url, opt => opt.Ignore())
-                .ForMember(dest => dest.Distance, opt => opt.Ignore())
-                .ForMember(dest => dest.ShapeArea, opt => opt.Ignore())
-                .ForMember(dest => dest.ShapeLength, opt => opt.Ignore())
-                .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
-                .ForMember(dest => dest.Feature, opt => opt.Ignore());
+        }
+
+        public static SubwayShape Map(Feature src)
+        {
+            ArgumentNullException.ThrowIfNull(src);
+
+            return new SubwayShape
+            {
+                Line = src.Attributes["line"]?.ToString() ?? string.Empty,
+                Name = src.Attributes["name"]?.ToString() ?? string.Empty,
+                ObjectId = int.Parse(src.Attributes["objectid"]?.ToString() ?? string.Empty),
+                BoundingBox = MapBoundingBox(src.BoundingBox),
+                Geometry = src.Geometry,
+            };
         }
     }
-
 }

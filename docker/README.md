@@ -1,5 +1,34 @@
 # Docker Files
 
+## Shape Files
+
+The API image does not contain the shape files (`files/`, about 290 MB on
+disk). In Cloud Run they come from the GCS bucket mounted at
+`/mnt/data/shapes` (`ShapeConfiguration:ShapeRootDirectory` in
+`appsettings.CloudRun.json`). Everywhere else `ShapeRootDirectory` is
+`../../files`, which resolves to `/files` inside the container, so mount the
+repository's `files/` folder there. The API docker-compose files below already
+do this with a read-only volume:
+
+```yaml
+    volumes:
+      - "../files:/files:ro"
+```
+
+To run the image on its own, from the repository root:
+
+```bash
+make test-data
+docker run --rm -p 5000:5000 \
+  -e ASPNETCORE_ENVIRONMENT=Docker -e ASPNETCORE_URLS=http://*:5000 \
+  -v "$(pwd)/files:/files:ro" \
+  stuartshay/microservice-api:latest
+```
+
+`make test-data` extracts the git-ignored Individual Landmark & Historic
+District building `.dbf` from its committed zip; without it that one shape
+can't be read.
+
 ## Local Mode
 
 ```

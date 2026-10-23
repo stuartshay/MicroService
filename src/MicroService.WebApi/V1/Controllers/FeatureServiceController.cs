@@ -4,10 +4,8 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
-using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Extensions.Swagger.Examples;
 using MicroService.WebApi.Models;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
@@ -24,7 +22,6 @@ namespace MicroService.WebApi.V1.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    [EnableCors(ApiConstants.CorsPolicy)]
     public class FeatureServiceController : ControllerBase
     {
         private readonly ShapeServiceResolver? _shapeServiceResolver;

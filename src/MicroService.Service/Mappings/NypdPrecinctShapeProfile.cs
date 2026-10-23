@@ -1,19 +1,28 @@
 ﻿using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
+using System;
 
 namespace MicroService.Service.Mappings
 {
     public class NypdPrecinctShapeProfile : ShapeProfile<NypdPrecinctShape>
     {
-        public NypdPrecinctShapeProfile()
+        protected NypdPrecinctShapeProfile()
         {
-            CreateMap<Feature, NypdPrecinctShape>()
-                .ForMember(dest => dest.Precinct, opt => opt.MapFrom(src => int.Parse(src.Attributes["Precinct"].ToString() ?? string.Empty)))
-                .ForMember(dest => dest.ShapeArea, opt => opt.MapFrom(src => double.Parse(src.Attributes["Shape_Area"].ToString() ?? string.Empty)))
-                .ForMember(dest => dest.ShapeLength, opt => opt.MapFrom(src => double.Parse(src.Attributes["Shape_Leng"].ToString() ?? string.Empty)))
-                .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry))
-                .ForMember(dest => dest.Feature, opt => opt.Ignore());
+        }
+
+        public static NypdPrecinctShape Map(Feature src)
+        {
+            ArgumentNullException.ThrowIfNull(src);
+
+            return new NypdPrecinctShape
+            {
+                Precinct = int.Parse(src.Attributes["Precinct"]?.ToString() ?? string.Empty),
+                ShapeArea = double.Parse(src.Attributes["Shape_Area"]?.ToString() ?? string.Empty),
+                ShapeLength = double.Parse(src.Attributes["Shape_Leng"]?.ToString() ?? string.Empty),
+                BoundingBox = MapBoundingBox(src.BoundingBox),
+                Geometry = src.Geometry,
+            };
         }
     }
 }

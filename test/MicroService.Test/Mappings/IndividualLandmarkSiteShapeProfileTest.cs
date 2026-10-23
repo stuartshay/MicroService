@@ -1,14 +1,11 @@
-using AutoMapper;
 using MicroService.Service.Mappings;
-using MicroService.Service.Models;
-using MicroService.Test.Mappings.Base;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using Xunit;
 
 namespace MicroService.Test.Mappings
 {
-    public class IndividualLandmarkSiteShapeProfileTest : BaseMapper<IndividualLandmarkSiteShape>
+    public class IndividualLandmarkSiteShapeProfileTest
     {
         private static Feature BuildFeature(object? alternativeName)
         {
@@ -40,7 +37,7 @@ namespace MicroService.Test.Mappings
         {
             var feature = BuildFeature(null);
 
-            var shape = Mapper.Map<IndividualLandmarkSiteShape>(feature);
+            var shape = IndividualLandmarkSiteShapeProfile.Map(feature);
 
             Assert.Null(shape.AlternativeName);
         }
@@ -51,7 +48,7 @@ namespace MicroService.Test.Mappings
             var value = "Old" + '\u0000' + "Name";
             var feature = BuildFeature(value);
 
-            var shape = Mapper.Map<IndividualLandmarkSiteShape>(feature);
+            var shape = IndividualLandmarkSiteShapeProfile.Map(feature);
 
             Assert.Equal("OldName", shape.AlternativeName);
         }

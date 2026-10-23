@@ -1,5 +1,4 @@
 ﻿using Asp.Versioning.ApiExplorer;
-using AutoMapper;
 using HealthChecks.UI.Client;
 using MicroService.Common.Constants;
 using MicroService.Common.Health;
@@ -8,7 +7,6 @@ using MicroService.Data.Repository;
 using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
-using MicroService.Service.Mappings;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
@@ -37,7 +35,6 @@ var env = builder.Environment;
 
 SetupLogger();
 SetupConfiguration();
-SetupMappings();
 SetupServices();
 AddServices();
 AddHealthCheckServices();
@@ -61,19 +58,10 @@ void SetupConfiguration()
     services.DisplayConfiguration(configuration);
 }
 
-void SetupMappings()
-{
-    services.AddSingleton(serviceProvider => new MapperConfiguration(cfg =>
-    {
-        //cfg.Internal().AllowAdditiveTypeMapCreation = true;
-        cfg.AddMaps(typeof(BoroughBoundaryShapeProfile).Assembly);
-    }, serviceProvider.GetRequiredService<ILoggerFactory>()).CreateMapper());
-}
-
 void SetupServices()
 {
     // Cors Configuration
-    services.AddCorsConfiguration();
+    services.AddCorsConfiguration(configuration);
 
     services.AddControllers().AddJsonOptions(options =>
     {
@@ -252,7 +240,7 @@ void SetupApp()
 {
     var config = configuration.Get<MicroService.Common.Configuration.ApplicationOptions>();
 
-    app.UseHttpsRedirection();
+    app.UseHttpsRedirectionOutsideCloudRun(app.Environment);
     app.UseStaticFiles();
     app.UseRouting();
     app.UseCors();
