@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-
-namespace MicroService.Test.Fixture
+﻿namespace MicroService.Test.Fixture
 {
     public abstract class FixtureConfig : IDisposable
     {
@@ -8,19 +6,7 @@ namespace MicroService.Test.Fixture
         {
             var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
             Console.WriteLine("ENV:" + env);
-
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", true, true)
-                .AddJsonFile($"appsettings.{env}.json", true)
-                .AddEnvironmentVariables()
-                .Build();
-
-            DbConnection = builder.GetConnectionString("PostgreSql")!;
-            Console.WriteLine("DbConnection:" + DbConnection);
         }
-
-        public string DbConnection { get; } = null!;
 
         public virtual void Dispose()
         {
