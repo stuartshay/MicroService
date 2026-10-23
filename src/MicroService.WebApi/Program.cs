@@ -3,7 +3,6 @@ using HealthChecks.UI.Client;
 using MicroService.Common.Constants;
 using MicroService.Common.Health;
 using MicroService.Common.Logging;
-using MicroService.Data.Repository;
 using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
@@ -12,7 +11,6 @@ using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Service.Services;
 using MicroService.Service.Services.Base;
-using MicroService.Service.Services.DataService;
 using MicroService.Service.Services.FlatFileService;
 using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.Swagger;
@@ -96,16 +94,8 @@ void AddServices()
 {
     var config = configuration.Get<ApplicationOptions>()
         ?? throw new InvalidOperationException("Application configuration could not be loaded.");
-    var connectionString = config.ConnectionStrings?.PostgreSql
-        ?? throw new InvalidOperationException("ConnectionStrings:PostgreSql configuration is required.");
     var shapeConfiguration = config.ShapeConfiguration
         ?? throw new InvalidOperationException("ShapeConfiguration is required.");
-
-    // Repositories
-    services.AddScoped<ITestDataRepository>(x => new TestDataRepository(connectionString));
-
-    // Services
-    services.AddScoped<ICalculationService, CalculationService>();
 
     services.AddScoped<ShapefileDataReaderResolver>(serviceProvider => key =>
     {

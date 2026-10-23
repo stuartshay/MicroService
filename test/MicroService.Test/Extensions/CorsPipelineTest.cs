@@ -54,7 +54,6 @@ namespace MicroService.Test.Extensions
             {
                 // Program.cs reads these before the host is built, so pass them as host settings
                 builder.UseEnvironment("Docker");
-                builder.UseSetting("ConnectionStrings:PostgreSql", "Host=localhost;Database=unused;Username=unused;Password=unused");
                 builder.UseSetting("ShapeConfiguration:ShapeRootDirectory", Path.Join(FindRepositoryRoot(), "files"));
             }
 

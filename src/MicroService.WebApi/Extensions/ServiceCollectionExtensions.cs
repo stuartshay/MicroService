@@ -34,7 +34,6 @@ namespace MicroService.WebApi.Extensions
                 ? "(not configured)"
                 : CronExpressionDescriptor.ExpressionDescriptor.GetDescription(shapeCronExpression);
 
-            Console.WriteLine($"PostgreSql: {config?.ConnectionStrings?.PostgreSql}");
             Console.WriteLine($"ShapeRootDirectory Config: {shapeRootDirectory}");
             Console.WriteLine($"ShapeRootDirectory: {(shapeRootDirectory == null ? "(not configured)" : Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeRootDirectory)))}");
             Console.WriteLine($"Shape CronExpression: {shapeCronExpression}");
