@@ -67,7 +67,7 @@ namespace MicroService.WebApi.Services
                     var file = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttribute>().FileName;
 
                     // ShapeFile Path without File Extension
-                    var shapeFilePath = Path.Combine(rootDirectory, directory, file);
+                    var shapeFilePath = Path.Join(rootDirectory, directory, file);
 
                     using var shapefileDataReader = new ShapefileDataReader(shapeFilePath, new GeometryFactory());
                     var features = shapefileDataReader.ReadFeatures();
@@ -131,8 +131,8 @@ namespace MicroService.WebApi.Services
                 var directory = shapeAttribute.Directory;
                 var file = $"{shapeAttribute.FileName}.dbf";
 
-                string shapeDirectoryPath = Path.Combine(rootDirectory, directory);
-                string shapeFilePath = Path.Combine(shapeDirectoryPath, file);
+                string shapeDirectoryPath = Path.Join(rootDirectory, directory);
+                string shapeFilePath = Path.Join(shapeDirectoryPath, file);
 
                 // Watch on *.dbf File
                 if (File.Exists(shapeFilePath))

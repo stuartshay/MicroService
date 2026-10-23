@@ -13,7 +13,7 @@ namespace MicroService.Test.Unit
 {
     public sealed class InMemoryCacheShapefileCronJobServiceTest : IDisposable
     {
-        private readonly string _root = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
+        private readonly string _root = Path.Join(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
         private readonly MemoryCache _cache = new(new MemoryCacheOptions());
         private readonly RecordingLogger _logger = new();
         private readonly CronJobServiceHealthCheck _health = new();
@@ -116,7 +116,7 @@ namespace MicroService.Test.Unit
             Assert.Contains("nybb.dbf", errorMessage);
         }
 
-        private string ShapePath => Path.Combine(_root, "Borough_Boundaries", "NAD83", "nybb");
+        private string ShapePath => Path.Join(_root, "Borough_Boundaries", "NAD83", "nybb");
 
         private void WriteShape()
         {
