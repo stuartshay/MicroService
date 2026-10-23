@@ -21,7 +21,7 @@ namespace MicroService.Test.Controllers
             var items = Assert.IsType<IEnumerable<object>>(okResult.Value, exactMatch: false).ToList();
 
             var expectedKeys = System.Enum.GetNames<FlatFileProperties>();
-            var actualKeys = items.Select(GetKey).ToList();
+            var actualKeys = items.ConvertAll(GetKey);
 
             Assert.Equal(expectedKeys.Length, items.Count);
             foreach (var expectedKey in expectedKeys)

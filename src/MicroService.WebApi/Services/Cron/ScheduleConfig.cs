@@ -6,12 +6,12 @@
     public interface IScheduleConfig
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         string? CronExpression { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TimeZoneInfo? TimeZoneInfo { get; set; }
     }

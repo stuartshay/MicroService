@@ -1,4 +1,4 @@
-﻿using Cronos;
+using Cronos;
 
 namespace MicroService.WebApi.Services.Cron
 {
@@ -9,7 +9,9 @@ namespace MicroService.WebApi.Services.Cron
     {
         private readonly CronExpression _expression;
         private readonly TimeZoneInfo _timeZoneInfo;
-        private System.Timers.Timer? _timer;
+        private ITimer? _timer;
+        private readonly TimeProvider _timeProvider;
+        private bool _stopped;
         private bool _disposed;
 
         /// <summary>
@@ -17,8 +19,10 @@ namespace MicroService.WebApi.Services.Cron
         /// </summary>
         /// <param name="cronExpression"></param>
         /// <param name="timeZoneInfo"></param>
-        protected CronJobService(string cronExpression, TimeZoneInfo timeZoneInfo)
+        /// <param name="timeProvider">Clock and timer provider; defaults to the system clock.</param>
+        protected CronJobService(string cronExpression, TimeZoneInfo timeZoneInfo, TimeProvider? timeProvider = null)
         {
+            _timeProvider = timeProvider ?? TimeProvider.System;
             _expression = CronExpression.Parse(cronExpression);
             _timeZoneInfo = timeZoneInfo;
         }
@@ -40,7 +44,9 @@ namespace MicroService.WebApi.Services.Cron
         /// <returns></returns>
         public virtual async Task StopAsync(CancellationToken cancellationToken)
         {
-            _timer?.Stop();
+            _stopped = true;
+            _timer?.Dispose();
+            _timer = null;
             await Task.CompletedTask;
         }
 
@@ -77,37 +83,37 @@ namespace MicroService.WebApi.Services.Cron
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        protected virtual async Task ScheduleJob(CancellationToken cancellationToken)
+        protected virtual Task ScheduleJob(CancellationToken cancellationToken)
         {
-            var next = _expression.GetNextOccurrence(DateTimeOffset.Now, _timeZoneInfo, true);
-            if (next.HasValue)
+            if (_disposed || _stopped || cancellationToken.IsCancellationRequested)
             {
-                var delay = next.Value - DateTimeOffset.Now;
-                if (delay.TotalMilliseconds <= 0)
-                {
-                    await ScheduleJob(cancellationToken);
-                }
-
-                _timer = new System.Timers.Timer(delay.TotalMilliseconds);
-                _timer.Elapsed += async (sender, args) =>
-                {
-                    _timer.Dispose();
-                    _timer = null!;
-
-                    if (!cancellationToken.IsCancellationRequested)
-                    {
-                        await DoWork(cancellationToken);
-                    }
-
-                    if (!cancellationToken.IsCancellationRequested)
-                    {
-                        await ScheduleJob(cancellationToken);
-                    }
-                };
-                _timer.Start();
+                return Task.CompletedTask;
             }
 
-            await Task.CompletedTask;
+            var now = _timeProvider.GetUtcNow();
+            var next = _expression.GetNextOccurrence(now, _timeZoneInfo, false);
+            if (next.HasValue)
+            {
+                var delay = next.Value - now;
+                _timer = _timeProvider.CreateTimer(async _ => await RunScheduledJob(cancellationToken),
+                    null, delay, Timeout.InfiniteTimeSpan);
+            }
+
+            return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Executes a scheduled run and schedules the following occurrence unless stopped.
+        /// </summary>
+        protected async Task RunScheduledJob(CancellationToken cancellationToken)
+        {
+            _timer?.Dispose();
+            _timer = null;
+            if (!_disposed && !_stopped && !cancellationToken.IsCancellationRequested)
+            {
+                await DoWork(cancellationToken);
+                await ScheduleJob(cancellationToken);
+            }
         }
     }
 }

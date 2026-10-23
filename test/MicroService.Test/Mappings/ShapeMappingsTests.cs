@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Mappings;
+using MicroService.Service.Mappings;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using Xunit;
@@ -234,45 +234,57 @@ namespace MicroService.Test.Mappings
             Assert.Null(result.Feature);
         }
 
-        [Fact]
-        public void NationalRegisterHistoricPlacesShapeProfile_MapsExpectedProperties()
+        [Theory]
+        [InlineData("en-US")]
+        [InlineData("fr-FR")]
+        [InlineData("ar-SA")]
+        public void NationalRegisterHistoricPlacesShapeProfile_MapsExpectedProperties(string culture)
         {
-            var feature = CreateFeature(new Dictionary<string, object?>
+            var previousCulture = System.Globalization.CultureInfo.CurrentCulture;
+            try
             {
-                { "objectid", "8" },
-                { "bbl", "5000070001" },
-                { "borough", "SI" },
-                { "lpc_lpnumb", "LP-01207" },
-                { "lpc_name", "Staten Island Borough Hall" },
-                { "lpc_site_d", "Site" },
-                { "landmark_t", "Individual Landmark" },
-                { "lpc_site_s", "Designated" },
-                { "lpc_altern", "Alt" + '\u0000' },
-                { "address", "10 Richmond Terrace" },
-                { "date_des_d", "1982-03-23" },
-                { "time_des_d", "00:00:00.000" },
-                { "block", "7" },
-                { "lot", "1" },
-                { "url_report", "http://example.com" },
-                { "shape_area", "10.0" },
-                { "shape_leng", "20.0" },
-            });
+                System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo(culture);
+                var feature = CreateFeature(new Dictionary<string, object?>
+                {
+                    { "objectid", "8" },
+                    { "bbl", "5000070001" },
+                    { "borough", "SI" },
+                    { "lpc_lpnumb", "LP-01207" },
+                    { "lpc_name", "Staten Island Borough Hall" },
+                    { "lpc_site_d", "Site" },
+                    { "landmark_t", "Individual Landmark" },
+                    { "lpc_site_s", "Designated" },
+                    { "lpc_altern", "Alt" + '\u0000' },
+                    { "address", "10 Richmond Terrace" },
+                    { "date_des_d", "1982-03-23" },
+                    { "time_des_d", "00:00:00.000" },
+                    { "block", "7.5" },
+                    { "lot", "1.5" },
+                    { "url_report", "http://example.com" },
+                    { "shape_area", "10.0" },
+                    { "shape_leng", "20.0" },
+                });
 
-            var result = NationalRegisterHistoricPlacesShapeProfile.Map(feature);
+                var result = NationalRegisterHistoricPlacesShapeProfile.Map(feature);
 
-            Assert.Equal(8d, result.ObjectId);
-            Assert.Equal(5000070001d, result.Bbl);
-            Assert.Equal("SI", result.BoroName);
-            Assert.Equal(5, result.BoroCode);
-            Assert.Equal("LP-01207", result.LPNumber);
-            Assert.Equal("Staten Island Borough Hall", result.AreaName);
-            Assert.Equal("Alt", result.AlternativeName);
-            Assert.Equal(new DateTime(1982, 3, 23), result.DateDesignated);
-            Assert.Equal(7d, result.Block);
-            Assert.Equal(1d, result.Lot);
-            Assert.Same(DefaultGeometry, result.Geometry);
-            Assert.NotNull(result.BoundingBox);
-            Assert.Null(result.Feature);
+                Assert.Equal(8d, result.ObjectId);
+                Assert.Equal(5000070001d, result.Bbl);
+                Assert.Equal("SI", result.BoroName);
+                Assert.Equal(5, result.BoroCode);
+                Assert.Equal("LP-01207", result.LPNumber);
+                Assert.Equal("Staten Island Borough Hall", result.AreaName);
+                Assert.Equal("Alt", result.AlternativeName);
+                Assert.Equal(new DateTime(1982, 3, 23), result.DateDesignated);
+                Assert.Equal(7.5d, result.Block);
+                Assert.Equal(1.5d, result.Lot);
+                Assert.Same(DefaultGeometry, result.Geometry);
+                Assert.NotNull(result.BoundingBox);
+                Assert.Null(result.Feature);
+            }
+            finally
+            {
+                System.Globalization.CultureInfo.CurrentCulture = previousCulture;
+            }
         }
 
         [Fact]

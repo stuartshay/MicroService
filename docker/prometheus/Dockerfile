@@ -1,9 +1,7 @@
 FROM prom/prometheus:v2.30.3
 
-COPY  config/prometheus.yml  /etc/prometheus/prometheus.yml
+COPY --chmod=0644 config/prometheus.yml  /etc/prometheus/prometheus.yml
 COPY  config/  /etc/prometheus/targets/
 COPY  alerts/  /etc/prometheus/
 
-# Set Write Permission to override at runtime
-USER root
-RUN chmod 644 -c /etc/prometheus/prometheus.yml
+USER nobody

@@ -28,7 +28,7 @@ namespace MicroService.Service.Services
             foreach (var feature in features)
             {
                 var featureAttributes = NationalRegisterHistoricPlacesShapeProfile.ToDictionary(feature);
-                featureAttributes.Add("ShapeColor", Color.Green.ToString().ToLower());
+                featureAttributes.Add("ShapeColor", nameof(Color.Green).ToLower());
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
 

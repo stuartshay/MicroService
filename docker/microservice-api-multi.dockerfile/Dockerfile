@@ -30,9 +30,12 @@ WORKDIR "/src/src/MicroService.WebApi"
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 ARG BUILD_NUMBER
-RUN dotnet publish "./MicroService.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false /p:Version=10.0.1.${BUILD_NUMBER}
+RUN dotnet publish "./MicroService.WebApi.csproj" \
+    -c $BUILD_CONFIGURATION -o /app/publish \
+    /p:UseAppHost=false /p:Version=10.0.1.${BUILD_NUMBER}
 
 FROM base AS final
+USER app
 
 # Shape files are not baked into the image: Cloud Run mounts them from GCS at
 # /mnt/data/shapes (appsettings.CloudRun.json), and local runs mount files/ at

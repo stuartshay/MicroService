@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Constants;
+using MicroService.Service.Constants;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum.Attributes;
 using NetTopologySuite.Geometries;
@@ -12,13 +12,13 @@ namespace MicroService.Test.Unit
         [Trait("Category", "Unit")]
         public void Can_Calculate_Percentile()
         {
-            double result1 = 3.4d;
+            const double result1 = 3.4d;
             var calculated1 = FunctionHelper.Percentile(new double[] { 1, 2, 3, 4 }, 0.8);
 
-            double result2 = 8.05d;
+            const double result2 = 8.05d;
             var calculated2 = FunctionHelper.Percentile(new double[] { 7, 8, 9, 20 }, 0.35);
 
-            double result3 = 1.9d;
+            const double result3 = 1.9d;
             var calculated3 = FunctionHelper.Percentile(new double[] { 1, 2, 3, 4 }, 0.3);
 
             // Assert
@@ -131,8 +131,8 @@ namespace MicroService.Test.Unit
         public void TransformGeometry_ShouldTransformLineString()
         {
             // Arrange
-            var fromDatum = Datum.Wgs84;
-            var toDatum = Datum.Nad83;
+            const Datum fromDatum = Datum.Wgs84;
+            const Datum toDatum = Datum.Nad83;
             var lineString = new LineString(new[]
             {
                 new Coordinate(12.34, 56.78),
@@ -147,9 +147,7 @@ namespace MicroService.Test.Unit
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<LineString>(result);
-
-            var transformedLineString = (LineString)result;
+            var transformedLineString = Assert.IsType<LineString>(result);
             Assert.Equal(lineString.Coordinates.Length, transformedLineString.Coordinates.Length);
             Assert.NotEqual(originalFirstCoordinate.X, transformedLineString.Coordinates[0].X);
             Assert.NotEqual(originalFirstCoordinate.Y, transformedLineString.Coordinates[0].Y);
@@ -166,8 +164,8 @@ namespace MicroService.Test.Unit
         public void TransformGeometry_ShouldTransformPolygon()
         {
             // Arrange
-            var fromDatum = Datum.Wgs84;
-            var toDatum = Datum.Nad83;
+            const Datum fromDatum = Datum.Wgs84;
+            const Datum toDatum = Datum.Nad83;
             var exteriorRing = new[]
             {
                 new Coordinate(12.34, 56.78),
@@ -191,9 +189,7 @@ namespace MicroService.Test.Unit
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Polygon>(result);
-
-            var transformedPolygon = (Polygon)result;
+            var transformedPolygon = Assert.IsType<Polygon>(result);
             Assert.Equal(exteriorRing.Length, transformedPolygon.ExteriorRing.Coordinates.Length);
             Assert.Equal(interiorRing.Length, transformedPolygon.InteriorRings[0].Coordinates.Length);
             Assert.NotEqual(originalExteriorCoordinate.X, transformedPolygon.ExteriorRing.Coordinates[0].X);

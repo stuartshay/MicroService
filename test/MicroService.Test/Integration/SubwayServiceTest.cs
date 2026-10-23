@@ -130,7 +130,7 @@ namespace MicroService.Test.Integration
             // and the radius is in degrees (0.002 degrees is roughly 170-220 m).
             // Lexington Ave & 68th St, at the 68 St-Hunter College station.
             var centerPoint = new Point(-73.964, 40.768);
-            var radius = 0.002;
+            const double radius = 0.002;
 
             // Act
             var pointsWithinRadius = _pointService.FindPointsByRadius(centerPoint, radius);

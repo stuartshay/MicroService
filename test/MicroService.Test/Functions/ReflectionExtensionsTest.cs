@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Helpers;
+using MicroService.Service.Helpers;
 using Xunit;
 
 namespace MicroService.Test.Functions
@@ -20,9 +20,7 @@ namespace MicroService.Test.Functions
         }
 
         [AttributeUsage(AttributeTargets.All)]
-        private class MyCustomAttribute : Attribute
-        {
-        }
+        private class MyCustomAttribute : Attribute;
 
         [Fact]
         public void ArePropertiesNotNull_AllPropertiesAreNotNull_ReturnsTrue()
@@ -61,10 +59,10 @@ namespace MicroService.Test.Functions
         {
             // Arrange
             var obj = new TestObjectWithAttribute();
-            var propertyName = nameof(TestObjectWithAttribute.Property1);
+            const string propertyName = nameof(TestObjectWithAttribute.Property1);
 
             // Act
-            var result = ReflectionExtensions.GetAttributeFromProperty<MyCustomAttribute>(obj, propertyName);
+            var result = obj.GetAttributeFromProperty<MyCustomAttribute>(propertyName);
 
             // Assert
             Assert.NotNull(result);
@@ -75,10 +73,10 @@ namespace MicroService.Test.Functions
         {
             // Arrange
             var obj = new TestObjectWithAttribute();
-            var propertyName = nameof(TestObjectWithAttribute.Property2);
+            const string propertyName = nameof(TestObjectWithAttribute.Property2);
 
             // Act
-            var result = ReflectionExtensions.GetAttributeFromProperty<MyCustomAttribute>(obj, propertyName);
+            var result = obj.GetAttributeFromProperty<MyCustomAttribute>(propertyName);
 
             // Assert
             Assert.Null(result);
@@ -91,7 +89,7 @@ namespace MicroService.Test.Functions
             var obj = new TestObjectWithAttribute();
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => ReflectionExtensions.GetAttributeFromProperty<MyCustomAttribute>(obj, "NotAProperty"));
+            Assert.Throws<ArgumentException>(() => obj.GetAttributeFromProperty<MyCustomAttribute>("NotAProperty"));
         }
 
         [Fact]

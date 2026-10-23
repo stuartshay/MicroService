@@ -27,7 +27,7 @@ namespace MicroService.Service.Services
             foreach (var feature in features)
             {
                 var featureAttributes = IndividualLandmarkSiteShapeProfile.ToDictionary(feature);
-                featureAttributes.Add("ShapeColor", Color.Red.ToString().ToLower());
+                featureAttributes.Add("ShapeColor", nameof(Color.Red).ToLower());
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
 

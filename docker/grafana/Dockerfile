@@ -11,6 +11,8 @@ RUN apt-get update && \
     apt install tree && \
     apt-get install --no-install-recommends less && \
     rm -rf /var/lib/apt/lists/*  && \
-    chmod +x /usr/local/bin/grafana.sh 
+    chmod +x /usr/local/bin/grafana.sh && \
+    /usr/local/bin/grafana.sh && \
+    chown -R grafana:root /var/lib/grafana
 
-RUN /usr/local/bin/grafana.sh
+USER grafana

@@ -23,7 +23,7 @@ namespace MicroService.Test.Extensions
             services.AddLogging();
             services.AddSingleton<IConfiguration>(new ConfigurationBuilder().Build());
             services.AddHttpsRedirection(options => options.HttpsPort = 443);
-            using var provider = services.BuildServiceProvider();
+            await using var provider = services.BuildServiceProvider();
 
             var app = new ApplicationBuilder(provider);
             app.UseHttpsRedirectionOutsideCloudRun(new TestHostEnvironment(environmentName));

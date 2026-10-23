@@ -113,12 +113,6 @@ article h4 {
     border-right: none;
 }
 
-.sidefilter {
-    background-color: #fff;
-    border-left: none;
-    border-right: none;
-}
-
 .toc-filter {
     padding: 10px;
     margin: 0;
@@ -172,20 +166,20 @@ article h4 {
 }
 
 .alert-info>h5 {
-    color: #1976d2;
-    border-bottom: 4px solid #1976d2;
+    color: #12599f;
+    border-bottom: 4px solid #12599f;
     background-color: #e3f2fd;
 }
 
 .alert-warning>h5 {
-    color: #f57f17;
-    border-bottom: 4px solid #f57f17;
+    color: #854300;
+    border-bottom: 4px solid #854300;
     background-color: #fff3e0;
 }
 
 .alert-danger>h5 {
-    color: #d32f2f;
-    border-bottom: 4px solid #d32f2f;
+    color: #a91f1f;
+    border-bottom: 4px solid #a91f1f;
     background-color: #ffebee;
 }
 

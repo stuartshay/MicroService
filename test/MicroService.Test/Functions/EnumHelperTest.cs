@@ -13,7 +13,7 @@ namespace MicroService.Test.Functions
         public void GetValueFromDescription_ReturnsCorrectValue()
         {
             // Arrange
-            var expected = Borough.MN;
+            const Borough expected = Borough.MN;
 
             // Act
             var result = EnumHelper.GetValueFromDescription<Borough>("Manhattan");
@@ -132,7 +132,7 @@ namespace MicroService.Test.Functions
         public void GetEnumDescription_ReturnsToString_WhenValueIsNotADefinedMember()
         {
             // Arrange: an undefined enum value has no backing field to reflect over.
-            var undefined = (NoAttributeEnum)999;
+            const NoAttributeEnum undefined = (NoAttributeEnum)999;
 
             // Act
             var result = undefined.GetEnumDescription();
