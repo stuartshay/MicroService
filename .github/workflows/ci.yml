@@ -29,7 +29,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
-          python-version: '3.13'
+          python-version: '3.15'
 
       - name: Install pre-commit
         run: python -m pip install --disable-pip-version-check pre-commit==4.6.0
@@ -124,7 +124,7 @@ jobs:
         run: dotnet test --solution MicroService.sln --configuration Release --coverage --coverage-output-format cobertura --results-directory ./coverage
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./coverage
