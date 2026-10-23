@@ -4,23 +4,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
 ENV APPLICATION_NAME=MicroService.WebApi
 
 LABEL org.label-schema.application=${APPLICATION_NAME}
-USER root
-
-# Install gcsfuse
-RUN apt update && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt install -y lsb-release gnupg2 curl && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN echo "deb https://packages.cloud.google.com/apt gcsfuse-$(lsb_release -c -s) main" | tee /etc/apt/sources.list.d/gcsfuse.list
-RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-RUN apt-get update
-RUN yes | apt-get install fuse gcsfuse
-
-
-# Create a directory to mount your GCS bucket
-RUN mkdir /mnt/gcs-bucket
-
 USER app
 WORKDIR /app
 EXPOSE 8080
@@ -39,8 +22,8 @@ COPY ["src/MicroService.Data/MicroService.Data.csproj", "src/MicroService.Data/"
 RUN dotnet restore "./src/MicroService.WebApi/./MicroService.WebApi.csproj"
 COPY . .
 WORKDIR "/src/src/MicroService.WebApi"
-RUN dotnet build "./MicroService.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
+# publish builds the project, so there is no separate build step
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 ARG BUILD_NUMBER
@@ -56,9 +39,4 @@ WORKDIR /app
 
 COPY --from=publish /app/publish .
 
-USER root
-COPY scripts/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-USER app
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["dotnet", "MicroService.WebApi.dll"]
