@@ -9,6 +9,9 @@ services:
      - ASPNETCORE_ENVIRONMENT=Development;
     ports:
      - "5000:5000"
+    volumes:
+      # Shape files are not in the image; ShapeRootDirectory (../../files from /app) resolves to /files
+      - "../files:/files:ro"
     networks:
       - aspnetcoreapp-network
 

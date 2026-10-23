@@ -48,9 +48,9 @@ RUN dotnet publish "./MicroService.WebApi.csproj" -c $BUILD_CONFIGURATION -o /ap
 
 FROM base AS final
 
-# Shape Files
-COPY files  /files
-RUN ls /files
+# Shape files are not baked into the image: Cloud Run mounts them from GCS at
+# /mnt/data/shapes (appsettings.CloudRun.json), and local runs mount files/ at
+# /files (see the docker-compose files and docker/README.md).
 
 WORKDIR /app
 

@@ -3,8 +3,6 @@ using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Service.Models.FlatFileModels;
-using MicroService.WebApi.Extensions.Constants;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MicroService.WebApi.V1.Controllers
@@ -15,7 +13,6 @@ namespace MicroService.WebApi.V1.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    [EnableCors(ApiConstants.CorsPolicy)]
     public class FlatFileServiceController : ControllerBase
     {
         private readonly FlatFileResolver _flatFileResolver;

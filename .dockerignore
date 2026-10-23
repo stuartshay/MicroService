@@ -23,3 +23,5 @@
 **/values.dev.yaml
 LICENSE
 README.md
+# Shape files are mounted at runtime, not copied into the image
+files/
