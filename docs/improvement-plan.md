@@ -121,7 +121,7 @@ check passes.
 
 ### Phase 2: quick wins (P2)
 
-**Done** in #514. Production now caps at 10 instances, allows only the CoreDataStore origins and serves a 184 MB image (was 291 MB).
+**Done** in #514 and #517. Production now caps at 10 instances, allows only the CoreDataStore origins, builds and pushes directly without intermediate tar artifacts or gcsfuse, and serves a smaller image (was 291 MB).
 
 One pull request; each item is small.
 
@@ -169,6 +169,8 @@ by the CoreDataStore repositories).
 
 ### Phase 4: remove the test data endpoints and PostgreSQL (P2)
 
+**Done** in #518. Removed `TestDataController`, `PercentileController`, `CalculationService`, `TestDataRepository`, the `ConnectionStrings:PostgreSql` startup requirement, `Npgsql`, `Dapper` and `AspNetCore.HealthChecks.NpgSql`, along with the remaining skipped test (`FunctionHelperIntegrationTest`).
+
 `TestDataController` (`api/v1/TestData`) and `PercentileController` are the
 only users of `ITestDataRepository`, `CalculationService` and the PostgreSQL
 connection. They received no traffic in the review period.
@@ -210,6 +212,8 @@ CoreDataStore path. Add a test for the fixed contract above that runs on every
 build.
 
 ### Phase 6: packages (P3)
+
+**Done** in #519. Moved all NuGet versions to `Directory.Packages.props`, updated all 21 outdated packages, migrated `xunit.v3` 4.0 onto `Microsoft.Testing.Platform`, and aligned `renovate.json` package groups.
 
 - Move package versions to `Directory.Packages.props` (central package
   management), as in CoreDataStore.

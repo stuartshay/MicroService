@@ -261,6 +261,7 @@
     "testsettings",
     "timein",
     "tofile",
+    "tolower",
     "topojson",
     "trafficlights",
     "unitsres",
