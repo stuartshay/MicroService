@@ -156,14 +156,23 @@ instances.
 
 ### Phase 3: Docker Hub tag pruning (P2)
 
+**Operational cleanup completed** (2026-10-23). The pruning workflow and script
+merged in #521. Configured the repository's `DOCKERHUB_PRUNE_TOKEN` secret and ran the backlog
+cleanup: 135 historical tags removed. The repository keeps `latest` and the five
+newest release tags. A follow-up script fix handles Docker Hub advertising a
+cached next page that no longer exists after a large cleanup. The manual cleanup
+and token configuration are complete; merge the pagination fix so automatic
+cleanup also tolerates that stale metadata.
+Local Compose examples use `latest` so retention does not remove their image tag.
+
 - Copy `scripts/dockerhub-prune.sh` from stuartshay/CoreDataStore (#283 and its
   rate-limit fix). It keeps `latest` and the 5 newest tags.
 - Run it in the Docker Hub publish job after the push, with
   `continue-on-error: true` and the `DOCKERHUB_PRUNE_TOKEN` secret.
 - Run it once by hand to remove the backlog (about 125 tags).
 
-**Owner step.** Set the `DOCKERHUB_PRUNE_TOKEN` secret (the token already used
-by the CoreDataStore repositories).
+**Owner step completed.** Configured the `DOCKERHUB_PRUNE_TOKEN` repository
+secret using the existing pruning credential.
 
 **Done when.** Docker Hub keeps `latest` and the 5 newest tags after a deploy.
 
@@ -181,8 +190,11 @@ connection. They received no traffic in the review period.
 - Stop requiring `ConnectionStrings:PostgreSql` at startup.
 - Remove Npgsql and Dapper if nothing else uses them.
 
-**Owner step.** After deploy, remove the `ConnectionStrings__PostgreSql` secret
-from the Cloud Run service.
+**Owner step completed** (2026-10-23). Removed the
+`ConnectionStrings__PostgreSql` secret binding from the production Cloud Run
+service. The removal created revision `microservice-api-00157-k8p` using the
+existing `10.0.459` image. Health and attribute-lookup contract checks passed
+without the binding. The underlying Secret Manager secret was not deleted.
 
 **Done when.** The service starts without a database connection string and
 the contract check passes.

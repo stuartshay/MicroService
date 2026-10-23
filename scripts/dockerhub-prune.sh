@@ -40,12 +40,21 @@ jwt="$(jq -n --arg u "${DOCKERHUB_USERNAME}" --arg p "${DOCKERHUB_PRUNE_TOKEN}" 
 
 # Every tag with its last push time, newest first
 tags_file="$(mktemp)"
-trap 'rm -f "${tags_file}"' EXIT
-url="${HUB}/repositories/${repository}/tags?page_size=100"
+page_file="$(mktemp)"
+trap 'rm -f "${tags_file}" "${page_file}"' EXIT
+first_url="${HUB}/repositories/${repository}/tags?page_size=100"
+url="${first_url}"
 while [[ -n "${url}" && "${url}" != "null" ]]; do
-    page="$(curl -fsS -H "Authorization: Bearer ${jwt}" "${url}")"
-    jq -r '.results[] | "\(.last_updated)\t\(.name)"' <<<"${page}" >>"${tags_file}"
-    url="$(jq -r '.next' <<<"${page}")"
+    status="$(curl -sS -o "${page_file}" -w '%{http_code}' \
+        -H "Authorization: Bearer ${jwt}" "${url}")" || fail "could not list tags"
+    # After a large cleanup, Docker Hub can advertise a cached next page that
+    # no longer exists. Only a later-page 404 means the listing has ended.
+    if [[ "${status}" == "404" && "${url}" != "${first_url}" ]]; then
+        break
+    fi
+    [[ "${status}" == "200" ]] || fail "could not list tags (HTTP ${status})"
+    jq -r '.results[] | "\(.last_updated)\t\(.name)"' "${page_file}" >>"${tags_file}"
+    url="$(jq -r '.next' "${page_file}")"
 done
 
 mapfile -t delete < <(sort -r "${tags_file}" | cut -f2 | grep -vx 'latest' | tail -n "+$((keep + 1))")
