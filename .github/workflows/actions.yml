@@ -85,6 +85,16 @@ jobs:
           cache-from: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache
           cache-to: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache,mode=max
 
+      # Docker Hub has no retention policy: keep latest and the 5 newest tags. Needs a token
+      # with Delete scope; without the DOCKERHUB_PRUNE_TOKEN secret the script skips.
+      - name: Remove old Docker Hub tags
+        # A Docker Hub problem must not mark the deploy run failed
+        continue-on-error: true
+        run: scripts/dockerhub-prune.sh ${{ env.DOCKER_REPOSITORY_IMAGE }} 5
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PRUNE_TOKEN: ${{ secrets.DOCKERHUB_PRUNE_TOKEN }}
+
   deploy-googlecloud:
     runs-on: ubuntu-latest
     permissions:
@@ -121,9 +131,6 @@ jobs:
             ASPNETCORE_ENVIRONMENT=${{ env.ASPNETCORE_ENVIRONMENT }}
             ASPNETCORE_URLS=${{ env.ASPNETCORE_URLS }}
           env_vars_update_strategy: 'merge'
-          secrets: |
-            ConnectionStrings__PostgreSql=postgres_coredatastore:latest
-          secrets_update_strategy: 'merge'
           # Public access is a Terraform-managed invoker binding (nyc-landmarks-vector-db
           # infrastructure/github_deploy), so deploys no longer rewrite the service's IAM policy
           flags: '--memory 2Gi --port 5000 --max-instances 10'
