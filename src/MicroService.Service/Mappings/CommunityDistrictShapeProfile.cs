@@ -21,9 +21,9 @@ namespace MicroService.Service.Mappings
 
             return new CommunityDistrictShape
             {
-                Cd = int.Parse(GetString(src, BoroCdField).Substring(1, 2), System.Globalization.CultureInfo.InvariantCulture),
+                Cd = int.Parse(GetString(src, BoroCdField).AsSpan(1, 2), System.Globalization.CultureInfo.InvariantCulture),
                 BoroCd = ParseInt(src, BoroCdField),
-                BoroCode = int.Parse(GetString(src, BoroCdField).Substring(0, 1), System.Globalization.CultureInfo.InvariantCulture),
+                BoroCode = int.Parse(GetString(src, BoroCdField).AsSpan(0, 1), System.Globalization.CultureInfo.InvariantCulture),
                 Borough = GetString(src, BoroCdField).Substring(0, 1).ParseEnum<Borough>().ToString(),
                 BoroName = GetString(src, BoroCdField).Substring(0, 1).ParseEnum<Borough>().GetEnumDescription(),
                 ShapeArea = ParseDouble(src, "Shape_Area"),
