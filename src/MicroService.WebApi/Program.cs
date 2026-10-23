@@ -1,5 +1,4 @@
-﻿using Asp.Versioning.ApiExplorer;
-using HealthChecks.UI.Client;
+using Asp.Versioning.ApiExplorer;
 using MicroService.Common.Constants;
 using MicroService.Common.Health;
 using MicroService.Common.Logging;
@@ -15,7 +14,6 @@ using MicroService.Service.Services.FlatFileService;
 using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.Swagger;
 using MicroService.WebApi.Services;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
@@ -243,14 +241,7 @@ void SetupApp()
 
     app.MapControllers();
 
-    app.UseHttpMetrics();
-    app.MapMetrics();
-
-    app.MapHealthChecks(config!.HealthCheckConfiguration!.HealthCheckJson!, new HealthCheckOptions
-    {
-        Predicate = _ => true,
-        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-    });
+    app.MapOperationalEndpoints(config!.HealthCheckConfiguration!.HealthCheckJson!);
 
     app.UseHealthChecks($"/health");
 

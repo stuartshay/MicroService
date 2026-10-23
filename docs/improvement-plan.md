@@ -1,6 +1,8 @@
 # Improvement Plan
 
-Status: proposed (2026-10-22). This plan comes from a review of `master` at
+Status: in progress (updated 2026-10-23). Phases 1–8 are complete. The owner
+authorized the remaining Phase 9 production cleanup and Phase 10 migration on
+2026-10-23. This plan comes from a review of `master` at
 `fd5e6f9` and of the production service. It brings MicroService in line with
 the changes made to the CoreDataStore API in October 2026, in a sequence of
 small pull requests.
@@ -9,7 +11,7 @@ Each phase below is one pull request unless noted. Work through them in order:
 phase 1 comes first because no other change can be deployed until it lands.
 Mark a phase done here when its pull request merges.
 
-## Current state
+## Baseline at the initial review
 
 ### What the service does in practice
 
@@ -156,13 +158,12 @@ instances.
 
 ### Phase 3: Docker Hub tag pruning (P2)
 
-**Operational cleanup completed** (2026-10-23). The pruning workflow and script
-merged in #521. Configured the repository's `DOCKERHUB_PRUNE_TOKEN` secret and ran the backlog
-cleanup: 135 historical tags removed. The repository keeps `latest` and the five
-newest release tags. A follow-up script fix handles Docker Hub advertising a
-cached next page that no longer exists after a large cleanup. The manual cleanup
-and token configuration are complete; merge the pagination fix so automatic
-cleanup also tolerates that stale metadata.
+**Done** in #521 and #523 (2026-10-23). Configured the repository's
+`DOCKERHUB_PRUNE_TOKEN` secret and removed 135 historical tags in the initial
+cleanup. The pagination fix tolerates Docker Hub advertising a cached next page
+that no longer exists. Deployment #461 at commit `ff1e21d` verified automatic
+pruning: one old release deleted, leaving `latest` and releases `10.0.457` through
+`10.0.461`.
 Local Compose examples use `latest` so retention does not remove their image tag.
 
 - Copy `scripts/dockerhub-prune.sh` from stuartshay/CoreDataStore (#283 and its
@@ -251,9 +252,42 @@ does (`EntityMappings`, `LpcReportMapper`), keeping the mapping tests.
   stuartshay/CoreDataStore#257.
 - Give each workflow the least `permissions` it needs.
 
-### Phase 9: production cleanups (needs approval)
+### Phase 9: production cleanups (approved, in progress)
 
-Not code changes; each needs the owner's approval.
+Owner approved proceeding on 2026-10-23. Runtime identity and service retirement
+are complete; endpoint restrictions are implemented and awaiting PR merge/deploy.
+
+Operational evidence (2026-10-23):
+
+- Applied the reviewed, targeted Terraform plan for the runtime account, the
+  `files-shapes` object-reader grant, log/metric writer grants, and deployer
+  impersonation. A subsequent targeted plan reports no changes.
+- Tested candidate revision `microservice-api-00160-sox` on image `10.0.461` under
+  `microservice-api-runtime@velvety-byway-327718.iam.gserviceaccount.com` before
+  routing 100% of production traffic to it. Health, both LP-00099 lookup contracts,
+  CORS, and borough reads passed.
+- Retired `microservice-api-develop`, `microservice-api-master`, and
+  `microservice-api-dotnetcore6`. Source references, domain mappings, regional
+  scheduled HTTP callers, uptime checks, and URL maps had no dependencies; the
+  last 30 days contained only seven curl probes, including failing health checks.
+- Added integration tests that verify Cloud Run exposes only overall health,
+  preserves HTTP 503 on failure, and returns 404 for `/metrics`, while local
+  diagnostic endpoints remain available.
+
+Implementation decisions:
+
+- Define the dedicated runtime identity and its IAM grants in the existing
+  Terraform root in `nyc-landmarks-vector-db/infrastructure/github_deploy`.
+  Grant object read access only on `files-shapes`, plus log and metric writing;
+  remove the deployer's permission to run as the default Compute Engine account.
+- Check source references, recent request logs, domain mappings, and scheduled
+  callers before deleting the three obsolete services.
+- In Cloud Run, keep `/health` public, reduce `/status` to `{ "status": "Healthy" }`
+  (or the unhealthy result and HTTP 503), and do not expose `/metrics`. Keep
+  detailed health and Prometheus endpoints in local development. Cloud Run
+  request logging and Google Cloud monitoring remain available.
+- Preserve the underlying PostgreSQL secret; removing a service binding does not
+  establish that no other service uses the secret.
 
 - **Old Cloud Run services.** `microservice-api-develop`,
   `microservice-api-master` and `microservice-api-dotnetcore6` received 2 to 3
@@ -266,6 +300,8 @@ Not code changes; each needs the owner's approval.
   CoreDataStore.
 
 ### Phase 10: replace the legacy shapefile reader (P3)
+
+**Approved, pending implementation and compatibility comparison** (2026-10-23).
 
 `NetTopologySuite.IO.ShapeFile` 2.1.0 (April 2022) is deprecated on NuGet as
 "Legacy". Its replacement is

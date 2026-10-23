@@ -29,7 +29,6 @@ This API aims to:
 
 - [Asp.Net core](https://docs.microsoft.com/en-us/aspnet/core/) - C# Web API Framework
 - [Net Topology Suite](https://github.com/NetTopologySuite/NetTopologySuite) - Geospatial data structures and algorithms for .NET
-- [AutoMapper](https://automapper.org/) - C# Object Mapper
 - [HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) - Health Checks for ASP.NET Core
 - [Serilog](https://serilog.net/) - Logging for .NET
 - [xUnit.net](https://xunit.net/) - Unit Testing Framework
@@ -70,3 +69,12 @@ make run
 
 Use `make check` to run every pre-commit check manually. Use `make help` to list
 the available targets and configuration options.
+
+## Operational endpoints
+
+In Cloud Run, `/health` returns the overall health text and `/status` returns only
+`{ "status": "Healthy" }` (HTTP 503 for an unhealthy result). Detailed health
+entries and Prometheus `/metrics` are available outside Cloud Run for local
+monitoring. Production diagnostics use Cloud Logging and Cloud Monitoring.
+
+See the [improvement plan](docs/improvement-plan.md) for rollout status.
