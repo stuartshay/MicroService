@@ -8,6 +8,9 @@ services:
      - ASPNETCORE_ENVIRONMENT=Docker
     ports:
      - "5000"
+    volumes:
+      # Shape files are not in the image; ShapeRootDirectory (../../files from /app) resolves to /files
+      - "../files:/files:ro"
     networks:
       - microservice-network
 

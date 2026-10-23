@@ -61,7 +61,7 @@ void SetupConfiguration()
 void SetupServices()
 {
     // Cors Configuration
-    services.AddCorsConfiguration();
+    services.AddCorsConfiguration(configuration);
 
     services.AddControllers().AddJsonOptions(options =>
     {
@@ -240,7 +240,7 @@ void SetupApp()
 {
     var config = configuration.Get<MicroService.Common.Configuration.ApplicationOptions>();
 
-    app.UseHttpsRedirection();
+    app.UseHttpsRedirectionOutsideCloudRun(app.Environment);
     app.UseStaticFiles();
     app.UseRouting();
     app.UseCors();

@@ -18,7 +18,7 @@ jobs:
       github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
       - name: Auto approve PR
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
             await github.rest.pulls.createReview({
@@ -34,7 +34,7 @@ jobs:
     if: github.event.pull_request.user.login == 'stuartshay'
     steps:
       - name: Wait for Copilot review
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
             const initialDelayMs = 60000;
@@ -94,7 +94,7 @@ jobs:
             core.setFailed('Copilot review not found after 5 minutes');
 
       - name: Log review context
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
@@ -157,7 +157,7 @@ jobs:
             }
 
       - name: Auto approve PR
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
             const prNumber = context.payload.pull_request.number;

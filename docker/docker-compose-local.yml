@@ -19,6 +19,8 @@ services:
     devices:
       - "/dev/fuse:/dev/fuse"  # Required for fuse
     volumes:
+      # Shape files are not in the image; ShapeRootDirectory (../../files from /app) resolves to /files
+      - "../files:/files:ro"
       - "/home/vagrant/.config/gcloud:/root/.config/gcloud"
       - "/home/vagrant/keys/service-account-key.json:/etc/gcsfuse/key/service-account-key.json"
     networks:

@@ -2,7 +2,6 @@
 using Asp.Versioning.ApiExplorer;
 using MicroService.Service.Configuration;
 using MicroService.Service.Models.Enum;
-using MicroService.WebApi.Extensions.Constants;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi;
@@ -43,24 +42,21 @@ namespace MicroService.WebApi.Extensions
         }
 
         /// <summary>
-        ///     CORS Configuration
+        ///     CORS: browsers may call the API only from the origins in <c>Cors:AllowedOrigins</c>
+        ///     (the CoreDataStore site, its UI's Cloud Run URL for the post-deploy smoke test, and local UI development).
+        ///     With none configured, no cross-origin request is allowed.
         /// </summary>
         /// <param name="services"></param>
-        public static void AddCorsConfiguration(this IServiceCollection services)
+        /// <param name="configuration"></param>
+        public static void AddCorsConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(
-                   builder => builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader());
+            var origins = configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
 
-                options.AddPolicy(
-                    ApiConstants.CorsPolicy,
-                    builder => builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader());
-            });
+            services.AddCors(options =>
+                options.AddDefaultPolicy(builder => builder
+                    .WithOrigins(origins)
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()));
         }
 
         /// <summary>
@@ -182,6 +178,22 @@ namespace MicroService.WebApi.Extensions
              });
 
             return services;
+        }
+
+        /// <summary>
+        ///     HTTPS redirection, except on Cloud Run: it terminates TLS in front of the container,
+        ///     so there is no HTTPS port to redirect to.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="environment"></param>
+        public static IApplicationBuilder UseHttpsRedirectionOutsideCloudRun(this IApplicationBuilder app, IHostEnvironment environment)
+        {
+            if (!environment.IsEnvironment("CloudRun"))
+            {
+                app.UseHttpsRedirection();
+            }
+
+            return app;
         }
 
         /// <summary>

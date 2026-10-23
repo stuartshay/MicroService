@@ -19,10 +19,5 @@
         /// Open Api Contact Name
         /// </summary>
         public const string OpenApiContactName = "Stuart Shay";
-
-        /// <summary>
-        /// CorsPolicy
-        /// </summary>
-        public const string CorsPolicy = "Policy";
     }
 }
