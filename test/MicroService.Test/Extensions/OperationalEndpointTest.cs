@@ -8,6 +8,7 @@ using Xunit;
 
 namespace MicroService.Test.Extensions
 {
+    [Trait("Category", "Integration")]
     public class OperationalEndpointTest
     {
         [Theory]
