@@ -25,7 +25,7 @@ help:
 	@echo "  make restore  Restore NuGet packages"
 	@echo "  make build    Build the solution"
 	@echo "  make run      Run the Web API locally"
-	@echo "  make test     Run the test project (extracts the test .dbf first if missing)"
+	@echo "  make test     Run retention checks and .NET tests (extracts missing test .dbf)"
 	@echo "  make test-data  Extract the git-ignored .dbf the tests need, if missing"
 	@echo "  make sonar    Build, test, and submit analysis to SonarQube"
 	@echo "  make certificates  Generate local nginx development certificates"
@@ -63,6 +63,7 @@ run:
 	$(DOTNET) run --project $(WEB_PROJECT) --configuration $(CONFIGURATION)
 
 test: test-data
+	python3 scripts/test_dockerhub_prune.py
 	$(DOTNET) test --project $(TEST_PROJECT) --configuration $(CONFIGURATION)
 
 # The building database .dbf is git-ignored; extract it from the committed zip

@@ -4,7 +4,7 @@ services:
 
   microservice-api:
     container_name: 'microservice-api'
-    image: "stuartshay/microservice-api:5.0.1-build.114"
+    image: "stuartshay/microservice-api:latest"
     environment:
      - ASPNETCORE_ENVIRONMENT=Development
     ports:

@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   api:
-    image: "stuartshay/microservice-api:5.0.1-build.117"
+    image: "stuartshay/microservice-api:latest"
     environment:
      - ASPNETCORE_ENVIRONMENT=Docker
     ports:
