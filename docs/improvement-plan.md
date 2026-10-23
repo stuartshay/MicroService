@@ -87,6 +87,8 @@ curl -s -X POST https://microservice-api-w6zlqlyoma-uk.a.run.app/api/v1/FeatureS
 
 ### Phase 1: deploy with workload identity (P1)
 
+**Done** in #511 (and stuartshay/nyc-landmarks-vector-db#450 for the identity pool and deployer account).
+
 **Problem.** `.github/workflows/actions.yml` authenticates to GCP with a JSON
 service account key (`secrets.GH_ACTIONS_SERVICE_ACCOUNT`, account
 `gh-actions-navigator`). Every user-managed key on that account is disabled,
@@ -118,6 +120,8 @@ runtime account, and apply. Then set the repository variables
 check passes.
 
 ### Phase 2: quick wins (P2)
+
+**Done** in #514. Production now caps at 10 instances, allows only the CoreDataStore origins and serves a 184 MB image (was 291 MB).
 
 One pull request; each item is small.
 
@@ -183,6 +187,8 @@ the contract check passes.
 
 ### Phase 5: skipped tests (P2)
 
+**Done** in #512. It also fixed the datum of the Individual Landmark & Historic District building data, which is WGS84, not NAD83.
+
 Nine tests are skipped with `TODO`/`FIX` reasons. Fix each or delete it with a
 reason in the pull request:
 
@@ -210,14 +216,19 @@ build.
 - Update the 21 outdated packages, including OpenTelemetry 1.17 to 1.20,
   Swashbuckle 10.2 to 10.3, and xunit.v3 3.2 to 4.0 (a major version: check
   its breaking changes). Keep Renovate's groups in step with the new layout.
+- Leave `NetTopologySuite.IO.ShapeFile` as it is; phase 10 replaces it.
 
 ### Phase 7: replace AutoMapper (P3)
+
+**Done** in #515. All mapped values are unchanged except Parks `System` and `LandUse`, which are now `""` instead of `null` when the source value is missing.
 
 AutoMapper 16 is commercially licensed. Replace the profiles under
 `MicroService.Service/Mappings` with explicit mapping methods, as CoreDataStore
 does (`EntityMappings`, `LpcReportMapper`), keeping the mapping tests.
 
 ### Phase 8: workflow hardening (P3)
+
+**Done** in #513.
 
 - Pin all 36 action references by commit SHA with the version as a comment
   (Renovate's `helpers:pinGitHubActionDigests` keeps them current), as in
@@ -237,6 +248,65 @@ Not code changes; each needs the owner's approval.
 - **Public operational endpoints.** `/status` (health details) and `/metrics`
   are public. Decide whether that is acceptable, as was decided for
   CoreDataStore.
+
+### Phase 10: replace the legacy shapefile reader (P3)
+
+`NetTopologySuite.IO.ShapeFile` 2.1.0 (April 2022) is deprecated on NuGet as
+"Legacy". Its replacement is
+[`NetTopologySuite.IO.Esri.Shapefile`](https://github.com/NetTopologySuite/NetTopologySuite.IO.Esri)
+(1.2.0, September 2024; targets .NET Standard 2.0 and needs only
+`NetTopologySuite` and `NetTopologySuite.Features` 2.x, which the service
+already uses). Do it after phase 6, so the package moves straight into
+`Directory.Packages.props`.
+
+Where the old reader is used:
+
+- `MicroService.Service/Helpers/CachedShapefileDataReader.cs` inherits
+  `ShapefileDataReader` and exposes its `ShapefileHeader` and `DbaseFileHeader`
+  through `IShapefileDataReaderService`.
+- `MicroService.Service/Extensions/ShapefileDataReaderExtensions.cs`
+  (`ReadFeatures`) turns records into `Feature` objects with an
+  `AttributesTable` keyed by the `.dbf` field names, and sets `BoundingBox` to
+  the geometry envelope.
+- `MicroService.WebApi/Services/InMemoryCacheShapefileCronJobService.cs`
+  creates a `ShapefileDataReader` to refresh the cache.
+- `IShapeService.GetShapeProperties()` and `GetShapeDatabaseProperties()`
+  return the library's header types to `FeatureServiceController`, whose
+  `GET /api/v1/FeatureService/{id}` builds `NumFields`, `NumRecords`, `Bounds`,
+  `LastUpdatedDate` and `FieldsList` (field name and .NET type name) from them.
+- Tests: the fixture, the integration tests, `Unit/ShapeFileTest.cs` and
+  `Unit/WktReaderFunctions.cs`.
+
+Changes:
+
+- Read features with the Esri reader (`Shapefile.ReadAllFeatures` or
+  `ShapefileReader`), keeping one `Feature` per record with the same attribute
+  names and the same `BoundingBox`.
+- Replace `ShapefileHeader` and `DbaseFileHeader` in the service interfaces
+  with the service's own small model (record count, fields, bounds,
+  last-updated date), so the API no longer exposes library types. Keep the
+  `GET /api/v1/FeatureService/{id}` response the same.
+- Remove `NetTopologySuite.IO.ShapeFile`.
+
+Risks to check, because the two readers can return the same file differently:
+
+- **Attribute value types.** Numeric, date and text `.dbf` fields may come back
+  as different .NET types (for example `int` or `decimal` instead of `double`),
+  with different trimming of padded text or different nulls. The mappers parse
+  most values from `ToString()`, but `FieldsList` reports the type names.
+- **Geometry types.** The new reader may return every polygon as a
+  `MultiPolygon`. GeoJSON from `attributelookupgeojson` must keep the same
+  geometry types, or the CoreDataStore UI map must be checked with the new ones.
+- **Text encoding.** Names with non-ASCII characters must read the same
+  (three datasets have a `.cpg` file).
+
+Compare before and after the way #515 was checked: map every feature of every
+dataset with both readers and diff the results, and compare the
+`attributelookupgeojson` output for LP-00099.
+
+**Done when.** The old package is gone, the full comparison shows no
+unexplained differences, and the contract check and the CoreDataStore UI
+production suite pass after deploy.
 
 ### Later
 
