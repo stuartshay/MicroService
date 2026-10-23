@@ -54,6 +54,17 @@
       "groupSlug": "aspnet-health-checks"
     },
     {
+      "description": "Group Serilog packages",
+      "matchManagers": [
+        "nuget"
+      ],
+      "matchPackageNames": [
+        "Serilog*"
+      ],
+      "groupName": "Serilog",
+      "groupSlug": "serilog"
+    },
+    {
       "description": "Group Swagger packages",
       "matchManagers": [
         "nuget"
@@ -82,10 +93,11 @@
         "nuget"
       ],
       "matchPackageNames": [
-        "coverlet.collector",
+        "Microsoft.AspNetCore.Mvc.Testing",
         "Microsoft.NET.Test.Sdk",
-        "xunit",
-        "xunit.runner.visualstudio"
+        "Microsoft.Testing.**",
+        "Moq",
+        "xunit*"
       ],
       "groupName": ".NET test infrastructure",
       "groupSlug": "dotnet-test-infrastructure"

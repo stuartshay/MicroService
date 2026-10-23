@@ -2,14 +2,14 @@
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Test.Fixture;
-using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit;
 
 namespace MicroService.Test.Integration
 {
-    public class DsnyDistrictsServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
+    [Trait("Category", "Integration")]
+    public class DsnyDistrictsServiceTest : IClassFixture<ShapeServiceFixture>
     {
         public IShapeService<DsnyDistrictsShape> _service;
 

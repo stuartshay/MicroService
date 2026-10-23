@@ -2,14 +2,14 @@
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Test.Fixture;
-using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit;
 
 namespace MicroService.Test.Integration
 {
-    public class IndividualLandmarkSiteServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
+    [Trait("Category", "Integration")]
+    public class IndividualLandmarkSiteServiceTest : IClassFixture<ShapeServiceFixture>
     {
         public IShapeService<IndividualLandmarkSiteShape> _service;
 
@@ -77,13 +77,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.AreaName);
             Assert.Equal(expected2, sut.BoroName);
-        }
-
-        //[InlineData(987615.655217366, 211953.9590513381, "Hotel Martinique", "MN")]
-        //[Theory(DisplayName = "Get Geospatial Point Lookup -NAD83")]
-        void IShapeTest.Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
-        {
-            throw new NotImplementedException();
         }
 
 

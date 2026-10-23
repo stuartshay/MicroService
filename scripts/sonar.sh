@@ -57,18 +57,18 @@ dotnet-sonarscanner begin \
     "/d:sonar.host.url=${SONAR_HOST_URL}" \
     "/d:sonar.token=${SONAR_TOKEN}" \
     "/d:sonar.exclusions=src/**/Program.cs,src/**/Extensions/**/*.cs" \
-    "/d:sonar.cs.opencover.reportsPaths=${RESULTS_DIRECTORY}/**/coverage.opencover.xml" \
+    "/d:sonar.cs.vscoveragexml.reportsPaths=${RESULTS_DIRECTORY}/*.xml" \
     "/d:sonar.cs.vstest.reportsPaths=${RESULTS_DIRECTORY}/*.trx"
 
 dotnet restore "${SOLUTION}"
 dotnet build "${SOLUTION}" --configuration Release --no-restore
-dotnet test "${TEST_PROJECT}" \
+dotnet test --project "${TEST_PROJECT}" \
     --configuration Release \
     --no-build \
-    --logger "trx;LogFileName=tests.trx" \
-    --results-directory "${RESULTS_DIRECTORY}" \
-    --collect "XPlat Code Coverage" \
-    -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+    --results-directory "${PWD}/${RESULTS_DIRECTORY}" \
+    --report-xunit-trx \
+    --coverage \
+    --coverage-output-format xml
 
 dotnet-sonarscanner end "/d:sonar.token=${SONAR_TOKEN}"
 printf '[sonar] Analysis submitted successfully\n'

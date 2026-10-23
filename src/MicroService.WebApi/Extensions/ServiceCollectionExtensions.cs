@@ -64,7 +64,11 @@ namespace MicroService.WebApi.Extensions
         /// <param name="services"></param>
         public static void AddCustomApiVersioning(this IServiceCollection services)
         {
-            _ = services.AddApiVersioning(options => { options.ReportApiVersions = true; })
+            _ = services.AddApiVersioning(options =>
+                {
+                    options.ReportApiVersions = true;
+                    options.ApiVersionReader = new UrlSegmentApiVersionReader();
+                })
                 .AddMvc()
                 .AddApiExplorer(
                 options =>
