@@ -54,7 +54,7 @@ namespace MicroService.Test.Extensions
             var services = new ServiceCollection();
             services.AddLogging();
             services.AddCorsConfiguration(configuration);
-            using var provider = services.BuildServiceProvider();
+            await using var provider = services.BuildServiceProvider();
 
             var context = new DefaultHttpContext { RequestServices = provider };
             context.Request.Method = method;

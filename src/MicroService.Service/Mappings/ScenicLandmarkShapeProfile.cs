@@ -1,4 +1,4 @@
-﻿using MicroService.Data.Enum;
+using MicroService.Data.Enum;
 using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
@@ -22,8 +22,8 @@ namespace MicroService.Service.Mappings
                 AreaName = src.Attributes["scen_lm_na"]?.ToString() ?? string.Empty,
                 BoroName = src.Attributes["borough"]?.ToString() ?? string.Empty,
                 BoroCode = (int)Enum.Parse<Borough>(src.Attributes["borough"]?.ToString() ?? string.Empty),
-                ShapeArea = double.Parse(src.Attributes["shape_area"]?.ToString() ?? string.Empty),
-                ShapeLength = double.Parse(src.Attributes["shape_leng"]?.ToString() ?? string.Empty),
+                ShapeArea = ParseDouble(src, "shape_area"),
+                ShapeLength = ParseDouble(src, "shape_leng"),
                 BoundingBox = MapBoundingBox(src.BoundingBox),
                 Geometry = src.Geometry,
             };

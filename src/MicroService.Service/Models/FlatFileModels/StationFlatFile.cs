@@ -23,7 +23,7 @@ namespace MicroService.Service.Models.FlatFileModels
         public string Structure { get; set; } = string.Empty;
 
         public double GTFSLatitude { get; set; }
-        
+
         public double GTFSLongitude { get; set; }
 
         public string NorthDirectionLabel { get; set; } = string.Empty;
@@ -31,7 +31,7 @@ namespace MicroService.Service.Models.FlatFileModels
         public string SouthDirectionLabel { get; set; } = string.Empty;
 
         public bool ADA { get; set; }
-        
+
         public string ADANotes { get; set; } = string.Empty;
 
     }

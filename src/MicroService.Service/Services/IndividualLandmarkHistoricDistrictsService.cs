@@ -43,7 +43,7 @@ namespace MicroService.Service.Services
             {
                 // Map attributes
                 var featureAttributes = IndividualLandmarkHistoricDistrictsShapeProfile.ToDictionary(feature);
-                featureAttributes.Add("ShapeColor", Color.Blue.ToString().ToLower());
+                featureAttributes.Add("ShapeColor", nameof(Color.Blue).ToLower());
 
                 // The building database geometry is already WGS84 (see its .prj), so no transform is needed
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));

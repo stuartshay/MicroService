@@ -19,7 +19,7 @@ namespace MicroService.Service.Helpers
 
             double frac = realIndex - index;
             if (index + 1 < elements.Length)
-                return elements[index] * (1 - frac) + elements[index + 1] * frac;
+                return (elements[index] * (1 - frac)) + (elements[index + 1] * frac);
             else
                 return elements[index];
         }

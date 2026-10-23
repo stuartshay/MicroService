@@ -27,7 +27,7 @@ namespace MicroService.Service.Services
             foreach (var feature in features)
             {
                 var featureAttributes = BoroughBoundaryShapeProfile.ToDictionary(feature);
-                featureAttributes.Add("ShapeColor", Color.Green.ToString().ToLower());
+                featureAttributes.Add("ShapeColor", nameof(Color.Green).ToLower());
 
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }

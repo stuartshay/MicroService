@@ -22,7 +22,7 @@ namespace MicroService.Common.Logging
                    .Enrich.WithExceptionDetails()
                    .Enrich.WithThreadId()
                    .Enrich.WithMachineName()
-                   .Enrich.WithProperty("Version", Assembly.GetEntryAssembly()?.GetName().Version!)
+                   .Enrich.WithProperty("Version", Assembly.GetEntryAssembly()?.GetName().Version)
                    .Enrich.WithProperty("ApplicationName", env.ApplicationName)
                    .Enrich.WithProperty("EnvironmentName", env.EnvironmentName)
                    .Enrich.WithExceptionDetails()

@@ -10,6 +10,6 @@ namespace MicroService.Service.Models.DataMaps
             Map(m => m.ComplexId).Name("Complex ID");
             Map(m => m.ComplexName).Name("Complex Name");
         }
-        
+
     }
 }

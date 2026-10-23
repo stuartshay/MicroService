@@ -115,7 +115,7 @@ namespace MicroService.WebApi.V1.Controllers
         ///  Get Feature Collection
         /// </summary>
         /// <remarks>
-        ///   List of features with attributes 
+        ///   List of features with attributes
         /// </remarks>
         /// <param name="request">Feature Attribute Request</param>
         /// <returns>List of features with attributes</returns>
@@ -148,7 +148,7 @@ namespace MicroService.WebApi.V1.Controllers
             if (request is null || !Enum.IsDefined(request.Type))
                 return BadRequest();
 
-            var validate = _shapeServiceResolver!(ShapeProperties.BoroughBoundaries.ToString()).GetFeatureLookup(request.X, request.Y, request.Datum);
+            var validate = _shapeServiceResolver!(nameof(ShapeProperties.BoroughBoundaries)).GetFeatureLookup(request.X, request.Y, request.Datum);
             if (validate == null)
                 return NoContent();
 
@@ -199,7 +199,7 @@ namespace MicroService.WebApi.V1.Controllers
             if (request.Attributes is null || request.Attributes.Count == 0)
                 return BadRequest("Attributes are required.");
 
-            var keys = request.Attributes.Select(kv => kv.Key).ToList();
+            var keys = request.Attributes.ConvertAll(kv => kv.Key);
             var service = _shapeServiceResolver!(request.Key);
 
             var shapeType = service.GetType().GetInterface("IShapeService`1")!.GetGenericArguments()[0];
@@ -252,7 +252,7 @@ namespace MicroService.WebApi.V1.Controllers
                 return BadRequest("Attributes are required.");
             }
 
-            var keys = request.Attributes.Select(kv => kv.Key).ToList();
+            var keys = request.Attributes.ConvertAll(kv => kv.Key);
             var service = _shapeServiceResolver!(request.Key);
 
             var shapeType = service.GetType().GetInterface("IShapeService`1")!.GetGenericArguments()[0];

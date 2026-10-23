@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Mappings.Base;
+using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 using System;
@@ -19,7 +19,7 @@ namespace MicroService.Service.Mappings
             {
                 Line = src.Attributes["line"]?.ToString() ?? string.Empty,
                 Name = src.Attributes["name"]?.ToString() ?? string.Empty,
-                ObjectId = int.Parse(src.Attributes["objectid"]?.ToString() ?? string.Empty),
+                ObjectId = ParseInt(src, "objectid"),
                 BoundingBox = MapBoundingBox(src.BoundingBox),
                 Geometry = src.Geometry,
             };

@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Interfaces;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
@@ -19,19 +19,14 @@ namespace MicroService.Test.Controllers
 {
     public class FeatureServiceControllerTests
     {
-        public static TheoryData<string, List<ShapeBase>> ValidRequests =>
-            new()
-            {
-                { "BoroughBoundaries", new List<ShapeBase> { new BoroughBoundaryShape(), new CommunityDistrictShape() } },
-                { "CommunityDistricts", new List<ShapeBase> { new CommunityDistrictShape(), new CommunityDistrictShape() } }
-            };
-
         [Theory]
-        [MemberData(nameof(ValidRequests))]
-        public async Task GetFeatureList_WithValidRequest_ReturnsOkResult(string key, List<ShapeBase> expectedResults)
+        [InlineData(ShapeProperties.BoroughBoundaries)]
+        [InlineData(ShapeProperties.CommunityDistricts)]
+        public async Task GetFeatureList_WithValidRequest_ReturnsOkResult(ShapeProperties key)
         {
+            var expectedResults = new List<ShapeBase> { new BoroughBoundaryShape(), new CommunityDistrictShape() };
             // Arrange
-            var request = new FeatureAttributeRequestModel { Key = System.Enum.Parse<ShapeProperties>(key) };
+            var request = new FeatureAttributeRequestModel { Key = key };
 
             var shapeServiceMock = new Mock<IShapeService<ShapeBase>>();
             shapeServiceMock.Setup(s => s.GetFeatureList()).Returns(expectedResults);
@@ -45,8 +40,7 @@ namespace MicroService.Test.Controllers
             var result = await controller.GetFeatureList(request);
 
             // Assert
-            Assert.IsType<OkObjectResult>(result.Result);
-            var okResult = (OkObjectResult)result.Result;
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
             Assert.Equal(expectedResults, okResult.Value);
         }
 
@@ -114,7 +108,7 @@ namespace MicroService.Test.Controllers
         public void GetShapeProperties_ReturnsOkResult()
         {
             // Arrange
-            var id = ShapeProperties.BoroughBoundaries;
+            const ShapeProperties id = ShapeProperties.BoroughBoundaries;
             var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
             shapeServiceMock.Setup(s => s.GetShapeDatabaseProperties()).Returns(new DbaseFileHeader
             {
@@ -146,7 +140,7 @@ namespace MicroService.Test.Controllers
         public void GetShapeProperties_ReturnsOkResult_WithFieldsListPopulated()
         {
             // Arrange
-            var id = ShapeProperties.BoroughBoundaries;
+            const ShapeProperties id = ShapeProperties.BoroughBoundaries;
             var databaseProperties = new DbaseFileHeader
             {
                 NumRecords = 5,
@@ -183,7 +177,7 @@ namespace MicroService.Test.Controllers
         public void GetShapeProperties_ReturnsNotFoundResult_WhenDatabasePropertiesAreNull()
         {
             // Arrange
-            var id = ShapeProperties.BoroughBoundaries;
+            const ShapeProperties id = ShapeProperties.BoroughBoundaries;
             DbaseFileHeader? nullDatabaseProperties = null;
             var shapeServiceMock = new Mock<IShapeService<BoroughBoundaryShape>>();
             shapeServiceMock.Setup(s => s.GetShapeDatabaseProperties()).Returns(nullDatabaseProperties!);
@@ -224,7 +218,7 @@ namespace MicroService.Test.Controllers
         public async Task GetGeospatialLookup_ReturnsOkResult_WhenRequestIsValid()
         {
             // Arrange
-            var id = "BoroughBoundaries";
+            const string id = "BoroughBoundaries";
             var request = new FeatureGeoRequestModel
             {
                 Type = ShapeProperties.BoroughBoundaries,

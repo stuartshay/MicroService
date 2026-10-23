@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Mappings.Base;
+using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
 using System;
@@ -21,12 +21,12 @@ namespace MicroService.Service.Mappings
                 Bin = GetDouble(src, "bin"),
                 Bbl = GetDouble(src, "bbl").ToString(CultureInfo.InvariantCulture),
                 BoroName = GetString(src, "borough"),
-                Block = double.Parse(GetString(src, "block")),
-                Lot = double.Parse(GetString(src, "lot")),
+                Block = ParseDouble(src, "block"),
+                Lot = ParseDouble(src, "lot"),
                 Address = GetString(src, "des_addres"),
-                Circa = int.Parse(GetString(src, "circa")),
-                DateLow = int.Parse(GetString(src, "date_low")),
-                DateHigh = int.Parse(GetString(src, "date_high")),
+                Circa = ParseInt(src, "circa"),
+                DateLow = ParseInt(src, "date_low"),
+                DateHigh = ParseInt(src, "date_high"),
                 DateCombo = GetString(src, "date_combo"),
                 AltDate1 = GetString(src, "alt_date_1"),
                 AltDate2 = GetString(src, "alt_date_2"),
@@ -34,7 +34,7 @@ namespace MicroService.Service.Mappings
                 OwnDevel = GetString(src, "own_devel"),
                 AltArch1 = GetString(src, "alt_arch_1"),
                 AltArch2 = GetString(src, "alt_arch_2"),
-                Altered = int.Parse(GetString(src, "altered")),
+                Altered = ParseInt(src, "altered"),
                 StylePrim = GetString(src, "style_prim"),
                 StyleSec = GetString(src, "style_sec"),
                 StyleOth = GetString(src, "style_oth"),

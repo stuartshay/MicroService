@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Helpers;
+using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
 using Microsoft.Extensions.Logging;
@@ -147,7 +147,7 @@ namespace MicroService.Service.Services.Base
         public string? GetFeatureName(string propertyName)
         {
             TShape shapeClass = new();
-            var featureName = ReflectionExtensions.GetAttributeFromProperty<FeatureNameAttribute>(shapeClass, propertyName);
+            var featureName = shapeClass.GetAttributeFromProperty<FeatureNameAttribute>(propertyName);
 
             return featureName?.AttributeName;
         }

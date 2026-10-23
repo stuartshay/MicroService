@@ -1,10 +1,11 @@
-﻿using MicroService.Service.Models.Base;
+using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum.Attributes;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -78,13 +79,23 @@ namespace MicroService.Service.Mappings.Base
         /// Reads a shapefile attribute as a string, defaulting to <see cref="string.Empty"/>
         /// when the attribute is absent or its value has no string representation.
         /// </summary>
-        protected static string GetString(Feature src, string key) => src.Attributes[key]?.ToString() ?? string.Empty;
+        protected static string GetString(Feature src, string key) => Convert.ToString(src.Attributes[key], CultureInfo.InvariantCulture) ?? string.Empty;
 
         /// <summary>
         /// Parses a shapefile attribute as a double. Throws if the attribute is absent, matching
         /// the behavior of the required shape_area/shape_leng geometry attributes.
         /// </summary>
-        protected static double ParseDouble(Feature src, string key) => double.Parse(GetString(src, key));
+        protected static double ParseDouble(Feature src, string key) => double.Parse(GetString(src, key), CultureInfo.InvariantCulture);
+
+        /// <summary>
+        /// Parses a required integer shapefile attribute using the data's invariant format.
+        /// </summary>
+        protected static int ParseInt(Feature src, string key) => int.Parse(GetString(src, key), CultureInfo.InvariantCulture);
+
+        /// <summary>
+        /// Parses a required long integer shapefile attribute using the data's invariant format.
+        /// </summary>
+        protected static long ParseLong(Feature src, string key) => long.Parse(GetString(src, key), CultureInfo.InvariantCulture);
 
         /// <summary>
         /// Reads a shapefile attribute as a double, defaulting to 0 when the attribute is absent.

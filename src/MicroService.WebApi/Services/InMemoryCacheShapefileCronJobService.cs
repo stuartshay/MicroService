@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Configuration;
+using MicroService.Service.Configuration;
 using MicroService.Service.Extensions;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
@@ -14,6 +14,8 @@ namespace MicroService.WebApi.Services
 {
     internal class InMemoryCacheShapefileCronJobService : CronJobService
     {
+        private readonly object _sync = new();
+        private bool _stopped;
         private readonly IMemoryCache _cache;
         private readonly CronJobServiceHealthCheck _cronJobServiceHealthCheck;
         private readonly IOptions<ApplicationOptions> _applicationOptions;
@@ -48,31 +50,39 @@ namespace MicroService.WebApi.Services
 
         public override Task DoWork(CancellationToken cancellationToken)
         {
-            UpdateEntries();
-
-            foreach (var (name, _) in _entries)
+            lock (_sync)
             {
-                var rootDirectory = _applicationOptions.Value.ShapeConfiguration?.ShapeSystemRootDirectory
-                    ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory configuration is required.");
-                var directory = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttribute>().Directory;
-                var file = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttribute>().FileName;
-
-                // ShapeFile Path without File Extension
-                var shapeFilePath = Path.Combine(rootDirectory, directory, file);
-
-                var shapefileDataReader = new ShapefileDataReader(shapeFilePath, new GeometryFactory());
-                var features = shapefileDataReader.ReadFeatures();
-
-                var memCacheTimeSpan = TimeSpan.FromHours(3);
-                _cache.Set(name, features, memCacheTimeSpan);
-
-                if (_logger.IsEnabled(LogLevel.Information))
+                if (_stopped || cancellationToken.IsCancellationRequested)
                 {
-                    _logger.LogInformation("[CacheRefresh]:{ServiceName}|ShapeName:{ShapeName}|CacheTimeSpan:{CacheTimeSpan}", nameof(InMemoryCacheShapefileCronJobService), name, memCacheTimeSpan);
+                    return Task.CompletedTask;
                 }
-            }
 
-            return Task.CompletedTask;
+                UpdateEntries();
+
+                foreach (var (name, _) in _entries)
+                {
+                    var rootDirectory = _applicationOptions.Value.ShapeConfiguration?.ShapeSystemRootDirectory
+                        ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory configuration is required.");
+                    var directory = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttribute>().Directory;
+                    var file = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttribute>().FileName;
+
+                    // ShapeFile Path without File Extension
+                    var shapeFilePath = Path.Join(rootDirectory, directory, file);
+
+                    using var shapefileDataReader = new ShapefileDataReader(shapeFilePath, new GeometryFactory());
+                    var features = shapefileDataReader.ReadFeatures();
+
+                    var memCacheTimeSpan = TimeSpan.FromHours(3);
+                    _cache.Set(name, features, memCacheTimeSpan);
+
+                    if (_logger.IsEnabled(LogLevel.Information))
+                    {
+                        _logger.LogInformation("[CacheRefresh]:{ServiceName}|ShapeName:{ShapeName}|CacheTimeSpan:{CacheTimeSpan}", nameof(InMemoryCacheShapefileCronJobService), name, memCacheTimeSpan);
+                    }
+                }
+
+                return Task.CompletedTask;
+            }
         }
 
         public override Task StopAsync(CancellationToken cancellationToken)
@@ -81,9 +91,31 @@ namespace MicroService.WebApi.Services
             {
                 _logger.LogInformation("[Stop]:{ServiceName}", nameof(InMemoryCacheShapefileCronJobService));
             }
-            _cache.Dispose();
-
+            DisposeWatchers();
             return base.StopAsync(cancellationToken);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                DisposeWatchers();
+            }
+
+            base.Dispose(disposing);
+        }
+
+        private void DisposeWatchers()
+        {
+            lock (_sync)
+            {
+                _stopped = true;
+                foreach (var (_, watcher) in _entries.Values)
+                {
+                    watcher.Dispose();
+                }
+                _entries.Clear();
+            }
         }
 
         private void UpdateEntries()
@@ -99,12 +131,17 @@ namespace MicroService.WebApi.Services
                 var directory = shapeAttribute.Directory;
                 var file = $"{shapeAttribute.FileName}.dbf";
 
-                string shapeDirectoryPath = Path.Combine(rootDirectory, directory);
-                string shapeFilePath = Path.Combine(shapeDirectoryPath, file);
+                string shapeDirectoryPath = Path.Join(rootDirectory, directory);
+                string shapeFilePath = Path.Join(shapeDirectoryPath, file);
 
                 // Watch on *.dbf File
                 if (File.Exists(shapeFilePath))
                 {
+                    if (_entries.ContainsKey(name))
+                    {
+                        continue;
+                    }
+
                     var fileSystemWatcher = new FileSystemWatcher
                     {
                         NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName,
@@ -133,7 +170,11 @@ namespace MicroService.WebApi.Services
                 }
                 else
                 {
-                    _entries.Remove(name, out _);
+                    if (_entries.TryRemove(name, out var entry))
+                    {
+                        entry.Item2.Dispose();
+                        _cache.Remove(name);
+                    }
                     if (_logger.IsEnabled(LogLevel.Information))
                     {
                         _logger.LogInformation("[FileNotExists]:{ServiceName}|ShapeFilePath:{ShapeFilePath}", nameof(InMemoryCacheShapefileCronJobService), shapeFilePath);

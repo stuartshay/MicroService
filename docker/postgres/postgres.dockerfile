@@ -1,3 +1,6 @@
+# Startup requires root to fix mounted data-directory ownership. The official
+# entrypoint drops to postgres before initdb and execs the database as postgres.
+# https://github.com/docker-library/docs/blob/master/postgres/content.md
 FROM postgres:9.6.23
 
 RUN apt-get update && apt-get install -y \

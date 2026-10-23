@@ -27,7 +27,7 @@ namespace MicroService.Service.Services
             foreach (var feature in features)
             {
                 var featureAttributes = NypdSectorShapeProfile.ToDictionary(feature);
-                featureAttributes.Add("ShapeColor", Color.Blue.ToString().ToLower());
+                featureAttributes.Add("ShapeColor", nameof(Color.Blue).ToLower());
                 featureCollection.Add(new Feature(feature.Geometry, new AttributesTable(featureAttributes)));
             }
 
