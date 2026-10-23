@@ -70,9 +70,27 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="sonarqube">SonarQube</h1>
 
-<h2 id="prerequisites">Prerequisites</h2>
-<pre><code>Java Latest JDK/JRE
-</code></pre>
+<p>Run <code>make sonar</code> with local <code>SONAR_HOST_URL</code> and <code>SONAR_TOKEN</code> settings in <code>.env</code>.
+The script builds Release, collects coverage, and submits analysis for
+<code>MicroService.Api</code>. Never commit local settings or scanner output.</p>
+<h2 id="container-review">Container review</h2>
+<p>The API explicitly runs as <code>app</code>. GDAL, Grafana, Prometheus, and the custom
+NGINX image also run as non-root users. When bind-mounting files into these
+containers, grant their runtime users access to the mounted files. In particular,
+NGINX listens on container ports 8080/8443 (map host ports 80/443 to those
+ports). NGINX needs read access to its TLS certificate and private key and write access
+to any mounted log directory. Keep private keys restricted to the required user
+or group; do not make production private keys world-readable.</p>
+<p>The PostgreSQL image intentionally keeps its official entrypoint's startup user.
+It prepares mounted data-directory ownership as root and then drops privileges
+to <code>postgres</code> before starting the database. Forcing <code>USER postgres</code> would bypass
+that ownership repair and can break existing volumes. The corresponding <code>S6471</code>
+finding needs a contextual security review; it is not globally suppressed.
+See the <a href="https://github.com/docker-library/docs/blob/master/postgres/content.md">official PostgreSQL image documentation</a>.</p>
+<p>Coverage tests exercise cache refresh and file-change handling with temporary
+shapefiles, scheduler cancellation and disposal with a controlled clock, and
+version health-check metadata. Mapping tests run with US, French, and Saudi
+cultures to ensure file data does not depend on the host's culture.</p>
 
 </article>
           </div>
