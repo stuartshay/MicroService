@@ -12,21 +12,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AspNetCore.HealthChecks.System" Version="9.0.0" />
-		<PackageReference Include="AspNetCore.HealthChecks.Uris" Version="9.0.0" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="9.0.0" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="9.0.0" />
-		<PackageReference Include="KubernetesClient" Version="19.0.2" />
-		<PackageReference Include="Flurl" Version="4.0.0" />
-		<PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
-		<PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="8.2.1" />
-		<PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
-		<PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
-		<PackageReference Include="Serilog.Enrichers.Thread" Version="4.0.0" />
-		<PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
-		<PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
-		<PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="9.0.1" />
+		<PackageReference Include="AspNetCore.HealthChecks.System" />
+		<PackageReference Include="AspNetCore.HealthChecks.Uris" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" />
+		<PackageReference Include="KubernetesClient" />
+		<PackageReference Include="Flurl" />
+		<PackageReference Include="prometheus-net.AspNetCore" />
+		<PackageReference Include="prometheus-net.AspNetCore.HealthChecks" />
+		<PackageReference Include="Serilog.AspNetCore" />
+		<PackageReference Include="Serilog.Enrichers.Environment" />
+		<PackageReference Include="Serilog.Enrichers.Thread" />
+		<PackageReference Include="Serilog.Sinks.Console" />
+		<PackageReference Include="Serilog.Exceptions" />
+		<PackageReference Include="Serilog.Sinks.Grafana.Loki" />
 	</ItemGroup>
 
 </Project>

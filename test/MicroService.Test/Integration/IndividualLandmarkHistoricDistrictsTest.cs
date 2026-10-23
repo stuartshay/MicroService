@@ -2,7 +2,6 @@
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Test.Fixture;
-using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
@@ -10,7 +9,8 @@ using Xunit;
 
 namespace MicroService.Test.Integration
 {
-    public class IndividualLandmarkHistoricDistrictsTest : IClassFixture<ShapeServiceFixture>, IShapeTest
+    [Trait("Category", "Integration")]
+    public class IndividualLandmarkHistoricDistrictsTest : IClassFixture<ShapeServiceFixture>
     {
         public IShapeService<IndividualLandmarkHistoricDistrictsShape> _service;
 

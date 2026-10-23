@@ -2,7 +2,6 @@
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Test.Fixture;
-using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
@@ -10,7 +9,8 @@ using Xunit;
 
 namespace MicroService.Test.Integration
 {
-    public class SubwayServiceTest : IClassFixture<ShapeServiceFixture>, IShapeTest
+    [Trait("Category", "Integration")]
+    public class SubwayServiceTest : IClassFixture<ShapeServiceFixture>
     {
         public IShapeService<SubwayShape> _service;
         public IPointService<SubwayShape> _pointService;
@@ -78,19 +78,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.Name);
             Assert.Equal(expected2, sut.Line);
-        }
-
-        void IShapeTest.Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
-        {
-            throw new NotImplementedException();
-        }
-
-        // SubwayService.GetFeatureLookup(x, y) returns the nearest entrance, so it never
-        // returns null; points outside the city are rejected by the controller's
-        // BoroughBoundaries check instead (see FeatureServiceControllerTest).
-        void IShapeTest.Get_Geospatial_Point_Lookup_Not_Found(double x, double y)
-        {
-            throw new NotImplementedException();
         }
 
         [InlineData("Junction Boulevard & Roosevelt Avenue at NE corner", "", "1789")]

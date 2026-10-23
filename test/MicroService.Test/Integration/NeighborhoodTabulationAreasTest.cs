@@ -2,14 +2,14 @@
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Test.Fixture;
-using MicroService.Test.Integration.Interfaces;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Xunit;
 
 namespace MicroService.Test.Integration
 {
-    public class NeighborhoodTabulationAreasTest : IClassFixture<ShapeServiceFixture>, IShapeTest
+    [Trait("Category", "Integration")]
+    public class NeighborhoodTabulationAreasTest : IClassFixture<ShapeServiceFixture>
     {
         public IShapeService<NeighborhoodTabulationAreaShape> _service;
 
@@ -71,11 +71,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.BoroName);
             Assert.Equal(expected2, sut.CDTAName);
-        }
-
-        void IShapeTest.Get_Geospatial_Point_Lookup_Wgs84(double latitude, double longitude, string expected, object expected2)
-        {
-            throw new NotImplementedException();
         }
 
         [InlineData("1", "MN1202", "MN12 Washington Heights-Inwood (CD 12 Equivalent)")]

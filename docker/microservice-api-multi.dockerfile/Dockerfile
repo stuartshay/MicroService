@@ -15,6 +15,9 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["global.json", "."]
 COPY ["NuGet.config", "."]
+COPY ["Directory.Build.props", "."]
+COPY ["Directory.Packages.props", "."]
+COPY ["common.props", "."]
 COPY ["src/MicroService.WebApi/MicroService.WebApi.csproj", "src/MicroService.WebApi/"]
 COPY ["src/MicroService.Common/MicroService.Common.csproj", "src/MicroService.Common/"]
 COPY ["src/MicroService.Service/MicroService.Service.csproj", "src/MicroService.Service/"]

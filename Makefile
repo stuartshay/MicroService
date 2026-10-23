@@ -63,7 +63,7 @@ run:
 	$(DOTNET) run --project $(WEB_PROJECT) --configuration $(CONFIGURATION)
 
 test: test-data
-	$(DOTNET) test $(TEST_PROJECT) --configuration $(CONFIGURATION)
+	$(DOTNET) test --project $(TEST_PROJECT) --configuration $(CONFIGURATION)
 
 # The building database .dbf is git-ignored; extract it from the committed zip
 # the same way CI's "Prepare test data" step does.
