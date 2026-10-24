@@ -1,0 +1,5 @@
+# Measure the same code as SonarQube (scripts/sonar.sh sonar.exclusions):
+# startup wiring in Program.cs and the registration extensions are left out.
+ignore:
+  - "src/**/Program.cs"
+  - "src/**/Extensions/**"
