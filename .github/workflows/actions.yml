@@ -135,6 +135,24 @@ jobs:
           # infrastructure/github_deploy), so deploys no longer rewrite the service's IAM policy
           flags: '--memory 2Gi --port 5000 --max-instances 10 --service-account microservice-api-runtime@velvety-byway-327718.iam.gserviceaccount.com'
 
+      # If traffic was ever pinned to a named revision (gcloud run services update-traffic
+      # --to-revisions), new revisions get no traffic and the health check below would test
+      # the old one. Send all traffic to the revision just deployed, then confirm it.
+      - name: Route traffic to the new revision
+        run: |
+          set -euo pipefail
+          gcloud run services update-traffic "${SERVICE}" --region "${REGION}" --to-latest --quiet
+
+          latest="$(gcloud run services describe "${SERVICE}" --region "${REGION}" \
+            --format='value(status.latestReadyRevisionName)')"
+          serving="$(gcloud run services describe "${SERVICE}" --region "${REGION}" \
+            --format='value(status.traffic[0].revisionName,status.traffic[0].percent)')"
+          echo "Latest ready: ${latest}; serving: ${serving}"
+          if [[ "${serving}" != "${latest}"$'\t'"100" ]]; then
+            echo "Expected ${latest} to serve 100% of traffic" >&2
+            exit 1
+          fi
+
   health-googlecloud:
     name: health check
     runs-on: ubuntu-latest
