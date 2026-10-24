@@ -1,10 +1,10 @@
+using MicroService.Service.Models;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
 using System.Reflection;
 
 namespace MicroService.Service.Services.Base
@@ -29,15 +29,15 @@ namespace MicroService.Service.Services.Base
             MapFeature = mapFeature ?? throw new ArgumentNullException(nameof(mapFeature));
         }
 
-        public ShapefileHeader GetShapeProperties()
+        public ShapefileProperties GetShapeProperties()
         {
-            ShapefileHeader shpHeader = ShapeFileDataReader.ShapeHeader;
+            ShapefileProperties shpHeader = ShapeFileDataReader.ShapeHeader;
             return shpHeader;
         }
 
-        public DbaseFileHeader GetShapeDatabaseProperties()
+        public ShapeDatabaseProperties GetShapeDatabaseProperties()
         {
-            DbaseFileHeader header = ShapeFileDataReader.DbaseHeader;
+            ShapeDatabaseProperties header = ShapeFileDataReader.DbaseHeader;
             return header;
         }
 

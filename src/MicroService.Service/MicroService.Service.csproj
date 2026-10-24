@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<Import Project="..\..\common.props" />
 
@@ -17,7 +17,7 @@
 		<PackageReference Include="NetTopologySuite.Features" />
 		<PackageReference Include="NetTopologySuite.IO.GeoJSON" />
 		<PackageReference Include="NetTopologySuite.IO.GeoJSON4STJ" />
-		<PackageReference Include="NetTopologySuite.IO.ShapeFile" />
+		<PackageReference Include="NetTopologySuite.IO.Esri.Shapefile" />
 		<PackageReference Include="ProjNet" />
 	</ItemGroup>
 

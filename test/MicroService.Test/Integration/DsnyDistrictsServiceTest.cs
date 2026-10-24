@@ -1,9 +1,8 @@
-﻿using MicroService.Service.Interfaces;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Test.Fixture;
 using NetTopologySuite.Features;
-using NetTopologySuite.IO;
 using Xunit;
 
 namespace MicroService.Test.Integration
@@ -49,7 +48,7 @@ namespace MicroService.Test.Integration
 
             for (int i = 0; i < sut.NumFields; i++)
             {
-                DbaseFieldDescriptor fldDescriptor = sut.Fields[i];
+                var fldDescriptor = sut.Fields[i];
                 _testOutputHelper.WriteLine($"   {fldDescriptor.Name} {fldDescriptor.DbaseType}");
             }
         }

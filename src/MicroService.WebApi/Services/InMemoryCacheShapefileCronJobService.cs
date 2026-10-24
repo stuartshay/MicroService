@@ -1,13 +1,10 @@
 using MicroService.Service.Configuration;
-using MicroService.Service.Extensions;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
-using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
 using System.Collections.Concurrent;
 
 namespace MicroService.WebApi.Services
@@ -69,8 +66,7 @@ namespace MicroService.WebApi.Services
                     // ShapeFile Path without File Extension
                     var shapeFilePath = Path.Join(rootDirectory, directory, file);
 
-                    using var shapefileDataReader = new ShapefileDataReader(shapeFilePath, new GeometryFactory());
-                    var features = shapefileDataReader.ReadFeatures();
+                    var features = ShapefileSource.ReadFeatures(shapeFilePath);
 
                     var memCacheTimeSpan = TimeSpan.FromHours(3);
                     _cache.Set(name, features, memCacheTimeSpan);
