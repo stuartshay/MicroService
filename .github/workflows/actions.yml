@@ -133,7 +133,7 @@ jobs:
           env_vars_update_strategy: 'merge'
           # Public access is a Terraform-managed invoker binding (nyc-landmarks-vector-db
           # infrastructure/github_deploy), so deploys no longer rewrite the service's IAM policy
-          flags: '--memory 2Gi --port 5000 --max-instances 10'
+          flags: '--memory 2Gi --port 5000 --max-instances 10 --service-account microservice-api-runtime@velvety-byway-327718.iam.gserviceaccount.com'
 
   health-googlecloud:
     name: health check
