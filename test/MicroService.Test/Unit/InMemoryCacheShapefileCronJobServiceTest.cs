@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
+using NetTopologySuite.IO.Esri;
 using Xunit;
 
 namespace MicroService.Test.Unit
@@ -122,11 +122,7 @@ namespace MicroService.Test.Unit
         {
             Directory.CreateDirectory(Path.GetDirectoryName(ShapePath)!);
             var feature = new Feature(new Point(1, 2), new AttributesTable { { "name", "sample" } });
-            var writer = new ShapefileDataWriter(ShapePath, new GeometryFactory())
-            {
-                Header = ShapefileDataWriter.GetHeader(feature, 1)
-            };
-            writer.Write(new[] { feature });
+            Shapefile.WriteAllFeatures(new[] { feature }, ShapePath + ".shp");
         }
 
         private InMemoryCacheShapefileCronJobService CreateService(string? root)

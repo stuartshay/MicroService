@@ -1,7 +1,7 @@
-﻿using MicroService.Service.Models.Base;
+using MicroService.Service.Models;
+using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum.Attributes;
 using NetTopologySuite.Features;
-using NetTopologySuite.IO;
 using System.Collections.Generic;
 
 namespace MicroService.Service.Interfaces
@@ -18,8 +18,8 @@ namespace MicroService.Service.Interfaces
 
         IEnumerable<T> GetFeatureList();
 
-        ShapefileHeader GetShapeProperties();
+        ShapefileProperties GetShapeProperties();
 
-        DbaseFileHeader GetShapeDatabaseProperties();
+        ShapeDatabaseProperties GetShapeDatabaseProperties();
     }
 }

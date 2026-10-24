@@ -19,7 +19,7 @@
     <PackageVersion Include="NetTopologySuite.Features" Version="2.2.0" />
     <PackageVersion Include="NetTopologySuite.IO.GeoJSON" Version="4.0.0" />
     <PackageVersion Include="NetTopologySuite.IO.GeoJSON4STJ" Version="4.0.0" />
-    <PackageVersion Include="NetTopologySuite.IO.ShapeFile" Version="2.1.0" />
+    <PackageVersion Include="NetTopologySuite.IO.Esri.Shapefile" Version="1.2.0" />
     <PackageVersion Include="ProjNet" Version="2.1.0" />
   </ItemGroup>
 
