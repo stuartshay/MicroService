@@ -27,18 +27,28 @@ This API aims to:
 
 ## Technology Stack
 
-- [Asp.Net core](https://docs.microsoft.com/en-us/aspnet/core/) - C# Web API Framework
-- [Net Topology Suite](https://github.com/NetTopologySuite/NetTopologySuite) - Geospatial data structures and algorithms for .NET
-- [HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) - Health Checks for ASP.NET Core
-- [Serilog](https://serilog.net/) - Logging for .NET
-- [xUnit.net](https://xunit.net/) - Unit Testing Framework
-- [Docker](https://www.docker.com/) - Containerization Platform
+- [.NET 10 / ASP.NET Core](https://learn.microsoft.com/aspnet/core/) - Web API (SDK pinned in `global.json`)
+- [NetTopologySuite](https://github.com/NetTopologySuite/NetTopologySuite) - Geometry, shapefile and GeoJSON support
+- [ProjNet](https://github.com/NetTopologySuite/ProjNet4GeoAPI) - NAD83 (New York State Plane) and WGS84 conversions
+- [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) and [Asp.Versioning](https://github.com/dotnet/aspnet-api-versioning) - OpenAPI documentation and API versioning
+- [HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) - `/health` and `/status`
+- [Serilog](https://serilog.net/), [OpenTelemetry](https://opentelemetry.io/docs/languages/dotnet/) and [prometheus-net](https://github.com/prometheus-net/prometheus-net) - Logging, tracing and local metrics
+- [Cronos](https://github.com/HangfireIO/Cronos) - Scheduled refresh of the in-memory shapefile cache
+- [xUnit.net v3](https://xunit.net/) on [Microsoft.Testing.Platform](https://learn.microsoft.com/dotnet/core/testing/microsoft-testing-platform-intro), with [Moq](https://github.com/devlooped/moq) - Tests and code coverage
+- [Docker](https://www.docker.com/) - Container image, published to Docker Hub and Google Artifact Registry
+- [Google Cloud Run](https://cloud.google.com/run) - Hosting, with the shapefiles mounted from Cloud Storage
+- [GitHub Actions](https://github.com/features/actions) - CI, CodeQL and deployment (workload identity, no service account keys)
+- [Renovate](https://docs.renovatebot.com/), [Codecov](https://about.codecov.io/) and [SonarQube](https://www.sonarsource.com/products/sonarqube/) - Dependency updates, coverage and code quality
 
 ## Datasets
 
 This project primarily focuses on datasets related to NYC Monuments, Landmarks, and Points of Interest. These datasets are relatively small in size and are versioned together with the source code in this project. By versioning the data and source code together, it simplifies the process of integrating data quality checks for both the data and the source code, ensuring consistency and reliability throughout the project.
 
 - [Shape Files](/files) - NYC Open Data Datasets Shape Files
+
+In production the same files are read from the `files-shapes` Cloud Storage
+bucket, which Cloud Run mounts at `/mnt/data/shapes`. Locally and in Docker they
+are read from `files/` (see [docker/README.md](docker/README.md)).
 
 ## References
 
@@ -67,8 +77,22 @@ make build
 make run
 ```
 
-Use `make check` to run every pre-commit check manually. Use `make help` to list
+`make test` extracts the git-ignored building database `.dbf` from its committed
+zip the first time it runs. Use `make check` to run every pre-commit check manually. Use `make help` to list
 the available targets and configuration options.
+
+## Deployment
+
+A push to `master` that changes `src/`, `test/`, the CI Dockerfile or the deploy
+workflow runs [Build/Test/Deploy](.github/workflows/actions.yml): it builds one
+amd64 image, pushes it to Docker Hub and Artifact Registry, deploys it to Cloud
+Run (`microservice-api`, us-east4) and checks `/health`. Merging to `master` is a
+production deploy. Pull requests run [CI](.github/workflows/ci.yml) (lint,
+build, analyzers and tests).
+
+The CoreDataStore API and UI depend on the `attributelookup` and
+`attributelookupgeojson` endpoints; see the fixed contract in the
+[improvement plan](docs/improvement-plan.md).
 
 ## Operational endpoints
 
