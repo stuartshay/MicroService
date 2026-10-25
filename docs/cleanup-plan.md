@@ -1,6 +1,7 @@
 # Cleanup Plan
 
-Status: proposed (2026-10-25). No phase has started.
+Status: in progress (2026-10-25). Phase 1 is complete; Phase 2 (#532) is
+implemented and ready for review; Phases 3 and 4 remain.
 
 This plan follows the [improvement plan](improvement-plan.md), which is
 complete: every phase of it has merged and is deployed. It comes from a review
@@ -51,6 +52,8 @@ that is still genuinely open moved here (phases 2 to 4) or to the issues listed
 at the end.
 
 ### Phase 2: one authoritative shape registry (P2)
+
+**Status:** implemented (#532).
 
 **Problem.** The mapping from a shape key (`ShapeProperties`) to its dataset
 and its service is written out five times:
@@ -161,7 +164,7 @@ documented model with no mapper errors, and the CoreDataStore contracts
 
 Open one issue for each item, so it is tracked outside this document:
 
-- Phase 2: one authoritative shape registry.
+- Phase 2: #532 (one authoritative shape registry).
 - Phase 3: remove repository leftovers, including the GitHub Pages decision.
 - Unused packages (`KubernetesClient`, `Flurl`, `AspNetCore.HealthChecks.Uris`,
   container tools), if they don't go in phase 3.

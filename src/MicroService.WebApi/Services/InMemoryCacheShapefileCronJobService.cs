@@ -1,7 +1,6 @@
 using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
-using MicroService.Service.Models.Enum;
-using MicroService.Service.Models.Enum.Attributes;
+using MicroService.Service.Services.Base;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
@@ -60,11 +59,10 @@ namespace MicroService.WebApi.Services
                 {
                     var rootDirectory = _applicationOptions.Value.ShapeConfiguration?.ShapeSystemRootDirectory
                         ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory configuration is required.");
-                    var directory = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttribute>().Directory;
-                    var file = Enum.Parse<ShapeProperties>(name).GetAttribute<ShapeAttribute>().FileName;
+                    var registration = ShapeRegistry.GetByKey(name);
 
                     // ShapeFile Path without File Extension
-                    var shapeFilePath = Path.Join(rootDirectory, directory, file);
+                    var shapeFilePath = Path.Join(rootDirectory, registration.Directory, registration.FileName);
 
                     var features = ShapefileSource.ReadFeatures(shapeFilePath);
 
@@ -116,16 +114,13 @@ namespace MicroService.WebApi.Services
 
         private void UpdateEntries()
         {
-            var nameWithShapeAttributes = typeof(ShapeProperties).GetFields()
-                .Where(x => x.IsLiteral)
-                .Select(x => (x.Name, (ShapeAttribute)x.GetCustomAttributes(typeof(ShapeAttribute), false).Single()));
-
-            foreach (var (name, shapeAttribute) in nameWithShapeAttributes)
+            foreach (var registration in ShapeRegistry.All)
             {
+                var name = registration.KeyName;
                 var rootDirectory = _applicationOptions.Value.ShapeConfiguration?.ShapeSystemRootDirectory
                     ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory configuration is required.");
-                var directory = shapeAttribute.Directory;
-                var file = $"{shapeAttribute.FileName}.dbf";
+                var directory = registration.Directory;
+                var file = $"{registration.FileName}.dbf";
 
                 string shapeDirectoryPath = Path.Join(rootDirectory, directory);
                 string shapeFilePath = Path.Join(shapeDirectoryPath, file);

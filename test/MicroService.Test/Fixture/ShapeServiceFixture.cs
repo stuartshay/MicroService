@@ -1,9 +1,6 @@
-﻿using MicroService.Service.Configuration;
-using MicroService.Service.Helpers;
+using MicroService.Service.Configuration;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models;
-using MicroService.Service.Models.Enum;
-using MicroService.Service.Models.Enum.Attributes;
 using MicroService.Service.Services;
 using MicroService.Service.Services.Base;
 using Microsoft.Extensions.Caching.Memory;
@@ -18,103 +15,50 @@ namespace MicroService.Test.Fixture
     {
         public ShapeServiceFixture()
         {
-            var serviceProvider = new ServiceCollection()
+            var services = new ServiceCollection()
                 .AddMemoryCache()
                 .AddLogging(builder => builder.AddConsole().SetMinimumLevel(LogLevel.Information))
                 .AddScoped<ShapefileDataReaderResolver>(serviceProvider => key =>
-                {
-                    ShapeAttribute shapeProperties = null!;
-                    if (key == nameof(ShapeProperties.BoroughBoundaries))
-                        shapeProperties = ShapeProperties.BoroughBoundaries.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.CommunityDistricts))
-                        shapeProperties = ShapeProperties.CommunityDistricts.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.DSNYDistricts))
-                        shapeProperties = ShapeProperties.DSNYDistricts.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.HistoricDistricts))
-                        shapeProperties = ShapeProperties.HistoricDistricts.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.IndividualLandmarkSite))
-                        shapeProperties = ShapeProperties.IndividualLandmarkSite.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.IndividualLandmarkHistoricDistricts))
-                        shapeProperties = ShapeProperties.IndividualLandmarkHistoricDistricts.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.NationalRegisterHistoricPlaces))
-                        shapeProperties = ShapeProperties.NationalRegisterHistoricPlaces.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.Neighborhoods))
-                        shapeProperties = ShapeProperties.Neighborhoods.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.NeighborhoodTabulationAreas))
-                        shapeProperties = ShapeProperties.NeighborhoodTabulationAreas.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.NypdPolicePrecincts))
-                        shapeProperties = ShapeProperties.NypdPolicePrecincts.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.NypdSectors))
-                        shapeProperties = ShapeProperties.NypdSectors.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.NychaDevelopments))
-                        shapeProperties = ShapeProperties.NychaDevelopments.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.Parks))
-                        shapeProperties = ShapeProperties.Parks.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.ScenicLandmarks))
-                        shapeProperties = ShapeProperties.ScenicLandmarks.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.Subway))
-                        shapeProperties = ShapeProperties.Subway.GetAttribute<ShapeAttribute>();
-                    else if (key == nameof(ShapeProperties.ZipCodes))
-                        shapeProperties = ShapeProperties.ZipCodes.GetAttribute<ShapeAttribute>();
-                    else
-                        throw new KeyNotFoundException(key);
-
-                    var options = serviceProvider.GetRequiredService<IOptions<ApplicationOptions>>();
-                    var cache = serviceProvider.GetRequiredService<IMemoryCache>();
-
-                    var resolvedShapeProperties = shapeProperties
-                        ?? throw new InvalidOperationException($"Shape attribute metadata is missing for key '{key}'.");
-                    var shapeConfiguration = options.Value.ShapeConfiguration
-                        ?? throw new InvalidOperationException("ShapeConfiguration is required for tests.");
-                    var shapeRootDirectory = shapeConfiguration.ShapeRootDirectory
-                        ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory is required for tests.");
-                    var relativeDirectory = resolvedShapeProperties.Directory.TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
-                    var relativeFileName = resolvedShapeProperties.FileName.TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
-                    var shapeDirectory = Path.Combine(shapeRootDirectory, relativeDirectory, relativeFileName);
-                    string shapePath = Path.GetFullPath(shapeDirectory);
-
-                    return new CachedShapefileDataReader(cache, key, shapePath);
-                })
-                .AddScoped<BoroughBoundariesService>()
-                .AddScoped<CommunityDistrictsService>()
-                .AddScoped<DsnyDistrictsService>()
-                .AddScoped<HistoricDistrictService>()
-                .AddScoped<IndividualLandmarkSiteService>()
-                .AddScoped<IndividualLandmarkHistoricDistrictsService>()
-                .AddScoped<NationalRegisterHistoricPlacesService>()
-                .AddScoped<NeighborhoodsService>()
-                .AddScoped<NeighborhoodTabulationAreasService>()
-                .AddScoped<NypdPolicePrecinctService>()
-                .AddScoped<NypdSectorsService>()
-                .AddScoped<NychaDevelopmentService>()
-                .AddScoped<ParkService>()
-                .AddScoped<ScenicLandmarkService>()
-                .AddScoped<SubwayService>()
-                .AddScoped<ZipCodeService>()
+                    ShapeRegistry.CreateDataReader(
+                        serviceProvider.GetRequiredService<IMemoryCache>(),
+                        serviceProvider.GetRequiredService<IOptions<ApplicationOptions>>(),
+                        key))
+                .AddScoped<ShapeServiceResolver>(serviceProvider => key =>
+                    ShapeRegistry.ResolveService(serviceProvider, key))
                 .AddOptions()
                 .Configure<ApplicationOptions>(Configuration)
-                .AddSingleton(Configuration)
+                .AddSingleton(Configuration);
 
-                .BuildServiceProvider();
+            foreach (var registration in ShapeRegistry.All)
+            {
+                services.AddScoped(registration.ServiceType);
+            }
 
-            BoroughBoundariesService = serviceProvider.GetRequiredService<BoroughBoundariesService>();
-            CommunityDistrictService = serviceProvider.GetRequiredService<CommunityDistrictsService>();
-            DSNYDistrictsService = serviceProvider.GetRequiredService<DsnyDistrictsService>();
-            HistoricDistrictService = serviceProvider.GetRequiredService<HistoricDistrictService>();
-            IndividualLandmarkSiteService = serviceProvider.GetRequiredService<IndividualLandmarkSiteService>();
-            IndividualLandmarkHistoricDistrictsService = serviceProvider.GetRequiredService<IndividualLandmarkHistoricDistrictsService>();
-            NationalRegisterHistoricPlacesService = serviceProvider.GetRequiredService<NationalRegisterHistoricPlacesService>();
-            NeighborhoodService = serviceProvider.GetRequiredService<NeighborhoodsService>();
-            NeighborhoodTabulationAreasService = serviceProvider.GetRequiredService<NeighborhoodTabulationAreasService>();
-            NypdPolicePrecinctService = serviceProvider.GetRequiredService<NypdPolicePrecinctService>();
-            NypdSectorsService = serviceProvider.GetRequiredService<NypdSectorsService>();
-            NychaDevelopmentService = serviceProvider.GetRequiredService<NychaDevelopmentService>();
-            ParkService = serviceProvider.GetRequiredService<ParkService>();
-            ScenicLandmarkService = serviceProvider.GetRequiredService<ScenicLandmarkService>();
-            SubwayService = serviceProvider.GetRequiredService<SubwayService>();
-            SubwayPointService = serviceProvider.GetRequiredService<SubwayService>();
-            ZipCodeService = serviceProvider.GetRequiredService<ZipCodeService>();
+            ServiceProvider = services.BuildServiceProvider();
+            ShapeServiceResolver = ServiceProvider.GetRequiredService<ShapeServiceResolver>();
+
+            BoroughBoundariesService = ServiceProvider.GetRequiredService<BoroughBoundariesService>();
+            CommunityDistrictService = ServiceProvider.GetRequiredService<CommunityDistrictsService>();
+            DSNYDistrictsService = ServiceProvider.GetRequiredService<DsnyDistrictsService>();
+            HistoricDistrictService = ServiceProvider.GetRequiredService<HistoricDistrictService>();
+            IndividualLandmarkSiteService = ServiceProvider.GetRequiredService<IndividualLandmarkSiteService>();
+            IndividualLandmarkHistoricDistrictsService = ServiceProvider.GetRequiredService<IndividualLandmarkHistoricDistrictsService>();
+            NationalRegisterHistoricPlacesService = ServiceProvider.GetRequiredService<NationalRegisterHistoricPlacesService>();
+            NeighborhoodService = ServiceProvider.GetRequiredService<NeighborhoodsService>();
+            NeighborhoodTabulationAreasService = ServiceProvider.GetRequiredService<NeighborhoodTabulationAreasService>();
+            NypdPolicePrecinctService = ServiceProvider.GetRequiredService<NypdPolicePrecinctService>();
+            NypdSectorsService = ServiceProvider.GetRequiredService<NypdSectorsService>();
+            NychaDevelopmentService = ServiceProvider.GetRequiredService<NychaDevelopmentService>();
+            ParkService = ServiceProvider.GetRequiredService<ParkService>();
+            ScenicLandmarkService = ServiceProvider.GetRequiredService<ScenicLandmarkService>();
+            SubwayService = ServiceProvider.GetRequiredService<SubwayService>();
+            SubwayPointService = ServiceProvider.GetRequiredService<SubwayService>();
+            ZipCodeService = ServiceProvider.GetRequiredService<ZipCodeService>();
         }
+
+        public ServiceProvider ServiceProvider { get; }
+
+        public ShapeServiceResolver ShapeServiceResolver { get; }
 
         public IShapeService<BoroughBoundaryShape> BoroughBoundariesService { get; set; }
 

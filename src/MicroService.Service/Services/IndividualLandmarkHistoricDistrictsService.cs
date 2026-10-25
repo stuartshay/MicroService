@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Interfaces;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -16,9 +16,8 @@ namespace MicroService.Service.Services
         public IndividualLandmarkHistoricDistrictsService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             IndividualLandmarkSiteService individualLandmarkSiteService,
             ILogger<IndividualLandmarkHistoricDistrictsService> logger)
-            : base(logger, IndividualLandmarkHistoricDistrictsShapeProfile.Map)
+            : base(shapefileDataReaderResolver, logger, IndividualLandmarkHistoricDistrictsShapeProfile.Map)
         {
-            ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkHistoricDistricts));
             _individualLandmarkSiteService = individualLandmarkSiteService;
         }
 

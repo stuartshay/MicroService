@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Interfaces;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -14,9 +14,8 @@ namespace MicroService.Service.Services
     {
         public HistoricDistrictService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             ILogger<HistoricDistrictService> logger)
-            : base(logger, HistoricDistrictShapeProfile.Map)
+            : base(shapefileDataReaderResolver, logger, HistoricDistrictShapeProfile.Map)
         {
-            ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.HistoricDistricts));
         }
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)

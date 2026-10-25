@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Interfaces;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -15,9 +15,8 @@ namespace MicroService.Service.Services
     {
         public ParkService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             ILogger<ParkService> logger)
-            : base(logger, ParkShapeProfile.Map)
+            : base(shapefileDataReaderResolver, logger, ParkShapeProfile.Map)
         {
-            ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Parks));
         }
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)
