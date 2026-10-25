@@ -1,5 +1,10 @@
 <Project>
   <PropertyGroup>
+    <Authors>Stuart Shay</Authors>
+    <RepositoryUrl>https://github.com/stuartshay/MicroService</RepositoryUrl>
+    <Company>Stuart Shay</Company>
+    <Product>MicroService</Product>
+    <Copyright>Copyright © Stuart Shay. All rights Reserved</Copyright>
     <NuGetAudit>true</NuGetAudit>
     <NuGetAuditMode>all</NuGetAuditMode>
     <WarningsAsErrors>$(WarningsAsErrors);NU1901;NU1902;NU1903;NU1904;CA1873;CA2263;CS8766;CS8767</WarningsAsErrors>

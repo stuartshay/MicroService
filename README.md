@@ -56,10 +56,6 @@ are read from `files/` (see [docker/README.md](docker/README.md)).
 - [LPC Designation Reports](https://www.nyc.gov/site/lpc/designations/designation-reports.page) - NYC Landmarks Preservation Commission Designation Reports
 - [Stuart Shay's Flickr](https://www.flickr.com/photos/stuartshay) - Stuart Shay's Flickr Collection of NYC Monuments, Landmarks, and Points of Interest
 
-## Developer Documentation
-
-- [DocFX](https://stuartshay.github.io/MicroService/)
-
 ## Local Development
 
 On Debian, Ubuntu, or macOS, install the .NET SDK selected by `global.json` and

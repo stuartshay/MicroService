@@ -1,7 +1,7 @@
 # Cleanup Plan
 
-Status: in progress (2026-10-25). Phase 1 is complete; Phase 2 (#532) is
-implemented and ready for review; Phases 3 and 4 remain.
+Status: in progress (2026-10-25). Phases 1, 2 (#533), and 3 (#534) are
+complete; Phase 4 (#526) remains.
 
 This plan follows the [improvement plan](improvement-plan.md), which is
 complete: every phase of it has merged and is deployed. It comes from a review
@@ -53,7 +53,9 @@ at the end.
 
 ### Phase 2: one authoritative shape registry (P2)
 
-**Status:** implemented (#532).
+**Done** in #533 (closes #532; deployed in `microservice-api-00165-7fr`, 100%
+traffic confirmed, contract checks and 19/19 `CoreDataStore.UI` production tests
+passed).
 
 **Problem.** The mapping from a shape key (`ShapeProperties`) to its dataset
 and its service is written out five times:
@@ -107,6 +109,8 @@ suite (`npm run test:production:docker` in CoreDataStore.UI) pass.
 
 ### Phase 3: remove repository leftovers (P3)
 
+**Done** (#534).
+
 The service has run on Cloud Run with shape files from GCS and no database
 since #518. These files describe earlier setups:
 
@@ -119,7 +123,7 @@ since #518. These files describe earlier setups:
 | `docfx/articles/` | Articles on EKS, Jenkins on AWS, Hyper-V, Kubernetes and MyGet, two PDFs, sample `howto` and `details1` pages | Remove, except anything the owner wants kept for history. |
 | `.github/workflows/docfx.yml`, `assets/docfx.png` | Publishes `docfx/` to GitHub Pages | Follows the decision below. |
 | `common.props` | Authors, product and an old `3.0.0.1` version, imported by three projects | Move what's still wanted into `Directory.Build.props`; delete the file. |
-| `Directory.Packages.props` / project files | `KubernetesClient`, `Flurl`, `AspNetCore.HealthChecks.Uris` (in `MicroService.Common`) and `Microsoft.VisualStudio.Azure.Containers.Tools.Targets` (in `MicroService.WebApi`) | Remove each one the build and `make unused` confirm unused. |
+| `Directory.Packages.props` / project files | `KubernetesClient`, `Flurl`, `AspNetCore.HealthChecks.Uris`, `AspNetCore.HealthChecks.UI`, `AspNetCore.HealthChecks.UI.InMemory.Storage` (in `MicroService.Common`) and `Microsoft.VisualStudio.Azure.Containers.Tools.Targets` (in `MicroService.WebApi`) | Removed each one after `make build` and `make unused` confirmed it unused (`AspNetCore.HealthChecks.UI` also pulled in `KubernetesClient` 15.0.1 transitively). |
 | `scripts/update_cloud_run_service.sh` | Adds the `files-shapes` GCS mount to the service by hand | Keep if it's the documented way to recreate the mount; otherwise move the mount into Terraform with the runtime account and remove the script. |
 
 **Owner decision: GitHub Pages.** `https://stuartshay.github.io/MicroService/`
@@ -164,10 +168,9 @@ documented model with no mapper errors, and the CoreDataStore contracts
 
 Open one issue for each item, so it is tracked outside this document:
 
-- Phase 2: #532 (one authoritative shape registry).
-- Phase 3: remove repository leftovers, including the GitHub Pages decision.
-- Unused packages (`KubernetesClient`, `Flurl`, `AspNetCore.HealthChecks.Uris`,
-  container tools), if they don't go in phase 3.
+- Phase 2: #532 (closed by #533).
+- Phase 3: #534 (remove repository leftovers, including retiring GitHub Pages and
+  removing unused packages).
 - #526 already exists for phase 4.
 
 ## Who can do each phase

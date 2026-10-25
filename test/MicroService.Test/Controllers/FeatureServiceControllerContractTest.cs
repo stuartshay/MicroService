@@ -1,5 +1,3 @@
-using MicroService.Service.Interfaces;
-using MicroService.Service.Models.Base;
 using MicroService.Test.Fixture;
 using MicroService.WebApi.Models;
 using MicroService.WebApi.V1.Controllers;

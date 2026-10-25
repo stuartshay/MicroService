@@ -12,7 +12,7 @@ TEST_DATA_DBF := $(LPC_DIRECTORY)/LPC_Individual_Landmark_and_Historic_District_
 
 .DEFAULT_GOAL := help
 
-.PHONY: help setup setup-gcloud hooks check analyze restore build run test test-data sonar certificates
+.PHONY: help setup setup-gcloud hooks check analyze restore build run test test-data sonar certificates unused
 
 help:
 	@echo "Available targets:"
@@ -28,6 +28,7 @@ help:
 	@echo "  make test     Run retention checks and .NET tests (extracts missing test .dbf)"
 	@echo "  make test-data  Extract the git-ignored .dbf the tests need, if missing"
 	@echo "  make sonar    Build, test, and submit analysis to SonarQube"
+	@echo "  make unused   Report unused code and usings (dotnet-unused, report only)"
 	@echo "  make certificates  Generate local nginx development certificates"
 	@echo ""
 	@echo "Options:"
@@ -79,3 +80,8 @@ sonar:
 
 certificates:
 	./scripts/generate-certificates.sh
+
+# Report only: lists unused symbols (public ones included) and using directives
+unused:
+	@command -v dotnet-unused >/dev/null || { echo "dotnet-unused not found: dotnet tool install --global dotnetunused"; exit 1; }
+	dotnet-unused $(SOLUTION) --exclude-public false
