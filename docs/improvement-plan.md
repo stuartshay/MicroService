@@ -1,8 +1,9 @@
 # Improvement Plan
 
-Status: in progress (updated 2026-10-23). Phases 1–8 are complete. The owner
-authorized the remaining Phase 9 production cleanup and Phase 10 migration on
-2026-10-23. This plan comes from a review of `master` at
+Status: complete (updated 2026-10-25). Every phase has merged and is deployed:
+production revision `microservice-api-00164-ckk` (image `10.0.465`) runs
+`master` at `3c8a261`. Follow-up work is in the [cleanup plan](cleanup-plan.md).
+This plan comes from a review of `master` at
 `fd5e6f9` and of the production service. It brings MicroService in line with
 the changes made to the CoreDataStore API in October 2026, in a sequence of
 small pull requests.
@@ -252,10 +253,12 @@ does (`EntityMappings`, `LpcReportMapper`), keeping the mapping tests.
   stuartshay/CoreDataStore#257.
 - Give each workflow the least `permissions` it needs.
 
-### Phase 9: production cleanups (approved, in progress)
+### Phase 9: production cleanups (P3)
 
-Owner approved proceeding on 2026-10-23. Runtime identity and service retirement
-are complete; endpoint restrictions are implemented and awaiting PR merge/deploy.
+**Done** in #524 (2026-10-24) and stuartshay/nyc-landmarks-vector-db#451.
+Verified in production on 2026-10-25: `/status` returns only
+`{"status":"Healthy"}`, `/metrics` returns 404, the service runs as
+`microservice-api-runtime`, and the three old services are gone.
 
 Operational evidence (2026-10-23):
 
@@ -301,15 +304,16 @@ Implementation decisions:
 
 ### Phase 10: replace the legacy shapefile reader (P3)
 
-**Implemented, awaiting PR merge and production acceptance** (2026-10-23).
-Replaced the package, introduced application-owned metadata models, and routed
+**Done** in #527 (2026-10-24); production runs it since #530 routed traffic to
+`microservice-api-00164-ckk`. The National Register mismatch it found is #526,
+planned as phase 4 of the [cleanup plan](cleanup-plan.md). Replaced the package, introduced application-owned metadata models, and routed
 request-time and cron refresh reads through one compatibility adapter. The
 independent legacy-versus-candidate comparison matched all 61,580 records across
 16 archives, plus the existing National Register service binding. Saved regression
 snapshots cover attributes and types, WKB geometry, mapped outcomes, and metadata.
 See [migration validation](shapefile-reader-migration.md) for provenance, results,
 compatibility decisions, and the existing National Register mismatch (#526).
-Production contract checks and the UI production suite remain required after merge.
+The contract check passed after deploy.
 
 `NetTopologySuite.IO.ShapeFile` 2.1.0 (April 2022) is deprecated on NuGet as
 "Legacy". Its replacement is
