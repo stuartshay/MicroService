@@ -25,19 +25,12 @@ namespace MicroService.Service.Services.Base
             ShapefileDataReaderResolver shapefileDataReaderResolver,
             ILogger logger,
             Func<Feature, TShape> mapFeature)
-            : this(logger, mapFeature)
         {
             ArgumentNullException.ThrowIfNull(shapefileDataReaderResolver);
-            var registration = ShapeRegistry.GetByServiceType(GetType());
-            ShapeFileDataReader = shapefileDataReaderResolver(registration.DatasetKeyName);
-        }
-
-        protected AbstractShapeService(
-            ILogger logger,
-            Func<Feature, TShape> mapFeature)
-        {
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             MapFeature = mapFeature ?? throw new ArgumentNullException(nameof(mapFeature));
+            var registration = ShapeRegistry.GetByServiceType(GetType());
+            ShapeFileDataReader = shapefileDataReaderResolver(registration.DatasetKeyName);
         }
 
         public ShapefileProperties GetShapeProperties()

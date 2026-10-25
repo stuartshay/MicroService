@@ -1,6 +1,8 @@
 using NetTopologySuite.Features;
+using MicroService.Service.Helpers;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
+using MicroService.Service.Services;
 using MicroService.Service.Services.Base;
 using Microsoft.Extensions.Logging;
 using Xunit;
@@ -9,7 +11,9 @@ namespace MicroService.Test.Unit
 {
     public class AbstractShapeServiceTest
     {
-        private readonly TestShapeService _service = new();
+        private readonly BoroughBoundariesService _service = new(
+            _ => Moq.Mock.Of<IShapefileDataReaderService>(),
+            Moq.Mock.Of<ILogger<BoroughBoundariesService>>());
 
         [Fact]
         public void MatchAttributeValue_MatchesDoubleWithinTolerance()
@@ -65,15 +69,30 @@ namespace MicroService.Test.Unit
         }
 
         [Fact]
+        public void Constructor_ThrowsArgumentNullException_WhenResolverIsNull()
+        {
+            Assert.Throws<ArgumentNullException>(() => new TestShapeService(
+                shapefileDataReaderResolver: null!,
+                logger: Moq.Mock.Of<ILogger>(),
+                mapFeature: BoroughBoundaryShapeProfile.Map));
+        }
+
+        [Fact]
         public void Constructor_ThrowsArgumentNullException_WhenLoggerIsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => new TestShapeService(logger: null!, mapFeature: BoroughBoundaryShapeProfile.Map));
+            Assert.Throws<ArgumentNullException>(() => new TestShapeService(
+                shapefileDataReaderResolver: _ => Moq.Mock.Of<IShapefileDataReaderService>(),
+                logger: null!,
+                mapFeature: BoroughBoundaryShapeProfile.Map));
         }
 
         [Fact]
         public void Constructor_ThrowsArgumentNullException_WhenMapperIsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => new TestShapeService(logger: Moq.Mock.Of<ILogger>(), mapFeature: null!));
+            Assert.Throws<ArgumentNullException>(() => new TestShapeService(
+                shapefileDataReaderResolver: _ => Moq.Mock.Of<IShapefileDataReaderService>(),
+                logger: Moq.Mock.Of<ILogger>(),
+                mapFeature: null!));
         }
 
         [Fact]
@@ -213,13 +232,11 @@ namespace MicroService.Test.Unit
 
         private sealed class TestShapeService : AbstractShapeService<BoroughBoundaryShape>
         {
-            public TestShapeService()
-                : base(Moq.Mock.Of<ILogger>(), BoroughBoundaryShapeProfile.Map)
-            {
-            }
-
-            public TestShapeService(ILogger logger, Func<Feature, BoroughBoundaryShape> mapFeature)
-                : base(logger, mapFeature)
+            public TestShapeService(
+                ShapefileDataReaderResolver shapefileDataReaderResolver,
+                ILogger logger,
+                Func<Feature, BoroughBoundaryShape> mapFeature)
+                : base(shapefileDataReaderResolver, logger, mapFeature)
             {
             }
 

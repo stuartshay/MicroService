@@ -3,12 +3,9 @@ using MicroService.Common.Constants;
 using MicroService.Common.Health;
 using MicroService.Common.Logging;
 using MicroService.Service.Configuration;
-using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
-using MicroService.Service.Models.Enum.Attributes;
-using MicroService.Service.Services;
 using MicroService.Service.Services.Base;
 using MicroService.Service.Services.FlatFileService;
 using MicroService.WebApi.Extensions;
@@ -141,9 +138,6 @@ void AddHealthCheckServices()
     string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
 
     services
-        // .AddHealthChecksUI()
-        // .AddInMemoryStorage()
-        // .Services
         .AddHealthChecks()
         .AddVersionHealthCheck()
         .AddFolderHealthCheck(shapePath, "Shape Root Directory")

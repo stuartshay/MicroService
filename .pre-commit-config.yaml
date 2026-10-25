@@ -37,7 +37,7 @@ repos:
     rev: v2.4.3
     hooks:
       - id: codespell
-        exclude: ^(files/|docfx/articles/howto/|docfx/restapi/redoc\.standalone\.js|docker/grafana/provisioning/dashboards/|cspell\.json)
+        exclude: ^(files/|docker/grafana/provisioning/dashboards/|cspell\.json)
 
   - repo: https://github.com/streetsidesoftware/cspell-cli
     rev: v10.0.1
@@ -56,4 +56,3 @@ repos:
     rev: v0.49.1
     hooks:
       - id: markdownlint
-        exclude: ^docfx/articles/howto/

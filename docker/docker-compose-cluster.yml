@@ -31,16 +31,6 @@ services:
       - microservice-network
     restart: always
 
-  database:
-    container_name: 'database'
-    image: "stuartshay/microservice-database:v1"
-    ports:
-     - "5432:5432"
-    environment:
-      POSTGRES_PASSWORD: password
-    networks:
-      - microservice-network
-
 volumes:
   nginx-log-volume:
 

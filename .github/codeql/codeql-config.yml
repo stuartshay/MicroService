@@ -5,7 +5,6 @@ queries:
   - uses: security-and-quality
 
 paths-ignore:
-  - docfx/**
   - docker/**
   - files/**
   - assets/**

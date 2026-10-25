@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net10.0</TargetFramework>
@@ -13,12 +13,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="AspNetCore.HealthChecks.System" />
-		<PackageReference Include="AspNetCore.HealthChecks.Uris" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI" />
 		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" />
-		<PackageReference Include="KubernetesClient" />
-		<PackageReference Include="Flurl" />
 		<PackageReference Include="prometheus-net.AspNetCore" />
 		<PackageReference Include="prometheus-net.AspNetCore.HealthChecks" />
 		<PackageReference Include="Serilog.AspNetCore" />
