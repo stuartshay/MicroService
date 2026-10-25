@@ -13,16 +13,13 @@ namespace MicroService.Service.Services.Base
     {
         public ShapeRegistration(
             ShapeProperties key,
-            Type serviceType,
-            ShapeProperties? datasetKey = null)
+            Type serviceType)
         {
             ArgumentNullException.ThrowIfNull(serviceType);
 
             Key = key;
             KeyName = key.ToString();
             ServiceType = serviceType;
-            DatasetKey = datasetKey ?? key;
-            DatasetKeyName = DatasetKey.ToString();
 
             var shapeAttribute = key.GetAttribute<ShapeAttribute>()
                 ?? throw new InvalidOperationException($"ShapeAttribute is missing for '{key}'.");
@@ -36,14 +33,6 @@ namespace MicroService.Service.Services.Base
         public string KeyName { get; }
 
         public Type ServiceType { get; }
-
-        /// <summary>
-        /// The dataset key opened by this service's shapefile reader. Matches <see cref="Key"/>
-        /// for every shape except documented legacy bindings (see #526).
-        /// </summary>
-        public ShapeProperties DatasetKey { get; }
-
-        public string DatasetKeyName { get; }
 
         public string Directory { get; }
 
@@ -62,9 +51,7 @@ namespace MicroService.Service.Services.Base
             new(ShapeProperties.HistoricDistricts, typeof(HistoricDistrictService)),
             new(ShapeProperties.IndividualLandmarkSite, typeof(IndividualLandmarkSiteService)),
             new(ShapeProperties.IndividualLandmarkHistoricDistricts, typeof(IndividualLandmarkHistoricDistrictsService)),
-            // Documented exception (#526): NationalRegisterHistoricPlacesService currently reads the
-            // IndividualLandmarkSite dataset. Phase 4 will switch it to its own HRHP archive.
-            new(ShapeProperties.NationalRegisterHistoricPlaces, typeof(NationalRegisterHistoricPlacesService), datasetKey: ShapeProperties.IndividualLandmarkSite),
+            new(ShapeProperties.NationalRegisterHistoricPlaces, typeof(NationalRegisterHistoricPlacesService)),
             new(ShapeProperties.Neighborhoods, typeof(NeighborhoodsService)),
             new(ShapeProperties.NeighborhoodTabulationAreas, typeof(NeighborhoodTabulationAreasService)),
             new(ShapeProperties.NypdPolicePrecincts, typeof(NypdPolicePrecinctService)),
