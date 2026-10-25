@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Helpers;
+using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
@@ -18,9 +18,8 @@ namespace MicroService.Service.Services
     {
         public SubwayService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             ILogger<SubwayService> logger)
-            : base(logger, SubwayShapeProfile.Map)
+            : base(shapefileDataReaderResolver, logger, SubwayShapeProfile.Map)
         {
-            ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.Subway));
         }
 
         public override SubwayShape? GetFeatureLookup(double x, double y, Datum datum)

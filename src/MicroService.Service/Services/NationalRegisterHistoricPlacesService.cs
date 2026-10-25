@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Interfaces;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -15,9 +15,8 @@ namespace MicroService.Service.Services
 
         public NationalRegisterHistoricPlacesService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             ILogger<NationalRegisterHistoricPlacesService> logger)
-            : base(logger, NationalRegisterHistoricPlacesShapeProfile.Map)
+            : base(shapefileDataReaderResolver, logger, NationalRegisterHistoricPlacesShapeProfile.Map)
         {
-            ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkSite));
         }
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)

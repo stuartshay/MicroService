@@ -25,6 +25,10 @@ namespace MicroService.Service.Helpers
 
         public ShapeDatabaseProperties DbaseHeader { get; }
 
+        public string ShapeKey => _shapeProperties;
+
+        public string FilePath => _fileName;
+
         public CachedShapefileDataReader(IMemoryCache memoryCache, string shapeProperties, string fileName)
         {
             _cache = memoryCache;

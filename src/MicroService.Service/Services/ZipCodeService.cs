@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Interfaces;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -14,9 +14,8 @@ namespace MicroService.Service.Services
     {
         public ZipCodeService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             ILogger<ZipCodeService> logger)
-            : base(logger, ZipCodeMappingsProfile.Map)
+            : base(shapefileDataReaderResolver, logger, ZipCodeMappingsProfile.Map)
         {
-            ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.ZipCodes));
         }
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)

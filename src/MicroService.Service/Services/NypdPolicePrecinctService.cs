@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Interfaces;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -14,9 +14,8 @@ namespace MicroService.Service.Services
     {
         public NypdPolicePrecinctService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             ILogger<NypdPolicePrecinctService> logger)
-            : base(logger, NypdPrecinctShapeProfile.Map)
+            : base(shapefileDataReaderResolver, logger, NypdPrecinctShapeProfile.Map)
         {
-            ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.NypdPolicePrecincts));
         }
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)

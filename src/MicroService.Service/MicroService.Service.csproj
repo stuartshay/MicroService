@@ -10,6 +10,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<InternalsVisibleTo Include="MicroService.Test" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CsvHelper" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" />
 		<PackageReference Include="Microsoft.Extensions.Options" />

@@ -29,14 +29,7 @@ namespace MicroService.Test.Controllers
 
         public FeatureServiceControllerContractTest(ShapeServiceFixture fixture)
         {
-            IShapeService<ShapeBase> Resolver(string key) => key switch
-            {
-                "HistoricDistricts" => fixture.HistoricDistrictService,
-                "IndividualLandmarkSite" => fixture.IndividualLandmarkSiteService,
-                _ => throw new ArgumentOutOfRangeException(nameof(key), key, null),
-            };
-
-            _controller = new FeatureServiceController(Resolver, NullLogger<FeatureServiceController>.Instance);
+            _controller = new FeatureServiceController(fixture.ShapeServiceResolver, NullLogger<FeatureServiceController>.Instance);
         }
 
         [Fact]

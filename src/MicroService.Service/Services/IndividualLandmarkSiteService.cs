@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Interfaces;
+using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Enum;
@@ -14,9 +14,8 @@ namespace MicroService.Service.Services
     {
         public IndividualLandmarkSiteService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             ILogger<IndividualLandmarkSiteService> logger)
-            : base(logger, IndividualLandmarkSiteShapeProfile.Map)
+            : base(shapefileDataReaderResolver, logger, IndividualLandmarkSiteShapeProfile.Map)
         {
-            ShapeFileDataReader = shapefileDataReaderResolver(nameof(ShapeProperties.IndividualLandmarkSite));
         }
 
         public FeatureCollection GetFeatureCollection(List<KeyValuePair<string, object>> attributes)

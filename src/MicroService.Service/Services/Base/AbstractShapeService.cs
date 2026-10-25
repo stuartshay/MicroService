@@ -14,12 +14,23 @@ namespace MicroService.Service.Services.Base
     public abstract class AbstractShapeService<TShape>
         where TShape : class, new()
     {
-        // Always assigned in each derived class's constructor via a ShapefileDataReaderResolver.
-        protected IShapefileDataReaderService ShapeFileDataReader { get; set; } = null!;
+        // Always assigned via ShapefileDataReaderResolver from ShapeRegistry.
+        protected internal IShapefileDataReaderService ShapeFileDataReader { get; protected set; } = null!;
 
         protected readonly Func<Feature, TShape> MapFeature;
 
         protected readonly ILogger Logger;
+
+        protected AbstractShapeService(
+            ShapefileDataReaderResolver shapefileDataReaderResolver,
+            ILogger logger,
+            Func<Feature, TShape> mapFeature)
+            : this(logger, mapFeature)
+        {
+            ArgumentNullException.ThrowIfNull(shapefileDataReaderResolver);
+            var registration = ShapeRegistry.GetByServiceType(GetType());
+            ShapeFileDataReader = shapefileDataReaderResolver(registration.DatasetKeyName);
+        }
 
         protected AbstractShapeService(
             ILogger logger,
