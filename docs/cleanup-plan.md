@@ -152,7 +152,9 @@ the GitHub Pages decision is carried out; `make check`, `make build`,
 `make test` and `make analyze` pass; the image is no larger than before; and the
 contract check passes after deploy.
 
-### Phase 4: National Register service reads its own dataset (P3) — done (#526)
+### Phase 4: National Register service reads its own dataset (P3)
+
+**Done** (#526).
 
 Tracked in #526. After phase 2, change the National Register registration to
 `ShapeProperties.NationalRegisterHistoricPlaces` (the `HRHP` archive), give it a
