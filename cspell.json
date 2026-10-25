@@ -15,6 +15,7 @@
     "package-lock.json"
   ],
   "words": [
+    "nameof",
     "actio",
     "aesgcm",
     "addext",
