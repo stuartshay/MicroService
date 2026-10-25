@@ -124,7 +124,7 @@ namespace MicroService.Service.Services.Base
 
             var relativeDirectory = registration.Directory.TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
             var relativeFileName = registration.FileName.TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
-            return Path.Combine(rootDirectory, relativeDirectory, relativeFileName);
+            return Path.Join(rootDirectory, relativeDirectory, relativeFileName);
         }
 
         public static CachedShapefileDataReader CreateDataReader(
