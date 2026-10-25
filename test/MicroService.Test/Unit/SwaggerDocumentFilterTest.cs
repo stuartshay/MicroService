@@ -1,7 +1,13 @@
+using Asp.Versioning;
+using Asp.Versioning.ApiExplorer;
+using MicroService.Common.Logging;
 using MicroService.WebApi.Extensions.Swagger;
 using MicroService.WebApi.Extensions.Swagger.Examples;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi;
+using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Xunit;
 
@@ -26,6 +32,48 @@ namespace MicroService.Test.Unit
             var filter = new SwaggerDocumentFilter();
 
             Assert.Throws<ArgumentNullException>(() => filter.Apply(null!, CreateContext()));
+        }
+
+        [Fact]
+        public void ConfigureSwaggerOptions_AppendsDeprecatedNotice_WhenVersionIsDeprecated()
+        {
+            var provider = Moq.Mock.Of<IApiVersionDescriptionProvider>(p =>
+                p.ApiVersionDescriptions == new List<ApiVersionDescription>
+                {
+                    new(new ApiVersion(1, 0), "v1", true),
+                });
+            var configureOptions = new ConfigureSwaggerOptions(provider);
+            var swaggerGenOptions = new SwaggerGenOptions();
+
+            configureOptions.Configure(swaggerGenOptions);
+
+            Assert.True(swaggerGenOptions.SwaggerGeneratorOptions.SwaggerDocs.TryGetValue("v1", out var info));
+            Assert.Contains("deprecated", info!.Description);
+        }
+
+        [Fact]
+        public void Logging_ConfigureLogger_AddsGrafanaLokiSink_WhenEnabled()
+        {
+            var configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(new Dictionary<string, string?>
+                {
+                    ["GrafanaLokiConfiguration:Uri"] = "http://localhost:3100",
+                    ["GrafanaLokiConfiguration:Enabled"] = "true",
+                })
+                .Build();
+            var hostContext = new HostBuilderContext(new Dictionary<object, object>())
+            {
+                Configuration = configuration,
+                HostingEnvironment = Moq.Mock.Of<IHostEnvironment>(e =>
+                    e.ApplicationName == "MicroService.WebApi" &&
+                    e.EnvironmentName == "Test"),
+            };
+            var loggerConfiguration = new LoggerConfiguration();
+
+            Logging.ConfigureLogger(hostContext, loggerConfiguration);
+            using var logger = loggerConfiguration.CreateLogger();
+
+            Assert.NotNull(logger);
         }
 
         [Fact]

@@ -6,12 +6,8 @@ using System.Globalization;
 
 namespace MicroService.Service.Mappings
 {
-    public class NationalRegisterHistoricPlacesShapeProfile : ShapeProfile<NationalRegisterHistoricPlacesShape>
+    public abstract class NationalRegisterHistoricPlacesShapeProfile : ShapeProfile<NationalRegisterHistoricPlacesShape>
     {
-        protected NationalRegisterHistoricPlacesShapeProfile()
-        {
-        }
-
         public static NationalRegisterHistoricPlacesShape Map(Feature src)
         {
             ArgumentNullException.ThrowIfNull(src);
