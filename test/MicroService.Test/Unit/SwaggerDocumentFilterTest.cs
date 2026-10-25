@@ -37,12 +37,14 @@ namespace MicroService.Test.Unit
         [Fact]
         public void ConfigureSwaggerOptions_AppendsDeprecatedNotice_WhenVersionIsDeprecated()
         {
-            var provider = Moq.Mock.Of<IApiVersionDescriptionProvider>(p =>
-                p.ApiVersionDescriptions == new List<ApiVersionDescription>
-                {
-                    new(new ApiVersion(1, 0), "v1", true),
-                });
-            var configureOptions = new ConfigureSwaggerOptions(provider);
+            var providerMock = new Moq.Mock<IApiVersionDescriptionProvider>();
+            providerMock
+                .SetupGet(p => p.ApiVersionDescriptions)
+                .Returns(
+                [
+                    new ApiVersionDescription(new ApiVersion(1, 0), "v1", true),
+                ]);
+            var configureOptions = new ConfigureSwaggerOptions(providerMock.Object);
             var swaggerGenOptions = new SwaggerGenOptions();
 
             configureOptions.Configure(swaggerGenOptions);
@@ -61,12 +63,13 @@ namespace MicroService.Test.Unit
                     ["GrafanaLokiConfiguration:Enabled"] = "true",
                 })
                 .Build();
+            var hostEnvironmentMock = new Moq.Mock<IHostEnvironment>();
+            hostEnvironmentMock.SetupGet(e => e.ApplicationName).Returns("MicroService.WebApi");
+            hostEnvironmentMock.SetupGet(e => e.EnvironmentName).Returns("Test");
             var hostContext = new HostBuilderContext(new Dictionary<object, object>())
             {
                 Configuration = configuration,
-                HostingEnvironment = Moq.Mock.Of<IHostEnvironment>(e =>
-                    e.ApplicationName == "MicroService.WebApi" &&
-                    e.EnvironmentName == "Test"),
+                HostingEnvironment = hostEnvironmentMock.Object,
             };
             var loggerConfiguration = new LoggerConfiguration();
 
