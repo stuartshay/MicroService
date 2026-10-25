@@ -298,15 +298,17 @@ namespace MicroService.Test.Mappings
             }
         }
 
-        [Fact]
-        public void NationalRegisterHistoricPlacesShapeProfile_HandlesNullDateAndNulPaddedTime()
+        [Theory]
+        [InlineData("\u0000\u0000\u0000")]
+        [InlineData(null)]
+        public void NationalRegisterHistoricPlacesShapeProfile_HandlesNullDateAndEmptyOrNulPaddedTime(string? timeValue)
         {
             var feature = CreateFeature(new Dictionary<string, object?>
             {
                 { "resource_n", "Gowanus Canal Historic District" },
                 { "county", "Kings" },
                 { "date_natio", null },
-                { "time_natio", new string('\u0000', 12) },
+                { "time_natio", timeValue },
                 { "sphinx_num", "12NR06417" },
                 { "x", "-73.989" },
                 { "y", "40.677" },
@@ -321,6 +323,22 @@ namespace MicroService.Test.Mappings
             Assert.Equal("12NR06417", result.SphinxNumber);
             Assert.Equal(-73.989d, result.X);
             Assert.Equal(40.677d, result.Y);
+            Assert.Throws<ArgumentNullException>(() => NationalRegisterHistoricPlacesShapeProfile.Map(null!));
+        }
+
+        [Fact]
+        public void ShapeProfiles_HaveProtectedParameterlessConstructors()
+        {
+            var profileTypes = typeof(NationalRegisterHistoricPlacesShapeProfile).Assembly.GetTypes()
+                .Where(t => t.Namespace == "MicroService.Service.Mappings" && !t.IsAbstract)
+                .ToList();
+
+            Assert.NotEmpty(profileTypes);
+            foreach (var profileType in profileTypes)
+            {
+                var instance = Activator.CreateInstance(profileType, nonPublic: true);
+                Assert.NotNull(instance);
+            }
         }
 
         [Theory]
