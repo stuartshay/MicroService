@@ -1,7 +1,7 @@
 using MicroService.WebApi.Extensions.Swagger;
+using MicroService.WebApi.Extensions.Swagger.Examples;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.OpenApi;
-using Moq;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Xunit;
 
@@ -26,6 +26,39 @@ namespace MicroService.Test.Unit
             var filter = new SwaggerDocumentFilter();
 
             Assert.Throws<ArgumentNullException>(() => filter.Apply(null!, CreateContext()));
+        }
+
+        [Fact]
+        public void GetShapeTypesExample_ReturnsNonEmptyExamples()
+        {
+            var provider = new GetShapeTypesExample();
+
+            var examples = provider.GetExamples().ToList();
+
+            Assert.Equal(2, examples.Count);
+        }
+
+        [Fact]
+        public void GetShapePropertiesExample_ReturnsNonNullExample()
+        {
+            var provider = new GetShapePropertiesExample();
+
+            var example = provider.GetExamples();
+
+            Assert.NotNull(example);
+        }
+
+        [Fact]
+        public void SwaggerFeatureRequestExamples_ReturnsExpectedDefaultExample()
+        {
+            var provider = new SwaggerFeatureRequestExamples();
+
+            var example = provider.GetExamples();
+
+            Assert.NotNull(example);
+            Assert.Equal("IndividualLandmarkHistoricDistricts", example.Key);
+            Assert.NotNull(example.Attributes);
+            Assert.Single(example.Attributes);
         }
 
         private static DocumentFilterContext CreateContext() => new(
