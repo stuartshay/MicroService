@@ -41,10 +41,8 @@ to pass a failing comparison.
 | ScenicLandmarks | 11 | None |
 | Subway | 1,928 | None |
 | ZipCodes | 263 | None |
-| NationalRegisterService | 1,520 | None |
 
-The 16 archives contain **61,580 records**. The separate National Register service
-binding comparison covers 1,520 of those records again. No attribute, geometry,
+The 16 archives contain **61,580 records**. No attribute, geometry,
 mapping-outcome, or metadata differences remain.
 
 ## Compatibility decisions
@@ -65,16 +63,15 @@ mapping-outcome, or metadata differences remain.
 - Both request-time reads and cron refreshes use the same adapter and dispose
   readers immediately. Cache eviction opens a fresh reader, avoiding reused cursors.
 
-## Existing National Register mismatch
+## National Register dataset alignment (#526)
 
-The HRHP archive has a different schema from its named mapper, which expects LPC
-Individual Landmark fields. All 6,417 raw HRHP records produce the same missing
-`objectid` mapping error with both readers. Snapshots record the error type/message
-and count so failures are explicit, not silently dropped. The actual service
-currently resolves the Individual Landmark archive; its 1,520 mapped records have
-no failures and compare exactly. This pre-existing mismatch is tracked in
-[issue #526](https://github.com/stuartshay/MicroService/issues/526). Changing that
-binding needs its own response-contract review.
+During the initial reader migration, `NationalRegisterHistoricPlacesService` resolved
+`IndividualLandmarkSite` while `NationalRegisterHistoricPlacesShapeProfile` expected LPC
+Individual Landmark fields. In Phase 4 ([#526](https://github.com/stuartshay/MicroService/issues/526)),
+`NationalRegisterHistoricPlacesService`, `NationalRegisterHistoricPlacesShape`, and
+`NationalRegisterHistoricPlacesShapeProfile` were aligned with the `HRHP` archive schema
+(`resource_n`, `county`, `date_natio`, `time_natio`, `sphinx_num`, `x`, `y`), mapping all
+6,417 records with zero failures.
 
 ## Pre-merge HTTP checks
 

@@ -18,12 +18,6 @@ namespace MicroService.Test.Compatibility
             AssertSnapshot(dataset, dataset, dataset.ToString());
         }
 
-        [Fact]
-        public void NationalRegisterService_MatchesItsExistingIndividualLandmarkBinding()
-        {
-            AssertSnapshot(ShapeProperties.NationalRegisterHistoricPlaces, ShapeProperties.IndividualLandmarkSite, "NationalRegisterService");
-        }
-
         private static void AssertSnapshot(ShapeProperties dataset, ShapeProperties source, string baseline)
         {
             var root = FindRepositoryRoot();

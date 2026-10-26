@@ -270,37 +270,24 @@ namespace MicroService.Test.Mappings
                 System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo(culture);
                 var feature = CreateFeature(new Dictionary<string, object?>
                 {
-                    { "objectid", "8" },
-                    { "bbl", "5000070001" },
-                    { "borough", "SI" },
-                    { "lpc_lpnumb", "LP-01207" },
-                    { "lpc_name", "Staten Island Borough Hall" },
-                    { "lpc_site_d", "Site" },
-                    { "landmark_t", "Individual Landmark" },
-                    { "lpc_site_s", "Designated" },
-                    { "lpc_altern", "Alt" + '\u0000' },
-                    { "address", "10 Richmond Terrace" },
-                    { "date_des_d", "1982-03-23" },
-                    { "time_des_d", "00:00:00.000" },
-                    { "block", "7.5" },
-                    { "lot", "1.5" },
-                    { "url_report", "http://example.com" },
-                    { "shape_area", "10.0" },
-                    { "shape_leng", "20.0" },
+                    { "resource_n", "Ocean Parkway" },
+                    { "county", "Kings" },
+                    { "date_natio", "1983-09-08" },
+                    { "time_natio", "00:00:00.000" },
+                    { "sphinx_num", "90NR01303" },
+                    { "x", "-73.9687673796" },
+                    { "y", "40.6108841936" },
                 });
 
                 var result = NationalRegisterHistoricPlacesShapeProfile.Map(feature);
 
-                Assert.Equal(8d, result.ObjectId);
-                Assert.Equal(5000070001d, result.Bbl);
-                Assert.Equal("SI", result.BoroName);
-                Assert.Equal(5, result.BoroCode);
-                Assert.Equal("LP-01207", result.LPNumber);
-                Assert.Equal("Staten Island Borough Hall", result.AreaName);
-                Assert.Equal("Alt", result.AlternativeName);
-                Assert.Equal(new DateTime(1982, 3, 23), result.DateDesignated);
-                Assert.Equal(7.5d, result.Block);
-                Assert.Equal(1.5d, result.Lot);
+                Assert.Equal("Ocean Parkway", result.ResourceName);
+                Assert.Equal("Kings", result.County);
+                Assert.Equal(new DateTime(1983, 9, 8), result.DateDesignated);
+                Assert.Equal("00:00:00.000", result.TimeDesignated);
+                Assert.Equal("90NR01303", result.SphinxNumber);
+                Assert.Equal(-73.9687673796d, result.X);
+                Assert.Equal(40.6108841936d, result.Y);
                 Assert.Same(DefaultGeometry, result.Geometry);
                 Assert.NotNull(result.BoundingBox);
                 Assert.Null(result.Feature);
@@ -308,6 +295,49 @@ namespace MicroService.Test.Mappings
             finally
             {
                 System.Globalization.CultureInfo.CurrentCulture = previousCulture;
+            }
+        }
+
+        [Theory]
+        [InlineData("\u0000\u0000\u0000")]
+        [InlineData(null)]
+        public void NationalRegisterHistoricPlacesShapeProfile_HandlesNullDateAndEmptyOrNulPaddedTime(string? timeValue)
+        {
+            var feature = CreateFeature(new Dictionary<string, object?>
+            {
+                { "resource_n", "Gowanus Canal Historic District" },
+                { "county", "Kings" },
+                { "date_natio", null },
+                { "time_natio", timeValue },
+                { "sphinx_num", "12NR06417" },
+                { "x", "-73.989" },
+                { "y", "40.677" },
+            });
+
+            var result = NationalRegisterHistoricPlacesShapeProfile.Map(feature);
+
+            Assert.Equal("Gowanus Canal Historic District", result.ResourceName);
+            Assert.Equal("Kings", result.County);
+            Assert.Equal(default, result.DateDesignated);
+            Assert.Equal(string.Empty, result.TimeDesignated);
+            Assert.Equal("12NR06417", result.SphinxNumber);
+            Assert.Equal(-73.989d, result.X);
+            Assert.Equal(40.677d, result.Y);
+            Assert.Throws<ArgumentNullException>(() => NationalRegisterHistoricPlacesShapeProfile.Map(null!));
+        }
+
+        [Fact]
+        public void ShapeProfiles_HaveProtectedParameterlessConstructors()
+        {
+            var profileTypes = typeof(NationalRegisterHistoricPlacesShapeProfile).Assembly.GetTypes()
+                .Where(t => t.Namespace == "MicroService.Service.Mappings" && !t.IsAbstract)
+                .ToList();
+
+            Assert.NotEmpty(profileTypes);
+            foreach (var profileType in profileTypes)
+            {
+                var instance = Activator.CreateInstance(profileType, nonPublic: true);
+                Assert.NotNull(instance);
             }
         }
 

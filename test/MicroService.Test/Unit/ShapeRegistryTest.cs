@@ -67,20 +67,6 @@ namespace MicroService.Test.Unit
         }
 
         [Fact]
-        public void DatasetKey_MatchesKeyExceptForDocumentedNationalRegisterOverride()
-        {
-            // Issue #526: NationalRegisterHistoricPlacesService reads IndividualLandmarkSite until Phase 4.
-            var overrides = ShapeRegistry.All
-                .Where(r => r.DatasetKey != r.Key)
-                .ToList();
-
-            var exception = Assert.Single(overrides);
-            Assert.Equal(ShapeProperties.NationalRegisterHistoricPlaces, exception.Key);
-            Assert.Equal(ShapeProperties.IndividualLandmarkSite, exception.DatasetKey);
-            Assert.Equal(nameof(ShapeProperties.IndividualLandmarkSite), exception.DatasetKeyName);
-        }
-
-        [Fact]
         public void EveryRegisteredService_ResolvesAndOpensDatasetFileNamedByRegistry()
         {
             var options = _fixture.ServiceProvider.GetRequiredService<IOptions<ApplicationOptions>>();
@@ -100,10 +86,9 @@ namespace MicroService.Test.Unit
                 Assert.NotNull(readerProperty);
 
                 var reader = Assert.IsType<CachedShapefileDataReader>(readerProperty.GetValue(resolvedByKey));
-                var datasetRegistration = ShapeRegistry.GetByKey(registration.DatasetKey);
-                var expectedFilePath = ShapeRegistry.GetShapeFilePath(rootDirectory, datasetRegistration);
+                var expectedFilePath = ShapeRegistry.GetShapeFilePath(rootDirectory, registration);
 
-                Assert.Equal(registration.DatasetKeyName, reader.ShapeKey);
+                Assert.Equal(registration.KeyName, reader.ShapeKey);
                 Assert.Equal(expectedFilePath, reader.FilePath);
                 Assert.True(resolvedByKey.GetShapeDatabaseProperties().NumRecords > 0);
             }

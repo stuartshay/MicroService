@@ -1,5 +1,3 @@
-using MicroService.Data.Enum;
-using MicroService.Service.Helpers;
 using MicroService.Service.Mappings.Base;
 using MicroService.Service.Models;
 using NetTopologySuite.Features;
@@ -20,35 +18,18 @@ namespace MicroService.Service.Mappings
 
             return new NationalRegisterHistoricPlacesShape
             {
-                ObjectId = ParseDouble(src, "objectid"),
-                Bbl = ParseDouble(src, "bbl"),
-                BoroName = GetString(src, "borough"),
-                BoroCode = GetBoroCode(src),
-                LPNumber = GetString(src, "lpc_lpnumb"),
-                AreaName = GetString(src, "lpc_name"),
-                SiteDesignation = GetString(src, "lpc_site_d"),
-                LandmarkType = GetString(src, "landmark_t"),
-                DesignationStatus = GetString(src, "lpc_site_s"),
-                AlternativeName = GetSanitizedString(src, "lpc_altern")!,
-                Address = GetString(src, "address"),
-                DateDesignated = DateTime.Parse(GetString(src, "date_des_d"), CultureInfo.InvariantCulture),
-                TimeDesignated = GetString(src, "time_des_d"),
-                Block = double.Parse(GetString(src, "block"), CultureInfo.InvariantCulture),
-                Lot = double.Parse(GetString(src, "lot"), CultureInfo.InvariantCulture),
-                UrlReport = GetString(src, "url_report"),
-                ShapeArea = ParseDouble(src, "shape_area"),
-                ShapeLength = ParseDouble(src, "shape_leng"),
+                ResourceName = GetString(src, "resource_n"),
+                County = GetString(src, "county"),
+                DateDesignated = DateTime.TryParse(GetString(src, "date_natio"), CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateDesignated)
+                    ? dateDesignated
+                    : default,
+                TimeDesignated = GetSanitizedString(src, "time_natio") ?? string.Empty,
+                SphinxNumber = GetString(src, "sphinx_num"),
+                X = ParseDouble(src, "x"),
+                Y = ParseDouble(src, "y"),
                 BoundingBox = MapBoundingBox(src.BoundingBox),
                 Geometry = src.Geometry,
             };
-        }
-
-        private static int GetBoroCode(Feature src)
-        {
-            var borough = GetString(src, "borough");
-            return src.Attributes["borough"] != null && EnumHelper.IsEnumValid<Borough>(borough)
-                ? (int)Enum.Parse<Borough>(borough)
-                : 0;
         }
     }
 }

@@ -65,39 +65,28 @@ namespace MicroService.Test.Integration
             Assert.NotNull(features);
         }
 
-        [InlineData(941558.433957287, 151587.69409039995, "SI", "LP-00369")]
-        [Theory(DisplayName = "Get Geospatial Point Lookup - NAD83")]
-        [Trait("Category", "Integration")]
-        public void Get_Geospatial_Point_Lookup(double x, double y, string expected, object expected2)
-        {
-            var sut = _service.GetFeatureLookup(x, y, Datum.Nad83);
-
-            Assert.NotNull(sut);
-            Assert.Equal(expected, sut.BoroName);
-            Assert.Equal(expected2, sut.LPNumber);
-        }
-
-        [InlineData(-74.15369462028448, 40.58264640562773, "SI", "LP-00369")]
+        [InlineData(-73.9687673796, 40.6108841936, "Kings", "90NR01303")]
         [Theory(DisplayName = "Get Geospatial Point Lookup - WGS84")]
         [Trait("Category", "Integration")]
-        public void Get_Geospatial_Point_Lookup_Wgs84(double longitude, double latitude, string expected, object expected2)
+        public void Get_Geospatial_Point_Lookup_Wgs84(double longitude, double latitude, string expectedCounty, string expectedSphinxNumber)
         {
             var sut = _service.GetFeatureLookup(longitude, latitude, Datum.Wgs84);
 
             Assert.NotNull(sut);
-            Assert.Equal(expected, sut.BoroName);
-            Assert.Equal(expected2, sut.LPNumber);
+            Assert.Equal(expectedCounty, sut.County);
+            Assert.Equal(expectedSphinxNumber, sut.SphinxNumber);
+            Assert.Equal("Ocean Parkway", sut.ResourceName);
         }
 
-        [InlineData("LP-01207", 8, "Staten Island Borough Hall")]
+        [InlineData("90NR01303", "Kings", "Ocean Parkway")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
-        public void Get_Feature_Attribute_Lookup(object value1, object value2, string expected)
+        public void Get_Feature_Attribute_Lookup(string sphinxNumber, string county, string expectedResourceName)
         {
             // Arrange
             var attributes = new List<KeyValuePair<string, object>>
             {
-                new("LPNumber", value1),
-                new("ObjectId", value2),
+                new("SphinxNumber", sphinxNumber),
+                new("County", county),
             };
 
             // Act
@@ -106,22 +95,21 @@ namespace MicroService.Test.Integration
 
             // Assert
             Assert.NotNull(sut);
-            Assert.Equal(expected, value?.AreaName);
-
+            Assert.Equal(expectedResourceName, value?.ResourceName);
+            Assert.Equal(county, value?.County);
+            Assert.Equal(sphinxNumber, value?.SphinxNumber);
             Assert.NotNull(value!.Geometry);
-
-            Assert.NotNull(sut);
         }
 
-        [InlineData("LP-01207", "8", "Staten Island Borough Hall")]
+        [InlineData("90NR01303", "Kings", "Ocean Parkway")]
         [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
-        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
+        public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string sphinxNumber, string county, string expectedResourceName)
         {
             // Arrange
             var attributes = new List<KeyValuePair<string, object>>
             {
-                new("LPNumber", value1),
-                new("ObjectId", value2),
+                new("SphinxNumber", sphinxNumber),
+                new("County", county),
             };
 
             // Act
@@ -134,7 +122,9 @@ namespace MicroService.Test.Integration
             Assert.IsType<FeatureCollection>(sut);
             Assert.NotNull(result);
 
-            Assert.Equal(expected, result.Attributes["AreaName"]);
+            Assert.Equal(expectedResourceName, result.Attributes["ResourceName"]);
+            Assert.Equal(county, result.Attributes["County"]);
+            Assert.Equal(sphinxNumber, result.Attributes["SphinxNumber"]);
         }
 
         [InlineData(1006187, 732036)]

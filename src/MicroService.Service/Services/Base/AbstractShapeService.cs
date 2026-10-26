@@ -30,7 +30,7 @@ namespace MicroService.Service.Services.Base
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             MapFeature = mapFeature ?? throw new ArgumentNullException(nameof(mapFeature));
             var registration = ShapeRegistry.GetByServiceType(GetType());
-            ShapeFileDataReader = shapefileDataReaderResolver(registration.DatasetKeyName);
+            ShapeFileDataReader = shapefileDataReaderResolver(registration.KeyName);
         }
 
         public ShapefileProperties GetShapeProperties()
