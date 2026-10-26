@@ -110,6 +110,34 @@
       ],
       "groupName": "Docker images",
       "groupSlug": "docker-images"
+    },
+    {
+      "description": "Major .NET image updates move the build and runtime off the target framework (net10.0); approve from the Dependency Dashboard together with a framework upgrade",
+      "matchManagers": [
+        "dockerfile"
+      ],
+      "matchPackageNames": [
+        "mcr.microsoft.com/dotnet/**"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Major updates of the local observability stack need configuration migration; approve from the Dependency Dashboard",
+      "matchManagers": [
+        "dockerfile",
+        "docker-compose"
+      ],
+      "matchPackageNames": [
+        "grafana/**",
+        "prom/**"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "dependencyDashboardApproval": true
     }
   ]
 }

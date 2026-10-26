@@ -23,6 +23,11 @@ on:
       - 'src/**'
       - 'test/**'
       - 'docker/microservice-api-multi.dockerfile/**'
+      # Build inputs: SDK and package updates must deploy too
+      - 'global.json'
+      - 'Directory.Build.props'
+      - 'Directory.Packages.props'
+      - 'NuGet.config'
       - '.github/workflows/actions.yml'
     branches:
       - master
