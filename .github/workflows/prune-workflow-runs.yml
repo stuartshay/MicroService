@@ -1,7 +1,8 @@
 name: Prune workflow runs
 
 # Deletes this repository's completed workflow runs (and their logs) that are
-# more than 7 days old. Deployed services, images and commits are unaffected.
+# more than 7 days old, keeping the newest run of each workflow whatever its
+# age. Deployed services, images and commits are unaffected.
 on:
   schedule:
     - cron: '17 6 * * 1'
@@ -26,14 +27,55 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           cutoff="$(date -u -d '7 days ago' +%Y-%m-%d)"
-          deleted=0
-          while :; do
-            ids="$(gh api "repos/${REPO}/actions/runs?per_page=100&created=<${cutoff}" \
-              --jq '.workflow_runs[] | select(.status == "completed") | .id')"
-            [ -z "${ids}" ] && break
-            for id in ${ids}; do
-              gh api -X DELETE "repos/${REPO}/actions/runs/${id}" --silent
-              deleted=$((deleted + 1))
+
+          # The newest run of each workflow is always kept
+          keep=" "
+          for workflow in $(gh api "repos/${REPO}/actions/workflows" --paginate --jq '.workflows[].id'); do
+            latest="$(gh api "repos/${REPO}/actions/workflows/${workflow}/runs?per_page=1" \
+              --jq '.workflow_runs[0].id // empty')"
+            [ -n "${latest}" ] && keep="${keep}${latest} "
+          done
+          echo "Keeping the newest run of each workflow:${keep}"
+
+          # 404 means the run is already gone. Rate limits and server errors are
+          # retried; a run that still can't be deleted is skipped and reported.
+          delete_run() {
+            local attempt status
+            for attempt in 1 2 3 4 5; do
+              status="$(gh api -X DELETE "repos/${REPO}/actions/runs/$1" --include 2>/dev/null \
+                | awk 'NR == 1 { print $2 }')" || true
+              case "${status}" in
+                2??|404) return 0 ;;
+                403|429|5??) sleep $((attempt * 15)) ;;
+                *) break ;;
+              esac
             done
+            echo "::warning::Could not delete run $1 (HTTP ${status:-none})"
+            return 1
+          }
+
+          deleted=0
+          failed=0
+          skip="${keep}"
+          while :; do
+            # The age is checked here too, so a recent run is never deleted even if
+            # the API ignored the created filter
+            ids="$(gh api "repos/${REPO}/actions/runs?per_page=100&created=%3C${cutoff}" \
+              --jq ".workflow_runs[] | select(.status == \"completed\" and .created_at < \"${cutoff}\") | .id")"
+            batch=0
+            for id in ${ids}; do
+              case "${skip}" in *" ${id} "*) continue ;; esac
+              # Each run is tried once, so a run the listing still returns
+              # (deleted moments ago, or undeletable) can't loop forever
+              skip="${skip}${id} "
+              batch=$((batch + 1))
+              if delete_run "${id}"; then
+                deleted=$((deleted + 1))
+              else
+                failed=$((failed + 1))
+              fi
+            done
+            [ "${batch}" -eq 0 ] && break
           done
           echo "Deleted ${deleted} runs created before ${cutoff}"
+          [ "${failed}" -eq 0 ] || { echo "::error::${failed} runs could not be deleted"; exit 1; }
