@@ -26,14 +26,20 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
         run: |
+          set -euo pipefail
           cutoff="$(date -u -d '7 days ago' +%Y-%m-%d)"
 
-          # The newest run of each workflow is always kept
+          # The newest run of each workflow is always kept. The workflow list is
+          # assigned first, so a failed call stops the job instead of leaving the
+          # keep list empty.
+          workflows="$(gh api "repos/${REPO}/actions/workflows" --paginate --jq '.workflows[].id')"
           keep=" "
-          for workflow in $(gh api "repos/${REPO}/actions/workflows" --paginate --jq '.workflows[].id'); do
+          for workflow in ${workflows}; do
             latest="$(gh api "repos/${REPO}/actions/workflows/${workflow}/runs?per_page=1" \
               --jq '.workflow_runs[0].id // empty')"
-            [ -n "${latest}" ] && keep="${keep}${latest} "
+            if [ -n "${latest}" ]; then
+              keep="${keep}${latest} "
+            fi
           done
           echo "Keeping the newest run of each workflow:${keep}"
 
@@ -58,9 +64,10 @@ jobs:
           failed=0
           skip="${keep}"
           while :; do
-            # The age is checked here too, so a recent run is never deleted even if
-            # the API ignored the created filter
-            ids="$(gh api "repos/${REPO}/actions/runs?per_page=100&created=%3C${cutoff}" \
+            # Only completed runs are listed, so runs still in progress can't fill
+            # the page. The age is checked here too, so a recent run is never
+            # deleted even if the API ignored the created filter.
+            ids="$(gh api "repos/${REPO}/actions/runs?per_page=100&status=completed&created=%3C${cutoff}" \
               --jq ".workflow_runs[] | select(.status == \"completed\" and .created_at < \"${cutoff}\") | .id")"
             batch=0
             for id in ${ids}; do
