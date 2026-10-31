@@ -1,0 +1,39 @@
+name: Prune workflow runs
+
+# Deletes this repository's completed workflow runs (and their logs) that are
+# more than 7 days old. Deployed services, images and commits are unaffected.
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+
+concurrency:
+  group: prune-workflow-runs
+  cancel-in-progress: false
+
+jobs:
+  prune:
+    name: Delete runs older than 7 days
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Delete old runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          cutoff="$(date -u -d '7 days ago' +%Y-%m-%d)"
+          deleted=0
+          while :; do
+            ids="$(gh api "repos/${REPO}/actions/runs?per_page=100&created=<${cutoff}" \
+              --jq '.workflow_runs[] | select(.status == "completed") | .id')"
+            [ -z "${ids}" ] && break
+            for id in ${ids}; do
+              gh api -X DELETE "repos/${REPO}/actions/runs/${id}" --silent
+              deleted=$((deleted + 1))
+            done
+          done
+          echo "Deleted ${deleted} runs created before ${cutoff}"
