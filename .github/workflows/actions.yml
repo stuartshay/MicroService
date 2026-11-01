@@ -11,6 +11,8 @@ env:
   REGION: us-east4
   ASPNETCORE_ENVIRONMENT: CloudRun
   ASPNETCORE_URLS: 'http://*:5000'
+  # Cloud Run mounts this bucket at /mnt/data/shapes; publish-shapes keeps it equal to files/
+  SHAPES_BUCKET: files-shapes
 
 # Jobs that sign in to Google Cloud add id-token: write (workload identity, no key)
 permissions:
@@ -18,9 +20,17 @@ permissions:
 
 on:
   workflow_dispatch:
+    inputs:
+      allow_deletions:
+        description: 'Let publish-shapes delete shape files or more than 20 objects not deleted in git'
+        type: boolean
+        default: false
   push:
     paths:
       - 'src/**'
+      # Shapefiles: publish-shapes copies them to the bucket, and the deploy reloads them
+      - 'files/**'
+      - 'scripts/publish-shapes.py'
       - 'test/**'
       - 'docker/microservice-api-multi.dockerfile/**'
       # Build inputs: SDK and package updates must deploy too
@@ -100,12 +110,62 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PRUNE_TOKEN: ${{ secrets.DOCKERHUB_PRUNE_TOKEN }}
 
+  # Makes the shapes bucket match files/ before the deploy, so a change to files and code lands
+  # together; the new revision then reloads the cached shapes. Each replaced or deleted object
+  # is copied to _previous/<date>-<commit>/ first (the bucket keeps no versions), and backups
+  # older than 90 days are pruned. See docs/shapefile-refresh-plan.md, phase 0.
+  publish-shapes:
+    name: Publish shapes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    environment:
+      name: prod
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          # The previous master commit, to tell deletions made in git from strays in the bucket
+          fetch-depth: 0
+
+      - name: Google Auth
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOYER }}
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db # v3
+        with:
+          project_id: ${{ secrets.GCP_PROJECT }}
+
+      - name: Publish files/ to the shapes bucket
+        env:
+          BEFORE: ${{ github.event.before }}
+          ALLOW_DELETIONS: ${{ inputs.allow_deletions || false }}
+        run: |
+          set -euo pipefail
+          deleted="$(mktemp)"
+          # A push names the previous master commit; a manual run has none
+          if [[ -n "${BEFORE:-}" && ! "${BEFORE}" =~ ^0+$ ]] && git cat-file -e "${BEFORE}^{commit}" 2>/dev/null; then
+            git diff --name-only --diff-filter=D "${BEFORE}" "${GITHUB_SHA}" -- files/ | sed 's#^files/##' > "${deleted}"
+          fi
+          args=(publish --bucket "${SHAPES_BUCKET}" --git-deleted "${deleted}"
+                --backup-prefix "_previous/$(date -u +%Y%m%d)-${GITHUB_SHA::7}")
+          if [[ "${ALLOW_DELETIONS}" == "true" ]]; then
+            args+=(--allow-deletions)
+          fi
+          python3 scripts/publish-shapes.py "${args[@]}"
+
+      - name: Remove backups older than 90 days
+        run: python3 scripts/publish-shapes.py prune --bucket "${SHAPES_BUCKET}" --keep-days 90
+
   deploy-googlecloud:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
-    needs: build
+    needs: [build, publish-shapes]
     environment:
       name: prod
       url: ${{ steps.deploy.outputs.url }}

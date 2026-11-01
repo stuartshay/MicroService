@@ -7,8 +7,8 @@ PRE_COMMIT ?= $(HOME)/.local/share/MicroService/pre-commit/bin/pre-commit
 RUN_ANALYZERS ?= 0
 ANALYZE_CONFIGURATION ?= Release
 LPC_DIRECTORY := files/LPC_Individual_Landmark_and_Historic_Building_Database
-TEST_DATA_ZIP := $(LPC_DIRECTORY)/20231209/Individual Landmark and Historic District Building Database_20240211.zip
 TEST_DATA_DBF := $(LPC_DIRECTORY)/LPC_Individual_Landmark_and_Historic_District_Building_Database_20231209.dbf
+TEST_DATA_ZIP := $(TEST_DATA_DBF).zip
 
 .DEFAULT_GOAL := help
 
@@ -65,15 +65,15 @@ run:
 
 test: test-data
 	python3 scripts/test_dockerhub_prune.py
+	python3 scripts/test_publish_shapes.py
 	$(DOTNET) test --project $(TEST_PROJECT) --configuration $(CONFIGURATION)
 
-# The building database .dbf is git-ignored; extract it from the committed zip
-# the same way CI's "Prepare test data" step does.
+# A .dbf over GitHub's 100 MB limit is committed as <name>.dbf.zip and git-ignored
+# unzipped; extract it the same way CI and publish-shapes do.
 test-data: $(TEST_DATA_DBF)
 
-$(TEST_DATA_DBF):
-	unzip -p '$(TEST_DATA_ZIP)' 'geo_export_590d5a7b-ac38-4625-a642-55d90456869d.dbf' > '$@.tmp'
-	mv '$@.tmp' '$@'
+$(TEST_DATA_DBF): $(TEST_DATA_ZIP)
+	python3 scripts/publish-shapes.py unzip
 
 sonar:
 	./scripts/sonar.sh

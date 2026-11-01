@@ -2,7 +2,8 @@
 
 <!-- cspell:ignore Ditmas Douglaston HRHP MODZCTA Queensboro Willoughby ZCTA ZCTAs borocd borocode calda damg desda dsny enfh gfnw gkve gpmc gthc hcne landmarkty lpnumb mpzq ncre nybb nycd nynta nypp phvi planimetric pvji qexa qhxs sitede sitest skyk xbvj yuvp -->
 
-Status: draft for the owner's review (2026-11-01). Nothing has changed yet.
+Status: phase 0 in review (2026-11-01); the owner approved phase 0. The other phases
+are drafts for the owner's review.
 
 The shapefiles in `files/` are two to eight years old. The landmark ones stop at
 December 2022, so the 2023–2026 designations have no outline on CoreDataStore's

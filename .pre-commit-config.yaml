@@ -3,6 +3,9 @@ repos:
     rev: v6.0.0
     hooks:
       - id: check-added-large-files
+        # Shapefiles are routinely over 500 KB; GitHub's 100 MB limit applies, and a
+        # larger .dbf is committed as <name>.dbf.zip (scripts/publish-shapes.py)
+        exclude: ^files/
       - id: check-case-conflict
       - id: check-executables-have-shebangs
       - id: check-json

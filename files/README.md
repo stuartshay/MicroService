@@ -1,5 +1,9 @@
 # NYC Open Data Sources
 
+Merging a change to `files/` publishes it to the production bucket; see
+"Shape Files" in the [README](../README.md). A `.dbf` over 100 MB is committed as
+`<name>.dbf.zip`.
+
 ## Borough Boundaries
 
 <https://data.cityofnewyork.us/City-Government/Borough-Boundaries/tqmj-j8zm>
