@@ -255,3 +255,14 @@ jobs:
           fi
 
           echo "Deployment health check passed: ${HEALTH_URL}"
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          sparse-checkout: scripts/shape-smoke-check.sh
+          sparse-checkout-cone-mode: false
+
+      # One known lookup per shape a client uses: catches a shape that did not load
+      - name: Shape smoke check
+        env:
+          BASE_URL: ${{ needs['deploy-googlecloud'].outputs.url }}
+        run: scripts/shape-smoke-check.sh "${BASE_URL}"
