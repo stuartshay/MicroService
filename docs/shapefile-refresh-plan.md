@@ -2,8 +2,11 @@
 
 <!-- cspell:ignore Ditmas Douglaston HRHP MODZCTA Queensboro Willoughby ZCTA ZCTAs borocd borocode calda damg desda dsny enfh gfnw gkve gpmc gthc hcne landmarkty lpnumb mpzq ncre nybb nycd nynta nypp phvi planimetric pvji qexa qhxs sitede sitest skyk xbvj yuvp -->
 
-Status: phase 0 in review (2026-11-01); the owner approved phase 0. The other phases
-are drafts for the owner's review.
+Status: phase 0 live (2026-11-01, #551, revision `microservice-api-00169-tnz`).
+The first publish matched the dry run (6 added, 19 replaced, 28 removed) and the
+bucket matches git, but rsync also deleted that run's 47 backups. They are in soft
+delete until 2026-11-08; the publish fix keeps backups out of the deletions. The
+other phases are drafts for the owner's review.
 
 The shapefiles in `files/` are two to eight years old. The landmark ones stop at
 December 2022, so the 2023–2026 designations have no outline on CoreDataStore's
@@ -108,14 +111,17 @@ before `deploy-googlecloud` when `files/` changed:
 1. Unzip every `*.dbf.zip` in place.
 2. Sign in with workload identity as the deployer.
 3. List the changes: `gcloud storage rsync --dry-run --checksums-only
-   --delete-unmatched-destination-objects files/ gs://files-shapes`, excluding
-   `_previous/`.
+   --delete-unmatched-destination-objects files/ gs://files-shapes`, then drop
+   `_previous/` paths from the deletions. An `--exclude` filters only the source,
+   so it does not protect bucket objects from deletion.
 4. Back up every object that will be replaced or deleted to
    `gs://files-shapes/_previous/<commit>/`.
 5. Guard: stop if the change would delete a file a shape in `ShapeProperties`
    reads, or more than 20 objects, unless the run was started by hand with
    `allow_deletions`.
-6. Run the sync.
+6. Run the sync without `--delete-unmatched-destination-objects`, then delete the
+   planned removals with `gcloud storage rm`. The first publish (2026-11-01) let
+   rsync delete and lost its own 47 backups to soft delete; see the status.
 7. The deploy runs as today, then a smoke check: one known lookup per changed
    shape.
 
