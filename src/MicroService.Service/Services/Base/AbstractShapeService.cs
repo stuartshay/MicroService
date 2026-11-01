@@ -192,18 +192,7 @@ namespace MicroService.Service.Services.Base
 
         public virtual TShape? GetFeatureLookup(double x, double y, Datum datum)
         {
-            ShapePropertiesAttribute shapePropertiesAttribute = typeof(TShape)
-                .GetCustomAttributes(typeof(ShapePropertiesAttribute), false)
-                .OfType<ShapePropertiesAttribute>()
-                .SingleOrDefault()
-                ?? throw new InvalidOperationException($"{typeof(TShape)} does not declare a {nameof(ShapePropertiesAttribute)}.");
-
-            ShapeProperties shapeProperties = shapePropertiesAttribute.ShapeProperties;
-            Datum sourceDatum = shapeProperties.GetAttribute<ShapeAttribute>().Datum;
-
-            (x, y) = TransformCoordinates(x, y, datum, sourceDatum);
-
-            var point = new Point(x, y);
+            var point = ToShapePoint(x, y, datum);
 
             var features = GetFeatures();
             var feature = features.FirstOrDefault(f => f.Geometry.Contains(point));
@@ -218,6 +207,24 @@ namespace MicroService.Service.Services.Base
 
         public IReadOnlyCollection<Feature> GetFeatures() =>
                 ShapeFileDataReader.GetFeatures();
+
+        /// <summary>
+        /// The request's point in the shapefile's own datum, from the shape's [Shape] attribute.
+        /// </summary>
+        protected static Point ToShapePoint(double x, double y, Datum datum)
+        {
+            ShapePropertiesAttribute shapePropertiesAttribute = typeof(TShape)
+                .GetCustomAttributes(typeof(ShapePropertiesAttribute), false)
+                .OfType<ShapePropertiesAttribute>()
+                .SingleOrDefault()
+                ?? throw new InvalidOperationException($"{typeof(TShape)} does not declare a {nameof(ShapePropertiesAttribute)}.");
+
+            ShapeProperties shapeProperties = shapePropertiesAttribute.ShapeProperties;
+            Datum sourceDatum = shapeProperties.GetAttribute<ShapeAttribute>().Datum;
+
+            (x, y) = TransformCoordinates(x, y, datum, sourceDatum);
+            return new Point(x, y);
+        }
 
         private static (double, double) TransformCoordinates(double x, double y, Datum fromDatum, Datum toDatum)
         {

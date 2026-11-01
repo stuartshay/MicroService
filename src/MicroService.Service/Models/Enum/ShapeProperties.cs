@@ -77,7 +77,7 @@ namespace MicroService.Service.Models.Enum
         ScenicLandmarks,
 
         [Description("Subway")]
-        [Shape("Subway_Entrances", "Subway_Entrances", Datum.Nad83)]
+        [Shape("Subway_Entrances", "Subway_Entrances", Datum.Wgs84)]
         [ShapeStyle(Color.Blue)]
         Subway,
 
