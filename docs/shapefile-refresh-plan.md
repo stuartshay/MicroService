@@ -7,7 +7,8 @@ The first publish matched the dry run (6 added, 19 replaced, 28 removed) and the
 bucket matches git, but rsync also deleted that run's 47 backups. The owner chose
 not to restore them: git holds every earlier version. #552 (revision
 `microservice-api-00170-8d5`) keeps backups out of the deletions. The other phases
-are drafts for the owner's review.
+are drafts for the owner's review, paused for now: only the landmark shapes have
+clients today.
 
 The shapefiles in `files/` are two to eight years old. The landmark ones stop at
 December 2022, so the 2023–2026 designations have no outline on CoreDataStore's
@@ -123,8 +124,9 @@ before `deploy-googlecloud` when `files/` changed:
 6. Run the sync without `--delete-unmatched-destination-objects`, then delete the
    planned removals with `gcloud storage rm`. The first publish (2026-11-01) let
    rsync delete and lost its own 47 backups to soft delete; see the status.
-7. The deploy runs as today, then a smoke check: one known lookup per changed
-   shape.
+7. The deploy runs as today, then `scripts/shape-smoke-check.sh` runs one
+   known lookup for each shape a client uses (the four landmark shapes, borough
+   boundaries and Subway Entrances).
 
 Deletions are mirrored, so the bucket always matches git; the backup and the
 guard make that safe. A lifecycle rule deletes `_previous/` objects after 90
@@ -150,8 +152,8 @@ the removal and keeps a copy in `_previous/`:
 - the `20231209/` raw export zip, once its `.dbf` follows the convention above
   (phase 1 replaces it with the 2026 export anyway).
 
-`Subway_Stations/` is in git but not in the bucket, and no shape reads it. It
-goes into phase 3 with Subway Entrances.
+`Subway_Stations/` is in git and, since the first publish, in the bucket; no
+shape reads it. It goes into phase 3 with Subway Entrances.
 
 **Done when:** a pull request that changes only `files/README.md` publishes,
 deploys and passes the smoke check, and the bucket matches git.
@@ -279,10 +281,11 @@ One decision each; none of them is used by CoreDataStore today.
 
 ## Found during the review
 
-- **Subway Entrances projection:** the file's `.prj` is WGS 84, but
-  `ShapeProperties` configures it as `Datum.Nad83`. If it is served, the points
-  may be transformed into the wrong place. Phase 1 adds a test; the fix goes
-  with phase 3.
+- **Subway Entrances projection (fixed in #554):** the file's `.prj` is WGS 84,
+  but `ShapeProperties` configured it as `Datum.Nad83`, and the lookup treated
+  every request as NAD83. A WGS 84 lookup at Lexington Ave & 68th St returned a
+  Staten Island Railway entrance. The shape is now `Wgs84` and the lookup
+  honours the request's datum.
 - **Encoding:** the exports are UTF-8 with a `.cpg` file, which
   `ShapefileSource` already honours. Without it, a name like "Central Harlem –
   West 130th-132nd Streets Historic District" would be misread.
@@ -318,8 +321,8 @@ pull requests. **Owner**: decisions and sources.
 | Item | Owner | Depends on | Notes |
 | --- | --- | --- | --- |
 | Review this plan and add details | Owner | — | |
-| Phase 0: `publish-shapes` job, large-file convention, clean-up | Claude | — | Merging deploys |
-| Phase 0: deployer gets object admin on `files-shapes` (Terraform) | Claude (+ owner applies) | — | nyc-landmarks-vector-db |
+| Phase 0: `publish-shapes` job, large-file convention, clean-up | Claude | — | Done: #551, #552 (backups), smoke check #555 |
+| Phase 0: deployer gets object admin on `files-shapes` (Terraform) | Claude (+ owner applies) | — | Done: nyc-landmarks-vector-db #465, #466 (bucket metadata read) |
 | Projection for the three NAD83 shapes: City Planning releases (a) or WGS 84 exports (b) | Owner | — | (a) needs City Planning's download links |
 | Phase 1: refresh script, `files/README.md`, the four shapes and their tests | Agent or Claude | Phase 0 and the projection decision | Merging publishes and deploys |
 | Phase 2: missing features, merge or follow the city | Owner | — | Proposal: merge and mark as kept |
