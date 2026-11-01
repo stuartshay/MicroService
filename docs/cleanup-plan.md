@@ -1,7 +1,8 @@
 # Cleanup Plan
 
-Status: in progress (2026-10-25). Phases 1, 2 (#533), and 3 (#534) are
-complete; Phase 4 (#526) remains.
+Status: complete (updated 2026-10-31). Phases 1, 2 (#533), 3 (#535) and 4
+(#536) are done; the owner steps left are in
+[Remaining work and owners](#remaining-work-and-owners).
 
 This plan follows the [improvement plan](improvement-plan.md), which is
 complete: every phase of it has merged and is deployed. It comes from a review
@@ -172,13 +173,20 @@ Open one issue for each item, so it is tracked outside this document:
 
 - Phase 2: #532 (closed by #533).
 - Phase 3: #534 (closed by #535).
-- Phase 4: #526.
+- Phase 4: #526 (closed by #536).
 
-## Who can do each phase
+## Remaining work and owners
 
-MicroService restores from nuget.org only, so cloud agents can build and test
-it. Phases 2 and 3 suit cloud agents once the Pages decision is made. Phase 4
-needs the request-log check and a decision on the response model first.
+Both plans are done (updated 2026-10-31). What's left is owner steps and dependency upgrades. **Agent**: repository-only work in one pull request that stops for review. **Claude**: production and deploy work, and reviewing agent pull requests. **Owner**: decisions, repository settings and credentials.
+
+| Item | Owner | Status / notes |
+| --- | --- | --- |
+| GitHub Pages | Owner | Still on: `https://stuartshay.github.io/MicroService/` serves the stale DocFX from `gh-pages`. Turn Pages off, then delete the branch (recommended) |
+| The `develop` branch | Owner | Still exists with legacy protection; remove the protection, then delete it |
+| The local `credentials/gcp-gh-actions-navigator.json` and its disabled key `d3b8e69e` | Owner | Delete the file and the key in IAM |
+| Major upgrades (.NET 11 images, Loki 3, Grafana 13, Prometheus 3) | Agent, then Claude verifies the deploy | Approve each in Renovate's Dependency Dashboard; .NET 11 is one change (SDK, target framework, images, packages) |
+
+MicroService restores from nuget.org only, so cloud agents can build and test it.
 
 ## Validation for every pull request
 
