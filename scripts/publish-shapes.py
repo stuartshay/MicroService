@@ -29,9 +29,11 @@ ROOT = Path(__file__).resolve().parent.parent
 SHAPE_PROPERTIES = ROOT / "src/MicroService.Service/Models/Enum/ShapeProperties.cs"
 SHAPE_PARTS = (".shp", ".shx", ".dbf", ".prj", ".cpg")
 BACKUP_ROOT = "_previous"
-# Kept out of the sync on both sides: backups, and the zips that publish extracts.
-# gcloud matches each pattern from the start of the relative path (re.match).
-EXCLUDES = (rf"^{BACKUP_ROOT}/", r".*\.dbf\.zip$")
+# The zips that publish extracts stay out of the sync. gcloud matches each pattern from
+# the start of the relative path (re.match), and only against the source: an exclude
+# does not stop --delete-unmatched-destination-objects deleting bucket objects. So the
+# sync never deletes; publish removes the planned deletions itself, skipping backups.
+EXCLUDES = (r".*\.dbf\.zip$",)
 
 
 def log(message):
@@ -77,12 +79,12 @@ def configured_files(path=SHAPE_PROPERTIES):
 
 
 def rsync_args(source, bucket, dry_run):
-    args = ["storage", "rsync", "--recursive", "--checksums-only",
-            "--delete-unmatched-destination-objects"]
+    """The dry run plans deletions too; the real sync only copies."""
+    args = ["storage", "rsync", "--recursive", "--checksums-only"]
     for pattern in EXCLUDES:
         args += ["--exclude", pattern]
     if dry_run:
-        args.append("--dry-run")
+        args += ["--delete-unmatched-destination-objects", "--dry-run"]
     return args + [str(source), f"gs://{bucket}"]
 
 
@@ -101,7 +103,9 @@ def plan(source, bucket):
         if match := re.match(r"Would copy \S.* to (gs://.+)$", line):
             copies.append(object_path(match.group(1), bucket))
         elif match := re.match(r"Would (?:remove|delete) (gs://.+)$", line):
-            removals.append(object_path(match.group(1), bucket))
+            path = object_path(match.group(1), bucket)
+            if not path.startswith(f"{BACKUP_ROOT}/"):
+                removals.append(path)
     return copies, removals
 
 
@@ -167,8 +171,10 @@ def publish(args):
     for path in backups:
         gcloud("storage", "cp", f"gs://{args.bucket}/{path}",
                f"gs://{args.bucket}/{args.backup_prefix}/{path}")
-    if copies or removals:
+    if copies:
         gcloud(*rsync_args(source, args.bucket, dry_run=False))
+    if removals:
+        gcloud("storage", "rm", *(f"gs://{args.bucket}/{path}" for path in removals))
     summary(lines if copies or removals else ["no changes: the bucket already matches files/"])
 
 

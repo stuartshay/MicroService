@@ -102,16 +102,26 @@ class PublishShapesTest(unittest.TestCase):
         self.assertEqual(writes[1], ["storage", "cp", "gs://files-shapes/a/old.dbf",
                                      "gs://files-shapes/_previous/20261101-abc1234/a/old.dbf"])
         self.assertEqual(writes[2][:2], ["storage", "rsync"])
-        self.assertEqual(len(writes), 3, "a new object needs no backup")
+        self.assertEqual(writes[3], ["storage", "rm", "gs://files-shapes/a/gone.txt"])
+        self.assertEqual(len(writes), 4, "a new object needs no backup")
         self.assertIn("1 added, 1 replaced, 1 removed", result.stdout)
 
-    def test_sync_keeps_backups_and_zips_out_of_the_mirror(self):
+    def test_sync_keeps_zips_out_and_never_deletes(self):
         self.publish(copies=["a/new.shp"])
         sync = self.writes()[-1]
-        self.assertIn("--delete-unmatched-destination-objects", sync)
+        self.assertNotIn("--delete-unmatched-destination-objects", sync)
         self.assertIn("--checksums-only", sync)
         excludes = [sync[i + 1] for i, arg in enumerate(sync) if arg == "--exclude"]
-        self.assertEqual(excludes, [r"^_previous/", r".*\.dbf\.zip$"])
+        self.assertEqual(excludes, [r".*\.dbf\.zip$"])
+
+    def test_backups_are_never_deleted(self):
+        # gcloud's dry run lists backups for deletion: an exclude does not protect the destination
+        result = self.publish(existing=["_previous/20261001-aaaaaaa/a/old.dbf", "a/gone.txt"],
+                              removals=["_previous/20261001-aaaaaaa/a/old.dbf", "a/gone.txt"])
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("0 added, 0 replaced, 1 removed", result.stdout)
+        removed = [w for w in self.writes() if w[:2] == ["storage", "rm"]]
+        self.assertEqual(removed, [["storage", "rm", "gs://files-shapes/a/gone.txt"]])
 
     def test_no_changes_means_no_writes(self):
         result = self.publish(existing=["a/same.shp"])
@@ -148,7 +158,8 @@ class PublishShapesTest(unittest.TestCase):
         result = self.publish("--allow-deletions", existing=["Borough_Boundaries/NAD83/nybb.dbf"],
                               removals=["Borough_Boundaries/NAD83/nybb.dbf"])
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(self.writes()[-1][:2], ["storage", "rsync"])
+        self.assertEqual(self.writes()[-1],
+                         ["storage", "rm", "gs://files-shapes/Borough_Boundaries/NAD83/nybb.dbf"])
 
     def test_dry_run_changes_nothing(self):
         result = self.publish("--dry-run", existing=["a/old.dbf"], copies=["a/old.dbf"],
