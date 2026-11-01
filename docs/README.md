@@ -7,3 +7,4 @@ Project planning and design notes.
 | [Shapefile migration](shapefile-reader-migration.md) | Legacy comparison evidence and production acceptance checks |
 | [Improvement plan](improvement-plan.md) | Review findings (October 2026) and the sequence of pull requests to address them |
 | [Cleanup plan](cleanup-plan.md) | Shape registry consolidation and repository cleanup plan |
+| [Shapefile refresh plan](shapefile-refresh-plan.md) | Bringing `files/` up to date from NYC Open Data (draft, November 2026) |
