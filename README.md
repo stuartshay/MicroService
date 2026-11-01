@@ -75,9 +75,10 @@ CoreDataStore UI  ──▶ attributelookupgeojson (CORS) ───────�
   when NYC publishes a new version. Serving the published shapefiles directly
   keeps them identical to the source, with nothing to load, migrate or keep in
   sync. The service has no database dependency.
-- **Mounted from Cloud Storage.** The image holds only the application, so it
-  stays small and a data update doesn't need a new build. The same files are in
-  `files/` for local development and tests.
+- **Mounted from Cloud Storage, published from git.** The image holds only the
+  application, so it stays small and a data update doesn't need a new build.
+  `files/` in git is the source of truth: merging a change to it publishes the
+  files to the bucket before the deploy (`scripts/publish-shapes.py`).
 - **In-memory cache.** Each dataset is read once and kept in memory, so lookups
   don't touch storage. A scheduled job (Cronos) and file watchers refresh the
   cache when the files change.
@@ -146,6 +147,16 @@ baselines as a code change.
 In production the same files are read from the `files-shapes` Cloud Storage
 bucket, which Cloud Run mounts at `/mnt/data/shapes`. Locally and in Docker they
 are read from `files/` (see [docker/README.md](docker/README.md)).
+
+To change a shapefile, change it in `files/` and open a pull request. CI tests
+the new files; merging runs the deploy workflow's `publish-shapes` job, which
+makes the bucket match `files/`. Every object it replaces or deletes is copied
+first to `_previous/<date>-<commit>/` in the bucket (kept 90 days), and it stops
+before deleting a file a configured shape reads, or more than 20 objects that
+were not deleted in git, unless the workflow is run by hand with
+`allow_deletions`. A `.dbf` over GitHub's 100 MB limit is committed as
+`<name>.dbf.zip`, holding only `<name>.dbf`; `python3 scripts/publish-shapes.py unzip`
+extracts it (`make test` and CI do this).
 
 ## Local development
 

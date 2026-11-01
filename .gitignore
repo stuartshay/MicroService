@@ -233,4 +233,5 @@ ModelManifest.xml
 .vscode/*
 !.vscode/extensions.json
 
+# Over 100 MB: committed as <name>.dbf.zip and extracted by scripts/publish-shapes.py unzip
 files/LPC_Individual_Landmark_and_Historic_Building_Database/LPC_Individual_Landmark_and_Historic_District_Building_Database_20231209.dbf

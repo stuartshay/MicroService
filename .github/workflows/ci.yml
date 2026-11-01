@@ -116,12 +116,12 @@ jobs:
         with:
           global-json-file: global.json
 
+      - name: Test shape publishing
+        run: python3 scripts/test_publish_shapes.py
+
+      # A .dbf over GitHub's 100 MB limit is committed as <name>.dbf.zip
       - name: Prepare test data
-        run: |
-          unzip -p \
-            'files/LPC_Individual_Landmark_and_Historic_Building_Database/20231209/Individual Landmark and Historic District Building Database_20240211.zip' \
-            'geo_export_590d5a7b-ac38-4625-a642-55d90456869d.dbf' \
-            > 'files/LPC_Individual_Landmark_and_Historic_Building_Database/LPC_Individual_Landmark_and_Historic_District_Building_Database_20231209.dbf'
+        run: python3 scripts/publish-shapes.py unzip
 
       - name: Test solution
         run: dotnet test --solution MicroService.sln --configuration Release --coverage --coverage-output-format cobertura --coverage-output coverage.cobertura.xml --results-directory ./coverage
