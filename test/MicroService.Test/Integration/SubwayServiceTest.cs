@@ -79,6 +79,23 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, sut.Line);
         }
 
+        // The same three corners in WGS84: the entrances are stored in WGS84, so the
+        // point is used as is. Before the fix it was converted as if it were NAD83, and
+        // the nearest entrance came back degrees away; these corners are under 500 m off
+        [InlineData(-73.92076219549662, 40.80353391080077, "Brook Ave & 138th St at SE corner", "6")]
+        [InlineData(-73.94149242005939, 40.823401612098436, "Saint Nicholas Ave & 147th St at NE corner", "A-B-C-D")]
+        [InlineData(-73.866667, 40.7500000809719, "Junction Blvd & Roosevelt Ave at SE corner", "7")]
+        [Theory(DisplayName = "Get Geospatial Point Lookup in WGS84")]
+        public void Get_Geospatial_Point_Lookup_Wgs84(double x, double y, string expected, string expectedLine)
+        {
+            var sut = _service.GetFeatureLookup(x, y, Datum.Wgs84);
+
+            Assert.NotNull(sut);
+            Assert.Equal(expected, sut.Name);
+            Assert.Equal(expectedLine, sut.Line);
+            Assert.True(sut.Distance < 0.005, $"nearest entrance is {sut.Distance} degrees away");
+        }
+
         [InlineData("Junction Boulevard & Roosevelt Avenue at NE corner", "", "1789")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]
         public void Get_Feature_Attribute_Lookup(object value1, object _value2, string expected)
