@@ -1,4 +1,3 @@
-using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Mappings;
 using MicroService.Service.Models;
@@ -24,11 +23,8 @@ namespace MicroService.Service.Services
 
         public override SubwayShape? GetFeatureLookup(double x, double y, Datum datum)
         {
-            // Validate Point is in Range
-            // ConvertNad83ToWgs84 only returns null components when its x/y arguments
-            // are null; x and y here are non-nullable doubles, so the result is always populated.
-            var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
-            var point = new Point(result.Item1!.Value, result.Item2!.Value);
+            // The entrances are WGS84, so a NAD83 request is converted and a WGS84 one is used as is
+            var point = ToShapePoint(x, y, datum);
 
             var features = GetFeatures();
             var subwayStops = new List<SubwayShape>(features.Count);
