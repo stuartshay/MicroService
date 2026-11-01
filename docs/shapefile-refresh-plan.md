@@ -8,6 +8,8 @@ The shapefiles in `files/` are two to eight years old. The landmark ones stop at
 December 2022, so the 2023–2026 designations have no outline on CoreDataStore's
 map. This plan brings them up to date from NYC Open Data, one group at a time,
 starting with the shapes that are the same as today's in every way except age.
+Git stays the source of truth: phase 0 makes a merge to `master` publish
+`files/` to the production bucket, so every later phase is a pull request.
 
 It is the first step of a larger piece of work: keeping CoreDataStore's
 landmarks up to date as LPC designates new ones (3 to 5 a year). That work has
@@ -24,6 +26,7 @@ its own plan in CoreDataStore, which depends on this one (see
   2024-02-11 (151 objects, 537 MiB).
 - The bucket has no object versioning, only the 7-day soft delete, so an upload
   that replaces a file must keep a copy of the old one.
+- Uploads have been by hand. Phase 0 replaces that with the deploy workflow.
 - The service caches loaded shapefiles in memory (`CachedShapefileDataReader`),
   so a new revision is needed to serve replaced files.
 - CoreDataStore uses three shapes today: Individual Landmark Sites, Historic
@@ -64,6 +67,86 @@ Groups:
 3. **Redefined by the city.** Different fields, a different dataset or a
    different geography. Phase 3, one decision each.
 4. **No current source found.** Phase 4.
+
+## Phase 0: publish shapes from git
+
+Owner decision (2026-11-01): keep the shapefiles in git, and have a merge to
+`master` copy them to the bucket. No Cloud Function: the existing deploy
+workflow does it, because:
+
+- a pull request can change files and code together (phase 2 changes both),
+  and the upload must land before the new revision starts. One workflow with
+  the upload job ahead of the deploy job guarantees that;
+- the deploy creates a new revision, which reloads the shape cache;
+- the deployer account and workload identity already exist;
+- the pull request's tests run against the new files, so a bad shapefile fails
+  CI before it reaches production.
+
+A function triggered by uploads would run after the file is already live and
+would still need to restart Cloud Run. Processing (download, changing the projection,
+merging) happens in the refresh script, in the pull request, so what git holds
+is exactly what production serves.
+
+### Large files
+
+GitHub rejects files over 100 MB. Today the one file that large, the 271 MB
+building database `.dbf`, is git-ignored, and git holds the raw Open Data export
+(`20231209/Individual Landmark and Historic District Building Database_20240211.zip`,
+13 MB, with `geo_export_…` names) that someone renamed by hand. The current
+export's `.dbf` is 282 MB.
+
+Convention: a `.dbf` over 100 MB is committed as `<base>.dbf.zip`, holding only
+`<base>.dbf`, next to the shape's other parts. CI and the publish job unzip it;
+`.gitignore` keeps the unzipped `.dbf` out of git.
+
+### Publishing
+
+`actions.yml` gains `files/**` in its paths and a `publish-shapes` job that runs
+before `deploy-googlecloud` when `files/` changed:
+
+1. Unzip every `*.dbf.zip` in place.
+2. Sign in with workload identity as the deployer.
+3. List the changes: `gcloud storage rsync --dry-run --checksums-only
+   --delete-unmatched-destination-objects files/ gs://files-shapes`, excluding
+   `_previous/`.
+4. Back up every object that will be replaced or deleted to
+   `gs://files-shapes/_previous/<commit>/`.
+5. Guard: stop if the change would delete a file a shape in `ShapeProperties`
+   reads, or more than 20 objects, unless the run was started by hand with
+   `allow_deletions`.
+6. Run the sync.
+7. The deploy runs as today, then a smoke check: one known lookup per changed
+   shape.
+
+Deletions are mirrored, so the bucket always matches git; the backup and the
+guard make that safe. A lifecycle rule deletes `_previous/` objects after 90
+days. The bucket has no versioning, so `_previous/` is the rollback: copy the
+objects back and deploy a new revision.
+
+The deployer needs object admin on `files-shapes` only (not project-wide):
+a Terraform change in nyc-landmarks-vector-db, prepared by Claude and applied
+with the owner's approval, as for the other deploy accounts.
+
+### Clean-up that goes with it
+
+Nothing reads these, so they are removed from git; the first publish mirrors
+the removal and keeps a copy in `_previous/`:
+
+- `Individual_Landmark_Sites/Archive/`, `Neighborhoods/Archive/`,
+  `LPC_Individual_Landmark_and_Historic_Building_Database/Archive/` and
+  `LPC_Individual_Landmark_and_Historic_Building_Database/202302/` (about
+  165 MB of older versions);
+- in the bucket only: a second copy of the `202302` files at the folder's top
+  level, and a Windows shortcut
+  (`LPC_Individual_Landmark_and_Historic_Building_Database - Shortcut.lnk`);
+- the `20231209/` raw export zip, once its `.dbf` follows the convention above
+  (phase 1 replaces it with the 2026 export anyway).
+
+`Subway_Stations/` is in git but not in the bucket, and no shape reads it. It
+goes into phase 3 with Subway Entrances.
+
+**Done when:** a pull request that changes only `files/README.md` publishes,
+deploys and passes the smoke check, and the bucket matches git.
 
 ## Phase 1: the four 1:1 shapes
 
@@ -109,14 +192,12 @@ Data exports only WGS 84, and writes whole-number codes as decimals (`borocode`
    - a known lookup works, for example the 2020 NTA for the Church of Saint
      Mary point (40.7158766, −73.9852317) is `MN0302`, and the buildings data has
      rows for LP-02692 (Beverley Square West, November 2025).
-4. Production (Claude, with the owner's approval):
-   - copy the files being replaced to `gs://files-shapes/_previous/<date>/`;
-   - upload the new files;
-   - deploy a new revision so the cache reloads;
-   - check every refreshed shape through the API.
+4. Merging publishes them through phase 0: the replaced files go to
+   `_previous/<commit>/`, the deploy reloads the cache, and the smoke check
+   covers each refreshed shape.
 
 **Done when:** the four shapes in production return the 2026 data, every other
-shape is unchanged, and the old files are kept in `_previous/<date>/`.
+shape is unchanged, and the old files are kept in `_previous/<commit>/`.
 
 ## Phase 2: renamed fields and missing features
 
@@ -229,9 +310,10 @@ pull requests. **Owner**: decisions and sources.
 | Item | Owner | Depends on | Notes |
 | --- | --- | --- | --- |
 | Review this plan and add details | Owner | — | |
+| Phase 0: `publish-shapes` job, large-file convention, clean-up | Claude | — | Merging deploys |
+| Phase 0: deployer gets object admin on `files-shapes` (Terraform) | Claude (+ owner applies) | — | nyc-landmarks-vector-db |
 | Projection for the three NAD83 shapes: City Planning releases (a) or WGS 84 exports (b) | Owner | — | (a) needs City Planning's download links |
-| Phase 1: refresh script, `files/README.md`, the four shapes and their tests | Agent or Claude | The projection decision | |
-| Phase 1: back up and upload to `files-shapes`, new revision, checks | Claude (owner approves) | The phase 1 pull request | |
+| Phase 1: refresh script, `files/README.md`, the four shapes and their tests | Agent or Claude | Phase 0 and the projection decision | Merging publishes and deploys |
 | Phase 2: missing features, merge or follow the city | Owner | — | Proposal: merge and mark as kept |
 | Phase 2: mapping changes, merge, tests | Agent or Claude | The decision above | CoreDataStore's three shapes |
 | Phase 3: one decision per shape | Owner | — | |
