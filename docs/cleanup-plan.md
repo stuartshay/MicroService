@@ -1,7 +1,8 @@
 # Cleanup Plan
 
-Status: in progress (2026-10-25). Phases 1, 2 (#533), and 3 (#534) are
-complete; Phase 4 (#526) remains.
+Status: complete (updated 2026-10-31). Phases 1, 2 (#533), 3 (#535) and 4
+(#536) are done; the owner steps left are in
+[Remaining work and owners](#remaining-work-and-owners).
 
 This plan follows the [improvement plan](improvement-plan.md), which is
 complete: every phase of it has merged and is deployed. It comes from a review
@@ -172,7 +173,7 @@ Open one issue for each item, so it is tracked outside this document:
 
 - Phase 2: #532 (closed by #533).
 - Phase 3: #534 (closed by #535).
-- Phase 4: #526.
+- Phase 4: #526 (closed by #536).
 
 ## Remaining work and owners
 
