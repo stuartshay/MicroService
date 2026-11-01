@@ -4,9 +4,10 @@
 
 Status: phase 0 live (2026-11-01, #551, revision `microservice-api-00169-tnz`).
 The first publish matched the dry run (6 added, 19 replaced, 28 removed) and the
-bucket matches git, but rsync also deleted that run's 47 backups. They are in soft
-delete until 2026-11-08; the publish fix keeps backups out of the deletions. The
-other phases are drafts for the owner's review.
+bucket matches git, but rsync also deleted that run's 47 backups. The owner chose
+not to restore them: git holds every earlier version. #552 (revision
+`microservice-api-00170-8d5`) keeps backups out of the deletions. The other phases
+are drafts for the owner's review.
 
 The shapefiles in `files/` are two to eight years old. The landmark ones stop at
 December 2022, so the 2023–2026 designations have no outline on CoreDataStore's
