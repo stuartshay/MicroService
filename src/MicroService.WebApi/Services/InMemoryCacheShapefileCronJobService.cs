@@ -112,6 +112,53 @@ namespace MicroService.WebApi.Services
             }
         }
 
+        /// <summary>
+        /// Watches a shape's .dbf and registers the watcher under <paramref name="name"/>. Returns false, and
+        /// disposes the new watcher, when the name is already registered. Once registered, <c>_entries</c> owns
+        /// the watcher: <see cref="DisposeWatchers"/> and the removal in <see cref="UpdateEntries"/> dispose it.
+        /// </summary>
+        internal bool TryAddWatcher(string name, string shapeDirectoryPath, string file, string shapeFilePath)
+        {
+            FileSystemWatcher? fileSystemWatcher = new FileSystemWatcher();
+            try
+            {
+                // Inside the try: setting Path throws for a missing directory
+                fileSystemWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName;
+                fileSystemWatcher.Filter = file;
+                fileSystemWatcher.Path = shapeDirectoryPath;
+                fileSystemWatcher.Changed += async (sender, e) =>
+                {
+                    try
+                    {
+                        if (_logger.IsEnabled(LogLevel.Information))
+                        {
+                            _logger.LogInformation("[FileChanged]:{ServiceName}|FileName:{Name}", nameof(InMemoryCacheShapefileCronJobService), e.Name);
+                        }
+
+                        await DoWork(CancellationToken.None);
+                    }
+                    catch (Exception exception)
+                    {
+                        _logger.LogError(exception, "[FileChangedError]:{ServiceName}|FileName:{Name}", nameof(InMemoryCacheShapefileCronJobService), e.Name);
+                    }
+                };
+                fileSystemWatcher.EnableRaisingEvents = true;
+
+                if (!_entries.TryAdd(name, (shapeFilePath, fileSystemWatcher)))
+                {
+                    return false;
+                }
+
+                // Owned by _entries from here on
+                fileSystemWatcher = null;
+                return true;
+            }
+            finally
+            {
+                fileSystemWatcher?.Dispose();
+            }
+        }
+
         private void UpdateEntries()
         {
             foreach (var registration in ShapeRegistry.All)
@@ -133,34 +180,7 @@ namespace MicroService.WebApi.Services
                         continue;
                     }
 
-                    var fileSystemWatcher = new FileSystemWatcher
-                    {
-                        NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName,
-                        Filter = file,
-                        Path = shapeDirectoryPath,
-                        EnableRaisingEvents = true,
-                    };
-                    fileSystemWatcher.Changed += async (sender, e) =>
-                    {
-                        try
-                        {
-                            if (_logger.IsEnabled(LogLevel.Information))
-                            {
-                                _logger.LogInformation("[FileChanged]:{ServiceName}|FileName:{Name}", nameof(InMemoryCacheShapefileCronJobService), e.Name);
-                            }
-
-                            await DoWork(CancellationToken.None);
-                        }
-                        catch (Exception exception)
-                        {
-                            _logger.LogError(exception, "[FileChangedError]:{ServiceName}|FileName:{Name}", nameof(InMemoryCacheShapefileCronJobService), e.Name);
-                        }
-                    };
-
-                    if (!_entries.TryAdd(name, (shapeFilePath, fileSystemWatcher)))
-                    {
-                        fileSystemWatcher.Dispose();
-                    }
+                    TryAddWatcher(name, shapeDirectoryPath, file, shapeFilePath);
                 }
                 else
                 {
