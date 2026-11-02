@@ -23,5 +23,24 @@ namespace MicroService.Test.Unit
             Assert.NotNull(result);
             Assert.True(Path.IsPathRooted(result));
         }
+
+        [Fact]
+        public void ShapeSystemRootDirectory_ResolvesRelativeRoot_UnderCurrentDirectory()
+        {
+            var config = new ShapeConfiguration { ShapeRootDirectory = "../../files" };
+
+            var expected = Path.GetFullPath(Path.Join(Directory.GetCurrentDirectory(), "../../files"));
+
+            Assert.Equal(expected, config.ShapeSystemRootDirectory);
+        }
+
+        [Fact]
+        public void ShapeSystemRootDirectory_KeepsAbsoluteRoot_Unchanged()
+        {
+            var absoluteRoot = OperatingSystem.IsWindows() ? @"C:\mnt\data\shapes" : "/mnt/data/shapes";
+            var config = new ShapeConfiguration { ShapeRootDirectory = absoluteRoot };
+
+            Assert.Equal(absoluteRoot, config.ShapeSystemRootDirectory);
+        }
     }
 }

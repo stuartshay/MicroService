@@ -58,9 +58,9 @@ public class ShapePropertiesTests
         foreach (var derivedType in derivedTypes)
         {
             var shapePropertiesAttribute = derivedType.GetCustomAttribute<ShapePropertiesAttribute>();
-            if (shapePropertiesAttribute == null)
+            if (shapePropertiesAttribute == null && derivedType.FullName != null)
             {
-                if (derivedType.FullName != null) invalidTypes.Add(derivedType.FullName);
+                invalidTypes.Add(derivedType.FullName);
             }
         }
 

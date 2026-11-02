@@ -25,7 +25,7 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public ActionResult<(double?, double?)> ConvertWgs84ToNad83(double latitude, double longitude)
         {
-            if (latitude == 0 || longitude == 0)
+            if (IsMissing(latitude) || IsMissing(longitude))
                 return NoContent();
 
             var result = GeoTransformationHelper.ConvertWgs84ToNad83(latitude, longitude);
@@ -47,7 +47,7 @@ namespace MicroService.WebApi.V1.Controllers
         [ProducesResponseType(404)]
         public ActionResult<(double?, double?)> ConvertNad83ToWgs84(double x, double y)
         {
-            if (x == 0 || y == 0)
+            if (IsMissing(x) || IsMissing(y))
                 return NoContent();
 
             var result = GeoTransformationHelper.ConvertNad83ToWgs84(x, y);
@@ -55,5 +55,8 @@ namespace MicroService.WebApi.V1.Controllers
 
             return Ok(point);
         }
+
+        // A coordinate of 0 (or -0.0) means "not supplied".
+        private static bool IsMissing(double value) => value is 0d;
     }
 }

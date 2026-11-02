@@ -69,7 +69,7 @@ namespace MicroService.Test.Integration
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.BoroName);
-            Assert.Equal(expected2, (int)sut.BoroCode);
+            Assert.Equal(expected2, sut.BoroCode);
         }
 
         [InlineData(-73.898840, 40.860570, "Bronx", 2)]
@@ -82,7 +82,7 @@ namespace MicroService.Test.Integration
 
             Assert.NotNull(sut);
             Assert.Equal(expected, sut.BoroName);
-            Assert.Equal(expected2, (int)sut.BoroCode);
+            Assert.Equal(expected2, sut.BoroCode);
         }
 
         [InlineData(1006187, 732036)]

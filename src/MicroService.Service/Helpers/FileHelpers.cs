@@ -10,7 +10,7 @@ namespace MicroService.Service.Helpers
         {
             var appPath = GetAssemblyDirectory();
             const string dataPath = "../../../../../files";
-            var dataDirectory = Path.GetFullPath(Path.Combine(appPath, dataPath));
+            var dataDirectory = Path.GetFullPath(Path.Join(appPath, dataPath));
 
             return dataDirectory;
         }

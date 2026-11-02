@@ -18,7 +18,7 @@ namespace MicroService.Test.Unit
         public void Shape_OutputFeatures(string shapeFilePath)
         {
             string shapeDirectory = $"../../../../../files/{shapeFilePath}";
-            string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
+            string shapePath = Path.GetFullPath(shapeDirectory, Directory.GetCurrentDirectory());
 
             var (shape, database) = MicroService.Service.Helpers.ShapefileSource.ReadMetadata(shapePath);
             Assert.Equal("Polygon", shape.ShapeType);

@@ -157,7 +157,10 @@ namespace MicroService.WebApi.Services
                         }
                     };
 
-                    _entries.TryAdd(name, (shapeFilePath, fileSystemWatcher));
+                    if (!_entries.TryAdd(name, (shapeFilePath, fileSystemWatcher)))
+                    {
+                        fileSystemWatcher.Dispose();
+                    }
                 }
                 else
                 {
