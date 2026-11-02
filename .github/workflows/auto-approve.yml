@@ -37,9 +37,12 @@ jobs:
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
+            // Copilot's reviews here take 5-11 minutes after a push (Nov 2026), so wait up to 20.
+            // The repository is public, so the wait costs no Actions minutes.
             const initialDelayMs = 60000;
-            const maxAttempts = 24;
+            const maxAttempts = 114;
             const delayMs = 10000;
+            const maxWaitMinutes = Math.round((initialDelayMs + maxAttempts * delayMs) / 60000);
             const prNumber = context.payload.pull_request.number;
             const headSha = context.payload.pull_request.head.sha;
 
@@ -91,7 +94,7 @@ jobs:
               await new Promise(r => setTimeout(r, delayMs));
             }
 
-            core.setFailed('Copilot review not found after 5 minutes');
+            core.setFailed(`Copilot review not found after ${maxWaitMinutes} minutes; re-run this job once it appears`);
 
       - name: Log review context
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
