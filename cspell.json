@@ -292,7 +292,13 @@
     "zonemap",
     "zstd",
     "dotnetcore",
-    "navigatormaps"
+    "navigatormaps",
+    "centimetre",
+    "mpzq",
+    "pyshp",
+    "reprojects",
+    "skyk",
+    "unpadded"
   ],
   "ignoreWords": [],
   "flagWords": []
