@@ -67,6 +67,7 @@ test: test-data
 	python3 scripts/test_dockerhub_prune.py
 	python3 scripts/test_publish_shapes.py
 	python3 scripts/test_shape_smoke_check.py
+	python3 scripts/test_add_historic_districts.py
 	$(DOTNET) test --project $(TEST_PROJECT) --configuration $(CONFIGURATION)
 
 # A .dbf over GitHub's 100 MB limit is committed as <name>.dbf.zip and git-ignored

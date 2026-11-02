@@ -114,6 +114,9 @@ jobs:
       - name: Test shape smoke check
         run: python3 scripts/test_shape_smoke_check.py
 
+      - name: Test historic district updates
+        run: python3 scripts/test_add_historic_districts.py
+
       - name: Set up .NET
         uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6
         with:
