@@ -28,7 +28,7 @@ namespace MicroService.WebApi.V1.Controllers
             if (IsMissing(latitude) || IsMissing(longitude))
                 return NoContent();
 
-            var result = GeoTransformationHelper.ConvertWgs84ToNad83(latitude, longitude);
+            var result = GeoTransformationHelper.ConvertWgs84ToNad83(longitude, latitude);
             var point = new { X = result.Item1, Y = result.Item2 };
 
             return Ok(point);

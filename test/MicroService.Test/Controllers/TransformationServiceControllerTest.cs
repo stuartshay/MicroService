@@ -81,12 +81,25 @@ namespace MicroService.Test.Controllers
         {
             var result = _controller.ConvertWgs84ToNad83(40.7128, -74.0060);
 
+            // Lower Manhattan in NY State Plane Long Island feet (EPSG:2263); pyproj gives 982586.63, 198968.82
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
             var (x, y) = GetXY(okResult.Value);
-            Assert.NotNull(x);
-            Assert.NotNull(y);
-            Assert.NotEqual(0, x!.Value);
-            Assert.NotEqual(0, y!.Value);
+            Assert.Equal(982586.63, x!.Value, 0.5);
+            Assert.Equal(198968.82, y!.Value, 0.5);
+        }
+
+        [Fact]
+        public void ConvertWgs84ToNad83_RoundTrips_ThroughConvertNad83ToWgs84()
+        {
+            var nad83 = Assert.IsType<OkObjectResult>(_controller.ConvertWgs84ToNad83(40.75, -73.866667).Result);
+            var (x, y) = GetXY(nad83.Value);
+            Assert.Equal(1021192.94, x!.Value, 0.5);
+            Assert.Equal(212550.03, y!.Value, 0.5);
+
+            var wgs84 = Assert.IsType<OkObjectResult>(_controller.ConvertNad83ToWgs84(x.Value, y.Value).Result);
+            var (longitude, latitude) = GetXY(wgs84.Value);
+            Assert.Equal(-73.866667, longitude!.Value, 6);
+            Assert.Equal(40.75, latitude!.Value, 6);
         }
 
         [Theory]
