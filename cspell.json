@@ -298,7 +298,8 @@
     "pyshp",
     "reprojects",
     "skyk",
-    "unpadded"
+    "unpadded",
+    "cityofnewyork"
   ],
   "ignoreWords": [],
   "flagWords": []
