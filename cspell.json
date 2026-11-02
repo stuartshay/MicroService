@@ -292,7 +292,15 @@
     "zonemap",
     "zstd",
     "dotnetcore",
-    "navigatormaps"
+    "navigatormaps",
+    "centimetre",
+    "mpzq",
+    "pyshp",
+    "reprojects",
+    "skyk",
+    "unpadded",
+    "cityofnewyork",
+    "willoughby"
   ],
   "ignoreWords": [],
   "flagWords": []

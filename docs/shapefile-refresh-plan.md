@@ -290,6 +290,15 @@ One decision each; none of them is used by CoreDataStore today.
   `ShapefileSource` already honours. Without it, a name like "Central Harlem –
   West 130th-132nd Streets Historic District" would be misread.
 - **Decimals for codes:** see the projection decision in phase 1.
+- **Historic district outlines (fixed 2026-11-02):** three districts in
+  CoreDataStore had no map. LP-02683 (Willoughby-Hart) was missing from the
+  WGS84 file, and LP-02607 (Central Harlem) and LP-02665 (Linden Street) were
+  stored as `LP-2607` and `LP-2665`, so the exact `lp_number` lookup the UI uses
+  found nothing. `scripts/add-historic-districts.py` replaced those two with
+  LPC's current outlines under padded numbers and added LP-02683 and the two
+  2025 designations staged in CoreDataStore (LP-02692, LP-02693), from Open
+  Data `skyk-mpzq`. 159 districts; the other 154 records are unchanged. Use the
+  same script for each new district until phase 2 refreshes the file.
 
 ## Shapes and the vector DB
 
