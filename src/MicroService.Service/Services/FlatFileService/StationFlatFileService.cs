@@ -23,7 +23,7 @@ namespace MicroService.Service.Services.FlatFileService
         {
             var fileName = FlatFileProperties.SubwayStationLocations.GetAttribute<FlatFileAttribute>().FileName;
             var directory = FlatFileProperties.SubwayStationLocations.GetAttribute<FlatFileAttribute>().Directory;
-            var inputPath = Path.Combine(FileHelpers.GetFilesDirectory(), directory, fileName);
+            var inputPath = Path.Join(FileHelpers.GetFilesDirectory(), directory, fileName);
 
             using var reader = new StreamReader(inputPath);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);

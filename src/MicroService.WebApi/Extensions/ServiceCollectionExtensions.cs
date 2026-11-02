@@ -35,7 +35,7 @@ namespace MicroService.WebApi.Extensions
                 : CronExpressionDescriptor.ExpressionDescriptor.GetDescription(shapeCronExpression);
 
             Console.WriteLine($"ShapeRootDirectory Config: {shapeRootDirectory}");
-            Console.WriteLine($"ShapeRootDirectory: {(shapeRootDirectory == null ? "(not configured)" : Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeRootDirectory)))}");
+            Console.WriteLine($"ShapeRootDirectory: {(shapeRootDirectory == null ? "(not configured)" : Path.GetFullPath(shapeRootDirectory, Directory.GetCurrentDirectory()))}");
             Console.WriteLine($"Shape CronExpression: {shapeCronExpression}");
             Console.WriteLine($"Shape Cron Description: {shapeCronExpressionDescription}");
         }
@@ -114,7 +114,7 @@ namespace MicroService.WebApi.Extensions
                         .ToList(),
                 });
 
-                var xmlFilePath = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
+                var xmlFilePath = Path.Join(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
                 c.UseAllOfToExtendReferenceSchemas();
                 c.EnableAnnotations();
                 c.ExampleFilters();

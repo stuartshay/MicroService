@@ -43,6 +43,29 @@ namespace MicroService.Test.Unit
         }
 
         [Fact]
+        public void TryAddWatcher_RegistersAName_Once()
+        {
+            using var service = CreateService(_root);
+
+            Assert.True(service.TryAddWatcher("Sample", _root, "sample.dbf", Path.Join(_root, "sample.dbf")));
+            // The second watcher for the same name is rejected (and disposed, not leaked)
+            Assert.False(service.TryAddWatcher("Sample", _root, "sample.dbf", Path.Join(_root, "sample.dbf")));
+            Assert.True(service.TryAddWatcher("Other", _root, "other.dbf", Path.Join(_root, "other.dbf")));
+        }
+
+        [Fact]
+        public void TryAddWatcher_MissingDirectory_ThrowsWithoutRegistering()
+        {
+            using var service = CreateService(_root);
+            var missing = Path.Join(_root, "missing");
+
+            Assert.ThrowsAny<ArgumentException>(() => service.TryAddWatcher("Sample", missing, "sample.dbf", Path.Join(missing, "sample.dbf")));
+            // Nothing was registered, so the name can still be added once the directory exists
+            Directory.CreateDirectory(missing);
+            Assert.True(service.TryAddWatcher("Sample", missing, "sample.dbf", Path.Join(missing, "sample.dbf")));
+        }
+
+        [Fact]
         public async Task DoWork_MissingFiles_DoesNotPopulateCache()
         {
             using var service = CreateService(_root);

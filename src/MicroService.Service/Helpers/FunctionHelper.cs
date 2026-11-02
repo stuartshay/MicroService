@@ -18,10 +18,9 @@ namespace MicroService.Service.Helpers
             int index = (int)realIndex;
 
             double frac = realIndex - index;
-            if (index + 1 < elements.Length)
-                return (elements[index] * (1 - frac)) + (elements[index + 1] * frac);
-            else
-                return elements[index];
+            return index + 1 < elements.Length
+                ? (elements[index] * (1 - frac)) + (elements[index + 1] * frac)
+                : elements[index];
         }
 
     }

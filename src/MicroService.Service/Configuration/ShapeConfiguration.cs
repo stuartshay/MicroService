@@ -8,6 +8,6 @@
 
         public string? ShapeSystemRootDirectory => ShapeRootDirectory == null
             ? null
-            : Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), ShapeRootDirectory));
+            : Path.GetFullPath(ShapeRootDirectory, Directory.GetCurrentDirectory());
     }
 }

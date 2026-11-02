@@ -272,7 +272,7 @@ namespace MicroService.Test.Unit
             Assert.Equal(y, transformedPoint.Coordinates[0].Y, 4);
 
             // Transform the point back to WGS84
-            var backTransformedPoint = GeoTransformationHelper.TransformGeometry(transformedPoint, Datum.Nad83, Datum.Wgs84);
+            GeoTransformationHelper.TransformGeometry(transformedPoint, Datum.Nad83, Datum.Wgs84);
             //Assert.Equal(longitude, backTransformedPoint.Coordinates[0].X, 4);
             //Assert.Equal(latitude, backTransformedPoint.Coordinates[0].Y, 4);
 

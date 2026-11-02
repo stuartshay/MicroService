@@ -135,7 +135,7 @@ void AddHealthCheckServices()
         ?? throw new InvalidOperationException("Application configuration could not be loaded.");
     var shapeDirectory = config.ShapeConfiguration?.ShapeRootDirectory
         ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory configuration is required.");
-    string shapePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), shapeDirectory));
+    string shapePath = Path.GetFullPath(shapeDirectory, Directory.GetCurrentDirectory());
 
     services
         .AddHealthChecks()
