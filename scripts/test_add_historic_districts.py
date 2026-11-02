@@ -39,6 +39,11 @@ class HelpersTest(unittest.TestCase):
         self.assertEqual(script.shapefile_date(None), "")
         self.assertEqual(script.shapefile_date(""), "")
 
+    def test_several_dates_are_converted_one_by_one(self):
+        self.assertEqual(script.shapefile_date("7/11/1978; 9/12/1978; 11/14/1978"), "7/11/1978; 9/12/1978; 11/14/1978")
+        self.assertEqual(script.shapefile_date("1978-07-11T00:00:00.000;1978-09-12"), "7/11/1978; 9/12/1978")
+        self.assertEqual(script.shapefile_date("continued; 9/12/1978"), "continued; 9/12/1978")
+
     def test_text_is_ascii(self):
         self.assertEqual(script.ascii_text("Central Harlem – West 130th"), "Central Harlem - West 130th")
         self.assertEqual(script.ascii_text(None), "")

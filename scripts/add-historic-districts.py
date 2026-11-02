@@ -79,13 +79,21 @@ def fetch(lp_numbers: list[str]) -> list[dict]:
 
 
 def shapefile_date(value: str | None) -> str:
-    """Open Data's 2023-05-09T00:00:00.000 as the file's 5/9/2023; blank stays blank."""
+    """Open Data's dates in the file's format: 2023-05-09T00:00:00.000 -> 5/9/2023.
+
+    A field can list several dates (public_hea: "7/11/1978; 9/12/1978"), so each
+    `;`-separated part is converted on its own; a part that is not a date is kept.
+    """
     if not value:
         return ""
-    if re.fullmatch(r"\d{1,2}/\d{1,2}/\d{4}", value):
-        return value
-    parsed = datetime.fromisoformat(value[:10])
-    return f"{parsed.month}/{parsed.day}/{parsed.year}"
+    return "; ".join(_one_date(part.strip()) for part in str(value).split(";"))
+
+
+def _one_date(part: str) -> str:
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}(T.*)?", part):
+        parsed = datetime.fromisoformat(part[:10])
+        return f"{parsed.month}/{parsed.day}/{parsed.year}"
+    return part
 
 
 def ascii_text(value) -> str:
