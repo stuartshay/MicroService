@@ -1,4 +1,4 @@
-FROM grafana/grafana:8.5.27-ubuntu
+FROM grafana/grafana:13.3.0-ubuntu
 
 COPY ./scripts/grafana.sh /usr/local/bin
 COPY  config.ini /etc/grafana/config.ini
