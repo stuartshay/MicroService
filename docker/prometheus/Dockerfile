@@ -1,4 +1,4 @@
-FROM prom/prometheus:v2.55.1
+FROM prom/prometheus:v3.16.0
 
 COPY --chmod=0644 config/prometheus.yml  /etc/prometheus/prometheus.yml
 COPY  config/  /etc/prometheus/targets/
