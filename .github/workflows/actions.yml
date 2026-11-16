@@ -197,7 +197,14 @@ jobs:
           env_vars_update_strategy: 'merge'
           # Public access is a Terraform-managed invoker binding (nyc-landmarks-vector-db
           # infrastructure/github_deploy), so deploys no longer rewrite the service's IAM policy
-          flags: '--memory 2Gi --port 5000 --max-instances 10 --service-account microservice-api-runtime@velvety-byway-327718.iam.gserviceaccount.com'
+          # Probes: /health is healthy once the shapes are mounted and the startup task is done.
+          # Startup: every 10s for up to 240s (the old TCP probe's budget). Liveness: every 30s,
+          # restart after 3 failures in a row.
+          flags: >-
+            --memory 2Gi --port 5000 --max-instances 10
+            --service-account microservice-api-runtime@velvety-byway-327718.iam.gserviceaccount.com
+            --startup-probe=httpGet.path=/health,httpGet.port=5000,periodSeconds=10,timeoutSeconds=5,failureThreshold=24
+            --liveness-probe=httpGet.path=/health,httpGet.port=5000,periodSeconds=30,timeoutSeconds=5,failureThreshold=3
 
       # If traffic was ever pinned to a named revision (gcloud run services update-traffic
       # --to-revisions), new revisions get no traffic and the health check below would test
