@@ -55,13 +55,6 @@ The shapefile refresh itself (phases 1 to 4) has its own
   still references `Serilog.Sinks.Grafana.Loki`. Remove them, or point them at a
   real backend (Cloud Run already sends the console logs to Cloud Logging). Who: agent or Claude. Blocker: none.
 
-- **An HTTP health probe on Cloud Run.** The service has only Cloud Run's default
-  TCP startup probe on port 5000; `/health` is checked once, by the deploy. Add an
-  HTTP startup probe and a liveness probe on `/health` to the deploy flags. This is
-  also why Checkov's CKV_DOCKER_2 (a Dockerfile `HEALTHCHECK`, which Cloud Run
-  ignores) is skipped in `.checkov.yaml`. Who: Claude, with the owner's approval
-  (production). Blocker: none.
-
 ## Later
 
 - **Rate limiting.** Low priority while scanner traffic stays near zero. If it
