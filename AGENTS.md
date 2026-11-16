@@ -12,14 +12,14 @@ under `.github/instructions/`.
 - Run analyzer validation: `make analyze`
 - Run pre-commit directly: `pre-commit run --all-files`
 
-## Project Skills
+## Analyzer findings
 
-- For C# compiler warnings, analyzer diagnostics, static analysis, or analyzer
-  policy, use the canonical project skill at
-  `.agents/skills/net-roslyn-code-analyzers/SKILL.md`.
-- Claude Code discovers the adapter under `.claude/skills/`; Codex discovers
-  the canonical skill under `.agents/skills/`; GitHub Copilot follows the
-  matching instruction under `.github/instructions/`.
+- Reproduce a C# warning or analyzer diagnostic with `make analyze` (warnings as
+  errors, as in CI) and record its ID before changing anything.
+- Fix the code first. Suppress a rule only when it doesn't apply, with the
+  narrowest scope and a comment that says why; don't weaken rules globally.
+- Keep analyzer fixes out of unrelated changes, and validate with `make check`,
+  `make analyze`, `make build` and `make test`.
 
 ## Pull Request Workflow
 
