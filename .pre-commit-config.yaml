@@ -42,6 +42,13 @@ repos:
       - id: hadolint-docker
         files: (^|/)Dockerfile$
 
+  - repo: https://github.com/bridgecrewio/checkov
+    rev: 3.2.456
+    hooks:
+      # Settings (frameworks, skipped checks and why) are in .checkov.yaml
+      - id: checkov
+        files: (^|/)Dockerfile$|^\.github/workflows/|^\.checkov\.yaml$
+
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.3
     hooks:

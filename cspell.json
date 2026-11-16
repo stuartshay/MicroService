@@ -300,7 +300,8 @@
     "cityofnewyork",
     "willoughby",
     "pyproj",
-    "Ditmars"
+    "Ditmars",
+    "HEALTHCHECK"
   ],
   "ignoreWords": [],
   "flagWords": []

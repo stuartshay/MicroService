@@ -111,7 +111,8 @@ CoreDataStore UI  ──▶ attributelookupgeojson (CORS) ───────�
   every push, pull request and weekly schedule, CodeFactor, and SonarQube
   (`make sonar`).
 - **Pre-commit:** gitleaks secret scanning, actionlint, shellcheck, hadolint
-  (Dockerfile), codespell, cspell and markdownlint.
+  and Checkov (Dockerfile, workflows; skipped checks and reasons in
+  `.checkov.yaml`), codespell, cspell and markdownlint.
 - **Dependencies:** Renovate, with central package management
   (`Directory.Packages.props`). Major .NET image updates wait for approval on
   the Dependency Dashboard.

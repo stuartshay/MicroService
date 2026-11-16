@@ -1,0 +1,17 @@
+# Checkov settings, read by the pre-commit hook and by a plain `checkov -d .` here.
+framework:
+  - dockerfile
+  - github_actions
+  - secrets
+skip-path:
+  - files
+compact: true
+quiet: true
+skip-check:
+  # HEALTHCHECK instruction: Cloud Run ignores a Dockerfile HEALTHCHECK and checks the
+  # container with its own probes, and the ASP.NET image has no curl or wget to run one.
+  # The deploy checks /health; an HTTP probe on /health is in docs/improvement-plan.md.
+  - CKV_DOCKER_2
+  # workflow_dispatch inputs: actions.yml's only input, allow_deletions, lets a manual
+  # run of publish-shapes delete files; it doesn't change what is built.
+  - CKV_GHA_7
