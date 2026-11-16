@@ -43,6 +43,20 @@ namespace MicroService.Test.Extensions
             Assert.Contains("/api/v1/TransformationService/ConvertWgs84ToNad83", paths);
         }
 
+        [Fact(DisplayName = "OpenAPI - XML comments supply summaries and parameter descriptions")]
+        [Trait("Category", "Integration")]
+        public async Task Xml_Comments_Are_Included()
+        {
+            var operation = (await GetDocumentAsync("/openapi/v1.json"))["paths"]!["/api/v1/TransformationService/ConvertNad83ToWgs84"]!["get"]!;
+
+            Assert.Equal("Nad83 New York Long Island  Convert to Wgs84", operation["summary"]!.GetValue<string>());
+            var parameters = operation["parameters"]!.AsArray().ToDictionary(
+                parameter => parameter!["name"]!.GetValue<string>(),
+                parameter => parameter!["description"]!.GetValue<string>());
+            Assert.Equal("X (Nad83)", parameters["x"]);
+            Assert.Equal("Y {Nad83}", parameters["y"]);
+        }
+
         [Fact(DisplayName = "OpenAPI - enums are listed by name, as the controllers write them")]
         [Trait("Category", "Integration")]
         public async Task Enums_Are_Strings_With_Names()

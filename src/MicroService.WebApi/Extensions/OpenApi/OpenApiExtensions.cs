@@ -1,5 +1,6 @@
 using MicroService.WebApi.Extensions.Constants;
 using System.Text.Json.Nodes;
+using Microsoft.AspNetCore.OpenApi;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.OpenApi;
 
@@ -26,46 +27,48 @@ namespace MicroService.WebApi.Extensions.OpenApi
         /// <param name="services">The service collection.</param>
         public static IServiceCollection AddOpenApiDocuments(this IServiceCollection services)
         {
-            foreach (var documentName in ApiConstants.OpenApiDocuments)
-            {
-                services.AddOpenApi(documentName, options =>
-                {
-                    // 3.1: what Swagger UI and most client generators read today (3.2 is the .NET 11 default)
-                    options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_1;
-                    options.AddDocumentTransformer<DocumentInfoTransformer>();
-                    options.AddOperationTransformer<ExampleOperationTransformer>();
-                    options.AddOperationTransformer((operation, _, _) =>
-                    {
-                        // A response without an XML <response> comment gets its reason phrase ("OK"), as before
-                        foreach (var (code, response) in operation.Responses ?? [])
-                        {
-                            if (string.IsNullOrEmpty(response.Description) && response is OpenApiResponse concrete
-                                && int.TryParse(code, out var status))
-                            {
-                                concrete.Description = ReasonPhrases.GetReasonPhrase(status);
-                            }
-                        }
-
-                        return Task.CompletedTask;
-                    });
-                    options.AddSchemaTransformer((schema, context, _) =>
-                    {
-                        // The controllers write enums by name (JsonStringEnumConverter in the MVC JSON
-                        // options), but the generator reads the minimal-API JSON options, so list the names
-                        var type = Nullable.GetUnderlyingType(context.JsonTypeInfo.Type) ?? context.JsonTypeInfo.Type;
-                        if (type.IsEnum)
-                        {
-                            schema.Type = JsonSchemaType.String;
-                            schema.Format = null;
-                            schema.Enum = [.. Enum.GetNames(type).Select(name => (JsonNode)JsonValue.Create(name))];
-                        }
-
-                        return Task.CompletedTask;
-                    });
-                });
-            }
+            // Each document is registered with a literal name: the XML-comment source generator only
+            // hooks into AddOpenApi calls whose document name is a string literal. A new API version
+            // needs its own call here and an entry in ApiConstants.OpenApiDocuments (for Swagger UI).
+            services.AddOpenApi("v1", ConfigureDocument);
 
             return services;
+        }
+
+        private static void ConfigureDocument(OpenApiOptions options)
+        {
+            // 3.1: what Swagger UI and most client generators read today (3.2 is the .NET 11 default)
+            options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_1;
+            options.AddDocumentTransformer<DocumentInfoTransformer>();
+            options.AddOperationTransformer<ExampleOperationTransformer>();
+            options.AddOperationTransformer((operation, _, _) =>
+            {
+                // A response without an XML <response> comment gets its reason phrase ("OK"), as before
+                foreach (var (code, response) in operation.Responses ?? [])
+                {
+                    if (string.IsNullOrEmpty(response.Description) && response is OpenApiResponse concrete
+                        && int.TryParse(code, out var status))
+                    {
+                        concrete.Description = ReasonPhrases.GetReasonPhrase(status);
+                    }
+                }
+
+                return Task.CompletedTask;
+            });
+            options.AddSchemaTransformer((schema, context, _) =>
+            {
+                // The controllers write enums by name (JsonStringEnumConverter in the MVC JSON
+                // options), but the generator reads the minimal-API JSON options, so list the names
+                var type = Nullable.GetUnderlyingType(context.JsonTypeInfo.Type) ?? context.JsonTypeInfo.Type;
+                if (type.IsEnum)
+                {
+                    schema.Type = JsonSchemaType.String;
+                    schema.Format = null;
+                    schema.Enum = [.. Enum.GetNames(type).Select(name => (JsonNode)JsonValue.Create(name))];
+                }
+
+                return Task.CompletedTask;
+            });
         }
 
         /// <summary>
