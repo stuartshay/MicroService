@@ -122,7 +122,7 @@ CoreDataStore UI  ──▶ attributelookupgeojson (CORS) ───────�
 
 ## Technology stack
 
-- [.NET 10 / ASP.NET Core](https://learn.microsoft.com/aspnet/core/) - Web API (SDK pinned in `global.json`)
+- [.NET 11 / ASP.NET Core](https://learn.microsoft.com/aspnet/core/) - Web API (SDK pinned in `global.json`)
 - [NetTopologySuite](https://github.com/NetTopologySuite/NetTopologySuite) and [NetTopologySuite.IO.Esri](https://github.com/NetTopologySuite/NetTopologySuite.IO.Esri) - Geometry, shapefile and GeoJSON support
 - [ProjNet](https://github.com/NetTopologySuite/ProjNet4GeoAPI) - NAD83 (New York State Plane) and WGS84 conversions
 - [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) and [Asp.Versioning](https://github.com/dotnet/aspnet-api-versioning) - OpenAPI documentation and API versioning

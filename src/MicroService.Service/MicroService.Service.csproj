@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net10.0</TargetFramework>
+		<TargetFramework>net11.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<NoWarn>$(NoWarn),1701;1702;1705,NU1803</NoWarn>
@@ -14,7 +14,6 @@
 	<ItemGroup>
 		<PackageReference Include="CsvHelper" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" />
-		<PackageReference Include="Microsoft.Extensions.Options" />
 		<PackageReference Include="NetTopologySuite" />
 		<PackageReference Include="NetTopologySuite.Features" />
 		<PackageReference Include="NetTopologySuite.IO.GeoJSON" />
