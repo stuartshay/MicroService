@@ -1,7 +1,7 @@
 name: Build/Test/Deploy
 env:
   DOCKER_REPOSITORY_IMAGE: stuartshay/microservice-api
-  DOCKER_IMAGE_TAG: 10.0.${{ github.run_number }}
+  DOCKER_IMAGE_TAG: 11.0.${{ github.run_number }}
   BUILD_NUMBER: ${{ github.run_number }}
   DOCKER_FILE: docker/microservice-api-multi.dockerfile/Dockerfile
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/microservice-api/microservice-api
@@ -94,7 +94,7 @@ jobs:
             ${{ env.DOCKER_REPOSITORY_IMAGE }}:${{ env.DOCKER_IMAGE_TAG}}
             ${{ env.GCP_DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
           labels: |
-            org.label-schema.version=10.0.1.${{ env.BUILD_NUMBER }}
+            org.label-schema.version=11.0.1.${{ env.BUILD_NUMBER }}
             org.label-schema.build-date=${{ steps.set_datetime.outputs.current_datetime }}
           push: true
           cache-from: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache

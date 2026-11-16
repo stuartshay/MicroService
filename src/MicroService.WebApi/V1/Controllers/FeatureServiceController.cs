@@ -44,7 +44,7 @@ namespace MicroService.WebApi.V1.Controllers
         /// </summary>
         /// <returns>An enumerable list of available shape datasets</returns>
         [HttpGet]
-        [Produces("application/json", Type = typeof(IEnumerable<string>))]
+        [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<object>), 200)]
         [SwaggerResponseExample(200, typeof(GetShapeTypesExample))]
         public ActionResult<object> Get()
@@ -120,7 +120,7 @@ namespace MicroService.WebApi.V1.Controllers
         /// <param name="request">Feature Attribute Request</param>
         /// <returns>List of features with attributes</returns>
         [HttpGet("featureList", Name = "GetFeatureList")]
-        [Produces("application/json", Type = typeof(ShapeBase))]
+        [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<ShapeBase>), 200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]

@@ -16,7 +16,7 @@ TEST_DATA_ZIP := $(TEST_DATA_DBF).zip
 
 help:
 	@echo "Available targets:"
-	@echo "  make setup    Install .NET 10 and essential development tools"
+	@echo "  make setup    Install .NET 11 and essential development tools"
 	@echo "  make setup-gcloud  Install and verify the Google Cloud CLI"
 	@echo "  make hooks    Install the pre-commit Git hook"
 	@echo "  make check    Run pre-commit checks against all tracked files"
