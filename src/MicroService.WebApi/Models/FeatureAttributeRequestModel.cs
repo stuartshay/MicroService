@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using MicroService.Service.Models.Enum;
-using Swashbuckle.AspNetCore.Annotations;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -15,7 +14,7 @@ namespace MicroService.WebApi.Models
         /// Lookup Service Key
         /// </summary>
         [BindRequired]
-        [SwaggerParameter("Shape Property Key")]
+        [Description("Shape Property Key")]
         [EnumDataType(typeof(ShapeProperties))]
         [DefaultValue(ShapeProperties.BoroughBoundaries)]
         public ShapeProperties Key { get; set; }

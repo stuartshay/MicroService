@@ -1,11 +1,11 @@
-﻿using Swashbuckle.AspNetCore.Filters;
+﻿using MicroService.WebApi.Extensions.OpenApi;
 
-namespace MicroService.WebApi.Extensions.Swagger.Examples;
+namespace MicroService.WebApi.Extensions.OpenApi.Examples;
 
 /// <summary>
 /// Shape Properties Swagger Example
 /// </summary>
-public class GetShapePropertiesExample : IExamplesProvider<object>
+public class GetShapePropertiesExample : IExampleProvider<object>
 {
     /// <summary>
     /// Builds the example response payload for shape properties.

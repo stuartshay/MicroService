@@ -1,11 +1,11 @@
-﻿using Swashbuckle.AspNetCore.Filters;
+﻿using MicroService.WebApi.Extensions.OpenApi;
 
-namespace MicroService.WebApi.Extensions.Swagger.Examples
+namespace MicroService.WebApi.Extensions.OpenApi.Examples
 {
     /// <summary>
     /// Swagger Example Shape Type 
     /// </summary>
-    public class GetShapeTypesExample : IExamplesProvider<IEnumerable<object>>
+    public class GetShapeTypesExample : IExampleProvider<IEnumerable<object>>
     {
         /// <summary>
         /// Builds the example response payload listing available shape types.

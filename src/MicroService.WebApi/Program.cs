@@ -9,7 +9,7 @@ using MicroService.Service.Models.Enum;
 using MicroService.Service.Services.Base;
 using MicroService.Service.Services.FlatFileService;
 using MicroService.WebApi.Extensions;
-using MicroService.WebApi.Extensions.Swagger;
+using MicroService.WebApi.Extensions.OpenApi;
 using MicroService.WebApi.Services;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Caching.Memory;
@@ -17,7 +17,6 @@ using Microsoft.Extensions.Options;
 using NetTopologySuite.IO.Converters;
 using Prometheus;
 using Serilog;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -77,9 +76,8 @@ void SetupServices()
     services.AddMemoryCache();
     services.AddSingleton<CronJobServiceHealthCheck>();
 
-    // Swagger 
-    services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
-    services.AddSwaggerConfiguration();
+    // OpenAPI documents (Microsoft.AspNetCore.OpenApi)
+    services.AddOpenApiDocuments();
 
     // Razor Pages
     services.AddRazorPages();
@@ -156,8 +154,7 @@ void SetupApp()
     app.UseRouting();
     app.UseCors();
 
-    var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-    app.UseSwaggerCustom(provider);
+    app.MapOpenApiDocuments();
 
     app.UseAuthentication();
     app.UseAuthorization();
