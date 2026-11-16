@@ -199,12 +199,12 @@ jobs:
           # infrastructure/github_deploy), so deploys no longer rewrite the service's IAM policy
           # Scale to zero when idle (no minimum instances); the probes don't keep an instance alive.
           # Probes: /health is healthy once the shapes are mounted and the startup task is done.
-          # Startup: every 10s for up to 240s (the old TCP probe's budget). Liveness: every 30s,
-          # restart after 3 failures in a row.
+          # Startup: every 2s for up to 240s (the old TCP probe's budget), so a cold start is
+          # ready within about 2s of listening. Liveness: every 30s, restart after 3 failures.
           flags: >-
             --memory 2Gi --port 5000 --min-instances 0 --max-instances 10
             --service-account microservice-api-runtime@velvety-byway-327718.iam.gserviceaccount.com
-            --startup-probe=httpGet.path=/health,httpGet.port=5000,periodSeconds=10,timeoutSeconds=5,failureThreshold=24
+            --startup-probe=httpGet.path=/health,httpGet.port=5000,periodSeconds=2,timeoutSeconds=2,failureThreshold=120
             --liveness-probe=httpGet.path=/health,httpGet.port=5000,periodSeconds=30,timeoutSeconds=5,failureThreshold=3
 
       # If traffic was ever pinned to a named revision (gcloud run services update-traffic
