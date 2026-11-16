@@ -66,7 +66,7 @@ namespace MicroService.Service.Services
                     new KeyValuePair<string, object>("LPNumber", lpNumberValue)
                 };
                 var properties = _individualLandmarkSiteService.GetFeatureCollection(propertyAttributes);
-                if (!properties.Any())
+                if (properties.Count == 0)
                 {
                     // Falls through to null when no matching individual landmark site is found;
                     // Historic Districts lookup by LPNumber is not yet implemented (2026-08-05). NOSONAR

@@ -301,7 +301,8 @@
     "unpadded",
     "cityofnewyork",
     "willoughby",
-    "pyproj"
+    "pyproj",
+    "Ditmars"
   ],
   "ignoreWords": [],
   "flagWords": []

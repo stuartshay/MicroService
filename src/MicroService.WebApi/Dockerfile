@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:11.0 AS base
 
 ARG APPLICATION_NAME='MicroService.WebApi'
 ARG BUILD_DATE='1/1/2023'
@@ -6,14 +6,14 @@ ARG BUILD_NUMBER=0
 
 LABEL org.label-schema.application=${APPLICATION_NAME}
 LABEL org.label-schema.build-date=${BUILD_DATE}
-LABEL org.label-schema.version=10.0.1.${BUILD_NUMBER}
+LABEL org.label-schema.version=11.0.1.${BUILD_NUMBER}
 
 USER app
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:11.0 AS build
 
 WORKDIR /src
 COPY ["global.json", "."]
@@ -33,7 +33,7 @@ RUN dotnet publish "MicroService.WebApi.csproj" \
     -c Release \
     -o /app/publish \
     /p:UseAppHost=false \
-    /p:Version=10.0.1.${BUILD_NUMBER}
+    /p:Version=11.0.1.${BUILD_NUMBER}
 
 FROM base AS final
 

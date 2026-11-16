@@ -1,12 +1,12 @@
 ﻿using MicroService.WebApi.Models;
-using Swashbuckle.AspNetCore.Filters;
+using MicroService.WebApi.Extensions.OpenApi;
 
-namespace MicroService.WebApi.Extensions.Swagger.Examples
+namespace MicroService.WebApi.Extensions.OpenApi.Examples
 {
     /// <summary>
     /// Swagger Display Examples
     /// </summary>
-    public class SwaggerFeatureRequestExamples : IExamplesProvider<FeatureAttributeLookupRequestModel>
+    public class SwaggerFeatureRequestExamples : IExampleProvider<FeatureAttributeLookupRequestModel>
     {
         /// <summary>
         /// Builds an example feature attribute lookup request.

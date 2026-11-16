@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
-using Swashbuckle.AspNetCore.Filters;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Text.Json.Nodes;
@@ -84,48 +83,6 @@ namespace MicroService.WebApi.Extensions
         }
 
         /// <summary>
-        ///     Swagger Configuration
-        /// </summary>
-        /// <param name="services"></param>
-        public static void AddSwaggerConfiguration(this IServiceCollection services)
-        {
-            services.AddSwaggerGen(c =>
-            {
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    In = ParameterLocation.Header,
-                    Description = "oauth2 Access token to authenticate and authorize the user",
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer"
-                });
-                c.AddSecurityRequirement(document => new OpenApiSecurityRequirement {
-                    {
-                        new OpenApiSecuritySchemeReference("Bearer", document, null),
-                        new List<string>()
-                    }
-                });
-                c.MapType<ShapeProperties>(() => new OpenApiSchema
-                {
-                    Type = JsonSchemaType.String,
-                    Enum = Enum.GetNames<ShapeProperties>()
-                        .Select(name => JsonValue.Create(name))
-                        .Cast<JsonNode>()
-                        .ToList(),
-                });
-
-                var xmlFilePath = Path.Join(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
-                c.UseAllOfToExtendReferenceSchemas();
-                c.EnableAnnotations();
-                c.ExampleFilters();
-                c.IncludeXmlComments(xmlFilePath);
-            });
-
-            services.AddSwaggerExamplesFromAssemblies(Assembly.GetEntryAssembly());
-
-        }
-
-        /// <summary>
         /// Open Telemetry Tracing Custom
         /// </summary>
         /// <param name="services"></param>
@@ -197,28 +154,6 @@ namespace MicroService.WebApi.Extensions
             }
 
             return app;
-        }
-
-        /// <summary>
-        /// Configure Swagger
-        /// </summary>
-        /// <param name="app"></param>
-        /// <param name="provider"></param>
-        public static void UseSwaggerCustom(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
-        {
-            app.UseSwagger();
-
-            app.UseSwaggerUI(options =>
-            {
-                provider.ApiVersionDescriptions
-                    .Select(description => new
-                    {
-                        Url = $"/swagger/{description.GroupName}/swagger.json",
-                        Title = $"MicroService.WebApi - {description.GroupName.ToUpperInvariant()}"
-                    })
-                    .ToList()
-                    .ForEach(x => options.SwaggerEndpoint(x.Url, x.Title));
-            });
         }
 
         /// <summary>

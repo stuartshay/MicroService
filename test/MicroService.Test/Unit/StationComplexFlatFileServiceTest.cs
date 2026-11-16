@@ -17,5 +17,15 @@ namespace MicroService.Test.Unit
             Assert.NotEmpty(sut);
             Assert.All(sut, item => Assert.IsType<StationComplexFlatFile>(item));
         }
+
+        // Pinned to the values CsvHelper 33's class map read from StationComplexes.csv.
+        [Fact]
+        public void GetAll_MapsComplexIdAndName()
+        {
+            var complexes = new StationComplexFlatFileService().GetAll().Cast<StationComplexFlatFile>().ToList();
+
+            Assert.Equal(32, complexes.Count);
+            Assert.Equal("14 St / 6 Av", complexes.Single(c => c.ComplexId == 601).ComplexName);
+        }
     }
 }

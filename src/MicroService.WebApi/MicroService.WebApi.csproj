@@ -1,15 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net10.0</TargetFramework>
+		<TargetFramework>net11.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<NoWarn>$(NoWarn),1701;1702;1705,NU1803</NoWarn>
+		<!-- AV0029/AV0030 suggest Asp.Versioning.OpenApi (one document per API version). Its 10.x
+		     releases require Microsoft.OpenApi 2.x, and .NET 11's OpenAPI uses 3.x, so the documents are
+		     registered per version in Extensions/OpenApi until a compatible release ships. -->
+		<NoWarn>$(NoWarn);AV0029;AV0030</NoWarn>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<UserSecretsId>e6ef6136-7df3-42dd-a53a-8522668d24d7</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>..\..</DockerfileContext>
-		<Version>10.0.0.1</Version>
+		<Version>11.0.0.1</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -18,11 +22,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="CronExpressionDescriptor" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
 		<PackageReference Include="Cronos" />
 		<PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" />
-		<PackageReference Include="Swashbuckle.AspNetCore" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Filters" />
 	</ItemGroup>
 
 	<ItemGroup>

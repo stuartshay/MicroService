@@ -112,7 +112,7 @@
       "groupSlug": "docker-images"
     },
     {
-      "description": "Major .NET image updates move the build and runtime off the target framework (net10.0); approve from the Dependency Dashboard together with a framework upgrade",
+      "description": "Major .NET image updates move the build and runtime off the target framework (net11.0); approve from the Dependency Dashboard together with a framework upgrade",
       "matchManagers": [
         "dockerfile"
       ],
