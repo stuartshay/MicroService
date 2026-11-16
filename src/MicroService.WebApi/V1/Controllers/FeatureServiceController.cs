@@ -4,14 +4,13 @@ using MicroService.Service.Interfaces;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
-using MicroService.WebApi.Extensions.Swagger.Examples;
+using MicroService.WebApi.Extensions.OpenApi;
+using MicroService.WebApi.Extensions.OpenApi.Examples;
 using MicroService.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Newtonsoft.Json;
-using Swashbuckle.AspNetCore.Annotations;
-using Swashbuckle.AspNetCore.Filters;
 using System.ComponentModel.DataAnnotations;
 
 namespace MicroService.WebApi.V1.Controllers
@@ -46,7 +45,7 @@ namespace MicroService.WebApi.V1.Controllers
         [HttpGet]
         [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<object>), 200)]
-        [SwaggerResponseExample(200, typeof(GetShapeTypesExample))]
+        [ResponseExample(200, typeof(GetShapeTypesExample))]
         public ActionResult<object> Get()
         {
             var result = EnumHelper.EnumToList<ShapeProperties>().Select(j => new
@@ -78,7 +77,7 @@ namespace MicroService.WebApi.V1.Controllers
         [Produces("application/json", Type = typeof(object))]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        [SwaggerResponseExample(200, typeof(GetShapePropertiesExample))]
+        [ResponseExample(200, typeof(GetShapePropertiesExample))]
         public ActionResult<object> GetShapeProperties(
             [FromRoute][EnumDataType(typeof(ShapeProperties))] ShapeProperties id)
         {
@@ -187,8 +186,7 @@ namespace MicroService.WebApi.V1.Controllers
         /// <returns></returns>
         [HttpPost("attributelookupgeojson", Name = "GetLookupFeatureGeoJson")]
         [Produces("application/geo+json")]
-        [SwaggerResponse(StatusCodes.Status200OK, "Returns a list of features", typeof(FeatureCollection))]
-        [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(FeatureCollection), StatusCodes.Status200OK, Description = "Returns a list of features")]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         public async Task<ActionResult<FeatureCollection>> GetLookupFeatureGeoJson([FromBody] FeatureAttributeLookupRequestModel request)
