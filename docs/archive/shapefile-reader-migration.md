@@ -1,5 +1,7 @@
 # Shapefile reader migration validation
 
+> Archived on 2026-11-16: the validation record for replacing the legacy shapefile reader (improvement plan phase 10, #527).
+
 <!-- cspell:ignore Batey Doña Provi -->
 
 The migration replaces `NetTopologySuite.IO.ShapeFile` 2.1.0 with

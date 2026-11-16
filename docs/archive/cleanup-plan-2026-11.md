@@ -1,6 +1,6 @@
 # Cleanup plan: finished work
 
-Finished phases moved out of [the cleanup plan](../cleanup-plan.md) on 2026-11-11, unchanged.
+Finished phases moved out of the cleanup plan on 2026-11-11, unchanged. Its last open items (owner steps and the bucket mount script) moved to the [improvement plan](../improvement-plan.md) on 2026-11-16, and the plan itself was retired.
 
 ## Fixed contract
 
