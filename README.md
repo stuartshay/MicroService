@@ -196,11 +196,12 @@ build, analyzers and tests) and CodeQL.
 The service was modernized in 2026: workload identity deploys, a dedicated
 runtime account, .NET 10 with central package management, AutoMapper and the
 legacy shapefile reader replaced, PostgreSQL and other unused infrastructure
-removed, and the shape registry consolidated. The
-[improvement plan](docs/improvement-plan.md) and
-[cleanup plan](docs/cleanup-plan.md) record each step, and
-[shapefile-reader-migration.md](docs/shapefile-reader-migration.md) documents how
-the reader replacement was validated.
+removed, and the shape registry consolidated. The archived
+[improvement plan](docs/archive/improvement-plan-2026-11.md) and
+[cleanup plan](docs/archive/cleanup-plan-2026-11.md) record each step, and
+[shapefile-reader-migration.md](docs/archive/shapefile-reader-migration.md) documents how
+the reader replacement was validated. Open work is in the
+[improvement plan](docs/improvement-plan.md); see [docs](docs/README.md) for the rest.
 
 ## References
 

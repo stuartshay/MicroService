@@ -296,7 +296,7 @@ Implementation decisions:
 
 **Done** in #527 (2026-10-24); production runs it since #530 routed traffic to
 `microservice-api-00164-ckk`. The National Register mismatch it found is #526,
-planned as phase 4 of the [cleanup plan](cleanup-plan.md). Replaced the package, introduced application-owned metadata models, and routed
+planned as phase 4 of the [cleanup plan](cleanup-plan-2026-11.md). Replaced the package, introduced application-owned metadata models, and routed
 request-time and cron refresh reads through one compatibility adapter. The
 independent legacy-versus-candidate comparison matched all 61,580 records across
 16 archives, plus the existing National Register service binding. Saved regression
