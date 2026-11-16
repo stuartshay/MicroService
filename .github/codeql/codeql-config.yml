@@ -7,6 +7,5 @@ queries:
 paths-ignore:
   - docker/**
   - files/**
-  - assets/**
   - '**/bin/**'
   - '**/obj/**'

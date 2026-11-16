@@ -5,8 +5,6 @@
   "ignorePaths": [
     "cspell.json",
     "files/",
-    "docker/grafana/provisioning/dashboards/",
-    "docker/tempo/load-generator.json",
     "**/*.min.js",
     "**/*.lock",
     "package-lock.json"
