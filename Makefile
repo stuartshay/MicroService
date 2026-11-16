@@ -12,7 +12,7 @@ TEST_DATA_ZIP := $(TEST_DATA_DBF).zip
 
 .DEFAULT_GOAL := help
 
-.PHONY: help setup setup-gcloud hooks check analyze restore build run test test-data sonar certificates unused
+.PHONY: help setup setup-gcloud hooks check analyze restore build run test test-data sonar unused
 
 help:
 	@echo "Available targets:"
@@ -29,7 +29,6 @@ help:
 	@echo "  make test-data  Extract the git-ignored .dbf the tests need, if missing"
 	@echo "  make sonar    Build, test, and submit analysis to SonarQube"
 	@echo "  make unused   Report unused code and usings (dotnet-unused, report only)"
-	@echo "  make certificates  Generate local nginx development certificates"
 	@echo ""
 	@echo "Options:"
 	@echo "  CONFIGURATION=Debug|Release (default: Debug)"
@@ -80,8 +79,6 @@ $(TEST_DATA_DBF): $(TEST_DATA_ZIP)
 sonar:
 	./scripts/sonar.sh
 
-certificates:
-	./scripts/generate-certificates.sh
 
 # Report only: lists unused symbols (public ones included) and using directives
 unused:

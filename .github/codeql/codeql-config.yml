@@ -5,8 +5,6 @@ queries:
   - uses: security-and-quality
 
 paths-ignore:
-  - docker/**
   - files/**
-  - assets/**
   - '**/bin/**'
   - '**/obj/**'

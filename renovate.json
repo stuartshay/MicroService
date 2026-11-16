@@ -105,8 +105,7 @@
     {
       "description": "Group Docker image updates",
       "matchManagers": [
-        "dockerfile",
-        "docker-compose"
+        "dockerfile"
       ],
       "groupName": "Docker images",
       "groupSlug": "docker-images"
@@ -118,21 +117,6 @@
       ],
       "matchPackageNames": [
         "mcr.microsoft.com/dotnet/**"
-      ],
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "dependencyDashboardApproval": true
-    },
-    {
-      "description": "Major updates of the local observability stack need configuration migration; approve from the Dependency Dashboard",
-      "matchManagers": [
-        "dockerfile",
-        "docker-compose"
-      ],
-      "matchPackageNames": [
-        "grafana/**",
-        "prom/**"
       ],
       "matchUpdateTypes": [
         "major"

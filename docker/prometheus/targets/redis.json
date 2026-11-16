@@ -1,8 +1,0 @@
-[
-    {
-      "targets": [ "redis-exporter:9121" ],
-      "labels": {
-        "job": "redis_exporter"
-      }
-    }
-  ]

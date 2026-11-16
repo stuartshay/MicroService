@@ -3,7 +3,7 @@ env:
   DOCKER_REPOSITORY_IMAGE: stuartshay/microservice-api
   DOCKER_IMAGE_TAG: 11.0.${{ github.run_number }}
   BUILD_NUMBER: ${{ github.run_number }}
-  DOCKER_FILE: docker/microservice-api-multi.dockerfile/Dockerfile
+  DOCKER_FILE: src/MicroService.WebApi/Dockerfile
   GCP_DOCKER_IMAGE: us-east4-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/microservice-api/microservice-api
   ARTIFACT_REGISTRY_HOST: us-east4-docker.pkg.dev
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
@@ -32,7 +32,6 @@ on:
       - 'files/**'
       - 'scripts/publish-shapes.py'
       - 'test/**'
-      - 'docker/microservice-api-multi.dockerfile/**'
       # Build inputs: SDK and package updates must deploy too
       - 'global.json'
       - 'Directory.Build.props'

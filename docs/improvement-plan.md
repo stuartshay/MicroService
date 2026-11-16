@@ -17,7 +17,6 @@ The shapefile refresh itself (phases 1 to 4) has its own
 | Step | Detail |
 | --- | --- |
 | Delete the disabled key `d3b8e69e` | A key of `gh-actions-navigator`, disabled and unused since the deploys moved to workload identity. GitHub Pages, the `develop` and `gh-pages` branches and the local `credentials/` file are already gone (checked 2026-11-16) |
-| Decide the local logging stack | Renovate's major update (Grafana 8.5 → 13.3, Loki 2.9 → 3.7, Promtail 2.9 → 3.6, Prometheus 2.55 → 3.16) only touches the Docker Compose stack in `docker/`. Loki 3 needs configuration changes, and Promtail is being replaced by Grafana Alloy. Keep the stack and upgrade it (Claude), or remove it |
 
 ## Next
 
@@ -48,6 +47,20 @@ The shapefile refresh itself (phases 1 to 4) has its own
   `Asp.Versioning.OpenApi` supports `Microsoft.OpenApi` 3, switch to
   `WithDocumentPerVersion()` and remove the AV0029/AV0030 suppression in
   `MicroService.WebApi.csproj` (added by #564). Who: agent. Blocker: that release.
+
+- **Logging and tracing settings left from the local stack.** The Docker Compose
+  stack (Loki, Promtail, Grafana, Prometheus, Tempo, Jaeger) was removed on
+  2026-11-16. `GrafanaLokiConfiguration` and `JaegerConfiguration` in
+  `appsettings*.json` are off but still point at it, and `MicroService.Common`
+  still references `Serilog.Sinks.Grafana.Loki`. Remove them, or point them at a
+  real backend (Cloud Run already sends the console logs to Cloud Logging). Who: agent or Claude. Blocker: none.
+
+- **An HTTP health probe on Cloud Run.** The service has only Cloud Run's default
+  TCP startup probe on port 5000; `/health` is checked once, by the deploy. Add an
+  HTTP startup probe and a liveness probe on `/health` to the deploy flags. This is
+  also why Checkov's CKV_DOCKER_2 (a Dockerfile `HEALTHCHECK`, which Cloud Run
+  ignores) is skipped in `.checkov.yaml`. Who: Claude, with the owner's approval
+  (production). Blocker: none.
 
 ## Later
 

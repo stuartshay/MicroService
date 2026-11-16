@@ -110,11 +110,12 @@ CoreDataStore UI  ──▶ attributelookupgeojson (CORS) ───────�
 - **Static analysis:** .NET analyzers in the build (`make analyze`), CodeQL on
   every push, pull request and weekly schedule, CodeFactor, and SonarQube
   (`make sonar`).
-- **Pre-commit:** gitleaks secret scanning, actionlint, shellcheck, codespell,
-  cspell and markdownlint.
+- **Pre-commit:** gitleaks secret scanning, actionlint, shellcheck, hadolint
+  and Checkov (Dockerfile, workflows; skipped checks and reasons in
+  `.checkov.yaml`), codespell, cspell and markdownlint.
 - **Dependencies:** Renovate, with central package management
-  (`Directory.Packages.props`). Major .NET and observability image updates wait
-  for approval on the Dependency Dashboard.
+  (`Directory.Packages.props`). Major .NET image updates wait for approval on
+  the Dependency Dashboard.
 - **CI hardening:** every GitHub Action is pinned to a commit SHA, and workflows
   run with read-only permissions unless a job needs more.
 - **Deploy checks:** after each deploy the workflow routes all traffic to the new
@@ -146,7 +147,7 @@ baselines as a code change.
 
 In production the same files are read from the `files-shapes` Cloud Storage
 bucket, which Cloud Run mounts at `/mnt/data/shapes`. Locally and in Docker they
-are read from `files/` (see [docker/README.md](docker/README.md)).
+are read from `files/` (see [Local development](#local-development)).
 
 To change a shapefile, change it in `files/` and open a pull request. CI tests
 the new files; merging runs the deploy workflow's `publish-shapes` job, which
@@ -179,6 +180,19 @@ make run
 zip the first time it runs. Use `make check` to run every pre-commit check
 manually. Use `make help` to list the available targets and configuration
 options.
+
+To run the published image instead, mount `files/` at `/files` (the image does
+not contain the shapefiles; outside Cloud Run, `ShapeConfiguration:ShapeRootDirectory`
+is `../../files`, which resolves to `/files` in the container). From the repository
+root:
+
+```bash
+make test-data
+docker run --rm -p 5000:5000 \
+  -e ASPNETCORE_ENVIRONMENT=Docker -e ASPNETCORE_URLS=http://*:5000 \
+  -v "$(pwd)/files:/files:ro" \
+  stuartshay/microservice-api:latest
+```
 
 ## Deployment
 

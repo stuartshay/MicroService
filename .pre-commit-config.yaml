@@ -36,11 +36,24 @@ repos:
         language: system
         pass_filenames: false
 
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.15.1
+    hooks:
+      - id: hadolint-docker
+        files: (^|/)Dockerfile$
+
+  - repo: https://github.com/bridgecrewio/checkov
+    rev: 3.2.456
+    hooks:
+      # Settings (frameworks, skipped checks and why) are in .checkov.yaml
+      - id: checkov
+        files: (^|/)Dockerfile$|^\.github/workflows/|^\.checkov\.yaml$
+
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.3
     hooks:
       - id: codespell
-        exclude: ^(files/|docker/grafana/provisioning/dashboards/|cspell\.json)
+        exclude: ^(files/|cspell\.json)
 
   - repo: https://github.com/streetsidesoftware/cspell-cli
     rev: v10.0.1
