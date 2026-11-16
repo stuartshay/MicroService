@@ -110,8 +110,8 @@ CoreDataStore UI  ──▶ attributelookupgeojson (CORS) ───────�
 - **Static analysis:** .NET analyzers in the build (`make analyze`), CodeQL on
   every push, pull request and weekly schedule, CodeFactor, and SonarQube
   (`make sonar`).
-- **Pre-commit:** gitleaks secret scanning, actionlint, shellcheck, codespell,
-  cspell and markdownlint.
+- **Pre-commit:** gitleaks secret scanning, actionlint, shellcheck, hadolint
+  (Dockerfile), codespell, cspell and markdownlint.
 - **Dependencies:** Renovate, with central package management
   (`Directory.Packages.props`). Major .NET image updates wait for approval on
   the Dependency Dashboard.

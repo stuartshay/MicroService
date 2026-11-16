@@ -1,0 +1,6 @@
+# hadolint configuration (pre-commit hook hadolint-docker)
+ignored:
+  # USER $APP_UID: the .NET images define APP_UID as the numeric id of their non-root
+  # "app" user (1654), as Microsoft's templates use it. hadolint can't resolve the
+  # variable, so it reports DL3066 (non-numeric user id) for it.
+  - DL3066

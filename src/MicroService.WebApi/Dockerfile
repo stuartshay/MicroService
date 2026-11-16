@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:11.0 AS base
 ENV APPLICATION_NAME=MicroService.WebApi
 
 LABEL org.label-schema.application=${APPLICATION_NAME}
-USER app
+USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
@@ -34,7 +34,7 @@ RUN dotnet publish "./MicroService.WebApi.csproj" \
     /p:UseAppHost=false /p:Version=11.0.1.${BUILD_NUMBER}
 
 FROM base AS final
-USER app
+USER $APP_UID
 
 # Shape files are not baked into the image: Cloud Run mounts them from GCS at
 # /mnt/data/shapes (appsettings.CloudRun.json), and local runs mount files/ at
