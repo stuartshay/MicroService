@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using MicroService.Service.Configuration;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
@@ -8,21 +9,30 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using Microsoft.Extensions.Options;
 
 namespace MicroService.Service.Services.FlatFileService
 {
     public class StationFlatFileService : IFlatFileService
     {
-        public StationFlatFileService()
-        {
+        private readonly string _rootDirectory;
 
+        /// <summary>
+        /// Reads the CSV from the shape root (ShapeConfiguration:ShapeRootDirectory): the
+        /// files-shapes mount in Cloud Run, the repository's files/ folder elsewhere.
+        /// </summary>
+        public StationFlatFileService(IOptions<ApplicationOptions> options)
+        {
+            ArgumentNullException.ThrowIfNull(options);
+            _rootDirectory = options.Value.ShapeConfiguration?.ShapeSystemRootDirectory
+                ?? throw new InvalidOperationException("ShapeConfiguration:ShapeRootDirectory configuration is required.");
         }
 
         public IEnumerable<FlatFileBase> GetAll()
         {
             var fileName = FlatFileProperties.SubwayStationLocations.GetAttribute<FlatFileAttribute>().FileName;
             var directory = FlatFileProperties.SubwayStationLocations.GetAttribute<FlatFileAttribute>().Directory;
-            var inputPath = Path.Join(FileHelpers.GetFilesDirectory(), directory, fileName);
+            var inputPath = Path.Join(_rootDirectory, directory, fileName);
 
             using var reader = new StreamReader(inputPath);
             using var csv = CsvReader.Create(reader, CsvReaderOptions.Default, leaveOpen: false);
