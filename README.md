@@ -11,7 +11,8 @@ GeoJSON in either NAD83 (New York State Plane) or WGS84.
 [CoreDataStore](https://coredatastore.com) uses it in production for landmark
 boundaries and map outlines.
 
-[API endpoint and Swagger UI](https://microservice-api-w6zlqlyoma-uk.a.run.app/)
+[API endpoint and Swagger UI](https://microservice-api-w6zlqlyoma-uk.a.run.app/) ·
+[OpenAPI document](https://microservice-api-w6zlqlyoma-uk.a.run.app/openapi/v1.json)
 
 ## Overview
 
@@ -37,7 +38,8 @@ are published in NAD83 while others use WGS84. This API:
 | `GET /api/v1/FeatureService/geospatiallookup` | The feature that contains a point (NAD83 or WGS84) |
 | `POST /api/v1/FeatureService/attributelookup` | Features matching attribute values, as JSON |
 | `POST /api/v1/FeatureService/attributelookupgeojson` | The same lookup as GeoJSON, for maps |
-| `GET /api/v1/FlatFileService/{id}` | Subway station and station complex lookups |
+| `GET /api/v1/FlatFileService` | The available flat files (CSV) |
+| `GET /api/v1/FlatFileService/{id}` | Every subway station location or station complex |
 | `GET /api/v1/TransformationService/ConvertNad83ToWgs84` and `ConvertWgs84ToNad83` | Coordinate conversion |
 
 Datasets include Historic Districts, Individual Landmark Sites, the LPC
@@ -88,8 +90,13 @@ CoreDataStore UI  ──▶ attributelookupgeojson (CORS) ───────�
 
 ### Production
 
-- **Hosting:** Cloud Run (`microservice-api`, us-east4), capped at 10 instances.
-  Cloud Run terminates TLS.
+- **Hosting:** Cloud Run (`microservice-api`, us-east4). It scales to zero when
+  idle (no minimum instances) and up to 10 instances, and Cloud Run terminates TLS.
+  HTTP startup and liveness probes call `/health`; a cold start is ready in about
+  4 seconds.
+- **Shapefiles:** the `files-shapes` bucket, mounted read-only at
+  `/mnt/data/shapes` (Cloud Storage FUSE, second-generation environment). The
+  deploy sets the volume and mount on every revision.
 - **Deployment:** GitHub Actions signs in with workload identity federation; no
   service account keys. The deploy account can only deploy this service and
   push its images.
@@ -104,7 +111,7 @@ CoreDataStore UI  ──▶ attributelookupgeojson (CORS) ───────�
 
 ## Quality and security
 
-- **Tests:** 436 xUnit v3 tests on Microsoft.Testing.Platform, including
+- **Tests:** about 460 xUnit v3 tests on Microsoft.Testing.Platform, including
   contract tests for the CoreDataStore endpoints and a saved snapshot of every
   dataset that each test run compares against. Coverage is about 97% (Codecov).
 - **Static analysis:** .NET analyzers in the build (`make analyze`), CodeQL on
@@ -119,7 +126,9 @@ CoreDataStore UI  ──▶ attributelookupgeojson (CORS) ───────�
 - **CI hardening:** every GitHub Action is pinned to a commit SHA, and workflows
   run with read-only permissions unless a job needs more.
 - **Deploy checks:** after each deploy the workflow routes all traffic to the new
-  revision, confirms it, and checks `/health`.
+  revision, confirms it, checks `/health`, and runs `scripts/shape-smoke-check.sh`:
+  one known lookup for each shape a client uses and one known record from each
+  flat file.
 
 ## Technology stack
 
@@ -143,7 +152,8 @@ boundaries around them. They are small, so they are versioned with the source
 code: a data update goes through the same review, tests and regression
 baselines as a code change.
 
-- [Shape Files](/files) - NYC Open Data shapefiles
+- [Shape files and flat files](files/README.md) - what each folder in `files/`
+  holds, its NYC Open Data source, and which endpoint serves it
 
 In production the same files are read from the `files-shapes` Cloud Storage
 bucket, which Cloud Run mounts at `/mnt/data/shapes`. Locally and in Docker they
@@ -196,21 +206,26 @@ docker run --rm -p 5000:5000 \
 
 ## Deployment
 
-A push to `master` that changes `src/`, `test/`, the build files
+A push to `master` that changes `src/` (including the image's
+`src/MicroService.WebApi/Dockerfile`), `test/`, `files/`, the build files
 (`global.json`, `Directory.Build.props`, `Directory.Packages.props`,
-`NuGet.config`), the image Dockerfile or the deploy workflow runs
-[Build/Test/Deploy](.github/workflows/actions.yml). It builds one amd64 image,
-pushes it to Docker Hub and Artifact Registry, deploys it to Cloud Run, routes
-all traffic to the new revision and checks `/health`. Merging to `master` is a
-production deploy. Pull requests run [CI](.github/workflows/ci.yml) (lint,
-build, analyzers and tests) and CodeQL.
+`NuGet.config`) or the deploy workflow runs
+[Build/Test/Deploy](.github/workflows/actions.yml). When `files/` changed, it first
+publishes them to the bucket. It builds one amd64 image, pushes it to Docker Hub
+(keeping the 5 newest tags) and Artifact Registry, deploys it to Cloud Run, routes
+all traffic to the new revision, and runs the health and smoke checks. Merging to
+`master` is a production deploy. Pull requests run [CI](.github/workflows/ci.yml)
+(lint, build, analyzers and tests) and CodeQL, and Codex reviews each one.
 
 ## Project history
 
 The service was modernized in 2026: workload identity deploys, a dedicated
-runtime account, .NET 10 with central package management, AutoMapper and the
-legacy shapefile reader replaced, PostgreSQL and other unused infrastructure
-removed, and the shape registry consolidated. The archived
+runtime account, central package management, AutoMapper and the legacy
+shapefile reader replaced, PostgreSQL and other unused infrastructure removed,
+and the shape registry consolidated. In November 2026 it moved to .NET 11 and
+Microsoft's OpenAPI generator, gained HTTP health probes and a deploy-managed
+read-only bucket mount, and dropped the unused local Docker stack, Loki logging
+and tracing. The archived
 [improvement plan](docs/archive/improvement-plan-2026-11.md) and
 [cleanup plan](docs/archive/cleanup-plan-2026-11.md) record each step, and
 [shapefile-reader-migration.md](docs/archive/shapefile-reader-migration.md) documents how

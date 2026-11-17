@@ -12,6 +12,35 @@ under `.github/instructions/`.
 - Run analyzer validation: `make analyze`
 - Run pre-commit directly: `pre-commit run --all-files`
 
+## Project Layout
+
+| Path | Role |
+| --- | --- |
+| `src/MicroService.WebApi` | Controllers, OpenAPI (`Extensions/OpenApi`), health checks, DI in `Program.cs`, and the image's `Dockerfile` |
+| `src/MicroService.Service` | Shape and flat-file services, `ShapeRegistry`, mappings, configuration |
+| `src/MicroService.Common` | Logging, health check helpers and their configuration |
+| `src/MicroService.Data` | Shared enums |
+| `test/MicroService.Test` | xUnit v3 tests, including contract tests and dataset snapshots |
+| `files/` | The shapefiles and CSVs (source of truth; see `files/README.md`) |
+| `scripts/` | Shape publishing, the post-deploy smoke check, Docker Hub pruning, setup |
+
+## Deployment
+
+- Merging to `master` is a production deploy when it changes `src/`, `test/`,
+  `files/`, the build files or `.github/workflows/actions.yml`. Docs-only changes
+  don't deploy.
+- The deploy publishes `files/` to the `files-shapes` bucket first, then deploys
+  Cloud Run `microservice-api` (us-east4) with the bucket mounted read-only, HTTP
+  probes on `/health` and no minimum instances, and runs the smoke check
+  (`scripts/shape-smoke-check.sh`).
+- After a deploying merge, confirm the new revision serves 100% of traffic and that
+  `/health`, the smoke check and the LP-00099 contract check pass
+  (`docs/improvement-plan.md`, Validation).
+- `POST /api/v1/FeatureService/attributelookup` and `attributelookupgeojson` are a
+  fixed contract with CoreDataStore; change them only together with it.
+- Do not change production (Cloud Run settings, the bucket, IAM) outside the deploy
+  workflow without the owner's approval.
+
 ## Analyzer findings
 
 - Reproduce a C# warning or analyzer diagnostic with `make analyze` (warnings as
