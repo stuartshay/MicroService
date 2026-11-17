@@ -201,9 +201,15 @@ jobs:
           # Probes: /health is healthy once the shapes are mounted and the startup task is done.
           # Startup: every 2s for up to 240s (the old TCP probe's budget), so a cold start is
           # ready within about 2s of listening. Liveness: every 30s, restart after 3 failures.
+          # The shapes bucket is mounted read-only at /mnt/data/shapes (ShapeRootDirectory in
+          # appsettings.CloudRun.json). Repeating --add-volume on each deploy replaces the volume
+          # and mount of the same name, so the service always matches this file.
           flags: >-
             --memory 2Gi --port 5000 --min-instances 0 --max-instances 10
             --service-account microservice-api-runtime@velvety-byway-327718.iam.gserviceaccount.com
+            --execution-environment gen2
+            --add-volume=name=files-shapes-volume,type=cloud-storage,bucket=${{ env.SHAPES_BUCKET }},readonly=true
+            --add-volume-mount=volume=files-shapes-volume,mount-path=/mnt/data/shapes
             --startup-probe=httpGet.path=/health,httpGet.port=5000,periodSeconds=2,timeoutSeconds=2,failureThreshold=120
             --liveness-probe=httpGet.path=/health,httpGet.port=5000,periodSeconds=30,timeoutSeconds=5,failureThreshold=3
 

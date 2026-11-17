@@ -20,10 +20,6 @@ The shapefile refresh itself (phases 1 to 4) has its own
 
 ## Next
 
-- **The `files-shapes` mount in the deploy.** The deploy workflow doesn't set the
-  bucket mount; the service keeps it from `scripts/update_cloud_run_service.sh`,
-  run by hand. Add the volume and mount to the deploy flags, then remove the
-  script. Who: Claude, with the owner's approval (production). Blocker: none.
 - **One OpenAPI document per version from Asp.Versioning.** When
   `Asp.Versioning.OpenApi` supports `Microsoft.OpenApi` 3, switch to
   `WithDocumentPerVersion()` and remove the AV0029/AV0030 suppression in
