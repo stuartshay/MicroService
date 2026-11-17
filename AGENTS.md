@@ -37,10 +37,10 @@ request. In particular:
 - Ensure required CI checks, including CodeQL code scanning, pass on the current
   head SHA before considering a PR merge-ready.
 - Do not describe a PR or stack as merge-ready, enable auto-merge, add it to a
-  merge queue, or merge it until GitHub Copilot has completed its review.
-- Address every actionable Copilot comment, reply with the resolution and
+  merge queue, or merge it until Codex has completed its review.
+- Address every actionable Codex finding, reply with the resolution and
   validation evidence, and wait for any requested follow-up review.
-- A PR is merge-ready only when required CI passes, Copilot review is complete,
+- A PR is merge-ready only when required CI passes, Codex review is complete,
   actionable review threads are resolved, and the PR is conflict-free.
 
 ## Safety
