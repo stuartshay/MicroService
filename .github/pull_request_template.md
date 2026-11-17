@@ -26,7 +26,7 @@ Validation results:
 
 ## Review Follow-Up
 
-- [ ] GitHub Copilot review completed on the current head SHA
+- [ ] Codex review completed (its summary is posted; fix-only commits need no new review)
 - [ ] Actionable review comments addressed and replied to with commit SHA and validation evidence
 - [ ] Required review threads resolved
 - [ ] No newer commit or rebase invalidated completed review or CI results
