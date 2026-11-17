@@ -1,8 +1,9 @@
 # Improvement Plan
 
-Open work only (updated 2026-11-16). The finished work is in [the archive](archive/):
+Open work only (updated 2026-11-17). The finished work is in [the archive](archive/):
 the October 2026 [improvement plan](archive/improvement-plan-2026-11.md) (phases 1 to
-10), the [cleanup plan](archive/cleanup-plan-2026-11.md) (phases 1 to 4; its last open
+10, and the November follow-ups #562 to #574: .NET 11, OpenAPI, health probes,
+the bucket mount and the clean-ups), the [cleanup plan](archive/cleanup-plan-2026-11.md) (phases 1 to 4; its last open
 items moved here), the [shapefile reader migration](archive/shapefile-reader-migration.md)
 record, and phase 0 of the [shapefile refresh](archive/shapefile-refresh-plan-2026-11.md).
 The shapefile refresh itself (phases 1 to 4) has its own
@@ -17,6 +18,8 @@ The shapefile refresh itself (phases 1 to 4) has its own
 | Step | Detail |
 | --- | --- |
 | Delete the disabled key `d3b8e69e` | A key of `gh-actions-navigator`, disabled and unused since the deploys moved to workload identity. GitHub Pages, the `develop` and `gh-pages` branches and the local `credentials/` file are already gone (checked 2026-11-16) |
+| Decide the unserved folders in `files/` | Eight folders no code reads: `Fire Companies`, `Historical_Signs`, `Monuments`, `NYC_Parks_Monuments`, `Parking Meters`, `Points Of Interest`, `Subway_Stations` and `reference` (listed in [files/README.md](../files/README.md); no other repository reads them either, checked 2026-11-17). The publish job copies them to the bucket. Keep them as reference data, or remove them (one pull request; the publish job then deletes them from the bucket, keeping a copy under `_previous/`) |
+| Optional: drop the ruleset's Copilot review rule | The shared "repository standards" ruleset still has `copilot_code_review`. Copilot review is off and Codex reviews instead, so the rule does nothing here; removing it is a change to every repository's ruleset |
 
 ## Next
 

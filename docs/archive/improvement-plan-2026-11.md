@@ -361,3 +361,24 @@ dataset with both readers and diff the results, and compare the
 **Done when.** The old package is gone, the full comparison shows no
 unexplained differences, and the contract check and the CoreDataStore UI
 production suite pass after deploy.
+
+## November 2026 follow-ups (#562 to #574)
+
+Done on 2026-11-16 and 2026-11-17, each validated after its deploy (traffic on the new
+revision, `/health`, the smoke check and the LP-00099 contract check).
+
+| PR | Change | Revision |
+| --- | --- | --- |
+| #562, #565 | Plans keep only open work; finished phases in `docs/archive/`; the cleanup plan retired; `docs/dotnet-11-upgrade.md` | docs |
+| #563 | .NET 11: SDK 11.0.100, `net11.0`, 11.0 images, packages up to date, CsvHelper 34 (attribute mapping, records identical) | `00178-kvj` |
+| #564 | `Microsoft.AspNetCore.OpenApi` replaces Swashbuckle's generator: `/openapi/v1.json` (the old `/swagger/v1/swagger.json` kept as an alias), Swagger UI at `/swagger`, examples and enum names kept | `00179-fgk` |
+| #566 | `assets/` and the local Docker Compose stack removed; the Dockerfile moved to `src/MicroService.WebApi/`; hadolint and Checkov in pre-commit | `00180-5ct` |
+| #567, #570 | HTTP startup and liveness probes on `/health`, `--min-instances 0`; the startup probe every 2 seconds (cold start ready in about 4 seconds) | `00181-z7n`, `00182-n5n` |
+| #569 | .NET 11 badge; the analyzer skill moved to user level (`~/.agents/skills`); `AGENTS.md` keeps its rules | docs |
+| #571 | The flat-file endpoints read from the shape root: they had answered 500 in production (an assembly-relative path); the smoke check now reads one record from each flat file | `00183-5pf` |
+| #572 | The Copilot approval job removed; Codex is the review gate | CI only |
+| #573 | The Loki sink and the unused tracing (Jaeger setting, 7 OpenTelemetry packages) removed | `00184-qzn` |
+| #574 | The `files-shapes` mount set by the deploy, read-only; `scripts/update_cloud_run_service.sh` removed | `00185-m4g` |
+
+`master`'s classic branch protection was also changed to require 0 approvals (2026-11-16),
+like the ruleset, so Codex-reviewed pull requests can merge.

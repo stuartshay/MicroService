@@ -82,6 +82,16 @@ the image locally before merging (see Validation).
   The generator reads the minimal-API JSON options, not the MVC ones, so enums
   written by `JsonStringEnumConverter` in `AddJsonOptions` need a schema
   transformer (or the same converter in `ConfigureHttpJsonOptions`).
+
+  Register each document with a **literal** name (`AddOpenApi("v1", …)`): the
+  XML-comment source generator only hooks calls whose document name is a string
+  literal, so a loop over version names can silently drop the summaries and
+  parameter descriptions (Codex caught this in #564). Test the XML text itself.
+
+  `Asp.Versioning.OpenApi` (one document per API version, which its AV0029/AV0030
+  analyzers suggest) still needs `Microsoft.OpenApi` 2.x in its 10.x releases. Until
+  it supports 3.x, register the versions yourself and suppress those two IDs with
+  the reason.
 - **NavigatorFunctions** deploys from source on Cloud Run functions. Check that the
   .NET runtime there offers .NET 11 before moving it.
 - **EF Core, Npgsql, MongoDB driver** (CoreDataStore, Reporting, the Navigator
@@ -101,3 +111,24 @@ the image locally before merging (see Validation).
    `/mnt/data/shapes`); check `/health` and a few endpoints.
 6. After the merge: the deploy is green, the new revision serves 100% of traffic,
    and the service's smoke or contract checks pass.
+
+## Also worth checking in each service
+
+Not .NET 11 changes, but MicroService's upgrade turned these up, and the other
+services may share them:
+
+- **Data read from an assembly-relative path.** MicroService's flat files used
+  `../../../../../files` from the assembly, which exists in a checkout but not in
+  the image; production answered 500 while tests passed (#571). Read data from
+  configuration, and run the image with production settings before merging.
+- **Probes.** Cloud Run's default is a TCP startup probe only. An HTTP startup
+  probe on `/health` every 2 seconds and a liveness probe every 30 seconds
+  (#567, #570) add no cold-start time; a 10-second period added 6 seconds.
+- **Scale to zero.** State `--min-instances 0` in the deploy flags so a manual
+  change doesn't stick (#567).
+- **Volumes in the deploy.** A Cloud Storage mount set by hand is lost when the
+  service is recreated; repeat `--add-volume` and `--add-volume-mount` in the
+  deploy flags (gcloud replaces them by name and path) (#574).
+- **Dockerfile.** Run as `USER $APP_UID` (the image's non-root user, as in
+  Microsoft's templates), keep the Dockerfile next to the project it builds, and
+  lint it with hadolint and Checkov in pre-commit (#566).
