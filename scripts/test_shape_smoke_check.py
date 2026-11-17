@@ -20,6 +20,12 @@ ANSWERS = {
     "ScenicLandmarks": {"lpNumber": "LP-00851"},
     "Subway": {"name": "Junction Blvd & Roosevelt Ave at SE corner"},
 }
+# What production answers for each flat file (only the fields the check reads)
+FLAT_FILES = {
+    "SubwayStationLocations": [{"stationId": 2, "stopName": "Astoria Blvd"},
+                               {"stationId": 1, "stopName": "Astoria-Ditmars Blvd"}],
+    "SubwayStationComplex": [{"complexId": 601, "complexName": "14 St / 6 Av"}],
+}
 # A stand-in for curl: answers each lookup from the case file, and logs every URL
 MOCK_CURL = '''#!/usr/bin/env python3
 import json
@@ -30,8 +36,16 @@ from urllib.parse import parse_qs, urlparse
 url = sys.argv[-1]
 with open(os.environ["SMOKE_TEST_URLS"], "a") as log:
     log.write(url + "\\n")
-shape = parse_qs(urlparse(url).query)["Type"][0]
 case = json.load(open(os.environ["SMOKE_TEST_CASE"]))
+path = urlparse(url).path
+if "/FlatFileService/" in path:
+    flat_file = path.rsplit("/", 1)[-1]
+    if flat_file in case["failing"]:
+        print("curl: (22) The requested URL returned error: 500", file=sys.stderr)
+        sys.exit(22)
+    print(json.dumps(case["flat_files"][flat_file]))
+    sys.exit(0)
+shape = parse_qs(urlparse(url).query)["Type"][0]
 if shape in case["failing"]:
     print("curl: (22) The requested URL returned error: 404", file=sys.stderr)
     sys.exit(22)
@@ -56,19 +70,27 @@ class ShapeSmokeCheckTest(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
-    def run_script(self, *args, answers=None, failing=()):
-        self.case.write_text(json.dumps({"answers": answers or ANSWERS, "failing": list(failing)}))
+    def run_script(self, *args, answers=None, flat_files=None, failing=()):
+        self.case.write_text(json.dumps({"answers": answers or ANSWERS, "flat_files": flat_files or FLAT_FILES,
+                                         "failing": list(failing)}))
         return subprocess.run(["bash", str(SCRIPT), *args], capture_output=True, text=True,
                               env=self.env)
 
+    def urls_requested(self):
+        return self.urls.read_text().splitlines()
+
     def requested(self):
-        return [parse_qs(urlparse(url).query) for url in self.urls.read_text().splitlines()]
+        return [parse_qs(urlparse(url).query) for url in self.urls_requested() if "geospatiallookup" in url]
+
+    def flat_files_requested(self):
+        return [urlparse(url).path.rsplit("/", 1)[-1] for url in self.urls_requested() if "/FlatFileService/" in url]
 
     def test_passes_when_every_shape_answers_as_expected(self):
         result = self.run_script(BASE_URL)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("All shape lookups passed", result.stdout)
+        self.assertIn("All shape and flat-file lookups passed", result.stdout)
         self.assertEqual(sorted(query["Type"][0] for query in self.requested()), sorted(ANSWERS))
+        self.assertEqual(sorted(self.flat_files_requested()), sorted(FLAT_FILES))
 
     def test_lookups_go_to_the_given_base_url(self):
         self.run_script(BASE_URL + "/")
@@ -81,7 +103,7 @@ class ShapeSmokeCheckTest(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertIn("FAIL ScenicLandmarks at Central Park: expected .lpNumber = LP-00851, got 'LP-00901'",
                       result.stderr)
-        self.assertIn("1 shape lookup(s) failed", result.stderr)
+        self.assertIn("1 lookup(s) failed", result.stderr)
 
     def test_a_missing_field_counts_as_a_failure(self):
         answers = dict(ANSWERS, BoroughBoundaries={})
@@ -95,6 +117,24 @@ class ShapeSmokeCheckTest(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertIn("FAIL Subway at Junction Blvd (NAD83): request failed", result.stderr)
         self.assertEqual(len(self.requested()), len(ANSWERS))
+
+    def test_flat_files_go_to_the_flat_file_endpoint(self):
+        self.run_script(BASE_URL + "/")
+        flat = [url for url in self.urls_requested() if "/FlatFileService/" in url]
+        self.assertIn(f"{BASE_URL}/api/v1/FlatFileService/SubwayStationLocations", flat)
+
+    def test_a_failing_flat_file_fails_the_check(self):
+        result = self.run_script(BASE_URL, failing=["SubwayStationComplex"])
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("FAIL SubwayStationComplex (complex 601): request failed", result.stderr)
+        self.assertIn("1 lookup(s) failed", result.stderr)
+
+    def test_a_wrong_flat_file_record_fails_the_check(self):
+        flat_files = dict(FLAT_FILES, SubwayStationLocations=[{"stationId": 1, "stopName": "Elsewhere"}])
+        result = self.run_script(BASE_URL, flat_files=flat_files)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("FAIL SubwayStationLocations (station 1): expected Astoria-Ditmars Blvd, got 'Elsewhere'",
+                      result.stderr)
 
     def test_subway_is_checked_in_nad83(self):
         self.run_script(BASE_URL)

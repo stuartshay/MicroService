@@ -27,13 +27,6 @@ The shapefile refresh itself (phases 1 to 4) has its own
 - **OpenAPI from `Microsoft.AspNetCore.OpenApi`** (#564, stacked on #563).
   Replaces Swashbuckle's generator; Swagger UI stays at `/swagger`. Who: owner
   merges after #563, Claude checks the deploy.
-- **Flat-file endpoints answer 500 in production.** `GET /api/v1/FlatFileService/{id}`
-  (the subway stations and station complexes CSVs) fails with
-  `DirectoryNotFoundException` for `/files/Subway_Station_Locations/Stations.csv`:
-  production reads shapes from `/mnt/data/shapes`, and the CSVs are in neither the
-  image nor the bucket. Read them from the shapes root (they are already under
-  `files/`, so the publish job copies them) and add a smoke check. Who: Claude or
-  agent. Blocker: none.
 - **OpenTelemetry after .NET 11.** ASP.NET Core 11 adds the HTTP semantic-convention
   tags to the server activity by itself, and the service also calls
   `AddAspNetCoreInstrumentation()`. Once #563 is live, check the traces for
