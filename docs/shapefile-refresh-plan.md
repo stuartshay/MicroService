@@ -107,7 +107,7 @@ Park West). Until this phase refreshes the file, add each new district with
 - `make check`, `make build` and `make test` pass; CI passes on the head commit.
 - The refresh summary for each shape is in the pull request: rows before and
   after, keys added and removed.
-- The Copilot review is complete, and every thread is answered and resolved.
+- The Codex review is complete, and every thread is answered and resolved.
 - After a production upload: the new revision serves 100% of traffic, each
   refreshed shape answers a known lookup, and CoreDataStore's landmark pages
   still show their outlines.

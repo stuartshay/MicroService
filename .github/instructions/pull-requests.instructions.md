@@ -43,13 +43,14 @@ Reference: <https://docs.github.com/en/pull-requests/how-tos/stacked-pull-reques
 6. Merge the top PR only when the entire stack satisfies the merge-readiness
    requirements below. GitHub will merge the stack from the bottom up.
 
-## Copilot Review Gate
+## Codex Review Gate
 
-GitHub Copilot review is a mandatory procedural gate:
+The Codex review (`chatgpt-codex-connector`, automatic on every PR) is a
+mandatory procedural gate. GitHub Copilot review is off for this repository.
 
-1. Wait until GitHub Copilot has completed its review of every PR in the stack.
-2. Inspect every Copilot comment; do not treat an absent, pending, or failed
-   review as approval.
+1. Wait until Codex has posted its review summary for every PR in the stack.
+2. Inspect every Codex finding (inline comments and the summary); do not treat
+   an absent or pending review as approval.
 3. For each actionable comment:
    - implement the fix in the correct stack layer;
    - run the relevant lint, build, and test commands;
@@ -59,7 +60,8 @@ GitHub Copilot review is a mandatory procedural gate:
    - request or wait for follow-up review when GitHub offers it.
 4. Resolve a thread only after the concern is addressed or a documented,
    technically supported reason for not changing the code is accepted.
-5. Re-check Copilot review state after every force-push or cascading rebase.
+5. A commit that only fixes a finding needs no new Codex review. Re-check the
+   review after a force-push or cascading rebase that changes other code.
 
 ## Merge-Readiness Checklist
 
@@ -69,7 +71,7 @@ the following are true:
 - [ ] The PR is ready for review and conflict-free.
 - [ ] Required lint, build, and test checks pass on the current head SHA.
 - [ ] Required code scanning checks pass on the current head SHA.
-- [ ] GitHub Copilot has completed its review on every affected PR.
+- [ ] Codex has completed its review on every affected PR.
 - [ ] Every actionable review comment has been addressed and replied to.
 - [ ] Required review threads are resolved.
 - [ ] No newer commit or rebase invalidated the completed review or CI results.
