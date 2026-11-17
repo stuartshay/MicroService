@@ -70,8 +70,6 @@ void SetupServices()
 
     services.AddHttpContextAccessor();
 
-    // Open Telemetry Tracing
-    services.AddOpenTelemetryTracingCustom(configuration, env);
 
     services.AddMemoryCache();
     services.AddSingleton<CronJobServiceHealthCheck>();

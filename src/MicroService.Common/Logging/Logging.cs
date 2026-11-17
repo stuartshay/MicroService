@@ -3,7 +3,6 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 using Serilog.Exceptions;
-using Serilog.Sinks.Grafana.Loki;
 using System.Reflection;
 
 namespace MicroService.Common.Logging
@@ -14,9 +13,6 @@ namespace MicroService.Common.Logging
            (hostingContext, loggerConfiguration) =>
            {
                var env = hostingContext.HostingEnvironment;
-               var lokiUri = hostingContext.Configuration.GetValue<string>("GrafanaLokiConfiguration:Uri");
-               var lokiEnabled = hostingContext.Configuration.GetValue<bool>("GrafanaLokiConfiguration:Enabled");
-
                loggerConfiguration.MinimumLevel.Information()
                    .Enrich.FromLogContext()
                    .Enrich.WithExceptionDetails()
@@ -30,11 +26,6 @@ namespace MicroService.Common.Logging
                    .MinimumLevel.Override("System.Net.Http.HttpClient", LogEventLevel.Warning)
                    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
                    .WriteTo.Console();
-
-               if (!string.IsNullOrEmpty(lokiUri) && lokiEnabled)
-               {
-                   loggerConfiguration.WriteTo.GrafanaLoki(lokiUri);
-               }
            };
 
     }
