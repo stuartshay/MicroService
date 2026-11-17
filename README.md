@@ -126,9 +126,9 @@ CoreDataStore UI  ──▶ attributelookupgeojson (CORS) ───────�
 - [.NET 11 / ASP.NET Core](https://learn.microsoft.com/aspnet/core/) - Web API (SDK pinned in `global.json`)
 - [NetTopologySuite](https://github.com/NetTopologySuite/NetTopologySuite) and [NetTopologySuite.IO.Esri](https://github.com/NetTopologySuite/NetTopologySuite.IO.Esri) - Geometry, shapefile and GeoJSON support
 - [ProjNet](https://github.com/NetTopologySuite/ProjNet4GeoAPI) - NAD83 (New York State Plane) and WGS84 conversions
-- [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) and [Asp.Versioning](https://github.com/dotnet/aspnet-api-versioning) - OpenAPI documentation and API versioning
+- [Microsoft.AspNetCore.OpenApi](https://learn.microsoft.com/aspnet/core/fundamentals/openapi/overview), [Swagger UI](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) and [Asp.Versioning](https://github.com/dotnet/aspnet-api-versioning) - OpenAPI documentation (`/openapi/v1.json`, UI at `/swagger`) and API versioning
 - [HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) - `/health` and `/status`
-- [Serilog](https://serilog.net/), [OpenTelemetry](https://opentelemetry.io/docs/languages/dotnet/) and [prometheus-net](https://github.com/prometheus-net/prometheus-net) - Logging, tracing and local metrics
+- [Serilog](https://serilog.net/) and [prometheus-net](https://github.com/prometheus-net/prometheus-net) - Console logging (to Cloud Logging in Cloud Run) and local metrics
 - [Cronos](https://github.com/HangfireIO/Cronos) - Scheduled refresh of the in-memory shapefile cache
 - [xUnit.net v3](https://xunit.net/) on [Microsoft.Testing.Platform](https://learn.microsoft.com/dotnet/core/testing/microsoft-testing-platform-intro), with [Moq](https://github.com/devlooped/moq) - Tests and code coverage
 - [Docker](https://www.docker.com/) - Container image, published to Docker Hub and Google Artifact Registry

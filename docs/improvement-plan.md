@@ -20,18 +20,6 @@ The shapefile refresh itself (phases 1 to 4) has its own
 
 ## Next
 
-- **.NET 11** (#563). SDK 11.0.100, `net11.0`, the 11.0 images and the package
-  updates, including CsvHelper 34. Who: owner merges, Claude checks the deploy.
-  The checklist for the other .NET services is in
-  [.NET 11 upgrade](dotnet-11-upgrade.md).
-- **OpenAPI from `Microsoft.AspNetCore.OpenApi`** (#564, stacked on #563).
-  Replaces Swashbuckle's generator; Swagger UI stays at `/swagger`. Who: owner
-  merges after #563, Claude checks the deploy.
-- **OpenTelemetry after .NET 11.** ASP.NET Core 11 adds the HTTP semantic-convention
-  tags to the server activity by itself, and the service also calls
-  `AddAspNetCoreInstrumentation()`. Once #563 is live, check the traces for
-  duplicate attributes, and drop the instrumentation or set the
-  `Microsoft.AspNetCore.Hosting.SuppressActivityOpenTelemetryData` switch. Who: Claude.
 - **The `files-shapes` mount in the deploy.** The deploy workflow doesn't set the
   bucket mount; the service keeps it from `scripts/update_cloud_run_service.sh`,
   run by hand. Add the volume and mount to the deploy flags, then remove the
@@ -41,15 +29,11 @@ The shapefile refresh itself (phases 1 to 4) has its own
   `WithDocumentPerVersion()` and remove the AV0029/AV0030 suppression in
   `MicroService.WebApi.csproj` (added by #564). Who: agent. Blocker: that release.
 
-- **Logging and tracing settings left from the local stack.** The Docker Compose
-  stack (Loki, Promtail, Grafana, Prometheus, Tempo, Jaeger) was removed on
-  2026-11-16. `GrafanaLokiConfiguration` and `JaegerConfiguration` in
-  `appsettings*.json` are off but still point at it, and `MicroService.Common`
-  still references `Serilog.Sinks.Grafana.Loki`. Remove them, or point them at a
-  real backend (Cloud Run already sends the console logs to Cloud Logging). Who: agent or Claude. Blocker: none.
-
 ## Later
 
+- **Tracing.** Removed on 2026-11-17: it was off everywhere and only wrote to the
+  console. If traces are wanted, add OpenTelemetry with an OTLP exporter to Cloud
+  Trace (and check ASP.NET Core 11's built-in HTTP tags against the instrumentation).
 - **Rate limiting.** Low priority while scanner traffic stays near zero. If it
   grows, reuse stuartshay/CoreDataStore#285 (200 requests a minute per client
   IP, taken from the last `X-Forwarded-For` entry).

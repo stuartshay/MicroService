@@ -5,8 +5,6 @@ using MicroService.Service.Models.Enum;
 using MicroService.WebApi.Services.Cron;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Text.Json.Nodes;
@@ -80,32 +78,6 @@ namespace MicroService.WebApi.Extensions
                     // can also be used to control the format of the API version in route templates
                     options.SubstituteApiVersionInUrl = true;
                 });
-        }
-
-        /// <summary>
-        /// Open Telemetry Tracing Custom
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="configuration"></param>
-        /// <param name="env"></param>
-        public static void AddOpenTelemetryTracingCustom(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
-        {
-            var serviceVersion = Assembly.GetEntryAssembly()?.GetName().Version?.ToString();
-
-            var commonConfig = configuration.Get<MicroService.Common.Configuration.ApplicationOptions>()
-                ?? throw new InvalidOperationException("Application configuration could not be loaded.");
-            if (commonConfig.JaegerConfiguration?.Enabled == true)
-            {
-                services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
-                {
-                    tracerProviderBuilder
-                        .AddConsoleExporter()
-                        .AddSource(env.ApplicationName).SetResourceBuilder(ResourceBuilder.CreateDefault()
-                          .AddService(serviceName: env.ApplicationName, serviceVersion: serviceVersion))
-                          .AddHttpClientInstrumentation()
-                          .AddAspNetCoreInstrumentation();
-                });
-            }
         }
 
         /// <summary>

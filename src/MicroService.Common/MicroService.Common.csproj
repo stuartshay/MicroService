@@ -21,7 +21,6 @@
 		<PackageReference Include="Serilog.Enrichers.Thread" />
 		<PackageReference Include="Serilog.Sinks.Console" />
 		<PackageReference Include="Serilog.Exceptions" />
-		<PackageReference Include="Serilog.Sinks.Grafana.Loki" />
 	</ItemGroup>
 
 </Project>
