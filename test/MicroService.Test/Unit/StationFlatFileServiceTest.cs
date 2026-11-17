@@ -1,5 +1,6 @@
 using MicroService.Service.Models.FlatFileModels;
 using MicroService.Service.Services.FlatFileService;
+using MicroService.Test.Fixture;
 using Xunit;
 
 namespace MicroService.Test.Unit
@@ -9,7 +10,7 @@ namespace MicroService.Test.Unit
         [Fact]
         public void GetAll_ReturnsStationRecords()
         {
-            var service = new StationFlatFileService();
+            var service = new StationFlatFileService(RepositoryFiles.Options());
 
             var sut = service.GetAll().ToList();
 
@@ -23,7 +24,7 @@ namespace MicroService.Test.Unit
         [Fact]
         public void GetAll_MapsEveryColumnOfStationsCsv()
         {
-            var stations = new StationFlatFileService().GetAll().Cast<StationFlatFile>().ToList();
+            var stations = new StationFlatFileService(RepositoryFiles.Options()).GetAll().Cast<StationFlatFile>().ToList();
 
             Assert.Equal(496, stations.Count);
 
@@ -52,7 +53,7 @@ namespace MicroService.Test.Unit
         [Fact]
         public void GetAll_ReadsAdaOneAndTwoAsAccessible()
         {
-            var stations = new StationFlatFileService().GetAll().Cast<StationFlatFile>().ToList();
+            var stations = new StationFlatFileService(RepositoryFiles.Options()).GetAll().Cast<StationFlatFile>().ToList();
 
             // Stations.csv: 365 rows with ADA 0, 122 with 1 and 9 with 2
             Assert.Equal(131, stations.Count(s => s.ADA));
