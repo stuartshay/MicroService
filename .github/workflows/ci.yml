@@ -81,10 +81,10 @@ jobs:
           global-json-file: global.json
 
       - name: Restore dependencies
-        run: dotnet restore MicroService.sln
+        run: dotnet restore MicroService.slnx
 
       - name: Build solution
-        run: dotnet build MicroService.sln --configuration Release --no-restore
+        run: dotnet build MicroService.slnx --configuration Release --no-restore
 
   analyze:
     name: Analyze
@@ -130,7 +130,7 @@ jobs:
         run: python3 scripts/publish-shapes.py unzip
 
       - name: Test solution
-        run: dotnet test --solution MicroService.sln --configuration Release --coverage --coverage-output-format cobertura --coverage-output coverage.cobertura.xml --results-directory ./coverage
+        run: dotnet test --solution MicroService.slnx --configuration Release --coverage --coverage-output-format cobertura --coverage-output coverage.cobertura.xml --results-directory ./coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7

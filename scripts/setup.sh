@@ -395,7 +395,7 @@ main() {
     repair_generated_artifact_permissions
 
     log "Restoring NuGet packages"
-    (cd "${REPO_ROOT}" && dotnet restore MicroService.sln)
+    (cd "${REPO_ROOT}" && dotnet restore MicroService.slnx)
 
     log "Setup complete. Open a new terminal, then run 'make build' or 'make run'."
 }

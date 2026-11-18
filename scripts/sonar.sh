@@ -8,7 +8,7 @@ REPO_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 readonly REPO_ROOT
 readonly ENV_FILE="${REPO_ROOT}/.env"
 readonly PROJECT_KEY="MicroService.Api"
-readonly SOLUTION="MicroService.sln"
+readonly SOLUTION="MicroService.slnx"
 readonly TEST_PROJECT="test/MicroService.Test/MicroService.Test.csproj"
 readonly RESULTS_DIRECTORY=".test-results/sonar"
 

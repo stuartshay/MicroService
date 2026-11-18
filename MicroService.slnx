@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MicroService.Common/MicroService.Common.csproj" />
+    <Project Path="src/MicroService.Data/MicroService.Data.csproj" />
+    <Project Path="src/MicroService.Service/MicroService.Service.csproj" />
+    <Project Path="src/MicroService.WebApi/MicroService.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/MicroService.Test/MicroService.Test.csproj" />
+  </Folder>
+</Solution>
