@@ -81,6 +81,10 @@ namespace MicroService.Test.Integration
         }
 
         [InlineData(-73.9878531, 40.748440580969934, "New York", "10001")]
+        // One World Trade Center: the site's retired code 10048 is now 10007 (scripts/fix-zip-codes.py)
+        [InlineData(-74.01333333, 40.71305556, "New York", "10007")]
+        // The 9/11 Memorial's south pool, on the same site
+        [InlineData(-74.0131, 40.7114, "New York", "10007")]
         [Theory(DisplayName = "Get Geospatial Point Lookup - WGS84")]
         public void Get_Geospatial_Point_Lookup_Wgs84(double x, double y, string expected, object expected2)
         {
@@ -150,6 +154,14 @@ namespace MicroService.Test.Integration
 
             Assert.NotEmpty(sut);
             Assert.NotNull(sut);
+        }
+
+        [Fact(DisplayName = "No feature has a retired ZIP code")]
+        public void No_Feature_Has_A_Retired_Zip_Code()
+        {
+            var attributes = new List<KeyValuePair<string, object>> { new("ZipCode", "10048") };
+
+            Assert.Empty(_service.GetFeatureLookup(attributes));
         }
     }
 }
