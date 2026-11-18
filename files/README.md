@@ -34,6 +34,12 @@ in the refresh plan's inventory on 2026-11-01.
 | `Subway` | `Subway_Entrances/Subway_Entrances` | WGS84 | MTA `i9wp-a4ja` on data.ny.gov |
 | `ZipCodes` | `Zip_Codes/ZIP_CODE_040114` | NAD83 | 2014 ZIP boundaries; Open Data now has only ZIP Code Tabulation Areas (`35j5-n34v`) |
 
+The 2014 ZIP file isn't refreshed, so codes the Postal Service has since retired are
+replaced in its `.dbf` by `scripts/fix-zip-codes.py` (the outline stays): 10048, the
+World Trade Center's own code, is 10007. `python3 scripts/fix-zip-codes.py --check`
+fails if one is left. `00083` (Central Park) is the city's code for the park, not a
+postal one; clients that need a city use the borough's.
+
 The `IndividualLandmarkHistoricDistricts` `.dbf` is committed as a zip; see
 [its folder](LPC_Individual_Landmark_and_Historic_Building_Database/README.md).
 `Projections/` holds the NAD83 State Plane (Long Island) projection the
