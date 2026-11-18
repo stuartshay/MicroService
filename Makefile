@@ -1,4 +1,4 @@
-SOLUTION := MicroService.sln
+SOLUTION := MicroService.slnx
 WEB_PROJECT := src/MicroService.WebApi/MicroService.WebApi.csproj
 TEST_PROJECT := test/MicroService.Test/MicroService.Test.csproj
 CONFIGURATION ?= Debug

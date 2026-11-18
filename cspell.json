@@ -301,7 +301,8 @@
     "willoughby",
     "pyproj",
     "Ditmars",
-    "HEALTHCHECK"
+    "HEALTHCHECK",
+    "slnx"
   ],
   "ignoreWords": [],
   "flagWords": []

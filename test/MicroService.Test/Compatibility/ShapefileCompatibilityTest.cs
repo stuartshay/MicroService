@@ -33,11 +33,11 @@ namespace MicroService.Test.Compatibility
         private static string FindRepositoryRoot()
         {
             var root = new DirectoryInfo(AppContext.BaseDirectory);
-            while (root != null && !File.Exists(Path.Join(root.FullName, "MicroService.sln")))
+            while (root != null && !File.Exists(Path.Join(root.FullName, "MicroService.slnx")))
             {
                 root = root.Parent;
             }
-            return root?.FullName ?? throw new DirectoryNotFoundException("MicroService.sln not found above the test output.");
+            return root?.FullName ?? throw new DirectoryNotFoundException("MicroService.slnx not found above the test output.");
         }
     }
 }

@@ -17,13 +17,13 @@ namespace MicroService.Test.Fixture
         public static string Directory()
         {
             var root = new DirectoryInfo(AppContext.BaseDirectory);
-            while (root != null && !File.Exists(Path.Join(root.FullName, "MicroService.sln")))
+            while (root != null && !File.Exists(Path.Join(root.FullName, "MicroService.slnx")))
             {
                 root = root.Parent;
             }
 
             return Path.Join(
-                root?.FullName ?? throw new DirectoryNotFoundException("MicroService.sln not found above the test output."),
+                root?.FullName ?? throw new DirectoryNotFoundException("MicroService.slnx not found above the test output."),
                 "files");
         }
     }

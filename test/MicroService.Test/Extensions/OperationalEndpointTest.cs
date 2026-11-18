@@ -53,7 +53,7 @@ namespace MicroService.Test.Extensions
                 builder.UseEnvironment(environment);
                 builder.UseSetting("HealthCheckConfiguration:HealthCheckJson", "/status");
                 var root = new DirectoryInfo(AppContext.BaseDirectory);
-                while (root != null && !File.Exists(Path.Join(root.FullName, "MicroService.sln")))
+                while (root != null && !File.Exists(Path.Join(root.FullName, "MicroService.slnx")))
                 {
                     root = root.Parent;
                 }

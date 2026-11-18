@@ -60,12 +60,12 @@ namespace MicroService.Test.Extensions
             private static string FindRepositoryRoot()
             {
                 var directory = new DirectoryInfo(AppContext.BaseDirectory);
-                while (directory != null && !File.Exists(Path.Join(directory.FullName, "MicroService.sln")))
+                while (directory != null && !File.Exists(Path.Join(directory.FullName, "MicroService.slnx")))
                 {
                     directory = directory.Parent;
                 }
 
-                return directory?.FullName ?? throw new DirectoryNotFoundException("MicroService.sln not found above the test output directory.");
+                return directory?.FullName ?? throw new DirectoryNotFoundException("MicroService.slnx not found above the test output directory.");
             }
         }
     }
