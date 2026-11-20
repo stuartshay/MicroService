@@ -20,7 +20,7 @@ Landmarks), looked up by LP number.
 | Projection for the NTA, borough and precinct shapes: (a) City Planning's own releases (same projection and fields; owner supplies the download links) or (b) Open Data exports in WGS 84, switching those shapes to `Datum.Wgs84` and reading codes as numbers | Owner | Blocks phase 1 |
 | Missing features (phase 2): merge, or follow the city's file | Owner | Proposal: merge, keep the old feature for an LP number the city lacks, mark it as kept |
 | One decision per shape in phase 3 | Owner | |
-| Source of the National Register points (phase 4) | Owner | Not on NYC Open Data |
+| Source of the National Register points (phase 4) | Owner | Found 2026-11-20: NYS SHPO's [National Register of Historic Places](https://data.ny.gov/d/iisn-hnyv) on data.ny.gov (see phase 4) |
 | Review this plan | Owner | |
 
 ## Inventory
@@ -45,7 +45,7 @@ Compared on 2026-11-01 against a fresh Open Data export
 | `ZipCodes` | `35j5-n34v` (ZIP Code Tabulation Areas) | 263 → 221 | 3 |
 | `Subway` | MTA `i9wp-a4ja` on data.ny.gov | 1,928 → 2,120 | 3 |
 | `SubwayServiceLines` | MTA `s692-irgq` on data.ny.gov | added 2026-11-20 with 29 | Current |
-| `NationalRegisterHistoricPlaces` | not found | 6,417 | 4 |
+| `NationalRegisterHistoricPlaces` | NYS SHPO `iisn-hnyv` on data.ny.gov (shapefile export) | 6,417 → 6,560 | 4 |
 | `Neighborhoods` (2010 NTAs) | retired; replaced by the 2020 NTAs | 195 | 4 |
 
 `SubwayServiceLines` (the routes `/api/v1/Subway/lines` draws) was added from the
@@ -105,8 +105,27 @@ Park West). Until this phase refreshes the file, add each new district with
   tabulation areas remain, a different geography); Subway Entrances (MTA feed,
   2,120 entrances). `Subway_Stations/` is in git, unread by any shape, and goes
   with Subway Entrances.
-- **Phase 4, no current source:** National Register points (owner to say where
-  they came from); Neighborhoods (2010 NTAs: keep for existing callers or remove).
+- **Phase 4:** National Register points and Neighborhoods.
+  - **National Register points:** the source is NYS SHPO's
+    [National Register of Historic Places](https://data.ny.gov/d/iisn-hnyv) (`iisn-hnyv`,
+    data.ny.gov; the owner found it on 2026-11-20). The current `HRHP` shapefile is an older
+    export of it: the same fields (`resource_name`, `county`, `national_register_date`,
+    `sphinx_number`, `x`, `y`, cut to 10-character DBF names). The data.ny.gov shapefile
+    export works (`api/geospatial/iisn-hnyv?method=export&format=Shapefile`, 485 KB,
+    WGS 84 points). It has 6,560 points statewide (1,052 in the five boroughs), all with a
+    position, against 6,417 here.
+  - Caveats: the dataset was last updated 2024-09-10 (newest listing 2024-08-26), so
+    listings since then are missing. It has no NPS reference number: `sphinx_number` is the
+    State's own id (e.g. `90NR01060`). Its listing dates are not authoritative: in Navigator's
+    2026-11-19 listing-date review, every date where it and the NPS disagreed was settled in
+    the NPS's favour. The NPS's own list
+    (`national-register-listed_YYYYMMDD.xlsx` on nps.gov) is the source for reference
+    numbers and dates; this dataset is the source for the points.
+  - The refresh follows phase 4's rules: export, compare with the current shapefile (rows,
+    fields), replace `files/National_Register_ Historic_Places/WGS84/HRHP.*`, and check the
+    `NationalRegisterHistoricPlaces` model still reads it (the export's DBF field names may
+    differ from the truncated `resource_n`, `date_natio`, `time_natio`, `sphinx_num`).
+  - **Neighborhoods** (2010 NTAs): keep for existing callers or remove.
 - **Vector DB context.** Refreshing all shapes gives nyc-landmarks-vector-db the
   borough, district, NTA, precinct, park, ZIP and subway context for each landmark.
 - **Downstream.** CoreDataStore's `LPCReport` (LPC's `landmarks.js`, 13 designations
