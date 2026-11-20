@@ -78,6 +78,7 @@ namespace MicroService.Test.Compatibility
             ShapeProperties.Parks => ParkShapeProfile.Map(feature),
             ShapeProperties.ScenicLandmarks => FeatureToScenicLandmarkShapeProfile.Map(feature),
             ShapeProperties.Subway => SubwayShapeProfile.Map(feature),
+            ShapeProperties.SubwayServiceLines => SubwayServiceLineShapeProfile.Map(feature),
             ShapeProperties.ZipCodes => ZipCodeMappingsProfile.Map(feature),
             _ => throw new ArgumentOutOfRangeException(nameof(dataset), dataset, null)
         };

@@ -81,6 +81,13 @@ namespace MicroService.Service.Models.Enum
         [ShapeStyle(Color.Blue)]
         Subway,
 
+        // The MTA's subway service lines (data.ny.gov s692-irgq): one line per service,
+        // served shaped for maps by /api/v1/Subway/lines
+        [Description("Subway Service Lines")]
+        [Shape("Subway_Service_Lines", "Subway_Service_Lines", Datum.Wgs84)]
+        [ShapeStyle(Color.Blue)]
+        SubwayServiceLines,
+
         [Description("Zip Codes")]
         [Shape("Zip_Codes", "ZIP_CODE_040114", Datum.Nad83)]
         [ShapeStyle(Color.Blue)]

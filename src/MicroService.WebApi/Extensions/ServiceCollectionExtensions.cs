@@ -39,7 +39,8 @@ namespace MicroService.WebApi.Extensions
 
         /// <summary>
         ///     CORS: browsers may call the API only from the origins in <c>Cors:AllowedOrigins</c>
-        ///     (the CoreDataStore site, its UI's Cloud Run URL for the post-deploy smoke test, and local UI development).
+        ///     (the CoreDataStore site, its UI's Cloud Run URL for the post-deploy smoke test, local UI development,
+        ///     and the navigatorglass.com and maps.navigatorglass.com sites).
         ///     With none configured, no cross-origin request is allowed.
         /// </summary>
         /// <param name="services"></param>

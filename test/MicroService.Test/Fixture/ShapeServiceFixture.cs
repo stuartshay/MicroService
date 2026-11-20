@@ -53,6 +53,7 @@ namespace MicroService.Test.Fixture
             ScenicLandmarkService = ServiceProvider.GetRequiredService<ScenicLandmarkService>();
             SubwayService = ServiceProvider.GetRequiredService<SubwayService>();
             SubwayPointService = ServiceProvider.GetRequiredService<SubwayService>();
+            SubwayServiceLinesService = ServiceProvider.GetRequiredService<SubwayServiceLinesService>();
             ZipCodeService = ServiceProvider.GetRequiredService<ZipCodeService>();
         }
 
@@ -91,6 +92,8 @@ namespace MicroService.Test.Fixture
         public IShapeService<SubwayShape> SubwayService { get; set; }
 
         public IPointService<SubwayShape> SubwayPointService { get; set; }
+
+        public SubwayServiceLinesService SubwayServiceLinesService { get; set; }
 
         public IShapeService<ZipCodeShape> ZipCodeService { get; set; }
 

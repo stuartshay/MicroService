@@ -121,6 +121,40 @@ namespace MicroService.Service.Helpers
             return geometry;
         }
 
+        /// <summary>
+        /// A copy of a NAD83 State Plane (Long Island, US feet) geometry in WGS84 longitude and
+        /// latitude. Unlike <see cref="TransformGeometry"/>, it leaves the source (often a cached
+        /// shapefile feature) unchanged, handles every geometry type, and builds the
+        /// transformation once per call rather than once per coordinate.
+        /// </summary>
+        public static Geometry CopyNad83ToWgs84(Geometry geometry)
+        {
+            ArgumentNullException.ThrowIfNull(geometry);
+
+            var nad83 = new CoordinateSystemFactory().CreateFromWkt(Epsg2263EsriWkt);
+            var transform = new CoordinateTransformationFactory()
+                .CreateFromCoordinateSystems(nad83, GeographicCoordinateSystem.WGS84)
+                .MathTransform;
+
+            var copy = geometry.Copy();
+            copy.Apply(new MathTransformFilter(transform));
+            return copy;
+        }
+
+        private sealed class MathTransformFilter(MathTransform transform) : ICoordinateSequenceFilter
+        {
+            public bool Done => false;
+
+            public bool GeometryChanged => true;
+
+            public void Filter(CoordinateSequence seq, int i)
+            {
+                var (x, y) = transform.Transform(seq.GetX(i), seq.GetY(i));
+                seq.SetX(i, x);
+                seq.SetY(i, y);
+            }
+        }
+
         private static void TransformCoordinates(IEnumerable<Coordinate> coordinates, bool wgs84ToNad83)
         {
             foreach (var coordinate in coordinates)

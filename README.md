@@ -41,13 +41,16 @@ are published in NAD83 while others use WGS84. This API:
 | `GET /api/v1/FlatFileService` | The available flat files (CSV) |
 | `GET /api/v1/FlatFileService/{id}` | Every subway station location or station complex |
 | `GET /api/v1/TransformationService/ConvertNad83ToWgs84` and `ConvertWgs84ToNad83` | Coordinate conversion |
+| `GET /api/v1/Subway/services` | Every subway service (route) with its MTA color and text color |
+| `GET /api/v1/Subway/lines` | Subway service lines as GeoJSON for a map: `services=1,2,3` (default all; `S` is every shuttle), `borough=MN` (clip to MN, BX, BK, QN or SI), `simplify=5` (metres, 0-50) |
+| `GET /api/v1/Subway/stations` | The stations within `radius` metres (10-500, default 100) of each `near=lat,lon;lat,lon` point (up to 300), with their routes, and the union of those routes |
 
 Datasets include Historic Districts, Individual Landmark Sites, the LPC
 Individual Landmark and Historic District Building Database, Scenic Landmarks,
 the National Register of Historic Places, Borough Boundaries, Community
 Districts, Neighborhoods, Neighborhood Tabulation Areas, NYPD Precincts and
-Sectors, DSNY Districts, NYCHA Developments, Parks, Subway Entrances and ZIP
-Codes.
+Sectors, DSNY Districts, NYCHA Developments, Parks, Subway Entrances, Subway
+Service Lines and ZIP Codes.
 
 ### Who depends on it
 
@@ -57,6 +60,9 @@ and the CoreDataStore UI calls `attributelookupgeojson` from the browser to
 draw landmark and historic district outlines on its map. Those two endpoints are
 a fixed contract: every deploy checks them, and changes to them are coordinated
 with CoreDataStore.
+
+The NavigatorMaps UI (maps.navigatorglass.com) calls `/api/v1/Subway` to draw the
+subway lines that serve a map's stations.
 
 ## Architecture
 
