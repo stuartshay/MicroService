@@ -60,8 +60,8 @@ namespace MicroService.Service.Services.Base
             new(ShapeProperties.Parks, typeof(ParkService)),
             new(ShapeProperties.ScenicLandmarks, typeof(ScenicLandmarkService)),
             new(ShapeProperties.Subway, typeof(SubwayService)),
-            new(ShapeProperties.SubwayServiceLines, typeof(SubwayServiceLinesService)),
             new(ShapeProperties.ZipCodes, typeof(ZipCodeService)),
+            new(ShapeProperties.SubwayServiceLines, typeof(SubwayServiceLinesService)),
         ];
 
         private static readonly IReadOnlyDictionary<string, ShapeRegistration> ByKeyName =
