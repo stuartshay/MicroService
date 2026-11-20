@@ -1,6 +1,6 @@
 # Data Files
 
-<!-- cspell:ignore gpmc yuvp gthc hcne buis pvji fkf5 skyk mpzq xbvj gfnw qexa qpj6 gi7d 8gt5 5crt au7u i6mn amj2 5rqd h5ci phvi damg enfh gkve y6ja fw4f 35j5 n34v i9wp a4ja 9nt8 h7nd y76i bdw7 nybb nycd dsny nynta nypp -->
+<!-- cspell:ignore irgq gpmc yuvp gthc hcne buis pvji fkf5 skyk mpzq xbvj gfnw qexa qpj6 gi7d 8gt5 5crt au7u i6mn amj2 5rqd h5ci phvi damg enfh gkve y6ja fw4f 35j5 n34v i9wp a4ja 9nt8 h7nd y76i bdw7 nybb nycd dsny nynta nypp -->
 
 The datasets the API serves, versioned with the code. `files/` is the source of
 truth: merging a change here publishes it to the `files-shapes` bucket before the
@@ -32,6 +32,7 @@ in the refresh plan's inventory on 2026-11-01.
 | `Parks` | `Park/PARK` | NAD83 | `enfh-gkve` (Parks Properties) or `y6ja-fw4f` (planimetric open space) |
 | `ScenicLandmarks` | `Scenic_Landmarks/WGS84/Scenic_Landmarks` | WGS84 | `qexa-qpj6` (map view `gi7d-8gt5`) |
 | `Subway` | `Subway_Entrances/Subway_Entrances` | WGS84 | MTA `i9wp-a4ja` on data.ny.gov |
+| `SubwayServiceLines` | `Subway_Service_Lines/Subway_Service_Lines` | WGS84 | MTA `s692-irgq` on data.ny.gov (Subway Service Lines, exported 2026-11-20) |
 | `ZipCodes` | `Zip_Codes/ZIP_CODE_040114` | NAD83 | 2014 ZIP boundaries; Open Data now has only ZIP Code Tabulation Areas (`35j5-n34v`) |
 
 The 2014 ZIP file isn't refreshed, so codes the Postal Service has since retired are
@@ -47,11 +48,12 @@ conversions use.
 
 ## Flat files
 
-Served by `/api/v1/FlatFileService/{id}`.
+Served by `/api/v1/FlatFileService/{id}`; `/api/v1/Subway/stations` also reads
+`Stations.csv`.
 
 | Id | Folder and file | Source |
 | --- | --- | --- |
-| `SubwayStationLocations` | `Subway_Station_Locations/Stations.csv` | MTA station list; source not recorded |
+| `SubwayStationLocations` | `Subway_Station_Locations/Stations.csv` | MTA Subway Stations, data.ny.gov `39hk-dx4f` (updated 2026-11-19, downloaded 2026-11-20, rows sorted by Station ID) |
 | `SubwayStationComplex` | `Subway_Complex/StationComplexes.csv` | MTA station complexes; source not recorded |
 
 ## Not served

@@ -8,6 +8,7 @@ using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Services.Base;
 using MicroService.Service.Services.FlatFileService;
+using MicroService.Service.Services.Subway;
 using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.OpenApi;
 using MicroService.WebApi.Services;
@@ -106,6 +107,11 @@ void AddServices()
     // Flat File Service Lookups
     services.AddScoped<StationFlatFileService>();
     services.AddScoped<StationComplexFlatFileService>();
+
+    // Subway services, lines and nearby stations (api/v1/Subway)
+    services.AddSingleton<SubwayLineCache>();
+    services.AddScoped<SubwayRouteService>();
+    services.AddScoped<SubwayStationLookupService>();
 
     services.AddScoped<FlatFileResolver>(serviceProvider => key =>
     {

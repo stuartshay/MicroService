@@ -302,8 +302,18 @@
     "pyproj",
     "Ditmars",
     "HEALTHCHECK",
-    "slnx"
+    "slnx",
+    "Canarsie",
+    "Extracter",
+    "Hostos",
+    "Linemerge",
+    "navigatorglass",
+    "Peucker",
+    "Queensbridge"
   ],
-  "ignoreWords": [],
+  "ignoreWords": [
+    "irgq",
+    "stle"
+  ],
   "flagWords": []
 }

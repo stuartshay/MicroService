@@ -9,13 +9,15 @@ namespace MicroService.Test.Extensions
 {
     public class CorsConfigurationTest
     {
-        [Theory(DisplayName = "CORS - appsettings.json allows the site, the UI smoke test and local UI development")]
+        [Theory(DisplayName = "CORS - appsettings.json allows the site, the UI smoke test, local UI development and the Navigator sites")]
         [Trait("Category", "Unit")]
         [InlineData("https://coredatastore.com", true)]
         [InlineData("https://coredatastore-ui-w6zlqlyoma-uk.a.run.app", true)]
         [InlineData("http://localhost:5173", true)]
         [InlineData("http://localhost:4173", true)]
         [InlineData("http://localhost:2000", true)]
+        [InlineData("https://maps.navigatorglass.com", true)]
+        [InlineData("https://navigatorglass.com", true)]
         [InlineData("https://evil.example", false)]
         [InlineData("http://coredatastore.com", false)]
         [InlineData("https://coredatastore.com.evil.example", false)]

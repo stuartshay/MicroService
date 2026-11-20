@@ -1,6 +1,6 @@
 # Shapefile Refresh Plan
 
-<!-- cspell:ignore Ditmas Douglaston HRHP MODZCTA Queensboro Willoughby ZCTA ZCTAs borocd borocode calda damg desda dsny enfh gfnw gkve gpmc gthc hcne landmarkty lpnumb mpzq ncre nybb nycd nynta nypp phvi planimetric pvji qexa qhxs sitede sitest skyk xbvj yuvp -->
+<!-- cspell:ignore irgq Hostos Ditmas Douglaston HRHP MODZCTA Queensboro Willoughby ZCTA ZCTAs borocd borocode calda damg desda dsny enfh gfnw gkve gpmc gthc hcne landmarkty lpnumb mpzq ncre nybb nycd nynta nypp phvi planimetric pvji qexa qhxs sitede sitest skyk xbvj yuvp -->
 
 Phase 0 (a merge to `master` publishes `files/` to the production bucket) is
 done; see the [archive](archive/shapefile-refresh-plan-2026-11.md) (PRs 551,
@@ -44,8 +44,20 @@ Compared on 2026-11-01 against a fresh Open Data export
 | `Parks` | `enfh-gkve` (Parks Properties) or `y6ja-fw4f` (planimetric) | 12,491 → 2,061 / 13,205 | 3 |
 | `ZipCodes` | `35j5-n34v` (ZIP Code Tabulation Areas) | 263 → 221 | 3 |
 | `Subway` | MTA `i9wp-a4ja` on data.ny.gov | 1,928 → 2,120 | 3 |
+| `SubwayServiceLines` | MTA `s692-irgq` on data.ny.gov | added 2026-11-20 with 29 | Current |
 | `NationalRegisterHistoricPlaces` | not found | 6,417 | 4 |
 | `Neighborhoods` (2010 NTAs) | retired; replaced by the 2020 NTAs | 195 | 4 |
+
+`SubwayServiceLines` (the routes `/api/v1/Subway/lines` draws) was added from the
+MTA's export on 2026-11-20 in WGS 84, so it starts current. On the same day the
+flat file `Subway_Station_Locations/Stations.csv` was replaced with the MTA's
+current station list (data.ny.gov `39hk-dx4f`, updated 2026-11-19): the same 496
+rows (493 stations), its columns in a new order and with CBD, ADA Northbound, ADA
+Southbound and Georeference added. Against the 2020-12-28 file, 20 stations'
+daytime routes changed (among them the F and M swap on the 63 St line and 53 St,
+Q-only stops on the Brighton line, and the 7 at Queensboro Plaza's station 461), 10
+stations were renamed (such as 149 St-Hostos and Christopher St-Stonewall) and 46
+ADA values changed. `Subway_Complex/StationComplexes.csv` is not refreshed.
 
 ## Next
 

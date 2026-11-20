@@ -37,8 +37,11 @@ namespace MicroService.Test.Extensions
             Assert.Equal("1.0", document["info"]!["version"]!.GetValue<string>());
 
             var paths = document["paths"]!.AsObject().Select(path => path.Key).ToList();
-            Assert.Equal(10, paths.Count);
+            Assert.Equal(13, paths.Count);
             Assert.Contains("/api/v1/FeatureService/{id}", paths);
+            Assert.Contains("/api/v1/Subway/services", paths);
+            Assert.Contains("/api/v1/Subway/lines", paths);
+            Assert.Contains("/api/v1/Subway/stations", paths);
             Assert.Contains("/api/v1/FlatFileService/{id}", paths);
             Assert.Contains("/api/v1/TransformationService/ConvertWgs84ToNad83", paths);
         }
@@ -66,7 +69,8 @@ namespace MicroService.Test.Extensions
             var shapes = schemas["ShapeProperties"]!;
             Assert.Equal("string", shapes["type"]!.GetValue<string>());
             Assert.Contains("BoroughBoundaries", shapes["enum"]!.AsArray().Select(value => value!.GetValue<string>()));
-            Assert.Equal(16, shapes["enum"]!.AsArray().Count);
+            Assert.Contains("SubwayServiceLines", shapes["enum"]!.AsArray().Select(value => value!.GetValue<string>()));
+            Assert.Equal(17, shapes["enum"]!.AsArray().Count);
 
             Assert.Equal(["Wgs84", "Nad83"], schemas["Datum"]!["enum"]!.AsArray().Select(value => value!.GetValue<string>()));
         }

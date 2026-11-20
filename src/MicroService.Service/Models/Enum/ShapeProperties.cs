@@ -85,5 +85,13 @@ namespace MicroService.Service.Models.Enum
         [Shape("Zip_Codes", "ZIP_CODE_040114", Datum.Nad83)]
         [ShapeStyle(Color.Blue)]
         ZipCodes,
+
+        // Last, so the numbers of the members above stay as they were (the endpoints accept them)
+        // The MTA's subway service lines (data.ny.gov s692-irgq): one line per service,
+        // served shaped for maps by /api/v1/Subway/lines
+        [Description("Subway Service Lines")]
+        [Shape("Subway_Service_Lines", "Subway_Service_Lines", Datum.Wgs84)]
+        [ShapeStyle(Color.Blue)]
+        SubwayServiceLines,
     }
 }
