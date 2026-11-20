@@ -112,7 +112,23 @@ namespace MicroService.Test.Unit
             Assert.Equal(1000, Metres(kept), 0);
         }
 
-        [Fact(DisplayName = "Subway stretch - a loop is never carried on to, and keeps the stretch between its own stations")]
+        [Fact(DisplayName = "Subway stretch - a station just inside a branch at a junction adds nothing to the stretch")]
+        public void Trim_StationJustInsideABranch()
+        {
+            var lines = Lines(
+                [(0, 0), (0, 2000)],
+                [(0, 2000), (0, 4000)],
+                [(0, 2000), (2000, 3000)]);
+
+            // Nearest the third branch, under a metre along it
+            var (kept, stations) = Stretch((0, 1000), (1, 2000.2)).Trim(lines);
+
+            Assert.Equal(2, stations);
+            Assert.Equal(1, kept.NumGeometries);
+            Assert.Equal(1000, Metres(kept), 0);
+        }
+
+        [Fact(DisplayName = "Subway stretch - a loop without stations is dropped; with stations it is kept")]
         public void Trim_Loops()
         {
             var trunk = new[] { (0d, 0d), (0d, 1000d) };
@@ -126,6 +142,75 @@ namespace MicroService.Test.Unit
             var (ring, stations) = Stretch((500, 1500), (0, 2000)).Trim(Line(loop));
             Assert.Equal(2, stations);
             Assert.Equal(Math.Sqrt(2) * 500, Metres(ring), 0);
+
+            // A loop with a station, at the end of a stretch, is kept whole
+            Assert.Equal(800 + (4 * Math.Sqrt(2) * 500), Metres(Stretch((0, 200), (0, 2000)).Trim(Lines(trunk, loop)).Lines), 0);
+
+            // A lone station on a loop keeps the stub along it
+            Assert.Equal(800, Metres(Stretch((500, 1500)).Trim(Line(loop)).Lines), 0);
+        }
+
+        [Fact(DisplayName = "Subway stretch - a lone station where two pieces meet counts once and keeps the whole stub across the join")]
+        public void Trim_StubAtAJoin()
+        {
+            // The pieces miss each other by 10 cm, as the source's do, so they stay two parts
+            var lines = Lines(
+                [(0, 0), (0, 2000)],
+                [(0, 2000.1), (0, 4000)]);
+
+            var (kept, stations) = Stretch((0, 2000)).Trim(lines);
+
+            Assert.Equal(1, stations);
+            Assert.Equal(2, kept.NumGeometries);
+            Assert.Equal(800, Metres(kept), 0);
+            Assert.Equal(1600, North(kept.Coordinates.Min(c => c.Y)), 0);
+            Assert.Equal(2400, North(kept.Coordinates.Max(c => c.Y)), 0);
+        }
+
+        [Fact(DisplayName = "Subway stretch - a stub carries on through a short piece into the next, whichever way they are drawn")]
+        public void Trim_StubCarriesOnThroughPieces()
+        {
+            // The last piece is drawn north to south
+            var lines = Lines(
+                [(0, 0), (0, 2000)],
+                [(0, 2000.1), (0, 2100)],
+                [(0, 5000), (0, 2100.1)]);
+
+            var (kept, _) = Stretch((0, 1900)).Trim(lines);
+
+            Assert.Equal(3, kept.NumGeometries);
+            Assert.Equal(800, Metres(kept), 0);
+            Assert.Equal(2300, North(kept.Coordinates.Max(c => c.Y)), 0);
+        }
+
+        [Fact(DisplayName = "Subway stretch - a stub near a junction carries on into both branches")]
+        public void Trim_StubIntoBranches()
+        {
+            var lines = Lines(
+                [(0, 0), (0, 2000)],
+                [(0, 2000), (0, 4000)],
+                [(0, 2000), (2000, 3000)]);
+
+            var (kept, _) = Stretch((0, 1800)).Trim(lines);
+
+            // 600 m on the trunk, then 200 m along each branch
+            Assert.Equal(3, kept.NumGeometries);
+            Assert.Equal(1000, Metres(kept), 0);
+        }
+
+        [Fact(DisplayName = "Subway stretch - each set of connected parts is trimmed on its own")]
+        public void Trim_SeparatePieces()
+        {
+            // Two lines 1 km apart, as a clip at a river leaves them
+            var lines = Lines(
+                [(0, 0), (0, 2000)],
+                [(0, 3000), (0, 6000)]);
+
+            var (kept, stations) = Stretch((0, 500), (0, 1500), (0, 4500)).Trim(lines);
+
+            Assert.Equal(3, stations);
+            Assert.Equal(2, kept.NumGeometries);
+            Assert.Equal(1000 + 800, Metres(kept), 0);
         }
 
         [Fact(DisplayName = "Subway stretch - nothing to trim gives no lines and no stations")]

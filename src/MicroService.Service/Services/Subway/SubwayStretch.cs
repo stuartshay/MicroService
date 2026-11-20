@@ -83,12 +83,15 @@ namespace MicroService.Service.Services.Subway
         /// </summary>
         /// <remarks>
         /// The lines are merged into parts, which meet at junctions and where the source's pieces
-        /// nearly touch (ends within 10 m), or not at all where a clip cut them. Each part keeps the line between the outermost of its stations, projected onto it, and
-        /// runs on to an end where it joins a part that has stations of its own, so that a stretch
-        /// carries on across a junction. A part whose stations are all at one spot and that joins
-        /// no part with stations keeps the stub; a part without stations is kept only where it
-        /// joins parts with stations at both ends, and is otherwise dropped. Distances are
-        /// metres on a plane centred on the lines (latitude scaled by the cosine at the centre).
+        /// nearly touch (ends within 10 m), and not where a clip cut them. A station within the
+        /// radius belongs to the part nearest it. In each set of connected parts, a part keeps the
+        /// line between the outermost of its stations, projected onto it, and runs on to an end
+        /// that leads to another part with stations, so that a stretch carries on across a
+        /// junction; a part without stations is kept only between parts with stations, and a loop
+        /// with stations that leads to more is kept whole. Where all
+        /// of a set's stations are at one spot, the set keeps the stub each side of it instead,
+        /// carried on across joins. Distances are metres on a plane centred on the lines, with
+        /// longitude scaled by the cosine of the centre's latitude.
         /// </remarks>
         /// <returns>The kept lines and how many of the stations lie within the radius of the lines.</returns>
         public (MultiLineString Lines, int Stations) Trim(Geometry lines)
@@ -106,69 +109,146 @@ namespace MicroService.Service.Services.Subway
 
             var frame = new LocalFrame(lines.EnvelopeInternal.Centre);
             var localParts = parts.Select(p => frame.ToLocal(p, factory)).ToList();
-            var localPoints = Points.Select(p => factory.CreatePoint(frame.ToLocal(p.Longitude, p.Latitude))).ToList();
+            var indexes = localParts.Select(p => new LengthIndexedLine(p)).ToList();
+            var positions = Assign(localParts, indexes, Points.Select(p => factory.CreatePoint(frame.ToLocal(p.Longitude, p.Latitude))));
+            var graph = new PartGraph(localParts, positions);
+            var ranges = new Dictionary<int, (double From, double To)>();
 
-            // The stations within the radius of each part
-            var near = localParts
-                .Select(part => Enumerable.Range(0, localPoints.Count).Where(i => part.IsWithinDistance(localPoints[i], RadiusMetres)).ToList())
-                .ToList();
-            var stations = near.SelectMany(n => n).Distinct().Count();
-
-            var graph = new PartGraph(localParts, near);
-            var kept = new List<LineString>();
-
-            for (var i = 0; i < localParts.Count; i++)
+            foreach (var component in graph.Components())
             {
-                var piece = TrimPart(
-                    localParts[i],
-                    near[i].Select(p => localPoints[p].Coordinate).ToList(),
-                    graph.HasStationsBeyond(i, fromStart: true),
-                    graph.HasStationsBeyond(i, fromStart: false));
-
-                if (piece is not null)
+                var withStations = component.Where(p => positions[p].Count > 0).ToList();
+                if (withStations.Count == 0)
                 {
-                    kept.Add(frame.ToWgs84(piece, factory));
+                    continue;
+                }
+
+                if (IsOneSpot(withStations, positions, indexes))
+                {
+                    AddStub(graph, indexes, withStations[0], positions[withStations[0]][0], ranges);
+                    continue;
+                }
+
+                foreach (var part in component)
+                {
+                    if (StretchRange(graph, indexes[part], positions[part], part) is { } range)
+                    {
+                        ranges[part] = range;
+                    }
                 }
             }
 
-            return (factory.CreateMultiLineString(kept.ToArray()), stations);
+            var kept = ranges
+                .OrderBy(r => r.Key)
+                .Select(r => frame.ToWgs84((LineString)indexes[r.Key].ExtractLine(r.Value.From, r.Value.To), factory))
+                .ToArray();
+
+            return (factory.CreateMultiLineString(kept), positions.Sum(p => p.Count));
         }
 
         /// <summary>
-        /// What one part keeps, in the local plane, or null for nothing.
+        /// Each station within the radius goes to the part nearest it, so that a station where
+        /// parts meet counts once. Ties go to the first part.
         /// </summary>
-        /// <param name="part">The part.</param>
-        /// <param name="stations">The stations within the radius of the part.</param>
-        /// <param name="toStart">Whether the part's start leads to another part with stations.</param>
-        /// <param name="toEnd">Whether the part's end leads to another part with stations.</param>
-        private LineString? TrimPart(LineString part, IReadOnlyList<Coordinate> stations, bool toStart, bool toEnd)
+        /// <returns>For each part, its stations' positions along it.</returns>
+        private List<List<double>> Assign(List<LineString> parts, List<LengthIndexedLine> indexes, IEnumerable<Point> stations)
         {
-            if (stations.Count == 0)
+            var positions = parts.Select(_ => new List<double>()).ToList();
+
+            foreach (var station in stations)
             {
-                // Kept whole only between two parts with stations
-                return toStart && toEnd ? part : null;
+                var (part, distance) = parts.Select((p, i) => (Part: i, Distance: p.Distance(station))).MinBy(p => p.Distance);
+                if (distance <= RadiusMetres)
+                {
+                    positions[part].Add(indexes[part].Project(station.Coordinate));
+                }
             }
 
-            var index = new LengthIndexedLine(part);
-            var positions = stations.Select(index.Project).ToList();
+            return positions;
+        }
+
+        private static bool IsOneSpot(List<int> parts, List<List<double>> positions, List<LengthIndexedLine> indexes)
+        {
+            var spots = parts.SelectMany(p => positions[p].Select(position => indexes[p].ExtractPoint(position))).ToList();
+            return spots.TrueForAll(s => s.Distance(spots[0]) < SameSpotMetres);
+        }
+
+        /// <summary>
+        /// The part of a line between its stations, running on to an end that leads to more
+        /// stations, or null for nothing.
+        /// </summary>
+        private static (double From, double To)? StretchRange(PartGraph graph, LengthIndexedLine index, List<double> positions, int part)
+        {
+            var toStart = graph.HasStationsBeyond(part, fromStart: true);
+            var toEnd = graph.HasStationsBeyond(part, fromStart: false);
+
+            if (graph.IsLoop(part))
+            {
+                // A loop with stations is kept whole when it leads to more, and is otherwise
+                // between its first and last (more than one spot, or it would be a stub)
+                return positions.Count == 0 ? null
+                    : toStart ? (index.StartIndex, index.EndIndex)
+                    : (positions.Min(), positions.Max());
+            }
+
+            if (positions.Count == 0)
+            {
+                return toStart && toEnd ? (index.StartIndex, index.EndIndex) : null;
+            }
+
             var from = toStart ? index.StartIndex : positions.Min();
             var to = toEnd ? index.EndIndex : positions.Max();
 
-            if (to - from < SameSpotMetres)
-            {
-                // A station where the part joins another with stations is on that one's stretch
-                if (toStart || toEnd || StubMetres <= 0)
-                {
-                    return null;
-                }
+            // Stations at the end where the part joins the stretch add nothing
+            return to - from < SameSpotMetres ? null : (from, to);
+        }
 
-                var spot = (from + to) / 2;
-                from = Math.Max(index.StartIndex, spot - StubMetres);
-                to = Math.Min(index.EndIndex, spot + StubMetres);
+        /// <summary>
+        /// The stub each side of <paramref name="spot"/> on <paramref name="part"/>, carried on
+        /// into the parts that join it when the part ends first.
+        /// </summary>
+        private void AddStub(PartGraph graph, List<LengthIndexedLine> indexes, int part, double spot, Dictionary<int, (double From, double To)> ranges)
+        {
+            if (StubMetres <= 0)
+            {
+                return;
             }
 
-            // A line too short to draw is dropped later, with the other lines that round to a point
-            return (LineString)index.ExtractLine(from, to);
+            var index = indexes[part];
+            ranges[part] = (Math.Max(index.StartIndex, spot - StubMetres), Math.Min(index.EndIndex, spot + StubMetres));
+
+            if (graph.IsLoop(part))
+            {
+                return;
+            }
+
+            var visited = new HashSet<int> { part };
+            CarryOn(graph, indexes, graph.Start(part), StubMetres - (spot - index.StartIndex), visited, ranges);
+            CarryOn(graph, indexes, graph.End(part), StubMetres - (index.EndIndex - spot), visited, ranges);
+        }
+
+        private static void CarryOn(PartGraph graph, List<LengthIndexedLine> indexes, int end, double metres, HashSet<int> visited, Dictionary<int, (double From, double To)> ranges)
+        {
+            if (metres <= 0)
+            {
+                return;
+            }
+
+            foreach (var next in graph.PartsAt(end).Where(visited.Add).ToList())
+            {
+                var index = indexes[next];
+                var length = index.EndIndex - index.StartIndex;
+
+                if (graph.Start(next) == end)
+                {
+                    ranges[next] = (index.StartIndex, Math.Min(index.EndIndex, index.StartIndex + metres));
+                    CarryOn(graph, indexes, graph.End(next), metres - length, visited, ranges);
+                }
+                else
+                {
+                    ranges[next] = (Math.Max(index.StartIndex, index.EndIndex - metres), index.EndIndex);
+                    CarryOn(graph, indexes, graph.Start(next), metres - length, visited, ranges);
+                }
+            }
         }
 
         private static string BuildKey(IReadOnlyList<(double Latitude, double Longitude)> points, double radiusMetres, double stubMetres)
@@ -225,15 +305,15 @@ namespace MicroService.Service.Services.Subway
         /// </summary>
         private sealed class PartGraph
         {
-            private readonly IReadOnlyList<List<int>> _near;
+            private readonly IReadOnlyList<List<double>> _stations;
             private readonly List<Coordinate> _ends = [];
             private readonly List<List<int>> _partsAtEnd = [];
             private readonly int[] _start;
             private readonly int[] _end;
 
-            public PartGraph(IReadOnlyList<LineString> parts, IReadOnlyList<List<int>> near)
+            public PartGraph(IReadOnlyList<LineString> parts, IReadOnlyList<List<double>> stations)
             {
-                _near = near;
+                _stations = stations;
                 _start = new int[parts.Count];
                 _end = new int[parts.Count];
 
@@ -244,18 +324,53 @@ namespace MicroService.Service.Services.Subway
                 }
             }
 
+            public int Start(int part) => _start[part];
+
+            public int End(int part) => _end[part];
+
+            public IReadOnlyList<int> PartsAt(int end) => _partsAtEnd[end];
+
+            /// <summary>
+            /// A part whose ends are one.
+            /// </summary>
+            public bool IsLoop(int part) => _start[part] == _end[part];
+
+            /// <summary>
+            /// The sets of connected parts.
+            /// </summary>
+            public IEnumerable<List<int>> Components()
+            {
+                var seen = new bool[_start.Length];
+
+                for (var first = 0; first < _start.Length; first++)
+                {
+                    if (seen[first])
+                    {
+                        continue;
+                    }
+
+                    seen[first] = true;
+                    var component = new List<int> { first };
+                    for (var i = 0; i < component.Count; i++)
+                    {
+                        var part = component[i];
+                        foreach (var next in _partsAtEnd[_start[part]].Concat(_partsAtEnd[_end[part]]).Where(p => !seen[p]))
+                        {
+                            seen[next] = true;
+                            component.Add(next);
+                        }
+                    }
+
+                    yield return component;
+                }
+            }
+
             /// <summary>
             /// Whether a part with stations can be reached from the start (or end) of part
-            /// <paramref name="part"/> without going along that part. A loop, whose ends are one,
-            /// is never carried on from.
+            /// <paramref name="part"/> without going along that part.
             /// </summary>
             public bool HasStationsBeyond(int part, bool fromStart)
             {
-                if (_start[part] == _end[part])
-                {
-                    return false;
-                }
-
                 var visited = new HashSet<int> { part };
                 var ends = new Queue<int>();
                 ends.Enqueue(fromStart ? _start[part] : _end[part]);
@@ -269,7 +384,7 @@ namespace MicroService.Service.Services.Subway
                             continue;
                         }
 
-                        if (_near[next].Count > 0)
+                        if (_stations[next].Count > 0)
                         {
                             return true;
                         }

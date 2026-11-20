@@ -328,6 +328,18 @@ namespace MicroService.Test.Integration
             Assert.Empty(Features(_service.GetLinesGeoJson(["7"], Borough.MN, 5, new SubwayStretch(timesSquare, 150, 0))));
         }
 
+        [Fact(DisplayName = "Subway stretch - a lone station where the 1's two source pieces meet keeps the whole stub")]
+        public void GetLines_StretchStubAtTheJoinOfTwoPieces()
+        {
+            // Near Times Sq, where the source's two pieces of the 1 miss each other by about 10 cm
+            var stretch = new SubwayStretch([(40.75753556819424, -73.98593949779362)], 150, 400);
+
+            var feature = Assert.Single(Features(_service.GetLinesGeoJson(["1"], null, 0, stretch)));
+
+            Assert.Equal(1, feature.GetProperty("properties").GetProperty("stations").GetInt32());
+            Assert.InRange(Metres(feature), 790, 805);
+        }
+
         [Fact(DisplayName = "Subway stretch - a station far from a line doesn't count for it, and a service without stations is left out")]
         public void GetLines_StretchLeavesOutServicesWithoutStations()
         {
