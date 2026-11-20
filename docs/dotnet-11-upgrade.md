@@ -19,6 +19,33 @@ Microsoft's references:
 - [Breaking changes in .NET 11](https://learn.microsoft.com/dotnet/core/compatibility/11)
 - [OpenAPI in ASP.NET Core](https://learn.microsoft.com/aspnet/core/fundamentals/openapi/overview)
 
+## Status (2026-11-20)
+
+![Live](https://img.shields.io/badge/Live-brightgreen) on .NET 11 in production · ![Done](https://img.shields.io/badge/Done-green) resolved · ![Held](https://img.shields.io/badge/Held-orange) waiting for a stable upstream release ·
+![Blocked](https://img.shields.io/badge/Blocked-red) the platform doesn't offer .NET 11 · ![Not needed](https://img.shields.io/badge/Not%20needed-lightgrey) doesn't apply
+
+| Repository | Status | Pull request | Notes |
+| --- | --- | --- | --- |
+| MicroService | ![Live](https://img.shields.io/badge/Live-brightgreen) | #563, #564 (OpenAPI) | First upgrade; this checklist comes from it |
+| CoreDataStore | ![Live](https://img.shields.io/badge/Live-brightgreen) | #334 | EF Core and Npgsql held at 10.x (below) |
+| CoreDataStore.Reporting | ![Live](https://img.shields.io/badge/Live-brightgreen) | #60 | EF Core and Npgsql held at 10.x (below) |
+| Navigator.Auth | ![Live](https://img.shields.io/badge/Live-brightgreen) | #54 | |
+| NavigatorAttractionsAPI | ![Live](https://img.shields.io/badge/Live-brightgreen) | #299 | |
+| NavigatorMaps.QL | ![Live](https://img.shields.io/badge/Live-brightgreen) | #109 | With HotChocolate 16 |
+| NavigatorMapsAPI | ![Live](https://img.shields.io/badge/Live-brightgreen) | #118 | |
+| NavigatorPhotoService | ![Live](https://img.shields.io/badge/Live-brightgreen) | #113 | |
+| NavigatorPhotoWorker | ![Live](https://img.shields.io/badge/Live-brightgreen) | #50 | |
+| NavigatorReportsAPI | ![Live](https://img.shields.io/badge/Live-brightgreen) | #413 | |
+| NavigatorFunctions | ![Blocked](https://img.shields.io/badge/Blocked-red) | | Stays `net10.0`: Cloud Run functions offers `dotnet10` (GA) and `dotnet8` (deprecated), no `dotnet11`. No hurry: .NET 10 is supported until 2028-11-14, as long as .NET 11 |
+
+| Item | Status | Notes |
+| --- | --- | --- |
+| EF Core and Npgsql 11 | ![Held](https://img.shields.io/badge/Held-orange) | EF Core 11.0.0 is stable, but `Npgsql.EntityFrameworkCore.PostgreSQL` is at 11.0.0-rc.3 and pins an exact EF Core release candidate. CoreDataStore and Reporting stay on EF Core 10.0.15 and Npgsql 10.0.3 until Npgsql 11.0 is stable; then move both together |
+| `Asp.Versioning.OpenApi` | ![Held](https://img.shields.io/badge/Held-orange) | 10.2.3 still requires `Microsoft.OpenApi` [2.7.5, 3.0). MicroService registers its API versions itself and suppresses AV0029/AV0030 until a release supports 3.x |
+| `Swashbuckle.AspNetCore.Filters` | ![Not needed](https://img.shields.io/badge/Not%20needed-lightgrey) | 11.0.0 is out, but nothing uses it now: MicroService moved to `Microsoft.AspNetCore.OpenApi`, and the five repositories on Swashbuckle 11.0.1 don't use Filters |
+| MongoDB driver | ![Done](https://img.shields.io/badge/Done-green) | 3.14.0 runs on .NET 11 in NavigatorAttractionsAPI, NavigatorMapsAPI, NavigatorReportsAPI and Navigator.Auth |
+| OpenTelemetry duplicate HTTP tags | ![Not needed](https://img.shields.io/badge/Not%20needed-lightgrey) | No repository calls `AddAspNetCoreInstrumentation()` |
+
 ## Change these together, in one pull request
 
 Renovate offers the image, SDK and package updates separately. Merged alone, each
@@ -55,9 +82,9 @@ the image locally before merging (see Validation).
 | --- | --- |
 | The OpenAPI document includes every `[ProducesResponseType]` per status code, and `[Produces(Type = …)]` counts as one | Two MVC actions that declared different 200 types in `[Produces]` and `[ProducesResponseType]` got `anyOf` schemas. Remove the redundant `Type` from `[Produces]` |
 | New analyzer rules (with warnings as errors in `make analyze`) | MicroService: CA1860, `Count == 0` instead of `!Any()`. Run `make analyze` before pushing |
-| Microsoft.OpenApi 3.x | Swashbuckle 11 uses it. `Swashbuckle.AspNetCore.Filters` (latest 10.0.1) and `Asp.Versioning.OpenApi` (10.x) still need 2.x and fail at run time (`MissingMethodException`), not at build time. See OpenAPI below |
+| Microsoft.OpenApi 3.x | Swashbuckle 11 uses it. `Asp.Versioning.OpenApi` (10.x, 10.2.3 on 2026-11-20) still needs 2.x and fails at run time (`MissingMethodException`), not at build time; `Swashbuckle.AspNetCore.Filters` did too until 11.0.0. See OpenAPI below |
 | `OpenApiVersion` defaults to 3.2 | Applies to `Microsoft.AspNetCore.OpenApi`. Set `options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_1` unless every reader of the document handles 3.2 |
-| Hosting emits OpenTelemetry HTTP semantic-convention tags by default | Services that also call `AddAspNetCoreInstrumentation()` may record the same attributes twice. Check the traces after the deploy |
+| Hosting emits OpenTelemetry HTTP semantic-convention tags by default | Services that also call `AddAspNetCoreInstrumentation()` may record the same attributes twice. None of ours does (2026-11-20) |
 | Kestrel tightens HTTP protocol compliance | Low risk behind Cloud Run; watch for new 400s after the deploy |
 | Response compression always sends `Vary: Accept-Encoding` | Only matters where response compression is on |
 | ConcurrencyLimiter middleware, MVC compatibility options and obsolete APIs removed | The build fails if a service uses them |
@@ -92,10 +119,11 @@ the image locally before merging (see Validation).
   analyzers suggest) still needs `Microsoft.OpenApi` 2.x in its 10.x releases. Until
   it supports 3.x, register the versions yourself and suppress those two IDs with
   the reason.
-- **NavigatorFunctions** deploys from source on Cloud Run functions. Check that the
-  .NET runtime there offers .NET 11 before moving it.
-- **EF Core, Npgsql, MongoDB driver** (CoreDataStore, Reporting, the Navigator
-  APIs): not checked yet; read their release notes for .NET 11 support first.
+- **NavigatorFunctions** deploys from source on Cloud Run functions, which offers no
+  .NET 11 runtime yet (`gcloud functions runtimes list`: `dotnet10` GA, `dotnet8`
+  deprecated, 2026-11-20). It stays on .NET 10 until one appears.
+- **EF Core, Npgsql, MongoDB driver:** EF Core 11 waits for a stable Npgsql 11.0 (see
+  Status); the MongoDB driver 3.14.0 needed no change.
 
 ## Validation
 
