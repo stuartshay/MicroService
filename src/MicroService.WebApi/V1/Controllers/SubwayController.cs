@@ -57,11 +57,25 @@ namespace MicroService.WebApi.V1.Controllers
         /// <remarks>
         /// One MultiLineString feature per service in WGS84, with the properties service, name, color and
         /// textColor. Example: <c>GET /api/v1/Subway/lines?services=1,2,3&amp;borough=MN&amp;simplify=5</c>
+        ///
+        /// With stations, each line keeps only the stretch between the map's stations on it: a station is on
+        /// a service when it lies within radius metres of the service's line (after the borough clip), and each
+        /// connected part of the line keeps the line from its first to its last station, carrying on across a
+        /// junction to another part with stations. A part with a single station keeps stub metres each side of
+        /// it. A service with no station on it is left out, and each feature also has stations, how many of the
+        /// stations are on it. Example:
+        /// <c>GET /api/v1/Subway/lines?services=1&amp;borough=MN&amp;stations=40.715556,-74.009722;40.860593,-73.926345</c>
         /// </remarks>
         /// <param name="services">Comma-separated service codes, e.g. 1,2,3,A,SIR. Codes match regardless of case,
         /// and S means every shuttle (SF, SR, ST). Leave out for every service.</param>
         /// <param name="borough">Clip each line to a borough: MN, BX, BK, QN or SI. A service with nothing left is left out.</param>
         /// <param name="simplify">Simplification tolerance in metres, 0 (none) to 50. Default 5.</param>
+        /// <param name="stations">The map's stations as lat,lon in decimal degrees, separated by ';'. At most 300, in any
+        /// order. Trims each line to the stretch between them; leave out for whole lines.</param>
+        /// <param name="radius">With stations: how near a line, in metres, a station must be to count for it, 10 to 500.
+        /// Default 150.</param>
+        /// <param name="stub">With stations: metres of line kept each side of a lone station, 0 (none: the part is
+        /// dropped) to 2000. Default 400.</param>
         /// <returns>A GeoJSON FeatureCollection</returns>
         [HttpGet("lines", Name = "GetSubwayLines")]
         [Produces("application/geo+json")]
@@ -70,7 +84,10 @@ namespace MicroService.WebApi.V1.Controllers
         public IActionResult GetLines(
             [FromQuery] string? services = null,
             [FromQuery] string? borough = null,
-            [FromQuery] double? simplify = null)
+            [FromQuery] double? simplify = null,
+            [FromQuery] string? stations = null,
+            [FromQuery] double? radius = null,
+            [FromQuery] double? stub = null)
         {
             var (resolved, unknown) = _routes.ResolveServices(services?.Split(','));
             if (unknown.Count > 0)
@@ -78,18 +95,7 @@ namespace MicroService.WebApi.V1.Controllers
                 ModelState.AddModelError(nameof(services), $"Unknown service codes: {string.Join(", ", unknown)}. GET api/v1/Subway/services lists them.");
             }
 
-            Borough? boroughCode = null;
-            if (!string.IsNullOrWhiteSpace(borough))
-            {
-                if (TryParseBorough(borough.Trim(), out var parsed))
-                {
-                    boroughCode = parsed;
-                }
-                else
-                {
-                    ModelState.AddModelError(nameof(borough), $"Unknown borough '{borough}'. Use MN, BX, BK, QN or SI.");
-                }
-            }
+            var boroughCode = ValidateBorough(borough);
 
             var tolerance = simplify ?? SubwayRouteService.DefaultSimplifyMetres;
             if (!double.IsFinite(tolerance) || tolerance < 0 || tolerance > SubwayRouteService.MaxSimplifyMetres)
@@ -97,12 +103,14 @@ namespace MicroService.WebApi.V1.Controllers
                 ModelState.AddModelError(nameof(simplify), $"simplify is in metres, 0 to {SubwayRouteService.MaxSimplifyMetres}.");
             }
 
+            var stretch = ValidateStretch(stations, radius, stub);
+
             if (!ModelState.IsValid)
             {
                 return ValidationProblem(ModelState);
             }
 
-            var geoJson = _routes.GetLinesGeoJson(resolved, boroughCode, tolerance);
+            var geoJson = _routes.GetLinesGeoJson(resolved, boroughCode, tolerance, stretch);
             Response.Headers.CacheControl = CacheControl;
             return Content(geoJson, "application/geo+json");
         }
@@ -147,6 +155,52 @@ namespace MicroService.WebApi.V1.Controllers
             var result = _stations.FindNear(points, radiusMetres);
             Response.Headers.CacheControl = CacheControl;
             return Ok(result);
+        }
+
+        /// <summary>
+        /// The borough code, or null for none; an unknown one is a model error.
+        /// </summary>
+        private Borough? ValidateBorough(string? borough)
+        {
+            if (string.IsNullOrWhiteSpace(borough))
+            {
+                return null;
+            }
+
+            if (TryParseBorough(borough.Trim(), out var parsed))
+            {
+                return parsed;
+            }
+
+            ModelState.AddModelError(nameof(borough), $"Unknown borough '{borough}'. Use MN, BX, BK, QN or SI.");
+            return null;
+        }
+
+        /// <summary>
+        /// The stretch for the stations, or null without them; bad values are model errors.
+        /// </summary>
+        private SubwayStretch? ValidateStretch(string? stations, double? radius, double? stub)
+        {
+            List<(double Latitude, double Longitude)> points = [];
+            var hasStations = !string.IsNullOrWhiteSpace(stations);
+            if (hasStations && !SubwayStationLookupService.TryParsePoints(stations, nameof(stations), out points, out var error))
+            {
+                ModelState.AddModelError(nameof(stations), error);
+            }
+
+            var radiusMetres = radius ?? SubwayStretch.DefaultRadiusMetres;
+            if (!double.IsFinite(radiusMetres) || radiusMetres < SubwayStretch.MinRadiusMetres || radiusMetres > SubwayStretch.MaxRadiusMetres)
+            {
+                ModelState.AddModelError(nameof(radius), $"radius is in metres, {SubwayStretch.MinRadiusMetres} to {SubwayStretch.MaxRadiusMetres}.");
+            }
+
+            var stubMetres = stub ?? SubwayStretch.DefaultStubMetres;
+            if (!double.IsFinite(stubMetres) || stubMetres < 0 || stubMetres > SubwayStretch.MaxStubMetres)
+            {
+                ModelState.AddModelError(nameof(stub), $"stub is in metres, 0 to {SubwayStretch.MaxStubMetres}.");
+            }
+
+            return hasStations && ModelState.IsValid ? new SubwayStretch(points, radiusMetres, stubMetres) : null;
         }
 
         private static bool TryParseBorough(string value, out Borough borough)

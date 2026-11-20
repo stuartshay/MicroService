@@ -75,21 +75,29 @@ namespace MicroService.Service.Services.Subway
         /// Parses <c>lat,lon;lat,lon</c> (decimal degrees, invariant culture).
         /// </summary>
         /// <returns>False with a message saying what is wrong.</returns>
-        public static bool TryParsePoints(string? near, out List<(double Latitude, double Longitude)> points, out string error)
+        public static bool TryParsePoints(string? near, out List<(double Latitude, double Longitude)> points, out string error) =>
+            TryParsePoints(near, nameof(near), out points, out error);
+
+        /// <summary>
+        /// Parses <c>lat,lon;lat,lon</c> (decimal degrees, invariant culture), with messages that
+        /// name the <paramref name="parameter"/> the points came in.
+        /// </summary>
+        /// <returns>False with a message saying what is wrong.</returns>
+        public static bool TryParsePoints(string? value, string parameter, out List<(double Latitude, double Longitude)> points, out string error)
         {
             points = [];
             error = string.Empty;
 
-            if (string.IsNullOrWhiteSpace(near))
+            if (string.IsNullOrWhiteSpace(value))
             {
-                error = "near is required: one or more lat,lon points separated by ';', e.g. near=40.7527,-73.9772;40.7066,-74.0110.";
+                error = $"{parameter} is required: one or more lat,lon points separated by ';', e.g. {parameter}=40.7527,-73.9772;40.7066,-74.0110.";
                 return false;
             }
 
-            var parts = near.Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+            var parts = value.Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
             if (parts.Length > MaxPoints)
             {
-                error = $"near has {parts.Length} points; the most is {MaxPoints}.";
+                error = $"{parameter} has {parts.Length} points; the most is {MaxPoints}.";
                 return false;
             }
 
@@ -102,13 +110,13 @@ namespace MicroService.Service.Services.Subway
                     || !double.IsFinite(latitude)
                     || !double.IsFinite(longitude))
                 {
-                    error = $"near point '{part}' is not lat,lon in decimal degrees.";
+                    error = $"{parameter} point '{part}' is not lat,lon in decimal degrees.";
                     return false;
                 }
 
                 if (latitude is < -90 or > 90 || longitude is < -180 or > 180)
                 {
-                    error = $"near point '{part}' is out of range: latitude is -90 to 90 and longitude -180 to 180.";
+                    error = $"{parameter} point '{part}' is out of range: latitude is -90 to 90 and longitude -180 to 180.";
                     return false;
                 }
 
@@ -117,7 +125,7 @@ namespace MicroService.Service.Services.Subway
 
             if (points.Count == 0)
             {
-                error = "near is required: one or more lat,lon points separated by ';'.";
+                error = $"{parameter} is required: one or more lat,lon points separated by ';'.";
                 return false;
             }
 

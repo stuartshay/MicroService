@@ -285,6 +285,107 @@ namespace MicroService.Test.Integration
             Assert.Throws<ArgumentNullException>(() => _service.GetLinesGeoJson(null!, null, 5));
         }
 
+        [Fact(DisplayName = "Subway stretch - the 1 in Manhattan between Chambers St and Dyckman St")]
+        public void GetLines_StretchBetweenTwoStations()
+        {
+            const double chambers = 40.715556;
+            const double dyckman = 40.860593;
+            const double radius = SubwayStretch.DefaultRadiusMetres / 111_320;
+            var stretch = new SubwayStretch([(chambers, -74.009722), (dyckman, -73.926345)], SubwayStretch.DefaultRadiusMetres, SubwayStretch.DefaultStubMetres);
+
+            var whole = Assert.Single(Features(_service.GetLinesGeoJson(["1"], Borough.MN, 5)));
+            var feature = Assert.Single(Features(_service.GetLinesGeoJson(["1"], Borough.MN, 5, stretch)));
+            var coordinates = Coordinates(feature).ToList();
+
+            Assert.Equal(2, feature.GetProperty("properties").GetProperty("stations").GetInt32());
+            Assert.All(coordinates, c => Assert.InRange(c.Y, chambers - radius, dyckman + radius));
+            Assert.InRange(coordinates.Min(c => c.Y), chambers - radius, chambers + radius);
+            Assert.InRange(coordinates.Max(c => c.Y), dyckman - radius, dyckman + radius);
+            Assert.True(Metres(feature) < Metres(whole) - 3000, $"stretch {Metres(feature):F0} m, whole {Metres(whole):F0} m");
+
+            // Unbroken from one station to the other, across the join of the source's two pieces near Times Sq
+            var covered = Segments(feature).Select(s => (Min: Math.Min(s.A.Y, s.B.Y), Max: Math.Max(s.A.Y, s.B.Y))).OrderBy(s => s.Min).ToList();
+            var reach = covered[0].Max;
+            foreach (var (min, max) in covered.Skip(1))
+            {
+                Assert.True(min <= reach + 1e-5, $"a gap from {reach} to {min}");
+                reach = Math.Max(reach, max);
+            }
+
+            Assert.True(reach > dyckman - radius);
+        }
+
+        [Fact(DisplayName = "Subway stretch - a lone station keeps a stub each side; with stub 0 the service is left out")]
+        public void GetLines_StretchStub()
+        {
+            (double, double)[] timesSquare = [(40.755278, -73.9875)];
+
+            var feature = Assert.Single(Features(_service.GetLinesGeoJson(["7"], Borough.MN, 5, new SubwayStretch(timesSquare, 150, 400))));
+            Assert.Equal(1, feature.GetProperty("properties").GetProperty("stations").GetInt32());
+            Assert.InRange(Metres(feature), 750, 810);
+
+            Assert.InRange(Metres(Assert.Single(Features(_service.GetLinesGeoJson(["7"], Borough.MN, 0, new SubwayStretch(timesSquare, 150, 200))))), 390, 405);
+            Assert.Empty(Features(_service.GetLinesGeoJson(["7"], Borough.MN, 5, new SubwayStretch(timesSquare, 150, 0))));
+        }
+
+        [Fact(DisplayName = "Subway stretch - a lone station where the 1's two source pieces meet keeps the whole stub")]
+        public void GetLines_StretchStubAtTheJoinOfTwoPieces()
+        {
+            // Near Times Sq, where the source's two pieces of the 1 miss each other by about 10 cm
+            var stretch = new SubwayStretch([(40.75753556819424, -73.98593949779362)], 150, 400);
+
+            var feature = Assert.Single(Features(_service.GetLinesGeoJson(["1"], null, 0, stretch)));
+
+            Assert.Equal(1, feature.GetProperty("properties").GetProperty("stations").GetInt32());
+            Assert.InRange(Metres(feature), 790, 805);
+        }
+
+        [Fact(DisplayName = "Subway stretch - a station far from a line doesn't count for it, and a service without stations is left out")]
+        public void GetLines_StretchLeavesOutServicesWithoutStations()
+        {
+            // 168 St (1) is about 9 km north of the L
+            var stretch = new SubwayStretch([(40.840556, -73.940556)], 150, 400);
+
+            var feature = Assert.Single(Features(_service.GetLinesGeoJson(["1", "L"], Borough.MN, 5, stretch)));
+
+            Assert.Equal("1", feature.GetProperty("properties").GetProperty("service").GetString());
+            Assert.Equal(1, feature.GetProperty("properties").GetProperty("stations").GetInt32());
+            Assert.Empty(Features(_service.GetLinesGeoJson(["L"], null, 5, stretch)));
+        }
+
+        [Fact(DisplayName = "Subway stretch - without a borough, and a service clipped to nothing, are trimmed too")]
+        public void GetLines_StretchWithAndWithoutABorough()
+        {
+            // 14 St-Union Sq and Bedford Av on the L, which crosses the East River between them
+            var stretch = new SubwayStretch([(40.734673, -73.989951), (40.717304, -73.956872)], 150, 400);
+
+            var coordinates = Coordinates(Assert.Single(Features(_service.GetLinesGeoJson(["L"], null, 5, stretch)))).ToList();
+            Assert.All(coordinates, c => Assert.InRange(c.X, -73.9918, -73.9550));
+
+            // In Brooklyn, only Bedford Av is left on the L: a stub; the 1 isn't in Brooklyn at all
+            var brooklyn = Assert.Single(Features(_service.GetLinesGeoJson(["1", "L"], Borough.BK, 5, stretch)));
+            Assert.Equal("L", brooklyn.GetProperty("properties").GetProperty("service").GetString());
+            Assert.Equal(1, brooklyn.GetProperty("properties").GetProperty("stations").GetInt32());
+        }
+
+        [Fact(DisplayName = "Subway stretch - cached per stations, radius and stub; the stations' order doesn't matter")]
+        public void GetLines_StretchIsCached()
+        {
+            (double, double)[] stations = [(40.715556, -74.009722), (40.755278, -73.9875), (40.860593, -73.926345)];
+
+            var first = _service.GetLinesGeoJson(["1", "7"], Borough.MN, 5, new SubwayStretch(stations, 150, 400));
+
+            Assert.Same(first, _service.GetLinesGeoJson(["1", "7"], Borough.MN, 5, new SubwayStretch(stations.Reverse().ToArray(), 150, 400)));
+            Assert.NotSame(first, _service.GetLinesGeoJson(["1", "7"], Borough.MN, 5, new SubwayStretch(stations, 100, 400)));
+            Assert.NotSame(first, _service.GetLinesGeoJson(["1", "7"], Borough.MN, 5, new SubwayStretch(stations, 150, 300)));
+            Assert.NotSame(first, _service.GetLinesGeoJson(["1", "7"], Borough.MN, 5, new SubwayStretch(stations[..2], 150, 400)));
+
+            // Without stations, the same entry as before
+            var whole = _service.GetLinesGeoJson(["1", "7"], Borough.MN, 5);
+            Assert.Same(whole, _service.GetLinesGeoJson(["1", "7"], Borough.MN, 5, null));
+            Assert.DoesNotContain("\"stations\"", whole, StringComparison.Ordinal);
+        }
+
         private Geometry ManhattanOutline()
         {
             var feature = _fixture.BoroughBoundariesService.GetFeatures().Single(f => Convert.ToInt32(f.Attributes["BoroCode"]) == 1);
@@ -297,6 +398,17 @@ namespace MicroService.Test.Integration
             Assert.Equal("FeatureCollection", document.RootElement.GetProperty("type").GetString());
             return document.RootElement.GetProperty("features").EnumerateArray().Select(f => f.Clone()).ToList();
         }
+
+        private static IEnumerable<(Coordinate A, Coordinate B)> Segments(JsonElement feature) =>
+            feature.GetProperty("geometry").GetProperty("coordinates").EnumerateArray()
+                .SelectMany(line =>
+                {
+                    var positions = line.EnumerateArray().Select(p => new Coordinate(p[0].GetDouble(), p[1].GetDouble())).ToList();
+                    return positions.Zip(positions.Skip(1));
+                });
+
+        private static double Metres(JsonElement feature) =>
+            Segments(feature).Sum(s => SubwayStationLookupService.Distance(s.A.Y, s.A.X, s.B.Y, s.B.X));
 
         private static IEnumerable<Coordinate> Coordinates(JsonElement feature) =>
             feature.GetProperty("geometry").GetProperty("coordinates").EnumerateArray()

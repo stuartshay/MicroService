@@ -15,6 +15,16 @@ namespace MicroService.Test.Controllers
         private const string AllManhattanLines =
             "/api/v1/Subway/lines?services=1,2,3,4,5,6,7,A,B,C,D,E,F,J,L,M,N,Q,R,S,W,Z&borough=MN&simplify=5";
 
+        // The 28 places of the stations map (Manhattan Subway and Railway Stations on the National Register)
+        private const string StationsMapPlaces =
+            "40.735274,-73.991055;40.746667,-73.994167;40.743333,-73.984444;40.746081,-73.982076;" +
+            "40.768056,-73.982500;40.778510,-73.981930;40.783827,-73.980001;40.779444,-73.956111;" +
+            "40.803889,-73.966944;40.807778,-73.964444;40.815581,-73.958372;40.820278,-73.936667;" +
+            "40.840556,-73.940556;40.849505,-73.933596;40.850891,-73.938289;40.858889,-73.934722;" +
+            "40.730102,-73.990852;40.726389,-73.995278;40.704088,-74.014523;40.713056,-74.004444;" +
+            "40.712657,-74.004136;40.715556,-74.009722;40.712600,-74.006700;40.860593,-73.926345;" +
+            "40.752710,-73.977240;40.755278,-73.987500;40.707710,-74.011717;40.731667,-74.001389";
+
         private readonly CorsPipelineTest.ApiFactory _factory;
         private readonly ITestOutputHelper _output;
 
@@ -118,6 +128,82 @@ namespace MicroService.Test.Controllers
             {
                 Assert.Equal(expected, services);
             }
+        }
+
+        [Fact(DisplayName = "Subway API - the stations map's lines trimmed to the stretch between its places")]
+        public async Task Lines_Stretch()
+        {
+            var uri = $"{AllManhattanLines}&stations={StationsMapPlaces}&radius=150&stub=400";
+            using var whole = await GetAsync(AllManhattanLines);
+            using var response = await GetAsync(uri);
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.Equal("application/geo+json", response.Content.Headers.ContentType?.MediaType);
+            Assert.Equal("public, max-age=86400", response.Headers.CacheControl?.ToString());
+
+            var wholeBody = await whole.Content.ReadAsByteArrayAsync(TestContext.Current.CancellationToken);
+            var body = await response.Content.ReadAsByteArrayAsync(TestContext.Current.CancellationToken);
+            _output.WriteLine($"stretch: {body.Length:N0} bytes, {Gzip(body):N0} gzipped; whole: {wholeBody.Length:N0} bytes, {Gzip(wholeBody):N0} gzipped");
+            Assert.True(body.Length < wholeBody.Length);
+
+            using var document = JsonDocument.Parse(body);
+            var stations = document.RootElement.GetProperty("features").EnumerateArray()
+                .ToDictionary(
+                    f => f.GetProperty("properties").GetProperty("service").GetString()!,
+                    f => f.GetProperty("properties").GetProperty("stations").GetInt32());
+
+            // Every service has a place on it in Manhattan
+            Assert.Equal(["1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "F", "J", "L", "M", "N", "Q", "R", "ST", "W", "Z"], stations.Keys);
+            Assert.All(stations.Values, count => Assert.InRange(count, 1, 28));
+
+            // With one place each, the E, L and 42 Street Shuttle are stubs
+            Assert.Equal(["E", "L", "ST"], stations.Where(s => s.Value == 1).Select(s => s.Key));
+        }
+
+        [Fact(DisplayName = "Subway API - without stations, or with them blank, lines are whole and have no stations property")]
+        public async Task Lines_WithoutStations()
+        {
+            using var response = await GetAsync("/api/v1/Subway/lines?services=1&borough=MN&radius=10&stub=0");
+            using var blank = await GetAsync("/api/v1/Subway/lines?services=1&borough=MN&stations=%20");
+
+            var body = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
+            Assert.Equal(body, await blank.Content.ReadAsStringAsync(TestContext.Current.CancellationToken));
+
+            using var document = JsonDocument.Parse(body);
+            var properties = Assert.Single(document.RootElement.GetProperty("features").EnumerateArray()).GetProperty("properties");
+            Assert.False(properties.TryGetProperty("stations", out _));
+        }
+
+        [Theory(DisplayName = "Subway API - bad stretch input is a 400 that names the problem")]
+        [InlineData("/api/v1/Subway/lines?stations=x", "stations", "stations point 'x' is not lat,lon")]
+        [InlineData("/api/v1/Subway/lines?stations=40.75", "stations", "is not lat,lon")]
+        [InlineData("/api/v1/Subway/lines?stations=40.75,-200", "stations", "stations point '40.75,-200' is out of range")]
+        [InlineData("/api/v1/Subway/lines?stations=;;", "stations", "stations is required")]
+        [InlineData("/api/v1/Subway/lines?stations=40.75,-73.98&radius=9", "radius", "10 to 500")]
+        [InlineData("/api/v1/Subway/lines?stations=40.75,-73.98&radius=501", "radius", "10 to 500")]
+        [InlineData("/api/v1/Subway/lines?stations=40.75,-73.98&radius=NaN", "radius", "10 to 500")]
+        [InlineData("/api/v1/Subway/lines?radius=wide", "radius", "not valid")]
+        [InlineData("/api/v1/Subway/lines?stations=40.75,-73.98&stub=-1", "stub", "0 to 2000")]
+        [InlineData("/api/v1/Subway/lines?stations=40.75,-73.98&stub=2001", "stub", "0 to 2000")]
+        [InlineData("/api/v1/Subway/lines?stub=Infinity", "stub", "0 to 2000")]
+        public async Task Lines_BadStretchInput(string uri, string field, string message)
+        {
+            await AssertBadRequest(uri, field, message);
+        }
+
+        [Fact(DisplayName = "Subway API - every bad stretch parameter is reported at once; more than 300 stations is a 400")]
+        public async Task Lines_ReportsEveryStretchProblem()
+        {
+            var stations = string.Join(';', Enumerable.Repeat("40.75,-73.98", 301));
+            using var response = await GetAsync($"/api/v1/Subway/lines?services=Q9&stations={stations}&radius=1&stub=5000");
+
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+            using var document = await ReadJsonAsync(response);
+            var errors = document.RootElement.GetProperty("errors");
+            Assert.Contains("Q9", errors.GetProperty("services")[0].GetString());
+            Assert.Contains("the most is 300", errors.GetProperty("stations")[0].GetString());
+            Assert.Contains("10 to 500", errors.GetProperty("radius")[0].GetString());
+            Assert.Contains("0 to 2000", errors.GetProperty("stub")[0].GetString());
         }
 
         [Fact(DisplayName = "Subway API - every bad stations parameter is reported at once")]

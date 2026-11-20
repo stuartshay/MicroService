@@ -42,7 +42,7 @@ are published in NAD83 while others use WGS84. This API:
 | `GET /api/v1/FlatFileService/{id}` | Every subway station location or station complex |
 | `GET /api/v1/TransformationService/ConvertNad83ToWgs84` and `ConvertWgs84ToNad83` | Coordinate conversion |
 | `GET /api/v1/Subway/services` | Every subway service (route) with its MTA color and text color |
-| `GET /api/v1/Subway/lines` | Subway service lines as GeoJSON for a map: `services=1,2,3` (default all; `S` is every shuttle), `borough=MN` (clip to MN, BX, BK, QN or SI), `simplify=5` (metres, 0-50) |
+| `GET /api/v1/Subway/lines` | Subway service lines as GeoJSON for a map: `services=1,2,3` (default all; `S` is every shuttle), `borough=MN` (clip to MN, BX, BK, QN or SI), `simplify=5` (metres, 0-50); `stations=lat,lon;lat,lon` (up to 300) trims each line to the stretch between those stations, with `radius=150` (metres, 10-500) and `stub=400` (metres, 0-2000) |
 | `GET /api/v1/Subway/stations` | The stations within `radius` metres (10-500, default 100) of each `near=lat,lon;lat,lon` point (up to 300), with their routes, and the union of those routes |
 
 Datasets include Historic Districts, Individual Landmark Sites, the LPC
@@ -63,6 +63,15 @@ with CoreDataStore.
 
 The NavigatorMaps UI (maps.navigatorglass.com) calls `/api/v1/Subway` to draw the
 subway lines that serve a map's stations.
+
+With `stations`, a station is on a service when it lies within `radius` metres of
+the service's line (after the borough clip). Each connected part of the line
+keeps the line from its first to its last station, carrying on across a junction
+to a part with stations of its own (ends within 10 m join, since the source's
+pieces can miss each other by a few metres). A part with one station keeps a stub
+of `stub` metres each side of it (`stub=0` drops it). A service with no station
+on it is left out, and each feature gains `stations`, how many of the stations
+are on it. The stations' order doesn't matter: the same set is one cached entry.
 
 ## Architecture
 
