@@ -33,7 +33,7 @@ namespace MicroService.Service.Services.Subway
         // Metres in a degree of latitude. A degree of longitude at New York's latitude (40.7° N)
         // is about 84,400 m, so a tolerance in degrees from this scale never removes a detail
         // larger than the requested metres in either direction.
-        private const double MetresPerDegree = 111_320;
+        internal const double MetresPerDegree = 111_320;
 
         private const int CoordinateDecimals = 6;
 
@@ -121,21 +121,45 @@ namespace MicroService.Service.Services.Subway
         /// <param name="services">Service codes from <see cref="ResolveServices"/>.</param>
         /// <param name="borough">Clip every line to this borough's outline; a service with nothing left is left out.</param>
         /// <param name="simplifyMetres">Douglas-Peucker tolerance in metres, 0 for none.</param>
-        public string GetLinesGeoJson(IReadOnlyCollection<string> services, Borough? borough, double simplifyMetres)
+        public string GetLinesGeoJson(IReadOnlyCollection<string> services, Borough? borough, double simplifyMetres) =>
+            GetLinesGeoJson(services, borough, simplifyMetres, null);
+
+        /// <summary>
+        /// A GeoJSON FeatureCollection with one MultiLineString feature per service (properties
+        /// service, name, color and textColor), cached per request. With a <paramref name="stretch"/>,
+        /// each line is trimmed to the stretch between its stations after clipping and before
+        /// simplifying, a service with nothing left is left out, and each feature also has
+        /// stations, how many of the stretch's stations are on it.
+        /// </summary>
+        /// <param name="services">Service codes from <see cref="ResolveServices"/>.</param>
+        /// <param name="borough">Clip every line to this borough's outline; a service with nothing left is left out.</param>
+        /// <param name="simplifyMetres">Douglas-Peucker tolerance in metres, 0 for none.</param>
+        /// <param name="stretch">The map's stations to trim the lines to, or null for whole lines.</param>
+        public string GetLinesGeoJson(IReadOnlyCollection<string> services, Borough? borough, double simplifyMetres, SubwayStretch? stretch)
         {
             ArgumentNullException.ThrowIfNull(services);
             ArgumentOutOfRangeException.ThrowIfNegative(simplifyMetres);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(simplifyMetres, MaxSimplifyMetres);
 
-            var key = string.Join('|',
+            var parts = new List<string>
+            {
                 "lines",
                 string.Join(',', services),
                 borough?.ToString() ?? "all",
-                simplifyMetres.ToString("R", CultureInfo.InvariantCulture));
+                simplifyMetres.ToString("R", CultureInfo.InvariantCulture),
+            };
+
+            if (stretch is not null)
+            {
+                parts.Add("stretch");
+                parts.Add(stretch.Key);
+            }
+
+            var key = string.Join('|', parts);
 
             return _cache.GetOrCreate(key, entry =>
             {
-                var json = JsonSerializer.Serialize(BuildLines(services, borough, simplifyMetres), GeoJsonOptions);
+                var json = JsonSerializer.Serialize(BuildLines(services, borough, simplifyMetres, stretch), GeoJsonOptions);
 
                 entry.AbsoluteExpirationRelativeToNow = Lifetime;
                 entry.Size = json.Length * sizeof(char);
@@ -143,7 +167,7 @@ namespace MicroService.Service.Services.Subway
             })!;
         }
 
-        private FeatureCollection BuildLines(IReadOnlyCollection<string> services, Borough? borough, double simplifyMetres)
+        private FeatureCollection BuildLines(IReadOnlyCollection<string> services, Borough? borough, double simplifyMetres, SubwayStretch? stretch)
         {
             var routes = GetServices().ToDictionary(r => r.Service, StringComparer.Ordinal);
             var lines = GetServiceFeatures().ToLookup(f => f.Service, StringComparer.Ordinal);
@@ -162,14 +186,17 @@ namespace MicroService.Service.Services.Subway
                 var factory = lines[service].First().Geometry.Factory;
                 Geometry geometry = MergeLines(lines[service].Select(l => l.Geometry), factory);
 
-                if (tolerance > 0)
+                var stations = 0;
+                if (stretch is null)
                 {
-                    geometry = DouglasPeuckerSimplifier.Simplify(geometry, tolerance);
+                    geometry = Simplify(geometry, tolerance);
+                    geometry = Clip(geometry, outline);
                 }
-
-                if (outline is not null)
+                else
                 {
-                    geometry = OverlayNGRobust.Overlay(geometry, outline, OverlayNG.INTERSECTION);
+                    // Trim the clipped line at full detail, then simplify what is left
+                    (geometry, stations) = stretch.Trim(Clip(geometry, outline));
+                    geometry = Simplify(geometry, tolerance);
                 }
 
                 var rounded = RoundLines(geometry, factory);
@@ -178,17 +205,30 @@ namespace MicroService.Service.Services.Subway
                     continue;
                 }
 
-                collection.Add(new Feature(rounded, new AttributesTable
+                var attributes = new AttributesTable
                 {
                     { "service", route.Service },
                     { "name", route.Name },
                     { "color", route.Color },
                     { "textColor", route.TextColor },
-                }));
+                };
+
+                if (stretch is not null)
+                {
+                    attributes.Add("stations", stations);
+                }
+
+                collection.Add(new Feature(rounded, attributes));
             }
 
             return collection;
         }
+
+        private static Geometry Simplify(Geometry geometry, double tolerance) =>
+            tolerance > 0 ? DouglasPeuckerSimplifier.Simplify(geometry, tolerance) : geometry;
+
+        private static Geometry Clip(Geometry geometry, Geometry? outline) =>
+            outline is null ? geometry : OverlayNGRobust.Overlay(geometry, outline, OverlayNG.INTERSECTION);
 
         private IEnumerable<(string Service, string Name, Geometry Geometry)> GetServiceFeatures() =>
             _serviceLines.GetFeatures().Select(f => (

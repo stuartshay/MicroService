@@ -309,7 +309,8 @@
     "Linemerge",
     "navigatorglass",
     "Peucker",
-    "Queensbridge"
+    "Queensbridge",
+    "Dyckman"
   ],
   "ignoreWords": [
     "irgq",
