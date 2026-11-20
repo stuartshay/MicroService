@@ -128,12 +128,13 @@ namespace MicroService.Service.Services.Subway
                     continue;
                 }
 
-                foreach (var part in component)
+                var stretches = component
+                    .Select(part => (Part: part, Range: StretchRange(graph, indexes[part], positions[part], part)))
+                    .Where(s => s.Range.HasValue);
+
+                foreach (var (part, range) in stretches)
                 {
-                    if (StretchRange(graph, indexes[part], positions[part], part) is { } range)
-                    {
-                        ranges[part] = range;
-                    }
+                    ranges[part] = range!.Value;
                 }
             }
 
