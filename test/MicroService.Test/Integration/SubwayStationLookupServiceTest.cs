@@ -65,8 +65,10 @@ namespace MicroService.Test.Integration
         [InlineData("M J Z", new[] { "J", "M", "Z" })]
         [InlineData("S 7 1", new[] { "1", "7", "S" })]
         [InlineData("SIR", new[] { "SIR" })]
+        [InlineData("N  N W", new[] { "N", "W" })]
         [InlineData("", new string[0])]
-        public void ParseRoutes_OrdersRoutes(string routes, string[] expected)
+        [InlineData(null, new string[0])]
+        public void ParseRoutes_OrdersRoutes(string? routes, string[] expected)
         {
             Assert.Equal(expected, SubwayStationLookupService.ParseRoutes(routes));
         }
@@ -103,6 +105,65 @@ namespace MicroService.Test.Integration
             Assert.False(SubwayStationLookupService.TryParsePoints(near, out _, out var error));
             Assert.Equal("near has 301 points; the most is 300.", error);
             Assert.True(SubwayStationLookupService.TryParsePoints(string.Join(';', Enumerable.Repeat("40.75,-73.98", 300)), out _, out _));
+        }
+
+        [Fact(DisplayName = "Subway stations - a station exactly at the radius is included, one just past it isn't")]
+        public void FindNear_RadiusIsInclusive()
+        {
+            var wallStreet = Assert.Single(Assert.Single(_service.FindNear([(40.70771, -74.011717)], 60).Points).Stations);
+
+            // Ask again from the same point with the radius set to the station's distance, then just under it
+            var exact = _service.FindNear([(40.70771, -74.011717)], wallStreet.Distance + 0.05);
+            var under = _service.FindNear([(40.70771, -74.011717)], wallStreet.Distance - 0.5);
+
+            Assert.Contains(Assert.Single(exact.Points).Stations, s => s.StationId == wallStreet.StationId);
+            Assert.DoesNotContain(Assert.Single(under.Points).Stations, s => s.StationId == wallStreet.StationId);
+        }
+
+        [Fact(DisplayName = "Subway stations - no points, no stations and no services")]
+        public void FindNear_NoPoints()
+        {
+            var result = _service.FindNear([], 100);
+
+            Assert.Empty(result.Points);
+            Assert.Empty(result.Services);
+        }
+
+        [Fact(DisplayName = "Subway stations - a station's fields come from Stations.csv")]
+        public void FindNear_MapsTheStation()
+        {
+            var station = Assert.Single(Assert.Single(_service.FindNear([(40.775036, -73.912034)], 10).Points).Stations);
+
+            Assert.Equal(1, station.StationId);
+            Assert.Equal(1, station.ComplexId);
+            Assert.Equal("R01", station.GtfsStopId);
+            Assert.Equal("Astoria-Ditmars Blvd", station.StopName);
+            Assert.Equal("Astoria", station.Line);
+            Assert.Equal("Q", station.Borough);
+            Assert.Equal(["N", "W"], station.Routes);
+            Assert.Equal("Elevated", station.Structure);
+            Assert.Equal(40.775036, station.Latitude);
+            Assert.Equal(-73.912034, station.Longitude);
+            Assert.Equal(0, station.Distance);
+        }
+
+        [Fact(DisplayName = "Subway stations - the station list is read once and then cached")]
+        public void FindNear_CachesTheStationList()
+        {
+            _service.FindNear([(40.75, -73.98)], 100);
+
+            Assert.True(_cache.TryGetValue("FlatFile:SubwayStationLocations", out List<MicroService.Service.Models.FlatFileModels.StationFlatFile>? stations));
+            Assert.Equal(496, stations!.Count);
+        }
+
+        [Fact(DisplayName = "Subway stations - its dependencies are required")]
+        public void Constructor_RequiresDependencies()
+        {
+            var stations = new StationFlatFileService(RepositoryFiles.Options());
+
+            Assert.Throws<ArgumentNullException>(() => new SubwayStationLookupService(null!, _cache));
+            Assert.Throws<ArgumentNullException>(() => new SubwayStationLookupService(stations, null!));
+            Assert.Throws<ArgumentNullException>(() => _service.FindNear(null!, 100));
         }
 
         [Fact(DisplayName = "Subway stations - haversine distance")]

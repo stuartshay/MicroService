@@ -87,7 +87,7 @@ namespace MicroService.Test.Unit
                 // The 2020 file's column order, the 2026 columns at the end, and a column the model doesn't read
                 File.WriteAllText(Path.Join(directory, "Stations.csv"),
                     "Station ID,Complex ID,GTFS Stop ID,Division,Line,Stop Name,Borough,Daytime Routes,Structure,GTFS Latitude,GTFS Longitude,North Direction Label,South Direction Label,ADA,ADA Notes,Extra,CBD,ADA Southbound,ADA Northbound\n" +
-                    "1,1,R01,BMT,Astoria,Astoria-Ditmars Blvd,Q,N W,Elevated,40.775036,-73.912034,,Manhattan,2,NaN,x,true,0,1\n");
+                    "1,1,R01,BMT,Astoria,Astoria-Ditmars Blvd,Q,N W,Elevated,40.775036,-73.912034,,NaN,2,NaN,x,true,0,1\n");
 
                 var station = Assert.IsType<StationFlatFile>(
                     Assert.Single(new StationFlatFileService(RepositoryFiles.Options(root)).GetAll()));
@@ -95,7 +95,9 @@ namespace MicroService.Test.Unit
                 Assert.Equal(1, station.StationId);
                 Assert.Equal("R01", station.GtfsStopId);
                 Assert.Equal("N W", station.DaytimeRoutes);
+                // Empty and NaN both read as no label or note
                 Assert.Null(station.NorthDirectionLabel);
+                Assert.Null(station.SouthDirectionLabel);
                 Assert.Null(station.ADANotes);
                 Assert.True(station.ADA);
                 Assert.True(station.ADANorthbound);

@@ -75,9 +75,75 @@ namespace MicroService.Test.Controllers
         [InlineData("/api/v1/Subway/lines?borough=1", "borough", "Unknown borough '1'")]
         [InlineData("/api/v1/Subway/lines?simplify=51", "simplify", "0 to 50")]
         [InlineData("/api/v1/Subway/lines?simplify=-1", "simplify", "0 to 50")]
+        [InlineData("/api/v1/Subway/lines?simplify=NaN", "simplify", "0 to 50")]
+        [InlineData("/api/v1/Subway/lines?simplify=five", "simplify", "not valid")]
         public async Task Lines_BadInput(string uri, string field, string message)
         {
             await AssertBadRequest(uri, field, message);
+        }
+
+        [Fact(DisplayName = "Subway API - every bad lines parameter is reported at once")]
+        public async Task Lines_ReportsEveryProblem()
+        {
+            using var response = await GetAsync("/api/v1/Subway/lines?services=1,Q9&borough=XX&simplify=99");
+
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+            using var document = await ReadJsonAsync(response);
+            var errors = document.RootElement.GetProperty("errors");
+            Assert.Contains("Q9", errors.GetProperty("services")[0].GetString());
+            Assert.Contains("'XX'", errors.GetProperty("borough")[0].GetString());
+            Assert.Contains("0 to 50", errors.GetProperty("simplify")[0].GetString());
+        }
+
+        [Theory(DisplayName = "Subway API - borough and service codes match regardless of case; blanks mean the defaults")]
+        [InlineData("/api/v1/Subway/lines?services=l,s&borough=bk&simplify=0", new[] { "L", "SF" })]
+        [InlineData("/api/v1/Subway/lines?services=SIR&borough=%20SI%20", new[] { "SIR" })]
+        [InlineData("/api/v1/Subway/lines?services=,&borough=&simplify=50", null)]
+        [InlineData("/api/v1/Subway/lines?services=1&borough=SI", new string[0])]
+        public async Task Lines_CodesAndDefaults(string uri, string[]? expected)
+        {
+            using var response = await GetAsync(uri);
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            using var document = await ReadJsonAsync(response);
+            var services = document.RootElement.GetProperty("features").EnumerateArray()
+                .Select(f => f.GetProperty("properties").GetProperty("service").GetString())
+                .ToList();
+
+            if (expected is null)
+            {
+                Assert.Equal(27, services.Count);
+            }
+            else
+            {
+                Assert.Equal(expected, services);
+            }
+        }
+
+        [Fact(DisplayName = "Subway API - every bad stations parameter is reported at once")]
+        public async Task Stations_ReportsEveryProblem()
+        {
+            using var response = await GetAsync("/api/v1/Subway/stations?near=x&radius=1");
+
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+            using var document = await ReadJsonAsync(response);
+            var errors = document.RootElement.GetProperty("errors");
+            Assert.Contains("'x' is not lat,lon", errors.GetProperty("near")[0].GetString());
+            Assert.Contains("10 to 500", errors.GetProperty("radius")[0].GetString());
+        }
+
+        [Fact(DisplayName = "Subway API - the default radius is 100 metres")]
+        public async Task Stations_DefaultRadius()
+        {
+            // Wall St (4 5) is about 30 m from this point and Wall St (2 3) about 190 m
+            using var response = await GetAsync("/api/v1/Subway/stations?near=40.70771,-74.011717");
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            using var document = await ReadJsonAsync(response);
+            var stations = document.RootElement.GetProperty("points")[0].GetProperty("stations").EnumerateArray().ToList();
+            Assert.NotEmpty(stations);
+            Assert.All(stations, s => Assert.True(s.GetProperty("distance").GetDouble() <= 100));
+            Assert.DoesNotContain("2", document.RootElement.GetProperty("services").EnumerateArray().Select(s => s.GetString()));
         }
 
         [Fact(DisplayName = "Subway API - stations near points and their services")]
@@ -104,6 +170,9 @@ namespace MicroService.Test.Controllers
         [InlineData("/api/v1/Subway/stations?near=40.75", "near", "is not lat,lon")]
         [InlineData("/api/v1/Subway/stations?near=40.75,-73.98&radius=5", "radius", "10 to 500")]
         [InlineData("/api/v1/Subway/stations?near=40.75,-73.98&radius=501", "radius", "10 to 500")]
+        [InlineData("/api/v1/Subway/stations?near=40.75,-73.98&radius=Infinity", "radius", "10 to 500")]
+        [InlineData("/api/v1/Subway/stations?near=40.75,-73.98&radius=wide", "radius", "not valid")]
+        [InlineData("/api/v1/Subway/stations?near=40.75,-200", "near", "is out of range")]
         public async Task Stations_BadInput(string uri, string field, string message)
         {
             await AssertBadRequest(uri, field, message);

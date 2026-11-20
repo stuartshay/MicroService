@@ -162,6 +162,129 @@ namespace MicroService.Test.Integration
             Assert.NotSame(first, _service.GetLinesGeoJson(["L"], Borough.BK, 10));
         }
 
+        [Fact(DisplayName = "Subway lines - every borough option keeps a service there and drops the rest")]
+        public void GetLines_EachBoroughKeepsItsServices()
+        {
+            string[] Services(Borough? borough) => Features(_service.GetLinesGeoJson(["1", "7", "G", "SIR"], borough, 5))
+                .Select(f => f.GetProperty("properties").GetProperty("service").GetString()!)
+                .ToArray();
+
+            Assert.Equal(["1", "7", "G", "SIR"], Services(null));
+            Assert.Equal(["1", "7"], Services(Borough.MN));
+            Assert.Equal(["1"], Services(Borough.BX));
+            Assert.Equal(["G"], Services(Borough.BK));
+            Assert.Equal(["7", "G"], Services(Borough.QN));
+            Assert.Equal(["SIR"], Services(Borough.SI));
+        }
+
+        [Fact(DisplayName = "Subway lines - no services gives an empty FeatureCollection")]
+        public void GetLines_NoServices()
+        {
+            Assert.Empty(Features(_service.GetLinesGeoJson([], Borough.MN, 5)));
+        }
+
+        [Fact(DisplayName = "Subway lines - a code not in the service lines is skipped")]
+        public void GetLines_SkipsUnresolvedCodes()
+        {
+            var features = Features(_service.GetLinesGeoJson(["X", "L"], null, 5));
+
+            Assert.Equal("L", Assert.Single(features).GetProperty("properties").GetProperty("service").GetString());
+        }
+
+        [Theory(DisplayName = "Subway lines - simplify outside 0 to 50 metres is an error")]
+        [InlineData(-0.1)]
+        [InlineData(50.1)]
+        public void GetLines_RejectsSimplifyOutOfRange(double simplify)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => _service.GetLinesGeoJson(["1"], null, simplify));
+        }
+
+        [Fact(DisplayName = "Subway lines - with simplify 0, lines keep the source's vertices, only rounded and deduplicated")]
+        public void GetLines_SimplifyZeroKeepsTheSourceVertices()
+        {
+            var source = _fixture.SubwayServiceLinesService.GetFeatures()
+                .Where(f => (string)f.Attributes["service"] == "L")
+                .Sum(f => f.Geometry.NumPoints);
+
+            var served = Coordinates(Assert.Single(Features(_service.GetLinesGeoJson(["L"], null, 0)))).Count();
+
+            // Merging pieces shares their end points, and rounding can merge neighboring points, so never more
+            Assert.InRange(served, source * 9 / 10, source);
+        }
+
+        [Fact(DisplayName = "Subway lines - S on its own resolves to the three shuttles, which draw in their boroughs")]
+        public void GetLines_ShuttleCode()
+        {
+            var (services, unknown) = _service.ResolveServices(["s"]);
+            Assert.Equal(["SF", "SR", "ST"], services);
+            Assert.Empty(unknown);
+
+            var features = Features(_service.GetLinesGeoJson(services, null, 5));
+            Assert.Equal(["SF", "SR", "ST"], features.Select(f => f.GetProperty("properties").GetProperty("service").GetString()));
+            Assert.All(features, f => Assert.Equal("#808183", f.GetProperty("properties").GetProperty("color").GetString()));
+            Assert.Equal(["ST"], Features(_service.GetLinesGeoJson(services, Borough.MN, 5)).Select(f => f.GetProperty("properties").GetProperty("service").GetString()));
+        }
+
+        [Fact(DisplayName = "Subway lines - blank codes are ignored, and only blanks means every service")]
+        public void ResolveServices_IgnoresBlankCodes()
+        {
+            var (services, unknown) = _service.ResolveServices(["", " ", "Z", "z"]);
+            Assert.Equal(["Z"], services);
+            Assert.Empty(unknown);
+
+            Assert.Equal(27, _service.ResolveServices(["", " "]).Services.Count);
+        }
+
+        [Fact(DisplayName = "Subway lines - the service list is read once and then cached")]
+        public void GetServices_IsCached()
+        {
+            Assert.Same(_service.GetServices(), _service.GetServices());
+        }
+
+        [Fact(DisplayName = "Subway service lines shape - attribute lookup as a FeatureCollection")]
+        public void ServiceLinesShape_GetFeatureCollection()
+        {
+            var collection = _fixture.SubwayServiceLinesService.GetFeatureCollection([new("Service", "A")]);
+
+            // A has two features in the source
+            Assert.Equal(2, collection.Count);
+            Assert.All(collection, f =>
+            {
+                Assert.Equal("A", f.Attributes["Service"]);
+                Assert.Equal("8 Avenue Express", f.Attributes["ServiceName"]);
+                Assert.Equal("blue", f.Attributes["ShapeColor"]);
+                Assert.IsType<MultiLineString>(f.Geometry, exactMatch: false);
+            });
+        }
+
+        [Fact(DisplayName = "Subway service lines shape - every feature maps")]
+        public void ServiceLinesShape_MapsEveryFeature()
+        {
+            var shapes = _fixture.SubwayServiceLinesService.GetFeatureList().ToList();
+
+            Assert.Equal(29, shapes.Count);
+            Assert.Equal(Enumerable.Range(1, 31).Except([28, 29]), shapes.Select(s => s.ObjectId).Order());
+            Assert.All(shapes, s =>
+            {
+                Assert.False(string.IsNullOrEmpty(s.Service));
+                Assert.False(string.IsNullOrEmpty(s.ServiceName));
+                Assert.True(s.ShapeLength > 0);
+                Assert.NotNull(s.BoundingBox);
+            });
+        }
+
+        [Fact(DisplayName = "Subway route service - its dependencies are required")]
+        public void Constructor_RequiresDependencies()
+        {
+            var lines = _fixture.SubwayServiceLinesService;
+            var boroughs = _fixture.ServiceProvider.GetRequiredService<BoroughBoundariesService>();
+
+            Assert.Throws<ArgumentNullException>(() => new SubwayRouteService(null!, boroughs, _cache));
+            Assert.Throws<ArgumentNullException>(() => new SubwayRouteService(lines, null!, _cache));
+            Assert.Throws<ArgumentNullException>(() => new SubwayRouteService(lines, boroughs, null!));
+            Assert.Throws<ArgumentNullException>(() => _service.GetLinesGeoJson(null!, null, 5));
+        }
+
         private Geometry ManhattanOutline()
         {
             var feature = _fixture.BoroughBoundariesService.GetFeatures().Single(f => Convert.ToInt32(f.Attributes["BoroCode"]) == 1);
