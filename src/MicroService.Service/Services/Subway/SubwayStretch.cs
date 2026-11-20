@@ -119,46 +119,56 @@ namespace MicroService.Service.Services.Subway
 
             for (var i = 0; i < localParts.Count; i++)
             {
-                var part = localParts[i];
-                var index = new LengthIndexedLine(part);
-                var toStart = graph.HasStationsBeyond(i, fromStart: true);
-                var toEnd = graph.HasStationsBeyond(i, fromStart: false);
+                var piece = TrimPart(
+                    localParts[i],
+                    near[i].Select(p => localPoints[p].Coordinate).ToList(),
+                    graph.HasStationsBeyond(i, fromStart: true),
+                    graph.HasStationsBeyond(i, fromStart: false));
 
-                if (near[i].Count == 0)
-                {
-                    // Kept whole only between two parts with stations
-                    if (toStart && toEnd)
-                    {
-                        kept.Add(frame.ToWgs84(part, factory));
-                    }
-
-                    continue;
-                }
-
-                var positions = near[i].Select(p => index.Project(localPoints[p].Coordinate)).ToList();
-                var from = toStart ? index.StartIndex : positions.Min();
-                var to = toEnd ? index.EndIndex : positions.Max();
-
-                if (to - from < SameSpotMetres)
-                {
-                    // A station where the part joins another with stations is on that one's stretch
-                    if (toStart || toEnd || StubMetres <= 0)
-                    {
-                        continue;
-                    }
-
-                    var spot = (from + to) / 2;
-                    from = Math.Max(index.StartIndex, spot - StubMetres);
-                    to = Math.Min(index.EndIndex, spot + StubMetres);
-                }
-
-                if (index.ExtractLine(from, to) is LineString piece && piece.Length > 0)
+                if (piece is not null)
                 {
                     kept.Add(frame.ToWgs84(piece, factory));
                 }
             }
 
             return (factory.CreateMultiLineString(kept.ToArray()), stations);
+        }
+
+        /// <summary>
+        /// What one part keeps, in the local plane, or null for nothing.
+        /// </summary>
+        /// <param name="part">The part.</param>
+        /// <param name="stations">The stations within the radius of the part.</param>
+        /// <param name="toStart">Whether the part's start leads to another part with stations.</param>
+        /// <param name="toEnd">Whether the part's end leads to another part with stations.</param>
+        private LineString? TrimPart(LineString part, IReadOnlyList<Coordinate> stations, bool toStart, bool toEnd)
+        {
+            if (stations.Count == 0)
+            {
+                // Kept whole only between two parts with stations
+                return toStart && toEnd ? part : null;
+            }
+
+            var index = new LengthIndexedLine(part);
+            var positions = stations.Select(index.Project).ToList();
+            var from = toStart ? index.StartIndex : positions.Min();
+            var to = toEnd ? index.EndIndex : positions.Max();
+
+            if (to - from < SameSpotMetres)
+            {
+                // A station where the part joins another with stations is on that one's stretch
+                if (toStart || toEnd || StubMetres <= 0)
+                {
+                    return null;
+                }
+
+                var spot = (from + to) / 2;
+                from = Math.Max(index.StartIndex, spot - StubMetres);
+                to = Math.Min(index.EndIndex, spot + StubMetres);
+            }
+
+            // A line too short to draw is dropped later, with the other lines that round to a point
+            return (LineString)index.ExtractLine(from, to);
         }
 
         private static string BuildKey(IReadOnlyList<(double Latitude, double Longitude)> points, double radiusMetres, double stubMetres)
