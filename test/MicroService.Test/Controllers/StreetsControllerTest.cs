@@ -58,6 +58,11 @@ namespace MicroService.Test.Controllers
         [InlineData("/api/v1/Streets/lines?names=5 AVE", "borough")]
         [InlineData("/api/v1/Streets/lines?names=5 AVE&borough=NJ", "borough")]
         [InlineData("/api/v1/Streets/lines?names=5 AVE&borough=MN&simplify=51", "simplify")]
+        [InlineData("/api/v1/Streets/lines?names=5 AVE&borough=MN&simplify=-1", "simplify")]
+        [InlineData("/api/v1/Streets/lines?names=5 AVE&borough=MN&simplify=NaN", "simplify")]
+        [InlineData("/api/v1/Streets/lines?names=5 AVE&borough=MN&places=40.75,-73.98&margin=-1", "margin")]
+        [InlineData("/api/v1/Streets/lines?names=5 AVE&borough=MN&places=40.75,-73.98&margin=NaN", "margin")]
+        [InlineData("/api/v1/Streets/lines?names=5 AVE&borough=MN&places=40.75,-73.98&radius=NaN", "radius")]
         [InlineData("/api/v1/Streets/lines?names=5 AVE&borough=MN&places=x", "places")]
         [InlineData("/api/v1/Streets/lines?names=5 AVE&borough=MN&places=40.75,-73.98&radius=5", "radius")]
         [InlineData("/api/v1/Streets/lines?names=5 AVE&borough=MN&places=40.75,-73.98&margin=2001", "margin")]
@@ -87,6 +92,7 @@ namespace MicroService.Test.Controllers
 
         [Theory(DisplayName = "Streets API - bad searches are 400")]
         [InlineData("/api/v1/Streets/search?q=5", "q")]
+        [InlineData("/api/v1/Streets/search", "q")]
         [InlineData("/api/v1/Streets/search?q=5 AVE;", "q")]
         [InlineData("/api/v1/Streets/search?q=5 AVE&borough=XX", "borough")]
         public async Task Search_BadRequest(string uri, string field)

@@ -30,6 +30,11 @@ namespace MicroService.Test.Unit
 
         public string? Body { get; set; }
 
+        /// <summary>
+        /// Extra raw rows added to every segments reply, e.g. rows without a usable shape.
+        /// </summary>
+        public List<object> ExtraSegmentRows { get; } = [];
+
         public static double[][] Segment(double fromNorth, double toNorth) =>
         [
             [Longitude, Latitude + fromNorth / MetresPerDegree],
@@ -50,11 +55,15 @@ namespace MicroService.Test.Unit
             });
         }
 
-        private static string Search() => JsonSerializer.Serialize(new[]
+        private static string Search() => JsonSerializer.Serialize(new object[]
         {
             new { full_street_name = "5 AVE", boroughcode = "1", segments = "139" },
             new { full_street_name = "W  42 ST", boroughcode = "1", segments = "11" },
             new { full_street_name = "5 AVE", boroughcode = "9", segments = "1" },
+            new { full_street_name = "BROADWAY", boroughcode = "X", segments = "3" },
+            new { boroughcode = "1", segments = "2" },
+            new { full_street_name = "NOWHERE ST", segments = "2" },
+            new { full_street_name = "MADISON AVE", boroughcode = "1" },
         });
 
         private string Segments(string query)
@@ -65,7 +74,9 @@ namespace MicroService.Test.Unit
                 {
                     full_street_name = s.Key,
                     the_geom = new { type = "MultiLineString", coordinates = new[] { segment } },
-                }));
+                }))
+                .Cast<object>()
+                .Concat(ExtraSegmentRows);
             return JsonSerializer.Serialize(rows);
         }
     }

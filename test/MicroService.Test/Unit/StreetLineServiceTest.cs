@@ -42,6 +42,37 @@ namespace MicroService.Test.Unit
             Assert.Empty(await _client.GetSegmentsAsync("MADISON AVE", Borough.MN, TestContext.Current.CancellationToken));
         }
 
+        [Fact(DisplayName = "Street centerline - rows without a name or a usable shape are skipped")]
+        public async Task GetSegments_SkipsRowsWithoutAShape()
+        {
+            _fake.ExtraSegmentRows.Add(new { full_street_name = "5 AVE" });
+            _fake.ExtraSegmentRows.Add(new { full_street_name = "5 AVE", the_geom = (object?)null });
+            _fake.ExtraSegmentRows.Add(new { the_geom = new { type = "Point", coordinates = new[] { -73.98, 40.75 } } });
+            _fake.ExtraSegmentRows.Add(new { full_street_name = "5 AVE", the_geom = new { type = "MultiLineString", coordinates = Array.Empty<double[][]>() } });
+
+            Assert.Equal(2, (await _client.GetSegmentsAsync("5 AVE", Borough.MN, TestContext.Current.CancellationToken)).Count);
+        }
+
+        [Fact(DisplayName = "Street centerline - the client and the service need their dependencies")]
+        public void Constructors_CheckTheirArguments()
+        {
+            using var cache = new MemoryCache(new MemoryCacheOptions());
+            using var http = new HttpClient();
+            Assert.Throws<ArgumentNullException>(() => new StreetCenterlineClient(null!, cache));
+            Assert.Throws<ArgumentNullException>(() => new StreetCenterlineClient(http, null!));
+            Assert.Throws<ArgumentNullException>(() => new StreetLineService(null!));
+        }
+
+        [Fact(DisplayName = "Street lines - a street too short to survive rounding is left out")]
+        public async Task Lines_LeaveOutAStreetThatRoundsAway()
+        {
+            _fake.Streets["TINY ST"] = [[[FakeCenterline.Longitude, FakeCenterline.Latitude], [FakeCenterline.Longitude + 1e-8, FakeCenterline.Latitude]]];
+
+            using var document = JsonDocument.Parse(await _service.GetLinesGeoJsonAsync(["TINY ST"], Borough.MN, 0, null, TestContext.Current.CancellationToken));
+
+            Assert.Empty(document.RootElement.GetProperty("features").EnumerateArray());
+        }
+
         [Fact(DisplayName = "Street centerline - a quote in a name is doubled in the query")]
         public async Task GetSegments_QuotesTheName()
         {
@@ -54,8 +85,10 @@ namespace MicroService.Test.Unit
         public async Task Search()
         {
             var names = await _client.SearchAsync("W 42", Borough.MN, TestContext.Current.CancellationToken);
+            await _client.SearchAsync("W 42", Borough.MN, TestContext.Current.CancellationToken);
 
-            Assert.Equal([new StreetName("5 AVE", "MN", 139), new StreetName("W 42 ST", "MN", 11)], names);
+            // Rows without a name or a known borough are skipped; a row without a count has 0
+            Assert.Equal([new StreetName("5 AVE", "MN", 139), new StreetName("W 42 ST", "MN", 11), new StreetName("MADISON AVE", "MN", 0)], names);
             var query = Assert.Single(_fake.Queries);
             Assert.Contains("upper(full_street_name) like '%W  42%' OR upper(full_street_name) like '%WEST 42%'", query, StringComparison.Ordinal);
             Assert.Contains("AND boroughcode='1'", query, StringComparison.Ordinal);

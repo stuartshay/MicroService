@@ -37,6 +37,7 @@ namespace MicroService.Test.Unit
             Assert.Equal(StreetNames.Key("W 42 ST"), StreetNames.Key("WEST 42 ST"));
             Assert.NotEqual(StreetNames.Key("W 42 ST"), StreetNames.Key("E 42 ST"));
             Assert.Equal("W 42 ST", StreetNames.Collapse("W  42 ST"));
+            Assert.Equal(string.Empty, StreetNames.Collapse(null!));
         }
 
         [Theory(DisplayName = "Street names - letters, figures, spaces, apostrophes and hyphens, at most 64")]
@@ -47,6 +48,9 @@ namespace MicroService.Test.Unit
         [InlineData("5 AVE'; DROP", false)]
         [InlineData("5 AVE%", false)]
         public void IsValid(string name, bool expected) => Assert.Equal(expected, StreetNames.IsValid(name));
+
+        [Fact(DisplayName = "Street names - an empty name has itself as its only spelling")]
+        public void Spellings_OfNothing() => Assert.Equal([string.Empty], StreetNames.Spellings(string.Empty));
 
         [Fact(DisplayName = "Street names - longer than 64 is not a name")]
         public void IsValid_TooLong() => Assert.False(StreetNames.IsValid(new string('A', 65)));
