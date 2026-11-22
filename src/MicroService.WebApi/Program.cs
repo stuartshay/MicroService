@@ -8,6 +8,7 @@ using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Services.Base;
 using MicroService.Service.Services.FlatFileService;
+using MicroService.Service.Services.Streets;
 using MicroService.Service.Services.Subway;
 using MicroService.WebApi.Extensions;
 using MicroService.WebApi.Extensions.OpenApi;
@@ -106,6 +107,15 @@ void AddServices()
     // Flat File Service Lookups
     services.AddScoped<StationFlatFileService>();
     services.AddScoped<StationComplexFlatFileService>();
+
+    // Street lines and names from the city's Street Centerline on NYC Open Data (api/v1/Streets)
+    services.AddHttpClient<StreetCenterlineClient>(client =>
+    {
+        client.BaseAddress = new Uri("https://data.cityofnewyork.us/");
+        client.Timeout = TimeSpan.FromSeconds(15);
+        client.DefaultRequestHeaders.UserAgent.ParseAdd("navigator-microservice/1.0");
+    });
+    services.AddScoped<StreetLineService>();
 
     // Subway services, lines and nearby stations (api/v1/Subway)
     services.AddSingleton<SubwayLineCache>();
