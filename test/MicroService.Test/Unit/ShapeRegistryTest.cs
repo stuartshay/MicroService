@@ -37,8 +37,7 @@ namespace MicroService.Test.Unit
             var concreteShapeServices = typeof(ShapeRegistry).Assembly.GetTypes()
                 .Where(type => type.Namespace == "MicroService.Service.Services"
                                && !type.IsAbstract
-                               && type.BaseType is { IsGenericType: true } baseType
-                               && baseType.GetGenericTypeDefinition() == typeof(AbstractShapeService<>))
+                               && DerivesFromShapeService(type))
                 .OrderBy(type => type.FullName)
                 .ToList();
 
@@ -118,6 +117,20 @@ namespace MicroService.Test.Unit
 
             Assert.Contains("ShapeConfiguration:ShapeRootDirectory", exception.Message);
         }
-    }
+    
+        // Directly, or through a base such as AbstractPointShapeService<T>
+        private static bool DerivesFromShapeService(Type type)
+        {
+            for (var baseType = type.BaseType; baseType != null; baseType = baseType.BaseType)
+            {
+                if (baseType.IsGenericType && baseType.GetGenericTypeDefinition() == typeof(AbstractShapeService<>))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+}
 }
 

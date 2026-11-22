@@ -6,7 +6,7 @@ namespace MicroService.Service.Models.Enum
     public enum ShapeProperties
     {
         [Description("Borough Boundaries")]
-        [Shape("Borough_Boundaries/NAD83", "nybb", Datum.Nad83)]
+        [Shape("Borough_Boundaries/WGS84", "nybb", Datum.Wgs84)]
         [ShapeStyle(Color.Blue)]
         BoroughBoundaries,
 
@@ -92,5 +92,27 @@ namespace MicroService.Service.Models.Enum
         [Shape("Subway_Service_Lines", "Subway_Service_Lines", Datum.Wgs84)]
         [ShapeStyle(Color.Blue)]
         SubwayServiceLines,
+
+        // Map layers (docs/map-layers-plan.md), exported from NYC Open Data in WGS 84 by
+        // scripts/refresh-shapes.py
+        [Description("Privately Owned Public Spaces")]
+        [Shape("Privately_Owned_Public_Spaces/WGS84", "POPS", Datum.Wgs84)]
+        [ShapeStyle(Color.Yellow)]
+        PrivatelyOwnedPublicSpaces,
+
+        [Description("Greenstreets")]
+        [Shape("Greenstreets/WGS84", "Greenstreets", Datum.Wgs84)]
+        [ShapeStyle(Color.Green)]
+        Greenstreets,
+
+        [Description("Libraries")]
+        [Shape("Libraries/WGS84", "Libraries", Datum.Wgs84)]
+        [ShapeStyle(Color.Blue)]
+        Libraries,
+
+        [Description("Post Offices")]
+        [Shape("Post_Offices/WGS84", "Post_Offices", Datum.Wgs84)]
+        [ShapeStyle(Color.Red)]
+        PostOffices,
     }
 }

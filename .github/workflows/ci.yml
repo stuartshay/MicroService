@@ -117,6 +117,17 @@ jobs:
       - name: Test historic district updates
         run: python3 scripts/test_add_historic_districts.py
 
+      # pyproj 3.6.1 (the version scripts/refresh-shapes.py documents) has wheels up to Python 3.12
+      - name: Set up Python for the shape refresh tests
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.12'
+
+      - name: Test shape refreshes
+        run: |
+          python3 -m pip install --quiet pyshp==2.3.1 pyproj==3.6.1
+          python3 scripts/test_refresh_shapes.py
+
       - name: Set up .NET
         uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6
         with:

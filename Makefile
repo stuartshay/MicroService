@@ -68,6 +68,8 @@ test: test-data
 	python3 scripts/test_shape_smoke_check.py
 	python3 scripts/test_add_historic_districts.py
 	python3 scripts/test_fix_zip_codes.py
+	@if python3 -c "import shapefile, pyproj" 2>/dev/null; then python3 scripts/test_refresh_shapes.py; \
+	else echo "Skipped scripts/test_refresh_shapes.py: pip install pyshp==2.3.1 pyproj==3.6.1"; fi
 	$(DOTNET) test --project $(TEST_PROJECT) --configuration $(CONFIGURATION)
 
 # A .dbf over GitHub's 100 MB limit is committed as <name>.dbf.zip and git-ignored

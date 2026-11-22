@@ -139,7 +139,7 @@ namespace MicroService.Test.Unit
             Assert.Contains("nybb.dbf", errorMessage);
         }
 
-        private string ShapePath => Path.Join(_root, "Borough_Boundaries", "NAD83", "nybb");
+        private string ShapePath => Path.Join(_root, "Borough_Boundaries", "WGS84", "nybb");
 
         private void WriteShape()
         {
