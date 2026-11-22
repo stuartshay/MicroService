@@ -96,7 +96,7 @@ namespace MicroService.Service.Services.Streets
             _cache.Set(key, segments, new MemoryCacheEntryOptions
             {
                 AbsoluteExpirationRelativeToNow = Lifetime,
-                Size = segments.Segments.Sum(s => s.NumPoints) * 16 + 64,
+                Size = (segments.Segments.Sum(s => s.NumPoints) * 16) + 64,
             });
             return segments;
         }
@@ -114,38 +114,54 @@ namespace MicroService.Service.Services.Streets
                 return cached;
             }
 
-            // CSCL pads a leading one-letter direction with two spaces, so search for each spelling
-            var likes = StreetNames.Spellings(text).Select(t => $"upper(full_street_name) like '%{Quote(t)}%'");
-            var where = $"({string.Join(" OR ", likes)})"
-                + (borough is null ? string.Empty : $" AND boroughcode='{(int)borough}'");
-            var query = "?$select=full_street_name,boroughcode,count(*) AS segments"
-                + $"&$where={Uri.EscapeDataString(where)}"
-                + "&$group=full_street_name,boroughcode&$order=segments DESC"
-                + $"&$limit={MaxSearchResults}";
-            using var document = await GetJsonAsync(query, cancellationToken).ConfigureAwait(false);
+            using var document = await GetJsonAsync(SearchQuery(text, borough), cancellationToken).ConfigureAwait(false);
+            IReadOnlyList<StreetName> names = document.RootElement.EnumerateArray()
+                .Select(ToStreetName)
+                .OfType<StreetName>()
+                .ToList();
 
-            var names = new List<StreetName>();
-            foreach (var row in document.RootElement.EnumerateArray())
-            {
-                var name = row.TryGetProperty("full_street_name", out var n) ? n.GetString() : null;
-                var code = row.TryGetProperty("boroughcode", out var b) ? b.GetString() : null;
-                var count = row.TryGetProperty("segments", out var c) && int.TryParse(c.GetString(), NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsed) ? parsed : 0;
-                if (string.IsNullOrWhiteSpace(name) || !int.TryParse(code, NumberStyles.Integer, CultureInfo.InvariantCulture, out var number)
-                    || !Enum.IsDefined(typeof(Borough), number))
-                {
-                    continue;
-                }
-
-                names.Add(new StreetName(StreetNames.Collapse(name), ((Borough)number).ToString(), count));
-            }
-
-            _cache.Set(key, (IReadOnlyList<StreetName>)names, new MemoryCacheEntryOptions
+            _cache.Set(key, names, new MemoryCacheEntryOptions
             {
                 AbsoluteExpirationRelativeToNow = Lifetime,
-                Size = names.Count * 64 + 64,
+                Size = (names.Count * 64) + 64,
             });
             return names;
         }
+
+        /// <summary>
+        /// The names containing any spelling of <paramref name="text"/> (CSCL pads a leading one-letter
+        /// direction with two spaces), with their segment counts, most first.
+        /// </summary>
+        private static string SearchQuery(string text, Borough? borough)
+        {
+            var likes = StreetNames.Spellings(text).Select(t => $"upper(full_street_name) like '%{Quote(t)}%'");
+            var where = $"({string.Join(" OR ", likes)})"
+                + (borough is null ? string.Empty : $" AND boroughcode='{(int)borough}'");
+            return "?$select=full_street_name,boroughcode,count(*) AS segments"
+                + $"&$where={Uri.EscapeDataString(where)}"
+                + "&$group=full_street_name,boroughcode&$order=segments DESC"
+                + $"&$limit={MaxSearchResults}";
+        }
+
+        /// <summary>
+        /// A search row as a name, or null without a name or a known borough; a row without a count has 0.
+        /// </summary>
+        private static StreetName? ToStreetName(JsonElement row)
+        {
+            var name = Text(row, "full_street_name");
+            if (string.IsNullOrWhiteSpace(name)
+                || !int.TryParse(Text(row, "boroughcode"), NumberStyles.Integer, CultureInfo.InvariantCulture, out var number)
+                || !Enum.IsDefined(typeof(Borough), number))
+            {
+                return null;
+            }
+
+            var segments = int.TryParse(Text(row, "segments"), NumberStyles.Integer, CultureInfo.InvariantCulture, out var count) ? count : 0;
+            return new StreetName(StreetNames.Collapse(name), ((Borough)number).ToString(), segments);
+        }
+
+        private static string? Text(JsonElement row, string property) =>
+            row.TryGetProperty(property, out var value) ? value.GetString() : null;
 
         private async Task<JsonDocument> GetJsonAsync(string query, CancellationToken cancellationToken)
         {

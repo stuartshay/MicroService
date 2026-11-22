@@ -37,12 +37,12 @@ namespace MicroService.Test.Unit
 
         public static double[][] Segment(double fromNorth, double toNorth) =>
         [
-            [Longitude, Latitude + fromNorth / MetresPerDegree],
-            [Longitude, Latitude + (fromNorth + toNorth) / 2 / MetresPerDegree],
-            [Longitude, Latitude + toNorth / MetresPerDegree],
+            [Longitude, Latitude + (fromNorth / MetresPerDegree)],
+            [Longitude, Latitude + ((fromNorth + toNorth) / 2 / MetresPerDegree)],
+            [Longitude, Latitude + (toNorth / MetresPerDegree)],
         ];
 
-        public static (double Latitude, double Longitude) North(double metres) => (Latitude + metres / MetresPerDegree, Longitude);
+        public static (double Latitude, double Longitude) North(double metres) => (Latitude + (metres / MetresPerDegree), Longitude);
 
         /// <summary>
         /// Thrown instead of answering, e.g. a TaskCanceledException as an HttpClient timeout throws.
