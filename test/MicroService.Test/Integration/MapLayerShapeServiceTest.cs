@@ -70,14 +70,24 @@ namespace MicroService.Test.Integration
             Assert.Single(service.GetFeatureLookup([new("gispropnum", "QZ757")]));
         }
 
-        [Fact(DisplayName = "Map layers - features carry their layer color in the attribute lookup GeoJSON")]
+        [Fact(DisplayName = "Map layers - each shape's attribute lookup GeoJSON carries its features and color")]
         public void FeatureCollections_CarryTheirColor()
         {
-            var collection = Service<LibrariesService>().GetFeatureCollection([new("name", "Jefferson Market")]);
+            var library = Assert.Single(Service<LibrariesService>().GetFeatureCollection([new("name", "Jefferson Market")]));
+            Assert.Equal("blue", library.Attributes["ShapeColor"]);
+            Assert.Equal("Jefferson Market", library.Attributes["Name"]);
 
-            var feature = Assert.Single(collection);
-            Assert.Equal("blue", feature.Attributes["ShapeColor"]);
-            Assert.Equal("Jefferson Market", feature.Attributes["Name"]);
+            var postOffice = Assert.Single(Service<PostOfficesService>().GetFeatureCollection([new("name", "Grand Central Station")]));
+            Assert.Equal("red", postOffice.Attributes["ShapeColor"]);
+            Assert.Equal("450 LEXINGTON AVENUE", postOffice.Attributes["Address"]);
+
+            var pops = Assert.Single(Service<PrivatelyOwnedPublicSpacesService>().GetFeatureCollection([new("pops_numbe", "M050022")]));
+            Assert.Equal("yellow", pops.Attributes["ShapeColor"]);
+            Assert.Equal("Plaza", pops.Attributes["PublicSpaceType"]);
+
+            var greenstreet = Assert.Single(Service<GreenstreetsService>().GetFeatureCollection([new("gispropnum", "QZ757")]));
+            Assert.Equal("green", greenstreet.Attributes["ShapeColor"]);
+            Assert.Equal("Active", greenstreet.Attributes["Status"]);
         }
 
         [Theory(DisplayName = "Map layers - the districts the city's file dropped are kept, so their LP numbers still find an outline")]

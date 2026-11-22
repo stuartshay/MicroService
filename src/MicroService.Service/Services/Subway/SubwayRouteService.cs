@@ -237,7 +237,7 @@ namespace MicroService.Service.Services.Subway
                 f.Geometry));
 
         /// <summary>
-        /// The borough's outline in WGS84; a NAD83 State Plane Borough Boundaries would be converted.
+        /// The borough's outline in WGS84.
         /// </summary>
         private Geometry GetBoroughOutline(Borough borough) =>
             _cache.GetOrCreate($"borough|{borough}", entry =>
@@ -245,10 +245,8 @@ namespace MicroService.Service.Services.Subway
                 var feature = _boroughBoundaries.GetFeatures().Single(f =>
                     Convert.ToInt32(f.Attributes["BoroCode"], CultureInfo.InvariantCulture) == (int)borough);
 
-                var datum = ShapeRegistry.GetByKey(ShapeProperties.BoroughBoundaries).Datum;
-                var outline = datum == Datum.Nad83
-                    ? GeoTransformationHelper.CopyNad83ToWgs84(feature.Geometry)
-                    : feature.Geometry.Copy();
+                // Borough Boundaries is WGS84 (the Open Data export), as the lines are
+                var outline = feature.Geometry.Copy();
 
                 entry.AbsoluteExpirationRelativeToNow = Lifetime;
                 entry.Size = outline.NumPoints * 40L;
