@@ -56,6 +56,32 @@ namespace MicroService.Test.Unit
             Assert.Equal(800, Metres(Stretch((0, 2500), (100, 2500.4)).Trim(line).Lines), 0);
         }
 
+        [Fact(DisplayName = "Subway stretch - a margin keeps that much line beyond the first and last station, clamped to the line's ends")]
+        public void Trim_KeepsTheMarginBeyondTheStations()
+        {
+            var line = Line((0, 0), (0, 5000));
+            var stations = new[] { At(0, 1000), At(0, 3000) };
+
+            var (lines, count) = new SubwayStretch(stations, 150, 400, 500).Trim(line);
+            Assert.Equal(2, count);
+            Assert.Equal(3000, Metres(lines), 0);
+            Assert.Equal(500, North(lines.Coordinates.Min(c => c.Y)), 0);
+            Assert.Equal(3500, North(lines.Coordinates.Max(c => c.Y)), 0);
+
+            // Beyond the start the line stops there
+            Assert.Equal(4500, Metres(new SubwayStretch(stations, 150, 400, 1500).Trim(line).Lines), 0);
+        }
+
+        [Fact(DisplayName = "Subway stretch - a margin is 0 to 2000 metres and is part of the key")]
+        public void Margin_IsCheckedAndKeyed()
+        {
+            var stations = new[] { At(0, 1000) };
+            Assert.Throws<ArgumentOutOfRangeException>(() => new SubwayStretch(stations, 150, 400, -1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new SubwayStretch(stations, 150, 400, 2001));
+            Assert.Equal(new SubwayStretch(stations, 150, 400).Key, new SubwayStretch(stations, 150, 400, 0).Key);
+            Assert.NotEqual(new SubwayStretch(stations, 150, 400).Key, new SubwayStretch(stations, 150, 400, 100).Key);
+        }
+
         [Fact(DisplayName = "Subway stretch - with stub 0, a line with a lone station is dropped but the station is counted")]
         public void Trim_StubZeroDropsALoneStation()
         {

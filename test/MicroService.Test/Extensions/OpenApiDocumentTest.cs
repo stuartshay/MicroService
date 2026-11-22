@@ -37,11 +37,13 @@ namespace MicroService.Test.Extensions
             Assert.Equal("1.0", document["info"]!["version"]!.GetValue<string>());
 
             var paths = document["paths"]!.AsObject().Select(path => path.Key).ToList();
-            Assert.Equal(13, paths.Count);
+            Assert.Equal(15, paths.Count);
             Assert.Contains("/api/v1/FeatureService/{id}", paths);
             Assert.Contains("/api/v1/Subway/services", paths);
             Assert.Contains("/api/v1/Subway/lines", paths);
             Assert.Contains("/api/v1/Subway/stations", paths);
+            Assert.Contains("/api/v1/Streets/lines", paths);
+            Assert.Contains("/api/v1/Streets/search", paths);
             Assert.Contains("/api/v1/FlatFileService/{id}", paths);
             Assert.Contains("/api/v1/TransformationService/ConvertWgs84ToNad83", paths);
         }

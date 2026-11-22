@@ -28,6 +28,8 @@ namespace MicroService.Service.Services.Subway
 
         public const double MaxStubMetres = 2000;
 
+        public const double MaxMarginMetres = 2000;
+
         public const int MaxPoints = SubwayStationLookupService.MaxPoints;
 
         // Stations closer than this along a line are one spot, which keeps a stub
@@ -43,6 +45,20 @@ namespace MicroService.Service.Services.Subway
         /// <param name="radiusMetres">How near a line a station must be to count for it, <see cref="MinRadiusMetres"/> to <see cref="MaxRadiusMetres"/>.</param>
         /// <param name="stubMetres">The line kept each side of a lone station, 0 (none) to <see cref="MaxStubMetres"/>.</param>
         public SubwayStretch(IReadOnlyCollection<(double Latitude, double Longitude)> points, double radiusMetres, double stubMetres)
+            : this(points, radiusMetres, stubMetres, 0)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SubwayStretch"/> class that also keeps
+        /// <paramref name="marginMetres"/> of line beyond the outermost stations, where the line goes on
+        /// (street lines run a little past the first and last place).
+        /// </summary>
+        /// <param name="points">The stations as WGS84 latitude and longitude, 1 to <see cref="MaxPoints"/>. Their order doesn't matter.</param>
+        /// <param name="radiusMetres">How near a line a station must be to count for it, <see cref="MinRadiusMetres"/> to <see cref="MaxRadiusMetres"/>.</param>
+        /// <param name="stubMetres">The line kept each side of a lone station, 0 (none) to <see cref="MaxStubMetres"/>.</param>
+        /// <param name="marginMetres">The line kept beyond the outermost stations, 0 (none) to <see cref="MaxMarginMetres"/>.</param>
+        public SubwayStretch(IReadOnlyCollection<(double Latitude, double Longitude)> points, double radiusMetres, double stubMetres, double marginMetres)
         {
             ArgumentNullException.ThrowIfNull(points);
             ArgumentOutOfRangeException.ThrowIfZero(points.Count, nameof(points));
@@ -57,11 +73,19 @@ namespace MicroService.Service.Services.Subway
                 throw new ArgumentOutOfRangeException(nameof(stubMetres), stubMetres, $"The stub is 0 to {MaxStubMetres} metres.");
             }
 
+            if (!double.IsFinite(marginMetres) || marginMetres < 0 || marginMetres > MaxMarginMetres)
+            {
+                throw new ArgumentOutOfRangeException(nameof(marginMetres), marginMetres, $"The margin is 0 to {MaxMarginMetres} metres.");
+            }
+
             // Sorted, so that the same stations in another order are the same request
             Points = points.OrderBy(p => p.Latitude).ThenBy(p => p.Longitude).ToList();
             RadiusMetres = radiusMetres;
             StubMetres = stubMetres;
-            Key = BuildKey(Points, radiusMetres, stubMetres);
+            MarginMetres = marginMetres;
+            // A margin changes the key only when there is one, so subway keys stay as they were
+            Key = BuildKey(Points, radiusMetres, stubMetres)
+                + (marginMetres > 0 ? "|m" + marginMetres.ToString("R", CultureInfo.InvariantCulture) : string.Empty);
         }
 
         /// <summary>
@@ -72,6 +96,11 @@ namespace MicroService.Service.Services.Subway
         public double RadiusMetres { get; }
 
         public double StubMetres { get; }
+
+        /// <summary>
+        /// The line kept beyond the outermost stations, 0 for none.
+        /// </summary>
+        public double MarginMetres { get; }
 
         /// <summary>
         /// The same for the same stations (in any order), radius and stub.
@@ -129,7 +158,7 @@ namespace MicroService.Service.Services.Subway
                 }
 
                 var stretches = component
-                    .Select(part => (Part: part, Range: StretchRange(graph, indexes[part], positions[part], part)))
+                    .Select(part => (Part: part, Range: StretchRange(graph, indexes[part], positions[part], part, MarginMetres)))
                     .Where(s => s.Range.HasValue);
 
                 foreach (var (part, range) in stretches)
@@ -177,7 +206,7 @@ namespace MicroService.Service.Services.Subway
         /// The part of a line between its stations, running on to an end that leads to more
         /// stations, or null for nothing.
         /// </summary>
-        private static (double From, double To)? StretchRange(PartGraph graph, LengthIndexedLine index, List<double> positions, int part)
+        private static (double From, double To)? StretchRange(PartGraph graph, LengthIndexedLine index, List<double> positions, int part, double marginMetres)
         {
             var toStart = graph.HasStationsBeyond(part, fromStart: true);
             var toEnd = graph.HasStationsBeyond(part, fromStart: false);
@@ -196,8 +225,8 @@ namespace MicroService.Service.Services.Subway
                 return toStart && toEnd ? (index.StartIndex, index.EndIndex) : null;
             }
 
-            var from = toStart ? index.StartIndex : positions.Min();
-            var to = toEnd ? index.EndIndex : positions.Max();
+            var from = toStart ? index.StartIndex : Math.Max(index.StartIndex, positions.Min() - marginMetres);
+            var to = toEnd ? index.EndIndex : Math.Min(index.EndIndex, positions.Max() + marginMetres);
 
             // Stations at the end where the part joins the stretch add nothing
             return to - from < SameSpotMetres ? null : (from, to);
