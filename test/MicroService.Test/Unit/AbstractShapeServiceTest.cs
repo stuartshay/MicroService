@@ -244,8 +244,8 @@ namespace MicroService.Test.Unit
         [Fact]
         public void ToShapePoint_ConvertsWgs84ToTheShapesNad83()
         {
-            // Borough boundaries are NAD83 (feet), so a WGS84 point is converted
-            var point = TestShapeService.ToPoint(-73.866667, 40.7500000809719, Datum.Wgs84);
+            // Community districts are NAD83 (feet), so a WGS84 point is converted
+            var point = Nad83ShapeService.ToPoint(-73.866667, 40.7500000809719, Datum.Wgs84);
 
             Assert.Equal(1021192.94, point.X, 0.5);
             Assert.Equal(212550.02, point.Y, 0.5);
@@ -261,6 +261,20 @@ namespace MicroService.Test.Unit
                 ShapefileDataReaderResolver shapefileDataReaderResolver,
                 ILogger logger,
                 Func<Feature, UnattributedShape> mapFeature)
+                : base(shapefileDataReaderResolver, logger, mapFeature)
+            {
+            }
+
+            public static Point ToPoint(double x, double y, Datum datum) => ToShapePoint(x, y, datum);
+        }
+
+        /// <summary>A NAD83 shape (Community Districts), for the datum conversion; never constructed.</summary>
+        private abstract class Nad83ShapeService : AbstractShapeService<CommunityDistrictShape>
+        {
+            protected Nad83ShapeService(
+                ShapefileDataReaderResolver shapefileDataReaderResolver,
+                ILogger logger,
+                Func<Feature, CommunityDistrictShape> mapFeature)
                 : base(shapefileDataReaderResolver, logger, mapFeature)
             {
             }

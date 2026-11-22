@@ -72,7 +72,7 @@ namespace MicroService.Test.Extensions
             Assert.Equal("string", shapes["type"]!.GetValue<string>());
             Assert.Contains("BoroughBoundaries", shapes["enum"]!.AsArray().Select(value => value!.GetValue<string>()));
             Assert.Contains("SubwayServiceLines", shapes["enum"]!.AsArray().Select(value => value!.GetValue<string>()));
-            Assert.Equal(17, shapes["enum"]!.AsArray().Count);
+            Assert.Equal(21, shapes["enum"]!.AsArray().Count);
 
             Assert.Equal(["Wgs84", "Nad83"], schemas["Datum"]!["enum"]!.AsArray().Select(value => value!.GetValue<string>()));
         }

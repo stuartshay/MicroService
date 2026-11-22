@@ -80,6 +80,10 @@ namespace MicroService.Test.Compatibility
             ShapeProperties.Subway => SubwayShapeProfile.Map(feature),
             ShapeProperties.SubwayServiceLines => SubwayServiceLineShapeProfile.Map(feature),
             ShapeProperties.ZipCodes => ZipCodeMappingsProfile.Map(feature),
+            ShapeProperties.PrivatelyOwnedPublicSpaces => PrivatelyOwnedPublicSpaceShapeProfile.Map(feature),
+            ShapeProperties.Greenstreets => GreenstreetShapeProfile.Map(feature),
+            ShapeProperties.Libraries => LibraryShapeProfile.Map(feature),
+            ShapeProperties.PostOffices => PostOfficeShapeProfile.Map(feature),
             _ => throw new ArgumentOutOfRangeException(nameof(dataset), dataset, null)
         };
     }

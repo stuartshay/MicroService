@@ -19,6 +19,10 @@ ANSWERS = {
     "HistoricDistricts": {"lpNumber": "LP-00099"},
     "ScenicLandmarks": {"lpNumber": "LP-00851"},
     "Subway": {"name": "Junction Blvd & Roosevelt Ave at SE corner"},
+    "PrivatelyOwnedPublicSpaces": {"popsNumber": "M050022"},
+    "Greenstreets": {"propertyNumber": "QZ757"},
+    "Libraries": {"name": "Jefferson Market"},
+    "PostOffices": {"name": "Grand Central Station"},
 }
 # What production answers for each flat file (only the fields the check reads)
 FLAT_FILES = {

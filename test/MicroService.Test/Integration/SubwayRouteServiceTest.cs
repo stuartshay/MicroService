@@ -388,8 +388,8 @@ namespace MicroService.Test.Integration
 
         private Geometry ManhattanOutline()
         {
-            var feature = _fixture.BoroughBoundariesService.GetFeatures().Single(f => Convert.ToInt32(f.Attributes["BoroCode"]) == 1);
-            return GeoTransformationHelper.CopyNad83ToWgs84(feature.Geometry);
+            // Borough Boundaries is WGS84 (the Open Data export)
+            return _fixture.BoroughBoundariesService.GetFeatures().Single(f => Convert.ToInt32(f.Attributes["BoroCode"]) == 1).Geometry;
         }
 
         private static List<JsonElement> Features(string geoJson)

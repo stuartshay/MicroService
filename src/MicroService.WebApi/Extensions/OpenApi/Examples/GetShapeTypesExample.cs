@@ -19,8 +19,8 @@ namespace MicroService.WebApi.Extensions.OpenApi.Examples
                     key = "BoroughBoundaries",
                     description = "Borough Boundaries",
                     fileName = "nybb",
-                    directory = "Borough_Boundaries/NAD83",
-                    datum = "Nad83"
+                    directory = "Borough_Boundaries/WGS84",
+                    datum = "Wgs84"
                 },
                 new {
                     key = "CommunityDistricts",

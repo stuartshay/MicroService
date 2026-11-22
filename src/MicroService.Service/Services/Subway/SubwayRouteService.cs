@@ -237,7 +237,7 @@ namespace MicroService.Service.Services.Subway
                 f.Geometry));
 
         /// <summary>
-        /// The borough's outline in WGS84. Borough Boundaries is NAD83 State Plane, so it is converted.
+        /// The borough's outline in WGS84; a NAD83 State Plane Borough Boundaries would be converted.
         /// </summary>
         private Geometry GetBoroughOutline(Borough borough) =>
             _cache.GetOrCreate($"borough|{borough}", entry =>
