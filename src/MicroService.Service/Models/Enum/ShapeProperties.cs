@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Models.Enum.Attributes;
+using MicroService.Service.Models.Enum.Attributes;
 using System.ComponentModel;
 
 namespace MicroService.Service.Models.Enum
@@ -34,7 +34,6 @@ namespace MicroService.Service.Models.Enum
         [Shape("LPC_Individual_Landmark_and_Historic_Building_Database", "LPC_Individual_Landmark_and_Historic_District_Building_Database_20231209", Datum.Wgs84)]
         [ShapeStyle(Color.Blue)]
         IndividualLandmarkHistoricDistricts,
-
 
         [Description("National Register Historic_Places")]
         [Shape("National_Register_ Historic_Places/WGS84", "HRHP", Datum.Wgs84)]

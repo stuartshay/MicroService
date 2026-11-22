@@ -27,7 +27,6 @@ namespace MicroService.Test.Unit
             Assert.Equal(result3, Math.Round(calculated3, DataConstants.PercentilePrecision));
         }
 
-
         [InlineData(1016636.9999607186, 187747.02946839959, 40.68193974177307, -73.8832294373166)]
         [Theory]
         [Trait("Category", "Unit")]
@@ -91,7 +90,6 @@ namespace MicroService.Test.Unit
             Assert.Null(result.Item2);
         }
 
-
         [InlineData(40.681939660888951, -73.8832294373166, 1016637, 187747.0295)]
         [Theory]
         [Trait("Category", "Unit")]
@@ -140,7 +138,6 @@ namespace MicroService.Test.Unit
                 new Coordinate(78.90, 12.34)
             });
             var originalFirstCoordinate = lineString.Coordinates[0].Copy();
-
 
             // Act
             var result = GeoTransformationHelper.TransformGeometry(lineString, fromDatum, toDatum);
@@ -253,7 +250,6 @@ namespace MicroService.Test.Unit
             Assert.Throws<ArgumentException>(() => GeoTransformationHelper.TransformGeometry(point, Datum.Nad83, Datum.Nad83));
         }
 
-
         [InlineData(40.681939660888951, -73.8832294373166, 187747.0294683996, 1016636.9999607186)]
         [Theory]
         [Trait("Category", "Unit")]
@@ -282,10 +278,5 @@ namespace MicroService.Test.Unit
             //Assert.Equal(point.X, backTransformedPoint.Coordinates[0].X, 1e-6);
             //Assert.Equal(point.Y, backTransformedPoint.Coordinates[0].Y, 1e-6);
         }
-
-
-
-
-
     }
 }

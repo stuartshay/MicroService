@@ -1,4 +1,4 @@
-﻿using MicroService.WebApi.Extensions.OpenApi;
+using MicroService.WebApi.Extensions.OpenApi;
 
 namespace MicroService.WebApi.Extensions.OpenApi.Examples
 {
@@ -32,5 +32,4 @@ namespace MicroService.WebApi.Extensions.OpenApi.Examples
             };
         }
     }
-
 }

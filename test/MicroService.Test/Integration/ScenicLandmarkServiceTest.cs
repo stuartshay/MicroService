@@ -35,7 +35,6 @@ namespace MicroService.Test.Integration
             _testOutputHelper.WriteLine($"Max bounds: ({bounds.MaxX},{bounds.MaxY})");
         }
 
-
         [Fact(DisplayName = "Get Shape File Database Properties")]
         [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
@@ -70,7 +69,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.IsType<List<Feature>>(sut);
         }
-
 
         [InlineData(991228.1942826601, 220507.29488507056, "Central Park", "MN")]
         [Theory(DisplayName = "Get Geospatial Point Lookup - NAD83")]
@@ -111,7 +109,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, result?.AreaName);
         }
-
 
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Geospatial Point Lookup Not Found")]
@@ -182,6 +179,5 @@ namespace MicroService.Test.Integration
             Assert.NotEmpty(sut);
             Assert.NotNull(sut);
         }
-
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MicroService.Service.Constants
+namespace MicroService.Service.Constants
 {
     /// <summary>
     /// Data Business Rules Constants
@@ -14,6 +14,5 @@
         /// Excel Percentile
         /// </summary>
         public const double ExcelPercentile = .995;
-
     }
 }

@@ -1,4 +1,4 @@
-﻿using MicroService.Data.Enum;
+using MicroService.Data.Enum;
 using MicroService.Service.Helpers;
 using MicroService.Service.Models;
 using MicroService.Service.Models.Base;
@@ -52,7 +52,6 @@ namespace MicroService.Test.Functions
                 Assert.Contains(properties, p => p.Name == expectedProperty);
             }
         }
-
 
         [Fact]
         public void GetPropertiesWithoutExcludedAttribute_ReturnsOnlyPropertiesWithoutAttribute()

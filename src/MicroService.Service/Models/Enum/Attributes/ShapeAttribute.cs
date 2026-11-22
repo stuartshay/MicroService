@@ -1,4 +1,4 @@
-﻿namespace MicroService.Service.Models.Enum.Attributes
+namespace MicroService.Service.Models.Enum.Attributes
 {
     [System.AttributeUsage(System.AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
     public class ShapeAttribute : System.Attribute
@@ -15,7 +15,6 @@
         public string FileName { get; set; }
 
         public Datum Datum { get; set; }
-
     }
 
     public enum Datum

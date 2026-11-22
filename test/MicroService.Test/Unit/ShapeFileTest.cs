@@ -46,6 +46,5 @@ namespace MicroService.Test.Unit
             WktReaderFunctions.GeometryContainsPoint();
             Assert.True(true);
         }
-
     }
 }

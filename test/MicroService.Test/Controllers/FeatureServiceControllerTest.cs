@@ -12,7 +12,6 @@ using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using Xunit;
 
-
 namespace MicroService.Test.Controllers
 {
     public class FeatureServiceControllerTests
@@ -193,7 +192,6 @@ namespace MicroService.Test.Controllers
             // Assert
             Assert.IsType<NotFoundResult>(sut.Result);
         }
-
 
         [Fact]
         public void GetShapeProperties_ReturnsBadRequestResult()
@@ -641,10 +639,8 @@ namespace MicroService.Test.Controllers
 
         private static FeatureServiceController GetFeatureServiceController(ShapeServiceResolver? resolver = null)
         {
-
             ILogger<FeatureServiceController> logger = new Mock<ILogger<FeatureServiceController>>().Object;
             resolver ??= new Mock<ShapeServiceResolver>().Object;
-
 
             return new FeatureServiceController(resolver, logger);
         }

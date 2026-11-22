@@ -78,7 +78,6 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, sut.BoroName);
         }
 
-
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Geospatial Point Lookup Not Found")]
         public void Get_Geospatial_Point_Lookup_Not_Found(double x, double y)
@@ -105,7 +104,6 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.Equal(expected, result?.AreaName);
         }
-
 
         [InlineData("LP-00001", "3079170009", "Pieter Claesen Wyckoff House")]
         [InlineData("LP-00010", "1005450040", "428 Lafayette Street Building")]

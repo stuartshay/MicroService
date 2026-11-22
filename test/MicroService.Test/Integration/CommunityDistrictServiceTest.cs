@@ -62,7 +62,6 @@ namespace MicroService.Test.Integration
             Assert.IsType<List<Feature>>(sut);
         }
 
-
         [InlineData(1006187, 232036, "Bronx", 201)]
         [InlineData(1000443, 0239270, "Manhattan", 110)]
         [Theory(DisplayName = "Get Geospatial Point Lookup")]
@@ -107,7 +106,6 @@ namespace MicroService.Test.Integration
             Assert.Equal(value2, result.Borough);
         }
 
-
         [Theory(DisplayName = "GetFeatureCollection returns a feature collection")]
         [InlineData("312")]
         public void GetFeatureCollection_ValidInput_ReturnsFeatureCollection(string value1)
@@ -128,7 +126,6 @@ namespace MicroService.Test.Integration
                 Assert.Equal(int.Parse(value1), Assert.IsType<int>(feature.Attributes["BoroCd"])));
         }
 
-
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Geospatial Point Lookup Not Found")]
         public void Get_Geospatial_Point_Lookup_Not_Found(double x, double y)
@@ -137,7 +134,6 @@ namespace MicroService.Test.Integration
 
             Assert.Null(sut);
         }
-
 
         [Fact]
         public void Get_Feature_List()

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,7 +22,6 @@ namespace MicroService.Service.Helpers
                 ? (elements[index] * (1 - frac)) + (elements[index + 1] * frac)
                 : elements[index];
         }
-
     }
 }
 

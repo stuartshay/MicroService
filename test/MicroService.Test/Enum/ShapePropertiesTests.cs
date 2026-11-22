@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Models;
+using MicroService.Service.Models;
 using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
@@ -110,6 +110,4 @@ public class ShapePropertiesTests
         // Return the Datum value
         return shapeAttribute.Datum;
     }
-
-
 }

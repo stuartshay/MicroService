@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Models.Base;
+using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
 
@@ -20,7 +20,6 @@ namespace MicroService.Service.Models
         public string GlobalId { get; set; } = string.Empty;
 
         public string OperationZone { get; set; } = string.Empty;
-
 
         public string OperationZoneName { get; set; } = string.Empty;
     }

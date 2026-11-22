@@ -97,7 +97,6 @@ namespace MicroService.Test.Integration
             Assert.Null(sut);
         }
 
-
         [InlineData("MN01", "72", "Manhattan")]
         [InlineData("SI02", "107", "Staten Island")]
         [Theory(DisplayName = "Get Feature Attribute Lookup")]

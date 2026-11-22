@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Models.Enum.Attributes;
+using MicroService.Service.Models.Enum.Attributes;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using System.Text.Json.Serialization;
@@ -21,7 +21,6 @@ namespace MicroService.Service.Models.Base
         [FeatureCollectionExclude]
         [JsonIgnore]
         public FeatureCollection Feature { get; set; } = null!;
-
     }
 
     public class BoundingBox
@@ -54,6 +53,5 @@ namespace MicroService.Service.Models.Base
         public double X { get; set; }
 
         public double Y { get; set; }
-
     }
 }

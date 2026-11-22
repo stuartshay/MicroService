@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Models.Enum.Attributes;
+using MicroService.Service.Models.Enum.Attributes;
 using System.ComponentModel;
 
 namespace MicroService.Service.Models.Enum
@@ -12,6 +12,5 @@ namespace MicroService.Service.Models.Enum
         [Description("Subway Station Complex")]
         [FlatFile("Subway_Complex", "StationComplexes.csv", "StationComplexFlatFile", FileTypes.Csv)]
         SubwayStationComplex,
-
     }
 }

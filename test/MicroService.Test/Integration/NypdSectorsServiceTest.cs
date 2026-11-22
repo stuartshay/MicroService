@@ -89,7 +89,6 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, result?.PatrolBoro);
         }
 
-
         [InlineData(1006187, 232036, "40A", "PBBX")]
         [InlineData(1021192.9426658918, 212550.01741990919, "115D", "PBQN")]
         [Theory(DisplayName = "Get Geospatial Point Lookup")]
@@ -103,7 +102,6 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected2, sut.PatrolBoro);
         }
 
-
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Geospatial Point Lookup Not Found")]
         public void Get_Geospatial_Point_Lookup_Not_Found(double x, double y)
@@ -112,7 +110,6 @@ namespace MicroService.Test.Integration
 
             Assert.Null(sut);
         }
-
 
         [InlineData("102", "102C", "PBQS")]
         [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
