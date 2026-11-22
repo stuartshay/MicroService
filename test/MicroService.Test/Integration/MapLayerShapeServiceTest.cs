@@ -48,6 +48,15 @@ namespace MicroService.Test.Integration
             Assert.Equal("Plaza", pops?.PublicSpaceType);
         }
 
+        [Fact(DisplayName = "Map layers - the nearest point is measured in metres, not degrees")]
+        public void PointShapes_MeasureInMetres()
+        {
+            // 802 m to the Schwarzman Building, 995 m to Columbus; in raw degrees Columbus looks nearer
+            var library = Service<LibrariesService>().GetFeatureLookup(-73.991, 40.756, Datum.Wgs84);
+
+            Assert.Equal("Stephen A. Schwarzman Building", library?.Name);
+        }
+
         [Fact(DisplayName = "Map layers - a Greenstreet is found by a point inside it, and by its property number")]
         public void Greenstreets_FoundByPointAndAttribute()
         {
