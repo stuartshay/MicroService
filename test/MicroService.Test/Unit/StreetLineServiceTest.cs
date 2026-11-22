@@ -26,7 +26,8 @@ namespace MicroService.Test.Unit
             var segments = await _client.GetSegmentsAsync("W 42 ST", Borough.MN, TestContext.Current.CancellationToken);
             await _client.GetSegmentsAsync("W 42 ST", Borough.MN, TestContext.Current.CancellationToken);
 
-            Assert.Single(segments);
+            Assert.Single(segments.Segments);
+            Assert.Equal("W  42 ST", segments.Spelling);
             var query = Assert.Single(_fake.Queries);
             Assert.Contains("$where=boroughcode='1' AND full_street_name in('W  42 ST','WEST 42 ST')", query, StringComparison.Ordinal);
         }
@@ -37,20 +38,25 @@ namespace MicroService.Test.Unit
             _fake.Streets["EAST DR"] = [FakeCenterline.Segment(0, 100)];
             _fake.Streets["E  DR"] = [FakeCenterline.Segment(0, 100), FakeCenterline.Segment(100, 200)];
 
-            Assert.Single(await _client.GetSegmentsAsync("EAST DR", Borough.MN, TestContext.Current.CancellationToken));
-            Assert.Equal(2, (await _client.GetSegmentsAsync("E DR", Borough.MN, TestContext.Current.CancellationToken)).Count);
-            Assert.Empty(await _client.GetSegmentsAsync("MADISON AVE", Borough.MN, TestContext.Current.CancellationToken));
+            var east = await _client.GetSegmentsAsync("EAST DR", Borough.MN, TestContext.Current.CancellationToken);
+            var e = await _client.GetSegmentsAsync("E DR", Borough.MN, TestContext.Current.CancellationToken);
+            var none = await _client.GetSegmentsAsync("MADISON AVE", Borough.MN, TestContext.Current.CancellationToken);
+
+            Assert.Equal(("EAST DR", 1), (east.Spelling, east.Segments.Count));
+            Assert.Equal(("E  DR", 2), (e.Spelling, e.Segments.Count));
+            Assert.Null(none.Spelling);
+            Assert.Empty(none.Segments);
         }
 
         [Fact(DisplayName = "Street centerline - rows without a name or a usable shape are skipped")]
         public async Task GetSegments_SkipsRowsWithoutAShape()
         {
             _fake.ExtraSegmentRows.Add(new { full_street_name = "5 AVE" });
-            _fake.ExtraSegmentRows.Add(new { full_street_name = "5 AVE", the_geom = (object?)null });
+            _fake.ExtraSegmentRows.Add(new { full_street_name = "5 AVE", the_geom = default(object) });
             _fake.ExtraSegmentRows.Add(new { the_geom = new { type = "Point", coordinates = new[] { -73.98, 40.75 } } });
             _fake.ExtraSegmentRows.Add(new { full_street_name = "5 AVE", the_geom = new { type = "MultiLineString", coordinates = Array.Empty<double[][]>() } });
 
-            Assert.Equal(2, (await _client.GetSegmentsAsync("5 AVE", Borough.MN, TestContext.Current.CancellationToken)).Count);
+            Assert.Equal(2, (await _client.GetSegmentsAsync("5 AVE", Borough.MN, TestContext.Current.CancellationToken)).Segments.Count);
         }
 
         [Fact(DisplayName = "Street centerline - the client and the service need their dependencies")]
@@ -121,6 +127,19 @@ namespace MicroService.Test.Unit
             // Simplified to its two ends: a straight line
             Assert.Equal(2, line.GetArrayLength());
             Assert.Equal(5000, NorthOf(line[1]) - NorthOf(line[0]), 0);
+        }
+
+        [Fact(DisplayName = "Street lines - names that find the same centerline street draw it once; streets that only look alike both draw")]
+        public async Task Lines_DrawEachCenterlineStreetOnce()
+        {
+            _fake.Streets["EAST DR"] = [FakeCenterline.Segment(0, 100)];
+            _fake.Streets["E  DR"] = [FakeCenterline.Segment(200, 300)];
+
+            using var document = await LinesAsync(["W 42 ST", "WEST 42 ST", "EAST DR", "E DR"], null);
+
+            var names = document.RootElement.GetProperty("features").EnumerateArray()
+                .Select(f => f.GetProperty("properties").GetProperty("name").GetString());
+            Assert.Equal(["W 42 ST", "EAST DR", "E DR"], names);
         }
 
         [Fact(DisplayName = "Street lines - with places, a street keeps the stretch along them plus the margin, and counts them")]

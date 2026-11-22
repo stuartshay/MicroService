@@ -93,12 +93,6 @@ namespace MicroService.Service.Services.Streets
         }
 
         /// <summary>
-        /// One key for every spelling of a name, to tell when two requested names are the same street.
-        /// </summary>
-        public static string Key(string normalized) =>
-            string.Join('|', Spellings(normalized).Select(Collapse).Order(StringComparer.Ordinal));
-
-        /// <summary>
         /// A CSCL name single-spaced, as the API shows it ("W  42 ST" is "W 42 ST").
         /// </summary>
         public static string Collapse(string name) =>

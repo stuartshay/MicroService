@@ -19,6 +19,11 @@ namespace MicroService.Service.Services.Streets
     public sealed record StreetName(string Name, string Borough, int Segments);
 
     /// <summary>
+    /// A street's segments and the centerline spelling they were found under; none when no spelling matched.
+    /// </summary>
+    public sealed record StreetSegments(string? Spelling, IReadOnlyList<Geometry> Segments);
+
+    /// <summary>
     /// The city's Street Centerline (CSCL, NYC Open Data <c>inkn-q76z</c>), read through the Socrata
     /// API: a street's segments by name and borough, and street names matching a search. Answers are
     /// kept a day in memory; the centerline changes a few times a year.
@@ -54,11 +59,11 @@ namespace MicroService.Service.Services.Streets
         /// The segments of the street named <paramref name="name"/> (normalized, <see cref="StreetNames.Normalize"/>)
         /// in the borough, in WGS84, under the first of its <see cref="StreetNames.Spellings"/> the centerline has.
         /// </summary>
-        public async Task<IReadOnlyList<Geometry>> GetSegmentsAsync(string name, Borough borough, CancellationToken cancellationToken = default)
+        public async Task<StreetSegments> GetSegmentsAsync(string name, Borough borough, CancellationToken cancellationToken = default)
         {
             ArgumentNullException.ThrowIfNull(name);
             var key = $"streets|segments|{(int)borough}|{name}";
-            if (_cache.TryGetValue(key, out IReadOnlyList<Geometry>? cached) && cached is not null)
+            if (_cache.TryGetValue(key, out StreetSegments? cached) && cached is not null)
             {
                 return cached;
             }
@@ -85,12 +90,13 @@ namespace MicroService.Service.Services.Streets
             }
 
             // Two spellings can be two streets (EAST DR and E  DR), so only the first one found is used
-            IReadOnlyList<Geometry> segments = spellings.Select(s => bySpelling.GetValueOrDefault(s)).FirstOrDefault(l => l is not null) ?? [];
+            var found = spellings.FirstOrDefault(bySpelling.ContainsKey);
+            var segments = new StreetSegments(found, found is null ? [] : bySpelling[found]);
 
             _cache.Set(key, segments, new MemoryCacheEntryOptions
             {
                 AbsoluteExpirationRelativeToNow = Lifetime,
-                Size = segments.Sum(s => s.NumPoints) * 16 + 64,
+                Size = segments.Segments.Sum(s => s.NumPoints) * 16 + 64,
             });
             return segments;
         }

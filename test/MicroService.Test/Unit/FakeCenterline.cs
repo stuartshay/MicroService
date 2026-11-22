@@ -44,15 +44,27 @@ namespace MicroService.Test.Unit
 
         public static (double Latitude, double Longitude) North(double metres) => (Latitude + metres / MetresPerDegree, Longitude);
 
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        /// <summary>
+        /// Thrown instead of answering, e.g. a TaskCanceledException as an HttpClient timeout throws.
+        /// </summary>
+        public Exception? Failure { get; set; }
+
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
+            // Answers asynchronously, as a real handler does; the caller owns the response
+            await Task.Yield();
             var query = Uri.UnescapeDataString(request.RequestUri!.Query);
             Queries.Add(query);
+            if (Failure is not null)
+            {
+                throw Failure;
+            }
+
             var body = Body ?? (query.Contains("$group=", StringComparison.Ordinal) ? Search() : Segments(query));
-            return Task.FromResult(new HttpResponseMessage(Status)
+            return new HttpResponseMessage(Status)
             {
                 Content = new StringContent(body, Encoding.UTF8, "application/json"),
-            });
+            };
         }
 
         private static string Search() => JsonSerializer.Serialize(new object[]

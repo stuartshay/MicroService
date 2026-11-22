@@ -165,6 +165,11 @@ namespace MicroService.Service.Services.Subway
                 {
                     ranges[part] = range!.Value;
                 }
+
+                if (MarginMetres > 0)
+                {
+                    CarryMargins(graph, indexes, positions, withStations, ranges);
+                }
             }
 
             var kept = ranges
@@ -254,6 +259,28 @@ namespace MicroService.Service.Services.Subway
             var visited = new HashSet<int> { part };
             CarryOn(graph, indexes, graph.Start(part), StubMetres - (spot - index.StartIndex), visited, ranges);
             CarryOn(graph, indexes, graph.End(part), StubMetres - (index.EndIndex - spot), visited, ranges);
+        }
+
+        /// <summary>
+        /// Where a part's margin runs past an end that leads to no more stations, the rest of the
+        /// margin carries on into the parts that join there, as a stub does.
+        /// </summary>
+        private void CarryMargins(PartGraph graph, List<LengthIndexedLine> indexes, List<List<double>> positions, List<int> withStations, Dictionary<int, (double From, double To)> ranges)
+        {
+            var visited = new HashSet<int>(ranges.Keys);
+            foreach (var part in withStations.Where(p => ranges.ContainsKey(p) && !graph.IsLoop(p)))
+            {
+                var index = indexes[part];
+                if (!graph.HasStationsBeyond(part, fromStart: true))
+                {
+                    CarryOn(graph, indexes, graph.Start(part), MarginMetres - (positions[part].Min() - index.StartIndex), visited, ranges);
+                }
+
+                if (!graph.HasStationsBeyond(part, fromStart: false))
+                {
+                    CarryOn(graph, indexes, graph.End(part), MarginMetres - (index.EndIndex - positions[part].Max()), visited, ranges);
+                }
+            }
         }
 
         private static void CarryOn(PartGraph graph, List<LengthIndexedLine> indexes, int end, double metres, HashSet<int> visited, Dictionary<int, (double From, double To)> ranges)

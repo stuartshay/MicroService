@@ -72,6 +72,27 @@ namespace MicroService.Test.Unit
             Assert.Equal(4500, Metres(new SubwayStretch(stations, 150, 400, 1500).Trim(line).Lines), 0);
         }
 
+        [Fact(DisplayName = "Subway stretch - a margin that runs past a junction carries on into the parts that join there")]
+        public void Trim_CarriesTheMarginAcrossAJunction()
+        {
+            // A part ending at a junction at 1000 m, where two parts carry on
+            var lines = Lines(
+                [(0, 0), (0, 1000)],
+                [(0, 1000), (0, 2000)],
+                [(0, 1000), (1000, 1000)]);
+
+            var (kept, stations) = new SubwayStretch([At(0, 800), At(0, 950)], 150, 400, 200).Trim(lines);
+
+            // 600-1000 on the first part, then the 150 m left on each part at the junction
+            Assert.Equal(2, stations);
+            Assert.Equal(700, Metres(kept), 0);
+            Assert.Equal(1150, North(kept.Coordinates.Max(c => c.Y)), 0);
+            Assert.Equal(150, East(kept.Coordinates.Max(c => c.X)), 0);
+
+            // Without a margin (subway), the stretch ends at the last station as before
+            Assert.Equal(150, Metres(new SubwayStretch([At(0, 800), At(0, 950)], 150, 400).Trim(lines).Lines), 0);
+        }
+
         [Fact(DisplayName = "Subway stretch - a margin is 0 to 2000 metres and is part of the key")]
         public void Margin_IsCheckedAndKeyed()
         {

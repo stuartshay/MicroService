@@ -38,6 +38,15 @@ namespace MicroService.Test.Controllers
             Assert.Equal(["5 AVE", "WEST 42 ST"], names);
         }
 
+        [Fact(DisplayName = "Streets API - two spellings of one street draw it once")]
+        public async Task Lines_OneLinePerStreet()
+        {
+            using var response = await GetAsync(_factory, "/api/v1/Streets/lines?names=W 42 ST,West 42nd Street&borough=MN");
+
+            using var document = await ReadJsonAsync(response);
+            Assert.Single(document.RootElement.GetProperty("features").EnumerateArray());
+        }
+
         [Fact(DisplayName = "Streets API - with places, each street keeps the stretch along them and counts them")]
         public async Task Lines_WithPlaces()
         {
@@ -116,6 +125,19 @@ namespace MicroService.Test.Controllers
             Assert.Equal(HttpStatusCode.BadGateway, lines.StatusCode);
             Assert.Equal(HttpStatusCode.BadGateway, search.StatusCode);
             Assert.Null(lines.Headers.CacheControl);
+        }
+
+        [Fact(DisplayName = "Streets API - 502 when NYC Open Data times out")]
+        public async Task CenterlineTimesOut()
+        {
+            await using var factory = new ApiFactory();
+            factory.Centerline.Failure = new TaskCanceledException("The request was canceled due to the configured HttpClient.Timeout.");
+
+            using var lines = await GetAsync(factory, "/api/v1/Streets/lines?names=5 AVE&borough=MN");
+            using var search = await GetAsync(factory, "/api/v1/Streets/search?q=5 AVE");
+
+            Assert.Equal(HttpStatusCode.BadGateway, lines.StatusCode);
+            Assert.Equal(HttpStatusCode.BadGateway, search.StatusCode);
         }
 
         private static async Task<HttpResponseMessage> GetAsync(ApiFactory factory, string uri)

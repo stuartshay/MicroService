@@ -48,7 +48,8 @@ namespace MicroService.Service.Services.Streets
 
         /// <summary>
         /// One MultiLineString feature per street that has a line, with the properties name, borough and,
-        /// with a stretch, places (how many of the places are along it).
+        /// with a stretch, places (how many of the places are along it). A name that resolves to a
+        /// centerline street already drawn is left out.
         /// </summary>
         public async Task<string> GetLinesGeoJsonAsync(
             IReadOnlyList<string> names,
@@ -63,11 +64,15 @@ namespace MicroService.Service.Services.Streets
 
             var tolerance = simplifyMetres / MetresPerDegree;
             var collection = new FeatureCollection();
+            var drawn = new HashSet<string>(StringComparer.Ordinal);
 
             foreach (var name in names)
             {
-                var segments = await _centerline.GetSegmentsAsync(name, borough, cancellationToken).ConfigureAwait(false);
-                if (segments.Count == 0)
+                var (spelling, segments) = await _centerline.GetSegmentsAsync(name, borough, cancellationToken).ConfigureAwait(false);
+
+                // Two names for one centerline street (W 42 ST and WEST 42 ST) draw it once; two
+                // streets that only look alike (EAST DR and E  DR) both draw
+                if (spelling is null || !drawn.Add(spelling))
                 {
                     continue;
                 }

@@ -101,7 +101,7 @@ namespace MicroService.WebApi.V1.Controllers
                 Response.Headers.CacheControl = CacheControl;
                 return Content(geoJson, "application/geo+json");
             }
-            catch (HttpRequestException exception)
+            catch (Exception exception) when (IsCenterlineFailure(exception, cancellationToken))
             {
                 return CenterlineUnavailable(exception);
             }
@@ -147,13 +147,21 @@ namespace MicroService.WebApi.V1.Controllers
                 Response.Headers.CacheControl = CacheControl;
                 return Ok(found);
             }
-            catch (HttpRequestException exception)
+            catch (Exception exception) when (IsCenterlineFailure(exception, cancellationToken))
             {
                 return CenterlineUnavailable(exception);
             }
         }
 
-        private ObjectResult CenterlineUnavailable(HttpRequestException exception)
+        /// <summary>
+        /// NYC Open Data failed or did not answer in time (the HttpClient timeout cancels the call); a
+        /// caller that went away cancels too, and that is not a failure to report.
+        /// </summary>
+        private static bool IsCenterlineFailure(Exception exception, CancellationToken cancellationToken) =>
+            exception is HttpRequestException
+            || (exception is OperationCanceledException && !cancellationToken.IsCancellationRequested);
+
+        private ObjectResult CenterlineUnavailable(Exception exception)
         {
             _logger.LogWarning(exception, "The street centerline could not be read");
             return Problem(
@@ -179,8 +187,9 @@ namespace MicroService.WebApi.V1.Controllers
                 ModelState.AddModelError(nameof(names), $"Not a street name: {string.Join(", ", invalid)}.");
             }
 
-            // One line per street, however it is spelled (W 42 ST and West 42nd Street)
-            return list.Select(StreetNames.Normalize).DistinctBy(StreetNames.Key, StringComparer.Ordinal).ToList();
+            // Repeats of one spelling go here; names that resolve to the same centerline street are
+            // drawn once by StreetLineService, which knows the street each one found
+            return list.Select(StreetNames.Normalize).Distinct(StringComparer.Ordinal).ToList();
         }
 
         private Borough? ValidateBorough(string? borough, bool required)

@@ -31,11 +31,9 @@ namespace MicroService.Test.Unit
             Assert.Equal(["AVE S"], StreetNames.Spellings("AVE S"));
         }
 
-        [Fact(DisplayName = "Street names - one key for every spelling of a street")]
-        public void Key()
+        [Fact(DisplayName = "Street names - a centerline name single-spaced")]
+        public void Collapse()
         {
-            Assert.Equal(StreetNames.Key("W 42 ST"), StreetNames.Key("WEST 42 ST"));
-            Assert.NotEqual(StreetNames.Key("W 42 ST"), StreetNames.Key("E 42 ST"));
             Assert.Equal("W 42 ST", StreetNames.Collapse("W  42 ST"));
             Assert.Equal(string.Empty, StreetNames.Collapse(null!));
         }
