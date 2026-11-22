@@ -8,6 +8,7 @@ using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Services.Base;
 using MicroService.Service.Services.FlatFileService;
+using MicroService.Service.Services.Layers;
 using MicroService.Service.Services.Streets;
 using MicroService.Service.Services.Subway;
 using MicroService.WebApi.Extensions;
@@ -103,6 +104,9 @@ void AddServices()
     // Register Shape Service Resolver
     services.AddScoped<ShapeServiceResolver>(serviceProvider => key =>
         ShapeRegistry.ResolveService(serviceProvider, key));
+
+    // Map layers: shapes a map can draw, and their features in a box (api/v1/Layers)
+    services.AddScoped<LayerService>();
 
     // Flat File Service Lookups
     services.AddScoped<StationFlatFileService>();
