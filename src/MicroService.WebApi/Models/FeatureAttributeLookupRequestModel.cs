@@ -1,4 +1,4 @@
-﻿namespace MicroService.WebApi.Models
+namespace MicroService.WebApi.Models
 {
     /// <summary>
     /// Request model for looking up a shape feature by attribute key/value pairs.
@@ -14,6 +14,5 @@
         /// Attribute Key Value Pairs
         /// </summary>
         public List<KeyValuePair<string, object>>? Attributes { get; set; }
-
     }
 }

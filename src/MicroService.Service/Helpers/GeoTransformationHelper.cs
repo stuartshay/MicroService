@@ -1,4 +1,4 @@
-﻿using NetTopologySuite.Geometries;
+using NetTopologySuite.Geometries;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 using System;
@@ -167,6 +167,5 @@ namespace MicroService.Service.Helpers
                 coordinate.Y = transformed[1];
             }
         }
-
     }
 }

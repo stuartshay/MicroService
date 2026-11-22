@@ -1,4 +1,4 @@
-﻿using Asp.Versioning;
+using Asp.Versioning;
 using MicroService.Service.Helpers;
 using MicroService.Service.Interfaces;
 using MicroService.Service.Models.Base;
@@ -230,7 +230,6 @@ namespace MicroService.WebApi.V1.Controllers
             return await Task.FromResult(Ok(geometry));
         }
 
-
         /// <summary>
         /// Feature Attribute Validation
         /// </summary>
@@ -279,6 +278,5 @@ namespace MicroService.WebApi.V1.Controllers
 
             return await Task.FromResult(Ok(results));
         }
-
     }
 }

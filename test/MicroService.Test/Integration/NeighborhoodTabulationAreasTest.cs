@@ -90,7 +90,6 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, result?.CDTAName);
         }
 
-
         [InlineData("BK0103", "047", "BK01 Williamsburg-Greenpoint (CD 1 Equivalent)")]
         [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
         public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
@@ -115,7 +114,6 @@ namespace MicroService.Test.Integration
             Assert.Equal(expected, result.Attributes["CDTAName"]);
         }
 
-
         [InlineData(1006187, 732036)]
         [Theory(DisplayName = "Get Geospatial Point Lookup Not Found")]
         [Trait("Category", "Integration")]
@@ -134,7 +132,5 @@ namespace MicroService.Test.Integration
             Assert.NotEmpty(sut);
             Assert.NotNull(sut);
         }
-
-
     }
 }

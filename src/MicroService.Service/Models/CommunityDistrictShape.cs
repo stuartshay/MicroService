@@ -1,4 +1,4 @@
-﻿using MicroService.Service.Models.Base;
+using MicroService.Service.Models.Base;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
 
@@ -17,6 +17,5 @@ namespace MicroService.Service.Models
         public string Borough { get; set; } = string.Empty;
 
         public string BoroName { get; set; } = string.Empty;
-
     }
 }

@@ -12,7 +12,6 @@ namespace MicroService.Service.Services
 {
     public class NationalRegisterHistoricPlacesService : AbstractShapeService<NationalRegisterHistoricPlacesShape>, IShapeService<NationalRegisterHistoricPlacesShape>
     {
-
         public NationalRegisterHistoricPlacesService(ShapefileDataReaderResolver shapefileDataReaderResolver,
             ILogger<NationalRegisterHistoricPlacesService> logger)
             : base(shapefileDataReaderResolver, logger, NationalRegisterHistoricPlacesShapeProfile.Map)
@@ -33,6 +32,5 @@ namespace MicroService.Service.Services
 
             return featureCollection;
         }
-
     }
 }

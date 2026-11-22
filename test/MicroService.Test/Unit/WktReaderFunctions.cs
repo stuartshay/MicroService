@@ -1,4 +1,4 @@
-﻿using NetTopologySuite;
+using NetTopologySuite;
 using NetTopologySuite.Geometries;
 using Xunit;
 
@@ -37,6 +37,5 @@ namespace MicroService.Test.Unit
                 System.Console.Write(contains);
             }
         }
-
     }
 }

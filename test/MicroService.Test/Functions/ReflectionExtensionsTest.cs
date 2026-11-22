@@ -133,5 +133,4 @@ namespace MicroService.Test.Functions
             Assert.Contains(result, p => p.Name == nameof(MicroService.Service.Models.IndividualLandmarkHistoricDistrictsShape.LPNumber));
         }
     }
-
 }

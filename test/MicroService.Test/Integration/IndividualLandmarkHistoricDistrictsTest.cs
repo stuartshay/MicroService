@@ -206,6 +206,5 @@ namespace MicroService.Test.Integration
             // Assert
             Assert.Null(sut);
         }
-
     }
 }

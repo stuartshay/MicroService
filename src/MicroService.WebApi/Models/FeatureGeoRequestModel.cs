@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using MicroService.Service.Models.Enum;
 using MicroService.Service.Models.Enum.Attributes;
 using System.ComponentModel;
@@ -39,5 +39,4 @@ namespace MicroService.WebApi.Models
         [DefaultValue(ShapeProperties.BoroughBoundaries)]
         public ShapeProperties Type { get; set; }
     }
-
 }

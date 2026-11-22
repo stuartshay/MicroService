@@ -4,5 +4,4 @@ namespace MicroService.Service.Models.Base
     // (StationFlatFile, StationComplexFlatFile) rather than a code-carrying
     // base class.
     public class FlatFileBase; // NOSONAR
-
 }

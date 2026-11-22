@@ -72,7 +72,6 @@ void SetupServices()
 
     services.AddHttpContextAccessor();
 
-
     services.AddMemoryCache();
     services.AddSingleton<CronJobServiceHealthCheck>();
 

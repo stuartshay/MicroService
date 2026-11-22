@@ -35,7 +35,6 @@ namespace MicroService.Test.Integration
             _testOutputHelper.WriteLine($"Max bounds: ({bounds.MaxX},{bounds.MaxY})");
         }
 
-
         [Fact(DisplayName = "Get Shape File Database Properties")]
         [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
@@ -105,7 +104,6 @@ namespace MicroService.Test.Integration
             Assert.Null(sut);
         }
 
-
         [InlineData("1", "MN15", "Clinton")]
         [InlineData("1", "MN25", "Battery Park City-Lower Manhattan")]
         [InlineData("1", "MN40", "Upper East Side-Carnegie Hill")]
@@ -140,6 +138,5 @@ namespace MicroService.Test.Integration
             Assert.NotNull(sut);
             Assert.NotEmpty(sut);
         }
-
     }
 }

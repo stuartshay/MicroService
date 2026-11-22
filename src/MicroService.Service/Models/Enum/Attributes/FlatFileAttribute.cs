@@ -1,4 +1,4 @@
-﻿namespace MicroService.Service.Models.Enum.Attributes
+namespace MicroService.Service.Models.Enum.Attributes
 {
     [System.AttributeUsage(System.AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
     public class FlatFileAttribute : System.Attribute
@@ -20,13 +20,10 @@
         public FileTypes FileType { get; set; }
     }
 
-
     public enum FileTypes
     {
         Csv,
         Xml,
         Json
     }
-
-
 }

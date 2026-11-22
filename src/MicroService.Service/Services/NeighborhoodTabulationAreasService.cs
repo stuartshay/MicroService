@@ -32,6 +32,5 @@ namespace MicroService.Service.Services
 
             return featureCollection;
         }
-
     }
 }

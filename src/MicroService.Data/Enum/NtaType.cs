@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 
 namespace MicroService.Data.Enum
 {
@@ -21,6 +21,5 @@ namespace MicroService.Data.Enum
 
         [Description("Park")]
         Park = 9
-
     }
 }

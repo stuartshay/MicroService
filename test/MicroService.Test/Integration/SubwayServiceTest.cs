@@ -38,7 +38,6 @@ namespace MicroService.Test.Integration
             _testOutputHelper.WriteLine($"Max bounds: ({bounds.MaxX},{bounds.MaxY})");
         }
 
-
         [Fact(DisplayName = "Get Shape File Database Properties")]
         [Trait("Category", "Integration")]
         public void Get_Shape_Database_Properties()
@@ -114,7 +113,6 @@ namespace MicroService.Test.Integration
             Assert.Equal(Double.Parse(expected), result?.ObjectId);
         }
 
-
         [InlineData("Junction Boulevard & Roosevelt Avenue at NE corner", "7", "1789")]
         [Theory(DisplayName = "GetFeatureCollection returns expected feature collection")]
         public void GetFeatureCollection_ValidInput_ReturnsExpectedFeature(string value1, string value2, string expected)
@@ -157,7 +155,6 @@ namespace MicroService.Test.Integration
             Assert.All(pointsWithinRadius, point => Assert.True(centerPoint.Distance(point) <= radius));
         }
 
-
         [Fact]
         public void Get_Feature_List()
         {
@@ -166,6 +163,5 @@ namespace MicroService.Test.Integration
             Assert.NotEmpty(sut);
             Assert.NotNull(sut);
         }
-
     }
 }
