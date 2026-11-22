@@ -59,6 +59,16 @@ namespace MicroService.Test.Integration
             Assert.Equal(Math.Round(coordinates[0].GetDouble(), 6), coordinates[0].GetDouble());
         }
 
+        [Fact(DisplayName = "Layers - a polygon whose envelope overlaps the box but whose outline doesn't is left out")]
+        public void Polygons_MustTouchTheBox()
+        {
+            // In the Hudson off Midtown: inside Manhattan's envelope, outside Manhattan
+            using var document = Features("BoroughBoundaries", new LayerBox(-74.015, 40.755, -74.014, 40.756));
+
+            Assert.DoesNotContain(document.RootElement.GetProperty("features").EnumerateArray(),
+                f => f.GetProperty("properties").GetProperty("title").GetString() == "Manhattan");
+        }
+
         [Fact(DisplayName = "Layers - polygons are simplified, and a feature without details has none")]
         public void Boroughs_AreSimplified()
         {

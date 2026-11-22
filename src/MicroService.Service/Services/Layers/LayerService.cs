@@ -1,6 +1,7 @@
 using MicroService.Service.Services.Base;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
+using NetTopologySuite.Geometries.Prepared;
 using NetTopologySuite.IO.Converters;
 using NetTopologySuite.Simplify;
 using System;
@@ -96,8 +97,15 @@ namespace MicroService.Service.Services.Layers
             var factory = new GeometryFactory(new PrecisionModel(), 4326);
             var tolerance = SimplifyMetres / MetresPerDegree;
 
+            // The envelope check is a quick first pass; a polygon's envelope can overlap the box
+            // while the polygon itself doesn't (a bay between two shores), so the geometry decides
+            var area = PreparedGeometryFactory.Prepare(factory.ToGeometry(envelope));
+            var touching = Features(layer)
+                .Where(f => f.Geometry.EnvelopeInternal.Intersects(envelope) && area.Intersects(f.Geometry))
+                .Take(MaxFeatures);
+
             var collection = new FeatureCollection();
-            foreach (var feature in Features(layer).Where(f => f.Geometry.EnvelopeInternal.Intersects(envelope)).Take(MaxFeatures))
+            foreach (var feature in touching)
             {
                 var geometry = layer.Geometry == LayerCatalog.Polygon
                     ? DouglasPeuckerSimplifier.Simplify(feature.Geometry, tolerance)
