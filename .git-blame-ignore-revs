@@ -1,0 +1,6 @@
+# Mechanical commits for git blame to skip. GitHub reads this file; locally run
+#   git config blame.ignoreRevsFile .git-blame-ignore-revs
+# Use the commit as it appears on master (a squash merge replaces the branch commits).
+
+# #589: CodeFactor autofix: remove the UTF-8 BOM from 23 files and repeated blank lines
+52d8eb5e8a642485e93d2b73f9dd3000d177ccd0
