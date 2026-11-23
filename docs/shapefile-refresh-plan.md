@@ -32,11 +32,11 @@ Compared on 2026-11-01 against a fresh Open Data export
 | --- | --- | --- | --- |
 | `IndividualLandmarkHistoricDistricts` | `gpmc-yuvp` | 37,521 → 38,105 | 1 |
 | `NeighborhoodTabulationAreas` | `9nt8-h7nd` | 262 → 262 | 1 |
-| `BoroughBoundaries` | `gthc-hcne` | 5 → 5 | Done 2026-11-22 ([map layers plan](map-layers-plan.md); WGS 84 export) |
+| `BoroughBoundaries` | `gthc-hcne` | 5 → 5 | Done 2026-11-22 ([map layers plan](archive/map-layers-plan-2026-11.md); WGS 84 export) |
 | `NypdPolicePrecincts` | `y76i-bdw7` | 77 → 78 | 1 |
 | `IndividualLandmarkSite` | `buis-pvji` (map view `ts56-fkf5`) | 1,520 → 1,532 | 2 |
-| `HistoricDistricts` | `skyk-mpzq` (map view `xbvj-gfnw`) | 159 → 141 + 18 kept | Done 2026-11-22 ([map layers plan](map-layers-plan.md)) |
-| `ScenicLandmarks` | `qexa-qpj6` (map view `gi7d-8gt5`) | 11 → 8 + 3 kept | Done 2026-11-22 ([map layers plan](map-layers-plan.md)) |
+| `HistoricDistricts` | `skyk-mpzq` (map view `xbvj-gfnw`) | 159 → 141 + 18 kept | Done 2026-11-22 ([map layers plan](archive/map-layers-plan-2026-11.md)) |
+| `ScenicLandmarks` | `qexa-qpj6` (map view `gi7d-8gt5`) | 11 → 8 + 3 kept | Done 2026-11-22 ([map layers plan](archive/map-layers-plan-2026-11.md)) |
 | `CommunityDistricts` | `5crt-au7u` | 71 → 71 | 2 |
 | `DSNYDistricts` | `i6mn-amj2` | 59 → 59 | 2 |
 | `NypdSectors` | `5rqd-h5ci` | 302 → 303 | 3 |
