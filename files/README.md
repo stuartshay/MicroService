@@ -41,7 +41,7 @@ in the refresh plan's inventory on 2026-11-01.
 
 `scripts/refresh-shapes.py` refreshes the borough, Historic Districts, Scenic Landmarks and
 the four map layer shapes from their Open Data exports (`--check` compares without writing),
-for the [map layers plan](../docs/map-layers-plan.md). Historic Districts and Scenic
+for the [map layers plan](../docs/archive/map-layers-plan-2026-11.md). Historic Districts and Scenic
 Landmarks export in NY State Plane feet although their `.prj` says WGS 84, so the script
 reprojects them; it keeps the features the city's file no longer has (owner decision,
 2026-11-22), marked `kept` = `Yes`, so CoreDataStore's LP number lookups still find them.
