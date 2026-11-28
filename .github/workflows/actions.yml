@@ -96,8 +96,6 @@ jobs:
             org.label-schema.version=11.0.1.${{ env.BUILD_NUMBER }}
             org.label-schema.build-date=${{ steps.set_datetime.outputs.current_datetime }}
           push: true
-          cache-from: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache
-          cache-to: type=registry,ref=${{ env.GCP_DOCKER_IMAGE }}:buildcache,mode=max
 
       # Docker Hub has no retention policy: keep latest and the 5 newest tags. Needs a token
       # with Delete scope; without the DOCKERHUB_PRUNE_TOKEN secret the script skips.
